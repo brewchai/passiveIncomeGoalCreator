@@ -168,7 +168,9 @@ async function addTicker() {
 }
 
 // Configuration
-const API_BASE_URL = 'http://localhost:5001/api';
+const API_BASE_URL = (window.RUNTIME_CONFIG && window.RUNTIME_CONFIG.API_BASE_URL)
+    ? window.RUNTIME_CONFIG.API_BASE_URL
+    : 'http://localhost:5001/api';
 
 // Mock dividend yield data (fallback)
 const mockDividendYields = {
