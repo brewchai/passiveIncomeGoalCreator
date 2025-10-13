@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passive Income Goal Tracker - Plan Your Financial Independence Journey</title>
+    <meta name="description"
+        content="Free passive income calculator and goal tracker. Plan your financial independence with dividend investing, rental income, and multiple income streams. Track your path to financial freedom.">
+    <meta name="keywords"
+        content="passive income calculator, financial independence, dividend income tracker, rental income planner, FIRE calculator, financial freedom, retirement planning, investment goal tracker">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Step 0: Landing Page -->
+        <div class="step active" id="step0">
+            <div class="landing-page">
+                <div class="landing-hero">
+                    <h1 class="landing-title">Achieve Financial Independence Through <span class="gradient-text">Passive
+                            Income</span></h1>
+                    <p class="landing-subtitle">The only goal tracker that <strong>automatically creates personalized
+                            milestones</strong> from your expenses.
+                        Track dividend income, rental properties, and multiple income streams—all in one place.</p>
+
+                    <div class="landing-features">
+                        <div class="feature-pill">
+                            <span class="feature-icon">✨</span>
+                            <span>Auto Goal Creation</span>
+                        </div>
+                        <div class="feature-pill">
+                            <span class="feature-icon">📊</span>
+                            <span>Smart Tracking</span>
+                        </div>
+                        <div class="feature-pill">
+                            <span class="feature-icon">💰</span>
+                            <span>Dividend Calculator</span>
+                        </div>
+                        <div class="feature-pill">
+                            <span class="feature-icon">🏠</span>
+                            <span>Rental Income</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-cta" onclick="startBuilder()">
+                        Get Started Free
+                        <span class="cta-arrow">→</span>
+                    </button>
+
+                    <p class="landing-note">No signup required • 100% free • Your data stays private</p>
+                </div>
+
+                <div class="landing-benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-card-icon">✨</div>
+                        <h3>Goals Created Automatically</h3>
+                        <p>Just enter your expenses—we automatically generate tiered financial milestones.
+                            No manual goal setting needed. Watch as you progress from covering groceries to achieving
+                            complete financial freedom.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-card-icon">📈</div>
+                        <h3>Track Multiple Income Streams</h3>
+                        <p>Monitor dividend-paying stocks, rental properties, royalties, and side businesses. Calculate
+                            your blended dividend yield and total monthly passive income automatically.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-card-icon">💡</div>
+                        <h3>See Exactly What to Invest</h3>
+                        <p>Know precisely how much portfolio value you need to reach each milestone.
+                            Clear investment targets based on your actual dividend yield—no guesswork required.</p>
+                    </div>
+                </div>
+
+                <div class="landing-how-it-works">
+                    <h2>How It Works</h2>
+                    <div class="steps-preview">
+                        <div class="step-preview-card">
+                            <div class="step-number">1</div>
+                            <h4>Add Income Sources</h4>
+                            <p>Enter your dividend stocks, rental properties, and other passive income streams</p>
+                        </div>
+                        <div class="step-preview-card">
+                            <div class="step-number">2</div>
+                            <h4>List Your Expenses</h4>
+                            <p>Add monthly expenses—we'll automatically create goals from them</p>
+                        </div>
+                        <div class="step-preview-card">
+                            <div class="step-number">3</div>
+                            <h4>Track Your Goals</h4>
+                            <p>See auto-generated milestones and exact investment amounts needed to achieve them</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="landing-cta-section">
+                    <h2>Start Your Financial Independence Journey Today</h2>
+                    <p>Join thousands planning their path to financial freedom through passive income</p>
+                    <button class="btn-cta" onclick="startBuilder()">
+                        Launch Goal Tracker
+                        <span class="cta-arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="landing-keywords">
+                    <p class="keywords-text">
+                        <strong>Perfect for:</strong> Financial Independence Retire Early (FIRE), Dividend Growth
+                        Investing, Rental Property Income Planning, Retirement Income Strategy, Multiple Income Streams,
+                        Wealth Building, Investment Portfolio Tracking, Financial Freedom Planning
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Indicator (shown from step 1-7) -->
+        <div class="progress-indicator" id="progressIndicator" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Step 1 of 8</div>
+        </div>
+
+        <!-- Step 1: Passive Income Explanation -->
+        <div class="step" id="step1">
+            <div class="step-content">
+                <div class="icon-container">
+                    <svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                </div>
+                <h1>What is Passive Income?</h1>
+                <div class="explanation-box">
+                    <p class="lead">Passive income is money earned regularly without actively working for it. The key
+                        principle:</p>
+                    <div class="highlight-box">
+                        <h3>Your Corpus Remains Intact</h3>
+                        <p>You never need to sell your investments. Instead, they generate fixed income for life through
+                            dividends, interest, rent, or royalties.</p>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🌱</div>
+                            <h4>Sustainable</h4>
+                            <p>Income flows indefinitely</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🔒</div>
+                            <h4>Protected</h4>
+                            <p>Capital stays invested</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">📈</div>
+                            <h4>Growing</h4>
+                            <p>Potential for increases</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🎯</div>
+                            <h4>Freedom</h4>
+                            <p>Financial independence</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="nextStep()">Get Started →</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Investment Portfolio -->
+        <div class="step" id="step2">
+            <div class="step-content">
+                <h1>Investment Portfolio</h1>
+                <p class="subtitle">Do you have dividend-paying investments? Add your holdings to calculate monthly
+                    income.</p>
+
+                <div class="portfolio-section">
+                    <div class="input-group">
+                        <label>Total Portfolio Value:</label>
+                        <input type="number" id="portfolioValue" placeholder="Total invested amount ($)"
+                            class="input-field" min="0" step="1000" oninput="updateDividendIncome()">
+                        <p class="input-hint">Enter the total current value of your dividend-paying investments</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Add your investments:</label>
+                        <div class="ticker-input-row">
+                            <input type="text" id="tickerSymbol" placeholder="Ticker Symbol (e.g., AAPL)"
+                                class="input-field">
+                            <input type="number" id="tickerPercent" placeholder="% of Portfolio" class="input-field"
+                                min="0" max="100" step="0.1">
+                            <button class="btn-secondary" onclick="addTicker()">Add</button>
+                        </div>
+                    </div>
+
+                    <div id="tickerList" class="ticker-list"></div>
+
+                    <div id="blendedYield" class="blended-yield-box" style="display: none;">
+                        <h3>Your Portfolio Summary</h3>
+                        <div class="yield-display">
+                            <div class="yield-stat">
+                                <span class="yield-label">Blended Yield</span>
+                                <span class="yield-value" id="yieldValue">0.00%</span>
+                            </div>
+                            <div class="yield-stat">
+                                <span class="yield-label">Monthly Dividend Income</span>
+                                <span class="yield-value income-highlight" id="monthlyDividendIncome">$0.00</span>
+                            </div>
+                        </div>
+                        <p class="yield-explanation">Based on your portfolio value and blended yield</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Rental Income -->
+        <div class="step" id="step3">
+            <div class="step-content">
+                <h1>Rental Income</h1>
+                <p class="subtitle">Do you have or plan to have rental properties?</p>
+
+                <div class="rental-section">
+                    <div class="input-group">
+                        <label>Add rental income sources:</label>
+                        <div class="rental-input-row">
+                            <input type="text" id="rentalName" placeholder="Property Name" class="input-field">
+                            <input type="number" id="rentalAmount" placeholder="Monthly Income ($)" class="input-field"
+                                min="0" step="0.01">
+                            <button class="btn-secondary" onclick="addRental()">Add</button>
+                        </div>
+                    </div>
+
+                    <div id="rentalList" class="income-list"></div>
+
+                    <div id="totalRental" class="total-box" style="display: none;">
+                        <span>Total Monthly Rental Income:</span>
+                        <span class="total-value" id="totalRentalValue">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Other Passive Income -->
+        <div class="step" id="step4">
+            <div class="step-content">
+                <h1>Other Passive Income</h1>
+                <p class="subtitle">Any other passive income sources? (Royalties, side businesses, etc.)</p>
+
+                <div class="other-section">
+                    <div class="input-group">
+                        <label>Add other income sources:</label>
+                        <div class="other-input-row">
+                            <input type="text" id="otherName" placeholder="Income Source" class="input-field">
+                            <input type="number" id="otherAmount" placeholder="Monthly Income ($)" class="input-field"
+                                min="0" step="0.01">
+                            <button class="btn-secondary" onclick="addOther()">Add</button>
+                        </div>
+                    </div>
+
+                    <div id="otherList" class="income-list"></div>
+
+                    <div id="totalOther" class="total-box" style="display: none;">
+                        <span>Total Monthly Other Income:</span>
+                        <span class="total-value" id="totalOtherValue">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Monthly Expenses -->
+        <div class="step" id="step5">
+            <div class="step-content">
+                <h1>Monthly Expenses</h1>
+                <p class="subtitle">List all your essential monthly expenses</p>
+
+                <div class="expenses-section">
+                    <div class="input-group">
+                        <label>Add your expenses:</label>
+                        <div class="expense-input-row">
+                            <input type="text" id="expenseName" placeholder="Expense Name (e.g., Rent)"
+                                class="input-field">
+                            <input type="number" id="expenseAmount" placeholder="Monthly Amount ($)" class="input-field"
+                                min="0" step="0.01">
+                            <button class="btn-secondary" onclick="addExpense()">Add</button>
+                        </div>
+                    </div>
+
+                    <div id="expenseList" class="expense-list"></div>
+
+                    <div id="totalExpenses" class="total-box" style="display: none;">
+                        <span>Total Monthly Expenses:</span>
+                        <span class="total-value" id="totalExpensesValue">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6: Calculating Goals -->
+        <div class="step" id="step6">
+            <div class="step-content">
+                <div class="calculating-container">
+                    <div class="spinner"></div>
+                    <h1>Setting Up Your Goals</h1>
+                    <p class="calculating-text">Analyzing your income streams and expenses...</p>
+                    <div class="calculating-steps">
+                        <div class="calc-step" id="calcStep1">✓ Calculating total passive income</div>
+                        <div class="calc-step" id="calcStep2">✓ Sorting expenses by priority</div>
+                        <div class="calc-step" id="calcStep3">✓ Creating milestone tiers</div>
+                        <div class="calc-step" id="calcStep4">✓ Determining progress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7: Congratulations -->
+        <div class="step" id="step7">
+            <div class="step-content">
+                <div class="congrats-container">
+                    <div class="congrats-icon">🎉</div>
+                    <h1>Congratulations!</h1>
+                    <p class="congrats-text">Your passive income goals are ready!</p>
+
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="summary-label">Total Passive Income</div>
+                            <div class="summary-value" id="summaryIncome">$0</div>
+                            <div class="summary-sublabel">per month</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Total Expenses</div>
+                            <div class="summary-value" id="summaryExpenses">$0</div>
+                            <div class="summary-sublabel">per month</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Goals Achieved</div>
+                            <div class="summary-value" id="summaryGoals">0/0</div>
+                            <div class="summary-sublabel">milestones</div>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="nextStep()">View Dashboard →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 8: Dashboard -->
+        <div class="step" id="step8">
+            <div class="dashboard">
+                <!-- Top Section: Income & Expense Summary -->
+                <div class="dashboard-summary">
+                    <div class="summary-section">
+                        <h2 class="dashboard-title">Your Financial Independence Dashboard</h2>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="summary-label">Total Monthly Income</span>
+                                <span class="summary-amount income" id="dashTotalIncome">$0</span>
+                                <div class="summary-breakdown" id="incomeBreakdown"></div>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Total Monthly Expenses</span>
+                                <span class="summary-amount expense" id="dashTotalExpenses">$0</span>
+                                <div class="summary-breakdown" id="expenseBreakdown"></div>
+                            </div>
+                            <div class="summary-item highlight">
+                                <span class="summary-label">Goals Achieved</span>
+                                <span class="summary-amount" id="dashGoalsAchieved">0/0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Section: Next Goal Highlight -->
+                <div class="next-goal-compact" id="nextGoalCompact">
+                    <div class="next-goal-info">
+                        <span class="next-goal-label">NEXT MILESTONE</span>
+                        <h3 id="nextGoalTitleCompact">Loading...</h3>
+                        <div class="next-goal-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Target</span>
+                                <span class="stat-value" id="nextGoalTargetCompact">$0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Portfolio Needed</span>
+                                <span class="stat-value highlight" id="nextGoalPortfolioNeeded">$0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Additional Investment</span>
+                                <span class="stat-value accent" id="nextGoalAdditionalInvestment">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-goal-progress-compact">
+                        <div class="progress-circle" id="progressCircle">
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: All Goals Grid -->
+                <div class="goals-section-compact">
+                    <h3 class="section-subtitle">All Milestones</h3>
+                    <div class="goals-grid-compact" id="goalsGridCompact">
+                        <!-- Goals will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="dashboard-actions">
+                    <button class="btn-secondary" onclick="resetApp()">Start Over</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

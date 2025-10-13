@@ -1,0 +1,50 @@
+# Environment
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
+.mypy_cache/
+
+# Python build/dist
+build/
+dist/
+.eggs/
+*.egg-info/
+wheels/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Node/JS (future-proofing)
+node_modules/
+.parcel-cache/
+.next/
+.vercel/
+dist/
+.cache/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage/Reports
+coverage/
+.coverage
