@@ -12,6 +12,9 @@ let appState = {
     totalPassiveIncome: 0
 };
 
+// Gate to control progression from Step 6 (calculating)
+let canProceedFromStep6 = false;
+
 // Load state from localStorage on page load
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
@@ -58,11 +61,59 @@ function nextStep() {
     // Special handling for calculation step
     if (appState.currentStep === 6) {
         showStep(6);
+        canProceedFromStep6 = false;
+
         setTimeout(() => {
             calculateGoals();
+
+            // Show all steps sequentially at same pace
             setTimeout(() => {
-                nextStep();
-            }, 2500);
+                const step1 = document.getElementById('calcStep1');
+                if (step1) step1.style.display = 'block';
+            }, 1000);
+
+            setTimeout(() => {
+                const step2 = document.getElementById('calcStep2');
+                if (step2) step2.style.display = 'block';
+            }, 2000);
+
+            setTimeout(() => {
+                const step3 = document.getElementById('calcStep3');
+                if (step3) step3.style.display = 'block';
+            }, 3000);
+
+            setTimeout(() => {
+                const step4 = document.getElementById('calcStep4');
+                if (step4) step4.style.display = 'block';
+            }, 4000);
+
+            setTimeout(() => {
+                const step5 = document.getElementById('calcStep5');
+                if (step5) step5.style.display = 'block';
+            }, 5000);
+
+            // Show completion state
+            setTimeout(() => {
+                const spinner = document.getElementById('calcSpinner');
+                const header = document.getElementById('calcHeader');
+                const signupBanner = document.getElementById('signupBanner');
+
+                if (spinner) spinner.style.display = 'none';
+                if (header) {
+                    header.textContent = 'All your goals have been setup';
+                    header.style.color = '#10b981';
+                }
+                if (signupBanner) signupBanner.style.display = 'flex';
+
+                // Trigger confetti animation
+                if (typeof confetti !== 'undefined') {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            }, 6000);
         }, 100);
         return;
     }
@@ -658,3 +709,11 @@ document.addEventListener('keypress', (e) => {
         }
     }
 });
+
+// Explicit user action to dismiss the Step 6 banner and continue
+function dismissStep6Banner() {
+    canProceedFromStep6 = true;
+    if (appState.currentStep === 6) {
+        nextStep();
+    }
+}
