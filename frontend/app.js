@@ -570,14 +570,25 @@ function renderDashboard() {
     // Render summary section
     renderDashboardSummary();
 
-    // Find next goal (first unachieved goal)
-    const nextGoal = appState.goals.find(g => !g.achieved);
+    // Check if there are any goals
+    if (appState.goals.length === 0) {
+        // No goals - show message to add expenses
+        document.getElementById('nextGoalTitleCompact').textContent = 'Enter expenses to create goals';
+        document.getElementById('nextGoalTargetCompact').textContent = '$0/mo';
+        document.getElementById('nextGoalCurrentPortfolio').textContent = '$0';
+        document.getElementById('nextGoalPortfolioNeeded').textContent = '$0';
+        document.getElementById('nextGoalAdditionalInvestment').textContent = '$0';
+        document.getElementById('progressPercentage').textContent = '0%';
+    } else {
+        // Find next goal (first unachieved goal)
+        const nextGoal = appState.goals.find(g => !g.achieved);
 
-    // If all goals achieved, show the last goal
-    const goalToHighlight = nextGoal || appState.goals[appState.goals.length - 1];
+        // If all goals achieved, show the last goal
+        const goalToHighlight = nextGoal || appState.goals[appState.goals.length - 1];
 
-    if (goalToHighlight) {
-        renderNextGoalCompact(goalToHighlight);
+        if (goalToHighlight) {
+            renderNextGoalCompact(goalToHighlight);
+        }
     }
 
     renderAllGoalsCompact();
