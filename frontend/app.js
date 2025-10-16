@@ -19,6 +19,8 @@ let canProceedFromStep6 = false;
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
     updateProgressBar();
+    // Start typing effect for welcome message
+    typeWelcomeMessage();
 });
 
 // Save state to localStorage
@@ -794,6 +796,90 @@ document.addEventListener('keypress', (e) => {
                 addExpense();
                 break;
         }
+    }
+});
+
+// Typewriter effect for welcome message
+function typeWelcomeMessage() {
+    const welcomeText = "Hi! I'm your AI assistant. Ask me anything about passive income and financial goals.";
+    const welcomeElement = document.getElementById('welcomeMessage');
+
+    if (!welcomeElement) return;
+
+    let charIndex = 0;
+    welcomeElement.textContent = '';
+
+    function typeChar() {
+        if (charIndex < welcomeText.length) {
+            welcomeElement.textContent += welcomeText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 30); // 30ms delay between characters
+        }
+    }
+
+    // Start typing after a short delay
+    setTimeout(typeChar, 500);
+}
+
+// Chatbot Functions
+function toggleChatbot() {
+    const chatbot = document.getElementById('chatbotContainer');
+    const minimizeBtn = document.querySelector('.chatbot-minimize');
+
+    chatbot.classList.toggle('minimized');
+
+    // Update button text
+    if (chatbot.classList.contains('minimized')) {
+        minimizeBtn.textContent = '+';
+    } else {
+        minimizeBtn.textContent = '−';
+    }
+}
+
+function sendChatMessage() {
+    const input = document.getElementById('chatbotInput');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Add user message to chat
+    addChatMessage(message, 'user');
+
+    // Clear input
+    input.value = '';
+
+    // TODO: Send to AI backend
+    // For now, show a placeholder response
+    setTimeout(() => {
+        addChatMessage('We are currently still working on adding the AI integration. Check back soon for an update!', 'bot');
+    }, 500);
+}
+
+function addChatMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${sender}-message`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.textContent = text;
+
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Add Enter key support for chatbot input
+document.addEventListener('DOMContentLoaded', () => {
+    const chatInput = document.getElementById('chatbotInput');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
     }
 });
 
