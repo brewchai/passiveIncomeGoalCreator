@@ -1831,10 +1831,15 @@ h4 {
     flex-direction: column;
     height: 405px;
     overflow: hidden;
+    opacity: 1;
+    max-height: 405px;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .chatbot-container.minimized .chatbot-body {
-    display: none;
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
 }
 
 .chatbot-messages {
