@@ -440,15 +440,27 @@ body {
     box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
     transition: all 0.3s ease;
     font-family: 'Inter', sans-serif;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+        transform: scale(1.02);
+    }
 }
 
 .btn-cta:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
-}
-
-.btn-cta:active {
-    transform: translateY(-2px);
+    animation: none;
 }
 
 .cta-arrow {
