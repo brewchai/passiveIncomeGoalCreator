@@ -421,7 +421,7 @@
                                 <span class="summary-amount income" id="dashTotalIncome">$0</span>
                                 <div class="summary-breakdown" id="incomeBreakdown"></div>
                             </div>
-                            <div class="summary-item">
+                            <div class="summary-item clickable" onclick="openExpenseModal()">
                                 <span class="summary-label">Total Monthly Expenses</span>
                                 <span class="summary-amount expense" id="dashTotalExpenses">$0</span>
                                 <div class="summary-breakdown" id="expenseBreakdown"></div>
@@ -445,8 +445,12 @@
                                 <span class="stat-value" id="nextGoalTargetCompact">$0</span>
                             </div>
                             <div class="stat-item">
+                                <span class="stat-label">Current Portfolio</span>
+                                <span class="stat-value highlight" id="nextGoalCurrentPortfolio">$0</span>
+                            </div>
+                            <div class="stat-item">
                                 <span class="stat-label">Portfolio Needed</span>
-                                <span class="stat-value highlight" id="nextGoalPortfolioNeeded">$0</span>
+                                <span class="stat-value" id="nextGoalPortfolioNeeded">$0</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-label">Additional Investment</span>
@@ -473,6 +477,31 @@
                 <div class="dashboard-actions">
                     <button class="btn-secondary" onclick="resetApp()">Start Over</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expense Edit Modal -->
+    <div class="modal-overlay" id="expenseEditModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Monthly Expenses</h2>
+                <button class="modal-close" onclick="closeExpenseModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="expense-edit-list" id="expenseEditList">
+                    <!-- Expenses will be populated here -->
+                </div>
+                <div class="add-expense-row">
+                    <input type="text" id="modalExpenseName" placeholder="Expense Name" class="input-field">
+                    <input type="number" id="modalExpenseAmount" placeholder="Amount ($)" class="input-field" min="0"
+                        step="10">
+                    <button class="btn-secondary" onclick="addExpenseFromModal()">Add</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeExpenseModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveExpenseChanges()">Save Changes</button>
             </div>
         </div>
     </div>

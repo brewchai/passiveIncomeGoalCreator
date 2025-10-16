@@ -511,15 +511,13 @@ function calculateGoals() {
         const achieved = annualIncome >= annualExpenseForTier;
 
         // Calculate investment needed to reach this goal
-        // We need to cover the cumulative monthly expense with passive income
-        // Non-portfolio income (rental + other) is already fixed
-        // So we need portfolio to generate: cumulativeAmount - (rentalTotal + otherTotal)
+        // Portfolio must generate ALL the income for this cumulative goal
         let portfolioValueNeeded = 0;
         let additionalInvestmentNeeded = 0;
 
         if (appState.blendedYield > 0) {
-            // Monthly income needed from portfolio
-            const monthlyIncomeNeededFromPortfolio = Math.max(0, cumulativeAmount - (rentalTotal + otherTotal));
+            // Monthly income needed from portfolio (total goal amount)
+            const monthlyIncomeNeededFromPortfolio = cumulativeAmount;
 
             // Annual income needed from portfolio
             const annualIncomeNeededFromPortfolio = monthlyIncomeNeededFromPortfolio * 12;
@@ -578,53 +576,41 @@ function renderDashboard() {
     renderAllGoalsCompact();
 }
 
+function renderNextGoalCompact(goal) {
+    const progress = Math.min((appState.totalPassiveIncome / goal.amount) * 100, 100);
+
+    // Use the stored portfolio values from calculateGoals
+    const portfolioValueNeeded = goal.portfolioValueNeeded || 0;
+    const additionalInvestmentNeeded = goal.additionalInvestmentNeeded || 0;
+
+    document.getElementById('nextGoalTitleCompact').textContent = goal.name;
+    document.getElementById('nextGoalTargetCompact').textContent = `$${goal.amount.toFixed(2)}/mo`;
+    document.getElementById('nextGoalCurrentPortfolio').textContent = `$${appState.portfolioValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('nextGoalPortfolioNeeded').textContent = `$${portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('nextGoalAdditionalInvestment').textContent = additionalInvestmentNeeded > 0
+        ? `+$${additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
+        : '$0';
+    document.getElementById('progressPercentage').textContent = `${progress.toFixed(0)}%`;
+}
+
 function renderDashboardSummary() {
     // Total income
     const totalIncome = appState.totalPassiveIncome;
     document.getElementById('dashTotalIncome').textContent = `$${totalIncome.toFixed(2)}`;
 
-    // Income breakdown
-    const incomeBreakdown = [];
-    if (appState.monthlyDividendIncome > 0) {
-        incomeBreakdown.push(`Dividends: $${appState.monthlyDividendIncome.toFixed(2)}`);
-    }
-    if (appState.rentalIncome.length > 0) {
-        const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
-        incomeBreakdown.push(`Rental: $${rentalTotal.toFixed(2)}`);
-    }
-    if (appState.otherIncome.length > 0) {
-        const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
-        incomeBreakdown.push(`Other: $${otherTotal.toFixed(2)}`);
-    }
-    document.getElementById('incomeBreakdown').innerHTML = incomeBreakdown.join('<br>');
+    // Income breakdown - hidden
+    document.getElementById('incomeBreakdown').innerHTML = '';
 
     // Total expenses
     const totalExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
     document.getElementById('dashTotalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
 
-    // Expense breakdown - show top 3
-    const sortedExpenses = [...appState.expenses].sort((a, b) => b.amount - a.amount);
-    const expenseBreakdown = sortedExpenses.slice(0, 3).map(e => `${e.name}: $${e.amount.toFixed(2)}`);
-    if (sortedExpenses.length > 3) {
-        expenseBreakdown.push(`+${sortedExpenses.length - 3} more`);
-    }
-    document.getElementById('expenseBreakdown').innerHTML = expenseBreakdown.join('<br>');
+    // Expense breakdown - hidden
+    document.getElementById('expenseBreakdown').innerHTML = '';
 
     // Goals achieved
     const achievedGoals = appState.goals.filter(g => g.achieved).length;
     document.getElementById('dashGoalsAchieved').textContent = `${achievedGoals}/${appState.goals.length}`;
-}
-
-function renderNextGoalCompact(goal) {
-    const progress = Math.min((appState.totalPassiveIncome / goal.amount) * 100, 100);
-
-    document.getElementById('nextGoalTitleCompact').textContent = goal.name;
-    document.getElementById('nextGoalTargetCompact').textContent = `$${goal.amount.toFixed(2)}/mo`;
-    document.getElementById('nextGoalPortfolioNeeded').textContent = `$${goal.portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('nextGoalAdditionalInvestment').textContent = goal.additionalInvestmentNeeded > 0
-        ? `+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
-        : '$0';
-    document.getElementById('progressPercentage').textContent = `${progress.toFixed(0)}%`;
 }
 
 function renderAllGoalsCompact() {
@@ -640,21 +626,13 @@ function renderAllGoalsCompact() {
         const achievedClass = goal.achieved ? 'achieved' : '';
         const statusIcon = goal.achieved ? '✓' : '○';
 
-        // Investment info for unachieved goals
+        // Use stored portfolio values from calculateGoals
         let investmentInfo = '';
         if (!goal.achieved && goal.portfolioValueNeeded > 0) {
             investmentInfo = `
                 <div class="goal-investment-compact">
-                    <div class="investment-row-compact">
-                        <span class="investment-label-compact">Portfolio Needed:</span>
-                        <span class="investment-value-compact">$${goal.portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-                    </div>
-                    ${goal.additionalInvestmentNeeded > 0 ? `
-                    <div class="investment-row-compact">
-                        <span class="investment-label-compact">Add'l Investment:</span>
-                        <span class="investment-value-compact additional">+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-                    </div>
-                    ` : ''}
+                    <div class="investment-label">Additional Investment:</div>
+                    <div class="investment-value highlight">+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
                 </div>
             `;
         }
@@ -684,6 +662,110 @@ function resetApp() {
         location.reload();
     }
 }
+
+// Expense Modal Functions
+let originalExpenses = [];
+
+function openExpenseModal() {
+    // Store original expenses for comparison
+    originalExpenses = JSON.parse(JSON.stringify(appState.expenses));
+
+    // Populate modal with current expenses
+    refreshExpenseModalDisplay();
+
+    // Show modal
+    document.getElementById('expenseEditModal').style.display = 'flex';
+}
+
+function refreshExpenseModalDisplay() {
+    const expenseEditList = document.getElementById('expenseEditList');
+    expenseEditList.innerHTML = '';
+
+    appState.expenses.forEach((expense, index) => {
+        const expenseItem = document.createElement('div');
+        expenseItem.className = 'expense-edit-item';
+        expenseItem.innerHTML = `
+            <input type="text" value="${expense.name}" onchange="updateExpenseInModal(${index}, 'name', this.value)" class="input-field">
+            <input type="number" value="${expense.amount}" onchange="updateExpenseInModal(${index}, 'amount', parseFloat(this.value))" class="input-field" min="0" step="10">
+            <button onclick="deleteExpenseFromModal(${index})">Delete</button>
+        `;
+        expenseEditList.appendChild(expenseItem);
+    });
+}
+
+function closeExpenseModal() {
+    // Restore original expenses if user cancels
+    appState.expenses = JSON.parse(JSON.stringify(originalExpenses));
+
+    // Clear input fields
+    document.getElementById('modalExpenseName').value = '';
+    document.getElementById('modalExpenseAmount').value = '';
+
+    // Hide modal
+    document.getElementById('expenseEditModal').style.display = 'none';
+}
+
+function updateExpenseInModal(index, field, value) {
+    if (field === 'name') {
+        appState.expenses[index].name = value;
+    } else if (field === 'amount') {
+        appState.expenses[index].amount = value;
+    }
+}
+
+function deleteExpenseFromModal(index) {
+    appState.expenses.splice(index, 1);
+    refreshExpenseModalDisplay(); // Refresh display without resetting originalExpenses
+}
+
+function addExpenseFromModal() {
+    const nameInput = document.getElementById('modalExpenseName');
+    const amountInput = document.getElementById('modalExpenseAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid expense name and amount');
+        return;
+    }
+
+    appState.expenses.push({ name, amount });
+
+    // Clear inputs
+    nameInput.value = '';
+    amountInput.value = '';
+
+    // Refresh modal display without resetting originalExpenses
+    refreshExpenseModalDisplay();
+}
+
+function saveExpenseChanges() {
+    // Check if expenses actually changed
+    const expensesChanged = JSON.stringify(originalExpenses) !== JSON.stringify(appState.expenses);
+
+    if (expensesChanged) {
+        // Recalculate goals with new expense data
+        calculateGoals();
+        renderDashboard();
+        saveState();
+    }
+
+    // Hide modal
+    document.getElementById('expenseEditModal').style.display = 'none';
+
+    // Clear input fields
+    document.getElementById('modalExpenseName').value = '';
+    document.getElementById('modalExpenseAmount').value = '';
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('expenseEditModal');
+    if (e.target === modal) {
+        closeExpenseModal();
+    }
+});
 
 // Allow Enter key to submit forms
 document.addEventListener('keypress', (e) => {
