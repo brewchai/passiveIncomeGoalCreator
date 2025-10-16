@@ -156,16 +156,16 @@ function showStep(stepNumber) {
 function updateProgressBar() {
     const progressIndicator = document.getElementById('progressIndicator');
 
-    // Hide progress bar on landing page (step 0) and dashboard (step 8)
-    if (appState.currentStep === 0 || appState.currentStep === 8) {
+    // Hide progress bar on landing page (step 0), transition screens (steps 6-7), and dashboard (step 8)
+    if (appState.currentStep === 0 || appState.currentStep >= 6) {
         progressIndicator.style.display = 'none';
         return;
     }
 
     progressIndicator.style.display = 'block';
-    const progress = (appState.currentStep / 8) * 100;
+    const progress = (appState.currentStep / 5) * 100;
     document.getElementById('progressFill').style.width = `${progress}%`;
-    document.getElementById('progressText').textContent = `Step ${appState.currentStep} of 8`;
+    document.getElementById('progressText').textContent = `Step ${appState.currentStep} of 5`;
 }
 
 // Start Builder from Landing Page
