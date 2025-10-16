@@ -44,6 +44,11 @@ function loadState() {
                 updateDividendIncome();
             }
 
+            // Restore portfolio summary display if tickers exist
+            if (appState.portfolio && appState.portfolio.length > 0) {
+                calculateBlendedYield();
+            }
+
             if (appState.currentStep === 8) {
                 renderDashboard();
             }
