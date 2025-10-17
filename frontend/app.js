@@ -19,8 +19,6 @@ let canProceedFromStep6 = false;
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
     updateProgressBar();
-    // Start typing effect for welcome message
-    typeWelcomeMessage();
 });
 
 // Save state to localStorage
@@ -891,6 +889,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 sendChatMessage();
             }
         });
+    }
+
+    // Start typing effect for welcome message
+    typeWelcomeMessage();
+
+    // Set minimize button to '+' since chatbot starts minimized
+    const minimizeBtn = document.querySelector('.chatbot-minimize');
+    if (minimizeBtn) {
+        minimizeBtn.textContent = '+';
     }
 });
 
