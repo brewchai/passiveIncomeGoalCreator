@@ -627,6 +627,10 @@ function renderDashboardSummary() {
     // Goals achieved
     const achievedGoals = appState.goals.filter(g => g.achieved).length;
     document.getElementById('dashGoalsAchieved').textContent = `${achievedGoals}/${appState.goals.length}`;
+
+    // Financial Independence Percentage
+    const fiPercentage = totalExpenses > 0 ? (totalIncome / totalExpenses) * 100 : 0;
+    document.getElementById('dashFIPercentage').textContent = `${fiPercentage.toFixed(2)}%`;
 }
 
 function renderAllGoalsCompact() {

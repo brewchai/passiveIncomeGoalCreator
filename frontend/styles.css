@@ -65,7 +65,7 @@ body {
 
 .summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 }
 
@@ -440,6 +440,7 @@ body {
     box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
     transition: all 0.3s ease;
     font-family: 'Inter', sans-serif;
+    text-decoration: none;
 }
 
 .btn-cta-pulse {
@@ -839,6 +840,7 @@ h4 {
     background: var(--gradient);
     color: white;
     box-shadow: var(--shadow-md);
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -1172,7 +1174,7 @@ h4 {
 
 .summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 }
 
