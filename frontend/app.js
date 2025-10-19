@@ -1051,23 +1051,64 @@ function toggleChatbot() {
     }
 }
 
-function sendChatMessage() {
+async function sendChatMessage() {
     const input = document.getElementById('chatbotInput');
+    const messagesContainer = document.getElementById('chatbotMessages');
     const message = input.value.trim();
 
     if (!message) return;
 
     // Add user message to chat
-    addChatMessage(message, 'user');
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'chatbot-message user-message';
+    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+    messagesContainer.appendChild(userMessageDiv);
 
     // Clear input
     input.value = '';
 
-    // TODO: Send to AI backend
-    // For now, show a placeholder response
-    setTimeout(() => {
-        addChatMessage('We are currently still working on adding the AI integration. Check back soon for an update!', 'bot');
-    }, 500);
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chatbot-message bot-message typing';
+    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        // Call chat API
+        const response = await fetch(API_BASE_URL + '/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Add bot response
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'chatbot-message bot-message';
+        botMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(data.reply || 'Sorry, I could not generate a response.')}</div>`;
+        messagesContainer.appendChild(botMessageDiv);
+
+    } catch (error) {
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'chatbot-message bot-message error';
+        errorDiv.innerHTML = '<div class="message-content">Sorry, I encountered an error. Please try again.</div>';
+        messagesContainer.appendChild(errorDiv);
+    }
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
 function addChatMessage(text, sender) {
@@ -1086,7 +1127,14 @@ function addChatMessage(text, sender) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// Add Enter key support for chatbot input
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Allow Enter key to send chat message
 document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chatbotInput');
     if (chatInput) {
@@ -1223,4 +1271,130 @@ function validatePortfolioPercentage() {
     }
 
     return total <= 100;
+}
+
+// --- MCP Context Pusher ---
+async function pushContextToServer() {
+    try {
+        const dom = document.documentElement ? document.documentElement.outerHTML : '';
+
+        // Normalize step information for chatbot context
+        const contextState = {
+            ...appState,
+            // Add normalized step info for chatbot
+            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
+            totalBuilderSteps: 5,
+            screenType: getScreenType(appState.currentStep)
+        };
+
+        await fetch(API_BASE_URL + '/mcp/update-context', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                dom,
+                appState: contextState,
+                url: window.location.href
+            })
+        });
+    } catch (e) {
+        // Silently fail - don't disrupt user experience
+    }
+}
+
+// Helper function to categorize screen types
+function getScreenType(currentStep) {
+    if (currentStep === 0) return 'landing';
+    if (currentStep >= 1 && currentStep <= 5) return 'builder';
+    if (currentStep === 6) return 'calculating';
+    if (currentStep === 7) return 'congratulations';
+    if (currentStep === 8) return 'dashboard';
+    return 'unknown';
+}
+
+// Push context immediately and then every 10 seconds
+pushContextToServer();
+setInterval(pushContextToServer, 10000);
+
+// --- AI Chatbot Integration ---
+async function sendChatMessage() {
+    const input = document.getElementById('chatbotInput');
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Add user message to chat
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'chatbot-message user-message';
+    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+    messagesContainer.appendChild(userMessageDiv);
+
+    // Clear input
+    input.value = '';
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chatbot-message bot-message typing';
+    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        // Call chat API
+        const response = await fetch(API_BASE_URL + '/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Add bot response
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'chatbot-message bot-message';
+        botMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(data.reply || 'Sorry, I could not generate a response.')}</div>`;
+        messagesContainer.appendChild(botMessageDiv);
+
+    } catch (error) {
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'chatbot-message bot-message error';
+        errorDiv.innerHTML = '<div class="message-content">Sorry, I encountered an error. Please try again.</div>';
+        messagesContainer.appendChild(errorDiv);
+    }
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function addChatMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${sender}-message`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.textContent = text;
+
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
