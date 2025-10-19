@@ -416,7 +416,7 @@
                     <div class="summary-section">
                         <h2 class="dashboard-title">Your Financial Independence Dashboard</h2>
                         <div class="summary-grid">
-                            <div class="summary-item">
+                            <div class="summary-item clickable" onclick="openIncomeModal()">
                                 <span class="summary-label">Total Monthly Income</span>
                                 <span class="summary-amount income" id="dashTotalIncome">$0</span>
                                 <div class="summary-breakdown" id="incomeBreakdown"></div>
@@ -508,6 +508,75 @@
             <div class="modal-footer">
                 <button class="btn-secondary" onclick="closeExpenseModal()">Cancel</button>
                 <button class="btn-primary" onclick="saveExpenseChanges()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Income Edit Modal -->
+    <div class="modal-overlay" id="incomeEditModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Monthly Income</h2>
+                <button class="modal-close" onclick="closeIncomeModal()">&times;</button>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="modal-tabs">
+                <button class="tab-button active" onclick="switchIncomeTab('stocks')" id="tabStocks">
+                    📊 Stocks
+                </button>
+                <button class="tab-button" onclick="switchIncomeTab('rental')" id="tabRental">
+                    🏠 Rental
+                </button>
+                <button class="tab-button" onclick="switchIncomeTab('other')" id="tabOther">
+                    💰 Other
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Stocks Tab Content -->
+                <div class="tab-content active" id="contentStocks">
+                    <div class="income-edit-list" id="stockEditList">
+                        <!-- Stocks will be populated here -->
+                    </div>
+                    <div class="add-income-row">
+                        <input type="text" id="modalStockSymbol" placeholder="Ticker Symbol" class="input-field">
+                        <input type="number" id="modalStockPercent" placeholder="% of Portfolio" class="input-field"
+                            min="0" max="100" step="1">
+                        <button class="btn-secondary" onclick="addStockFromModal()">Add</button>
+                    </div>
+                </div>
+
+                <!-- Rental Tab Content -->
+                <div class="tab-content" id="contentRental">
+                    <div class="income-edit-list" id="rentalEditList">
+                        <!-- Rental properties will be populated here -->
+                    </div>
+                    <div class="add-income-row">
+                        <input type="text" id="modalRentalName" placeholder="Property Name" class="input-field">
+                        <input type="number" id="modalRentalAmount" placeholder="Monthly Income ($)" class="input-field"
+                            min="0" step="10">
+                        <button class="btn-secondary" onclick="addRentalFromModal()">Add</button>
+                    </div>
+                </div>
+
+                <!-- Other Income Tab Content -->
+                <div class="tab-content" id="contentOther">
+                    <div class="income-edit-list" id="otherEditList">
+                        <!-- Other income sources will be populated here -->
+                    </div>
+                    <div class="add-income-row">
+                        <input type="text" id="modalOtherName" placeholder="Income Source" class="input-field">
+                        <input type="number" id="modalOtherAmount" placeholder="Monthly Income ($)" class="input-field"
+                            min="0" step="10">
+                        <button class="btn-secondary" onclick="addOtherFromModal()">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeIncomeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveIncomeChanges()">Save Changes</button>
             </div>
         </div>
     </div>

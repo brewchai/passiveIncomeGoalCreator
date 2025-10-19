@@ -618,7 +618,7 @@ function renderDashboardSummary() {
     document.getElementById('incomeBreakdown').innerHTML = '';
 
     // Total expenses
-    const totalExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalExpenses = appState.expenses.reduce((sum, expense) => sum + expense.amount, 0);
     document.getElementById('dashTotalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
 
     // Expense breakdown - hidden
@@ -629,8 +629,8 @@ function renderDashboardSummary() {
     document.getElementById('dashGoalsAchieved').textContent = `${achievedGoals}/${appState.goals.length}`;
 
     // Financial Independence Percentage
-    const fiPercentage = totalExpenses > 0 ? (totalIncome / totalExpenses) * 100 : 0;
-    document.getElementById('dashFIPercentage').textContent = `${fiPercentage.toFixed(2)}%`;
+    const fiProgress = totalExpenses > 0 ? Math.min((totalIncome / totalExpenses) * 100, 100) : 0;
+    document.getElementById('dashFIPercentage').textContent = `${fiProgress.toFixed(2)}%`;
 }
 
 function renderAllGoalsCompact() {
@@ -779,13 +779,207 @@ function saveExpenseChanges() {
     document.getElementById('modalExpenseAmount').value = '';
 }
 
-// Close modal when clicking outside
-document.addEventListener('click', (e) => {
-    const modal = document.getElementById('expenseEditModal');
-    if (e.target === modal) {
-        closeExpenseModal();
+// Income Modal Functions
+let originalIncomeData = {};
+
+function openIncomeModal() {
+    // Store original income data for comparison
+    originalIncomeData = {
+        portfolio: JSON.parse(JSON.stringify(appState.portfolio)),
+        rentalIncome: JSON.parse(JSON.stringify(appState.rentalIncome)),
+        otherIncome: JSON.parse(JSON.stringify(appState.otherIncome))
+    };
+
+    // Populate modal with current income data
+    refreshStockModalDisplay();
+    refreshRentalModalDisplay();
+    refreshOtherModalDisplay();
+
+    // Show modal with Stocks tab active by default
+    switchIncomeTab('stocks');
+
+    // Show modal
+    document.getElementById('incomeEditModal').style.display = 'flex';
+}
+
+function closeIncomeModal() {
+    // Restore original income data if user cancels
+    appState.portfolio = JSON.parse(JSON.stringify(originalIncomeData.portfolio));
+    appState.rentalIncome = JSON.parse(JSON.stringify(originalIncomeData.rentalIncome));
+    appState.otherIncome = JSON.parse(JSON.stringify(originalIncomeData.otherIncome));
+
+    // Hide modal
+    document.getElementById('incomeEditModal').style.display = 'none';
+}
+
+function switchIncomeTab(tabName) {
+    // Remove active class from all tabs and content
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    // Add active class to selected tab and content
+    if (tabName === 'stocks') {
+        document.getElementById('tabStocks').classList.add('active');
+        document.getElementById('contentStocks').classList.add('active');
+    } else if (tabName === 'rental') {
+        document.getElementById('tabRental').classList.add('active');
+        document.getElementById('contentRental').classList.add('active');
+    } else if (tabName === 'other') {
+        document.getElementById('tabOther').classList.add('active');
+        document.getElementById('contentOther').classList.add('active');
     }
-});
+}
+
+function saveIncomeChanges() {
+    // Recalculate portfolio dividend income first (in case stocks were edited/deleted)
+    calculateBlendedYield();
+
+    // Recalculate total income and update dashboard
+    const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
+    const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
+    const portfolioTotal = appState.monthlyDividendIncome;
+
+    appState.totalPassiveIncome = rentalTotal + otherTotal + portfolioTotal;
+
+    calculateGoals();
+    renderDashboard();
+    saveState();
+
+    // Hide modal
+    document.getElementById('incomeEditModal').style.display = 'none';
+}
+
+function refreshStockModalDisplay() {
+    const stockEditList = document.getElementById('stockEditList');
+    stockEditList.innerHTML = '';
+
+    appState.portfolio.forEach((stock, index) => {
+        const stockItem = document.createElement('div');
+        stockItem.className = 'stock-edit-item';
+
+        // If yield is missing, fetch it
+        if (!stock.yield) {
+            stockItem.innerHTML = `
+                <input type="text" value="${stock.symbol}" onchange="updateStockInModal(${index}, 'symbol', this.value)" class="input-field" placeholder="Ticker">
+                <input type="number" value="${stock.percent}" onchange="updateStockInModal(${index}, 'percent', parseFloat(this.value))" class="input-field stock-percent-input" min="0" max="100" step="1" placeholder="%">
+                <span class="stock-yield">Loading...</span>
+                <span class="stock-income">$0.00/mo</span>
+                <button onclick="deleteStockFromModal(${index})">Delete</button>
+            `;
+            stockEditList.appendChild(stockItem);
+
+            // Fetch yield asynchronously
+            fetchDividendYield(stock.symbol).then(yieldData => {
+                if (yieldData) {
+                    stock.yield = yieldData;
+                    // Calculate monthly income for this stock
+                    const annualDividend = (appState.portfolioValue * (stock.percent / 100)) * (yieldData / 100);
+                    stock.monthlyIncome = annualDividend / 12;
+                    refreshStockModalDisplay();
+                }
+            });
+        } else {
+            // Calculate monthly income if not already set
+            if (!stock.monthlyIncome || stock.monthlyIncome === 0) {
+                const annualDividend = (appState.portfolioValue * (stock.percent / 100)) * (stock.yield / 100);
+                stock.monthlyIncome = annualDividend / 12;
+            }
+
+            stockItem.innerHTML = `
+                <input type="text" value="${stock.symbol}" onchange="updateStockInModal(${index}, 'symbol', this.value)" class="input-field" placeholder="Ticker">
+                <input type="number" value="${stock.percent}" onchange="updateStockInModal(${index}, 'percent', parseFloat(this.value))" class="input-field stock-percent-input" min="0" max="100" step="1" placeholder="%">
+                <span class="stock-yield">${stock.yield.toFixed(2)}%</span>
+                <span class="stock-income">$${stock.monthlyIncome.toFixed(2)}/mo</span>
+                <button onclick="deleteStockFromModal(${index})">Delete</button>
+            `;
+            stockEditList.appendChild(stockItem);
+        }
+    });
+
+    // Validate total percentage
+    validatePortfolioPercentage();
+}
+
+function refreshRentalModalDisplay() {
+    const rentalEditList = document.getElementById('rentalEditList');
+    rentalEditList.innerHTML = '';
+
+    appState.rentalIncome.forEach((rental, index) => {
+        const rentalItem = document.createElement('div');
+        rentalItem.className = 'rental-edit-item';
+        rentalItem.innerHTML = `
+            <input type="text" value="${rental.name}" onchange="updateRentalInModal(${index}, 'name', this.value)" class="input-field" placeholder="Property Name">
+            <input type="number" value="${rental.amount}" onchange="updateRentalInModal(${index}, 'amount', parseFloat(this.value))" class="input-field" min="0" step="10" placeholder="Monthly Income">
+            <button onclick="deleteRentalFromModal(${index})">Delete</button>
+        `;
+        rentalEditList.appendChild(rentalItem);
+    });
+}
+
+function refreshOtherModalDisplay() {
+    const otherEditList = document.getElementById('otherEditList');
+    otherEditList.innerHTML = '';
+
+    appState.otherIncome.forEach((other, index) => {
+        const otherItem = document.createElement('div');
+        otherItem.className = 'other-edit-item';
+        otherItem.innerHTML = `
+            <input type="text" value="${other.name}" onchange="updateOtherInModal(${index}, 'name', this.value)" class="input-field" placeholder="Income Source">
+            <input type="number" value="${other.amount}" onchange="updateOtherInModal(${index}, 'amount', parseFloat(this.value))" class="input-field" min="0" step="10" placeholder="Monthly Amount">
+            <button onclick="deleteOtherFromModal(${index})">Delete</button>
+        `;
+        otherEditList.appendChild(otherItem);
+    });
+}
+
+// Delete functions
+function deleteStockFromModal(index) {
+    appState.portfolio.splice(index, 1);
+    refreshStockModalDisplay();
+}
+
+function deleteRentalFromModal(index) {
+    appState.rentalIncome.splice(index, 1);
+    refreshRentalModalDisplay();
+}
+
+function deleteOtherFromModal(index) {
+    appState.otherIncome.splice(index, 1);
+    refreshOtherModalDisplay();
+}
+
+// Update functions for inline editing
+function updateStockInModal(index, field, value) {
+    if (field === 'symbol') {
+        appState.portfolio[index].symbol = value.toUpperCase();
+    } else if (field === 'percent') {
+        appState.portfolio[index].percent = value;
+        // Recalculate monthly income when percent changes
+        if (appState.portfolio[index].yield) {
+            const annualDividend = (appState.portfolioValue * (value / 100)) * (appState.portfolio[index].yield / 100);
+            appState.portfolio[index].monthlyIncome = annualDividend / 12;
+        }
+        // Validate and refresh display
+        validatePortfolioPercentage();
+        refreshStockModalDisplay();
+    }
+}
+
+function updateRentalInModal(index, field, value) {
+    if (field === 'name') {
+        appState.rentalIncome[index].name = value;
+    } else if (field === 'amount') {
+        appState.rentalIncome[index].amount = value;
+    }
+}
+
+function updateOtherInModal(index, field, value) {
+    if (field === 'name') {
+        appState.otherIncome[index].name = value;
+    } else if (field === 'amount') {
+        appState.otherIncome[index].amount = value;
+    }
+}
 
 // Allow Enter key to submit forms
 document.addEventListener('keypress', (e) => {
@@ -811,6 +1005,14 @@ document.addEventListener('keypress', (e) => {
         }
     }
 });
+
+// Explicit user action to dismiss the Step 6 banner and continue
+function dismissStep6Banner() {
+    canProceedFromStep6 = true;
+    if (appState.currentStep === 6) {
+        nextStep();
+    }
+}
 
 // Typewriter effect for welcome message
 function typeWelcomeMessage() {
@@ -905,10 +1107,120 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Explicit user action to dismiss the Step 6 banner and continue
-function dismissStep6Banner() {
-    canProceedFromStep6 = true;
-    if (appState.currentStep === 6) {
-        nextStep();
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('expenseEditModal');
+    if (e.target === modal) {
+        closeExpenseModal();
     }
+
+    const incomeModal = document.getElementById('incomeEditModal');
+    if (e.target === incomeModal) {
+        closeIncomeModal();
+    }
+});
+
+// Add functions
+async function addStockFromModal() {
+    const symbolInput = document.getElementById('modalStockSymbol');
+    const percentInput = document.getElementById('modalStockPercent');
+
+    const symbol = symbolInput.value.trim().toUpperCase();
+    const percent = parseFloat(percentInput.value);
+
+    if (!symbol || !percent || percent <= 0) {
+        alert('Please enter a valid ticker symbol and percentage');
+        return;
+    }
+
+    // Check if total percentage would exceed 100%
+    const currentTotal = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    if (currentTotal + percent > 100) {
+        alert('Total portfolio percentage cannot exceed 100%');
+        return;
+    }
+
+    // Fetch dividend yield
+    const yieldData = await fetchDividendYield(symbol);
+
+    if (yieldData) {
+        // Calculate monthly income for this stock
+        const annualDividend = (appState.portfolioValue * (percent / 100)) * (yieldData / 100);
+        const monthlyIncome = annualDividend / 12;
+
+        appState.portfolio.push({
+            symbol: symbol,
+            percent: percent,
+            yield: yieldData,
+            name: symbol,
+            monthlyIncome: monthlyIncome
+        });
+
+        symbolInput.value = '';
+        percentInput.value = '';
+
+        refreshStockModalDisplay();
+    }
+}
+
+function addRentalFromModal() {
+    const nameInput = document.getElementById('modalRentalName');
+    const amountInput = document.getElementById('modalRentalAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid property name and monthly income amount');
+        return;
+    }
+
+    appState.rentalIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshRentalModalDisplay();
+}
+
+function addOtherFromModal() {
+    const nameInput = document.getElementById('modalOtherName');
+    const amountInput = document.getElementById('modalOtherAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid income source name and monthly amount');
+        return;
+    }
+
+    appState.otherIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshOtherModalDisplay();
+}
+
+// Portfolio percentage validation
+function validatePortfolioPercentage() {
+    const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    const percentInputs = document.querySelectorAll('.stock-percent-input');
+
+    if (total > 100) {
+        // Highlight all percentage inputs in red
+        percentInputs.forEach(input => {
+            input.style.borderColor = '#E53E3E';
+            input.style.backgroundColor = '#FEE';
+        });
+    } else {
+        // Remove red highlight
+        percentInputs.forEach(input => {
+            input.style.borderColor = '';
+            input.style.backgroundColor = '';
+        });
+    }
+
+    return total <= 100;
 }
