@@ -32,6 +32,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
 </head>
 
 <body>
@@ -40,33 +43,33 @@
         <div class="step active" id="step0">
             <div class="landing-page">
                 <div class="landing-hero">
-                    <h1 class="landing-title">Achieve Financial Independence Through <span class="gradient-text">Passive
-                            Income</span></h1>
-                    <p class="landing-subtitle">The only goal tracker that <strong>automatically creates personalized
-                            milestones</strong> from your expenses.
-                        Track dividend income, rental properties, and multiple income streams—all in one place.</p>
+                    <h1 class="landing-title">World's <span class="gradient-text">smartest</span> FIRE planner</h1>
+                    <p class="landing-subtitle">The only tool that <strong>tracks
+                            net worth and automatically creates
+                            milestones</strong> for your life and guides you towards financial independence.
+                    </p>
 
                     <div class="landing-features">
                         <div class="feature-pill">
                             <span class="feature-icon">✨</span>
-                            <span>Auto Goal Creation</span>
+                            <span>Expense Tracker</span>
                         </div>
                         <div class="feature-pill">
                             <span class="feature-icon">📊</span>
-                            <span>Smart Tracking</span>
+                            <span>Goal Creator</span>
                         </div>
                         <div class="feature-pill">
                             <span class="feature-icon">💰</span>
-                            <span>Dividend Calculator</span>
+                            <span>Net Worth Projector</span>
                         </div>
                         <div class="feature-pill">
                             <span class="feature-icon">🏠</span>
-                            <span>Rental Income</span>
+                            <span>Retirement Planner</span>
                         </div>
                     </div>
 
                     <button class="btn-cta" onclick="startBuilder()">
-                        Get Started Free
+                        Launch FIRE Date Projector
                         <span class="cta-arrow">→</span>
                     </button>
 
@@ -127,7 +130,7 @@
                     <h2>Start Your Financial Independence Journey Today</h2>
                     <p>Join thousands planning their path to financial freedom through passive income</p>
                     <button class="btn-cta btn-cta-pulse" onclick="startBuilder()">
-                        Launch Goal Tracker
+                        Launch FIRE Date Projector
                         <span class="cta-arrow">→</span>
                     </button>
                 </div>
@@ -609,6 +612,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="config.js"></script>
+    <!-- Markdown rendering and sanitization for chatbot -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+    <!-- KaTeX for math rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>
 

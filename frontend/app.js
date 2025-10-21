@@ -516,13 +516,18 @@ function calculateGoals() {
         const achieved = annualIncome >= annualExpenseForTier;
 
         // Calculate investment needed to reach this goal
-        // Portfolio must generate ALL the income for this cumulative goal
+        // Portfolio should only cover the shortfall not covered by rental + other income
         let portfolioValueNeeded = 0;
         let additionalInvestmentNeeded = 0;
 
         if (appState.blendedYield > 0) {
-            // Monthly income needed from portfolio (total goal amount)
-            const monthlyIncomeNeededFromPortfolio = cumulativeAmount;
+            // Compute non-portfolio income (monthly)
+            const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
+            const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
+            const nonPortfolioMonthlyIncome = rentalTotal + otherTotal;
+
+            // Monthly income needed from portfolio = max(0, goal amount - non-portfolio income)
+            const monthlyIncomeNeededFromPortfolio = Math.max(0, cumulativeAmount - nonPortfolioMonthlyIncome);
 
             // Annual income needed from portfolio
             const annualIncomeNeededFromPortfolio = monthlyIncomeNeededFromPortfolio * 12;
@@ -618,7 +623,7 @@ function renderDashboardSummary() {
     document.getElementById('incomeBreakdown').innerHTML = '';
 
     // Total expenses
-    const totalExpenses = appState.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+    const totalExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
     document.getElementById('dashTotalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
 
     // Expense breakdown - hidden
@@ -1090,21 +1095,32 @@ async function sendChatMessage() {
         // Remove typing indicator
         typingDiv.remove();
 
-        // Add bot response
+        // Add bot response with typing effect
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'chatbot-message bot-message';
-        botMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(data.reply || 'Sorry, I could not generate a response.')}</div>`;
+        const botContent = document.createElement('div');
+        botContent.className = 'message-content';
+        botMessageDiv.appendChild(botContent);
         messagesContainer.appendChild(botMessageDiv);
+
+        const replyText = data.reply || 'Sorry, I could not generate a response.';
+        await typeText(botContent, replyText, 15);
+        // After typing completes, render Markdown safely
+        botContent.innerHTML = renderMarkdownSafe(replyText);
+        setTimeout(() => renderMath(botContent), 50);
 
     } catch (error) {
         // Remove typing indicator
         typingDiv.remove();
 
-        // Show error message
+        // Show error message with typing effect
         const errorDiv = document.createElement('div');
         errorDiv.className = 'chatbot-message bot-message error';
-        errorDiv.innerHTML = '<div class="message-content">Sorry, I encountered an error. Please try again.</div>';
+        const errorContent = document.createElement('div');
+        errorContent.className = 'message-content';
+        errorDiv.appendChild(errorContent);
         messagesContainer.appendChild(errorDiv);
+        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
     }
 
     // Scroll to bottom
@@ -1132,6 +1148,49 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function renderMarkdownSafe(markdownText) {
+    try {
+        const html = window.marked ? window.marked.parse(markdownText || '') : (markdownText || '');
+        const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+        return clean;
+    } catch (e) {
+        return (markdownText || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+    }
+}
+
+function renderMath(element, attempts = 0) {
+    if (window.renderMathInElement) {
+        try {
+            window.renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.warn('KaTeX rendering failed:', e);
+        }
+    } else if (attempts < 20) {
+        setTimeout(() => renderMath(element, attempts + 1), 100);
+    }
+}
+
+// Typing effect helper
+async function typeText(element, text, speed = 15) {
+    const safeText = String(text || '');
+    element.textContent = '';
+    for (let i = 0; i < safeText.length; i++) {
+        element.textContent += safeText[i];
+        // Keep scrolled to bottom while typing
+        const container = document.getElementById('chatbotMessages');
+        if (container) container.scrollTop = container.scrollHeight;
+        await new Promise(res => setTimeout(res, speed));
+    }
 }
 
 // Allow Enter key to send chat message
@@ -1355,21 +1414,32 @@ async function sendChatMessage() {
         // Remove typing indicator
         typingDiv.remove();
 
-        // Add bot response
+        // Add bot response with typing effect
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'chatbot-message bot-message';
-        botMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(data.reply || 'Sorry, I could not generate a response.')}</div>`;
+        const botContent = document.createElement('div');
+        botContent.className = 'message-content';
+        botMessageDiv.appendChild(botContent);
         messagesContainer.appendChild(botMessageDiv);
+
+        const replyText = data.reply || 'Sorry, I could not generate a response.';
+        await typeText(botContent, replyText, 15);
+        // After typing completes, render Markdown safely
+        botContent.innerHTML = renderMarkdownSafe(replyText);
+        setTimeout(() => renderMath(botContent), 50);
 
     } catch (error) {
         // Remove typing indicator
         typingDiv.remove();
 
-        // Show error message
+        // Show error message with typing effect
         const errorDiv = document.createElement('div');
         errorDiv.className = 'chatbot-message bot-message error';
-        errorDiv.innerHTML = '<div class="message-content">Sorry, I encountered an error. Please try again.</div>';
+        const errorContent = document.createElement('div');
+        errorContent.className = 'message-content';
+        errorDiv.appendChild(errorContent);
         messagesContainer.appendChild(errorDiv);
+        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
     }
 
     // Scroll to bottom
@@ -1397,4 +1467,332 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function renderMarkdownSafe(markdownText) {
+    try {
+        const html = window.marked ? window.marked.parse(markdownText || '') : (markdownText || '');
+        const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+        return clean;
+    } catch (e) {
+        return (markdownText || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+    }
+}
+
+function renderMath(element, attempts = 0) {
+    if (window.renderMathInElement) {
+        try {
+            window.renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.warn('KaTeX rendering failed:', e);
+        }
+    } else if (attempts < 20) {
+        setTimeout(() => renderMath(element, attempts + 1), 100);
+    }
+}
+
+// Typing effect helper
+async function typeText(element, text, speed = 15) {
+    const safeText = String(text || '');
+    element.textContent = '';
+    for (let i = 0; i < safeText.length; i++) {
+        element.textContent += safeText[i];
+        // Keep scrolled to bottom while typing
+        const container = document.getElementById('chatbotMessages');
+        if (container) container.scrollTop = container.scrollHeight;
+        await new Promise(res => setTimeout(res, speed));
+    }
+}
+
+// Add functions
+async function addStockFromModal() {
+    const symbolInput = document.getElementById('modalStockSymbol');
+    const percentInput = document.getElementById('modalStockPercent');
+
+    const symbol = symbolInput.value.trim().toUpperCase();
+    const percent = parseFloat(percentInput.value);
+
+    if (!symbol || !percent || percent <= 0) {
+        alert('Please enter a valid ticker symbol and percentage');
+        return;
+    }
+
+    // Check if total percentage would exceed 100%
+    const currentTotal = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    if (currentTotal + percent > 100) {
+        alert('Total portfolio percentage cannot exceed 100%');
+        return;
+    }
+
+    // Fetch dividend yield
+    const yieldData = await fetchDividendYield(symbol);
+
+    if (yieldData) {
+        // Calculate monthly income for this stock
+        const annualDividend = (appState.portfolioValue * (percent / 100)) * (yieldData / 100);
+        const monthlyIncome = annualDividend / 12;
+
+        appState.portfolio.push({
+            symbol: symbol,
+            percent: percent,
+            yield: yieldData,
+            name: symbol,
+            monthlyIncome: monthlyIncome
+        });
+
+        symbolInput.value = '';
+        percentInput.value = '';
+
+        refreshStockModalDisplay();
+    }
+}
+
+function addRentalFromModal() {
+    const nameInput = document.getElementById('modalRentalName');
+    const amountInput = document.getElementById('modalRentalAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid property name and monthly income amount');
+        return;
+    }
+
+    appState.rentalIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshRentalModalDisplay();
+}
+
+function addOtherFromModal() {
+    const nameInput = document.getElementById('modalOtherName');
+    const amountInput = document.getElementById('modalOtherAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid income source name and monthly amount');
+        return;
+    }
+
+    appState.otherIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshOtherModalDisplay();
+}
+
+// Portfolio percentage validation
+function validatePortfolioPercentage() {
+    const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    const percentInputs = document.querySelectorAll('.stock-percent-input');
+
+    if (total > 100) {
+        // Highlight all percentage inputs in red
+        percentInputs.forEach(input => {
+            input.style.borderColor = '#E53E3E';
+            input.style.backgroundColor = '#FEE';
+        });
+    } else {
+        // Remove red highlight
+        percentInputs.forEach(input => {
+            input.style.borderColor = '';
+            input.style.backgroundColor = '';
+        });
+    }
+
+    return total <= 100;
+}
+
+// --- MCP Context Pusher ---
+async function pushContextToServer() {
+    try {
+        const dom = document.documentElement ? document.documentElement.outerHTML : '';
+
+        // Normalize step information for chatbot context
+        const contextState = {
+            ...appState,
+            // Add normalized step info for chatbot
+            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
+            totalBuilderSteps: 5,
+            screenType: getScreenType(appState.currentStep)
+        };
+
+        await fetch(API_BASE_URL + '/mcp/update-context', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                dom,
+                appState: contextState,
+                url: window.location.href
+            })
+        });
+    } catch (e) {
+        // Silently fail - don't disrupt user experience
+    }
+}
+
+// Helper function to categorize screen types
+function getScreenType(currentStep) {
+    if (currentStep === 0) return 'landing';
+    if (currentStep >= 1 && currentStep <= 5) return 'builder';
+    if (currentStep === 6) return 'calculating';
+    if (currentStep === 7) return 'congratulations';
+    if (currentStep === 8) return 'dashboard';
+    return 'unknown';
+}
+
+// Push context immediately and then every 10 seconds
+pushContextToServer();
+setInterval(pushContextToServer, 10000);
+
+// --- AI Chatbot Integration ---
+async function sendChatMessage() {
+    const input = document.getElementById('chatbotInput');
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Add user message to chat
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'chatbot-message user-message';
+    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+    messagesContainer.appendChild(userMessageDiv);
+
+    // Clear input
+    input.value = '';
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chatbot-message bot-message typing';
+    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        // Call chat API
+        const response = await fetch(API_BASE_URL + '/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Add bot response with typing effect
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'chatbot-message bot-message';
+        const botContent = document.createElement('div');
+        botContent.className = 'message-content';
+        botMessageDiv.appendChild(botContent);
+        messagesContainer.appendChild(botMessageDiv);
+
+        const replyText = data.reply || 'Sorry, I could not generate a response.';
+        await typeText(botContent, replyText, 15);
+        // After typing completes, render Markdown safely
+        botContent.innerHTML = renderMarkdownSafe(replyText);
+        setTimeout(() => renderMath(botContent), 50);
+
+    } catch (error) {
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Show error message with typing effect
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'chatbot-message bot-message error';
+        const errorContent = document.createElement('div');
+        errorContent.className = 'message-content';
+        errorDiv.appendChild(errorContent);
+        messagesContainer.appendChild(errorDiv);
+        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
+    }
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function addChatMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${sender}-message`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.textContent = text;
+
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function renderMarkdownSafe(markdownText) {
+    try {
+        const html = window.marked ? window.marked.parse(markdownText || '') : (markdownText || '');
+        const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+        return clean;
+    } catch (e) {
+        return (markdownText || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+    }
+}
+
+function renderMath(element, attempts = 0) {
+    if (window.renderMathInElement) {
+        try {
+            window.renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.warn('KaTeX rendering failed:', e);
+        }
+    } else if (attempts < 20) {
+        setTimeout(() => renderMath(element, attempts + 1), 100);
+    }
+}
+
+// Typing effect helper
+async function typeText(element, text, speed = 15) {
+    const safeText = String(text || '');
+    element.textContent = '';
+    for (let i = 0; i < safeText.length; i++) {
+        element.textContent += safeText[i];
+        // Keep scrolled to bottom while typing
+        const container = document.getElementById('chatbotMessages');
+        if (container) container.scrollTop = container.scrollHeight;
+        await new Promise(res => setTimeout(res, speed));
+    }
 }
