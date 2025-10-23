@@ -1,6 +1,13 @@
 // Application State
 let appState = {
     currentStep: 0,
+    // Step 1: Personal & Family Info
+    career: '',
+    city: '',
+    relationshipStatus: '', // 'single', 'married', 'partnered'
+    numberOfKids: 0,
+    annualIncome: 0,
+    // Step 2+: Investment & Income
     portfolio: [],
     portfolioValue: 0,
     blendedYield: 0,
@@ -48,12 +55,55 @@ function loadState() {
             if (appState.portfolio && appState.portfolio.length > 0) {
                 calculateBlendedYield();
             }
+        }
 
-            if (appState.currentStep === 8) {
-                renderDashboard();
-            }
+        // Restore Step 1 fields if they exist
+        if (appState.currentStep >= 1) {
+            const careerField = document.getElementById('careerField');
+            const cityLocation = document.getElementById('cityLocation');
+            const relationshipStatus = document.getElementById('relationshipStatus');
+            const numberOfKids = document.getElementById('numberOfKids');
+            const annualIncome = document.getElementById('annualIncome');
+
+            if (careerField && appState.career) careerField.value = appState.career;
+            if (cityLocation && appState.city) cityLocation.value = appState.city;
+            if (relationshipStatus && appState.relationshipStatus) relationshipStatus.value = appState.relationshipStatus;
+            if (numberOfKids && appState.numberOfKids !== undefined) numberOfKids.value = appState.numberOfKids;
+            if (annualIncome && appState.annualIncome) annualIncome.value = appState.annualIncome;
+        }
+
+        if (appState.currentStep === 8) {
+            renderDashboard();
         }
     }
+}
+
+// Step 1: Save personal and family data
+function saveStep1Data() {
+    const career = document.getElementById('careerField').value.trim();
+    const city = document.getElementById('cityLocation').value.trim();
+    const relationshipStatus = document.getElementById('relationshipStatus').value;
+    const numberOfKids = parseInt(document.getElementById('numberOfKids').value) || 0;
+    const annualIncome = parseFloat(document.getElementById('annualIncome').value);
+
+    if (!career || !city || !relationshipStatus || !annualIncome || annualIncome <= 0) {
+        alert('Please fill in all required fields with valid information');
+        return;
+    }
+
+    if (numberOfKids < 0 || numberOfKids > 20) {
+        alert('Please enter a valid number of kids (0-20)');
+        return;
+    }
+
+    appState.career = career;
+    appState.city = city;
+    appState.relationshipStatus = relationshipStatus;
+    appState.numberOfKids = numberOfKids;
+    appState.annualIncome = annualIncome;
+
+    saveState();
+    nextStep();
 }
 
 // Navigation Functions

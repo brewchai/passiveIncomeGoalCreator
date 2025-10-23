@@ -2137,3 +2137,68 @@ h4 {
         height: 340px;
     }
 }
+
+/* KaTeX Math Rendering */
+.message-content .katex-display {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.message-content .katex {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.message-content .katex-display>.katex {
+    display: inline-block;
+    text-align: center;
+}
+
+/* Step 1: Income Form Styles */
+.income-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.income-frequency-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.frequency-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    background: white;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.frequency-btn:hover {
+    border-color: var(--accent-color);
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.frequency-btn.active {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}

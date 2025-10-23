@@ -153,42 +153,47 @@
             <div class="progress-text" id="progressText">Step 1 of 8</div>
         </div>
 
-        <!-- Step 1: Passive Income Explanation -->
+        <!-- Step 1: Personal and Family Data -->
         <div class="step" id="step1">
             <div class="step-content">
-                <h1>Understanding Passive Income</h1>
-                <div class="explanation-box">
-                    <p class="lead">Passive income is money earned regularly without actively working for it. The key
-                        principle:</p>
-                    <div class="highlight-box">
-                        <h3>Your Corpus Remains Intact</h3>
-                        <p>You never need to sell your investments. Instead, they generate fixed income for life through
-                            dividends, interest, rent, or royalties. Ask our AI Assistant for more details.</p>
-                    </div>
-                    <div class="benefits-grid">
-                        <div class="benefit-item">
-                            <div class="benefit-icon">🌱</div>
-                            <h4>Sustainable</h4>
-                            <p>Income flows indefinitely</p>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon">🔒</div>
-                            <h4>Protected</h4>
-                            <p>Capital stays invested</p>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon">📈</div>
-                            <h4>Growing</h4>
-                            <p>Potential for increases</p>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon">🎯</div>
-                            <h4>Freedom</h4>
-                            <p>Financial independence</p>
-                        </div>
-                    </div>
+                <h1>Tell Us About Yourself</h1>
+                <p class="subtitle">Help us personalize your financial independence journey</p>
+
+                <div class="form-group">
+                    <label for="careerField">What's your career field?</label>
+                    <input type="text" id="careerField" class="input-field"
+                        placeholder="e.g., Software Engineer, Teacher, Business Owner" />
                 </div>
-                <button class="btn-primary" onclick="nextStep()">Get Started →</button>
+
+                <div class="form-group">
+                    <label for="cityLocation">Which city do you live in?</label>
+                    <input type="text" id="cityLocation" class="input-field"
+                        placeholder="e.g., San Francisco, New York, Austin" />
+                </div>
+
+                <div class="form-group">
+                    <label for="relationshipStatus">Relationship Status</label>
+                    <select id="relationshipStatus" class="input-field">
+                        <option value="">Select...</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="partnered">Partnered</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="numberOfKids">Number of Kids</label>
+                    <input type="number" id="numberOfKids" class="input-field" placeholder="0" min="0" max="20"
+                        value="0" />
+                </div>
+
+                <div class="form-group">
+                    <label for="annualIncome">Total Annual Family Income</label>
+                    <input type="number" id="annualIncome" class="input-field" placeholder="150000" min="0"
+                        step="1000" />
+                </div>
+
+                <button class="btn-primary" onclick="saveStep1Data()">Next →</button>
             </div>
         </div>
 
