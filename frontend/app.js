@@ -14,6 +14,8 @@ let appState = {
     monthlyDividendIncome: 0,
     rentalIncome: [],
     otherIncome: [],
+    // Step 3: Houses
+    houses: [],
     expenses: [],
     goals: [],
     totalPassiveIncome: 0
@@ -21,11 +23,13 @@ let appState = {
 
 // Gate to control progression from Step 6 (calculating)
 let canProceedFromStep6 = false;
+let step3HouseListHTML = ''; // Temporary storage for house cards
 
 // Load state from localStorage on page load
 window.addEventListener('DOMContentLoaded', () => {
     loadState();
     updateProgressBar();
+    setupStep3Listeners();
 });
 
 // Save state to localStorage
@@ -55,6 +59,11 @@ function loadState() {
             if (appState.portfolio && appState.portfolio.length > 0) {
                 calculateBlendedYield();
             }
+        }
+
+        // Restore Step 3 houses if they exist
+        if (appState.currentStep >= 3 && appState.houses && appState.houses.length > 0) {
+            renderHouseList();
         }
 
         // Restore Step 1 fields if they exist
@@ -205,6 +214,18 @@ function prevStep() {
 function showStep(stepNumber) {
     const stepEl = document.getElementById(`step${stepNumber}`);
     stepEl.classList.add('active');
+
+    // Restore Step 3 house list if returning to it
+    if (stepNumber === 3 && step3HouseListHTML) {
+        setTimeout(() => {
+            const houseList = document.getElementById('houseList');
+            if (houseList) {
+                houseList.innerHTML = step3HouseListHTML;
+                updateHouseSummary();
+            }
+        }, 0);
+    }
+
     updateProgressBar();
 }
 
@@ -409,25 +430,28 @@ function addRental() {
 function renderRentalList() {
     const listEl = document.getElementById('rentalList');
 
+    // Skip if element doesn't exist (Step 3 redesigned)
+    if (!listEl) return;
+
     if (appState.rentalIncome.length === 0) {
         listEl.innerHTML = '';
-        document.getElementById('totalRental').style.display = 'none';
+        const totalEl = document.getElementById('totalRental');
+        if (totalEl) totalEl.style.display = 'none';
         return;
     }
 
     listEl.innerHTML = appState.rentalIncome.map((item, index) => `
-        <div class="list-item">
-            <div class="list-item-info">
-                <div class="list-item-name">${item.name}</div>
-            </div>
-            <span class="list-item-value">$${item.amount.toFixed(2)}</span>
-            <button class="delete-btn" onclick="removeRental(${index})">×</button>
+        <div class="income-item">
+            <span>${item.name}: $${item.amount.toFixed(2)}/month</span>
+            <button class="btn-remove" onclick="removeRental(${index})">Remove</button>
         </div>
     `).join('');
 
     const total = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
-    document.getElementById('totalRental').style.display = 'flex';
-    document.getElementById('totalRentalValue').textContent = `$${total.toFixed(2)}`;
+    const totalEl = document.getElementById('totalRental');
+    const totalValueEl = document.getElementById('totalRentalValue');
+    if (totalEl) totalEl.style.display = 'flex';
+    if (totalValueEl) totalValueEl.textContent = `$${total.toFixed(2)}`;
 }
 
 function removeRental(index) {
@@ -837,6 +861,47 @@ function saveExpenseChanges() {
 // Income Modal Functions
 let originalIncomeData = {};
 
+// Sync rental income from houses that generate rental income
+function syncRentalIncomeFromHouses() {
+    // Get houses that generate rental income
+    const rentalHouses = appState.houses.filter(house => house.generatesRental && house.monthlyRentalIncome > 0);
+
+    // Clear existing rental income from houses (keep only manually added ones)
+    // We'll identify house-based rentals by checking if the name matches a house name
+    const houseNames = appState.houses.map(house => house.name);
+    appState.rentalIncome = appState.rentalIncome.filter(rental => !houseNames.includes(rental.name));
+
+    // Add rental income from houses
+    rentalHouses.forEach(house => {
+        appState.rentalIncome.push({
+            name: house.name,
+            amount: house.monthlyRentalIncome,
+            fromHouse: true // Mark as coming from house data
+        });
+    });
+}
+
+// Sync mortgage payments from houses as expenses
+function syncMortgageExpensesFromHouses() {
+    // Get houses with mortgage payments
+    const mortgageHouses = appState.houses.filter(house => house.paidOffStatus === 'no' && house.mortgagePayment > 0);
+
+    // Clear existing mortgage expenses from houses (keep only manually added ones)
+    // We'll identify house-based expenses by checking if the name contains the house name + "Mortgage"
+    appState.expenses = appState.expenses.filter(expense => {
+        return !appState.houses.some(house => expense.name === `${house.name} Mortgage`);
+    });
+
+    // Add mortgage payments as expenses
+    mortgageHouses.forEach(house => {
+        appState.expenses.push({
+            name: `${house.name} Mortgage`,
+            amount: house.mortgagePayment,
+            fromHouse: true // Mark as coming from house data
+        });
+    });
+}
+
 function openIncomeModal() {
     // Store original income data for comparison
     originalIncomeData = {
@@ -1243,26 +1308,480 @@ async function typeText(element, text, speed = 15) {
     }
 }
 
-// Allow Enter key to send chat message
-document.addEventListener('DOMContentLoaded', () => {
-    const chatInput = document.getElementById('chatbotInput');
-    if (chatInput) {
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendChatMessage();
-            }
+// Add functions
+async function addStockFromModal() {
+    const symbolInput = document.getElementById('modalStockSymbol');
+    const percentInput = document.getElementById('modalStockPercent');
+
+    const symbol = symbolInput.value.trim().toUpperCase();
+    const percent = parseFloat(percentInput.value);
+
+    if (!symbol || !percent || percent <= 0) {
+        alert('Please enter a valid ticker symbol and percentage');
+        return;
+    }
+
+    // Check if total percentage would exceed 100%
+    const currentTotal = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    if (currentTotal + percent > 100) {
+        alert('Total portfolio percentage cannot exceed 100%');
+        return;
+    }
+
+    // Fetch dividend yield
+    const yieldData = await fetchDividendYield(symbol);
+
+    if (yieldData) {
+        // Calculate monthly income for this stock
+        const annualDividend = (appState.portfolioValue * (percent / 100)) * (yieldData / 100);
+        const monthlyIncome = annualDividend / 12;
+
+        appState.portfolio.push({
+            symbol: symbol,
+            percent: percent,
+            yield: yieldData,
+            name: symbol,
+            monthlyIncome: monthlyIncome
+        });
+
+        symbolInput.value = '';
+        percentInput.value = '';
+
+        refreshStockModalDisplay();
+    }
+}
+
+function addRentalFromModal() {
+    const nameInput = document.getElementById('modalRentalName');
+    const amountInput = document.getElementById('modalRentalAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid property name and monthly income amount');
+        return;
+    }
+
+    appState.rentalIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshRentalModalDisplay();
+}
+
+function addOtherFromModal() {
+    const nameInput = document.getElementById('modalOtherName');
+    const amountInput = document.getElementById('modalOtherAmount');
+
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
+
+    if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid income source name and monthly amount');
+        return;
+    }
+
+    appState.otherIncome.push({ name, amount });
+
+    nameInput.value = '';
+    amountInput.value = '';
+
+    refreshOtherModalDisplay();
+}
+
+// Portfolio percentage validation
+function validatePortfolioPercentage() {
+    const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
+    const percentInputs = document.querySelectorAll('.stock-percent-input');
+
+    if (total > 100) {
+        // Highlight all percentage inputs in red
+        percentInputs.forEach(input => {
+            input.style.borderColor = '#E53E3E';
+            input.style.backgroundColor = '#FEE';
+        });
+    } else {
+        // Remove red highlight
+        percentInputs.forEach(input => {
+            input.style.borderColor = '';
+            input.style.backgroundColor = '';
         });
     }
 
-    // Start typing effect for welcome message
-    typeWelcomeMessage();
+    return total <= 100;
+}
 
-    // Set minimize button to '+' since chatbot starts minimized
-    const minimizeBtn = document.querySelector('.chatbot-minimize');
-    if (minimizeBtn) {
-        minimizeBtn.textContent = '+';
+// --- MCP Context Pusher ---
+async function pushContextToServer() {
+    try {
+        const dom = document.documentElement ? document.documentElement.outerHTML : '';
+
+        // Normalize step information for chatbot context
+        const contextState = {
+            ...appState,
+            // Add normalized step info for chatbot
+            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
+            totalBuilderSteps: 5,
+            screenType: getScreenType(appState.currentStep)
+        };
+
+        await fetch(API_BASE_URL + '/mcp/update-context', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                dom,
+                appState: contextState,
+                url: window.location.href
+            })
+        });
+    } catch (e) {
+        // Silently fail - don't disrupt user experience
     }
-});
+}
+
+// Helper function to categorize screen types
+function getScreenType(currentStep) {
+    if (currentStep === 0) return 'landing';
+    if (currentStep >= 1 && currentStep <= 5) return 'builder';
+    if (currentStep === 6) return 'calculating';
+    if (currentStep === 7) return 'congratulations';
+    if (currentStep === 8) return 'dashboard';
+    return 'unknown';
+}
+
+// Push context immediately and then every 10 seconds
+pushContextToServer();
+setInterval(pushContextToServer, 10000);
+
+// --- AI Chatbot Integration ---
+async function sendChatMessage() {
+    const input = document.getElementById('chatbotInput');
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Add user message to chat
+    const userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'chatbot-message user-message';
+    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+    messagesContainer.appendChild(userMessageDiv);
+
+    // Clear input
+    input.value = '';
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chatbot-message bot-message typing';
+    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        // Call chat API
+        const response = await fetch(API_BASE_URL + '/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Add bot response with typing effect
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'chatbot-message bot-message';
+        const botContent = document.createElement('div');
+        botContent.className = 'message-content';
+        botMessageDiv.appendChild(botContent);
+        messagesContainer.appendChild(botMessageDiv);
+
+        const replyText = data.reply || 'Sorry, I could not generate a response.';
+        await typeText(botContent, replyText, 15);
+        // After typing completes, render Markdown safely
+        botContent.innerHTML = renderMarkdownSafe(replyText);
+        setTimeout(() => renderMath(botContent), 50);
+
+    } catch (error) {
+        // Remove typing indicator
+        typingDiv.remove();
+
+        // Show error message with typing effect
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'chatbot-message bot-message error';
+        const errorContent = document.createElement('div');
+        errorContent.className = 'message-content';
+        errorDiv.appendChild(errorContent);
+        messagesContainer.appendChild(errorDiv);
+        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
+    }
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function addChatMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chatbot-message ${sender}-message`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.textContent = text;
+
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function renderMarkdownSafe(markdownText) {
+    try {
+        const html = window.marked ? window.marked.parse(markdownText || '') : (markdownText || '');
+        const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+        return clean;
+    } catch (e) {
+        return (markdownText || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+    }
+}
+
+function renderMath(element, attempts = 0) {
+    if (window.renderMathInElement) {
+        try {
+            window.renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.warn('KaTeX rendering failed:', e);
+        }
+    } else if (attempts < 20) {
+        setTimeout(() => renderMath(element, attempts + 1), 100);
+    }
+}
+
+// Typing effect helper
+async function typeText(element, text, speed = 15) {
+    const safeText = String(text || '');
+    element.textContent = '';
+    for (let i = 0; i < safeText.length; i++) {
+        element.textContent += safeText[i];
+        // Keep scrolled to bottom while typing
+        const container = document.getElementById('chatbotMessages');
+        if (container) container.scrollTop = container.scrollHeight;
+        await new Promise(res => setTimeout(res, speed));
+    }
+}
+
+// Step 3: Add house to appState and UI
+function addHouse() {
+    // Get form values
+    const houseType = document.getElementById('houseType').value;
+    const houseName = document.getElementById('houseName').value.trim();
+    const paidOffStatus = document.querySelector('input[name="paidOffStatus"]:checked').value;
+    const houseEstimate = parseFloat(document.getElementById('houseEstimate').value) || 0;
+    const homeEquity = parseFloat(document.getElementById('homeEquity').value) || 0;
+    const mortgagePayment = parseFloat(document.getElementById('mortgagePayment').value) || 0;
+    const generatesRental = document.getElementById('generatesRental').checked;
+    const monthlyRentalIncome = parseFloat(document.getElementById('monthlyRentalIncome').value) || 0;
+
+    // Validate required fields
+    if (!houseType) {
+        alert('Please select a property type');
+        return;
+    }
+
+    if (!houseName) {
+        alert('Please enter a property name or address');
+        return;
+    }
+
+    if (paidOffStatus === 'yes' && houseEstimate <= 0) {
+        alert('Please enter the estimated property value');
+        return;
+    }
+
+    if (paidOffStatus === 'no' && (homeEquity <= 0 || mortgagePayment <= 0)) {
+        alert('Please enter both home equity and monthly mortgage payment');
+        return;
+    }
+
+    if (generatesRental && monthlyRentalIncome <= 0) {
+        alert('Please enter the monthly rental income');
+        return;
+    }
+
+    // Create house data object
+    const houseData = {
+        id: Date.now(),
+        type: houseType,
+        name: houseName,
+        paidOffStatus: paidOffStatus,
+        value: paidOffStatus === 'yes' ? houseEstimate : homeEquity,
+        mortgagePayment: paidOffStatus === 'no' ? mortgagePayment : 0,
+        generatesRental: generatesRental,
+        monthlyRentalIncome: generatesRental ? monthlyRentalIncome : 0
+    };
+
+    // Add to appState
+    appState.houses.push(houseData);
+
+    // Render all houses
+    renderHouseList();
+
+    // Clear form
+    document.getElementById('houseType').value = '';
+    document.getElementById('houseName').value = '';
+    document.querySelector('input[name="paidOffStatus"][value="yes"]').checked = true;
+    document.getElementById('houseEstimate').value = '';
+    document.getElementById('homeEquity').value = '';
+    document.getElementById('mortgagePayment').value = '';
+    document.getElementById('generatesRental').checked = false;
+    document.getElementById('monthlyRentalIncome').value = '';
+
+    // Reset conditional fields visibility
+    document.getElementById('paidOffGroup').style.display = 'block';
+    document.getElementById('mortgageGroup').style.display = 'none';
+    document.getElementById('mortgagePaymentGroup').style.display = 'none';
+    document.getElementById('rentalIncomeGroup').style.display = 'none';
+
+    // Save state
+    saveState();
+}
+
+// Step 3: Render house list from appState
+function renderHouseList() {
+    const houseList = document.getElementById('houseList');
+    if (!houseList) return;
+
+    houseList.innerHTML = '';
+
+    appState.houses.forEach(house => {
+        const houseCard = document.createElement('div');
+        houseCard.className = 'house-item';
+        houseCard.dataset.houseId = house.id;
+
+        const typeLabel = house.type.charAt(0).toUpperCase() + house.type.slice(1).replace('-', ' ');
+
+        houseCard.innerHTML = `
+            <div class="house-details">
+                <h4>${house.name}</h4>
+                <div class="house-meta">
+                    <div class="house-meta-item">
+                        <span class="house-meta-label">Type</span>
+                        <span class="house-meta-value">${typeLabel}</span>
+                    </div>
+                    <div class="house-meta-item">
+                        <span class="house-meta-label">Status</span>
+                        <span class="house-meta-value">${house.paidOffStatus === 'yes' ? 'Paid Off' : 'Has Mortgage'}</span>
+                    </div>
+                    <div class="house-meta-item">
+                        <span class="house-meta-label">${house.paidOffStatus === 'yes' ? 'Value' : 'Equity'}</span>
+                        <span class="house-meta-value">$${house.value.toLocaleString()}</span>
+                    </div>
+                    ${house.paidOffStatus === 'no' ? `
+                    <div class="house-meta-item">
+                        <span class="house-meta-label">Mortgage/Month</span>
+                        <span class="house-meta-value">$${house.mortgagePayment.toLocaleString()}</span>
+                    </div>
+                    ` : ''}
+                    ${house.generatesRental ? `
+                    <div class="house-meta-item">
+                        <span class="house-meta-label">Rental Income</span>
+                        <span class="house-meta-value income-highlight">$${house.monthlyRentalIncome.toLocaleString()}/mo</span>
+                    </div>
+                    ` : ''}
+                </div>
+            </div>
+            <div class="house-actions">
+                <button class="btn-remove" onclick="removeHouse(this)">Remove</button>
+            </div>
+        `;
+
+        houseList.appendChild(houseCard);
+    });
+
+    updateHouseSummary();
+
+    // Sync rental income from houses
+    syncRentalIncomeFromHouses();
+
+    // Sync mortgage expenses from houses
+    syncMortgageExpensesFromHouses();
+}
+
+// Step 3: Remove house from UI list
+function removeHouse(button) {
+    const houseItem = button.closest('.house-item');
+    houseItem.remove();
+
+    // Save the house list HTML
+    step3HouseListHTML = document.getElementById('houseList').innerHTML;
+
+    updateHouseSummary();
+}
+
+// Step 3: Update house summary totals
+function updateHouseSummary() {
+    const houseItems = document.querySelectorAll('.house-item');
+    const summaryBox = document.getElementById('houseSummary');
+
+    if (houseItems.length === 0) {
+        summaryBox.style.display = 'none';
+        return;
+    }
+
+    summaryBox.style.display = 'block';
+
+    let totalProperties = houseItems.length;
+    let totalValue = 0;
+    let totalRentalIncome = 0;
+
+    houseItems.forEach(item => {
+        // Extract value from the card - find the meta-item with "Value" or "Equity" label
+        const metaItems = item.querySelectorAll('.house-meta-item');
+        metaItems.forEach(metaItem => {
+            const label = metaItem.querySelector('.house-meta-label')?.textContent || '';
+            if (label === 'Value' || label === 'Equity') {
+                const valueText = metaItem.querySelector('.house-meta-value')?.textContent || '$0';
+                const value = parseFloat(valueText.replace(/[$,]/g, '')) || 0;
+                totalValue += value;
+            }
+        });
+
+        // Extract rental income if exists
+        const rentalIncomeEl = item.querySelector('.income-highlight');
+        if (rentalIncomeEl) {
+            const rentalText = rentalIncomeEl.textContent || '$0';
+            const rental = parseFloat(rentalText.replace(/[$,/mo]/g, '')) || 0;
+            totalRentalIncome += rental;
+        }
+    });
+
+    document.getElementById('totalHousesCount').textContent = totalProperties;
+    document.getElementById('totalPropertyValue').textContent = `$${totalValue.toLocaleString()}`;
+    document.getElementById('totalRentalIncome').textContent = `$${totalRentalIncome.toLocaleString()}`;
+}
 
 // Close modal when clicking outside
 document.addEventListener('click', (e) => {
@@ -1562,287 +2081,65 @@ async function typeText(element, text, speed = 15) {
     }
 }
 
-// Add functions
-async function addStockFromModal() {
-    const symbolInput = document.getElementById('modalStockSymbol');
-    const percentInput = document.getElementById('modalStockPercent');
-
-    const symbol = symbolInput.value.trim().toUpperCase();
-    const percent = parseFloat(percentInput.value);
-
-    if (!symbol || !percent || percent <= 0) {
-        alert('Please enter a valid ticker symbol and percentage');
-        return;
-    }
-
-    // Check if total percentage would exceed 100%
-    const currentTotal = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
-    if (currentTotal + percent > 100) {
-        alert('Total portfolio percentage cannot exceed 100%');
-        return;
-    }
-
-    // Fetch dividend yield
-    const yieldData = await fetchDividendYield(symbol);
-
-    if (yieldData) {
-        // Calculate monthly income for this stock
-        const annualDividend = (appState.portfolioValue * (percent / 100)) * (yieldData / 100);
-        const monthlyIncome = annualDividend / 12;
-
-        appState.portfolio.push({
-            symbol: symbol,
-            percent: percent,
-            yield: yieldData,
-            name: symbol,
-            monthlyIncome: monthlyIncome
-        });
-
-        symbolInput.value = '';
-        percentInput.value = '';
-
-        refreshStockModalDisplay();
-    }
-}
-
-function addRentalFromModal() {
-    const nameInput = document.getElementById('modalRentalName');
-    const amountInput = document.getElementById('modalRentalAmount');
-
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid property name and monthly income amount');
-        return;
-    }
-
-    appState.rentalIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshRentalModalDisplay();
-}
-
-function addOtherFromModal() {
-    const nameInput = document.getElementById('modalOtherName');
-    const amountInput = document.getElementById('modalOtherAmount');
-
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid income source name and monthly amount');
-        return;
-    }
-
-    appState.otherIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshOtherModalDisplay();
-}
-
-// Portfolio percentage validation
-function validatePortfolioPercentage() {
-    const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
-    const percentInputs = document.querySelectorAll('.stock-percent-input');
-
-    if (total > 100) {
-        // Highlight all percentage inputs in red
-        percentInputs.forEach(input => {
-            input.style.borderColor = '#E53E3E';
-            input.style.backgroundColor = '#FEE';
-        });
-    } else {
-        // Remove red highlight
-        percentInputs.forEach(input => {
-            input.style.borderColor = '';
-            input.style.backgroundColor = '';
+// Allow Enter key to send chat message
+document.addEventListener('DOMContentLoaded', () => {
+    const chatInput = document.getElementById('chatbotInput');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
         });
     }
 
-    return total <= 100;
-}
+    // Start typing effect for welcome message
+    typeWelcomeMessage();
 
-// --- MCP Context Pusher ---
-async function pushContextToServer() {
-    try {
-        const dom = document.documentElement ? document.documentElement.outerHTML : '';
+    // Set minimize button to '+' since chatbot starts minimized
+    const minimizeBtn = document.querySelector('.chatbot-minimize');
+    if (minimizeBtn) {
+        minimizeBtn.textContent = '+';
+    }
+});
 
-        // Normalize step information for chatbot context
-        const contextState = {
-            ...appState,
-            // Add normalized step info for chatbot
-            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
-            totalBuilderSteps: 5,
-            screenType: getScreenType(appState.currentStep)
-        };
+// Step 3: Setup event listeners for house form
+function setupStep3Listeners() {
+    // Toggle mortgage/estimate fields based on paid off status
+    const paidOffRadios = document.querySelectorAll('input[name="paidOffStatus"]');
+    paidOffRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            const paidOffGroup = document.getElementById('paidOffGroup');
+            const mortgageGroup = document.getElementById('mortgageGroup');
+            const mortgagePaymentGroup = document.getElementById('mortgagePaymentGroup');
 
-        await fetch(API_BASE_URL + '/mcp/update-context', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                dom,
-                appState: contextState,
-                url: window.location.href
-            })
+            if (e.target.value === 'no') {
+                // Has mortgage: show home equity and mortgage payment
+                paidOffGroup.style.display = 'none';
+                mortgageGroup.style.display = 'block';
+                mortgagePaymentGroup.style.display = 'block';
+                document.getElementById('houseEstimate').value = '';
+            } else {
+                // Paid off: show only estimated value
+                paidOffGroup.style.display = 'block';
+                mortgageGroup.style.display = 'none';
+                mortgagePaymentGroup.style.display = 'none';
+                document.getElementById('homeEquity').value = '';
+                document.getElementById('mortgagePayment').value = '';
+            }
         });
-    } catch (e) {
-        // Silently fail - don't disrupt user experience
-    }
-}
+    });
 
-// Helper function to categorize screen types
-function getScreenType(currentStep) {
-    if (currentStep === 0) return 'landing';
-    if (currentStep >= 1 && currentStep <= 5) return 'builder';
-    if (currentStep === 6) return 'calculating';
-    if (currentStep === 7) return 'congratulations';
-    if (currentStep === 8) return 'dashboard';
-    return 'unknown';
-}
-
-// Push context immediately and then every 10 seconds
-pushContextToServer();
-setInterval(pushContextToServer, 10000);
-
-// --- AI Chatbot Integration ---
-async function sendChatMessage() {
-    const input = document.getElementById('chatbotInput');
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const message = input.value.trim();
-
-    if (!message) return;
-
-    // Add user message to chat
-    const userMessageDiv = document.createElement('div');
-    userMessageDiv.className = 'chatbot-message user-message';
-    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
-    messagesContainer.appendChild(userMessageDiv);
-
-    // Clear input
-    input.value = '';
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    // Show typing indicator
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'chatbot-message bot-message typing';
-    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
-    messagesContainer.appendChild(typingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    try {
-        // Call chat API
-        const response = await fetch(API_BASE_URL + '/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+    // Toggle rental income field based on checkbox
+    const rentalCheckbox = document.getElementById('generatesRental');
+    if (rentalCheckbox) {
+        rentalCheckbox.addEventListener('change', (e) => {
+            const rentalIncomeGroup = document.getElementById('rentalIncomeGroup');
+            if (e.target.checked) {
+                rentalIncomeGroup.style.display = 'block';
+            } else {
+                rentalIncomeGroup.style.display = 'none';
+                document.getElementById('monthlyRentalIncome').value = '';
+            }
         });
-
-        const data = await response.json();
-
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Add bot response with typing effect
-        const botMessageDiv = document.createElement('div');
-        botMessageDiv.className = 'chatbot-message bot-message';
-        const botContent = document.createElement('div');
-        botContent.className = 'message-content';
-        botMessageDiv.appendChild(botContent);
-        messagesContainer.appendChild(botMessageDiv);
-
-        const replyText = data.reply || 'Sorry, I could not generate a response.';
-        await typeText(botContent, replyText, 15);
-        // After typing completes, render Markdown safely
-        botContent.innerHTML = renderMarkdownSafe(replyText);
-        setTimeout(() => renderMath(botContent), 50);
-
-    } catch (error) {
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Show error message with typing effect
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'chatbot-message bot-message error';
-        const errorContent = document.createElement('div');
-        errorContent.className = 'message-content';
-        errorDiv.appendChild(errorContent);
-        messagesContainer.appendChild(errorDiv);
-        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
-    }
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function addChatMessage(text, sender) {
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${sender}-message`;
-
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content';
-    contentDiv.textContent = text;
-
-    messageDiv.appendChild(contentDiv);
-    messagesContainer.appendChild(messageDiv);
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-// Helper function to escape HTML
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function renderMarkdownSafe(markdownText) {
-    try {
-        const html = window.marked ? window.marked.parse(markdownText || '') : (markdownText || '');
-        const clean = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
-        return clean;
-    } catch (e) {
-        return (markdownText || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
-    }
-}
-
-function renderMath(element, attempts = 0) {
-    if (window.renderMathInElement) {
-        try {
-            window.renderMathInElement(element, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '\\[', right: '\\]', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\(', right: '\\)', display: false }
-                ],
-                throwOnError: false
-            });
-        } catch (e) {
-            console.warn('KaTeX rendering failed:', e);
-        }
-    } else if (attempts < 20) {
-        setTimeout(() => renderMath(element, attempts + 1), 100);
-    }
-}
-
-// Typing effect helper
-async function typeText(element, text, speed = 15) {
-    const safeText = String(text || '');
-    element.textContent = '';
-    for (let i = 0; i < safeText.length; i++) {
-        element.textContent += safeText[i];
-        // Keep scrolled to bottom while typing
-        const container = document.getElementById('chatbotMessages');
-        if (container) container.scrollTop = container.scrollHeight;
-        await new Promise(res => setTimeout(res, speed));
     }
 }

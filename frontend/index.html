@@ -254,25 +254,97 @@
         <!-- Step 3: Rental Income -->
         <div class="step" id="step3">
             <div class="step-content">
-                <h1>Rental Income</h1>
-                <p class="subtitle">Do you have or plan to have rental properties?</p>
+                <h1>Real Estate & Housing</h1>
+                <p class="subtitle">Track your properties and their financial details</p>
 
-                <div class="rental-section">
-                    <div class="input-group">
-                        <label>Add rental income sources:</label>
-                        <div class="rental-input-row">
-                            <input type="text" id="rentalName" placeholder="Property Name" class="input-field">
-                            <input type="number" id="rentalAmount" placeholder="Monthly Income ($)" class="input-field"
-                                min="0" step="0.01">
-                            <button class="btn-secondary" onclick="addRental()">Add</button>
+                <div class="house-section">
+                    <div class="house-form-card">
+                        <h3>Add a Property</h3>
+
+                        <div class="form-group">
+                            <label for="houseType">Property Type</label>
+                            <select id="houseType" class="input-field">
+                                <option value="">Select type...</option>
+                                <option value="primary">Primary Residence</option>
+                                <option value="rental">Rental Property</option>
+                                <option value="vacation">Vacation Home</option>
+                                <option value="investment">Investment Property</option>
+                            </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="houseName">Property Name/Address</label>
+                            <input type="text" id="houseName" class="input-field"
+                                placeholder="e.g., Main Street House, Downtown Condo" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Is this property paid off?</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="paidOffStatus" value="yes" checked />
+                                    <span>Yes, paid off</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="paidOffStatus" value="no" />
+                                    <span>No, has mortgage</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="paidOffGroup">
+                            <label for="houseEstimate">Estimated Property Value</label>
+                            <input type="number" id="houseEstimate" class="input-field" placeholder="500000" min="0"
+                                step="10000" />
+                            <p class="field-hint">Don't know the value? Ask our AI Assistant for an estimate based on
+                                your location and property type.</p>
+                        </div>
+
+                        <div class="form-group" id="mortgageGroup" style="display: none;">
+                            <label for="homeEquity">Current Home Equity</label>
+                            <input type="number" id="homeEquity" class="input-field" placeholder="200000" min="0"
+                                step="10000" />
+                            <p class="field-hint">Your current ownership stake in the property (property value -
+                                remaining loan balance)</p>
+                        </div>
+
+                        <div class="form-group" id="mortgagePaymentGroup" style="display: none;">
+                            <label for="mortgagePayment">Monthly Mortgage Payment</label>
+                            <input type="number" id="mortgagePayment" class="input-field" placeholder="2500" min="0"
+                                step="100" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generatesRental" />
+                                <span>This property generates rental income</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group" id="rentalIncomeGroup" style="display: none;">
+                            <label for="monthlyRentalIncome">Monthly Rental Income</label>
+                            <input type="number" id="monthlyRentalIncome" class="input-field" placeholder="3000" min="0"
+                                step="100" />
+                        </div>
+
+                        <button class="btn-secondary" onclick="addHouse()">+ Add Property</button>
                     </div>
 
-                    <div id="rentalList" class="income-list"></div>
+                    <div id="houseList" class="house-list"></div>
 
-                    <div id="totalRental" class="total-box" style="display: none;">
-                        <span>Total Monthly Rental Income:</span>
-                        <span class="total-value" id="totalRentalValue">$0.00</span>
+                    <div id="houseSummary" class="summary-box" style="display: none;">
+                        <div class="summary-row">
+                            <span>Total Properties:</span>
+                            <span class="summary-value" id="totalHousesCount">0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Property Value:</span>
+                            <span class="summary-value" id="totalPropertyValue">$0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Monthly Rental Income:</span>
+                            <span class="summary-value income-highlight" id="totalRentalIncome">$0</span>
+                        </div>
                     </div>
                 </div>
 
@@ -319,7 +391,7 @@
         <div class="step" id="step5">
             <div class="step-content">
                 <h1>Monthly Expenses</h1>
-                <p class="subtitle">List all your essential monthly expenses</p>
+                <p class="subtitle">List all your essential monthly expenses, feel free to exclude mortgage</p>
 
                 <div class="expenses-section">
                     <div class="input-group">
