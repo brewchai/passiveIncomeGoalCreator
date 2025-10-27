@@ -507,13 +507,18 @@
                                 <div class="summary-breakdown" id="expenseBreakdown"></div>
                             </div>
                             <div class="summary-item highlight">
-                                <span class="summary-label">Goals Achieved</span>
-                                <span class="summary-amount" id="dashGoalsAchieved">0/0</span>
+                                <span class="summary-label">Savings Rate</span>
+                                <span class="summary-amount" id="dashGoalsAchieved">0%</span>
                             </div>
-                            <div class="summary-item highlight">
-                                <span class="summary-label">FI Progress</span>
-                                <span class="summary-amount" id="dashFIPercentage">0%</span>
-                                <div class="summary-breakdown">of expenses covered</div>
+                            <div class="summary-item highlight clickable" onclick="openFireModal()">
+                                <span class="summary-label">FIRE Number</span>
+                                <span class="summary-amount" id="dashFIPercentage">$0</span>
+                                <div class="summary-breakdown">4% withdrawal rule</div>
+                            </div>
+                            <div class="summary-item highlight clickable" onclick="openFIYearModal()">
+                                <span class="summary-label">Projected FI Year</span>
+                                <span class="summary-amount" id="dashProjectedFIYear">Never</span>
+                                <div class="summary-breakdown">at 5% annual return</div>
                             </div>
                         </div>
                     </div>
@@ -530,13 +535,13 @@
                                 <span class="stat-value" id="nextGoalTargetCompact">$0</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-label">Current Portfolio</span>
+                                <span class="stat-label">Net Worth</span>
                                 <span class="stat-value highlight" id="nextGoalCurrentPortfolio">$0</span>
                             </div>
-                            <div class="stat-item">
+                            <!-- <div class="stat-item">
                                 <span class="stat-label">Portfolio Needed</span>
                                 <span class="stat-value" id="nextGoalPortfolioNeeded">$0</span>
-                            </div>
+                            </div> -->
                             <div class="stat-item">
                                 <span class="stat-label">Additional Investment</span>
                                 <span class="stat-value accent" id="nextGoalAdditionalInvestment">$0</span>
@@ -602,15 +607,10 @@
 
             <!-- Tab Navigation -->
             <div class="modal-tabs">
-                <button class="tab-button active" onclick="switchIncomeTab('stocks')" id="tabStocks">
-                    📊 Stocks
-                </button>
-                <button class="tab-button" onclick="switchIncomeTab('rental')" id="tabRental">
-                    🏠 Rental
-                </button>
-                <button class="tab-button" onclick="switchIncomeTab('other')" id="tabOther">
-                    💰 Other
-                </button>
+                <button class="tab-button active" id="tabStocks" onclick="switchIncomeTab('stocks')">📊 Stocks</button>
+                <button class="tab-button" id="tabRental" onclick="switchIncomeTab('rental')">🏠 Rental</button>
+                <button class="tab-button" id="tabOther" onclick="switchIncomeTab('other')">💰 Other</button>
+                <button class="tab-button" id="tabJob" onclick="switchIncomeTab('job')">💼 Job Income</button>
             </div>
 
             <div class="modal-body">
@@ -652,11 +652,194 @@
                         <button class="btn-secondary" onclick="addOtherFromModal()">Add</button>
                     </div>
                 </div>
+
+                <!-- Job Income Tab Content -->
+                <div class="tab-content" id="contentJob">
+                    <div class="job-income-section">
+                        <h4>Annual Family Income</h4>
+                        <div class="job-income-item">
+                            <label for="modalJobIncome">Total Annual Income from Job(s):</label>
+                            <input type="number" id="modalJobIncome" class="input-field" min="0" step="1000"
+                                placeholder="Annual Income">
+                        </div>
+                        <div class="job-income-display">
+                            <div class="income-breakdown">
+                                <span>Monthly Equivalent:</span>
+                                <span id="jobIncomeMonthly">$0/month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="modal-footer">
                 <button class="btn-secondary" onclick="closeIncomeModal()">Cancel</button>
                 <button class="btn-primary" onclick="saveIncomeChanges()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIRE Number Explanation Modal -->
+    <div class="modal-overlay" id="fireExplanationModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your FIRE Number Explained</h2>
+                <button class="modal-close" onclick="closeFireModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="fire-explanation">
+                    <div class="fire-intro">
+                        <p>Your <strong>FIRE Number</strong> is the total amount you need invested to achieve Financial
+                            Independence and Retire Early (FIRE). It's calculated using the <strong>4% Safe Withdrawal
+                                Rule</strong>.</p>
+                    </div>
+
+                    <div class="fire-calculation">
+                        <h3>Here's how we calculated your FIRE Number:</h3>
+                        <div class="calculation-steps">
+                            <div class="calc-step">
+                                <div class="step-label">1. Your Monthly Expenses:</div>
+                                <div class="step-value" id="fireModalExpenses">$0</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">2. Annual Expenses (Monthly × 12):</div>
+                                <div class="step-value" id="fireModalAnnualExpenses">$0</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">3. FIRE Number (Annual Expenses ÷ 4%):</div>
+                                <div class="step-value highlight" id="fireModalFireNumber">$0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fire-explanation-text">
+                        <h3>What does this mean?</h3>
+                        <p>Once you have <span id="fireModalFireNumberText">$0</span> invested, you can safely withdraw
+                            4% per year (<span id="fireModalAnnualWithdrawal">$0</span>) to cover your expenses without
+                            touching the principal. This means you're financially independent!</p>
+
+                        <div class="fire-progress">
+                            <h4>Your Progress:</h4>
+                            <div class="progress-item">
+                                <span>Current Net Worth:</span>
+                                <span id="fireModalCurrentNetWorth">$0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Growing Assets (Portfolio):</span>
+                                <span id="fireModalGrowingAssets">$0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Still Need:</span>
+                                <span id="fireModalStillNeed">$0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Progress:</span>
+                                <span id="fireModalProgress">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fire-customization">
+                        <div class="customization-note">
+                            <p><strong>Want to try different withdrawal rates?</strong></p>
+                            <p>The 4% rule is conservative. Some people use 3.5% for extra safety or 4.5% for a more
+                                aggressive approach.</p>
+                            <button class="btn-secondary" onclick="showSwrCustomization()" disabled>
+                                Customize Withdrawal Rate (Coming Soon)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeFireModal()">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projected FI Year Explanation Modal -->
+    <div class="modal-overlay" id="fiYearExplanationModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Projected FI Year Explained</h2>
+                <button class="modal-close" onclick="closeFIYearModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="fire-explanation">
+                    <div class="fire-intro">
+                        <p>Your <strong>Projected FI Year</strong> is when you're expected to reach Financial
+                            Independence based on your current savings rate and investment returns. This calculation
+                            assumes a <strong>5% annual real return</strong> after inflation.</p>
+                    </div>
+
+                    <div class="fire-calculation">
+                        <h3>Here's how we calculated your FI timeline:</h3>
+                        <div class="calculation-steps">
+                            <div class="calc-step">
+                                <div class="step-label">1. Your FIRE Number Target:</div>
+                                <div class="step-value" id="fiYearModalFireNumber">$0</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">2. Current Net Worth:</div>
+                                <div class="step-value" id="fiYearModalCurrentNetWorth">$0</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">3. Monthly Savings:</div>
+                                <div class="step-value" id="fiYearModalMonthlySavings">$0</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">4. Expected Annual Return:</div>
+                                <div class="step-value">5.0%</div>
+                            </div>
+                            <div class="calc-step">
+                                <div class="step-label">5. Projected FI Year:</div>
+                                <div class="step-value highlight" id="fiYearModalProjectedYear">Never</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fire-explanation-text">
+                        <h3>What does this mean?</h3>
+                        <p id="fiYearModalExplanation">Based on your current savings and investment strategy, you're
+                            projected to reach financial independence in <span id="fiYearModalYearsToGo">0</span> years.
+                        </p>
+
+                        <div class="fire-progress">
+                            <h4>Your Investment Journey:</h4>
+                            <div class="progress-item">
+                                <span>Starting Point:</span>
+                                <span id="fiYearModalStartingPoint">$0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Monthly Contributions:</span>
+                                <span id="fiYearModalMonthlyContrib">$0</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Compound Growth:</span>
+                                <span>5% annually</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Final Portfolio Value:</span>
+                                <span id="fiYearModalFinalValue">$0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fire-customization">
+                        <div class="customization-note">
+                            <p><strong>Want to reach FI faster?</strong></p>
+                            <p>Try increasing your savings rate, optimizing your investment returns, or reducing your
+                                expenses. Small changes can have a big impact over time!</p>
+                            <button class="btn-secondary" onclick="showFIOptimization()" disabled>
+                                Optimize Your FI Timeline (Coming Soon)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeFIYearModal()">Got It!</button>
             </div>
         </div>
     </div>

@@ -650,10 +650,13 @@ function renderDashboard() {
     // Check if there are any goals
     if (appState.goals.length === 0) {
         // No goals - show message to add expenses
+        const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+        const totalCurrentPortfolio = appState.portfolioValue + totalHouseValue;
+
         document.getElementById('nextGoalTitleCompact').textContent = 'Enter expenses to create goals';
         document.getElementById('nextGoalTargetCompact').textContent = '$0/mo';
-        document.getElementById('nextGoalCurrentPortfolio').textContent = '$0';
-        document.getElementById('nextGoalPortfolioNeeded').textContent = '$0';
+        document.getElementById('nextGoalCurrentPortfolio').textContent = `$${totalCurrentPortfolio.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+        // document.getElementById('nextGoalPortfolioNeeded').textContent = '$0';
         document.getElementById('nextGoalAdditionalInvestment').textContent = '$0';
         document.getElementById('progressPercentage').textContent = '0%';
     } else {
@@ -678,19 +681,25 @@ function renderNextGoalCompact(goal) {
     const portfolioValueNeeded = goal.portfolioValueNeeded || 0;
     const additionalInvestmentNeeded = goal.additionalInvestmentNeeded || 0;
 
+    // Calculate total portfolio including house values
+    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const totalCurrentPortfolio = appState.portfolioValue + totalHouseValue;
+
     document.getElementById('nextGoalTitleCompact').textContent = goal.name;
     document.getElementById('nextGoalTargetCompact').textContent = `$${goal.amount.toFixed(2)}/mo`;
-    document.getElementById('nextGoalCurrentPortfolio').textContent = `$${appState.portfolioValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('nextGoalPortfolioNeeded').textContent = `$${portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('nextGoalAdditionalInvestment').textContent = additionalInvestmentNeeded > 0
-        ? `+$${additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
-        : '$0';
+    document.getElementById('nextGoalCurrentPortfolio').textContent = `$${totalCurrentPortfolio.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    // document.getElementById('nextGoalPortfolioNeeded').textContent = `$${portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    // Hide additional investment needed completely
+    const additionalInvestmentElement = document.getElementById('nextGoalAdditionalInvestment');
+    if (additionalInvestmentElement && additionalInvestmentElement.parentElement) {
+        additionalInvestmentElement.parentElement.style.display = 'none';
+    }
     document.getElementById('progressPercentage').textContent = `${progress.toFixed(0)}%`;
 }
 
 function renderDashboardSummary() {
-    // Total income
-    const totalIncome = appState.totalPassiveIncome;
+    // Total income (passive + job income)
+    const totalIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
     document.getElementById('dashTotalIncome').textContent = `$${totalIncome.toFixed(2)}`;
 
     // Income breakdown - hidden
@@ -703,13 +712,47 @@ function renderDashboardSummary() {
     // Expense breakdown - hidden
     document.getElementById('expenseBreakdown').innerHTML = '';
 
-    // Goals achieved
-    const achievedGoals = appState.goals.filter(g => g.achieved).length;
-    document.getElementById('dashGoalsAchieved').textContent = `${achievedGoals}/${appState.goals.length}`;
+    // Savings Rate calculation
+    const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
+    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const monthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
+    const savingsRate = totalMonthlyIncome > 0 ? (monthlySavings / totalMonthlyIncome) * 100 : 0;
 
-    // Financial Independence Percentage
-    const fiProgress = totalExpenses > 0 ? Math.min((totalIncome / totalExpenses) * 100, 100) : 0;
-    document.getElementById('dashFIPercentage').textContent = `${fiProgress.toFixed(2)}%`;
+    document.getElementById('dashGoalsAchieved').textContent = `${savingsRate.toFixed(1)}%`;
+
+    // FIRE Number calculation (4% safe withdrawal rule)
+    const annualExpensesTarget = totalMonthlyExpenses * 12;
+    const fireNumber = annualExpensesTarget / 0.04;
+    document.getElementById('dashFIPercentage').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+    // Projected FI Year calculation
+    const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
+    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const currentNetWorth = appState.portfolioValue + totalHouseValue;
+    const currentPortfolioValue = appState.portfolioValue;
+    const expectedReturnRate = 0.05; // 5% annual real return
+    const currentYear = new Date().getFullYear();
+
+    let projectedFIYear = 'Never';
+    if (projectedMonthlySavings > 0 && fireNumber > 0) {
+        // Solve for t when FV = FIRE_Number using iterative approach
+        let t = 0;
+        let futureValue = currentNetWorth;
+        const monthlyReturn = expectedReturnRate / 12;
+
+        while (futureValue < fireNumber && t < 50) { // Cap at 50 years
+            t += 1 / 12; // Increment by month
+            const futurePortfolioValue = currentPortfolioValue * Math.pow(1 + expectedReturnRate, t) +
+                projectedMonthlySavings * ((Math.pow(1 + expectedReturnRate, t) - 1) / expectedReturnRate);
+            futureValue = futurePortfolioValue + totalHouseValue;
+        }
+
+        if (futureValue >= fireNumber && t < 50) {
+            projectedFIYear = Math.ceil(currentYear + t);
+        }
+    }
+
+    document.getElementById('dashProjectedFIYear').textContent = projectedFIYear;
 }
 
 function renderAllGoalsCompact() {
@@ -727,14 +770,15 @@ function renderAllGoalsCompact() {
 
         // Use stored portfolio values from calculateGoals
         let investmentInfo = '';
-        if (!goal.achieved && goal.portfolioValueNeeded > 0) {
-            investmentInfo = `
-                <div class="goal-investment-compact">
-                    <div class="investment-label">Additional Investment:</div>
-                    <div class="investment-value highlight">+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
-                </div>
-            `;
-        }
+        // Hide additional investment needed
+        // if (!goal.achieved && goal.portfolioValueNeeded > 0) {
+        //     investmentInfo = `
+        //         <div class="goal-investment-compact">
+        //             <div class="investment-label">Additional Investment:</div>
+        //             <div class="investment-value highlight">+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
+        //         </div>
+        //     `;
+        // }
 
         return `
             <div class="goal-card-compact ${achievedClass}">
@@ -914,6 +958,7 @@ function openIncomeModal() {
     refreshStockModalDisplay();
     refreshRentalModalDisplay();
     refreshOtherModalDisplay();
+    refreshJobIncomeDisplay();
 
     // Show modal with Stocks tab active by default
     switchIncomeTab('stocks');
@@ -947,6 +992,9 @@ function switchIncomeTab(tabName) {
     } else if (tabName === 'other') {
         document.getElementById('tabOther').classList.add('active');
         document.getElementById('contentOther').classList.add('active');
+    } else if (tabName === 'job') {
+        document.getElementById('tabJob').classList.add('active');
+        document.getElementById('contentJob').classList.add('active');
     }
 }
 
@@ -1050,6 +1098,28 @@ function refreshOtherModalDisplay() {
         `;
         otherEditList.appendChild(otherItem);
     });
+}
+
+function refreshJobIncomeDisplay() {
+    const jobIncomeInput = document.getElementById('modalJobIncome');
+    const jobIncomeMonthly = document.getElementById('jobIncomeMonthly');
+
+    if (!jobIncomeInput || !jobIncomeMonthly) return;
+
+    // Set current annual income
+    jobIncomeInput.value = appState.annualIncome || 0;
+
+    // Update monthly display
+    const monthlyEquivalent = (appState.annualIncome || 0) / 12;
+    jobIncomeMonthly.textContent = `$${monthlyEquivalent.toLocaleString(undefined, { maximumFractionDigits: 0 })}/month`;
+
+    // Add input handler for real-time updates
+    jobIncomeInput.oninput = function () {
+        const annualAmount = parseFloat(this.value) || 0;
+        const monthlyAmount = annualAmount / 12;
+        jobIncomeMonthly.textContent = `$${monthlyAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}/month`;
+        appState.annualIncome = annualAmount;
+    };
 }
 
 // Delete functions
@@ -2142,4 +2212,111 @@ function setupStep3Listeners() {
             }
         });
     }
+}
+
+// FIRE Number Modal Functions
+function openFireModal() {
+    // Calculate current values
+    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const annualExpenses = totalMonthlyExpenses * 12;
+    const fireNumber = annualExpenses / 0.04;
+    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const currentNetWorth = appState.portfolioValue + totalHouseValue;
+    const stillNeed = Math.max(0, fireNumber - currentNetWorth);
+    const progress = fireNumber > 0 ? Math.min(100, (currentNetWorth / fireNumber) * 100) : 0;
+
+    // Populate modal with calculated values
+    document.getElementById('fireModalExpenses').textContent = `$${totalMonthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalAnnualExpenses').textContent = `$${annualExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalFireNumber').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalFireNumberText').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalAnnualWithdrawal').textContent = `$${annualExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalCurrentNetWorth').textContent = `$${currentNetWorth.toLocaleString(undefined, { maximumFractionDigits: 0 })} (includes house)`;
+    document.getElementById('fireModalGrowingAssets').textContent = `$${appState.portfolioValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalStillNeed').textContent = `$${stillNeed.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalProgress').textContent = `${progress.toFixed(1)}%`;
+
+    // Show modal
+    document.getElementById('fireExplanationModal').style.display = 'flex';
+}
+
+function closeFireModal() {
+    document.getElementById('fireExplanationModal').style.display = 'none';
+}
+
+function showSwrCustomization() {
+    // Placeholder for future SWR customization feature
+    alert('Safe Withdrawal Rate customization coming soon! This will allow you to experiment with different withdrawal rates (3.5%, 4%, 4.5%, etc.) to see how it affects your FIRE number.');
+}
+
+// FI Year Modal Functions
+function openFIYearModal() {
+    // Calculate current values (same logic as in renderDashboard)
+    const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
+    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const annualExpenses = totalMonthlyExpenses * 12;
+    const fireNumber = annualExpenses / 0.04;
+    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const currentNetWorth = appState.portfolioValue + totalHouseValue;
+    const currentPortfolioValue = appState.portfolioValue;
+    const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
+    const expectedReturnRate = 0.05;
+    const currentYear = new Date().getFullYear();
+
+    let projectedFIYear = 'Never';
+    let yearsToGo = 0;
+    let finalValue = currentNetWorth;
+
+    if (projectedMonthlySavings > 0 && fireNumber > 0) {
+        // Solve for t when FV = FIRE_Number using iterative approach
+        let t = 0;
+        let futureValue = currentNetWorth;
+        const monthlyReturn = expectedReturnRate / 12;
+
+        while (futureValue < fireNumber && t < 50) { // Cap at 50 years
+            t += 1 / 12; // Increment by month
+            const futurePortfolioValue = currentPortfolioValue * Math.pow(1 + expectedReturnRate, t) +
+                projectedMonthlySavings * ((Math.pow(1 + expectedReturnRate, t) - 1) / expectedReturnRate);
+            futureValue = futurePortfolioValue + totalHouseValue;
+        }
+
+        if (futureValue >= fireNumber && t < 50) {
+            projectedFIYear = Math.ceil(currentYear + t);
+            yearsToGo = Math.ceil(t);
+            finalValue = futureValue;
+        }
+    }
+
+    // Populate modal with calculated values
+    document.getElementById('fiYearModalFireNumber').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fiYearModalCurrentNetWorth').textContent = `$${currentNetWorth.toLocaleString(undefined, { maximumFractionDigits: 0 })} (includes house)`;
+    document.getElementById('fiYearModalMonthlySavings').textContent = `$${projectedMonthlySavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fiYearModalProjectedYear').textContent = projectedFIYear;
+    document.getElementById('fiYearModalStartingPoint').textContent = `$${currentPortfolioValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} (portfolio only)`;
+    document.getElementById('fiYearModalMonthlyContrib').textContent = `$${projectedMonthlySavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fiYearModalFinalValue').textContent = `$${finalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+    // Update explanation text based on whether FI is achievable
+    const explanationElement = document.getElementById('fiYearModalExplanation');
+    const yearsToGoElement = document.getElementById('fiYearModalYearsToGo');
+
+    if (projectedFIYear === 'Never') {
+        explanationElement.innerHTML = "Based on your current savings rate, you may not reach financial independence within a reasonable timeframe. Consider increasing your income, reducing expenses, or optimizing your investment strategy.";
+        yearsToGoElement.textContent = "∞";
+    } else {
+        explanationElement.innerHTML = `Based on your current savings and investment strategy, you're projected to reach financial independence in <span id="fiYearModalYearsToGo">${yearsToGo}</span> years (by ${projectedFIYear}).`;
+        yearsToGoElement.textContent = yearsToGo;
+    }
+
+    // Show modal
+    document.getElementById('fiYearExplanationModal').style.display = 'flex';
+}
+
+function closeFIYearModal() {
+    document.getElementById('fiYearExplanationModal').style.display = 'none';
+}
+
+function showFIOptimization() {
+    // Placeholder for future FI optimization feature
+    alert('FI Timeline optimization coming soon! This will help you explore different scenarios to reach financial independence faster by adjusting savings rate, investment returns, and expenses.');
 }
