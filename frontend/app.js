@@ -737,6 +737,14 @@ function renderDashboard() {
     // Render summary section
     renderDashboardSummary();
 
+    // Render optimization charts
+    renderDashboardIncomeChart();
+    renderDashboardExpenseChart();
+
+    // Fetch AI optimization tips
+    fetchIncomeTip();
+    fetchExpenseTip();
+
     // Check if there are any goals
     if (appState.goals.length === 0) {
         // No goals - show message to add expenses
@@ -792,10 +800,14 @@ function renderNextGoalCompact(goal) {
 // Shared FI Year calculation function
 function calculateProjectedFIYear() {
     const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
-    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalMonthlyExpenses = (appState.expenses && appState.expenses.length > 0)
+        ? appState.expenses.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
     const annualExpenses = totalMonthlyExpenses * 12;
     const fireNumber = annualExpenses / 0.04;
-    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const totalHouseValue = (appState.houses && appState.houses.length > 0)
+        ? appState.houses.reduce((sum, house) => sum + house.value, 0)
+        : 0;
     const totalRetirementValue = getTotalRetirementValue();
     const currentPortfolioValue = appState.portfolioValue + totalRetirementValue;
     const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
@@ -988,28 +1000,18 @@ function openExpenseModal() {
     // Populate modal with current expenses
     refreshExpenseModalDisplay();
 
-    // Show modal with Overview tab active by default
-    switchExpenseTab('overview');
-
-    // Render expense breakdown chart
-    renderExpenseBreakdownChart();
+    // Show modal with Edit tab active by default
+    switchExpenseTab('edit');
 
     // Show modal
     document.getElementById('expenseEditModal').style.display = 'flex';
 }
 
 function switchExpenseTab(tabName) {
-    // Remove active class from all tabs and content
-    document.querySelectorAll('#expenseEditModal .tab-button').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('#expenseEditModal .tab-content').forEach(content => content.classList.remove('active'));
-
-    // Add active class to selected tab and content
-    if (tabName === 'overview') {
-        document.getElementById('tabExpenseOverview').classList.add('active');
-        document.getElementById('contentExpenseOverview').classList.add('active');
-    } else if (tabName === 'edit') {
-        document.getElementById('tabExpenseEdit').classList.add('active');
-        document.getElementById('contentExpenseEdit').classList.add('active');
+    // Since we only have edit tab now, just make sure it's active
+    const editContent = document.getElementById('contentExpenseEdit');
+    if (editContent) {
+        editContent.classList.add('active');
     }
 }
 
@@ -1241,14 +1243,331 @@ function openIncomeModal() {
     refreshOtherModalDisplay();
     refreshJobIncomeDisplay();
 
-    // Show modal with Overview tab active by default
-    switchIncomeTab('overview');
-
-    // Render income breakdown chart
-    renderIncomeBreakdownChart();
+    // Show modal with Job Income tab active by default
+    switchIncomeTab('job');
 
     // Show modal
     document.getElementById('incomeEditModal').style.display = 'flex';
+}
+
+// Dashboard Charts
+let dashboardIncomeChart = null;
+let dashboardExpenseChart = null;
+
+// AI Tips state
+let incomeTip = '';
+let expenseTip = '';
+
+// Fetch AI tip for income optimization
+async function fetchIncomeTip() {
+    try {
+        const incomeData = {
+            jobIncome: appState.annualIncome ? appState.annualIncome / 12 : 0,
+            stockIncome: appState.monthlyDividendIncome || 0,
+            rentalIncome: appState.rentalIncome.reduce((sum, r) => sum + r.amount, 0),
+            otherIncome: appState.otherIncome.reduce((sum, o) => sum + o.amount, 0),
+            retirementValue: getTotalRetirementValue()
+        };
+
+        const totalIncome = incomeData.jobIncome + incomeData.stockIncome + incomeData.rentalIncome + incomeData.otherIncome;
+        const largestSource = Math.max(incomeData.jobIncome, incomeData.stockIncome, incomeData.rentalIncome, incomeData.otherIncome);
+        const concentration = (largestSource / totalIncome * 100).toFixed(0);
+
+        const response = await fetch('http://localhost:5001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: `Income breakdown: Job $${incomeData.jobIncome.toFixed(0)}/mo, Stocks $${incomeData.stockIncome.toFixed(0)}/mo, Rental $${incomeData.rentalIncome.toFixed(0)}/mo, Other $${incomeData.otherIncome.toFixed(0)}/mo (${concentration}% from largest source). Using proven strategies from financial experts (Warren Buffett, Ramit Sethi, etc.), give ONE ultra-specific tip to boost passive income. STRICT RULES: Max 15 words. Use SUGGESTIVE language ("Consider", "Try", "You could"). Use **bold** for key action. Include a number. Example: "Consider **investing $500/mo** in dividend aristocrats for 4% yield." No preamble, no fluff.`
+            })
+        });
+
+        const data = await response.json();
+        incomeTip = data.reply || 'No tip available';
+        console.log('Income tip:', incomeTip);
+
+        // Update UI with HTML rendering for markdown
+        const tipElement = document.getElementById('incomeTipText');
+        if (tipElement) {
+            // Convert markdown bold to HTML with better styling
+            let formattedTip = incomeTip
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>'); // Highlight dollar amounts
+            tipElement.innerHTML = formattedTip;
+        }
+    } catch (error) {
+        console.error('Error fetching income tip:', error);
+        incomeTip = 'Unable to fetch tip';
+        const tipElement = document.getElementById('incomeTipText');
+        if (tipElement) {
+            let formattedTip = incomeTip
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>');
+            tipElement.innerHTML = formattedTip;
+        }
+    }
+}
+
+// Fetch AI tip for expense optimization
+async function fetchExpenseTip() {
+    try {
+        // Check if there are any expenses
+        if (!appState.expenses || appState.expenses.length === 0) {
+            const tipElement = document.getElementById('expenseTipText');
+            if (tipElement) {
+                tipElement.innerHTML = 'Add expenses to get personalized tips';
+            }
+            return;
+        }
+
+        const expenseData = appState.expenses.map(e => `${e.name}: $${e.amount}`).join(', ');
+        const totalExpenses = appState.expenses.reduce((sum, e) => sum + e.amount, 0);
+
+        const sortedExpenses = appState.expenses
+            .filter(e => e.amount > 0)
+            .sort((a, b) => b.amount - a.amount);
+
+        // Check if there are any expenses with amount > 0
+        if (sortedExpenses.length === 0) {
+            const tipElement = document.getElementById('expenseTipText');
+            if (tipElement) {
+                tipElement.innerHTML = 'Add expenses to get personalized tips';
+            }
+            return;
+        }
+
+        const largestExpense = sortedExpenses[0];
+        const largestPct = (largestExpense.amount / totalExpenses * 100).toFixed(0);
+
+        const response = await fetch('http://localhost:5001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: `Expenses: ${expenseData} (${largestExpense.name} is ${largestPct}% of total). Using proven frugal living strategies from finance experts, give ONE ultra-specific cost-cutting tip. STRICT RULES: Max 15 words. Use SUGGESTIVE language ("Consider", "Try", "You could"). Use **bold** for key action. Include a number or %. Example: "Consider **negotiating rent down 10%** to save $300/mo." No preamble, no fluff.`
+            })
+        });
+
+        const data = await response.json();
+        expenseTip = data.reply || 'No tip available';
+        console.log('Expense tip:', expenseTip);
+
+        // Update UI with HTML rendering for markdown
+        const tipElement = document.getElementById('expenseTipText');
+        if (tipElement) {
+            // Convert markdown bold to HTML with better styling
+            let formattedTip = expenseTip
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>') // Highlight dollar amounts
+                .replace(/(\d+)%/g, '<span style="color: #059669; font-weight: 600;">$1%</span>'); // Highlight percentages
+            tipElement.innerHTML = formattedTip;
+        }
+    } catch (error) {
+        console.error('Error fetching expense tip:', error);
+        expenseTip = 'Unable to fetch tip';
+        const tipElement = document.getElementById('expenseTipText');
+        if (tipElement) {
+            let formattedTip = expenseTip
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>')
+                .replace(/(\d+)%/g, '<span style="color: #059669; font-weight: 600;">$1%</span>');
+            tipElement.innerHTML = formattedTip;
+        }
+    }
+}
+
+// Open chat with context
+function openChatWithContext(type) {
+    // Open the chat modal/interface
+    // This will be implemented when you have a chat interface
+    console.log(`Opening chat for ${type} optimization`);
+    alert(`Chat feature coming soon! This will help you optimize your ${type}.`);
+}
+
+// Shared rank-based color palette for consistent coloring across charts
+const RANK_COLORS = [
+    '#8b5cf6', // Purple - Rank 1 (largest)
+    '#3b82f6', // Blue - Rank 2
+    '#10b981', // Green - Rank 3
+    '#f59e0b', // Orange - Rank 4
+    '#ef4444', // Red - Rank 5
+    '#ec4899', // Pink - Rank 6
+    '#06b6d4', // Cyan - Rank 7
+    '#eab308', // Yellow - Rank 8
+    '#a855f7', // Violet - Rank 9
+    '#14b8a6', // Teal - Rank 10
+    '#f97316', // Orange-red - Rank 11
+    '#84cc16', // Lime - Rank 12
+    '#6366f1', // Indigo - Rank 13
+    '#d946ef', // Fuchsia - Rank 14
+    '#f43f5e'  // Rose - Rank 15
+];
+
+function renderDashboardIncomeChart() {
+    // Calculate monthly income from each source
+    const jobIncome = appState.annualIncome ? appState.annualIncome / 12 : 0;
+    const stockIncome = appState.monthlyDividendIncome || 0;
+    const rentalIncome = appState.rentalIncome.reduce((sum, rental) => sum + rental.amount, 0);
+    const otherIncome = appState.otherIncome.reduce((sum, other) => sum + other.amount, 0);
+
+    const totalIncome = jobIncome + stockIncome + rentalIncome + otherIncome;
+
+    // Prepare chart data with sorting
+    const incomeItems = [];
+    if (jobIncome > 0) incomeItems.push({ label: 'Job Income', value: jobIncome });
+    if (stockIncome > 0) incomeItems.push({ label: 'Stocks', value: stockIncome });
+    if (rentalIncome > 0) incomeItems.push({ label: 'Real Estate', value: rentalIncome });
+    if (otherIncome > 0) incomeItems.push({ label: 'Other', value: otherIncome });
+
+    // Sort by value descending (largest first)
+    incomeItems.sort((a, b) => b.value - a.value);
+
+    const data = incomeItems.map(item => item.value);
+    const labels = incomeItems.map(item => item.label);
+    const colors = incomeItems.map((item, index) => RANK_COLORS[index % RANK_COLORS.length]);
+
+    // Destroy existing chart if it exists
+    if (dashboardIncomeChart) {
+        dashboardIncomeChart.destroy();
+    }
+
+    // Create new chart
+    const ctx = document.getElementById('dashboardIncomeChart');
+    if (ctx && totalIncome > 0) {
+        dashboardIncomeChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors,
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 14
+                            },
+                            generateLabels: function (chart) {
+                                const data = chart.data;
+                                return data.labels.map((label, i) => {
+                                    const value = data.datasets[0].data[i];
+                                    const percentage = ((value / totalIncome) * 100).toFixed(0);
+                                    return {
+                                        text: label,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percentage = ((value / totalIncome) * 100).toFixed(1);
+                                return `${label}: $${value.toFixed(0)}/mo (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else if (ctx) {
+        // Show message if no income
+        ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+    }
+}
+
+function renderDashboardExpenseChart() {
+    const totalExpenses = appState.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+
+    // Prepare chart data with sorting
+    const expenseItems = [];
+    appState.expenses.forEach((expense) => {
+        if (expense.amount > 0) {
+            expenseItems.push({ label: expense.name, value: expense.amount });
+        }
+    });
+
+    // Sort by value descending (largest first)
+    expenseItems.sort((a, b) => b.value - a.value);
+
+    const data = expenseItems.map(item => item.value);
+    const labels = expenseItems.map(item => item.label);
+    const colors = expenseItems.map((item, index) => RANK_COLORS[index % RANK_COLORS.length]);
+
+    // Destroy existing chart if it exists
+    if (dashboardExpenseChart) {
+        dashboardExpenseChart.destroy();
+    }
+
+    // Create new chart
+    const ctx = document.getElementById('dashboardExpenseChart');
+    if (ctx && totalExpenses > 0) {
+        dashboardExpenseChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors.slice(0, data.length),
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 14
+                            },
+                            generateLabels: function (chart) {
+                                const data = chart.data;
+                                return data.labels.map((label, i) => {
+                                    const value = data.datasets[0].data[i];
+                                    const percentage = ((value / totalExpenses) * 100).toFixed(0);
+                                    return {
+                                        text: label,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percentage = ((value / totalExpenses) * 100).toFixed(1);
+                                return `${label}: $${value.toFixed(0)}/mo (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else if (ctx) {
+        // Show message if no expenses
+        ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+    }
 }
 
 function renderIncomeBreakdownChart() {
@@ -2621,10 +2940,14 @@ function setupStep3Listeners() {
 // FIRE Number Modal Functions
 function openFireModal() {
     // Calculate current values
-    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalMonthlyExpenses = (appState.expenses && appState.expenses.length > 0)
+        ? appState.expenses.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
     const annualExpenses = totalMonthlyExpenses * 12;
     const fireNumber = annualExpenses / 0.04;
-    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const totalHouseValue = (appState.houses && appState.houses.length > 0)
+        ? appState.houses.reduce((sum, house) => sum + house.value, 0)
+        : 0;
     const totalRetirementValue = getTotalRetirementValue();
     const liquidAssets = appState.portfolioValue + totalRetirementValue;
     const currentNetWorth = liquidAssets + totalHouseValue;

@@ -536,8 +536,8 @@
                     </div>
                 </div>
 
-                <!-- Middle Section: Next Goal Highlight -->
-                <div class="next-goal-compact" id="nextGoalCompact">
+                <!-- Middle Section: Next Goal Highlight (HIDDEN - kept for backward compatibility) -->
+                <div class="next-goal-compact" id="nextGoalCompact" style="display: none;">
                     <div class="next-goal-info">
                         <span class="next-goal-label">NEXT MILESTONE</span>
                         <h3 id="nextGoalTitleCompact">Loading...</h3>
@@ -567,16 +567,48 @@
                     </div>
                 </div>
 
-                <!-- Bottom Section: All Goals Grid -->
-                <div class="goals-section-compact">
+                <!-- Bottom Section: All Goals Grid (HIDDEN - kept for backward compatibility) -->
+                <div class="goals-section-compact" style="display: none;">
                     <h3 class="section-subtitle">All Milestones</h3>
                     <div class="goals-grid-compact" id="goalsGridCompact">
                         <!-- Goals will be dynamically inserted here -->
                     </div>
                 </div>
 
+                <!-- New Optimization Sections -->
+                <div class="optimization-sections">
+                    <div class="optimization-card">
+                        <h3 class="optimization-title">Optimize Your Income</h3>
+                        <div class="optimization-content">
+                            <div class="chart-container">
+                                <canvas id="dashboardIncomeChart"></canvas>
+                            </div>
+                            <div class="ai-tip-section">
+                                <div class="ai-tip-text-wrapper">
+                                    <p class="ai-tip-text" id="incomeTipText">Loading tip...</p>
+                                </div>
+                                <button class="btn-chat-ai" onclick="openChatWithContext('income')">Ask AI</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optimization-card">
+                        <h3 class="optimization-title">Optimize Your Expenses</h3>
+                        <div class="optimization-content">
+                            <div class="chart-container">
+                                <canvas id="dashboardExpenseChart"></canvas>
+                            </div>
+                            <div class="ai-tip-section">
+                                <div class="ai-tip-text-wrapper">
+                                    <p class="ai-tip-text" id="expenseTipText">Loading tip...</p>
+                                </div>
+                                <button class="btn-chat-ai" onclick="openChatWithContext('expense')">Ask AI</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Action Button -->
-                <div class="dashboard-actions">
+                <div class="dashboard-actions" style="display: none;">
                     <a href="/signup" class="btn-primary">Sign Up</a>
                     <button class="btn-secondary" onclick="resetApp()">Start Over</button>
                 </div>
@@ -592,27 +624,7 @@
                 <button class="modal-close" onclick="closeExpenseModal()">&times;</button>
             </div>
 
-            <!-- Tab Navigation -->
-            <div class="modal-tabs">
-                <button class="tab-button active" id="tabExpenseOverview" onclick="switchExpenseTab('overview')">📊
-                    Overview</button>
-                <button class="tab-button" id="tabExpenseEdit" onclick="switchExpenseTab('edit')">✏️ Edit</button>
-            </div>
-
             <div class="modal-body">
-                <!-- Overview Tab Content -->
-                <div class="tab-content active" id="contentExpenseOverview">
-                    <div class="expense-chart-container"
-                        style="padding: 16px; background: #f9fafb; border-radius: 12px;">
-                        <h3
-                            style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #374151; text-align: center;">
-                            Monthly Expense Breakdown</h3>
-                        <div style="max-width: 350px; margin: 0 auto;">
-                            <canvas id="expenseBreakdownChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Edit Tab Content -->
                 <div class="tab-content" id="contentExpenseEdit">
                     <div class="expense-edit-list" id="expenseEditList">
@@ -644,28 +656,13 @@
 
             <!-- Tab Navigation -->
             <div class="modal-tabs">
-                <button class="tab-button active" id="tabOverview" onclick="switchIncomeTab('overview')">📊
-                    Overview</button>
-                <button class="tab-button" id="tabJob" onclick="switchIncomeTab('job')">💼 Job Income</button>
+                <button class="tab-button active" id="tabJob" onclick="switchIncomeTab('job')">💼 Job Income</button>
                 <button class="tab-button" id="tabStocks" onclick="switchIncomeTab('stocks')">📈 Stocks</button>
                 <button class="tab-button" id="tabRental" onclick="switchIncomeTab('rental')">🏠 Rental</button>
                 <button class="tab-button" id="tabOther" onclick="switchIncomeTab('other')">💰 Other</button>
             </div>
 
             <div class="modal-body">
-                <!-- Overview Tab Content -->
-                <div class="tab-content active" id="contentOverview">
-                    <div class="income-chart-container"
-                        style="padding: 16px; background: #f9fafb; border-radius: 12px;">
-                        <h3
-                            style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #374151; text-align: center;">
-                            Monthly Income Breakdown</h3>
-                        <div style="max-width: 350px; margin: 0 auto;">
-                            <canvas id="incomeBreakdownChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Job Income Tab Content -->
                 <div class="tab-content active" id="contentJob">
                     <label for="modalJobIncome"

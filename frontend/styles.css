@@ -2559,3 +2559,101 @@ h4 {
     font-weight: 700;
     color: var(--text-primary);
 }
+
+/* Optimization Sections */
+.optimization-sections {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex: 1;
+    min-height: 300px;
+}
+
+.optimization-card {
+    flex: 1;
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.optimization-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.optimization-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.optimization-content .chart-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+}
+
+.optimization-content .chart-container canvas {
+    max-height: 250px;
+}
+
+/* AI Tip Section */
+.ai-tip-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.ai-tip-text-wrapper {
+    flex: 1;
+}
+
+.ai-tip-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ai-tip-text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.btn-chat-ai {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-chat-ai:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
