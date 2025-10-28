@@ -13,9 +13,13 @@ let appState = {
     blendedYield: 0,
     monthlyDividendIncome: 0,
     rentalIncome: [],
+    // Step 4: Retirement Accounts
+    retirementAccounts: [],
+    // Step 5: Other Income
     otherIncome: [],
     // Step 3: Houses
     houses: [],
+    // Step 6: Expenses
     expenses: [],
     goals: [],
     totalPassiveIncome: 0
@@ -42,10 +46,16 @@ function loadState() {
     const saved = localStorage.getItem('passiveIncomeGoalTracker');
     if (saved) {
         appState = JSON.parse(saved);
+
+        // Initialize new fields for backward compatibility
+        if (!appState.retirementAccounts) {
+            appState.retirementAccounts = [];
+        }
         if (appState.currentStep > 1) {
             // Restore UI state
             renderTickerList();
             renderRentalList();
+            renderRetirementList();
             renderOtherList();
             renderExpenseList();
 
@@ -81,7 +91,7 @@ function loadState() {
             if (annualIncome && appState.annualIncome) annualIncome.value = appState.annualIncome;
         }
 
-        if (appState.currentStep === 8) {
+        if (appState.currentStep === 9) {
             renderDashboard();
         }
     }
@@ -123,8 +133,8 @@ function nextStep() {
     appState.currentStep++;
 
     // Special handling for calculation step
-    if (appState.currentStep === 6) {
-        showStep(6);
+    if (appState.currentStep === 7) {
+        showStep(7);
         canProceedFromStep6 = false;
 
         setTimeout(() => {
@@ -164,7 +174,7 @@ function nextStep() {
 
                 if (spinner) spinner.style.display = 'none';
                 if (header) {
-                    header.textContent = 'All your goals have been setup';
+                    header.textContent = 'Your dashboard is now fully setup';
                     header.style.color = '#10b981';
                 }
                 if (signupBanner) signupBanner.style.display = 'flex';
@@ -179,14 +189,6 @@ function nextStep() {
                 }
             }, 6000);
         }, 100);
-        return;
-    }
-
-    // Special handling for congratulations step
-    if (appState.currentStep === 7) {
-        showStep(7);
-        updateCongratsScreen();
-        saveState();
         return;
     }
 
@@ -232,16 +234,16 @@ function showStep(stepNumber) {
 function updateProgressBar() {
     const progressIndicator = document.getElementById('progressIndicator');
 
-    // Hide progress bar on landing page (step 0), transition screens (steps 6-7), and dashboard (step 8)
-    if (appState.currentStep === 0 || appState.currentStep >= 6) {
+    // Hide progress bar on landing page (step 0), transition screens (steps 7-8), and dashboard (step 9)
+    if (appState.currentStep === 0 || appState.currentStep >= 7) {
         progressIndicator.style.display = 'none';
         return;
     }
 
     progressIndicator.style.display = 'block';
-    const progress = (appState.currentStep / 5) * 100;
+    const progress = (appState.currentStep / 6) * 100;
     document.getElementById('progressFill').style.width = `${progress}%`;
-    document.getElementById('progressText').textContent = `Step ${appState.currentStep} of 5`;
+    document.getElementById('progressText').textContent = `Step ${appState.currentStep} of 6`;
 }
 
 // Start Builder from Landing Page
@@ -512,6 +514,86 @@ function removeOther(index) {
     saveState();
 }
 
+// Retirement Account Functions
+function addRetirementAccount() {
+    const typeInput = document.getElementById('retirementAccountType');
+    const balanceInput = document.getElementById('retirementAccountBalance');
+
+    const type = typeInput.value;
+    const balance = parseFloat(balanceInput.value);
+
+    if (!type) {
+        alert('Please select an account type');
+        return;
+    }
+
+    if (isNaN(balance) || balance < 0) {
+        alert('Please enter a valid account balance');
+        return;
+    }
+
+    appState.retirementAccounts.push({
+        type,
+        balance
+    });
+
+    typeInput.value = '';
+    balanceInput.value = '';
+
+    renderRetirementList();
+    saveState();
+}
+
+function getAccountTypeLabel(type) {
+    const typeLabels = {
+        '401k': '401(k)',
+        'roth-ira': 'Roth IRA',
+        'traditional-ira': 'Traditional IRA',
+        '403b': '403(b)',
+        'sep-ira': 'SEP IRA',
+        'simple-ira': 'SIMPLE IRA',
+        'pension': 'Pension',
+        'other': 'Other Retirement Account'
+    };
+    return typeLabels[type] || 'Retirement Account';
+}
+
+function renderRetirementList() {
+    const listEl = document.getElementById('retirementList');
+
+    if (!listEl) return;
+
+    // Ensure retirementAccounts exists
+    if (!appState.retirementAccounts || appState.retirementAccounts.length === 0) {
+        listEl.innerHTML = '';
+        const totalEl = document.getElementById('totalRetirement');
+        if (totalEl) totalEl.style.display = 'none';
+        return;
+    }
+
+    listEl.innerHTML = appState.retirementAccounts.map((account, index) => `
+        <div class="list-item">
+            <div class="list-item-info">
+                <div class="list-item-name">${getAccountTypeLabel(account.type)}</div>
+            </div>
+            <span class="list-item-value">$${account.balance.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+            <button class="delete-btn" onclick="removeRetirementAccount(${index})">&times;</button>
+        </div>
+    `).join('');
+
+    const total = appState.retirementAccounts.reduce((sum, account) => sum + account.balance, 0);
+    const totalEl = document.getElementById('totalRetirement');
+    const totalValueEl = document.getElementById('totalRetirementValue');
+    if (totalEl) totalEl.style.display = 'flex';
+    if (totalValueEl) totalValueEl.textContent = `$${total.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+}
+
+function removeRetirementAccount(index) {
+    appState.retirementAccounts.splice(index, 1);
+    renderRetirementList();
+    saveState();
+}
+
 // Expense Functions
 function addExpense() {
     const nameInput = document.getElementById('expenseName');
@@ -697,6 +779,107 @@ function renderNextGoalCompact(goal) {
     document.getElementById('progressPercentage').textContent = `${progress.toFixed(0)}%`;
 }
 
+// Shared FI Year calculation function
+function calculateProjectedFIYear() {
+    const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
+    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const annualExpenses = totalMonthlyExpenses * 12;
+    const fireNumber = annualExpenses / 0.04;
+    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const currentPortfolioValue = appState.portfolioValue;
+    const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
+    const expectedReturnRate = 0.05;
+    const currentYear = new Date().getFullYear();
+
+    console.log('\n🔥 FI YEAR CALCULATION DEBUG 🔥');
+    console.log('═══════════════════════════════════════');
+    console.log('📊 INCOME BREAKDOWN:');
+    console.log('  • Passive Income (monthly):', `$${appState.totalPassiveIncome.toFixed(2)}`);
+    console.log('  • Job Income (annual):', `$${(appState.annualIncome || 0).toFixed(2)}`);
+    console.log('  • Job Income (monthly):', `$${((appState.annualIncome || 0) / 12).toFixed(2)}`);
+    console.log('  • TOTAL Monthly Income:', `$${totalMonthlyIncome.toFixed(2)}`);
+    console.log('\n💸 EXPENSES:');
+    console.log('  • Total Monthly Expenses:', `$${totalMonthlyExpenses.toFixed(2)}`);
+    console.log('  • Annual Expenses:', `$${annualExpenses.toFixed(2)}`);
+    console.log('\n💰 SAVINGS:');
+    console.log('  • Monthly Savings:', `$${projectedMonthlySavings.toFixed(2)}`);
+    console.log('  • Savings Rate:', `${totalMonthlyIncome > 0 ? ((projectedMonthlySavings / totalMonthlyIncome) * 100).toFixed(1) : 0}%`);
+    console.log('\n🏠 ASSETS:');
+    console.log('  • Current Portfolio Value:', `$${currentPortfolioValue.toFixed(2)}`);
+    console.log('  • Total House Value:', `$${totalHouseValue.toFixed(2)}`);
+    console.log('  • Current Net Worth:', `$${(currentPortfolioValue + totalHouseValue).toFixed(2)}`);
+    console.log('\n🎯 FIRE TARGET:');
+    console.log('  • FIRE Number (25x expenses):', `$${fireNumber.toFixed(2)}`);
+    console.log('  • Still Need:', `$${Math.max(0, fireNumber - currentPortfolioValue).toFixed(2)}`);
+    console.log('\n📈 GROWTH ASSUMPTIONS:');
+    console.log('  • Expected Annual Return:', `${(expectedReturnRate * 100).toFixed(1)}%`);
+    console.log('  • Monthly Return Rate:', `${((expectedReturnRate / 12) * 100).toFixed(3)}%`);
+
+    let projectedFIYear = 'Never';
+    let yearsToGo = 0;
+    let finalValue = currentPortfolioValue + totalHouseValue;
+
+    if (projectedMonthlySavings > 0 && fireNumber > 0) {
+        console.log('\n⏱️  SIMULATION STARTING...');
+        console.log('  ⚠️  NOTE: Only portfolio counts towards FIRE number (house is illiquid)');
+        // Month-by-month simulation
+        let months = 0;
+        let portfolioValue = currentPortfolioValue;
+        const monthlyReturn = expectedReturnRate / 12;
+
+        // Log first few months for verification
+        let loggedMonths = 0;
+
+        // FIXED: Only compare portfolio value (not including house) to FIRE number
+        while (portfolioValue < fireNumber && months < 600) {
+            const beforeGrowth = portfolioValue;
+            portfolioValue = portfolioValue * (1 + monthlyReturn);
+            const afterGrowth = portfolioValue;
+            portfolioValue += projectedMonthlySavings;
+            months++;
+
+            // Log first 3 months and every 12 months thereafter
+            if (loggedMonths < 3 || months % 12 === 0) {
+                console.log(`  Month ${months}: Portfolio: $${beforeGrowth.toFixed(2)} → (growth) → $${afterGrowth.toFixed(2)} → (+ savings) → $${portfolioValue.toFixed(2)} | [House not counted: $${totalHouseValue.toFixed(2)}]`);
+                loggedMonths++;
+            }
+        }
+
+        const t = months / 12;
+        finalValue = portfolioValue + totalHouseValue; // Total net worth for display only
+
+        console.log('\n✅ SIMULATION COMPLETE!');
+        console.log('  • Total Months:', months);
+        console.log('  • Total Years:', t.toFixed(2));
+        console.log('  • Final Portfolio Value (liquid):', `$${portfolioValue.toFixed(2)}`);
+        console.log('  • Final Total Net Worth (w/ house):', `$${finalValue.toFixed(2)}`);
+        console.log('  • Target FIRE Number:', `$${fireNumber.toFixed(2)}`);
+        console.log('  • Reached Target?', portfolioValue >= fireNumber ? '✅ YES' : '❌ NO');
+
+        if (portfolioValue >= fireNumber && t < 50) {
+            projectedFIYear = Math.ceil(currentYear + t);
+            yearsToGo = Math.ceil(t);
+            console.log('\n🎉 PROJECTED FI YEAR:', projectedFIYear);
+            console.log('  • Years to Go:', yearsToGo);
+        } else {
+            console.log('\n⚠️  FI NOT ACHIEVABLE within 50 years');
+        }
+    } else {
+        console.log('\n⚠️  CANNOT CALCULATE: Monthly savings or FIRE number is zero/negative');
+    }
+
+    return {
+        projectedFIYear,
+        yearsToGo,
+        finalValue,
+        fireNumber,
+        currentNetWorth: currentPortfolioValue + totalHouseValue,
+        projectedMonthlySavings,
+        currentPortfolioValue,
+        totalHouseValue
+    };
+}
+
 function renderDashboardSummary() {
     // Total income (passive + job income)
     const totalIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
@@ -725,34 +908,9 @@ function renderDashboardSummary() {
     const fireNumber = annualExpensesTarget / 0.04;
     document.getElementById('dashFIPercentage').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
 
-    // Projected FI Year calculation
-    const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
-    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
-    const currentNetWorth = appState.portfolioValue + totalHouseValue;
-    const currentPortfolioValue = appState.portfolioValue;
-    const expectedReturnRate = 0.05; // 5% annual real return
-    const currentYear = new Date().getFullYear();
-
-    let projectedFIYear = 'Never';
-    if (projectedMonthlySavings > 0 && fireNumber > 0) {
-        // Solve for t when FV = FIRE_Number using iterative approach
-        let t = 0;
-        let futureValue = currentNetWorth;
-        const monthlyReturn = expectedReturnRate / 12;
-
-        while (futureValue < fireNumber && t < 50) { // Cap at 50 years
-            t += 1 / 12; // Increment by month
-            const futurePortfolioValue = currentPortfolioValue * Math.pow(1 + expectedReturnRate, t) +
-                projectedMonthlySavings * ((Math.pow(1 + expectedReturnRate, t) - 1) / expectedReturnRate);
-            futureValue = futurePortfolioValue + totalHouseValue;
-        }
-
-        if (futureValue >= fireNumber && t < 50) {
-            projectedFIYear = Math.ceil(currentYear + t);
-        }
-    }
-
-    document.getElementById('dashProjectedFIYear').textContent = projectedFIYear;
+    // Use shared FI Year calculation
+    const fiData = calculateProjectedFIYear();
+    document.getElementById('dashProjectedFIYear').textContent = fiData.projectedFIYear;
 }
 
 function renderAllGoalsCompact() {
@@ -808,6 +966,7 @@ function resetApp() {
 
 // Expense Modal Functions
 let originalExpenses = [];
+let expenseChart = null;
 
 function openExpenseModal() {
     // Store original expenses for comparison
@@ -816,8 +975,112 @@ function openExpenseModal() {
     // Populate modal with current expenses
     refreshExpenseModalDisplay();
 
+    // Show modal with Overview tab active by default
+    switchExpenseTab('overview');
+
+    // Render expense breakdown chart
+    renderExpenseBreakdownChart();
+
     // Show modal
     document.getElementById('expenseEditModal').style.display = 'flex';
+}
+
+function switchExpenseTab(tabName) {
+    // Remove active class from all tabs and content
+    document.querySelectorAll('#expenseEditModal .tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('#expenseEditModal .tab-content').forEach(content => content.classList.remove('active'));
+
+    // Add active class to selected tab and content
+    if (tabName === 'overview') {
+        document.getElementById('tabExpenseOverview').classList.add('active');
+        document.getElementById('contentExpenseOverview').classList.add('active');
+    } else if (tabName === 'edit') {
+        document.getElementById('tabExpenseEdit').classList.add('active');
+        document.getElementById('contentExpenseEdit').classList.add('active');
+    }
+}
+
+function renderExpenseBreakdownChart() {
+    const totalExpenses = appState.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+
+    // Prepare chart data
+    const data = [];
+    const labels = [];
+    const colors = [
+        '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16',
+        '#22c55e', '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9',
+        '#3b82f6', '#6366f1', '#8b5cf6', '#a855f7', '#d946ef'
+    ];
+
+    appState.expenses.forEach((expense, index) => {
+        if (expense.amount > 0) {
+            labels.push(expense.name);
+            data.push(expense.amount);
+        }
+    });
+
+    // Destroy existing chart if it exists
+    if (expenseChart) {
+        expenseChart.destroy();
+    }
+
+    // Create new chart
+    const ctx = document.getElementById('expenseBreakdownChart');
+    if (ctx && totalExpenses > 0) {
+        expenseChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors.slice(0, data.length),
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 12,
+                            font: {
+                                size: 12
+                            },
+                            generateLabels: function (chart) {
+                                const data = chart.data;
+                                return data.labels.map((label, i) => {
+                                    const value = data.datasets[0].data[i];
+                                    const percentage = ((value / totalExpenses) * 100).toFixed(1);
+                                    return {
+                                        text: `${label}: $${value.toFixed(0)} (${percentage}%)`,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percentage = ((value / totalExpenses) * 100).toFixed(1);
+                                return `${label}: $${value.toFixed(0)}/mo (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else if (ctx) {
+        // Show message if no expenses
+        ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+    }
 }
 
 function refreshExpenseModalDisplay() {
@@ -854,11 +1117,13 @@ function updateExpenseInModal(index, field, value) {
     } else if (field === 'amount') {
         appState.expenses[index].amount = value;
     }
+    renderExpenseBreakdownChart();
 }
 
 function deleteExpenseFromModal(index) {
     appState.expenses.splice(index, 1);
-    refreshExpenseModalDisplay(); // Refresh display without resetting originalExpenses
+    refreshExpenseModalDisplay();
+    renderExpenseBreakdownChart();
 }
 
 function addExpenseFromModal() {
@@ -881,6 +1146,7 @@ function addExpenseFromModal() {
 
     // Refresh modal display without resetting originalExpenses
     refreshExpenseModalDisplay();
+    renderExpenseBreakdownChart();
 }
 
 function saveExpenseChanges() {
@@ -946,6 +1212,8 @@ function syncMortgageExpensesFromHouses() {
     });
 }
 
+let incomeChart = null;
+
 function openIncomeModal() {
     // Store original income data for comparison
     originalIncomeData = {
@@ -960,11 +1228,113 @@ function openIncomeModal() {
     refreshOtherModalDisplay();
     refreshJobIncomeDisplay();
 
-    // Show modal with Stocks tab active by default
-    switchIncomeTab('stocks');
+    // Show modal with Overview tab active by default
+    switchIncomeTab('overview');
+
+    // Render income breakdown chart
+    renderIncomeBreakdownChart();
 
     // Show modal
     document.getElementById('incomeEditModal').style.display = 'flex';
+}
+
+function renderIncomeBreakdownChart() {
+    // Calculate monthly income from each source
+    const jobIncome = appState.annualIncome ? appState.annualIncome / 12 : 0;
+    const stockIncome = appState.monthlyDividendIncome || 0;
+    const rentalIncome = appState.rentalIncome.reduce((sum, rental) => sum + rental.amount, 0);
+    const otherIncome = appState.otherIncome.reduce((sum, other) => sum + other.amount, 0);
+
+    const totalIncome = jobIncome + stockIncome + rentalIncome + otherIncome;
+
+    // Prepare chart data
+    const data = [];
+    const labels = [];
+    const colors = [];
+
+    if (jobIncome > 0) {
+        labels.push('Job Income');
+        data.push(jobIncome);
+        colors.push('#8b5cf6'); // Purple
+    }
+    if (stockIncome > 0) {
+        labels.push('Stocks');
+        data.push(stockIncome);
+        colors.push('#3b82f6'); // Blue
+    }
+    if (rentalIncome > 0) {
+        labels.push('Rental');
+        data.push(rentalIncome);
+        colors.push('#10b981'); // Green
+    }
+    if (otherIncome > 0) {
+        labels.push('Other');
+        data.push(otherIncome);
+        colors.push('#f59e0b'); // Orange
+    }
+
+    // Destroy existing chart if it exists
+    if (incomeChart) {
+        incomeChart.destroy();
+    }
+
+    // Create new chart
+    const ctx = document.getElementById('incomeBreakdownChart');
+    if (ctx && totalIncome > 0) {
+        incomeChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors,
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 12,
+                            font: {
+                                size: 12
+                            },
+                            generateLabels: function (chart) {
+                                const data = chart.data;
+                                return data.labels.map((label, i) => {
+                                    const value = data.datasets[0].data[i];
+                                    const percentage = ((value / totalIncome) * 100).toFixed(1);
+                                    return {
+                                        text: `${label}: $${value.toFixed(0)} (${percentage}%)`,
+                                        fillStyle: data.datasets[0].backgroundColor[i],
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percentage = ((value / totalIncome) * 100).toFixed(1);
+                                return `${label}: $${value.toFixed(0)}/mo (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } else if (ctx) {
+        // Show message if no income
+        ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+    }
 }
 
 function closeIncomeModal() {
@@ -983,7 +1353,13 @@ function switchIncomeTab(tabName) {
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
     // Add active class to selected tab and content
-    if (tabName === 'stocks') {
+    if (tabName === 'overview') {
+        document.getElementById('tabOverview').classList.add('active');
+        document.getElementById('contentOverview').classList.add('active');
+    } else if (tabName === 'job') {
+        document.getElementById('tabJob').classList.add('active');
+        document.getElementById('contentJob').classList.add('active');
+    } else if (tabName === 'stocks') {
         document.getElementById('tabStocks').classList.add('active');
         document.getElementById('contentStocks').classList.add('active');
     } else if (tabName === 'rental') {
@@ -992,9 +1368,6 @@ function switchIncomeTab(tabName) {
     } else if (tabName === 'other') {
         document.getElementById('tabOther').classList.add('active');
         document.getElementById('contentOther').classList.add('active');
-    } else if (tabName === 'job') {
-        document.getElementById('tabJob').classList.add('active');
-        document.getElementById('contentJob').classList.add('active');
     }
 }
 
@@ -1117,8 +1490,9 @@ function refreshJobIncomeDisplay() {
     jobIncomeInput.oninput = function () {
         const annualAmount = parseFloat(this.value) || 0;
         const monthlyAmount = annualAmount / 12;
-        jobIncomeMonthly.textContent = `$${monthlyAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}/month`;
+        jobIncomeMonthly.textContent = `$${monthlyAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}/mo`;
         appState.annualIncome = annualAmount;
+        renderIncomeBreakdownChart();
     };
 }
 
@@ -1126,16 +1500,19 @@ function refreshJobIncomeDisplay() {
 function deleteStockFromModal(index) {
     appState.portfolio.splice(index, 1);
     refreshStockModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 function deleteRentalFromModal(index) {
     appState.rentalIncome.splice(index, 1);
     refreshRentalModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 function deleteOtherFromModal(index) {
     appState.otherIncome.splice(index, 1);
     refreshOtherModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 // Update functions for inline editing
@@ -1184,22 +1561,25 @@ document.addEventListener('keypress', (e) => {
                 addTicker();
                 break;
             case 'step3':
-                addRental();
+                // Houses don't have quick add
                 break;
             case 'step4':
-                addOther();
+                addRetirementAccount();
                 break;
             case 'step5':
+                addOther();
+                break;
+            case 'step6':
                 addExpense();
                 break;
         }
     }
 });
 
-// Explicit user action to dismiss the Step 6 banner and continue
+// Explicit user action to dismiss the Step 7 banner and continue
 function dismissStep6Banner() {
     canProceedFromStep6 = true;
-    if (appState.currentStep === 6) {
+    if (appState.currentStep === 7) {
         nextStep();
     }
 }
@@ -1418,6 +1798,7 @@ async function addStockFromModal() {
         percentInput.value = '';
 
         refreshStockModalDisplay();
+        renderIncomeBreakdownChart();
     }
 }
 
@@ -1439,6 +1820,7 @@ function addRentalFromModal() {
     amountInput.value = '';
 
     refreshRentalModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 function addOtherFromModal() {
@@ -1459,6 +1841,7 @@ function addOtherFromModal() {
     amountInput.value = '';
 
     refreshOtherModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 // Portfolio percentage validation
@@ -1492,8 +1875,8 @@ async function pushContextToServer() {
         const contextState = {
             ...appState,
             // Add normalized step info for chatbot
-            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
-            totalBuilderSteps: 5,
+            builderStep: appState.currentStep >= 1 && appState.currentStep <= 6 ? appState.currentStep : null,
+            totalBuilderSteps: 6,
             screenType: getScreenType(appState.currentStep)
         };
 
@@ -1514,10 +1897,10 @@ async function pushContextToServer() {
 // Helper function to categorize screen types
 function getScreenType(currentStep) {
     if (currentStep === 0) return 'landing';
-    if (currentStep >= 1 && currentStep <= 5) return 'builder';
-    if (currentStep === 6) return 'calculating';
-    if (currentStep === 7) return 'congratulations';
-    if (currentStep === 8) return 'dashboard';
+    if (currentStep >= 1 && currentStep <= 6) return 'builder';
+    if (currentStep === 7) return 'calculating';
+    if (currentStep === 8) return 'congratulations';
+    if (currentStep === 9) return 'dashboard';
     return 'unknown';
 }
 
@@ -1906,6 +2289,7 @@ async function addStockFromModal() {
         percentInput.value = '';
 
         refreshStockModalDisplay();
+        renderIncomeBreakdownChart();
     }
 }
 
@@ -1927,6 +2311,7 @@ function addRentalFromModal() {
     amountInput.value = '';
 
     refreshRentalModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 function addOtherFromModal() {
@@ -1947,6 +2332,7 @@ function addOtherFromModal() {
     amountInput.value = '';
 
     refreshOtherModalDisplay();
+    renderIncomeBreakdownChart();
 }
 
 // Portfolio percentage validation
@@ -1980,8 +2366,8 @@ async function pushContextToServer() {
         const contextState = {
             ...appState,
             // Add normalized step info for chatbot
-            builderStep: appState.currentStep >= 1 && appState.currentStep <= 5 ? appState.currentStep : null,
-            totalBuilderSteps: 5,
+            builderStep: appState.currentStep >= 1 && appState.currentStep <= 6 ? appState.currentStep : null,
+            totalBuilderSteps: 6,
             screenType: getScreenType(appState.currentStep)
         };
 
@@ -2002,10 +2388,10 @@ async function pushContextToServer() {
 // Helper function to categorize screen types
 function getScreenType(currentStep) {
     if (currentStep === 0) return 'landing';
-    if (currentStep >= 1 && currentStep <= 5) return 'builder';
-    if (currentStep === 6) return 'calculating';
-    if (currentStep === 7) return 'congratulations';
-    if (currentStep === 8) return 'dashboard';
+    if (currentStep >= 1 && currentStep <= 6) return 'builder';
+    if (currentStep === 7) return 'calculating';
+    if (currentStep === 8) return 'congratulations';
+    if (currentStep === 9) return 'dashboard';
     return 'unknown';
 }
 
@@ -2182,19 +2568,24 @@ function setupStep3Listeners() {
             const mortgageGroup = document.getElementById('mortgageGroup');
             const mortgagePaymentGroup = document.getElementById('mortgagePaymentGroup');
 
+            if (!paidOffGroup || !mortgageGroup || !mortgagePaymentGroup) return;
+
             if (e.target.value === 'no') {
                 // Has mortgage: show home equity and mortgage payment
                 paidOffGroup.style.display = 'none';
                 mortgageGroup.style.display = 'block';
                 mortgagePaymentGroup.style.display = 'block';
-                document.getElementById('houseEstimate').value = '';
+                const houseEstimate = document.getElementById('houseEstimate');
+                if (houseEstimate) houseEstimate.value = '';
             } else {
                 // Paid off: show only estimated value
                 paidOffGroup.style.display = 'block';
                 mortgageGroup.style.display = 'none';
                 mortgagePaymentGroup.style.display = 'none';
-                document.getElementById('homeEquity').value = '';
-                document.getElementById('mortgagePayment').value = '';
+                const homeEquity = document.getElementById('homeEquity');
+                const mortgagePayment = document.getElementById('mortgagePayment');
+                if (homeEquity) homeEquity.value = '';
+                if (mortgagePayment) mortgagePayment.value = '';
             }
         });
     });
@@ -2222,8 +2613,8 @@ function openFireModal() {
     const fireNumber = annualExpenses / 0.04;
     const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
     const currentNetWorth = appState.portfolioValue + totalHouseValue;
-    const stillNeed = Math.max(0, fireNumber - currentNetWorth);
-    const progress = fireNumber > 0 ? Math.min(100, (currentNetWorth / fireNumber) * 100) : 0;
+    const stillNeed = Math.max(0, fireNumber - appState.portfolioValue);
+    const progress = fireNumber > 0 ? Math.min(100, (appState.portfolioValue / fireNumber) * 100) : 0;
 
     // Populate modal with calculated values
     document.getElementById('fireModalExpenses').textContent = `$${totalMonthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
@@ -2251,41 +2642,9 @@ function showSwrCustomization() {
 
 // FI Year Modal Functions
 function openFIYearModal() {
-    // Calculate current values (same logic as in renderDashboard)
-    const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
-    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
-    const annualExpenses = totalMonthlyExpenses * 12;
-    const fireNumber = annualExpenses / 0.04;
-    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
-    const currentNetWorth = appState.portfolioValue + totalHouseValue;
-    const currentPortfolioValue = appState.portfolioValue;
-    const projectedMonthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
-    const expectedReturnRate = 0.05;
-    const currentYear = new Date().getFullYear();
-
-    let projectedFIYear = 'Never';
-    let yearsToGo = 0;
-    let finalValue = currentNetWorth;
-
-    if (projectedMonthlySavings > 0 && fireNumber > 0) {
-        // Solve for t when FV = FIRE_Number using iterative approach
-        let t = 0;
-        let futureValue = currentNetWorth;
-        const monthlyReturn = expectedReturnRate / 12;
-
-        while (futureValue < fireNumber && t < 50) { // Cap at 50 years
-            t += 1 / 12; // Increment by month
-            const futurePortfolioValue = currentPortfolioValue * Math.pow(1 + expectedReturnRate, t) +
-                projectedMonthlySavings * ((Math.pow(1 + expectedReturnRate, t) - 1) / expectedReturnRate);
-            futureValue = futurePortfolioValue + totalHouseValue;
-        }
-
-        if (futureValue >= fireNumber && t < 50) {
-            projectedFIYear = Math.ceil(currentYear + t);
-            yearsToGo = Math.ceil(t);
-            finalValue = futureValue;
-        }
-    }
+    // Use shared FI Year calculation
+    const fiData = calculateProjectedFIYear();
+    const { projectedFIYear, yearsToGo, finalValue, fireNumber, currentNetWorth, projectedMonthlySavings, currentPortfolioValue } = fiData;
 
     // Populate modal with calculated values
     document.getElementById('fiYearModalFireNumber').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
