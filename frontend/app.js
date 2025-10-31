@@ -105,7 +105,7 @@ function saveStep1Data() {
     const numberOfKids = parseInt(document.getElementById('numberOfKids').value) || 0;
     const annualIncome = parseFloat(document.getElementById('annualIncome').value);
 
-    if (!career || !city || !relationshipStatus || !annualIncome || annualIncome <= 0) {
+    if (!career || !city || !relationshipStatus || isNaN(annualIncome) || annualIncome < 0) {
         alert('Please fill in all required fields with valid information');
         return;
     }
@@ -415,7 +415,7 @@ function addRental() {
     const name = nameInput.value.trim();
     const amount = parseFloat(amountInput.value);
 
-    if (!name || !amount || amount <= 0) {
+    if (!name || isNaN(amount) || amount < 0) {
         alert('Please enter a valid property name and monthly income');
         return;
     }
@@ -470,7 +470,7 @@ function addOther() {
     const name = nameInput.value.trim();
     const amount = parseFloat(amountInput.value);
 
-    if (!name || !amount || amount <= 0) {
+    if (!name || isNaN(amount) || amount < 0) {
         alert('Please enter a valid income source and monthly amount');
         return;
     }
@@ -657,8 +657,12 @@ function removeExpense(index) {
 // Goal Calculation Functions
 function calculateGoals() {
     // Calculate total passive income (monthly)
-    const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
-    const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
+    const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
+        ? appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
+    const otherTotal = (appState.otherIncome && appState.otherIncome.length > 0)
+        ? appState.otherIncome.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
     const portfolioTotal = appState.monthlyDividendIncome;
 
     appState.totalPassiveIncome = rentalTotal + otherTotal + portfolioTotal;
@@ -686,8 +690,12 @@ function calculateGoals() {
 
         if (appState.blendedYield > 0) {
             // Compute non-portfolio income (monthly)
-            const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
-            const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
+            const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
+                ? appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0)
+                : 0;
+            const otherTotal = (appState.otherIncome && appState.otherIncome.length > 0)
+                ? appState.otherIncome.reduce((sum, item) => sum + item.amount, 0)
+                : 0;
             const nonPortfolioMonthlyIncome = rentalTotal + otherTotal;
 
             // Monthly income needed from portfolio = max(0, goal amount - non-portfolio income)
@@ -748,7 +756,9 @@ function renderDashboard() {
     // Check if there are any goals
     if (appState.goals.length === 0) {
         // No goals - show message to add expenses
-        const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+        const totalHouseValue = (appState.houses && appState.houses.length > 0)
+            ? appState.houses.reduce((sum, house) => sum + house.value, 0)
+            : 0;
         const totalRetirementValue = getTotalRetirementValue();
         const totalCurrentPortfolio = appState.portfolioValue + totalRetirementValue + totalHouseValue;
 
@@ -781,7 +791,9 @@ function renderNextGoalCompact(goal) {
     const additionalInvestmentNeeded = goal.additionalInvestmentNeeded || 0;
 
     // Calculate total portfolio including retirement and house values
-    const totalHouseValue = appState.houses.reduce((sum, house) => sum + house.value, 0);
+    const totalHouseValue = (appState.houses && appState.houses.length > 0)
+        ? appState.houses.reduce((sum, house) => sum + house.value, 0)
+        : 0;
     const totalRetirementValue = getTotalRetirementValue();
     const totalCurrentPortfolio = appState.portfolioValue + totalRetirementValue + totalHouseValue;
 
@@ -914,7 +926,9 @@ function renderDashboardSummary() {
     document.getElementById('incomeBreakdown').innerHTML = '';
 
     // Total expenses
-    const totalExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalExpenses = (appState.expenses && appState.expenses.length > 0)
+        ? appState.expenses.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
     document.getElementById('dashTotalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
 
     // Expense breakdown - hidden
@@ -922,7 +936,9 @@ function renderDashboardSummary() {
 
     // Savings Rate calculation
     const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
-    const totalMonthlyExpenses = appState.expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalMonthlyExpenses = (appState.expenses && appState.expenses.length > 0)
+        ? appState.expenses.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
     const monthlySavings = Math.max(0, totalMonthlyIncome - totalMonthlyExpenses);
     const savingsRate = totalMonthlyIncome > 0 ? (monthlySavings / totalMonthlyIncome) * 100 : 0;
 
@@ -994,8 +1010,12 @@ let originalExpenses = [];
 let expenseChart = null;
 
 function openExpenseModal() {
+    console.log('📂 OPENING EXPENSE MODAL');
+    console.log('Current appState.expenses:', JSON.parse(JSON.stringify(appState.expenses)));
+
     // Store original expenses for comparison
     originalExpenses = JSON.parse(JSON.stringify(appState.expenses));
+    console.log('Stored originalExpenses:', JSON.parse(JSON.stringify(originalExpenses)));
 
     // Populate modal with current expenses
     refreshExpenseModalDisplay();
@@ -1099,7 +1119,15 @@ function renderExpenseBreakdownChart() {
 }
 
 function refreshExpenseModalDisplay() {
+    console.log('🔄 Refreshing expense modal display');
+    console.log('Current expenses:', appState.expenses);
+
     const expenseEditList = document.getElementById('expenseEditList');
+    if (!expenseEditList) {
+        console.error('❌ expenseEditList element not found!');
+        return;
+    }
+
     expenseEditList.innerHTML = '';
 
     appState.expenses.forEach((expense, index) => {
@@ -1165,18 +1193,41 @@ function addExpenseFromModal() {
 }
 
 function saveExpenseChanges() {
+    console.log('💾 SAVING EXPENSE CHANGES');
+    console.log('Original expenses:', JSON.parse(JSON.stringify(originalExpenses)));
+    console.log('Current expenses:', JSON.parse(JSON.stringify(appState.expenses)));
+
     // Check if expenses actually changed
     const expensesChanged = JSON.stringify(originalExpenses) !== JSON.stringify(appState.expenses);
+    console.log('Expenses changed?', expensesChanged);
 
-    if (expensesChanged) {
-        // Recalculate goals with new expense data
-        calculateGoals();
-        renderDashboard();
-        saveState();
+    try {
+        if (expensesChanged) {
+            // Recalculate goals with new expense data
+            calculateGoals();
+            renderDashboard();
+            renderExpenseList(); // Update the expense list in the sidebar
+            saveState();
+            console.log('✅ Saved to localStorage');
+
+            // Update originalExpenses to match the saved state
+            originalExpenses = JSON.parse(JSON.stringify(appState.expenses));
+        } else {
+            console.log('⚠️ No changes detected, not saving');
+        }
+    } catch (error) {
+        console.error('❌ Error saving expenses:', error);
     }
 
-    // Hide modal
-    document.getElementById('expenseEditModal').style.display = 'none';
+    // Hide modal (do this regardless of save success/failure)
+    console.log('🔒 Closing modal...');
+    const modal = document.getElementById('expenseEditModal');
+    if (modal) {
+        modal.style.display = 'none';
+        console.log('✅ Modal closed');
+    } else {
+        console.error('❌ Modal element not found!');
+    }
 
     // Clear input fields
     document.getElementById('modalExpenseName').value = '';
@@ -1708,9 +1759,13 @@ function saveIncomeChanges() {
     calculateBlendedYield();
 
     // Recalculate total income and update dashboard
-    const rentalTotal = appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0);
-    const otherTotal = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
-    const portfolioTotal = appState.monthlyDividendIncome;
+    const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
+        ? appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
+    const otherTotal = (appState.otherIncome && appState.otherIncome.length > 0)
+        ? appState.otherIncome.reduce((sum, item) => sum + item.amount, 0)
+        : 0;
+    const portfolioTotal = appState.monthlyDividendIncome || 0;
 
     appState.totalPassiveIncome = rentalTotal + otherTotal + portfolioTotal;
 
@@ -1913,6 +1968,51 @@ function dismissStep6Banner() {
     canProceedFromStep6 = true;
     if (appState.currentStep === 7) {
         nextStep();
+    }
+}
+
+// Submit waitlist email
+function submitWaitlist() {
+    const emailInput = document.getElementById('waitlistEmail');
+    const email = emailInput.value.trim();
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    // Store email in appState
+    appState.userEmail = email;
+    saveState();
+
+    console.log('Waitlist email submitted:', email);
+
+    // Send to backend waitlist endpoint (server will persist and forward to Zapier)
+    fetch(API_BASE_URL + '/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email,
+            meta: {
+                source: 'signupBanner',
+                builderStep: appState.currentStep || null
+            }
+        })
+    }).catch(err => console.log('Waitlist submission error:', err));
+
+    // Show success message
+    const banner = document.getElementById('signupBanner');
+    if (banner) {
+        banner.innerHTML = `
+            <div style="text-align:center; color:#10b981; font-weight:500;">
+                ✓ You're on the waitlist! We'll notify you when new features launch.
+            </div>
+        `;
+        setTimeout(() => {
+            dismissStep6Banner();
+        }, 2000);
     }
 }
 

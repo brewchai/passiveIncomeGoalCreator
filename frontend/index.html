@@ -96,33 +96,44 @@
                         </div>
                         <div class="step-preview-card">
                             <div class="step-number">3</div>
-                            <h4>Track Your Goals</h4>
-                            <p>See auto-generated milestones and exact investment amounts needed to achieve them</p>
+                            <h4>Track Your FIRE Journey</h4>
+                            <p>Monitor your progress toward financial independence and get AI-powered tips to retire
+                                earlier</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Preview Section -->
+                <div class="landing-dashboard-preview">
+                    <h2>See Your Financial Future at a Glance</h2>
+                    <p class="preview-subtitle">Track everything that matters in one beautiful dashboard</p>
+                    <div class="dashboard-screenshot-container">
+                        <img src="dashboard-screenshot.png"
+                            alt="FIRE Dashboard showing monthly income, expenses, savings rate, FIRE number, and projected retirement year with AI-powered optimization tips"
+                            class="dashboard-screenshot">
                     </div>
                 </div>
 
                 <div class="landing-benefits">
                     <div class="benefit-card">
-                        <div class="benefit-card-icon">✨</div>
-                        <h3>Goals Created Automatically</h3>
-                        <p>Just enter your expenses—we automatically generate tiered financial milestones.
-                            No manual goal setting needed. Watch as you progress from covering groceries to achieving
-                            complete financial freedom.</p>
+                        <div class="benefit-card-icon">💰</div>
+                        <h3>Track Your FIRE Number</h3>
+                        <p>See your personalized FIRE number based on the 4% rule. Know exactly how much you need to
+                            achieve financial independence and track your progress in real-time.</p>
                     </div>
 
                     <div class="benefit-card">
-                        <div class="benefit-card-icon">📈</div>
-                        <h3>Track Multiple Income Streams</h3>
-                        <p>Monitor dividend-paying stocks, rental properties, royalties, and side businesses. Calculate
-                            your blended dividend yield and total monthly passive income automatically.</p>
+                        <div class="benefit-card-icon">📅</div>
+                        <h3>See When You Can Retire</h3>
+                        <p>Calculate your retirement timeline based on real numbers—not guesswork. Watch it improve as
+                            you optimize your finances.</p>
                     </div>
 
                     <div class="benefit-card">
-                        <div class="benefit-card-icon">💡</div>
-                        <h3>See Exactly What to Invest</h3>
-                        <p>Know precisely how much portfolio value you need to reach each milestone.
-                            Clear investment targets based on your actual dividend yield—no guesswork required.</p>
+                        <div class="benefit-card-icon">🤖</div>
+                        <h3>AI-Powered Optimization</h3>
+                        <p>Receive personalized recommendations to boost income and cut expenses. Get specific,
+                            actionable tips based on your real financial data—not generic advice.</p>
                     </div>
                 </div>
 
@@ -479,20 +490,21 @@
                             year</div>
                     </div>
 
-                    <!-- Lightweight signup CTA (non-primary styling) -->
+                    <!-- Waitlist signup banner -->
                     <div class="info-banner" id="signupBanner"
-                        style="display:none; margin-top:16px; padding:12px 14px; border:1px solid rgba(0,0,0,0.08); border-radius:10px; background: linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)), #fff; align-items:center; justify-content:space-between; gap:12px;">
-                        <div style="font-size:14px; color:#374151; text-align:left;">
-                            Sign Up to save your financial independence numbers
+                        style="display:none; margin-top:12px; padding:12px; border:1px solid rgba(0,0,0,0.08); border-radius:10px; background: linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)), #fff;">
+                        <div
+                            style="font-size:15px; color:#1f2937; text-align:center; margin-bottom:10px; font-weight:500; line-height:1.4;">
+                            We're building something special. Join the waitlist for early access to premium features and
+                            exclusive content.
                         </div>
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <a href="/signup"
-                                style="font-size:14px; padding:8px 16px; border-radius:8px; border:none; background:#3b82f6; color:#ffffff; text-decoration:none; font-weight:500;">
-                                Create
-                            </a>
-                            <button type="button" onclick="dismissStep6Banner()"
-                                style="font-size:14px; padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.12); background:#f9fafb; color:#374151; cursor:pointer;">
-                                Dismiss
+                        <div
+                            style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:center;">
+                            <input type="email" id="waitlistEmail" placeholder="your@email.com"
+                                style="flex:1; min-width:250px; font-size:15px; padding:12px 16px; border-radius:12px; border:1px solid rgba(0,0,0,0.12); background:#fff;">
+                            <button type="button" onclick="submitWaitlist()" class="btn-primary"
+                                style="padding:12px 32px; font-size:15px; font-weight:600; border-radius:12px; border:none; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#ffffff; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 12px rgba(102, 126, 234, 0.4);">
+                                Join Waitlist
                             </button>
                         </div>
                     </div>

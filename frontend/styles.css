@@ -514,6 +514,67 @@ body {
     }
 }
 
+/* Dashboard Preview Section */
+.landing-dashboard-preview {
+    text-align: center;
+    margin: 5rem 0;
+    padding: 0 1rem;
+}
+
+.landing-dashboard-preview h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.preview-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboard-screenshot-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-screenshot-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2),
+        0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .landing-dashboard-preview h2 {
+        font-size: 2rem;
+    }
+
+    .preview-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-screenshot-container {
+        border-radius: 12px;
+    }
+}
+
 .landing-benefits {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

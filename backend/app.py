@@ -6,12 +6,19 @@ from dotenv import load_dotenv
 import time
 import typing as t
 from openai import OpenAI
+import re
+import csv
+from datetime import datetime
+import httpx
 
 # Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend requests
+
+# Simple email validator
+EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
 # Initialize FMP service
 fmp_service = FMPService(api_key=os.getenv('FMP_API_KEY'))
@@ -29,8 +36,49 @@ def health_check():
     """Health check endpoint"""
     return jsonify({
         'status': 'healthy',
-        'service': 'Passive Income Goal Tracker API'
+        'service': 'FIRE Tracker API'
     }), 200
+
+@app.post('/api/waitlist')
+def waitlist():
+    try:
+        data = request.get_json(force=True, silent=True) or {}
+        email = (data.get('email') or '').strip()
+        meta = data.get('meta') or {}
+
+        if not email or not EMAIL_RE.match(email):
+            return jsonify({'success': False, 'error': 'invalid_email'}), 400
+
+        # Persist to CSV (server-side storage)
+        csv_path = os.path.join(os.path.dirname(__file__), 'waitlist.csv')
+        is_new_file = not os.path.exists(csv_path)
+        with open(csv_path, 'a', newline='') as f:
+            writer = csv.writer(f)
+            if is_new_file:
+                writer.writerow(['timestamp_iso', 'email', 'meta'])
+            writer.writerow([datetime.utcnow().isoformat(), email, str(meta)])
+
+        # Optional: forward to webhook automation (e.g., Zapier/Make/Sheets)
+        webhook_url = os.getenv('WAITLIST_WEBHOOK_URL')
+        if webhook_url:
+            try:
+                # Send flattened payload for easier Zapier mapping
+                payload = {
+                    'timestamp': datetime.utcnow().isoformat(),
+                    'email': email,
+                    'source': meta.get('source', ''),
+                    'builderStep': meta.get('builderStep', '')
+                }
+                with httpx.Client(timeout=5.0) as client:
+                    client.post(webhook_url, json=payload)
+            except Exception as e:
+                # Don't fail the user if webhook forwarding fails
+                print('Waitlist webhook error:', e)
+
+        return jsonify({'success': True})
+    except Exception as e:
+        print('Waitlist error:', e)
+        return jsonify({'success': False, 'error': 'server_error'}), 500
 
 @app.route('/api/dividend-yield', methods=['GET'])
 def get_dividend_yield():
