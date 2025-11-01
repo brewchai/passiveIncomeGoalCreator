@@ -15,8 +15,8 @@ let appState = {
     rentalIncome: [],
     // Step 4: Retirement Accounts
     retirementAccounts: [],
-    // Step 5: Other Income
-    otherIncome: [],
+    // Step 5: Savings Accounts
+    savingsAccounts: [],
     // Step 3: Houses
     houses: [],
     // Step 6: Expenses
@@ -56,7 +56,7 @@ function loadState() {
             renderTickerList();
             renderRentalList();
             renderRetirementList();
-            renderOtherList();
+            renderSavingsList();
             renderExpenseList();
 
             // Restore portfolio value
@@ -127,6 +127,8 @@ function saveStep1Data() {
 
 // Navigation Functions
 function nextStep() {
+    window.scrollTo(0, 0);
+
     const currentStepEl = document.getElementById(`step${appState.currentStep}`);
     currentStepEl.classList.remove('active');
 
@@ -205,6 +207,8 @@ function nextStep() {
 }
 
 function prevStep() {
+    window.scrollTo(0, 0);
+
     const currentStepEl = document.getElementById(`step${appState.currentStep}`);
     currentStepEl.classList.remove('active');
 
@@ -300,6 +304,7 @@ async function addTicker() {
 const API_BASE_URL = (window.RUNTIME_CONFIG && window.RUNTIME_CONFIG.API_BASE_URL)
     ? window.RUNTIME_CONFIG.API_BASE_URL
     : 'http://localhost:5001/api';
+const CHAT_ENDPOINT = `${API_BASE_URL}/chat`;
 
 // Mock dividend yield data (fallback)
 const mockDividendYields = {
@@ -462,55 +467,73 @@ function removeRental(index) {
     saveState();
 }
 
-// Other Income Functions
-function addOther() {
-    const nameInput = document.getElementById('otherName');
-    const amountInput = document.getElementById('otherAmount');
+// Savings Account Functions
+function addSavings() {
+    const nameInput = document.getElementById('savingsName');
+    const amountInput = document.getElementById('savingsAmount');
+    const rateInput = document.getElementById('savingsInterestRate');
 
     const name = nameInput.value.trim();
     const amount = parseFloat(amountInput.value);
+    const interestRate = parseFloat(rateInput.value);
 
-    if (!name || isNaN(amount) || amount < 0) {
-        alert('Please enter a valid income source and monthly amount');
+    if (!name || isNaN(amount) || amount < 0 || isNaN(interestRate) || interestRate < 0) {
+        alert('Please enter a valid account name, balance, and interest rate');
         return;
     }
 
-    appState.otherIncome.push({ name, amount });
+    if (!appState.savingsAccounts) {
+        appState.savingsAccounts = [];
+    }
+
+    appState.savingsAccounts.push({ name, amount, interestRate });
 
     nameInput.value = '';
     amountInput.value = '';
+    rateInput.value = '';
 
-    renderOtherList();
+    renderSavingsList();
     saveState();
 }
 
-function renderOtherList() {
-    const listEl = document.getElementById('otherList');
+function renderSavingsList() {
+    const listEl = document.getElementById('savingsList');
 
-    if (appState.otherIncome.length === 0) {
+    if (!listEl) return;
+
+    if (!appState.savingsAccounts || appState.savingsAccounts.length === 0) {
         listEl.innerHTML = '';
-        document.getElementById('totalOther').style.display = 'none';
+        document.getElementById('totalSavings').style.display = 'none';
         return;
     }
 
-    listEl.innerHTML = appState.otherIncome.map((item, index) => `
+    listEl.innerHTML = appState.savingsAccounts.map((item, index) => {
+        const monthlyInterest = (item.amount * (item.interestRate / 100)) / 12;
+        return `
         <div class="list-item">
             <div class="list-item-info">
                 <div class="list-item-name">${item.name}</div>
+                <div class="list-item-details">Balance: $${item.amount.toFixed(2)} • Rate: ${item.interestRate.toFixed(2)}%</div>
             </div>
-            <span class="list-item-value">$${item.amount.toFixed(2)}</span>
-            <button class="delete-btn" onclick="removeOther(${index})">×</button>
+            <div class="list-item-value">
+                <div style="font-size: 0.875rem; color: #6b7280;">$${monthlyInterest.toFixed(2)}/mo</div>
+            </div>
+            <button class="delete-btn" onclick="removeSavings(${index})">×</button>
         </div>
-    `).join('');
+    `;
+    }).join('');
 
-    const total = appState.otherIncome.reduce((sum, item) => sum + item.amount, 0);
-    document.getElementById('totalOther').style.display = 'flex';
-    document.getElementById('totalOtherValue').textContent = `$${total.toFixed(2)}`;
+    const totalBalance = appState.savingsAccounts.reduce((sum, item) => sum + item.amount, 0);
+    const totalMonthlyInterest = appState.savingsAccounts.reduce((sum, item) => sum + ((item.amount * (item.interestRate / 100)) / 12), 0);
+
+    document.getElementById('totalSavings').style.display = 'block';
+    document.getElementById('totalSavingsBalance').textContent = `$${totalBalance.toFixed(2)}`;
+    document.getElementById('monthlySavingsInterest').textContent = `$${totalMonthlyInterest.toFixed(2)}`;
 }
 
-function removeOther(index) {
-    appState.otherIncome.splice(index, 1);
-    renderOtherList();
+function removeSavings(index) {
+    appState.savingsAccounts.splice(index, 1);
+    renderSavingsList();
     saveState();
 }
 
@@ -660,12 +683,12 @@ function calculateGoals() {
     const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
         ? appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0)
         : 0;
-    const otherTotal = (appState.otherIncome && appState.otherIncome.length > 0)
-        ? appState.otherIncome.reduce((sum, item) => sum + item.amount, 0)
+    const savingsInterestTotal = (appState.savingsAccounts && appState.savingsAccounts.length > 0)
+        ? appState.savingsAccounts.reduce((sum, item) => sum + ((item.amount * (item.interestRate / 100)) / 12), 0)
         : 0;
     const portfolioTotal = appState.monthlyDividendIncome;
 
-    appState.totalPassiveIncome = rentalTotal + otherTotal + portfolioTotal;
+    appState.totalPassiveIncome = rentalTotal + savingsInterestTotal + portfolioTotal;
 
     // Sort expenses by amount (ASCENDING - smallest to largest)
     const sortedExpenses = [...appState.expenses].sort((a, b) => a.amount - b.amount);
@@ -781,6 +804,9 @@ function renderDashboard() {
     }
 
     renderAllGoalsCompact();
+
+    // Show signup modal if user hasn't signed up yet
+    showSignupModal();
 }
 
 function renderNextGoalCompact(goal) {
@@ -826,39 +852,11 @@ function calculateProjectedFIYear() {
     const expectedReturnRate = 0.05;
     const currentYear = new Date().getFullYear();
 
-    console.log('\n🔥 FI YEAR CALCULATION DEBUG 🔥');
-    console.log('═══════════════════════════════════════');
-    console.log('📊 INCOME BREAKDOWN:');
-    console.log('  • Passive Income (monthly):', `$${appState.totalPassiveIncome.toFixed(2)}`);
-    console.log('  • Job Income (annual):', `$${(appState.annualIncome || 0).toFixed(2)}`);
-    console.log('  • Job Income (monthly):', `$${((appState.annualIncome || 0) / 12).toFixed(2)}`);
-    console.log('  • TOTAL Monthly Income:', `$${totalMonthlyIncome.toFixed(2)}`);
-    console.log('\n💸 EXPENSES:');
-    console.log('  • Total Monthly Expenses:', `$${totalMonthlyExpenses.toFixed(2)}`);
-    console.log('  • Annual Expenses:', `$${annualExpenses.toFixed(2)}`);
-    console.log('\n💰 SAVINGS:');
-    console.log('  • Monthly Savings:', `$${projectedMonthlySavings.toFixed(2)}`);
-    console.log('  • Savings Rate:', `${totalMonthlyIncome > 0 ? ((projectedMonthlySavings / totalMonthlyIncome) * 100).toFixed(1) : 0}%`);
-    console.log('\n🏠 ASSETS:');
-    console.log('  • Investment Portfolio Value:', `$${appState.portfolioValue.toFixed(2)}`);
-    console.log('  • Total Retirement Value:', `$${totalRetirementValue.toFixed(2)}`);
-    console.log('  • Liquid Assets (Portfolio + Retirement):', `$${currentPortfolioValue.toFixed(2)}`);
-    console.log('  • Total House Value:', `$${totalHouseValue.toFixed(2)}`);
-    console.log('  • Current Net Worth:', `$${(currentPortfolioValue + totalHouseValue).toFixed(2)}`);
-    console.log('\n🎯 FIRE TARGET:');
-    console.log('  • FIRE Number (25x expenses):', `$${fireNumber.toFixed(2)}`);
-    console.log('  • Still Need:', `$${Math.max(0, fireNumber - currentPortfolioValue).toFixed(2)}`);
-    console.log('\n📈 GROWTH ASSUMPTIONS:');
-    console.log('  • Expected Annual Return:', `${(expectedReturnRate * 100).toFixed(1)}%`);
-    console.log('  • Monthly Return Rate:', `${((expectedReturnRate / 12) * 100).toFixed(3)}%`);
-
     let projectedFIYear = 'Never';
     let yearsToGo = 0;
     let finalValue = currentPortfolioValue + totalHouseValue;
 
     if (projectedMonthlySavings > 0 && fireNumber > 0) {
-        console.log('\n⏱️  SIMULATION STARTING...');
-        console.log('  ⚠️  NOTE: Portfolio + Retirement count towards FIRE number (house is illiquid)');
         // Month-by-month simulation
         let months = 0;
         let portfolioValue = currentPortfolioValue;
@@ -877,7 +875,7 @@ function calculateProjectedFIYear() {
 
             // Log first 3 months and every 12 months thereafter
             if (loggedMonths < 3 || months % 12 === 0) {
-                console.log(`  Month ${months}: Portfolio: $${beforeGrowth.toFixed(2)} → (growth) → $${afterGrowth.toFixed(2)} → (+ savings) → $${portfolioValue.toFixed(2)} | [House not counted: $${totalHouseValue.toFixed(2)}]`);
+
                 loggedMonths++;
             }
         }
@@ -885,19 +883,12 @@ function calculateProjectedFIYear() {
         const t = months / 12;
         finalValue = portfolioValue + totalHouseValue; // Total net worth for display only
 
-        console.log('\n✅ SIMULATION COMPLETE!');
-        console.log('  • Total Months:', months);
-        console.log('  • Total Years:', t.toFixed(2));
-        console.log('  • Final Portfolio Value (liquid):', `$${portfolioValue.toFixed(2)}`);
-        console.log('  • Final Total Net Worth (w/ house):', `$${finalValue.toFixed(2)}`);
-        console.log('  • Target FIRE Number:', `$${fireNumber.toFixed(2)}`);
-        console.log('  • Reached Target?', portfolioValue >= fireNumber ? '✅ YES' : '❌ NO');
+
 
         if (portfolioValue >= fireNumber && t < 50) {
             projectedFIYear = Math.ceil(currentYear + t);
             yearsToGo = Math.ceil(t);
-            console.log('\n🎉 PROJECTED FI YEAR:', projectedFIYear);
-            console.log('  • Years to Go:', yearsToGo);
+
         } else {
             console.log('\n⚠️  FI NOT ACHIEVABLE within 50 years');
         }
@@ -1010,12 +1001,9 @@ let originalExpenses = [];
 let expenseChart = null;
 
 function openExpenseModal() {
-    console.log('📂 OPENING EXPENSE MODAL');
-    console.log('Current appState.expenses:', JSON.parse(JSON.stringify(appState.expenses)));
 
     // Store original expenses for comparison
     originalExpenses = JSON.parse(JSON.stringify(appState.expenses));
-    console.log('Stored originalExpenses:', JSON.parse(JSON.stringify(originalExpenses)));
 
     // Populate modal with current expenses
     refreshExpenseModalDisplay();
@@ -1119,8 +1107,7 @@ function renderExpenseBreakdownChart() {
 }
 
 function refreshExpenseModalDisplay() {
-    console.log('🔄 Refreshing expense modal display');
-    console.log('Current expenses:', appState.expenses);
+
 
     const expenseEditList = document.getElementById('expenseEditList');
     if (!expenseEditList) {
@@ -1193,13 +1180,11 @@ function addExpenseFromModal() {
 }
 
 function saveExpenseChanges() {
-    console.log('💾 SAVING EXPENSE CHANGES');
-    console.log('Original expenses:', JSON.parse(JSON.stringify(originalExpenses)));
-    console.log('Current expenses:', JSON.parse(JSON.stringify(appState.expenses)));
+
 
     // Check if expenses actually changed
     const expensesChanged = JSON.stringify(originalExpenses) !== JSON.stringify(appState.expenses);
-    console.log('Expenses changed?', expensesChanged);
+
 
     try {
         if (expensesChanged) {
@@ -1208,7 +1193,6 @@ function saveExpenseChanges() {
             renderDashboard();
             renderExpenseList(); // Update the expense list in the sidebar
             saveState();
-            console.log('✅ Saved to localStorage');
 
             // Update originalExpenses to match the saved state
             originalExpenses = JSON.parse(JSON.stringify(appState.expenses));
@@ -1220,11 +1204,11 @@ function saveExpenseChanges() {
     }
 
     // Hide modal (do this regardless of save success/failure)
-    console.log('🔒 Closing modal...');
+
     const modal = document.getElementById('expenseEditModal');
     if (modal) {
         modal.style.display = 'none';
-        console.log('✅ Modal closed');
+
     } else {
         console.error('❌ Modal element not found!');
     }
@@ -1285,13 +1269,12 @@ function openIncomeModal() {
     originalIncomeData = {
         portfolio: JSON.parse(JSON.stringify(appState.portfolio)),
         rentalIncome: JSON.parse(JSON.stringify(appState.rentalIncome)),
-        otherIncome: JSON.parse(JSON.stringify(appState.otherIncome))
+        savingsAccounts: JSON.parse(JSON.stringify(appState.savingsAccounts || []))
     };
 
     // Populate modal with current income data
     refreshStockModalDisplay();
     refreshRentalModalDisplay();
-    refreshOtherModalDisplay();
     refreshJobIncomeDisplay();
 
     // Show modal with Job Income tab active by default
@@ -1308,41 +1291,85 @@ let dashboardExpenseChart = null;
 // AI Tips state
 let incomeTip = '';
 let expenseTip = '';
+const MAX_TIP_HISTORY = 6;
+const incomeTipHistory = [];
+const expenseTipHistory = [];
+
+function normalizeTipText(tip) {
+    return (tip || '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+function addTipToHistory(historyArray, tip) {
+    if (!tip) return;
+    const normalized = normalizeTipText(tip);
+    const exists = historyArray.some(existing => normalizeTipText(existing) === normalized);
+    if (exists) return;
+    historyArray.push(tip);
+    if (historyArray.length > MAX_TIP_HISTORY) {
+        historyArray.shift();
+    }
+}
+
+function buildHistoryReminder(historyArray) {
+    if (!historyArray || historyArray.length === 0) return '';
+    const bullets = historyArray.map(item => `- ${item}`).join('\n');
+    return `Previously suggested tips (do NOT repeat these ideas or topics):\n${bullets}\n`;
+}
+
+function setTipButtonState(type, isLoading) {
+    const buttonId = type === 'income' ? 'refreshIncomeTipBtn' : 'refreshExpenseTipBtn';
+    const button = document.getElementById(buttonId);
+    if (!button) return;
+    button.disabled = isLoading;
+    button.textContent = isLoading ? 'Refreshing…' : '↻ Refresh Tip';
+}
 
 // Fetch AI tip for income optimization
-async function fetchIncomeTip() {
+async function fetchIncomeTip({ isRefresh = false } = {}) {
+    const historyPrompt = buildHistoryReminder(incomeTipHistory);
     try {
         const incomeData = {
             jobIncome: appState.annualIncome ? appState.annualIncome / 12 : 0,
             stockIncome: appState.monthlyDividendIncome || 0,
             rentalIncome: appState.rentalIncome.reduce((sum, r) => sum + r.amount, 0),
-            otherIncome: appState.otherIncome.reduce((sum, o) => sum + o.amount, 0),
+            savingsInterestIncome: (appState.savingsAccounts || []).reduce((sum, s) => sum + ((s.amount * (s.interestRate / 100)) / 12), 0),
             retirementValue: getTotalRetirementValue()
         };
 
-        const totalIncome = incomeData.jobIncome + incomeData.stockIncome + incomeData.rentalIncome + incomeData.otherIncome;
-        const largestSource = Math.max(incomeData.jobIncome, incomeData.stockIncome, incomeData.rentalIncome, incomeData.otherIncome);
-        const concentration = (largestSource / totalIncome * 100).toFixed(0);
+        const totalIncome = incomeData.jobIncome + incomeData.stockIncome + incomeData.rentalIncome + incomeData.savingsInterestIncome;
+        const jobPercent = totalIncome > 0 ? (incomeData.jobIncome / totalIncome * 100).toFixed(0) : 0;
+        const randomSeed = Math.floor(Math.random() * 1000);
 
-        const response = await fetch('http://localhost:5001/api/chat', {
+        const response = await fetch(CHAT_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                message: `Income breakdown: Job $${incomeData.jobIncome.toFixed(0)}/mo, Stocks $${incomeData.stockIncome.toFixed(0)}/mo, Rental $${incomeData.rentalIncome.toFixed(0)}/mo, Other $${incomeData.otherIncome.toFixed(0)}/mo (${concentration}% from largest source). Using proven strategies from financial experts (Warren Buffett, Ramit Sethi, etc.), give ONE ultra-specific tip to boost passive income. STRICT RULES: Max 15 words. Use SUGGESTIVE language ("Consider", "Try", "You could"). Use **bold** for key action. Include a number. Example: "Consider **investing $500/mo** in dividend aristocrats for 4% yield." No preamble, no fluff.`
+                message: `${historyPrompt}INCOME: Job $${incomeData.jobIncome.toFixed(0)} (${jobPercent}%), Stocks $${incomeData.stockIncome.toFixed(0)}, Rental $${incomeData.rentalIncome.toFixed(0)}, Savings Interest $${incomeData.savingsInterestIncome.toFixed(0)}
+
+Give ONE creative financial tip using these EXACT numbers. Vary your approach each time.
+
+GOOD examples:
+"You could **negotiate a 5% raise** to add $${(incomeData.jobIncome * 0.05 * 12).toFixed(0)}/yr to income."
+"Consider **moving $10K to 4.5% HYSA** for $450/yr extra interest."
+"Try **automating $200/mo to investments** to build wealth faster."
+
+BAD (too generic):
+"Diversify income" "Invest more" "Save money"
+
+RULES: Max 18 words. MUST start with "Consider", "Try", "You could", or "You might". Use **bold** for action. Include specific $ amounts. Be creative and VARY your suggestions. Seed: ${randomSeed}`
             })
         });
 
         const data = await response.json();
         incomeTip = data.reply || 'No tip available';
-        console.log('Income tip:', incomeTip);
+        addTipToHistory(incomeTipHistory, incomeTip);
 
         // Update UI with HTML rendering for markdown
         const tipElement = document.getElementById('incomeTipText');
         if (tipElement) {
-            // Convert markdown bold to HTML with better styling
             let formattedTip = incomeTip
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
-                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>'); // Highlight dollar amounts
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>');
             tipElement.innerHTML = formattedTip;
         }
     } catch (error) {
@@ -1355,21 +1382,29 @@ async function fetchIncomeTip() {
                 .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>');
             tipElement.innerHTML = formattedTip;
         }
+    } finally {
+        if (isRefresh) {
+            setTipButtonState('income', false);
+        }
     }
 }
 
 // Fetch AI tip for expense optimization
-async function fetchExpenseTip() {
-    try {
-        // Check if there are any expenses
-        if (!appState.expenses || appState.expenses.length === 0) {
-            const tipElement = document.getElementById('expenseTipText');
-            if (tipElement) {
-                tipElement.innerHTML = 'Add expenses to get personalized tips';
-            }
-            return;
+async function fetchExpenseTip({ isRefresh = false } = {}) {
+    if (!appState.expenses || appState.expenses.length === 0) {
+        const tipElement = document.getElementById('expenseTipText');
+        if (tipElement) {
+            tipElement.innerHTML = 'Add expenses to get personalized tips';
         }
+        if (isRefresh) {
+            setTipButtonState('expense', false);
+        }
+        return;
+    }
 
+    const historyPrompt = buildHistoryReminder(expenseTipHistory);
+
+    try {
         const expenseData = appState.expenses.map(e => `${e.name}: $${e.amount}`).join(', ');
         const totalExpenses = appState.expenses.reduce((sum, e) => sum + e.amount, 0);
 
@@ -1377,7 +1412,6 @@ async function fetchExpenseTip() {
             .filter(e => e.amount > 0)
             .sort((a, b) => b.amount - a.amount);
 
-        // Check if there are any expenses with amount > 0
         if (sortedExpenses.length === 0) {
             const tipElement = document.getElementById('expenseTipText');
             if (tipElement) {
@@ -1386,29 +1420,44 @@ async function fetchExpenseTip() {
             return;
         }
 
+        const expenseList = sortedExpenses.map(e =>
+            `${e.name} $${e.amount} (${(e.amount / totalExpenses * 100).toFixed(0)}%)`
+        ).join(', ');
         const largestExpense = sortedExpenses[0];
-        const largestPct = (largestExpense.amount / totalExpenses * 100).toFixed(0);
+        const randomSeed = Math.floor(Math.random() * 1000);
 
-        const response = await fetch('http://localhost:5001/api/chat', {
+        const response = await fetch(CHAT_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                message: `Expenses: ${expenseData} (${largestExpense.name} is ${largestPct}% of total). Using proven frugal living strategies from finance experts, give ONE ultra-specific cost-cutting tip. STRICT RULES: Max 15 words. Use SUGGESTIVE language ("Consider", "Try", "You could"). Use **bold** for key action. Include a number or %. Example: "Consider **negotiating rent down 10%** to save $300/mo." No preamble, no fluff.`
+                message: `${historyPrompt}EXPENSES: ${expenseList}
+TOTAL: $${totalExpenses}/mo
+
+Give ONE creative money-saving tip using these EXACT numbers. Vary your approach each time.
+
+GOOD examples:
+"Consider **negotiating your $${largestExpense.amount} ${largestExpense.name}** to save $${(largestExpense.amount * 0.15).toFixed(0)}/mo."
+"You could **automate $${(totalExpenses * 0.1).toFixed(0)}/mo to savings** before spending."
+"Try **auditing subscriptions quarterly** to find $100-200/yr in waste."
+
+BAD (too vague):
+"Reduce expenses" "Cut back" "Be more frugal"
+
+RULES: Max 18 words. MUST start with "Consider", "Try", "You could", or "You might". Use **bold** for action. Calculate specific $ savings. Be creative and VARY suggestions. Seed: ${randomSeed}`
             })
         });
 
         const data = await response.json();
         expenseTip = data.reply || 'No tip available';
-        console.log('Expense tip:', expenseTip);
 
-        // Update UI with HTML rendering for markdown
+        addTipToHistory(expenseTipHistory, expenseTip);
+
         const tipElement = document.getElementById('expenseTipText');
         if (tipElement) {
-            // Convert markdown bold to HTML with better styling
             let formattedTip = expenseTip
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1e40af; font-weight: 600;">$1</strong>')
-                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>') // Highlight dollar amounts
-                .replace(/(\d+)%/g, '<span style="color: #059669; font-weight: 600;">$1%</span>'); // Highlight percentages
+                .replace(/\$(\d+)/g, '<span style="color: #059669; font-weight: 600;">$$$1</span>')
+                .replace(/(\d+)%/g, '<span style="color: #059669; font-weight: 600;">$1%</span>');
             tipElement.innerHTML = formattedTip;
         }
     } catch (error) {
@@ -1422,7 +1471,21 @@ async function fetchExpenseTip() {
                 .replace(/(\d+)%/g, '<span style="color: #059669; font-weight: 600;">$1%</span>');
             tipElement.innerHTML = formattedTip;
         }
+    } finally {
+        if (isRefresh) {
+            setTipButtonState('expense', false);
+        }
     }
+}
+
+function refreshIncomeTip() {
+    setTipButtonState('income', true);
+    fetchIncomeTip({ isRefresh: true });
+}
+
+function refreshExpenseTip() {
+    setTipButtonState('expense', true);
+    fetchExpenseTip({ isRefresh: true });
 }
 
 // Open chat with context
@@ -1457,16 +1520,16 @@ function renderDashboardIncomeChart() {
     const jobIncome = appState.annualIncome ? appState.annualIncome / 12 : 0;
     const stockIncome = appState.monthlyDividendIncome || 0;
     const rentalIncome = appState.rentalIncome.reduce((sum, rental) => sum + rental.amount, 0);
-    const otherIncome = appState.otherIncome.reduce((sum, other) => sum + other.amount, 0);
+    const savingsInterestIncome = (appState.savingsAccounts || []).reduce((sum, savings) => sum + ((savings.amount * (savings.interestRate / 100)) / 12), 0);
 
-    const totalIncome = jobIncome + stockIncome + rentalIncome + otherIncome;
+    const totalIncome = jobIncome + stockIncome + rentalIncome + savingsInterestIncome;
 
     // Prepare chart data with sorting
     const incomeItems = [];
     if (jobIncome > 0) incomeItems.push({ label: 'Job Income', value: jobIncome });
     if (stockIncome > 0) incomeItems.push({ label: 'Stocks', value: stockIncome });
     if (rentalIncome > 0) incomeItems.push({ label: 'Real Estate', value: rentalIncome });
-    if (otherIncome > 0) incomeItems.push({ label: 'Other', value: otherIncome });
+    if (savingsInterestIncome > 0) incomeItems.push({ label: 'Savings Interest', value: savingsInterestIncome });
 
     // Sort by value descending (largest first)
     incomeItems.sort((a, b) => b.value - a.value);
@@ -1724,7 +1787,7 @@ function closeIncomeModal() {
     // Restore original income data if user cancels
     appState.portfolio = JSON.parse(JSON.stringify(originalIncomeData.portfolio));
     appState.rentalIncome = JSON.parse(JSON.stringify(originalIncomeData.rentalIncome));
-    appState.otherIncome = JSON.parse(JSON.stringify(originalIncomeData.otherIncome));
+    appState.savingsAccounts = JSON.parse(JSON.stringify(originalIncomeData.savingsAccounts));
 
     // Hide modal
     document.getElementById('incomeEditModal').style.display = 'none';
@@ -1762,12 +1825,12 @@ function saveIncomeChanges() {
     const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
         ? appState.rentalIncome.reduce((sum, item) => sum + item.amount, 0)
         : 0;
-    const otherTotal = (appState.otherIncome && appState.otherIncome.length > 0)
-        ? appState.otherIncome.reduce((sum, item) => sum + item.amount, 0)
+    const savingsInterestTotal = (appState.savingsAccounts && appState.savingsAccounts.length > 0)
+        ? appState.savingsAccounts.reduce((sum, item) => sum + ((item.amount * (item.interestRate / 100)) / 12), 0)
         : 0;
     const portfolioTotal = appState.monthlyDividendIncome || 0;
 
-    appState.totalPassiveIncome = rentalTotal + otherTotal + portfolioTotal;
+    appState.totalPassiveIncome = rentalTotal + savingsInterestTotal + portfolioTotal;
 
     calculateGoals();
     renderDashboard();
@@ -1844,22 +1907,6 @@ function refreshRentalModalDisplay() {
     });
 }
 
-function refreshOtherModalDisplay() {
-    const otherEditList = document.getElementById('otherEditList');
-    otherEditList.innerHTML = '';
-
-    appState.otherIncome.forEach((other, index) => {
-        const otherItem = document.createElement('div');
-        otherItem.className = 'other-edit-item';
-        otherItem.innerHTML = `
-            <input type="text" value="${other.name}" onchange="updateOtherInModal(${index}, 'name', this.value)" class="input-field" placeholder="Income Source">
-            <input type="number" value="${other.amount}" onchange="updateOtherInModal(${index}, 'amount', parseFloat(this.value))" class="input-field" min="0" step="10" placeholder="Monthly Amount">
-            <button onclick="deleteOtherFromModal(${index})">Delete</button>
-        `;
-        otherEditList.appendChild(otherItem);
-    });
-}
-
 function refreshJobIncomeDisplay() {
     const jobIncomeInput = document.getElementById('modalJobIncome');
     const jobIncomeMonthly = document.getElementById('jobIncomeMonthly');
@@ -1896,12 +1943,6 @@ function deleteRentalFromModal(index) {
     renderIncomeBreakdownChart();
 }
 
-function deleteOtherFromModal(index) {
-    appState.otherIncome.splice(index, 1);
-    refreshOtherModalDisplay();
-    renderIncomeBreakdownChart();
-}
-
 // Update functions for inline editing
 function updateStockInModal(index, field, value) {
     if (field === 'symbol') {
@@ -1924,14 +1965,6 @@ function updateRentalInModal(index, field, value) {
         appState.rentalIncome[index].name = value;
     } else if (field === 'amount') {
         appState.rentalIncome[index].amount = value;
-    }
-}
-
-function updateOtherInModal(index, field, value) {
-    if (field === 'name') {
-        appState.otherIncome[index].name = value;
-    } else if (field === 'amount') {
-        appState.otherIncome[index].amount = value;
     }
 }
 
@@ -2252,27 +2285,6 @@ function addRentalFromModal() {
     amountInput.value = '';
 
     refreshRentalModalDisplay();
-    renderIncomeBreakdownChart();
-}
-
-function addOtherFromModal() {
-    const nameInput = document.getElementById('modalOtherName');
-    const amountInput = document.getElementById('modalOtherAmount');
-
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid income source name and monthly amount');
-        return;
-    }
-
-    appState.otherIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshOtherModalDisplay();
     renderIncomeBreakdownChart();
 }
 
@@ -2746,27 +2758,6 @@ function addRentalFromModal() {
     renderIncomeBreakdownChart();
 }
 
-function addOtherFromModal() {
-    const nameInput = document.getElementById('modalOtherName');
-    const amountInput = document.getElementById('modalOtherAmount');
-
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid income source name and monthly amount');
-        return;
-    }
-
-    appState.otherIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshOtherModalDisplay();
-    renderIncomeBreakdownChart();
-}
-
 // Portfolio percentage validation
 function validatePortfolioPercentage() {
     const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
@@ -3116,4 +3107,82 @@ function closeFIYearModal() {
 function showFIOptimization() {
     // Placeholder for future FI optimization feature
     alert('FI Timeline optimization coming soon! This will help you explore different scenarios to reach financial independence faster by adjusting savings rate, investment returns, and expenses.');
+}
+
+// Signup Modal Functions
+function showSignupModal() {
+    console.log('🔔 showSignupModal called');
+    console.log('📧 appState.userEmail:', appState.userEmail);
+    console.log('📧 typeof appState.userEmail:', typeof appState.userEmail);
+
+    // Only show if user hasn't signed up yet (no email stored)
+    // if (!appState.userEmail) {
+    console.log('✅ No email found, will show modal in 1 second...');
+    setTimeout(() => {
+        const modal = document.getElementById('signupModal');
+        console.log('📦 Modal element:', modal);
+        if (modal) {
+            console.log('✅ Setting modal display to flex');
+            modal.style.display = 'flex';
+            console.log('✅ Modal display is now:', modal.style.display);
+        } else {
+            console.error('❌ Modal element #signupModal not found in DOM!');
+        }
+    }, 1000);
+    // } else {
+    //     console.log('⏭️ User already has email, skipping modal. Email:', appState.userEmail);
+    // }
+}
+
+function closeSignupModal() {
+    document.getElementById('signupModal').style.display = 'none';
+}
+
+function submitSignupModal() {
+    const emailInput = document.getElementById('signupModalEmail');
+    const email = emailInput.value.trim();
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    // Store email in appState
+    appState.userEmail = email;
+    saveState();
+
+    console.log('Signup email submitted:', email);
+
+    // Send to backend waitlist endpoint
+    fetch(API_BASE_URL + '/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email,
+            meta: {
+                source: 'signupModal',
+                dashboardAccess: true
+            }
+        })
+    }).catch(err => console.log('Signup submission error:', err));
+
+    // Show success message
+    const modal = document.getElementById('signupModal');
+    const modalBody = modal.querySelector('.modal-body');
+    if (modalBody) {
+        modalBody.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+                <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
+                <h3 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 600; color: #10b981;">You're all set!</h3>
+                <p style="color: #6b7280; margin: 0;">Your dashboard has been saved. We'll send you updates at ${email}</p>
+            </div>
+        `;
+    }
+
+    // Close modal after 2 seconds
+    setTimeout(() => {
+        closeSignupModal();
+    }, 2000);
 }

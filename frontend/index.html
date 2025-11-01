@@ -208,82 +208,8 @@
             </div>
         </div>
 
-        <!-- Step 2: Investment Portfolio -->
+        <!-- Step 2: Real Estate & Housing -->
         <div class="step" id="step2">
-            <div class="step-content">
-                <h1>Investment Portfolio</h1>
-                <p class="subtitle">Do you have dividend-paying investments? Add your holdings to calculate monthly
-                    income.</p>
-
-                <div class="portfolio-section">
-                    <div class="input-group">
-                        <label>Total Portfolio Value:</label>
-                        <input type="number" id="portfolioValue" placeholder="Total invested amount ($)"
-                            class="input-field" min="0" step="1000" oninput="updateDividendIncome()">
-                        <p class="input-hint">Enter the total current value of your dividend-paying investments</p>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Add your investments:</label>
-                        <div class="ticker-input-row">
-                            <input type="text" id="tickerSymbol" placeholder="Ticker Symbol (e.g., AAPL)"
-                                class="input-field">
-                            <input type="number" id="tickerPercent" placeholder="% of Portfolio" class="input-field"
-                                min="0" max="100" step="0.1">
-                            <button class="btn-secondary" onclick="addTicker()">Add</button>
-                        </div>
-                        <p class="input-hint" style="margin-top: 8px; color: var(--muted, #6b7280);">
-                            Note: We currently support a limited set of ticker symbols. Full coverage coming soon.
-                        </p>
-                    </div>
-
-                    <div id="tickerList" class="ticker-list"></div>
-
-                    <!-- Image Upload Section -->
-                    <div class="upload-section"
-                        style="margin-top: 24px; padding: 20px; border: 2px dashed #cbd5e1; border-radius: 12px; text-align: center; background: linear-gradient(0deg, rgba(102, 126, 234, 0.02), rgba(102, 126, 234, 0.02)), #fff;">
-                        <div style="font-size: 32px; margin-bottom: 8px;">📸</div>
-                        <h3 style="margin: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #1f2937;">Upload
-                            Brokerage Screenshots</h3>
-                        <p style="color: #64748b; margin: 0 0 16px 0; font-size: 14px;">Automatically extract your
-                            portfolio from broker statements</p>
-
-                        <button type="button"
-                            onclick="alert('🚀 Coming soon! We\'re building AI-powered portfolio extraction from screenshots.')"
-                            class="btn-secondary" style="padding: 10px 24px; font-size: 14px;">
-                            📤 Upload Images
-                        </button>
-
-                        <p style="margin-top: 12px; font-size: 12px; color: #94a3b8;">
-                            Supported: Robinhood, Fidelity, Schwab, E*TRADE, and more
-                        </p>
-                    </div>
-
-                    <div id="blendedYield" class="blended-yield-box" style="display: none;">
-                        <h3>Your Portfolio Summary</h3>
-                        <div class="yield-display">
-                            <div class="yield-stat">
-                                <span class="yield-label">Blended Yield</span>
-                                <span class="yield-value" id="yieldValue">0.00%</span>
-                            </div>
-                            <div class="yield-stat">
-                                <span class="yield-label">Monthly Dividend Income</span>
-                                <span class="yield-value income-highlight" id="monthlyDividendIncome">$0.00</span>
-                            </div>
-                        </div>
-                        <p class="yield-explanation">Based on your portfolio value and blended yield</p>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 3: Rental Income -->
-        <div class="step" id="step3">
             <div class="step-content">
                 <h1>Real Estate & Housing</h1>
                 <p class="subtitle">Track your properties and their financial details</p>
@@ -386,6 +312,79 @@
             </div>
         </div>
 
+        <!-- Step 3: Investment Portfolio -->
+        <div class="step" id="step3">
+            <div class="step-content">
+                <h1>Investment Portfolio</h1>
+                <p class="subtitle">Add your investments to get a full picture of your portfolio.</p>
+
+                <div class="portfolio-section">
+                    <!-- Image Upload Section -->
+                    <div class="upload-section"
+                        style="margin-top: 0; padding: 20px; border: 2px dashed #cbd5e1; border-radius: 12px; text-align: center; background: linear-gradient(0deg, rgba(102, 126, 234, 0.02), rgba(102, 126, 234, 0.02)), #fff;">
+                        <div style="font-size: 32px; margin-bottom: 8px;">📸</div>
+                        <h3 style="margin: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #1f2937;">Upload
+                            Brokerage Screenshots</h3>
+                        <p style="color: #64748b; margin: 0 0 16px 0; font-size: 14px;">Automatically extract your
+                            portfolio from broker statements</p>
+
+                        <button type="button"
+                            onclick="alert('🚀 Coming soon! We\'re building AI-powered portfolio extraction from screenshots. Please input manual portfolio values for now.')"
+                            class="btn-secondary" style="padding: 10px 24px; font-size: 14px;">
+                            📤 Upload Images
+                        </button>
+
+                        <p style="margin-top: 12px; font-size: 12px; color: #94a3b8;">
+                            Supported: Robinhood, Fidelity, Schwab, E*TRADE, and more
+                        </p>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 24px;">
+                        <label>Total Portfolio Value:</label>
+                        <input type="number" id="portfolioValue" placeholder="Total invested amount ($)"
+                            class="input-field" min="0" step="1000" oninput="updateDividendIncome()">
+                        <p class="input-hint">Enter the total current value of your dividend-paying investments</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Add your investments:</label>
+                        <div class="ticker-input-row">
+                            <input type="text" id="tickerSymbol" placeholder="Ticker Symbol (e.g., AAPL)"
+                                class="input-field">
+                            <input type="number" id="tickerPercent" placeholder="% of Portfolio" class="input-field"
+                                min="0" max="100" step="0.1">
+                            <button class="btn-secondary" onclick="addTicker()">Add</button>
+                        </div>
+                        <p class="input-hint" style="margin-top: 8px; color: var(--muted, #6b7280);">
+                            Note: We currently support a limited set of ticker symbols. Full coverage coming soon.
+                        </p>
+                    </div>
+
+                    <div id="tickerList" class="ticker-list"></div>
+
+                    <div id="blendedYield" class="blended-yield-box" style="display: none;">
+                        <h3>Your Portfolio Summary</h3>
+                        <div class="yield-display">
+                            <div class="yield-stat">
+                                <span class="yield-label">Blended Yield</span>
+                                <span class="yield-value" id="yieldValue">0.00%</span>
+                            </div>
+                            <div class="yield-stat">
+                                <span class="yield-label">Monthly Dividend Income</span>
+                                <span class="yield-value income-highlight" id="monthlyDividendIncome">$0.00</span>
+                            </div>
+                        </div>
+                        <p class="yield-explanation">Based on your portfolio value and blended yield</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Step 4: Retirement Accounts -->
         <div class="step" id="step4">
             <div class="step-content">
@@ -425,28 +424,37 @@
             </div>
         </div>
 
-        <!-- Step 5: Other Passive Income -->
+        <!-- Step 5: Cash in Savings -->
         <div class="step" id="step5">
             <div class="step-content">
-                <h1>Other Passive Income</h1>
-                <p class="subtitle">Any other passive income sources? (Royalties, side businesses, etc.)</p>
+                <h1>Cash & Savings Accounts</h1>
+                <p class="subtitle">Track your liquid savings and the interest rates they earn</p>
 
-                <div class="other-section">
+                <div class="savings-section">
                     <div class="input-group">
-                        <label>Add other income sources:</label>
-                        <div class="other-input-row">
-                            <input type="text" id="otherName" placeholder="Income Source" class="input-field">
-                            <input type="number" id="otherAmount" placeholder="Monthly Income ($)" class="input-field"
-                                min="0" step="0.01">
-                            <button class="btn-secondary" onclick="addOther()">Add</button>
+                        <label>Add savings accounts:</label>
+                        <input type="text" id="savingsName" placeholder="Account Name (e.g., Emergency Fund)"
+                            class="input-field" style="margin-bottom: 12px;">
+                        <div class="savings-input-row" style="display: flex; gap: 12px; align-items: center;">
+                            <input type="number" id="savingsAmount" placeholder="Balance ($)" class="input-field"
+                                min="0" step="0.01" style="flex: 1;">
+                            <input type="number" id="savingsInterestRate" placeholder="Annual Interest Rate (%)"
+                                class="input-field" min="0" max="100" step="0.01" style="flex: 1;">
+                            <button class="btn-secondary" onclick="addSavings()">Add</button>
                         </div>
                     </div>
 
-                    <div id="otherList" class="income-list"></div>
+                    <div id="savingsList" class="savings-list"></div>
 
-                    <div id="totalOther" class="total-box" style="display: none;">
-                        <span>Total Monthly Other Income:</span>
-                        <span class="total-value" id="totalOtherValue">$0.00</span>
+                    <div id="totalSavings" class="total-box" style="display: none;">
+                        <div class="savings-summary-row">
+                            <span>Total Savings Balance:</span>
+                            <span class="total-value" id="totalSavingsBalance">$0.00</span>
+                        </div>
+                        <div class="savings-summary-row">
+                            <span>Monthly Interest Income:</span>
+                            <span class="total-value income-highlight" id="monthlySavingsInterest">$0.00</span>
+                        </div>
                     </div>
                 </div>
 
@@ -525,6 +533,10 @@
                             <button type="button" onclick="submitWaitlist()" class="btn-primary"
                                 style="padding:12px 32px; font-size:15px; font-weight:600; border-radius:12px; border:none; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#ffffff; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 12px rgba(102, 126, 234, 0.4);">
                                 Join Waitlist
+                            </button>
+                            <button type="button" onclick="dismissStep6Banner()" class="btn-secondary"
+                                style="padding:12px 24px; font-size:15px; font-weight:500; border-radius:12px; border:1px solid rgba(0,0,0,0.12); background:#fff; color:#64748b; cursor:pointer; transition:all 0.2s;">
+                                Skip
                             </button>
                         </div>
                     </div>
@@ -619,7 +631,11 @@
                                 <div class="ai-tip-text-wrapper">
                                     <p class="ai-tip-text" id="incomeTipText">Loading tip...</p>
                                 </div>
-                                <button class="btn-chat-ai" onclick="openChatWithContext('income')">Ask AI</button>
+                                <div class="ai-tip-actions">
+                                    <button class="btn-tip-refresh" id="refreshIncomeTipBtn"
+                                        onclick="refreshIncomeTip()">↻ Refresh Tip</button>
+                                    <button class="btn-chat-ai" onclick="openChatWithContext('income')">Ask AI</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -633,7 +649,11 @@
                                 <div class="ai-tip-text-wrapper">
                                     <p class="ai-tip-text" id="expenseTipText">Loading tip...</p>
                                 </div>
-                                <button class="btn-chat-ai" onclick="openChatWithContext('expense')">Ask AI</button>
+                                <div class="ai-tip-actions">
+                                    <button class="btn-tip-refresh" id="refreshExpenseTipBtn"
+                                        onclick="refreshExpenseTip()">↻ Refresh Tip</button>
+                                    <button class="btn-chat-ai" onclick="openChatWithContext('expense')">Ask AI</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -924,6 +944,47 @@
             </div>
             <div class="modal-footer">
                 <button class="btn-primary" onclick="closeFIYearModal()">Got It!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModal" style="display:none;">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;">Save Your Dashboard</h2>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 16px; color: #4b5563; line-height: 1.6; margin-bottom: 20px;">
+                    Your data is only saved on this device for now. Create an account to keep it safe and access it
+                    anywhere.
+                </p>
+                <div style="background: #f3f4f6; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <span style="font-size: 24px;">💾</span>
+                        <div>
+                            <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">Why sign up?</div>
+                            <ul
+                                style="margin: 0; padding-left: 20px; color: #6b7280; font-size: 14px; line-height: 1.6;">
+                                <li>Access your dashboard from anywhere</li>
+                                <li>Never lose your financial data</li>
+                                <li>Get early access to premium features</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="email" id="signupModalEmail" placeholder="Enter your email"
+                        style="width: 100%; font-size: 15px; padding: 12px 16px; border-radius: 8px; border: 1px solid #d1d5db; box-sizing: border-box;">
+                    <button type="button" onclick="submitSignupModal()" class="btn-primary"
+                        style="width: 100%; padding: 12px; font-size: 16px; font-weight: 600; border-radius: 8px; border: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; cursor: pointer;">
+                        Sign Up
+                    </button>
+                    <button type="button" onclick="closeSignupModal()" class="btn-secondary"
+                        style="width: 100%; padding: 12px; font-size: 15px; font-weight: 500; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; color: #6b7280; cursor: pointer;">
+                        Maybe Later
+                    </button>
+                </div>
             </div>
         </div>
     </div>
