@@ -1,3 +1,3 @@
 window.RUNTIME_CONFIG = {
-    API_BASE_URL: 'http://localhost:5001/api'
+    API_BASE_URL: 'https://passiveincomegoalcreator.onrender.com/api'
 };
