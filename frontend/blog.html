@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FIRE Planner | Financial Independence Insights</title>
+    <meta name="description"
+        content="Learn about FIRE, passive income strategies, and financial independence through our expert articles and guides.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">FIRE Planner</a>
+            <a href="/" class="nav-link">← Back to App</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="blog-container">
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <h1>The <span class="gradient-text">FIRE</span> Blog</h1>
+            <p>Expert insights on financial independence, passive income strategies, and early retirement</p>
+        </section>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-box" placeholder="Search articles... (coming soon)" disabled>
+        </div>
+
+        <!-- Articles -->
+        <section class="recent-section">
+            <div class="articles-list" id="articlesGrid">
+                <!-- Populated from posts.json (paginated all posts) -->
+            </div>
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="load-more-btn">Load More</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 FIRE Planner. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">Empowering your journey to financial independence</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const gridEl = document.getElementById('articlesGrid');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const PAGE_SIZE = 9;
+            let allPosts = [];
+            let renderedCount = 0;
+
+            function htmlEscape(s) {
+                return (s || '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            }
+
+            function cardHTML(post) {
+                const cover = post.cover && post.cover.trim() ? post.cover : '';
+                const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+                const imgBlock = cover
+                    ? `<div class="article-thumbnail" style="padding:0; height:auto;"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} cover" style="width:100%; height:220px; object-fit:cover; display:block;"></div>`
+                    : `<div class="article-thumbnail">📝</div>`;
+                return `
+                <a href="/blog/${encodeURIComponent(post.slug)}" style="text-decoration:none; color:inherit;">
+                  <article class="article-card">
+                    ${imgBlock}
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">📅 ${date}</span>
+                            ${post.featured ? '<span class="article-tag">Featured</span>' : ''}
+                        </div>
+                        <h3 class="article-title">${htmlEscape(post.title)}</h3>
+                        <p class="article-excerpt">${htmlEscape(post.description || '')}</p>
+                        <span class="read-more">Read More →</span>
+                    </div>
+                  </article>
+                </a>`;
+            }
+
+            function renderMore() {
+                const next = allPosts.slice(renderedCount, renderedCount + PAGE_SIZE);
+                gridEl.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
+                renderedCount += next.length;
+                if (renderedCount >= allPosts.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'inline-block';
+                }
+            }
+
+            async function init() {
+                try {
+                    const url = `/blog/posts/posts.json?ts=${Date.now()}`;
+                    const res = await fetch(url, { cache: 'no-store' });
+                    if (!res.ok) return;
+                    const text = await res.text();
+                    if (!text) { console.warn('Empty posts.json response'); return; }
+                    const data = JSON.parse(text);
+
+                    // Use data.all if present, else merge featured+recent
+                    allPosts = Array.isArray(data.all) && data.all.length
+                        ? data.all
+                        : [...(data.featured || []), ...(data.recent || [])];
+
+                    // Sort by date desc just in case
+                    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                    gridEl.innerHTML = '';
+                    renderedCount = 0;
+                    if (allPosts.length) {
+                        renderMore();
+                    } else {
+                        gridEl.innerHTML = '<div style="color:#64748b;">No posts yet.</div>';
+                        loadMoreBtn.style.display = 'none';
+                    }
+                } catch (e) {
+                    console.error('Failed to load posts.json', e);
+                }
+            }
+
+            loadMoreBtn.addEventListener('click', renderMore);
+            init();
+        })();
+    </script>
+</body>
+
+</html>

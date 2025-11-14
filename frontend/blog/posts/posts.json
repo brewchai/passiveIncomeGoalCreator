@@ -1,0 +1,86 @@
+{
+  "featured": [
+    {
+      "slug": "calculating-fire-number",
+      "title": "The Complete Guide to Calculating Your FIRE Number",
+      "description": "A practical walkthrough of the 4% rule and personalization",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/calculating-fire-number/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/calculating-fire-number"
+    },
+    {
+      "slug": "how-much-need-retire-forty-40",
+      "title": "How much do you need to retire at 40?",
+      "description": "A detailed breakdown of the math behind early retirement",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/how-much-need-retire-forty-40"
+    },
+    {
+      "slug": "what-is-LEAN-FIRE",
+      "title": "What is LEAN F.I.R.E?",
+      "description": "A detailed breakdown of the math behind LEAN FIRE",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/what-is-lean-fire/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-LEAN-FIRE"
+    }
+  ],
+  "recent": [],
+  "all": [
+    {
+      "slug": "calculating-fire-number",
+      "title": "The Complete Guide to Calculating Your FIRE Number",
+      "description": "A practical walkthrough of the 4% rule and personalization",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/calculating-fire-number/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/calculating-fire-number"
+    },
+    {
+      "slug": "how-much-need-retire-forty-40",
+      "title": "How much do you need to retire at 40?",
+      "description": "A detailed breakdown of the math behind early retirement",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/how-much-need-retire-forty-40"
+    },
+    {
+      "slug": "what-is-LEAN-FIRE",
+      "title": "What is LEAN F.I.R.E?",
+      "description": "A detailed breakdown of the math behind LEAN FIRE",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/what-is-lean-fire/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-LEAN-FIRE"
+    }
+  ],
+  "_generated_at": "2025-11-14T09:53:25.616240Z"
+}

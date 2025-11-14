@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/blog",
+            "destination": "/blog.html"
+        },
+        {
+            "source": "/blog/:slug",
+            "destination": "/blog/posts/:slug/index.html"
+        },
+        {
+            "source": "/((?!blog|blog\\.html|blog/posts/.*|.*\\.(css|js|png|jpg|jpeg|webp|ico|svg|gif)).*)",
+            "destination": "/index.html"
+        }
+    ]
+}

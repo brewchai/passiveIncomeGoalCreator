@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Complete Guide to Calculating Your FIRE Number | FIRE Planner</title>
+    <meta name="description" content="A practical walkthrough of the 4% rule and personalization">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/blog/calculating-fire-number">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Complete Guide to Calculating Your FIRE Number">
+    <meta property="og:description" content="A practical walkthrough of the 4% rule and personalization">
+    <meta property="og:url" content="/blog/calculating-fire-number">
+    <meta property="og:image" content="/blog/posts/calculating-fire-number/cover.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Complete Guide to Calculating Your FIRE Number">
+    <meta name="twitter:description" content="A practical walkthrough of the 4% rule and personalization">
+    <meta name="twitter:image" content="/blog/posts/calculating-fire-number/cover.jpg">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "The Complete Guide to Calculating Your FIRE Number", "description": "A practical walkthrough of the 4% rule and personalization", "image": ["/blog/posts/calculating-fire-number/cover.jpg"], "datePublished": "2025-01-15", "dateModified": "2025-01-15", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {}}, "mainEntityOfPage": "/blog/calculating-fire-number"}
+  </script>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        /* Modern post page design */
+        body {
+            background: #fafbfc;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .post-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-hero img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            margin-top: 1.5rem;
+        }
+
+        .post-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin: 0 0 0.75rem;
+            color: #0f172a;
+        }
+
+        .post-subtitle {
+            color: #475569;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .post-meta {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+
+        .post-content>*:first-child {
+            margin-top: 0;
+        }
+
+        .post-content p {
+            margin: 1.25rem 0;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .post-content li {
+            margin: 0.5rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .post-content strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .post-content em {
+            font-style: italic;
+            color: #334155;
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin: 2.5rem 0 1rem;
+            color: #0f172a;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.75rem;
+            color: #1e293b;
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: #334155;
+        }
+
+        .post-content hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 2.5rem 0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .post-content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.2s;
+        }
+
+        .post-content a:hover {
+            color: #5568d3;
+            border-bottom-color: #5568d3;
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            color: #475569;
+            font-style: italic;
+        }
+
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content code {
+            background: #f1f5f9;
+            color: #e11d48;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-content table {
+                font-size: 0.9rem;
+            }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">FIRE Planner</a>
+            <a href="/blog" class="nav-link">← All Articles</a>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="post-container">
+            <div class="post-hero">
+                <h1 class="post-title">The Complete Guide to Calculating Your FIRE Number</h1>
+                <p class="post-subtitle">A practical walkthrough of the 4% rule and personalization</p>
+                <div class="post-meta">📅 2025-01-15</div>
+                <img src="/blog/posts/calculating-fire-number/cover.jpg" alt="The Complete Guide to Calculating Your FIRE Number cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">
+            </div>
+
+            <article class="post-content">
+                <p>The <strong>FIRE number</strong> is the foundational goal of the <em>Financial Independence, Retire Early (FIRE)</em> movement. It represents the total amount of money you need to have invested in a diversified portfolio so that your investments generate enough income to cover your desired annual expenses — allowing you to retire and live financially independent without relying on a traditional job. </p>
+<p>Achieving this number signifies true financial freedom, offering the choice to work only if you want to be.</p>
+<hr />
+<h2 id="what-is-the-fire-number">What is the FIRE Number?</h2>
+<p>The FIRE number is typically calculated using the <strong>25x Rule</strong>, which is directly linked to the <strong>4% Rule</strong>. To find your number, you first estimate your desired annual expenses in retirement and then multiply that figure by 25.</p>
+<h3 id="formula">Formula:</h3>
+<p>FIRE Number = Annual Expenses × 25</p>
+<p><strong>Example:</strong></p>
+<p>If you estimate needing <strong>$48,000 per year</strong> to cover your living costs, your target investment portfolio (your FIRE number) would be:</p>
+<p>$48,000 × 25 = $1,200,000</p>
+<hr />
+<h2 id="explaining-the-4-rule-and-why-it-matters">Explaining the 4% Rule and Why It Matters</h2>
+<p>The <strong>4% Rule</strong> is the core principle that gives the <em>25× multiplier</em> its power. It suggests that if you withdraw no more than <strong>4% of your total investment portfolio’s value</strong> in the first year of retirement, and then adjust that dollar amount annually for inflation, your savings have a high probability (historically, over 95%) of lasting for 30 years or more.</p>
+<h3 id="why-it-matters">Why It Matters</h3>
+<ul>
+<li>
+<p><strong>Trinity Study Origin:</strong><br />
+  The 4% figure comes from the <em>Trinity Study</em>, a landmark piece of financial research that analyzed historical returns of investment portfolios (typically 60% stocks, 40% bonds) over various 30-year periods in the US market. The study found this withdrawal rate was consistently successful.</p>
+</li>
+<li>
+<p><strong>Safety and Sustainability:</strong><br />
+  It provides a necessary margin of safety against market volatility, particularly against <em>Sequence of Returns Risk</em> — the risk that poor market performance early in retirement depletes your portfolio before it has a chance to recover.</p>
+</li>
+<li>
+<p><strong>Clarity:</strong><br />
+  By setting a <em>safe withdrawal rate (SWR)</em>, the rule gives you a clear, measurable goal for your investment accumulation phase.</p>
+</li>
+</ul>
+<hr />
+<h2 id="personalizing-the-number">Personalizing the Number</h2>
+<p>The standard 4% Rule assumes a 30-year retirement and a moderate-risk portfolio. For those aiming to retire much earlier (e.g., in their 30s) or those facing unique expenses, personalization is crucial.</p>
+<h3 id="1-adjustments-for-your-risk-tolerance">1. Adjustments for Your Risk Tolerance</h3>
+<p>Your retirement time horizon significantly impacts your required multiplier:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Withdrawal Rate (SWR)</strong></th>
+<th><strong>Multiplier (FIRE Number)</strong></th>
+<th><strong>Rationale</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3.0%</strong></td>
+<td>33.3× Annual Expenses</td>
+<td><em>Very Conservative:</em> Recommended for very long retirements (50+ years) or extremely low risk tolerance.</td>
+</tr>
+<tr>
+<td><strong>3.5%</strong></td>
+<td>28.6× Annual Expenses</td>
+<td><em>Conservative:</em> Provides a higher margin of safety than 4%.</td>
+</tr>
+<tr>
+<td><strong>4.0%</strong></td>
+<td>25.0× Annual Expenses</td>
+<td><em>Standard:</em> The classic FIRE number (assumes ~30 years).</td>
+</tr>
+<tr>
+<td><strong>4.5%+</strong></td>
+<td>22.2× Annual Expenses</td>
+<td><em>Aggressive:</em> Higher risk of running out of money; often used only if the retiree plans to work part-time (<em>Barista FIRE</em>) or has flexible spending.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-adjustments-for-location-and-expected-returns">2. Adjustments for Location and Expected Returns</h3>
+<ul>
+<li>
+<p><strong>Location / Lifestyle:</strong><br />
+  Your estimated annual expenses should be realistic for your desired retirement location. If you plan to move to a lower cost of living (LCOL) area — a concept known as <em>Geo-arbitrage</em> — your annual expenses will drop, dramatically lowering your FIRE number.<br />
+  Ensure you accurately account for major non-negotiable costs, like healthcare premiums before Medicare eligibility.</p>
+</li>
+<li>
+<p><strong>Expected Returns &amp; Other Income:</strong><br />
+  If you anticipate receiving reliable guaranteed income (like a pension, social security, or passive real estate rental income), you can <strong>subtract that annual income</strong> from your desired annual expenses before applying the multiplier.<br />
+  This effectively lowers the total portfolio amount you need to save.</p>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>If you need <strong>$50,000/year</strong> but expect <strong>$10,000</strong> from a rental property, you only need to multiply:</p>
+<p>($50,000 - $10,000) × 25 = $1,000,000</p>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<p>Calculating your FIRE number is the first, most empowering step on your journey to financial independence. Now that you understand the 4% rule and the necessary adjustments, your focus should shift to execution.</p>
+<ul>
+<li>
+<p><strong>Refine Your Expense Budget:</strong><br />
+  Get a crystal-clear, detailed understanding of your current and future annual spending, especially incorporating costs like travel and early-retirement healthcare.</p>
+</li>
+<li>
+<p><strong>Model Your Scenario:</strong><br />
+  The best way to finalize your plan is by using an advanced simulator.  </p>
+</li>
+</ul>
+<p>Ready to see how fast you can get there?<br />
+Use a detailed, interactive online <strong>FIRE calculator</strong> that allows you to input custom withdrawal rates and model how your portfolio might perform across thousands of historical market simulations. This will help you manage risk and finalize your personal goal with confidence.</p>
+<hr />
+            </article>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 FIRE Planner. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,3 +1,17 @@
+// Supabase Configuration
+const SUPABASE_URL = 'https://vyzbczmrfxwkfjtwrlzc.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5emJjem1yZnh3a2ZqdHdybHpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMjQ4MzEsImV4cCI6MjA3NzYwMDgzMX0.w0rG3obToNSx_eBmxNuf7vemHoJa7ZrLdJjVDQjS2zM';
+
+// Initialize Supabase client with localStorage persistence
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: {
+        storage: window.localStorage,
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+    }
+});
+
 // Application State
 let appState = {
     currentStep: 0,
@@ -27,25 +41,246 @@ let appState = {
 
 // Gate to control progression from Step 6 (calculating)
 let canProceedFromStep6 = false;
+let isUserAuthenticated = false;
 let step3HouseListHTML = ''; // Temporary storage for house cards
 
-// Load state from localStorage on page load
-window.addEventListener('DOMContentLoaded', () => {
-    loadState();
-    updateProgressBar();
-    setupStep3Listeners();
+// Listen to auth state changes (MUST be registered before DOMContentLoaded)
+supabase.auth.onAuthStateChange(async (event, session) => {
+    // console.log('🔐 Auth event:', event);
+
+    // Treat both SIGNED_IN and INITIAL_SESSION as authenticated states
+    if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
+        // console.log('✅ User authenticated:', session.user.email);
+        isUserAuthenticated = true;
+
+        // Don't modify appState here - let DOMContentLoaded handle it after loadState
+        closeSignupModal();
+
+        // Alert only once per fresh auth
+        if (!localStorage.getItem('supabase_session_handled')) {
+            localStorage.setItem('supabase_session_handled', 'true');
+        }
+    }
+
+    if (event === 'SIGNED_OUT') {
+        // console.log('👋 User signed out');
+        localStorage.removeItem('supabase_session_handled');
+    }
+
+    // if (event === 'TOKEN_REFRESHED') {
+    //     console.log('🔄 Session refreshed');
+    // }
 });
 
-// Save state to localStorage
-function saveState() {
+// Load state from localStorage on page load
+window.addEventListener('DOMContentLoaded', async () => {
+    const appBody = document.body;
+    const appLoader = document.getElementById('app-loader');
+    try {
+        // Simple client-side router
+        if (window.location.pathname === '/blog') {
+            window.location.href = '/blog.html';
+            return; // Stop further execution for the blog page
+        }
+
+        const appContainer = document.querySelector('.container');
+        // console.log('🚀 App starting...');
+
+        // Manually handle OAuth callback
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = hashParams.get('access_token');
+        const refreshToken = hashParams.get('refresh_token');
+
+        if (accessToken && refreshToken) {
+            // console.log('🔐 OAuth callback detected, manually setting session...');
+
+            // Manually set the session with tokens from URL
+            const { data, error } = await supabase.auth.setSession({
+                access_token: accessToken,
+                refresh_token: refreshToken
+            });
+
+            if (error) {
+                console.error('❌ Error setting session:', error);
+            } else {
+                // console.log('✅ Session set successfully:', data.session.user.email);
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+                // Wait for auth listener to process the session
+                // await new Promise(resolve => setTimeout(resolve, 200));
+                // console.log('✅ Session established, continuing app load...');
+            }
+        }
+
+        await loadState();
+        // console.log('✅ State loaded');
+
+        // If a valid session exists at load, always land on dashboard
+        const { data: { session: domSession } } = await supabase.auth.getSession();
+        if (domSession) {
+            // console.log('🔍 DEBUG: appState before Supabase check:', JSON.stringify(appState));
+
+            const { data: existingData } = await supabase
+                .from('user_data')
+                .select('app_state')
+                .eq('user_id', domSession.user.id)
+                .single();
+
+            // Check if user has meaningful data in Supabase
+            const hasDataInSupabase = existingData && existingData.app_state && (
+                (existingData.app_state.expenses && existingData.app_state.expenses.length > 0) ||
+                (existingData.app_state.portfolio && existingData.app_state.portfolio.length > 0) ||
+                (existingData.app_state.houses && existingData.app_state.houses.length > 0) ||
+                (existingData.app_state.retirementAccounts && existingData.app_state.retirementAccounts.length > 0) ||
+                (existingData.app_state.savingsAccounts && existingData.app_state.savingsAccounts.length > 0)
+            );
+
+            // Check if user has meaningful data in localStorage (appState loaded earlier)
+            const hasDataInLocalStorage = (
+                (appState.expenses && appState.expenses.length > 0) ||
+                (appState.portfolio && appState.portfolio.length > 0) ||
+                (appState.houses && appState.houses.length > 0) ||
+                (appState.retirementAccounts && appState.retirementAccounts.length > 0) ||
+                (appState.savingsAccounts && appState.savingsAccounts.length > 0)
+            );
+
+            // If no data in either location, reject
+            if (!hasDataInSupabase && !hasDataInLocalStorage) {
+                // console.log('⚠️ First-time user with no data - signing out and redirecting to builder');
+                await supabase.auth.signOut();
+                appState.currentStep = 0;
+                showStep(0);
+                alert('Please complete the builder first to create your financial profile, then sign in to save your data.');
+                return;
+            }
+
+            // If user has data in localStorage but not Supabase, save it now (first-time sign in)
+            if (hasDataInLocalStorage && !hasDataInSupabase) {
+                // console.log('💾 First sign-in with local data - saving to Supabase');
+                await saveState();
+            }
+
+            // User has data, proceed to dashboard
+            if (appState.currentStep !== 8) {
+                appState.currentStep = 8;
+            }
+
+            // console.log('✅ User has existing data, rendering dashboard');
+            showStep(8);
+            renderDashboard(true); // Pass true to indicate user is authenticated
+            // console.log('🧭 Dashboard rendered for authenticated user');
+            return;
+        }
+
+        // Restore saved step for non-authenticated users
+        if (appState.currentStep && appState.currentStep > 0) {
+            // console.log(`🔄 Restoring saved step: ${appState.currentStep}`);
+            showStep(appState.currentStep);
+
+            // Render dashboard if saved step was dashboard
+            if (appState.currentStep === 8) {
+                renderDashboard();
+            }
+        }
+
+        updateProgressBar();
+        setupStep3Listeners();
+
+        // console.log('✅ App initialized');
+        appLoader.style.display = 'none';
+        appContainer.style.visibility = 'visible';
+    } catch (error) {
+        console.error('❌ Error during app initialization:', error);
+    } finally {
+        // THIS BLOCK ALWAYS RUNS
+        // console.log('🎬 Finalizing app load...');
+        appLoader.style.display = 'none';
+        appBody.classList.remove('app-loading');
+    }
+});
+
+
+// Save state to Supabase (with localStorage fallback)
+async function saveState() {
+    // Always save to localStorage as backup
     localStorage.setItem('passiveIncomeGoalTracker', JSON.stringify(appState));
+
+    // Save to Supabase if user is logged in
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+        try {
+            const { error } = await supabase
+                .from('user_data')
+                .upsert({
+                    user_id: session.user.id,
+                    app_state: appState,
+                    updated_at: new Date().toISOString()
+                }, {
+                    onConflict: 'user_id'
+                });
+
+            if (error) {
+                console.error('Error saving to Supabase:', error);
+            }
+        } catch (err) {
+            console.error('Supabase save failed:', err);
+        }
+    }
 }
 
-// Load state from localStorage
-function loadState() {
-    const saved = localStorage.getItem('passiveIncomeGoalTracker');
-    if (saved) {
-        appState = JSON.parse(saved);
+// Load state from Supabase (with localStorage fallback)
+async function loadState() {
+    // Check if user is logged in
+    const { data: { session } } = await supabase.auth.getSession();
+
+    let loadedFromSupabase = false;
+
+    if (session) {
+        // User is logged in - ALWAYS try Supabase first
+        try {
+            const { data, error } = await supabase
+                .from('user_data')
+                .select('app_state')
+                .eq('user_id', session.user.id)
+                .single();
+
+            if (data && data.app_state) {
+                appState = data.app_state;
+                loadedFromSupabase = true;
+                // console.log('✅ Loaded from Supabase:', data.app_state);
+            } else if (error) {
+                console.log('⚠️ Supabase query error:', error.code, error.message);
+            }
+        } catch (err) {
+            console.error('❌ Supabase load exception:', err);
+        }
+
+        // If Supabase didn't work, ALWAYS fall back to localStorage
+        if (!loadedFromSupabase) {
+            // console.log('🆕 Falling back to localStorage');
+            const saved = localStorage.getItem('passiveIncomeGoalTracker');
+            if (saved) {
+                try {
+                    appState = JSON.parse(saved);
+                    console.log('📦 Loaded from localStorage:', appState);
+                } catch (e) {
+                    console.error('❌ Failed to parse localStorage:', e);
+                }
+            } else {
+                console.log('⚠️ No localStorage data found');
+            }
+        }
+    } else {
+        // No session - use localStorage
+        const saved = localStorage.getItem('passiveIncomeGoalTracker');
+        if (saved) {
+            appState = JSON.parse(saved);
+            // console.log('📦 Loaded from localStorage (no session)');
+        }
+    }
+
+    // Restore UI if data exists
+    if (appState && appState.currentStep) {
 
         // Initialize new fields for backward compatibility
         if (!appState.retirementAccounts) {
@@ -91,7 +326,7 @@ function loadState() {
             if (annualIncome && appState.annualIncome) annualIncome.value = appState.annualIncome;
         }
 
-        if (appState.currentStep === 9) {
+        if (appState.currentStep === 8) {
             renderDashboard();
         }
     }
@@ -218,8 +453,18 @@ function prevStep() {
 }
 
 function showStep(stepNumber) {
+    // Hard hide all steps to prevent any overlay (including landing page)
+    const allSteps = document.querySelectorAll('.step');
+    allSteps.forEach(el => {
+        el.classList.remove('active');
+        el.style.display = 'none';
+    });
+
     const stepEl = document.getElementById(`step${stepNumber}`);
-    stepEl.classList.add('active');
+    if (stepEl) {
+        stepEl.style.display = 'block';
+        stepEl.classList.add('active');
+    }
 
     // Restore Step 3 house list if returning to it
     if (stepNumber === 3 && step3HouseListHTML) {
@@ -761,7 +1006,7 @@ function updateCongratsScreen() {
 }
 
 // Dashboard Functions
-function renderDashboard() {
+function renderDashboard(isAuthenticated = false) {
     // Hide progress indicator on dashboard
     document.getElementById('progressIndicator').style.display = 'none';
 
@@ -805,27 +1050,32 @@ function renderDashboard() {
 
     renderAllGoalsCompact();
 
-    // Show signup modal if user hasn't signed up yet
-    showSignupModal();
+    // Show signup modal if user hasn't signed up yet (only for non-authenticated users)
+    if (!isAuthenticated) {
+        showSignupModal();
+    }
 }
 
 function renderNextGoalCompact(goal) {
     const progress = Math.min((appState.totalPassiveIncome / goal.amount) * 100, 100);
+    const achievedClass = goal.achieved ? 'achieved' : '';
+    const statusIcon = goal.achieved ? '✓' : '○';
 
-    // Use the stored portfolio values from calculateGoals
-    const portfolioValueNeeded = goal.portfolioValueNeeded || 0;
-    const additionalInvestmentNeeded = goal.additionalInvestmentNeeded || 0;
-
-    // Calculate total portfolio including retirement and house values
-    const totalHouseValue = (appState.houses && appState.houses.length > 0)
-        ? appState.houses.reduce((sum, house) => sum + house.value, 0)
-        : 0;
-    const totalRetirementValue = getTotalRetirementValue();
-    const totalCurrentPortfolio = appState.portfolioValue + totalRetirementValue + totalHouseValue;
+    // Use stored portfolio values from calculateGoals
+    let investmentInfo = '';
+    // Hide additional investment needed
+    // if (!goal.achieved && goal.portfolioValueNeeded > 0) {
+    //     investmentInfo = `
+    //         <div class="goal-investment-compact">
+    //             <div class="investment-label">Additional Investment:</div>
+    //             <div class="investment-value highlight">+$${goal.additionalInvestmentNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
+    //         </div>
+    //     `;
+    // }
 
     document.getElementById('nextGoalTitleCompact').textContent = goal.name;
     document.getElementById('nextGoalTargetCompact').textContent = `$${goal.amount.toFixed(2)}/mo`;
-    document.getElementById('nextGoalCurrentPortfolio').textContent = `$${totalCurrentPortfolio.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('nextGoalCurrentPortfolio').textContent = `$${(appState.portfolioValue + getTotalRetirementValue()).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
     // document.getElementById('nextGoalPortfolioNeeded').textContent = `$${portfolioValueNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
     // Hide additional investment needed completely
     const additionalInvestmentElement = document.getElementById('nextGoalAdditionalInvestment');
@@ -1492,7 +1742,7 @@ function refreshExpenseTip() {
 function openChatWithContext(type) {
     // Open the chat modal/interface
     // This will be implemented when you have a chat interface
-    console.log(`Opening chat for ${type} optimization`);
+    // console.log(`Opening chat for ${type} optimization`);
     alert(`Chat feature coming soon! This will help you optimize your ${type}.`);
 }
 
@@ -1713,9 +1963,9 @@ function renderIncomeBreakdownChart() {
         data.push(rentalIncome);
         colors.push('#10b981'); // Green
     }
-    if (otherIncome > 0) {
-        labels.push('Other');
-        data.push(otherIncome);
+    if (savingsIncome > 0) {
+        labels.push('Savings Interest');
+        data.push(savingsIncome);
         colors.push('#f59e0b'); // Orange
     }
 
@@ -2020,7 +2270,7 @@ function submitWaitlist() {
     appState.userEmail = email;
     saveState();
 
-    console.log('Waitlist email submitted:', email);
+    // console.log('Waitlist email submitted:', email);
 
     // Send to backend waitlist endpoint (server will persist and forward to Zapier)
     fetch(API_BASE_URL + '/waitlist', {
@@ -3110,79 +3360,56 @@ function showFIOptimization() {
 }
 
 // Signup Modal Functions
-function showSignupModal() {
-    console.log('🔔 showSignupModal called');
-    console.log('📧 appState.userEmail:', appState.userEmail);
-    console.log('📧 typeof appState.userEmail:', typeof appState.userEmail);
+async function showSignupModal() {
+    // console.log('🔔 showSignupModal called');
 
-    // Only show if user hasn't signed up yet (no email stored)
-    // if (!appState.userEmail) {
-    console.log('✅ No email found, will show modal in 1 second...');
-    setTimeout(() => {
-        const modal = document.getElementById('signupModal');
-        console.log('📦 Modal element:', modal);
-        if (modal) {
-            console.log('✅ Setting modal display to flex');
-            modal.style.display = 'flex';
-            console.log('✅ Modal display is now:', modal.style.display);
-        } else {
-            console.error('❌ Modal element #signupModal not found in DOM!');
+    // Delay and check session inside setTimeout to avoid race conditions
+    setTimeout(async () => {
+        // Fresh session check right before showing modal
+        const { data: { session } } = await supabase.auth.getSession();
+        // console.log('📧 Session check before modal:', session ? session.user.email : 'No session');
+
+        // Only show if user is NOT logged in
+        if (!session) {
+            const modal = document.getElementById('signupModal');
+            // console.log('📦 Modal element:', modal);
+            if (modal) {
+                // console.log('✅ Setting modal display to flex');
+                modal.style.display = 'flex';
+                // console.log('✅ Modal display is now:', modal.style.display);
+            } else {
+                console.error('❌ Modal element #signupModal not found in DOM!');
+            }
         }
     }, 1000);
-    // } else {
-    //     console.log('⏭️ User already has email, skipping modal. Email:', appState.userEmail);
-    // }
 }
 
 function closeSignupModal() {
     document.getElementById('signupModal').style.display = 'none';
 }
 
-function submitSignupModal() {
-    const emailInput = document.getElementById('signupModalEmail');
-    const email = emailInput.value.trim();
-
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-    }
-
-    // Store email in appState
-    appState.userEmail = email;
-    saveState();
-
-    console.log('Signup email submitted:', email);
-
-    // Send to backend waitlist endpoint
-    fetch(API_BASE_URL + '/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email,
-            meta: {
-                source: 'signupModal',
-                dashboardAccess: true
+async function submitSignupModal() {
+    try {
+        // Sign in with Google OAuth
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: `${window.location.origin}/`
             }
-        })
-    }).catch(err => console.log('Signup submission error:', err));
+        });
 
-    // Show success message
-    const modal = document.getElementById('signupModal');
-    const modalBody = modal.querySelector('.modal-body');
-    if (modalBody) {
-        modalBody.innerHTML = `
-            <div style="text-align: center; padding: 40px 20px;">
-                <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
-                <h3 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 600; color: #10b981;">You're all set!</h3>
-                <p style="color: #6b7280; margin: 0;">Your dashboard has been saved. We'll send you updates at ${email}</p>
-            </div>
-        `;
+        if (error) {
+            console.error('OAuth error:', error);
+            alert('Sign in failed. Please try again.');
+            return;
+        }
+
+        // OAuth redirect will happen automatically
+        // After redirect, the auth state change listener will handle saving data
+        // console.log('🚀 Redirecting to Google OAuth...');
+
+    } catch (err) {
+        console.error('Signup error:', err);
+        alert('An error occurred. Please try again.');
     }
-
-    // Close modal after 2 seconds
-    setTimeout(() => {
-        closeSignupModal();
-    }, 2000);
 }
