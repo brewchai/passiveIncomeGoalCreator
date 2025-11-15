@@ -3391,10 +3391,15 @@ function closeSignupModal() {
 async function submitSignupModal() {
     try {
         // Sign in with Google OAuth
+        // Always redirect to production URL after OAuth
+        const redirectUrl = window.location.hostname === 'localhost'
+            ? 'http://localhost:3000/'
+            : 'https://butfirstfire.com/';
+
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/`
+                redirectTo: redirectUrl
             }
         });
 
