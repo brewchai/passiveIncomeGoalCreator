@@ -14,6 +14,19 @@
       "url": "/blog/calculating-fire-number"
     },
     {
+      "slug": "four-different-types-of-fire",
+      "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "description": "A detailed breaddown of different flavors of FIRE",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/four-different-types-of-fire"
+    },
+    {
       "slug": "how-much-need-retire-forty-40",
       "title": "How much do you need to retire at 40?",
       "description": "A detailed breakdown of the math behind early retirement",
@@ -56,6 +69,19 @@
       "url": "/blog/calculating-fire-number"
     },
     {
+      "slug": "four-different-types-of-fire",
+      "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "description": "A detailed breaddown of different flavors of FIRE",
+      "date": "2025-01-15",
+      "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/four-different-types-of-fire"
+    },
+    {
       "slug": "how-much-need-retire-forty-40",
       "title": "How much do you need to retire at 40?",
       "description": "A detailed breakdown of the math behind early retirement",
@@ -82,5 +108,5 @@
       "url": "/blog/what-is-LEAN-FIRE"
     }
   ],
-  "_generated_at": "2025-11-15T07:04:55.684796Z"
+  "_generated_at": "2025-11-15T12:54:24.558896Z"
 }
