@@ -9,7 +9,7 @@
             "destination": "/blog/posts/:slug/index.html"
         },
         {
-            "source": "/((?!blog|blog.html|blog/posts/.*|.+\\.(css|js|png|jpg|jpeg|webp|ico|svg|gif|json)).*)",
+            "source": "/(.*)",
             "destination": "/index.html"
         }
     ]
