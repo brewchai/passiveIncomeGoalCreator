@@ -15,7 +15,12 @@ import httpx
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend requests
+# Enable CORS for frontend requests from production and local dev
+CORS(app, origins=[
+    'https://butfirstfire.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+], supports_credentials=True)
 
 # Simple email validator
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
