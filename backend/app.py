@@ -16,11 +16,19 @@ load_dotenv()
 
 app = Flask(__name__)
 # Enable CORS for frontend requests from production and local dev
-CORS(app, origins=[
-    'https://butfirstfire.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-], supports_credentials=True)
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            "https://butfirstfire.com",
+            "https://www.butfirstfire.com",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000"
+        ],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"],
+        "supports_credentials": True
+    }
+})
 
 # Simple email validator
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
