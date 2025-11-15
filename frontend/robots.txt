@@ -1,0 +1,16 @@
+# robots.txt for butfirstfire.com
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Specifically allow blog content
+Allow: /blog/
+Allow: /blog/posts/
+
+# Disallow any admin or private areas (if you add them later)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location (create this later for better SEO)
+Sitemap: https://butfirstfire.com/sitemap.xml
