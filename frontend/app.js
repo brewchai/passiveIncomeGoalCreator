@@ -1599,14 +1599,14 @@ async function fetchIncomeTip({ isRefresh = false } = {}) {
 Give ONE creative financial tip using these EXACT numbers. Vary your approach each time.
 
 GOOD examples:
-"You could **negotiate a 5% raise** to add $${(incomeData.jobIncome * 0.05 * 12).toFixed(0)}/yr to income."
+"You could consider **negotiating a 5% raise** to add $${(incomeData.jobIncome * 0.05 * 12).toFixed(0)}/yr to income."
 "Consider **moving $10K to 4.5% HYSA** for $450/yr extra interest."
 "Try **automating $200/mo to investments** to build wealth faster."
 
 BAD (too generic):
 "Diversify income" "Invest more" "Save money"
 
-RULES: Max 18 words. MUST start with "Consider", "Try", "You could", or "You might". Use **bold** for action. Include specific $ amounts. Be creative and VARY your suggestions. Seed: ${randomSeed}`
+RULES: Max 18 words. MUST start with "Consider", "Try", or "You could consider". Use **bold** for action. Include specific $ amounts. Be creative and VARY your suggestions. Seed: ${randomSeed}`
             })
         });
 
@@ -1687,13 +1687,13 @@ Give ONE creative money-saving tip using these EXACT numbers. Vary your approach
 
 GOOD examples:
 "Consider **negotiating your $${largestExpense.amount} ${largestExpense.name}** to save $${(largestExpense.amount * 0.15).toFixed(0)}/mo."
-"You could **automate $${(totalExpenses * 0.1).toFixed(0)}/mo to savings** before spending."
+"You could consider **automating $${(totalExpenses * 0.1).toFixed(0)}/mo to savings** before spending."
 "Try **auditing subscriptions quarterly** to find $100-200/yr in waste."
 
 BAD (too vague):
 "Reduce expenses" "Cut back" "Be more frugal"
 
-RULES: Max 18 words. MUST start with "Consider", "Try", "You could", or "You might". Use **bold** for action. Calculate specific $ savings. Be creative and VARY suggestions. Seed: ${randomSeed}`
+RULES: Max 18 words. MUST start with "Consider", "Try", or "You could consider". Use **bold** for action. Calculate specific $ savings. Be creative and VARY suggestions. Seed: ${randomSeed}`
             })
         });
 
