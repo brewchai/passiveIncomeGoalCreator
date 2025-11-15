@@ -42,6 +42,8 @@ The **4% Rule** is the core principle that gives the *25× multiplier* its power
 
 The standard 4% Rule assumes a 30-year retirement and a moderate-risk portfolio. For those aiming to retire much earlier (e.g., in their 30s) or those facing unique expenses, personalization is crucial.
 
+Different FIRE strategies require different target numbers. Whether you're pursuing [LeanFIRE, FatFIRE, CoastFIRE or BaristaFIRE](/blog/four-different-types-of-fire), your withdrawal rate and portfolio size will vary significantly based on your lifestyle goals.
+
 ### 1. Adjustments for Your Risk Tolerance
 
 Your retirement time horizon significantly impacts your required multiplier:

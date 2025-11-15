@@ -29,6 +29,8 @@ Whether you're dreaming of early retirement on a beach or just want the freedom 
 * Spend $25,000/year → Target: $625,000
 * Spend $20,000/year → Target: $500,000
 
+These numbers are calculated using the 25x rule. Want to understand how to calculate your own FIRE number? Check out our [complete guide to calculating your FIRE number](/blog/calculating-fire-number).
+
 ### Common LeanFIRE Locations
 
 * Southeast Asia (Vietnam, Thailand, Bali)

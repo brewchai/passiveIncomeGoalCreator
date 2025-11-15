@@ -26,6 +26,18 @@ Typical Lean FIRE annual expenses range between $18,000 and $36,000. This path i
 * Earn moderate incomes.
 * Value early freedom over extreme wealth accumulation.
 
+## Is LeanFIRE Right for You?
+
+LeanFIRE is ideal if you:
+
+* Value freedom and time over material possessions
+* Are comfortable with a minimalist lifestyle
+* Can adapt to living in lower-cost areas
+* Have low or flexible healthcare needs
+* Are willing to be resourceful and DIY-oriented
+
+LeanFIRE is just one approach to financial independence. If you're curious about other strategies like FatFIRE, BaristaFIRE, or CoastFIRE, explore our [complete guide to different types of FIRE](/blog/four-different-types-of-fire).
+
 ---
 
 ## Core Math: The 4% Rule, Simplified

@@ -44,6 +44,8 @@ That means your FIRE number is:
 
 FIRE Number = Annual Expenses × 30.8
 
+Want to understand the math behind these multipliers and how to personalize them? Check out our [complete guide to calculating your FIRE number](/blog/calculating-fire-number).
+
 ---
 
 ## 2. Step 1 — Estimate Your Annual Expenses at Age 40
