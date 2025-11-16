@@ -1,8 +1,23 @@
 {
   "featured": [
     {
+      "slug": "what-is-barista-FIRE",
+      "title": "What is Barista F.I.R.E?",
+      "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
+      "description": "A detailed breakdown of the math behind Barista FIRE",
+      "date": "2025-11-16",
+      "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-barista-FIRE"
+    },
+    {
       "slug": "what-is-LEAN-FIRE",
       "title": "What is LEAN F.I.R.E?",
+      "subtitle": "The Complete Lean FIRE Blueprint: How to Retire Early on a Modest Income",
       "description": "A detailed breakdown of the math behind LEAN FIRE",
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
@@ -16,6 +31,7 @@
     {
       "slug": "how-much-need-retire-forty-40",
       "title": "How much do you need to retire at 40?",
+      "subtitle": "A detailed breakdown of the math behind early retirement",
       "description": "A detailed breakdown of the math behind early retirement",
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
@@ -29,6 +45,7 @@
     {
       "slug": "four-different-types-of-fire",
       "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "subtitle": "And which is the right one for you?",
       "description": "A detailed breaddown of different flavors of FIRE",
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
@@ -42,6 +59,7 @@
     {
       "slug": "calculating-fire-number",
       "title": "The Complete Guide to Calculating Your FIRE Number",
+      "subtitle": "A practical walkthrough of the 4% rule and personalization",
       "description": "A practical walkthrough of the 4% rule and personalization",
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
@@ -56,8 +74,23 @@
   "recent": [],
   "all": [
     {
+      "slug": "what-is-barista-FIRE",
+      "title": "What is Barista F.I.R.E?",
+      "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
+      "description": "A detailed breakdown of the math behind Barista FIRE",
+      "date": "2025-11-16",
+      "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-barista-FIRE"
+    },
+    {
       "slug": "what-is-LEAN-FIRE",
       "title": "What is LEAN F.I.R.E?",
+      "subtitle": "The Complete Lean FIRE Blueprint: How to Retire Early on a Modest Income",
       "description": "A detailed breakdown of the math behind LEAN FIRE",
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
@@ -71,6 +104,7 @@
     {
       "slug": "how-much-need-retire-forty-40",
       "title": "How much do you need to retire at 40?",
+      "subtitle": "A detailed breakdown of the math behind early retirement",
       "description": "A detailed breakdown of the math behind early retirement",
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
@@ -84,6 +118,7 @@
     {
       "slug": "four-different-types-of-fire",
       "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "subtitle": "And which is the right one for you?",
       "description": "A detailed breaddown of different flavors of FIRE",
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
@@ -97,6 +132,7 @@
     {
       "slug": "calculating-fire-number",
       "title": "The Complete Guide to Calculating Your FIRE Number",
+      "subtitle": "A practical walkthrough of the 4% rule and personalization",
       "description": "A practical walkthrough of the 4% rule and personalization",
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
@@ -108,5 +144,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2025-11-15T14:07:03.804788Z"
+  "_generated_at": "2025-11-16T04:06:53.816316Z"
 }

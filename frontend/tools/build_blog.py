@@ -121,6 +121,7 @@ def build_one_post(slug: str, template: str) -> dict:
     return {
         "slug": slug,
         "title": meta["title"],
+        "subtitle": meta.get("subtitle", ""),
         "description": meta.get("description", ""),
         "date": iso_date(meta["date"]),
         "cover": meta.get("cover", ""),
