@@ -2688,12 +2688,19 @@ h4 {
 }
 
 .optimization-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-size: 1.1rem;
     margin: 0 0 0.75rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.optimization-card .numbers-toggle {
+    margin: 0;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
 }
 
 .optimization-content {
@@ -2738,21 +2745,59 @@ h4 {
 }
 
 .btn-tip-refresh {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    border-radius: 6px;
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    background: rgba(59, 130, 246, 0.08);
-    color: #2563eb;
+    /* Icon-only pill with two icons */
+    padding: 0.55rem 0.9rem;
+    font-size: 1.1rem;
+    /* slightly larger to read both icons */
+    line-height: 1;
+    width: 64px;
+    /* wider button */
+    height: 48px;
+    /* keep circular feel */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    /* space between ✨ and ↻ */
+    border-radius: 9999px;
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #22d3ee 100%);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
     cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Shimmer sweep */
+.btn-tip-refresh::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.45) 50%, transparent 80%);
+    transform: translateX(-120%);
+    animation: shimmer 2.2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+
 .btn-tip-refresh:hover {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.5);
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 22px rgba(99, 102, 241, 0.32);
+}
+
+.btn-tip-refresh:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .ai-tip-title {

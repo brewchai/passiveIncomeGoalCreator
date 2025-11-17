@@ -1570,9 +1570,13 @@ function setTipButtonState(type, isLoading) {
     const buttonId = type === 'income' ? 'refreshIncomeTipBtn' : 'refreshExpenseTipBtn';
     const button = document.getElementById(buttonId);
     if (!button) return;
+    // Only disable/enable. Do not modify content or classes.
     button.disabled = isLoading;
-    button.textContent = isLoading ? 'Refreshing…' : '↻ Refresh Tip';
+    // Accessibility hints
+    button.setAttribute('aria-busy', String(isLoading));
+    button.title = isLoading ? 'Refreshing…' : 'Refresh tip';
 }
+
 
 // Fetch AI tip for income optimization
 async function fetchIncomeTip({ isRefresh = false } = {}) {
@@ -2301,7 +2305,7 @@ function submitWaitlist() {
 
 // Typewriter effect for welcome message
 function typeWelcomeMessage() {
-    const welcomeText = "Hi! I'm your AI assistant. Ask me anything about passive income and financial goals.";
+    const welcomeText = "Hi! I'm your AI assistant. Ask me anything about the F.I.R.E movement and how to achieve your goals.";
     const welcomeElement = document.getElementById('welcomeMessage');
 
     if (!welcomeElement) return;
@@ -3296,14 +3300,14 @@ function openFireModal() {
     const progress = fireNumber > 0 ? Math.min(100, (liquidAssets / fireNumber) * 100) : 0;
 
     // Populate modal with calculated values
-    document.getElementById('fireModalExpenses').textContent = `$${totalMonthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalAnnualExpenses').textContent = `$${annualExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalFireNumber').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalFireNumberText').textContent = `$${fireNumber.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalAnnualWithdrawal').textContent = `$${annualExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalCurrentNetWorth').textContent = `$${currentNetWorth.toLocaleString(undefined, { maximumFractionDigits: 0 })} (includes house & retirement)`;
-    document.getElementById('fireModalGrowingAssets').textContent = `$${liquidAssets.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    document.getElementById('fireModalStillNeed').textContent = `$${stillNeed.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    document.getElementById('fireModalExpenses').textContent = formatCurrency(totalMonthlyExpenses);
+    document.getElementById('fireModalAnnualExpenses').textContent = formatCurrency(annualExpenses);
+    document.getElementById('fireModalFireNumber').textContent = formatCurrency(fireNumber);
+    document.getElementById('fireModalFireNumberText').textContent = formatCurrency(fireNumber);
+    document.getElementById('fireModalAnnualWithdrawal').textContent = formatCurrency(annualExpenses);
+    document.getElementById('fireModalCurrentNetWorth').textContent = formatCurrency(currentNetWorth) + ' (house & retirement)';
+    document.getElementById('fireModalGrowingAssets').textContent = formatCurrency(liquidAssets);
+    document.getElementById('fireModalStillNeed').textContent = formatCurrency(stillNeed);
     document.getElementById('fireModalProgress').textContent = `${progress.toFixed(1)}%`;
 
     // Show modal

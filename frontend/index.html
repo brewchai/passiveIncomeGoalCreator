@@ -582,8 +582,10 @@
             <div class="dashboard">
                 <!-- Top Section: Income & Expense Summary -->
                 <div class="dashboard-summary">
+                    <div class="dashboard-header">
+                        <h1 class="dashboard-title">Your Financial Dashboard</h1>
+                    </div>
                     <div class="summary-section">
-                        <h2 class="dashboard-title">Your Financial Independence Dashboard</h2>
                         <div class="summary-grid">
                             <div class="summary-item clickable" onclick="openIncomeModal()">
                                 <span class="summary-label">Total Monthly Income</span>
@@ -665,9 +667,10 @@
                                     <p class="ai-tip-text" id="incomeTipText">Loading tip...</p>
                                 </div>
                                 <div class="ai-tip-actions">
-                                    <button class="btn-tip-refresh" id="refreshIncomeTipBtn"
-                                        onclick="refreshIncomeTip()">↻ Refresh Tip</button>
-                                    <button class="btn-chat-ai" onclick="openChatWithContext('income')">Ask AI</button>
+                                    <button class="btn-tip-refresh" id="refreshIncomeTipBtn" aria-label="Refresh tip"
+                                        title="Refresh tip" onclick="refreshIncomeTip()">
+                                        <span class="icon-sparkle" aria-hidden="true">✨</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -683,9 +686,10 @@
                                     <p class="ai-tip-text" id="expenseTipText">Loading tip...</p>
                                 </div>
                                 <div class="ai-tip-actions">
-                                    <button class="btn-tip-refresh" id="refreshExpenseTipBtn"
-                                        onclick="refreshExpenseTip()">↻ Refresh Tip</button>
-                                    <button class="btn-chat-ai" onclick="openChatWithContext('expense')">Ask AI</button>
+                                    <button class="btn-tip-refresh" id="refreshExpenseTipBtn" aria-label="Refresh tip"
+                                        title="Refresh tip" onclick="refreshExpenseTip()">
+                                        <span class="icon-sparkle" aria-hidden="true">✨</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
