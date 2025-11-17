@@ -1,6 +1,20 @@
 {
   "featured": [
     {
+      "slug": "what-is-Coast-FIRE",
+      "title": "What is Coast F.I.R.E?",
+      "subtitle": "The Complete Coast FIRE Blueprint: How to Stop worrying about retirement and live for today",
+      "description": "A detailed breakdown of the math behind Coast FIRE",
+      "date": "2025-11-17",
+      "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-Coast-FIRE"
+    },
+    {
       "slug": "what-is-barista-FIRE",
       "title": "What is Barista F.I.R.E?",
       "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
@@ -74,6 +88,20 @@
   "recent": [],
   "all": [
     {
+      "slug": "what-is-Coast-FIRE",
+      "title": "What is Coast F.I.R.E?",
+      "subtitle": "The Complete Coast FIRE Blueprint: How to Stop worrying about retirement and live for today",
+      "description": "A detailed breakdown of the math behind Coast FIRE",
+      "date": "2025-11-17",
+      "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "url": "/blog/what-is-Coast-FIRE"
+    },
+    {
       "slug": "what-is-barista-FIRE",
       "title": "What is Barista F.I.R.E?",
       "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
@@ -144,5 +172,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2025-11-16T04:06:53.816316Z"
+  "_generated_at": "2025-11-17T03:19:06.127943Z"
 }
