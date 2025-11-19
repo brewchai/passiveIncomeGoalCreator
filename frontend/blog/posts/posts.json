@@ -85,8 +85,37 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "recent": [],
+  "recent": [
+    {
+      "slug": "How-to-save-500-per-month",
+      "title": "Here's how you can save upto $500 each month",
+      "subtitle": "And retire years earlier than you thought you could",
+      "description": "Psychological tips and tricks that can help you save more money than you can think of",
+      "date": "2025-11-18",
+      "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": false,
+      "url": "/blog/How-to-save-500-per-month"
+    }
+  ],
   "all": [
+    {
+      "slug": "How-to-save-500-per-month",
+      "title": "Here's how you can save upto $500 each month",
+      "subtitle": "And retire years earlier than you thought you could",
+      "description": "Psychological tips and tricks that can help you save more money than you can think of",
+      "date": "2025-11-18",
+      "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": false,
+      "url": "/blog/How-to-save-500-per-month"
+    },
     {
       "slug": "what-is-Coast-FIRE",
       "title": "What is Coast F.I.R.E?",
@@ -172,5 +201,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2025-11-17T03:19:06.127943Z"
+  "_generated_at": "2025-11-19T07:27:02.544200Z"
 }
