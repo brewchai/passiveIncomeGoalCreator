@@ -1718,6 +1718,27 @@ h4 {
     background: var(--secondary-color);
 }
 
+/* Footer */
+.blog-footer {
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    color: var(--text-secondary);
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+}
+
 /* Goal Investment Needed */
 .goal-investment-needed {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
