@@ -4,38 +4,96 @@
   <!-- Main Pages -->
   <url>
     <loc>https://butfirstfire.com/</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
+    <loc>https://butfirstfire.com/about</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/privacy</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/terms</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/contact</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://butfirstfire.com/blog</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <!-- Blog Posts -->
   <url>
-    <loc>https://butfirstfire.com/blog/calculating-fire-number</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://butfirstfire.com/blog/How-to-save-500-per-month</loc>
+    <lastmod>2025-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://butfirstfire.com/blog/how-much-need-retire-forty-40</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://butfirstfire.com/blog/what-is-Coast-FIRE</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/blog/what-is-barista-FIRE</loc>
+    <lastmod>2025-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://butfirstfire.com/blog/what-is-LEAN-FIRE</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/blog/how-much-need-retire-forty-40</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/blog/four-different-types-of-fire</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://butfirstfire.com/blog/calculating-fire-number</loc>
+    <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
 </urlset>
+</CodeContent>
+<parameter name="Complexity">2

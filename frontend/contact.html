@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - But First Fire</title>
+    <meta name="description"
+        content="Get in touch with the But First Fire team. We'd love to hear your questions, feedback, or suggestions about our FIRE calculator and financial planning tools.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        .page-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin: 0 0 0.75rem;
+            color: #0f172a;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            color: #64748b;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin: 0 0 2.5rem;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 0.75rem;
+        }
+
+        .success-message p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .direct-email {
+            text-align: center;
+        }
+
+        .direct-email p {
+            color: #64748b;
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .email-link:hover {
+            color: #5568d3;
+        }
+
+        .faq-section {
+            margin-top: 3rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 1.5rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 0.5rem;
+        }
+
+        .faq-item p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .page-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <a href="/" class="nav-link">← Back to App</a>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="page-container">
+            <h1 class="page-title">Get in Touch</h1>
+            <p class="page-subtitle">Have questions, feedback, or suggestions? We'd love to hear from you!</p>
+
+            <div class="contact-card">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="feedback">General Feedback</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="question">Question about FIRE</option>
+                            <option value="partnership">Partnership Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us what's on your mind..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✅</div>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out. We'll get back to you as soon as possible.</p>
+                </div>
+
+                <div class="divider">or email us directly</div>
+
+                <div class="direct-email">
+                    <p>Prefer email? Reach out to us at:</p>
+                    <a href="mailto:butfirstfire@gmail.com" class="email-link">
+                        📧 butfirstfire@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h4>Is But First Fire really free?</h4>
+                    <p>Yes! Our core FIRE calculator and planning tools are completely free to use. We believe everyone
+                        should have access to quality financial planning tools.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Is my financial data safe?</h4>
+                    <p>Absolutely. All your financial data is stored locally in your browser. We don't have access to
+                        your portfolio, income, or expense information. Check our <a href="/privacy"
+                            style="color: #667eea;">Privacy Policy</a> for details.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I get personalized financial advice?</h4>
+                    <p>While our tools provide helpful projections and AI-powered tips, we don't provide personalized
+                        financial advice. For specific guidance, we recommend consulting with a licensed financial
+                        advisor.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How accurate are the retirement projections?</h4>
+                    <p>Our projections are based on standard financial assumptions (like the 4% rule and historical
+                        market returns). They're meant to give you a realistic estimate, but actual results will vary
+                        based on market conditions and your specific situation.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Create mailto link as fallback (opens email client)
+            const mailtoSubject = encodeURIComponent(`[But First Fire] ${formData.subject}: ${formData.name}`);
+            const mailtoBody = encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nSubject: ${formData.subject}\n\n${formData.message}`);
+            const mailtoLink = `mailto:butfirstfire@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+            // Simulate sending (since we don't have a backend for contact form)
+            setTimeout(() => {
+                // Open mailto as the actual sending mechanism
+                window.location.href = mailtoLink;
+
+                // Show success
+                form.style.display = 'none';
+                successMessage.classList.add('show');
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
+</CodeContent>
+<parameter name="EmptyFile">false

@@ -207,7 +207,9 @@ def chat():
     
     data = request.get_json(force=True, silent=True) or {}
     message = data.get('message', '').strip()
+    history = data.get('history', [])
     print(f"Received message: {message}")
+    print(f"Received history length: {len(history)}")
     
     if not message:
         print("ERROR: Empty message")
@@ -215,23 +217,26 @@ def chat():
 
     # Compose a context-aware prompt
     system_prompt = (
-        "You are a financial assistant for a Passive Income Goal Tracker app. "
-        "Your ONLY purpose is to help users with finance-related topics including: "
-        "passive income strategies, dividend investing, rental property income, expense tracking, "
-        "financial independence (FIRE), portfolio allocation, yield calculations, economy, stock market, financial information of publicly traded companies and goal planning.\n\n"
-        "STRICT RULES:\n"
-        "1. ONLY answer questions related to finance, investing, passive income, budgeting, wealth building and about this website.\n"
-        "2. If asked about non-finance topics and anything not related to the website (sports, weather, general knowledge, coding, etc.), "
-        "politely decline and redirect: 'I'm specialized in using this tool for financial planning and passive income strategies. "
-        "Please ask me about your portfolio, income sources, expenses, or financial goals.'\n"
-        "3. Use the provided appState and DOM context to give personalized advice based on their actual data. You do not need to use this data for every single message. Only use it if relating this data with the current user query can render a more helpful response. Otherwise chose to ignore it. Strictly avoid using technical terms outside of finance. For example when asked about the page contents, refrain from using appState, DOM or any other web related terms.\n"
-        "4. Be concise, helpful, and reference specific values from their portfolio, income, expenses, or goals when relevant.\n"
-        "5. Format responses with Markdown for clarity (use **bold**, lists, code blocks (especially for math formulas always!!)small headers only when appropriate).\n"
-        "6. For mathematical formulas, use LaTeX notation with proper delimiters: \\[ \\] for display blocks (centered equations) and $ $ for inline math.\n"
-        "   IMPORTANT: Only use math delimiters for actual mathematical expressions (numbers, operators, variables). Never put regular English text inside $ $ or \\[ \\]. For example, use '$2 + 3 = 5$' not '$2 and is already achieved$'.\n"
-        "7. Try to be concise unless asked to provide a detailed explanation."
-
+        "You are a knowledgeable and helpful financial assistant for a Passive Income Goal Tracker app. "
+        "You help users with all finance-related topics including: "
+        "passive income strategies, dividend investing, rental property income, expense tracking, budgeting, "
+        "financial independence (FIRE), portfolio allocation, yield calculations, economy, stock market, "
+        "financial information of publicly traded companies, goal planning, tax optimization, and retirement planning.\n\n"
+        "GUIDELINES:\n"
+        "1. Answer questions related to finance, investing, passive income, budgeting, wealth building, economic data, "
+        "financial comparisons (like average spending, benchmarks, industry standards), and this website.\n"
+        "2. When users ask for comparisons (e.g., 'compare my expenses to US average'), provide helpful data and context. "
+        "This is a valid financial planning question.\n"
+        "3. For clearly off-topic questions (entertainment, recipes, coding help, etc.), politely redirect: "
+        "'I'm focused on financial planning. How can I help with your finances today?'\n"
+        "4. Use the provided appState and DOM context to give personalized advice based on their actual data when relevant.\n"
+        "5. Be concise, helpful, and reference specific values from their portfolio, income, expenses, or goals when relevant.\n"
+        "6. Format responses with Markdown for clarity (use **bold**, lists, small headers when appropriate).\n"
+        "7. For mathematical formulas, use LaTeX notation: \\[ \\] for display blocks and $ $ for inline math.\n"
+        "   IMPORTANT: Only use math delimiters for actual mathematical expressions, not regular text.\n"
+        "8. Be concise unless asked to provide a detailed explanation."
     )
+
     context_blob = {
         "url": LATEST_CONTEXT.get("url"),
         "appState": LATEST_CONTEXT.get("app_state"),
@@ -251,20 +256,27 @@ def chat():
             model = os.getenv('OPENAI_MODEL', 'gpt-4o-mini')
             print(f"Using model: {model}")
 
+            # Construct messages with system prompt, history, and current context/question
+            messages = [{"role": "system", "content": system_prompt}]
+            
+            # Add valid history messages
+            for msg in history:
+                if isinstance(msg, dict) and 'role' in msg and 'content' in msg:
+                    # Sanitize role to be either 'user' or 'assistant'
+                    role = 'assistant' if msg['role'] not in ['user', 'assistant'] else msg['role']
+                    messages.append({"role": role, "content": str(msg['content'])})
+
+            # Add current user message with context
+            messages.append({
+                "role": "user",
+                "content": f"Context: {context_blob}\n\nUser question: {message}"
+            })
+
             response = client.chat.completions.create(
                 model=model,
                 max_tokens=1024,
                 temperature=0.3,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt
-                    },
-                    {
-                        "role": "user",
-                        "content": f"Context: {context_blob}\n\nUser question: {message}"
-                    }
-                ]
+                messages=messages
             )
             print("OpenAI API call successful")
 

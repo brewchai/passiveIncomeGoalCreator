@@ -3,7 +3,7 @@ const SUPABASE_URL = 'https://vyzbczmrfxwkfjtwrlzc.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5emJjem1yZnh3a2ZqdHdybHpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMjQ4MzEsImV4cCI6MjA3NzYwMDgzMX0.w0rG3obToNSx_eBmxNuf7vemHoJa7ZrLdJjVDQjS2zM';
 
 // Initialize Supabase client with localStorage persistence
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: {
         storage: window.localStorage,
         autoRefreshToken: true,
@@ -44,8 +44,18 @@ let canProceedFromStep6 = false;
 let isUserAuthenticated = false;
 let step3HouseListHTML = ''; // Temporary storage for house cards
 
+// Utility function to format numbers as currency
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(amount);
+}
+
 // Listen to auth state changes (MUST be registered before DOMContentLoaded)
-supabase.auth.onAuthStateChange(async (event, session) => {
+supabaseClient.auth.onAuthStateChange(async (event, session) => {
     // console.log('🔐 Auth event:', event);
 
     // Treat both SIGNED_IN and INITIAL_SESSION as authenticated states
@@ -95,7 +105,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             // console.log('🔐 OAuth callback detected, manually setting session...');
 
             // Manually set the session with tokens from URL
-            const { data, error } = await supabase.auth.setSession({
+            const { data, error } = await supabaseClient.auth.setSession({
                 access_token: accessToken,
                 refresh_token: refreshToken
             });
@@ -116,11 +126,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         // console.log('✅ State loaded');
 
         // If a valid session exists at load, always land on dashboard
-        const { data: { session: domSession } } = await supabase.auth.getSession();
+        const { data: { session: domSession } } = await supabaseClient.auth.getSession();
         if (domSession) {
             // console.log('🔍 DEBUG: appState before Supabase check:', JSON.stringify(appState));
 
-            const { data: existingData } = await supabase
+            const { data: existingData } = await supabaseClient
                 .from('user_data')
                 .select('app_state')
                 .eq('user_id', domSession.user.id)
@@ -147,7 +157,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             // If no data in either location, reject
             if (!hasDataInSupabase && !hasDataInLocalStorage) {
                 // console.log('⚠️ First-time user with no data - signing out and redirecting to builder');
-                await supabase.auth.signOut();
+                await supabaseClient.auth.signOut();
                 appState.currentStep = 0;
                 showStep(0);
                 alert('Please complete the builder first to create your financial profile, then sign in to save your data.');
@@ -206,10 +216,10 @@ async function saveState() {
     localStorage.setItem('passiveIncomeGoalTracker', JSON.stringify(appState));
 
     // Save to Supabase if user is logged in
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supabaseClient.auth.getSession();
     if (session) {
         try {
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('user_data')
                 .upsert({
                     user_id: session.user.id,
@@ -231,14 +241,14 @@ async function saveState() {
 // Load state from Supabase (with localStorage fallback)
 async function loadState() {
     // Check if user is logged in
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supabaseClient.auth.getSession();
 
     let loadedFromSupabase = false;
 
     if (session) {
         // User is logged in - ALWAYS try Supabase first
         try {
-            const { data, error } = await supabase
+            const { data, error } = await supabaseClient
                 .from('user_data')
                 .select('app_state')
                 .eq('user_id', session.user.id)
@@ -2317,7 +2327,7 @@ function typeWelcomeMessage() {
         if (charIndex < welcomeText.length) {
             welcomeElement.textContent += welcomeText.charAt(charIndex);
             charIndex++;
-            setTimeout(typeChar, 30); // 30ms delay between characters
+            setTimeout(typeChar, 5); // 5ms delay between characters
         }
     }
 
@@ -2338,6 +2348,19 @@ function toggleChatbot() {
     } else {
         minimizeBtn.textContent = '−';
     }
+}
+
+let chatHistory = [];
+try {
+    const saved = sessionStorage.getItem('fire_chat_history');
+    if (saved) {
+        chatHistory = JSON.parse(saved);
+        // Ensure it's an array
+        if (!Array.isArray(chatHistory)) chatHistory = [];
+    }
+} catch (e) {
+    console.error('Failed to load chat history', e);
+    chatHistory = [];
 }
 
 async function sendChatMessage() {
@@ -2371,7 +2394,10 @@ async function sendChatMessage() {
         const response = await fetch(API_BASE_URL + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            body: JSON.stringify({
+                message,
+                history: chatHistory
+            })
         });
 
         const data = await response.json();
@@ -2388,7 +2414,23 @@ async function sendChatMessage() {
         messagesContainer.appendChild(botMessageDiv);
 
         const replyText = data.reply || 'Sorry, I could not generate a response.';
-        await typeText(botContent, replyText, 15);
+
+        // Update history IMMEDIATELY (before animation)
+        chatHistory.push({ role: 'user', content: message });
+        chatHistory.push({ role: 'assistant', content: replyText });
+
+        // Keep only last 5 exchanges (10 messages)
+        if (chatHistory.length > 10) {
+            chatHistory = chatHistory.slice(chatHistory.length - 10);
+        }
+        // Save to sessionStorage for persistence across reloads
+        try {
+            sessionStorage.setItem('fire_chat_history', JSON.stringify(chatHistory));
+        } catch (e) {
+            console.error('Failed to save chat history', e);
+        }
+
+        await typeText(botContent, replyText, 5);
         // After typing completes, render Markdown safely
         botContent.innerHTML = renderMarkdownSafe(replyText);
         setTimeout(() => renderMath(botContent), 50);
@@ -2465,7 +2507,7 @@ function renderMath(element, attempts = 0) {
 }
 
 // Typing effect helper
-async function typeText(element, text, speed = 15) {
+async function typeText(element, text, speed = 5) {
     const safeText = String(text || '');
     element.textContent = '';
     for (let i = 0; i < safeText.length; i++) {
@@ -2638,7 +2680,10 @@ async function sendChatMessage() {
         const response = await fetch(API_BASE_URL + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            body: JSON.stringify({
+                message,
+                history: chatHistory
+            })
         });
 
         const data = await response.json();
@@ -2655,7 +2700,23 @@ async function sendChatMessage() {
         messagesContainer.appendChild(botMessageDiv);
 
         const replyText = data.reply || 'Sorry, I could not generate a response.';
-        await typeText(botContent, replyText, 15);
+
+        // Update history IMMEDIATELY (before animation)
+        chatHistory.push({ role: 'user', content: message });
+        chatHistory.push({ role: 'assistant', content: replyText });
+
+        // Keep only last 5 exchanges (10 messages)
+        if (chatHistory.length > 10) {
+            chatHistory = chatHistory.slice(chatHistory.length - 10);
+        }
+        // Save to sessionStorage for persistence across reloads
+        try {
+            sessionStorage.setItem('fire_chat_history', JSON.stringify(chatHistory));
+        } catch (e) {
+            console.error('Failed to save chat history', e);
+        }
+
+        await typeText(botContent, replyText, 5);
         // After typing completes, render Markdown safely
         botContent.innerHTML = renderMarkdownSafe(replyText);
         setTimeout(() => renderMath(botContent), 50);
@@ -2732,7 +2793,7 @@ function renderMath(element, attempts = 0) {
 }
 
 // Typing effect helper
-async function typeText(element, text, speed = 15) {
+async function typeText(element, text, speed = 5) {
     const safeText = String(text || '');
     element.textContent = '';
     for (let i = 0; i < safeText.length; i++) {
@@ -3108,7 +3169,10 @@ async function sendChatMessage() {
         const response = await fetch(API_BASE_URL + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            body: JSON.stringify({
+                message,
+                history: chatHistory
+            })
         });
 
         const data = await response.json();
@@ -3125,7 +3189,23 @@ async function sendChatMessage() {
         messagesContainer.appendChild(botMessageDiv);
 
         const replyText = data.reply || 'Sorry, I could not generate a response.';
-        await typeText(botContent, replyText, 15);
+
+        // Update history IMMEDIATELY (before animation)
+        chatHistory.push({ role: 'user', content: message });
+        chatHistory.push({ role: 'assistant', content: replyText });
+
+        // Keep only last 5 exchanges (10 messages)
+        if (chatHistory.length > 10) {
+            chatHistory = chatHistory.slice(chatHistory.length - 10);
+        }
+        // Save to sessionStorage for persistence across reloads
+        try {
+            sessionStorage.setItem('fire_chat_history', JSON.stringify(chatHistory));
+        } catch (e) {
+            console.error('Failed to save chat history', e);
+        }
+
+        await typeText(botContent, replyText, 5);
         // After typing completes, render Markdown safely
         botContent.innerHTML = renderMarkdownSafe(replyText);
         setTimeout(() => renderMath(botContent), 50);
@@ -3202,7 +3282,7 @@ function renderMath(element, attempts = 0) {
 }
 
 // Typing effect helper
-async function typeText(element, text, speed = 15) {
+async function typeText(element, text, speed = 5) {
     const safeText = String(text || '');
     element.textContent = '';
     for (let i = 0; i < safeText.length; i++) {
@@ -3370,7 +3450,7 @@ async function showSignupModal() {
     // Delay and check session inside setTimeout to avoid race conditions
     setTimeout(async () => {
         // Fresh session check right before showing modal
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session } } = await supabaseClient.auth.getSession();
         // console.log('📧 Session check before modal:', session ? session.user.email : 'No session');
 
         // Only show if user is NOT logged in
@@ -3400,7 +3480,7 @@ async function submitSignupModal() {
             ? 'http://localhost:3000/'
             : 'https://butfirstfire.com/';
 
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: 'google',
             options: {
                 redirectTo: redirectUrl
