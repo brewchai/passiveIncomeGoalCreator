@@ -200,50 +200,121 @@ def mcp_read():
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    """Simple chat endpoint that incorporates latest screen context.
-    Body: { message: string }
+    """Context-aware chat endpoint that uses userContext for personalized advice.
+    Body: { message: string, history: array, userContext: object }
     """
     print("=== CHAT ENDPOINT CALLED ===")
     
     data = request.get_json(force=True, silent=True) or {}
     message = data.get('message', '').strip()
     history = data.get('history', [])
+    user_context = data.get('userContext', {})
+    
     print(f"Received message: {message}")
     print(f"Received history length: {len(history)}")
+    print(f"UserContext present: {bool(user_context)}")
     
     if not message:
         print("ERROR: Empty message")
         return jsonify({"error": "empty_message"}), 400
 
-    # Compose a context-aware prompt
-    system_prompt = (
-        "You are a knowledgeable and helpful financial assistant for a Passive Income Goal Tracker app. "
-        "You help users with all finance-related topics including: "
-        "passive income strategies, dividend investing, rental property income, expense tracking, budgeting, "
-        "financial independence (FIRE), portfolio allocation, yield calculations, economy, stock market, "
-        "financial information of publicly traded companies, goal planning, tax optimization, and retirement planning.\n\n"
-        "GUIDELINES:\n"
-        "1. Answer questions related to finance, investing, passive income, budgeting, wealth building, economic data, "
-        "financial comparisons (like average spending, benchmarks, industry standards), and this website.\n"
-        "2. When users ask for comparisons (e.g., 'compare my expenses to US average'), provide helpful data and context. "
-        "This is a valid financial planning question.\n"
-        "3. For clearly off-topic questions (entertainment, recipes, coding help, etc.), politely redirect: "
-        "'I'm focused on financial planning. How can I help with your finances today?'\n"
-        "4. Use the provided appState and DOM context to give personalized advice based on their actual data when relevant.\n"
-        "5. Be concise, helpful, and reference specific values from their portfolio, income, expenses, or goals when relevant.\n"
-        "6. Format responses with Markdown for clarity (use **bold**, lists, small headers when appropriate).\n"
-        "7. For mathematical formulas, use LaTeX notation: \\[ \\] for display blocks and $ $ for inline math.\n"
-        "   IMPORTANT: Only use math delimiters for actual mathematical expressions, not regular text.\n"
-        "8. Be concise unless asked to provide a detailed explanation."
-    )
+    # Format user context into a readable snapshot
+    def format_currency(val):
+        if val is None or val == 0:
+            return "$0"
+        return f"${val:,.0f}"
+    
+    def format_percent(val):
+        if val is None:
+            return "0%"
+        return f"{val}%"
 
-    context_blob = {
-        "url": LATEST_CONTEXT.get("url"),
-        "appState": LATEST_CONTEXT.get("app_state"),
-        "domPreview": (LATEST_CONTEXT.get("dom") or "")[:5000],  # cap size
-    }
-    print(f"Context blob keys: {list(context_blob.keys())}")
-    print(f"App state present: {context_blob['appState'] is not None}")
+    # Build the financial snapshot string
+    monthly_income = user_context.get('totalMonthlyIncome', 0)
+    monthly_expenses = user_context.get('monthlyExpenses', 0)
+    savings_rate = user_context.get('savingsRate', 0)
+    fire_number = user_context.get('fireNumber', 0)
+    projected_year = user_context.get('projectedFIYear')
+    net_worth = user_context.get('totalNetWorth', 0)
+    
+    # Build expense breakdown string
+    expense_breakdown = user_context.get('expenseBreakdown', [])
+    expense_str = ", ".join([f"{e.get('name', 'Unknown')}: {format_currency(e.get('amount', 0))}" for e in expense_breakdown[:8]]) if expense_breakdown else "No expenses tracked"
+    
+    # Build portfolio string
+    portfolio = user_context.get('portfolio', [])
+    portfolio_str = ", ".join([f"{p.get('symbol', '?')}: {p.get('percent', 0)}% @ {p.get('yield', 0):.1f}% yield" for p in portfolio[:5]]) if portfolio else "No stocks"
+    
+    # Build properties string
+    properties = user_context.get('properties', [])
+    properties_str = ", ".join([f"{p.get('name', 'Property')}: {format_currency(p.get('value', 0))} ({'rented' if p.get('monthlyRent', 0) > 0 else 'primary'})" for p in properties[:3]]) if properties else "No properties"
+
+    # Determine user phase
+    years_to_fi = (projected_year - 2026) if projected_year and projected_year > 2026 else None
+    if years_to_fi and years_to_fi > 20:
+        phase_note = "The user's FI goal is very far away (>20 years). Suggest aggressive optimization strategies."
+    elif years_to_fi and years_to_fi <= 5:
+        phase_note = "The user is close to FI (<5 years). Focus on risk management and withdrawal strategies."
+    else:
+        phase_note = "The user is in the accumulation phase, building wealth steadily."
+
+    # Handle new user (empty data) gracefully
+    if monthly_income == 0 and net_worth == 0:
+        context_section = """
+The user appears to be new or hasn't entered their financial data yet.
+Encourage them to fill in their income, expenses, and assets so you can provide personalized advice.
+For now, give general FIRE guidance and ask clarifying questions about their situation.
+"""
+    else:
+        context_section = f"""
+USER'S LIVE FINANCIAL SNAPSHOT:
+
+Income (Monthly):
+- Job: {format_currency(user_context.get('monthlyJobIncome', 0))}
+- Dividends: {format_currency(user_context.get('monthlyDividendIncome', 0))}
+- Rental: {format_currency(user_context.get('monthlyRentalIncome', 0))}
+- TOTAL: {format_currency(monthly_income)}
+
+Expenses (Monthly): {format_currency(monthly_expenses)}
+- Breakdown: {expense_str}
+
+Savings Rate: {format_percent(savings_rate)}
+
+Net Worth: {format_currency(net_worth)}
+- Portfolio Value: {format_currency(user_context.get('portfolioValue', 0))}
+- Real Estate Equity: {format_currency(user_context.get('realEstateValue', 0))}
+- Retirement Accounts: {format_currency(user_context.get('retirementTotal', 0))}
+- Savings/Cash: {format_currency(user_context.get('savingsTotal', 0))}
+
+Portfolio: {portfolio_str}
+Blended Dividend Yield: {user_context.get('blendedYield', 0):.2f}%
+
+Properties: {properties_str}
+
+FIRE Metrics:
+- FIRE Number (25x expenses): {format_currency(fire_number)}
+- Projected FI Year: {projected_year if projected_year else 'Not calculated'}
+- Years to FI: {years_to_fi if years_to_fi else 'N/A'}
+
+{phase_note}
+"""
+
+    # Build the personalized system prompt
+    system_prompt = f"""You are an expert Financial Independence & Retire Early (FIRE) Advisor.
+Your goal is to help the user reach financial independence faster by analyzing their specific numbers.
+
+{context_section}
+
+CRITICAL RESPONSE RULES:
+1. **BE EXTREMELY BRIEF.** Max 3-4 sentences for simple questions. Max 5-6 bullet points for complex ones.
+2. **NO CALCULATION STEPS.** Give the answer directly, NOT the math. Only show formulas if the user explicitly asks "how did you calculate that" or "show me the math."
+   - Bad: "First I calculated your monthly savings ($5,000), then multiplied by 12..."
+   - Good: "At your current pace, you'll hit FI in **2031** (5 years)."
+3. Reference their **specific numbers** when relevant (savings rate, expenses, net worth).
+4. Use **bold** for key numbers and takeaways.
+5. Skip pleasantries. Get straight to the point.
+6. If they're far from FI (>15 years), give ONE actionable tip, not a lecture.
+7. Assume 4% safe withdrawal rate unless told otherwise."""
 
     # If OpenAI API key is configured, use it; else return a fallback response.
     openai_key = os.getenv('OPENAI_API_KEY')
@@ -256,7 +327,7 @@ def chat():
             model = os.getenv('OPENAI_MODEL', 'gpt-4o-mini')
             print(f"Using model: {model}")
 
-            # Construct messages with system prompt, history, and current context/question
+            # Construct messages with system prompt, history, and current question
             messages = [{"role": "system", "content": system_prompt}]
             
             # Add valid history messages
@@ -266,10 +337,10 @@ def chat():
                     role = 'assistant' if msg['role'] not in ['user', 'assistant'] else msg['role']
                     messages.append({"role": role, "content": str(msg['content'])})
 
-            # Add current user message with context
+            # Add current user message (no need to repeat context, it's in system prompt)
             messages.append({
                 "role": "user",
-                "content": f"Context: {context_blob}\n\nUser question: {message}"
+                "content": message
             })
 
             response = client.chat.completions.create(

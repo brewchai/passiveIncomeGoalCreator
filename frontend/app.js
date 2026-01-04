@@ -2641,13 +2641,74 @@ async function sendChatMessage() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
-        // Call chat API
+        // Build userContext with the user's financial snapshot
+        const userContext = {
+            // Income
+            annualJobIncome: appState.annualIncome || 0,
+            monthlyJobIncome: (appState.annualIncome || 0) / 12,
+            monthlyDividendIncome: appState.monthlyDividendIncome || 0,
+            monthlyRentalIncome: (appState.rentalIncome || []).reduce((sum, r) => sum + (r.amount || 0), 0),
+            monthlySavingsInterest: (appState.savingsAccounts || []).reduce((sum, s) => sum + ((s.balance || s.amount || 0) * ((s.interestRate || 0) / 100) / 12), 0),
+
+            // Expenses
+            monthlyExpenses: (appState.expenses || []).reduce((sum, e) => sum + (e.amount || 0), 0),
+            expenseBreakdown: (appState.expenses || []).map(e => ({ name: e.name, amount: e.amount })),
+
+            // Portfolio & Assets
+            portfolioValue: appState.portfolioValue || 0,
+            portfolio: (appState.portfolio || []).map(p => ({ symbol: p.symbol, percent: p.percent, yield: p.yield })),
+            blendedYield: appState.blendedYield || 0,
+
+            // Real Estate
+            realEstateValue: (appState.houses || []).reduce((sum, h) => sum + (h.value || 0), 0),
+            properties: (appState.houses || []).map(h => ({
+                name: h.name,
+                value: h.value,
+                type: h.houseType,
+                hasMortgage: h.paidOffStatus === 'no',
+                mortgagePayment: h.mortgagePayment || 0,
+                monthlyRent: h.monthlyRentalIncome || 0
+            })),
+
+            // Retirement
+            retirementTotal: (appState.retirementAccounts || []).reduce((sum, r) => sum + (r.balance || 0), 0),
+            retirementAccounts: (appState.retirementAccounts || []).map(r => ({ type: r.type, balance: r.balance })),
+
+            // Savings
+            savingsTotal: (appState.savingsAccounts || []).reduce((sum, s) => sum + (s.balance || s.amount || 0), 0),
+            savingsAccounts: (appState.savingsAccounts || []).map(s => ({ name: s.name, balance: s.balance || s.amount, apy: s.interestRate })),
+
+            // FIRE Metrics
+            fireNumber: appState.fireNumber || 0,
+            projectedFIYear: appState.projectedFIYear || null,
+            savingsRate: appState.savingsRate || 0,
+
+            // Net Worth
+            totalNetWorth: (appState.portfolioValue || 0) +
+                (appState.houses || []).reduce((sum, h) => sum + (h.homeEquity || h.value || 0), 0) +
+                (appState.retirementAccounts || []).reduce((sum, r) => sum + (r.balance || 0), 0) +
+                (appState.savingsAccounts || []).reduce((sum, s) => sum + (s.balance || s.amount || 0), 0)
+        };
+
+        // Calculate total monthly income
+        userContext.totalMonthlyIncome = userContext.monthlyJobIncome +
+            userContext.monthlyDividendIncome +
+            userContext.monthlyRentalIncome +
+            userContext.monthlySavingsInterest;
+
+        // Calculate savings rate if not already set
+        if (!userContext.savingsRate && userContext.totalMonthlyIncome > 0) {
+            userContext.savingsRate = Math.round(((userContext.totalMonthlyIncome - userContext.monthlyExpenses) / userContext.totalMonthlyIncome) * 100);
+        }
+
+        // Call chat API with userContext
         const response = await fetch(API_BASE_URL + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 message,
-                history: chatHistory
+                history: chatHistory,
+                userContext
             })
         });
 
@@ -2879,113 +2940,6 @@ function getScreenType(currentStep) {
 // Push context immediately and then every 10 seconds
 pushContextToServer();
 setInterval(pushContextToServer, 10000);
-
-// --- AI Chatbot Integration ---
-async function sendChatMessage() {
-    const input = document.getElementById('chatbotInput');
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const message = input.value.trim();
-
-    if (!message) return;
-
-    // Add user message to chat
-    const userMessageDiv = document.createElement('div');
-    userMessageDiv.className = 'chatbot-message user-message';
-    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
-    messagesContainer.appendChild(userMessageDiv);
-
-    // Clear input
-    input.value = '';
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    // Show typing indicator
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'chatbot-message bot-message typing';
-    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
-    messagesContainer.appendChild(typingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    try {
-        // Call chat API
-        const response = await fetch(API_BASE_URL + '/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                message,
-                history: chatHistory
-            })
-        });
-
-        const data = await response.json();
-
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Add bot response with typing effect
-        const botMessageDiv = document.createElement('div');
-        botMessageDiv.className = 'chatbot-message bot-message';
-        const botContent = document.createElement('div');
-        botContent.className = 'message-content';
-        botMessageDiv.appendChild(botContent);
-        messagesContainer.appendChild(botMessageDiv);
-
-        const replyText = data.reply || 'Sorry, I could not generate a response.';
-
-        // Update history IMMEDIATELY (before animation)
-        chatHistory.push({ role: 'user', content: message });
-        chatHistory.push({ role: 'assistant', content: replyText });
-
-        // Keep only last 5 exchanges (10 messages)
-        if (chatHistory.length > 10) {
-            chatHistory = chatHistory.slice(chatHistory.length - 10);
-        }
-        // Save to sessionStorage for persistence across reloads
-        try {
-            sessionStorage.setItem('fire_chat_history', JSON.stringify(chatHistory));
-        } catch (e) {
-            console.error('Failed to save chat history', e);
-        }
-
-        await typeText(botContent, replyText, 5);
-        // After typing completes, render Markdown safely
-        botContent.innerHTML = renderMarkdownSafe(replyText);
-        setTimeout(() => renderMath(botContent), 50);
-
-    } catch (error) {
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Show error message with typing effect
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'chatbot-message bot-message error';
-        const errorContent = document.createElement('div');
-        errorContent.className = 'message-content';
-        errorDiv.appendChild(errorContent);
-        messagesContainer.appendChild(errorDiv);
-        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
-    }
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function addChatMessage(text, sender) {
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${sender}-message`;
-
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content';
-    contentDiv.textContent = text;
-
-    messageDiv.appendChild(contentDiv);
-    messagesContainer.appendChild(messageDiv);
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
 
 // Helper function to escape HTML
 function escapeHtml(text) {
@@ -3284,112 +3238,6 @@ function getScreenType(currentStep) {
 pushContextToServer();
 setInterval(pushContextToServer, 10000);
 
-// --- AI Chatbot Integration ---
-async function sendChatMessage() {
-    const input = document.getElementById('chatbotInput');
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const message = input.value.trim();
-
-    if (!message) return;
-
-    // Add user message to chat
-    const userMessageDiv = document.createElement('div');
-    userMessageDiv.className = 'chatbot-message user-message';
-    userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
-    messagesContainer.appendChild(userMessageDiv);
-
-    // Clear input
-    input.value = '';
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    // Show typing indicator
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'chatbot-message bot-message typing';
-    typingDiv.innerHTML = '<div class="message-content">Thinking...</div>';
-    messagesContainer.appendChild(typingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    try {
-        // Call chat API
-        const response = await fetch(API_BASE_URL + '/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                message,
-                history: chatHistory
-            })
-        });
-
-        const data = await response.json();
-
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Add bot response with typing effect
-        const botMessageDiv = document.createElement('div');
-        botMessageDiv.className = 'chatbot-message bot-message';
-        const botContent = document.createElement('div');
-        botContent.className = 'message-content';
-        botMessageDiv.appendChild(botContent);
-        messagesContainer.appendChild(botMessageDiv);
-
-        const replyText = data.reply || 'Sorry, I could not generate a response.';
-
-        // Update history IMMEDIATELY (before animation)
-        chatHistory.push({ role: 'user', content: message });
-        chatHistory.push({ role: 'assistant', content: replyText });
-
-        // Keep only last 5 exchanges (10 messages)
-        if (chatHistory.length > 10) {
-            chatHistory = chatHistory.slice(chatHistory.length - 10);
-        }
-        // Save to sessionStorage for persistence across reloads
-        try {
-            sessionStorage.setItem('fire_chat_history', JSON.stringify(chatHistory));
-        } catch (e) {
-            console.error('Failed to save chat history', e);
-        }
-
-        await typeText(botContent, replyText, 5);
-        // After typing completes, render Markdown safely
-        botContent.innerHTML = renderMarkdownSafe(replyText);
-        setTimeout(() => renderMath(botContent), 50);
-
-    } catch (error) {
-        // Remove typing indicator
-        typingDiv.remove();
-
-        // Show error message with typing effect
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'chatbot-message bot-message error';
-        const errorContent = document.createElement('div');
-        errorContent.className = 'message-content';
-        errorDiv.appendChild(errorContent);
-        messagesContainer.appendChild(errorDiv);
-        await typeText(errorContent, 'Sorry, I encountered an error. Please try again.', 15);
-    }
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function addChatMessage(text, sender) {
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${sender}-message`;
-
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content';
-    contentDiv.textContent = text;
-
-    messageDiv.appendChild(contentDiv);
-    messagesContainer.appendChild(messageDiv);
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
 
 // Helper function to escape HTML
 function escapeHtml(text) {
