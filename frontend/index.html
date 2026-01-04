@@ -761,10 +761,14 @@
 
             <!-- Tab Navigation -->
             <div class="modal-tabs">
-                <button class="tab-button active" id="tabJob" onclick="switchIncomeTab('job')">💼 Job Income</button>
-                <button class="tab-button" id="tabStocks" onclick="switchIncomeTab('stocks')">📈 Stocks</button>
-                <button class="tab-button" id="tabRental" onclick="switchIncomeTab('rental')">🏠 Rental</button>
-                <button class="tab-button" id="tabOther" onclick="switchIncomeTab('other')">💰 Other</button>
+                <button class="tab-button active" id="tabJob" onclick="switchIncomeTab('job')">Job</button>
+                <button class="tab-button" id="tabStocks" onclick="switchIncomeTab('stocks')">Stocks</button>
+                <button class="tab-button" id="tabRealEstate"
+                    onclick="switchIncomeTab('realEstate')">Properties</button>
+                <button class="tab-button" id="tabRetirement"
+                    onclick="switchIncomeTab('retirement')">Retirement</button>
+                <button class="tab-button" id="tabSavings" onclick="switchIncomeTab('savings')">Savings</button>
+                <button class="tab-button" id="tabOther" onclick="switchIncomeTab('other')">Other</button>
             </div>
 
             <div class="modal-body">
@@ -795,18 +799,7 @@
                     </div>
                 </div>
 
-                <!-- Rental Tab Content -->
-                <div class="tab-content" id="contentRental">
-                    <div class="income-edit-list" id="rentalEditList">
-                        <!-- Rental properties will be populated here -->
-                    </div>
-                    <div class="add-income-row">
-                        <input type="text" id="modalRentalName" placeholder="Property Name" class="input-field">
-                        <input type="number" id="modalRentalAmount" placeholder="Monthly Income ($)" class="input-field"
-                            min="0" step="10">
-                        <button class="btn-secondary" onclick="addRentalFromModal()">Add</button>
-                    </div>
-                </div>
+                <!-- Rental Tab Content Removed -->
 
                 <!-- Other Income Tab Content -->
                 <div class="tab-content" id="contentOther">
@@ -818,6 +811,77 @@
                         <input type="number" id="modalOtherAmount" placeholder="Monthly Income ($)" class="input-field"
                             min="0" step="10">
                         <button class="btn-secondary" onclick="addOtherFromModal()">Add</button>
+                    </div>
+                </div>
+
+                <!-- Real Estate Tab Content -->
+                <div class="tab-content" id="contentRealEstate">
+                    <div class="income-edit-list" id="realEstateEditList">
+                        <!-- Real Estate properties will be populated here -->
+                    </div>
+                    <div class="add-income-column">
+                        <label style="font-weight: 600; margin-bottom: 8px;">Add New Property</label>
+                        <input type="text" id="modalHouseName" placeholder="Property Name" class="input-field">
+                        <div class="row-inputs">
+                            <input type="number" id="modalHouseValue" placeholder="Value ($)" class="input-field"
+                                min="0" step="1000">
+                            <select id="modalHouseType" class="input-field">
+                                <option value="primary">Primary</option>
+                                <option value="rental">Rental</option>
+                                <option value="vacation">Vacation</option>
+                                <option value="investment">Investment</option>
+                            </select>
+                        </div>
+                        <div class="row-inputs">
+                            <label class="checkbox-label" style="font-size: 14px;">
+                                <input type="checkbox" id="modalHouseMortgage"> Has Mortgage?
+                            </label>
+                            <input type="number" id="modalHouseMortgageAmount" placeholder="Payment ($)"
+                                class="input-field" style="display:none;" min="0">
+                        </div>
+                        <div class="row-inputs">
+                            <label class="checkbox-label" style="font-size: 14px;">
+                                <input type="checkbox" id="modalHouseRent"> Earns Rent?
+                            </label>
+                            <input type="number" id="modalHouseRentAmount" placeholder="Rent ($)" class="input-field"
+                                style="display:none;" min="0">
+                        </div>
+                        <button class="btn-secondary" onclick="addHouseFromModal()"
+                            style="width: 100%; margin-top: 8px;">+ Add Property</button>
+                    </div>
+                </div>
+
+                <!-- Retirement Tab Content -->
+                <div class="tab-content" id="contentRetirement">
+                    <div class="income-edit-list" id="retirementEditList">
+                        <!-- Retirement accounts will be populated here -->
+                    </div>
+                    <div class="add-income-row">
+                        <select id="modalRetirementType" class="input-field">
+                            <option value="">Type...</option>
+                            <option value="401k">401(k)</option>
+                            <option value="roth-ira">Roth IRA</option>
+                            <option value="traditional-ira">Trad IRA</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="number" id="modalRetirementBalance" placeholder="Balance ($)" class="input-field"
+                            min="0" step="1000">
+                        <button class="btn-secondary" onclick="addRetirementFromModal()">Add</button>
+                    </div>
+                </div>
+
+                <!-- Savings Tab Content -->
+                <div class="tab-content" id="contentSavings">
+                    <div class="income-edit-list" id="savingsEditList">
+                        <!-- Savings accounts will be populated here -->
+                    </div>
+                    <div class="add-income-row">
+                        <input type="text" id="modalSavingsName" placeholder="Bank Name" class="input-field">
+                        <input type="number" id="modalSavingsBalance" placeholder="Balance ($)" class="input-field"
+                            min="0">
+                        <input type="number" id="modalSavingsRate" placeholder="APY %" class="input-field" step="0.1"
+                            style="width: 80px;">
+                        <button class="btn-secondary" onclick="addSavingsFromModal()">Add</button>
                     </div>
                 </div>
 

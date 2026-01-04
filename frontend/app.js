@@ -72,6 +72,17 @@ supabaseClient.auth.onAuthStateChange(async (event, session) => {
         }
     }
 
+    // Auto-refresh CSS if in dev mode
+    const refreshCSS = () => {
+        const links = document.getElementsByTagName('link');
+        for (let i = 0; i < links.length; i++) {
+            if (links[i].rel === 'stylesheet') {
+                links[i].href = links[i].href.split('?')[0] + '?t=' + new Date().getTime();
+            }
+        }
+    };
+    // setInterval(refreshCSS, 2000);
+
     if (event === 'SIGNED_OUT') {
         // console.log('👋 User signed out');
         localStorage.removeItem('supabase_session_handled');
@@ -1487,9 +1498,8 @@ function syncRentalIncomeFromHouses() {
     const rentalHouses = appState.houses.filter(house => house.generatesRental && house.monthlyRentalIncome > 0);
 
     // Clear existing rental income from houses (keep only manually added ones)
-    // We'll identify house-based rentals by checking if the name matches a house name
-    const houseNames = appState.houses.map(house => house.name);
-    appState.rentalIncome = appState.rentalIncome.filter(rental => !houseNames.includes(rental.name));
+    // Filter out any entries previously synced from houses
+    appState.rentalIncome = appState.rentalIncome.filter(rental => !rental.fromHouse);
 
     // Add rental income from houses
     rentalHouses.forEach(house => {
@@ -1507,10 +1517,8 @@ function syncMortgageExpensesFromHouses() {
     const mortgageHouses = appState.houses.filter(house => house.paidOffStatus === 'no' && house.mortgagePayment > 0);
 
     // Clear existing mortgage expenses from houses (keep only manually added ones)
-    // We'll identify house-based expenses by checking if the name contains the house name + "Mortgage"
-    appState.expenses = appState.expenses.filter(expense => {
-        return !appState.houses.some(house => expense.name === `${house.name} Mortgage`);
-    });
+    // Filter out any entries previously synced from houses
+    appState.expenses = appState.expenses.filter(expense => !expense.fromHouse);
 
     // Add mortgage payments as expenses
     mortgageHouses.forEach(house => {
@@ -1529,13 +1537,17 @@ function openIncomeModal() {
     originalIncomeData = {
         portfolio: JSON.parse(JSON.stringify(appState.portfolio)),
         rentalIncome: JSON.parse(JSON.stringify(appState.rentalIncome)),
-        savingsAccounts: JSON.parse(JSON.stringify(appState.savingsAccounts || []))
+        savingsAccounts: JSON.parse(JSON.stringify(appState.savingsAccounts || [])),
+        retirementAccounts: JSON.parse(JSON.stringify(appState.retirementAccounts || [])),
+        houses: JSON.parse(JSON.stringify(appState.houses || []))
     };
 
     // Populate modal with current income data
     refreshStockModalDisplay();
-    refreshRentalModalDisplay();
     refreshJobIncomeDisplay();
+    refreshRealEstateModalDisplay();
+    refreshRetirementModalDisplay();
+    refreshSavingsModalDisplay();
 
     // Show modal with Job Income tab active by default
     switchIncomeTab('job');
@@ -2049,41 +2061,304 @@ function renderIncomeBreakdownChart() {
 
 function closeIncomeModal() {
     // Restore original income data if user cancels
-    appState.portfolio = JSON.parse(JSON.stringify(originalIncomeData.portfolio));
-    appState.rentalIncome = JSON.parse(JSON.stringify(originalIncomeData.rentalIncome));
-    appState.savingsAccounts = JSON.parse(JSON.stringify(originalIncomeData.savingsAccounts));
+    if (originalIncomeData.portfolio) appState.portfolio = JSON.parse(JSON.stringify(originalIncomeData.portfolio));
+    if (originalIncomeData.rentalIncome) appState.rentalIncome = JSON.parse(JSON.stringify(originalIncomeData.rentalIncome));
+    if (originalIncomeData.savingsAccounts) appState.savingsAccounts = JSON.parse(JSON.stringify(originalIncomeData.savingsAccounts));
+    if (originalIncomeData.retirementAccounts) appState.retirementAccounts = JSON.parse(JSON.stringify(originalIncomeData.retirementAccounts));
+    if (originalIncomeData.houses) appState.houses = JSON.parse(JSON.stringify(originalIncomeData.houses));
 
     // Hide modal
     document.getElementById('incomeEditModal').style.display = 'none';
 }
 
-function switchIncomeTab(tabName) {
-    // Remove active class from all tabs and content
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+// ------------------------------------------------------------------
+// NEW ASSET MODAL FUNCTIONS (Real Estate, Retirement, Savings)
+// ------------------------------------------------------------------
 
-    // Add active class to selected tab and content
-    if (tabName === 'overview') {
-        document.getElementById('tabOverview').classList.add('active');
-        document.getElementById('contentOverview').classList.add('active');
-    } else if (tabName === 'job') {
-        document.getElementById('tabJob').classList.add('active');
-        document.getElementById('contentJob').classList.add('active');
-    } else if (tabName === 'stocks') {
-        document.getElementById('tabStocks').classList.add('active');
-        document.getElementById('contentStocks').classList.add('active');
-    } else if (tabName === 'rental') {
-        document.getElementById('tabRental').classList.add('active');
-        document.getElementById('contentRental').classList.add('active');
-    } else if (tabName === 'other') {
-        document.getElementById('tabOther').classList.add('active');
-        document.getElementById('contentOther').classList.add('active');
+// --- Real Estate Functions ---
+function refreshRealEstateModalDisplay() {
+    const listEl = document.getElementById('realEstateEditList');
+    if (!listEl) return;
+
+    listEl.innerHTML = '';
+
+    if (!appState.houses || appState.houses.length === 0) {
+        listEl.innerHTML = '<div class="empty-state">No properties added yet.</div>';
+        return;
+    }
+
+    listEl.innerHTML = appState.houses.map((house, index) => {
+        // Safe accessors
+        const hValue = house.value || 0;
+        const hMortgage = house.mortgagePayment || 0;
+        const hRent = house.monthlyRentalIncome || 0;
+        const hName = house.name || '';
+
+        // Show mortgage/rent inputs only if they apply
+        let extraFields = '';
+        if (house.paidOffStatus === 'no') {
+            extraFields += `
+                <div class="row-inputs" style="margin-top:4px;">
+                    <label style="font-size:0.8rem; color:#718096; min-width:70px;">Mortgage:</label>
+                    <input type="number" class="input-field" style="width:100px; padding:4px;" 
+                           value="${hMortgage}" onchange="updateHouseInModal(${index}, 'mortgagePayment', parseFloat(this.value))">
+                </div>`;
+        }
+        if (house.generatesRental) {
+            extraFields += `
+                <div class="row-inputs" style="margin-top:4px;">
+                    <label style="font-size:0.8rem; color:#718096; min-width:70px;">Rent:</label>
+                    <input type="number" class="input-field" style="width:100px; padding:4px;" 
+                           value="${hRent}" onchange="updateHouseInModal(${index}, 'monthlyRentalIncome', parseFloat(this.value))">
+                </div>`;
+        }
+
+        return `
+            <div class="income-edit-item" style="flex-direction:column; align-items:flex-start;">
+                <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <input type="text" class="input-field" style="font-weight:600; width:140px;" 
+                           value="${hName}" onchange="updateHouseInModal(${index}, 'name', this.value)">
+                    <button class="btn-remove" onclick="deleteHouseFromModal(${index})">Remove</button>
+                </div>
+                <div style="width:100%;">
+                    <div class="row-inputs">
+                        <label style="font-size:0.8rem; color:#718096; min-width:70px;">Value:</label>
+                        <input type="number" class="input-field" style="width:100px; padding:4px;" 
+                               value="${hValue}" onchange="updateHouseInModal(${index}, 'value', parseFloat(this.value))">
+                    </div>
+                    ${extraFields}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+}
+
+function addHouseFromModal() {
+    const name = document.getElementById('modalHouseName').value.trim();
+    const value = parseFloat(document.getElementById('modalHouseValue').value);
+    const type = document.getElementById('modalHouseType').value;
+    const hasMortgage = document.getElementById('modalHouseMortgage').checked;
+    const mortgagePayment = hasMortgage ? parseFloat(document.getElementById('modalHouseMortgageAmount').value) : 0;
+    const earnsRent = document.getElementById('modalHouseRent').checked;
+    const rentAmount = earnsRent ? parseFloat(document.getElementById('modalHouseRentAmount').value) : 0;
+
+    if (!name || isNaN(value) || value < 0) {
+        alert('Please enter a valid property name and value');
+        return;
+    }
+
+    if (!appState.houses) appState.houses = [];
+
+    appState.houses.push({
+        name,
+        value,
+        houseType: type,
+        paidOffStatus: hasMortgage ? 'no' : 'yes',
+        mortgagePayment: mortgagePayment || 0,
+        generatesRental: earnsRent,
+        monthlyRentalIncome: rentAmount || 0,
+        homeEquity: hasMortgage ? (value * 0.2) : value // simplified assumption for modal add
+    });
+
+    // Reset inputs
+    document.getElementById('modalHouseName').value = '';
+    document.getElementById('modalHouseValue').value = '';
+    document.getElementById('modalHouseMortgage').checked = false;
+    document.getElementById('modalHouseMortgageAmount').value = '';
+    document.getElementById('modalHouseMortgageAmount').style.display = 'none';
+    document.getElementById('modalHouseRent').checked = false;
+    document.getElementById('modalHouseRentAmount').value = '';
+    document.getElementById('modalHouseRentAmount').style.display = 'none';
+
+    refreshRealEstateModalDisplay();
+}
+
+function deleteHouseFromModal(index) {
+    appState.houses.splice(index, 1);
+    refreshRealEstateModalDisplay();
+}
+
+
+// --- Retirement Functions ---
+function refreshRetirementModalDisplay() {
+    const listEl = document.getElementById('retirementEditList');
+    if (!listEl) return;
+
+    listEl.innerHTML = '';
+    if (!appState.retirementAccounts || appState.retirementAccounts.length === 0) {
+        listEl.innerHTML = '<div class="empty-state">No retirement accounts.</div>';
+        return;
+    }
+
+    listEl.innerHTML = appState.retirementAccounts.map((account, index) => `
+        <div class="income-edit-item" style="justify-content: space-between; align-items:center;">
+             <div style="display:flex; gap:8px; align-items:center;">
+                <span class="item-name" style="width:80px; font-size:0.9rem;">${getAccountTypeLabel(account.type)}</span>
+                <input type="number" class="input-field" style="width:120px;" 
+                       value="${account.balance}" onchange="updateRetirementInModal(${index}, 'balance', parseFloat(this.value))">
+            </div>
+            <button class="btn-remove" onclick="deleteRetirementFromModal(${index})">Remove</button>
+        </div>
+    `).join('');
+}
+
+function addRetirementFromModal() {
+    const type = document.getElementById('modalRetirementType').value;
+    const balance = parseFloat(document.getElementById('modalRetirementBalance').value);
+
+    if (!type || isNaN(balance)) {
+        alert('Please select a type and enter a balance');
+        return;
+    }
+
+    if (!appState.retirementAccounts) appState.retirementAccounts = [];
+
+    appState.retirementAccounts.push({ type, balance });
+
+    document.getElementById('modalRetirementBalance').value = '';
+    refreshRetirementModalDisplay();
+}
+
+function deleteRetirementFromModal(index) {
+    appState.retirementAccounts.splice(index, 1);
+    refreshRetirementModalDisplay();
+}
+
+
+// --- Savings Functions ---
+function refreshSavingsModalDisplay() {
+    const listEl = document.getElementById('savingsEditList');
+    if (!listEl) return;
+
+    listEl.innerHTML = '';
+    if (!appState.savingsAccounts || appState.savingsAccounts.length === 0) {
+        listEl.innerHTML = '<div class="empty-state">No savings accounts.</div>';
+        return;
+    }
+
+    listEl.innerHTML = appState.savingsAccounts.map((account, index) => {
+        const balance = account.balance || account.amount || 0;
+        return `
+        <div class="income-edit-item" style="flex-direction:column; align-items:flex-start;">
+             <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <input type="text" class="input-field" style="font-weight:600; width:140px;" 
+                       value="${account.name}" onchange="updateSavingsInModal(${index}, 'name', this.value)">
+                <button class="btn-remove" onclick="deleteSavingsFromModal(${index})">Remove</button>
+            </div>
+            <div style="display:flex; gap:12px; width:100%;">
+                <div class="row-inputs">
+                    <label style="font-size:0.8rem; color:#718096;">Bal:</label>
+                    <input type="number" class="input-field" style="width:90px; padding:4px;" 
+                           value="${balance}" onchange="updateSavingsInModal(${index}, 'balance', parseFloat(this.value))">
+                </div>
+                 <div class="row-inputs">
+                    <label style="font-size:0.8rem; color:#718096;">APY%:</label>
+                    <input type="number" class="input-field" style="width:60px; padding:4px;" step="0.1" 
+                           value="${account.interestRate}" onchange="updateSavingsInModal(${index}, 'interestRate', parseFloat(this.value))">
+                </div>
+            </div>
+        </div>
+    `}).join('');
+}
+
+function addSavingsFromModal() {
+    const name = document.getElementById('modalSavingsName').value.trim();
+    const balance = parseFloat(document.getElementById('modalSavingsBalance').value);
+    const rate = parseFloat(document.getElementById('modalSavingsRate').value);
+
+    if (!name || isNaN(balance) || isNaN(rate)) {
+        alert('Please enter valid savings details');
+        return;
+    }
+
+    if (!appState.savingsAccounts) appState.savingsAccounts = [];
+
+    // Note: handling "amount" vs "balance" inconsistency (legacy uses amount)
+    appState.savingsAccounts.push({ name, amount: balance, balance: balance, interestRate: rate });
+
+    document.getElementById('modalSavingsName').value = '';
+    document.getElementById('modalSavingsBalance').value = '';
+    document.getElementById('modalSavingsRate').value = '';
+    refreshSavingsModalDisplay();
+}
+
+function deleteSavingsFromModal(index) {
+    appState.savingsAccounts.splice(index, 1);
+    refreshSavingsModalDisplay();
+}
+
+// Inline Update Functions
+function updateHouseInModal(index, field, value) {
+    if (appState.houses && appState.houses[index]) {
+        appState.houses[index][field] = value;
+        // If mortgage changed, ensure paidOffStatus is updated if needed logic (simplified for now)
+        if (field === 'mortgagePayment' && value > 0) appState.houses[index].paidOffStatus = 'no';
     }
 }
 
+function updateRetirementInModal(index, field, value) {
+    if (appState.retirementAccounts && appState.retirementAccounts[index]) {
+        appState.retirementAccounts[index][field] = value;
+    }
+}
+
+function updateSavingsInModal(index, field, value) {
+    if (appState.savingsAccounts && appState.savingsAccounts[index]) {
+        appState.savingsAccounts[index][field] = value;
+        if (field === 'balance') appState.savingsAccounts[index].amount = value; // Sync legacy amount field
+    }
+}
+
+// ------------------------------------------------------------------
+
+function switchIncomeTab(tabName) {
+    // Hide all contents and remove active class
+    const contents = document.querySelectorAll('#incomeEditModal .tab-content');
+    contents.forEach(el => el.classList.remove('active'));
+
+    const buttons = document.querySelectorAll('#incomeEditModal .tab-button');
+    buttons.forEach(el => el.classList.remove('active'));
+
+    // Activate selected tab
+    const tabId = `content${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`;
+    const btnId = `tab${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`;
+
+    const tabEl = document.getElementById(tabId);
+    const btnEl = document.getElementById(btnId);
+
+    if (tabEl) tabEl.classList.add('active');
+    if (btnEl) btnEl.classList.add('active');
+}
+
 function saveIncomeChanges() {
-    // Recalculate portfolio dividend income first (in case stocks were edited/deleted)
+    // Check if job income changed
+    const jobInput = document.getElementById('modalJobIncome');
+    if (jobInput) {
+        const val = parseFloat(jobInput.value);
+        if (!isNaN(val)) {
+            appState.annualIncome = val;
+        }
+    }
+
+    // 1. Sync Logic: Ensure House rentals and mortgages are synced
+    syncRentalIncomeFromHouses();
+    syncMortgageExpensesFromHouses();
+
+    // 2. Recalculate everything
     calculateBlendedYield();
+    calculateGoals();
+    renderDashboard();
+    saveState();
+
+    // Update originalIncomeData to match saved state
+    originalIncomeData = {
+        portfolio: JSON.parse(JSON.stringify(appState.portfolio)),
+        rentalIncome: JSON.parse(JSON.stringify(appState.rentalIncome)),
+        savingsAccounts: JSON.parse(JSON.stringify(appState.savingsAccounts || [])),
+        retirementAccounts: JSON.parse(JSON.stringify(appState.retirementAccounts || [])),
+        houses: JSON.parse(JSON.stringify(appState.houses || []))
+    };
 
     // Recalculate total income and update dashboard
     const rentalTotal = (appState.rentalIncome && appState.rentalIncome.length > 0)
@@ -2119,7 +2394,7 @@ function refreshStockModalDisplay() {
                 <input type="number" value="${stock.percent}" onchange="updateStockInModal(${index}, 'percent', parseFloat(this.value))" class="input-field stock-percent-input" min="0" max="100" step="1" placeholder="%">
                 <span class="stock-yield">Loading...</span>
                 <span class="stock-income">$0.00/mo</span>
-                <button onclick="deleteStockFromModal(${index})">Delete</button>
+                <button class="btn-remove" onclick="deleteStockFromModal(${index})">Remove</button>
             `;
             stockEditList.appendChild(stockItem);
 
@@ -2145,7 +2420,7 @@ function refreshStockModalDisplay() {
                 <input type="number" value="${stock.percent}" onchange="updateStockInModal(${index}, 'percent', parseFloat(this.value))" class="input-field stock-percent-input" min="0" max="100" step="1" placeholder="%">
                 <span class="stock-yield">${stock.yield.toFixed(2)}%</span>
                 <span class="stock-income">$${stock.monthlyIncome.toFixed(2)}/mo</span>
-                <button onclick="deleteStockFromModal(${index})">Delete</button>
+                <button class="btn-remove" onclick="deleteStockFromModal(${index})">Remove</button>
             `;
             stockEditList.appendChild(stockItem);
         }
@@ -2155,21 +2430,7 @@ function refreshStockModalDisplay() {
     validatePortfolioPercentage();
 }
 
-function refreshRentalModalDisplay() {
-    const rentalEditList = document.getElementById('rentalEditList');
-    rentalEditList.innerHTML = '';
-
-    appState.rentalIncome.forEach((rental, index) => {
-        const rentalItem = document.createElement('div');
-        rentalItem.className = 'rental-edit-item';
-        rentalItem.innerHTML = `
-            <input type="text" value="${rental.name}" onchange="updateRentalInModal(${index}, 'name', this.value)" class="input-field" placeholder="Property Name">
-            <input type="number" value="${rental.amount}" onchange="updateRentalInModal(${index}, 'amount', parseFloat(this.value))" class="input-field" min="0" step="10" placeholder="Monthly Income">
-            <button onclick="deleteRentalFromModal(${index})">Delete</button>
-        `;
-        rentalEditList.appendChild(rentalItem);
-    });
-}
+// Rental modal display function removed (consolidated into Properties)
 
 function refreshJobIncomeDisplay() {
     const jobIncomeInput = document.getElementById('modalJobIncome');
@@ -2201,11 +2462,7 @@ function deleteStockFromModal(index) {
     renderIncomeBreakdownChart();
 }
 
-function deleteRentalFromModal(index) {
-    appState.rentalIncome.splice(index, 1);
-    refreshRentalModalDisplay();
-    renderIncomeBreakdownChart();
-}
+// Rental delete consolidated into Properties
 
 // Update functions for inline editing
 function updateStockInModal(index, field, value) {
@@ -2224,13 +2481,7 @@ function updateStockInModal(index, field, value) {
     }
 }
 
-function updateRentalInModal(index, field, value) {
-    if (field === 'name') {
-        appState.rentalIncome[index].name = value;
-    } else if (field === 'amount') {
-        appState.rentalIncome[index].amount = value;
-    }
-}
+
 
 // Allow Enter key to submit forms
 document.addEventListener('keypress', (e) => {
@@ -2563,26 +2814,7 @@ async function addStockFromModal() {
     }
 }
 
-function addRentalFromModal() {
-    const nameInput = document.getElementById('modalRentalName');
-    const amountInput = document.getElementById('modalRentalAmount');
 
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid property name and monthly income amount');
-        return;
-    }
-
-    appState.rentalIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshRentalModalDisplay();
-    renderIncomeBreakdownChart();
-}
 
 // Portfolio percentage validation
 function validatePortfolioPercentage() {
@@ -3008,92 +3240,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Add functions
-async function addStockFromModal() {
-    const symbolInput = document.getElementById('modalStockSymbol');
-    const percentInput = document.getElementById('modalStockPercent');
 
-    const symbol = symbolInput.value.trim().toUpperCase();
-    const percent = parseFloat(percentInput.value);
-
-    if (!symbol || !percent || percent <= 0) {
-        alert('Please enter a valid ticker symbol and percentage');
-        return;
-    }
-
-    // Check if total percentage would exceed 100%
-    const currentTotal = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
-    if (currentTotal + percent > 100) {
-        alert('Total portfolio percentage cannot exceed 100%');
-        return;
-    }
-
-    // Fetch dividend yield
-    const yieldData = await fetchDividendYield(symbol);
-
-    if (yieldData) {
-        // Calculate monthly income for this stock
-        const annualDividend = (appState.portfolioValue * (percent / 100)) * (yieldData / 100);
-        const monthlyIncome = annualDividend / 12;
-
-        appState.portfolio.push({
-            symbol: symbol,
-            percent: percent,
-            yield: yieldData,
-            name: symbol,
-            monthlyIncome: monthlyIncome
-        });
-
-        symbolInput.value = '';
-        percentInput.value = '';
-
-        refreshStockModalDisplay();
-        renderIncomeBreakdownChart();
-    }
-}
-
-function addRentalFromModal() {
-    const nameInput = document.getElementById('modalRentalName');
-    const amountInput = document.getElementById('modalRentalAmount');
-
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-
-    if (!name || isNaN(amount) || amount <= 0) {
-        alert('Please enter a valid property name and monthly income amount');
-        return;
-    }
-
-    appState.rentalIncome.push({ name, amount });
-
-    nameInput.value = '';
-    amountInput.value = '';
-
-    refreshRentalModalDisplay();
-    renderIncomeBreakdownChart();
-}
-
-// Portfolio percentage validation
-function validatePortfolioPercentage() {
-    const total = appState.portfolio.reduce((sum, item) => sum + item.percent, 0);
-    const percentInputs = document.querySelectorAll('.stock-percent-input');
-
-    if (total > 100) {
-        // Highlight all percentage inputs in red
-        percentInputs.forEach(input => {
-            input.style.borderColor = '#E53E3E';
-            input.style.backgroundColor = '#FEE';
-        });
-    } else {
-        // Remove red highlight
-        percentInputs.forEach(input => {
-            input.style.borderColor = '';
-            input.style.backgroundColor = '';
-        });
-    }
-
-    return total <= 100;
-}
 
 // --- MCP Context Pusher ---
 async function pushContextToServer() {
@@ -3502,3 +3649,40 @@ async function submitSignupModal() {
         alert('An error occurred. Please try again.');
     }
 }
+
+// --- Global Modal Listener Setup ---
+function setupModalListeners() {
+    // Real Estate: Mortgage Toggle
+    const mortgageCheck = document.getElementById('modalHouseMortgage');
+    const mortgageInput = document.getElementById('modalHouseMortgageAmount');
+    if (mortgageCheck && mortgageInput) {
+        mortgageCheck.addEventListener('change', function () {
+            if (this.checked) {
+                mortgageInput.style.display = 'block';
+                // Small timeout to ensure display:block applies before focus
+                setTimeout(() => mortgageInput.focus(), 50);
+            } else {
+                mortgageInput.style.display = 'none';
+                mortgageInput.value = '';
+            }
+        });
+    }
+
+    // Real Estate: Rent Toggle
+    const rentCheck = document.getElementById('modalHouseRent');
+    const rentInput = document.getElementById('modalHouseRentAmount');
+    if (rentCheck && rentInput) {
+        rentCheck.addEventListener('change', function () {
+            if (this.checked) {
+                rentInput.style.display = 'block';
+                setTimeout(() => rentInput.focus(), 50);
+            } else {
+                rentInput.style.display = 'none';
+                rentInput.value = '';
+            }
+        });
+    }
+}
+
+// Initialize listeners when DOM is ready
+document.addEventListener('DOMContentLoaded', setupModalListeners);

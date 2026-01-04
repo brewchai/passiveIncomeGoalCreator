@@ -2071,7 +2071,7 @@ h4 {
 }
 
 .income-edit-list {
-    min-height: 200px;
+    min-height: 50px;
     max-height: 300px;
     overflow-y: auto;
 }
@@ -2858,4 +2858,88 @@ h4 {
 
 .app-loading .container {
     visibility: hidden;
+}
+
+/* Asset Modal New Layouts */
+.add-income-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: #F7FAFC;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    margin-top: 16px;
+}
+
+.row-inputs {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.row-inputs .input-field {
+    flex: 1;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-secondary);
+}
+
+.income-edit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.income-edit-item:last-child {
+    border-bottom: none;
+}
+
+.income-edit-item .item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.income-edit-item .item-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.income-edit-item .item-details {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.income-edit-item .btn-remove {
+    color: #dc2626;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.income-edit-item .btn-remove:hover {
+    background: #fecaca;
+    color: #991b1b;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.empty-state {
+    padding: 24px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
 }
