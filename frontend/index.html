@@ -788,6 +788,23 @@
 
                 <!-- Stocks Tab Content -->
                 <div class="tab-content" id="contentStocks">
+                    <!-- Portfolio Value Editor -->
+                    <div class="portfolio-value-editor"
+                        style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <label
+                            style="font-weight: 600; font-size: 0.9rem; color: #475569; display: block; margin-bottom: 6px;">
+                            Total Portfolio Value
+                        </label>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span style="font-size: 1.2rem; color: #475569;">$</span>
+                            <input type="number" id="modalPortfolioValue" placeholder="Enter total invested amount"
+                                class="input-field" min="0" step="1000"
+                                style="flex: 1; font-size: 1.1rem; font-weight: 600;">
+                        </div>
+                        <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">
+                            The total value of all your dividend-paying investments.
+                        </p>
+                    </div>
                     <div class="income-edit-list" id="stockEditList">
                         <!-- Stocks will be populated here -->
                     </div>
@@ -1024,34 +1041,69 @@
                             projected to reach financial independence in <span id="fiYearModalYearsToGo">0</span>
                             years.
                         </p>
+                    </div>
 
-                        <div class="fire-progress">
-                            <h4>Your Investment Journey:</h4>
-                            <div class="progress-item">
-                                <span>Starting Point:</span>
-                                <span id="fiYearModalStartingPoint">$0</span>
+                    <!-- HERO: Realistic Range Simulation Section -->
+                    <div class="realistic-range-hero">
+                        <div class="hero-header">
+                            <h3>🎲 But wait — what if the market doesn't cooperate?</h3>
+                            <p>That projection assumes <strong>steady 5% growth every year</strong>. Real markets swing
+                                wildly. Let's run a stress test.</p>
+                        </div>
+                        <button class="btn-primary btn-hero" id="runRealisticRangeBtn">
+                            🔮 Run 1,000 Market Simulations
+                        </button>
+                        <div id="simulationLoader" style="display: none; text-align: center; padding: 20px;">
+                            <div class="loader-spinner"></div>
+                            <p id="loaderText" style="margin-top: 12px; color: #718096; font-size: 0.9rem;">Simulating
+                                1,000 possible futures...</p>
+                        </div>
+                        <div id="realisticRangeResults" style="display: none; margin-top: 16px;">
+                            <div class="simulation-stats">
+                                <span>✓ <strong id="simCount">1,000</strong> simulations completed</span>
+                                <span>• 7% avg return • 15% volatility</span>
                             </div>
-                            <div class="progress-item">
-                                <span>Monthly Contributions:</span>
-                                <span id="fiYearModalMonthlyContrib">$0</span>
+                            <div class="range-results-grid">
+                                <div class="range-result best">
+                                    <span class="range-label">🌟 Best Case (10%)</span>
+                                    <span class="range-value" id="rangeBest">-</span>
+                                </div>
+                                <div class="range-result likely">
+                                    <span class="range-label">📊 Most Likely</span>
+                                    <span class="range-value" id="rangeLikely">-</span>
+                                </div>
+                                <div class="range-result conservative">
+                                    <span class="range-label">🛡️ Conservative (90%)</span>
+                                    <span class="range-value" id="rangeConservative">-</span>
+                                </div>
                             </div>
-                            <div class="progress-item">
-                                <span>Compound Growth:</span>
-                                <span>5% annually</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Total Net Worth:</span>
-                                <span id="fiYearModalFinalValue">$0</span>
-                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fire-progress" style="margin-top: 20px;">
+                        <h4>Your Investment Journey:</h4>
+                        <div class="progress-item">
+                            <span>Starting Point:</span>
+                            <span id="fiYearModalStartingPoint">$0</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Monthly Contributions:</span>
+                            <span id="fiYearModalMonthlyContrib">$0</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Compound Growth:</span>
+                            <span>5% annually</span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Total Net Worth:</span>
+                            <span id="fiYearModalFinalValue">$0</span>
                         </div>
                     </div>
 
                     <div class="fire-customization">
                         <div class="customization-note">
                             <p><strong>Want to reach FI faster?</strong></p>
-                            <p>Try increasing your savings rate, optimizing your investment returns, or reducing
-                                your
-                                expenses. Small changes can have a big impact over time!</p>
+                            <p>Try increasing your savings rate or reducing expenses.</p>
                             <button class="btn-secondary" onclick="showFIOptimization()" disabled>
                                 Optimize Your FI Timeline (Coming Soon)
                             </button>

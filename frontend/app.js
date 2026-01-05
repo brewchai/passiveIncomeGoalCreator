@@ -194,20 +194,20 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Restore saved step for non-authenticated users
-        if (appState.currentStep && appState.currentStep > 0) {
-            // console.log(`🔄 Restoring saved step: ${appState.currentStep}`);
-            showStep(appState.currentStep);
+        console.log('📍 Current step after loadState:', appState.currentStep);
 
-            // Render dashboard if saved step was dashboard
-            if (appState.currentStep === 8) {
-                renderDashboard();
-            }
+        // Always show the correct step (even if 0)
+        showStep(appState.currentStep || 0);
+
+        // Render dashboard if saved step was dashboard
+        if (appState.currentStep === 8) {
+            renderDashboard();
         }
 
         updateProgressBar();
         setupStep3Listeners();
 
-        // console.log('✅ App initialized');
+        console.log('✅ App initialized, showing step:', appState.currentStep);
         appLoader.style.display = 'none';
         appContainer.style.visibility = 'visible';
     } catch (error) {
@@ -300,56 +300,64 @@ async function loadState() {
         }
     }
 
-    // Restore UI if data exists
-    if (appState && appState.currentStep) {
-
+    // Restore UI if data exists - ALWAYS populate form fields if we have data
+    if (appState) {
         // Initialize new fields for backward compatibility
         if (!appState.retirementAccounts) {
             appState.retirementAccounts = [];
         }
-        if (appState.currentStep > 1) {
-            // Restore UI state
-            renderTickerList();
-            renderRentalList();
-            renderRetirementList();
-            renderSavingsList();
-            renderExpenseList();
 
-            // Restore portfolio value
-            if (appState.portfolioValue) {
-                document.getElementById('portfolioValue').value = appState.portfolioValue;
-                updateDividendIncome();
-            }
-
-            // Restore portfolio summary display if tickers exist
-            if (appState.portfolio && appState.portfolio.length > 0) {
-                calculateBlendedYield();
-            }
-        }
+        // Always populate form fields from appState (regardless of currentStep)
+        populateAllFormFields();
 
         // Restore Step 3 houses if they exist
-        if (appState.currentStep >= 3 && appState.houses && appState.houses.length > 0) {
+        if (appState.houses && appState.houses.length > 0) {
             renderHouseList();
-        }
-
-        // Restore Step 1 fields if they exist
-        if (appState.currentStep >= 1) {
-            const careerField = document.getElementById('careerField');
-            const cityLocation = document.getElementById('cityLocation');
-            const relationshipStatus = document.getElementById('relationshipStatus');
-            const numberOfKids = document.getElementById('numberOfKids');
-            const annualIncome = document.getElementById('annualIncome');
-
-            if (careerField && appState.career) careerField.value = appState.career;
-            if (cityLocation && appState.city) cityLocation.value = appState.city;
-            if (relationshipStatus && appState.relationshipStatus) relationshipStatus.value = appState.relationshipStatus;
-            if (numberOfKids && appState.numberOfKids !== undefined) numberOfKids.value = appState.numberOfKids;
-            if (annualIncome && appState.annualIncome) annualIncome.value = appState.annualIncome;
         }
 
         if (appState.currentStep === 8) {
             renderDashboard();
         }
+    }
+}
+
+// Populate all form fields from appState (called on load and when navigating)
+function populateAllFormFields() {
+    // Step 1 fields
+    const careerField = document.getElementById('careerField');
+    const cityLocation = document.getElementById('cityLocation');
+    const relationshipStatus = document.getElementById('relationshipStatus');
+    const numberOfKids = document.getElementById('numberOfKids');
+    const annualIncome = document.getElementById('annualIncome');
+
+    if (careerField && appState.career) careerField.value = appState.career;
+    if (cityLocation && appState.city) cityLocation.value = appState.city;
+    if (relationshipStatus && appState.relationshipStatus) relationshipStatus.value = appState.relationshipStatus;
+    if (numberOfKids && appState.numberOfKids !== undefined) numberOfKids.value = appState.numberOfKids;
+    if (annualIncome && appState.annualIncome) annualIncome.value = appState.annualIncome;
+
+    // Step 4 portfolio value
+    const portfolioValueInput = document.getElementById('portfolioValue');
+    if (portfolioValueInput && appState.portfolioValue) {
+        portfolioValueInput.value = appState.portfolioValue;
+    }
+
+    // Render lists if data exists
+    if (appState.portfolio && appState.portfolio.length > 0) {
+        renderTickerList();
+        calculateBlendedYield();
+    }
+    if (appState.rentalIncome && appState.rentalIncome.length > 0) {
+        renderRentalList();
+    }
+    if (appState.retirementAccounts && appState.retirementAccounts.length > 0) {
+        renderRetirementList();
+    }
+    if (appState.savingsAccounts && appState.savingsAccounts.length > 0) {
+        renderSavingsList();
+    }
+    if (appState.expenses && appState.expenses.length > 0) {
+        renderExpenseList();
     }
 }
 
@@ -498,6 +506,9 @@ function showStep(stepNumber) {
         }, 0);
     }
 
+    // Always repopulate form fields when showing a new step
+    populateAllFormFields();
+
     updateProgressBar();
 }
 
@@ -523,6 +534,7 @@ function startBuilder() {
 
     appState.currentStep = 1;
     showStep(1);
+    populateAllFormFields(); // Ensure form fields are populated
     saveState();
 }
 
@@ -658,10 +670,20 @@ function calculateBlendedYield() {
 
 // Update dividend income based on portfolio value and blended yield
 function updateDividendIncome() {
+    // FIXED: Read from appState, not from the builder step input
+    // The builder step input is only valid during initial setup
     const portfolioValueInput = document.getElementById('portfolioValue');
-    const portfolioValue = parseFloat(portfolioValueInput.value) || 0;
 
-    appState.portfolioValue = portfolioValue;
+    // Only read from input if it exists AND has a value (builder step context)
+    // Otherwise use existing appState value
+    if (portfolioValueInput && portfolioValueInput.value !== '') {
+        const inputValue = parseFloat(portfolioValueInput.value);
+        if (!isNaN(inputValue) && inputValue >= 0) {
+            appState.portfolioValue = inputValue;
+        }
+    }
+
+    const portfolioValue = appState.portfolioValue || 0;
 
     if (portfolioValue > 0 && appState.blendedYield > 0) {
         // Annual dividend = portfolio value * yield percentage
@@ -669,10 +691,12 @@ function updateDividendIncome() {
         const monthlyDividend = annualDividend / 12;
 
         appState.monthlyDividendIncome = monthlyDividend;
-        document.getElementById('monthlyDividendIncome').textContent = `$${monthlyDividend.toFixed(2)}`;
+        const displayEl = document.getElementById('monthlyDividendIncome');
+        if (displayEl) displayEl.textContent = `$${monthlyDividend.toFixed(2)}`;
     } else {
         appState.monthlyDividendIncome = 0;
-        document.getElementById('monthlyDividendIncome').textContent = '$0.00';
+        const displayEl = document.getElementById('monthlyDividendIncome');
+        if (displayEl) displayEl.textContent = '$0.00';
     }
 
     saveState();
@@ -1106,6 +1130,71 @@ function renderNextGoalCompact(goal) {
     document.getElementById('progressPercentage').textContent = `${progress.toFixed(0)}%`;
 }
 
+// --- Monte Carlo Simulation for Realistic FI Range ---
+// Box-Muller transform for Gaussian random numbers
+function gaussianRandom(mean = 0, stdDev = 1) {
+    const u1 = Math.random();
+    const u2 = Math.random();
+    const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    return z * stdDev + mean;
+}
+
+// Run Monte Carlo simulation to get realistic FI year range
+function runMonteCarloSimulation({
+    currentPrincipal,
+    monthlyContribution,
+    fireNumber,
+    simulations = 1000,
+    meanAnnualReturn = 0.07,
+    stdDevAnnualReturn = 0.15
+}) {
+    const results = [];
+    const currentYear = new Date().getFullYear();
+    const maxMonths = 600; // 50 year cap
+
+    for (let sim = 0; sim < simulations; sim++) {
+        let balance = currentPrincipal;
+        let months = 0;
+
+        while (balance < fireNumber && months < maxMonths) {
+            // Generate random monthly return using Box-Muller
+            const monthlyMean = meanAnnualReturn / 12;
+            const monthlyStdDev = stdDevAnnualReturn / Math.sqrt(12);
+            const randomReturn = gaussianRandom(monthlyMean, monthlyStdDev);
+
+            // Apply return and contribution
+            balance = balance * (1 + randomReturn) + monthlyContribution;
+            months++;
+        }
+
+        results.push(months < maxMonths ? months : null);
+    }
+
+    // Filter valid results and sort
+    const validResults = results.filter(m => m !== null).sort((a, b) => a - b);
+
+    if (validResults.length === 0) {
+        return {
+            optimisticYear: 'Never',
+            medianYear: 'Never',
+            pessimisticYear: 'Never',
+            simulationsRun: simulations
+        };
+    }
+
+    // Calculate percentiles (10th, 50th, 90th)
+    const p10Months = validResults[Math.floor(validResults.length * 0.10)];
+    const p50Months = validResults[Math.floor(validResults.length * 0.50)];
+    const p90Months = validResults[Math.floor(validResults.length * 0.90)];
+
+    return {
+        optimisticYear: currentYear + Math.ceil(p10Months / 12),
+        medianYear: currentYear + Math.ceil(p50Months / 12),
+        pessimisticYear: currentYear + Math.ceil(p90Months / 12),
+        simulationsRun: simulations
+    };
+}
+
 // Shared FI Year calculation function
 function calculateProjectedFIYear() {
     const totalMonthlyIncome = appState.totalPassiveIncome + (appState.annualIncome ? appState.annualIncome / 12 : 0);
@@ -1533,14 +1622,21 @@ function syncMortgageExpensesFromHouses() {
 let incomeChart = null;
 
 function openIncomeModal() {
-    // Store original income data for comparison
+    // Store original income data for comparison (including portfolioValue)
     originalIncomeData = {
         portfolio: JSON.parse(JSON.stringify(appState.portfolio)),
         rentalIncome: JSON.parse(JSON.stringify(appState.rentalIncome)),
         savingsAccounts: JSON.parse(JSON.stringify(appState.savingsAccounts || [])),
         retirementAccounts: JSON.parse(JSON.stringify(appState.retirementAccounts || [])),
-        houses: JSON.parse(JSON.stringify(appState.houses || []))
+        houses: JSON.parse(JSON.stringify(appState.houses || [])),
+        portfolioValue: appState.portfolioValue || 0
     };
+
+    // Clear portfolio value input so it gets properly populated
+    const portfolioInput = document.getElementById('modalPortfolioValue');
+    if (portfolioInput) {
+        portfolioInput.value = '';
+    }
 
     // Populate modal with current income data
     refreshStockModalDisplay();
@@ -2341,6 +2437,22 @@ function saveIncomeChanges() {
         }
     }
 
+    // Check if portfolio value changed
+    const portfolioInput = document.getElementById('modalPortfolioValue');
+    if (portfolioInput) {
+        const newPortfolioValue = parseFloat(portfolioInput.value);
+        if (!isNaN(newPortfolioValue) && newPortfolioValue >= 0) {
+            appState.portfolioValue = newPortfolioValue;
+            // Recalculate stock incomes based on new value
+            appState.portfolio.forEach(stock => {
+                if (stock.yield) {
+                    const annualDividend = (newPortfolioValue * (stock.percent / 100)) * (stock.yield / 100);
+                    stock.monthlyIncome = annualDividend / 12;
+                }
+            });
+        }
+    }
+
     // 1. Sync Logic: Ensure House rentals and mortgages are synced
     syncRentalIncomeFromHouses();
     syncMortgageExpensesFromHouses();
@@ -2380,7 +2492,21 @@ function saveIncomeChanges() {
 }
 
 function refreshStockModalDisplay() {
+    // Only populate portfolio value input ONCE when modal opens (not on async refreshes)
+    const portfolioValueInput = document.getElementById('modalPortfolioValue');
+    if (portfolioValueInput && portfolioValueInput.value === '') {
+        // Only set if empty (first load), don't overwrite user's typed value
+        portfolioValueInput.value = appState.portfolioValue || '';
+    }
+
+    // Refresh stock list only
+    refreshStockList();
+}
+
+// Separate function to refresh just the stock list (called by async yield fetches)
+function refreshStockList() {
     const stockEditList = document.getElementById('stockEditList');
+    if (!stockEditList) return;
     stockEditList.innerHTML = '';
 
     appState.portfolio.forEach((stock, index) => {
@@ -2398,14 +2524,14 @@ function refreshStockModalDisplay() {
             `;
             stockEditList.appendChild(stockItem);
 
-            // Fetch yield asynchronously
+            // Fetch yield asynchronously - only refresh stock list, NOT the whole display
             fetchDividendYield(stock.symbol).then(yieldData => {
                 if (yieldData) {
                     stock.yield = yieldData;
                     // Calculate monthly income for this stock
                     const annualDividend = (appState.portfolioValue * (stock.percent / 100)) * (yieldData / 100);
                     stock.monthlyIncome = annualDividend / 12;
-                    refreshStockModalDisplay();
+                    refreshStockList(); // Only refresh stock list, preserves portfolio value input
                 }
             });
         } else {
@@ -2428,6 +2554,64 @@ function refreshStockModalDisplay() {
 
     // Validate total percentage
     validatePortfolioPercentage();
+}
+
+// Update portfolio value from modal
+function updatePortfolioValueFromModal() {
+    const input = document.getElementById('modalPortfolioValue');
+    if (!input) {
+        console.error('Portfolio value input not found');
+        return;
+    }
+
+    const newValue = parseFloat(input.value);
+    if (isNaN(newValue) || newValue < 0) {
+        alert('Please enter a valid portfolio value');
+        return;
+    }
+
+    console.log('Updating portfolio value from', appState.portfolioValue, 'to', newValue);
+    appState.portfolioValue = newValue;
+
+    // Recalculate all stock monthly incomes based on new portfolio value
+    appState.portfolio.forEach(stock => {
+        if (stock.yield) {
+            const annualDividend = (newValue * (stock.percent / 100)) * (stock.yield / 100);
+            stock.monthlyIncome = annualDividend / 12;
+        }
+    });
+
+    // Update dividend income
+    calculateBlendedYield();
+
+    // Refresh the stock list only (not the input)
+    const stockEditList = document.getElementById('stockEditList');
+    if (stockEditList) {
+        // Rebuild stock list HTML without touching portfolio value input
+        stockEditList.innerHTML = '';
+        appState.portfolio.forEach((stock, index) => {
+            const stockItem = document.createElement('div');
+            stockItem.className = 'stock-edit-item';
+            if (stock.yield) {
+                const income = stock.monthlyIncome || 0;
+                stockItem.innerHTML = `
+                    <input type="text" value="${stock.symbol}" onchange="updateStockInModal(${index}, 'symbol', this.value)" class="input-field" placeholder="Ticker">
+                    <input type="number" value="${stock.percent}" onchange="updateStockInModal(${index}, 'percent', parseFloat(this.value))" class="input-field stock-percent-input" min="0" max="100" step="1" placeholder="%">
+                    <span class="stock-yield">${stock.yield.toFixed(2)}%</span>
+                    <span class="stock-income">$${income.toFixed(2)}/mo</span>
+                    <button class="btn-remove" onclick="deleteStockFromModal(${index})">Remove</button>
+                `;
+            }
+            stockEditList.appendChild(stockItem);
+        });
+    }
+
+    renderDashboard();
+    saveState();
+
+    // Visual feedback
+    input.style.borderColor = '#22c55e';
+    setTimeout(() => { input.style.borderColor = ''; }, 1000);
 }
 
 // Rental modal display function removed (consolidated into Properties)
@@ -3079,7 +3263,9 @@ function renderHouseList() {
         houseCard.className = 'house-item';
         houseCard.dataset.houseId = house.id;
 
-        const typeLabel = house.type.charAt(0).toUpperCase() + house.type.slice(1).replace('-', ' ');
+        const typeLabel = house.type
+            ? house.type.charAt(0).toUpperCase() + house.type.slice(1).replace('-', ' ')
+            : 'Property';
 
         houseCard.innerHTML = `
             <div class="house-details">
@@ -3427,6 +3613,57 @@ function openFIYearModal() {
 
     // Show modal
     document.getElementById('fiYearExplanationModal').style.display = 'flex';
+
+    // Reset Monte Carlo results when modal opens
+    document.getElementById('realisticRangeResults').style.display = 'none';
+
+    // Wire up the Monte Carlo simulation button
+    const runBtn = document.getElementById('runRealisticRangeBtn');
+    if (runBtn) {
+        runBtn.onclick = function () {
+            runBtn.style.display = 'none';
+            const loader = document.getElementById('simulationLoader');
+            const loaderText = document.getElementById('loaderText');
+            const resultsDiv = document.getElementById('realisticRangeResults');
+
+            loader.style.display = 'block';
+            resultsDiv.style.display = 'none';
+
+            // Animated loader messages
+            const messages = [
+                'Simulating 1,000 possible futures...',
+                'Applying market volatility (σ = 15%)...',
+                'Calculating percentiles...',
+                'Crunching the numbers...'
+            ];
+            let msgIndex = 0;
+            const msgInterval = setInterval(() => {
+                msgIndex = (msgIndex + 1) % messages.length;
+                loaderText.textContent = messages[msgIndex];
+            }, 400);
+
+            // Run simulation after fake delay
+            setTimeout(() => {
+                const results = runMonteCarloSimulation({
+                    currentPrincipal: currentPortfolioValue,
+                    monthlyContribution: projectedMonthlySavings,
+                    fireNumber: fireNumber
+                });
+
+                clearInterval(msgInterval);
+                loader.style.display = 'none';
+
+                document.getElementById('rangeBest').textContent = results.optimisticYear;
+                document.getElementById('rangeLikely').textContent = results.medianYear;
+                document.getElementById('rangeConservative').textContent = results.pessimisticYear;
+                document.getElementById('simCount').textContent = results.simulationsRun.toLocaleString();
+                resultsDiv.style.display = 'block';
+
+                runBtn.textContent = '🔄 Run Again';
+                runBtn.style.display = 'block';
+            }, 3500);
+        };
+    }
 }
 
 function closeFIYearModal() {
@@ -3470,10 +3707,8 @@ function closeSignupModal() {
 async function submitSignupModal() {
     try {
         // Sign in with Google OAuth
-        // Always redirect to production URL after OAuth
-        const redirectUrl = window.location.hostname === 'localhost'
-            ? 'http://localhost:3000/'
-            : 'https://butfirstfire.com/';
+        // Use current origin for redirect (works for any port in dev)
+        const redirectUrl = window.location.origin + '/';
 
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: 'google',
