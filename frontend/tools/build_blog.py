@@ -40,6 +40,15 @@ def strip_leading_h1(html: str) -> str:
     import re
     return re.sub(r"^\s*<h1[^>]*>.*?</h1>\s*", "", html, flags=re.IGNORECASE | re.DOTALL)
 
+def calculate_read_time(text: str) -> int:
+    """Calculate read time in minutes based on word count (200 wpm average)"""
+    import re
+    # Strip HTML tags and count words
+    clean_text = re.sub(r'<[^>]+>', '', text)
+    words = len(clean_text.split())
+    minutes = max(1, round(words / 200))  # At least 1 minute
+    return minutes
+
 
 def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> str:
     title = meta["title"].strip()
@@ -57,12 +66,16 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     # Remove duplicate H1 at top of content
     html_body = strip_leading_h1(html_content)
 
+    # Calculate read time from content
+    read_time = calculate_read_time(html_content)
+
     # Simple placeholder replacement
     page = (
         template.replace("{{TITLE}}", title)
         .replace("{{DESCRIPTION}}", description)
         .replace("{{SUBTITLE}}", subtitle)
         .replace("{{DATE}}", date)
+        .replace("{{READ_TIME}}", str(read_time))
         .replace("{{CANONICAL}}", canonical_abs)
         .replace("{{CANONICAL_PATH}}", canonical_path)
         .replace("{{COVER}}", cover_abs)

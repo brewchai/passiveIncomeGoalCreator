@@ -1,6 +1,22 @@
 {
   "featured": [
     {
+      "slug": "40k-debt-to-1m-at-33",
+      "title": "The 3 Things That Took Me from $40k in Debt to $1M at 33",
+      "subtitle": "Yes a 9-5 made me a millionaire in a decade",
+      "description": "How a 9-5 job, strategic saving, and consistent investing made me a millionaire in a decade",
+      "date": "2026-01-29",
+      "cover": "/blog/posts/40k-debt-to-1m-at-33/cover.jpg",
+      "tags": [
+        "personal-story",
+        "debt-payoff",
+        "millionaire",
+        "fire-journey"
+      ],
+      "featured": true,
+      "url": "/blog/40k-debt-to-1m-at-33"
+    },
+    {
       "slug": "what-is-Coast-FIRE",
       "title": "What is Coast F.I.R.E?",
       "subtitle": "The Complete Coast FIRE Blueprint: How to Stop worrying about retirement and live for today",
@@ -103,6 +119,22 @@
   ],
   "all": [
     {
+      "slug": "40k-debt-to-1m-at-33",
+      "title": "The 3 Things That Took Me from $40k in Debt to $1M at 33",
+      "subtitle": "Yes a 9-5 made me a millionaire in a decade",
+      "description": "How a 9-5 job, strategic saving, and consistent investing made me a millionaire in a decade",
+      "date": "2026-01-29",
+      "cover": "/blog/posts/40k-debt-to-1m-at-33/cover.jpg",
+      "tags": [
+        "personal-story",
+        "debt-payoff",
+        "millionaire",
+        "fire-journey"
+      ],
+      "featured": true,
+      "url": "/blog/40k-debt-to-1m-at-33"
+    },
+    {
       "slug": "How-to-save-500-per-month",
       "title": "Here's how you can save upto $500 each month",
       "subtitle": "And retire years earlier than you thought you could",
@@ -201,5 +233,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-01-03T15:39:58.106251Z"
+  "_generated_at": "2026-01-28T16:21:25.306899Z"
 }
