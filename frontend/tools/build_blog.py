@@ -59,7 +59,11 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     # Canonical path/URL
     canonical_path = f"/blog/{slug}"
     canonical_abs = f"{BASE_URL}{canonical_path}" if BASE_URL else canonical_path
-    cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover.startswith("/")) else cover
+    
+    # Fix cover path: if relative, prepend full blog post path
+    if cover and not cover.startswith("/"):
+        cover = f"/blog/posts/{slug}/{cover}"
+    cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover) else cover
 
     hero_html = f'<img src="{cover_abs}" alt="{title} cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">' if cover_abs else ''
 
@@ -131,13 +135,18 @@ def build_one_post(slug: str, template: str) -> dict:
     out_path.write_text(html, encoding="utf-8")
 
     # Minimal record for posts.json
+    # Fix cover path for JSON output too
+    cover_for_json = meta.get("cover", "")
+    if cover_for_json and not cover_for_json.startswith("/"):
+        cover_for_json = f"/blog/posts/{slug}/{cover_for_json}"
+    
     return {
         "slug": slug,
         "title": meta["title"],
         "subtitle": meta.get("subtitle", ""),
         "description": meta.get("description", ""),
         "date": iso_date(meta["date"]),
-        "cover": meta.get("cover", ""),
+        "cover": cover_for_json,
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
         "url": f"/blog/{slug}",
