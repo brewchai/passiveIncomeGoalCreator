@@ -129,7 +129,7 @@ Coast FIRE doesn't require geo-arbitrage like Lean FIRE, but you can benefit fro
 
 Once you stop saving for retirement, income can be more casual or passion-driven:
 
-* Freelancing, consulting, part-time roles
+* Freelancing, consulting, part-time roles (similar to [Barista FIRE](/blog/what-is-barista-FIRE))
 * Entrepreneurship or creative work
 * Seasonal or project-based jobs
 
@@ -152,7 +152,7 @@ Even with Coast FIRE, plan for the unexpected:
 
 In one month, you can make serious progress toward Coast FIRE:
 
-1. **Calculate your Coast FIRE number** — how much do you need now?
+1. **Calculate your Coast FIRE number** — [use our FIRE calculator](/blog/calculating-fire-number) to find how much you need now
 2. **Audit your portfolio** — current balance vs. required
 3. **Re-balance investments** — align with long-term strategy
 4. **Increase savings rate** — even temporarily

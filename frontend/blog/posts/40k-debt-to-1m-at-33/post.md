@@ -20,7 +20,7 @@ For me, that came through working in tech. A solid salary gave me the base, but 
 
 **The first six years of my career, the stock was a dud.** It crawled up maybe 3 to 4 percent a year. Nothing glamorous at all and no I didn't appreciate my way up to a million merrily. But here's the key... *I never treated RSUs as cash*. They didn't touch my checking account, they didn't factor into my lifestyle, and I never sold them just to fund day-to-day expenses.
 
-I could've inflated my life easily — bigger apartments, fancier trips, whatever. But I didn't. I held on, partly to avoid unnecessary taxes, but mostly because I trained myself to see RSUs as untouchable. They stacked quietly in the background while I lived entirely on my salary **and I saved A LOT of it too**.
+I could've inflated my life easily — bigger apartments, fancier trips, whatever. But I didn't. I held on, partly to avoid unnecessary taxes, but mostly because I trained myself to see RSUs as untouchable. They stacked quietly in the background while I lived entirely on my salary **and I saved A LOT of it too**. This is essentially [Coast FIRE](/blog/what-is-Coast-FIRE) — where your investments grow without additional contributions.
 
 Only later, once they had built up, did I start selling portions... not to upgrade my lifestyle, but to diversify into index funds and spread my bets. That decision kept me from being hostage to one company's stock price.
 
@@ -68,6 +68,6 @@ While I'm fortunate enough to be in this position, I've made a lot of mistakes a
 2. **Stay invested** — don't interrupt compounding
 3. **Save aggressively** — but don't deprive yourself
 
-If you're starting from debt like I was, know that it's possible. It took me 10 years, but the principles are timeless. Start where you are, use what you have, and stay consistent.
+If you're starting from debt like I was, know that it's possible. It took me 10 years, but the principles are timeless. Start where you are, use what you have, and stay consistent. To figure out your target number, check out our [complete guide to calculating your FIRE number](/blog/calculating-fire-number).
 
 Your future millionaire self is already thanking you.

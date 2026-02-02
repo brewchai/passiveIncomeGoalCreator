@@ -159,7 +159,7 @@ Even the conservative $500/month savings gives you:
 ### **$6,000/year invested**  
 ### **$6,000/year compounding**  
 
-This alone can shift your retirement by **several years earlier**. And if you increase income simultaneously — even better, because the timeline shrinks dramatically when savings rate grows from 20% → 40%.
+This alone can shift your retirement by **several years earlier**. Every $500 saved impacts your [FIRE number](/blog/calculating-fire-number) significantly. And if you increase income simultaneously — even better, because the timeline shrinks dramatically when savings rate grows from 20% → 40%.
 
 If you'd like to track your progress, you can use our [ButFirstFIRE](https://butfirstfire.com) dashboard. It shows your exact numbers — your income, your expenses, your FI number, and your projected retirement year — and shows *exactly* how the extra $500 affects your timeline. The dashboard shows, in real time, how each spending habit pushes your FIRE date earlier or later.
 
@@ -170,5 +170,5 @@ You don’t need a radical lifestyle overhaul. You don’t need to give up every
 You just need a handful of rules that nudge you toward intention instead of convenience.
 
 And those rules — done consistently — can buy you something priceless:  
-**years of freedom back.**
+**years of freedom back.** See how I saved 50% of my income in my [journey to $1M at 33](/blog/40k-debt-to-1m-at-33).
 

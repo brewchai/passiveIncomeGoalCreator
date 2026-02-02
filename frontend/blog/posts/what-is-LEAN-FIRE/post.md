@@ -133,6 +133,8 @@ Even a modest side income ($500–$1,000/month) can accelerate Lean FIRE:
 * Provides extra margin for emergencies.
 * Can cover occasional splurges without touching core savings.
 
+For more flexibility, consider [Barista FIRE](/blog/what-is-barista-FIRE) which combines part-time work with financial independence.
+
 ---
 
 ## Psychological & Social Considerations

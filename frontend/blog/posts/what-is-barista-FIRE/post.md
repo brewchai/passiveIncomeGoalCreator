@@ -28,7 +28,7 @@ This approach is ideal for individuals who:
 
 ## How It Differs from Lean FIRE
 
-Unlike Lean FIRE, which requires a fully self-sufficient portfolio, Barista FIRE combines savings with ongoing part-time or freelance income. This reduces the portfolio needed and allows for more financial breathing room.
+Unlike [Lean FIRE](/blog/what-is-LEAN-FIRE), which requires a fully self-sufficient portfolio, Barista FIRE combines savings with ongoing part-time or freelance income. This reduces the portfolio needed and allows for more financial breathing room. It's similar to [Coast FIRE](/blog/what-is-Coast-FIRE), but with part-time work instead of letting investments coast.
 
 Key differences:
 

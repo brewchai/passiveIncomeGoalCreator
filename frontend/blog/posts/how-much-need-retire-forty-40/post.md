@@ -280,7 +280,7 @@ Tech, sales, nursing, cyber, PM, cloud.
 $500–$1,000/month side income reduces your required FIRE number by:
 $1,000 × 12 × 30.8 = $369,600
 
-You need $370k LESS.
+You need $370k LESS. Consider [Coast FIRE](/blog/what-is-Coast-FIRE) as an alternative approach.
 
 ---
 
@@ -317,6 +317,6 @@ It’s a **mathematical commitment** shaped by savings rate, time, and income le
 - At **$200k+** → very achievable  
 
 Your savings rate matters more than your investment returns.  
-The earlier you start, the easier the math gets.  
+The earlier you start, the easier the math gets. Start by [saving $500/month](/blog/How-to-save-500-per-month) to build momentum.  
 And if you combine strong income with low expenses for a decade, FIRE at 40 becomes not just possible… but predictable.
 
