@@ -257,10 +257,11 @@
                     heroPostEl.innerHTML = '';
                     remainingPosts = filteredPosts;
                 } else {
-                    // Show first post as hero, rest in grid
-                    if (filteredPosts.length > 0) {
-                        renderHeroPost(filteredPosts[0]);
-                        remainingPosts = filteredPosts.slice(1);
+                    // Show featured post as hero, or first post if none featured
+                    const featuredPost = filteredPosts.find(p => p.featured) || filteredPosts[0];
+                    if (featuredPost) {
+                        renderHeroPost(featuredPost);
+                        remainingPosts = filteredPosts.filter(p => p.slug !== featuredPost.slug);
                     } else {
                         heroPostEl.innerHTML = '';
                         remainingPosts = [];
