@@ -58,7 +58,8 @@
         <!-- Search Box -->
         <div class="search-container">
             <span class="search-icon">🔍</span>
-            <input type="text" class="search-box" placeholder="Search articles... (coming soon)" disabled>
+            <input type="text" class="search-box" id="searchInput" placeholder="Search articles...">
+            <button class="search-clear" id="searchClear" style="display:none;" aria-label="Clear search">✕</button>
         </div>
 
         <!-- Articles -->
@@ -68,6 +69,12 @@
             </div>
             <div class="load-more-container">
                 <button id="loadMoreBtn" class="load-more-btn">Load More</button>
+            </div>
+            <div id="noResults" style="display:none; text-align:center; padding:3rem 1rem; color:#64748b;">
+                <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+                <p style="font-size:1.125rem; font-weight:500; color:#0f172a; margin:0 0 0.5rem;">No articles found</p>
+                <p style="margin:0;">Try a different search term or <a href="#" id="clearSearchLink"
+                        style="color:#667eea; text-decoration:none; font-weight:500;">browse all articles</a></p>
             </div>
         </section>
     </main>
@@ -86,13 +93,50 @@
         </div>
     </footer>
 
+    <style>
+        .search-container {
+            position: relative;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .search-clear:hover {
+            color: #475569;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box:not(:disabled) {
+            cursor: text;
+        }
+    </style>
+
     <script>
         (function () {
             const gridEl = document.getElementById('articlesGrid');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            const noResults = document.getElementById('noResults');
+            const clearSearchLink = document.getElementById('clearSearchLink');
             const PAGE_SIZE = 9;
             let allPosts = [];
+            let filteredPosts = [];
             let renderedCount = 0;
+            let isSearching = false;
+            let debounceTimer = null;
 
             function htmlEscape(s) {
                 return (s || '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -102,7 +146,7 @@
                 const cover = post.cover && post.cover.trim() ? post.cover : '';
                 const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
                 const imgBlock = cover
-                    ? `<div class="article-thumbnail" style="padding:0; height:auto;"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} cover" style="width:100%; height:220px; object-fit:cover; display:block;"></div>`
+                    ? `<div class="article-thumbnail" style="padding:0; height:auto;"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — article cover image" style="width:100%; height:220px; object-fit:cover; display:block;"></div>`
                     : `<div class="article-thumbnail">📝</div>`;
                 return `
                 <a href="/blog/${encodeURIComponent(post.slug)}" style="text-decoration:none; color:inherit;">
@@ -121,16 +165,83 @@
                 </a>`;
             }
 
-            function renderMore() {
-                const next = allPosts.slice(renderedCount, renderedCount + PAGE_SIZE);
+            function renderPosts(posts, append) {
+                if (!append) {
+                    gridEl.innerHTML = '';
+                    renderedCount = 0;
+                }
+                const next = posts.slice(renderedCount, renderedCount + PAGE_SIZE);
                 gridEl.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
                 renderedCount += next.length;
-                if (renderedCount >= allPosts.length) {
+
+                // Show/hide load more
+                if (isSearching || renderedCount >= posts.length) {
                     loadMoreBtn.style.display = 'none';
                 } else {
                     loadMoreBtn.style.display = 'inline-block';
                 }
+
+                // Show/hide no results
+                if (isSearching && posts.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
             }
+
+            function searchPosts(query) {
+                const q = query.toLowerCase().trim();
+                isSearching = q.length > 0;
+                searchClear.style.display = isSearching ? 'block' : 'none';
+
+                if (!isSearching) {
+                    filteredPosts = allPosts;
+                    renderPosts(filteredPosts, false);
+                    // Update URL
+                    history.replaceState(null, '', '/blog');
+                    return;
+                }
+
+                const terms = q.split(/\s+/);
+                filteredPosts = allPosts.filter(post => {
+                    const haystack = [
+                        post.title || '',
+                        post.subtitle || '',
+                        post.description || '',
+                        ...(post.tags || [])
+                    ].join(' ').toLowerCase();
+                    return terms.every(term => haystack.includes(term));
+                });
+
+                renderPosts(filteredPosts, false);
+
+                // Update URL with search param
+                const url = new URL(window.location);
+                url.searchParams.set('q', query);
+                history.replaceState(null, '', url);
+            }
+
+            function clearSearch() {
+                searchInput.value = '';
+                searchPosts('');
+                searchInput.focus();
+            }
+
+            // Event listeners
+            searchInput.addEventListener('input', function () {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => searchPosts(this.value), 300);
+            });
+
+            searchClear.addEventListener('click', clearSearch);
+            clearSearchLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                clearSearch();
+            });
+
+            loadMoreBtn.addEventListener('click', function () {
+                renderPosts(isSearching ? filteredPosts : allPosts, true);
+            });
 
             async function init() {
                 try {
@@ -141,28 +252,27 @@
                     if (!text) { console.warn('Empty posts.json response'); return; }
                     const data = JSON.parse(text);
 
-                    // Use data.all if present, else merge featured+recent
                     allPosts = Array.isArray(data.all) && data.all.length
                         ? data.all
                         : [...(data.featured || []), ...(data.recent || [])];
 
-                    // Sort by date desc just in case
                     allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-                    gridEl.innerHTML = '';
-                    renderedCount = 0;
-                    if (allPosts.length) {
-                        renderMore();
+                    // Check for ?q= param
+                    const params = new URLSearchParams(window.location.search);
+                    const q = params.get('q');
+                    if (q) {
+                        searchInput.value = q;
+                        searchPosts(q);
                     } else {
-                        gridEl.innerHTML = '<div style="color:#64748b;">No posts yet.</div>';
-                        loadMoreBtn.style.display = 'none';
+                        filteredPosts = allPosts;
+                        renderPosts(allPosts, false);
                     }
                 } catch (e) {
                     console.error('Failed to load posts.json', e);
                 }
             }
 
-            loadMoreBtn.addEventListener('click', renderMore);
             init();
         })();
     </script>
