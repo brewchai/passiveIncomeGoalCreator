@@ -110,6 +110,23 @@
   ],
   "recent": [
     {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can I Retire at 35 with $500k?",
+      "subtitle": "Every strategy simulated \u2014 from S&P 500 withdrawals to real estate, JEPI, and geo-arbitrage",
+      "description": "Can you retire at 35 with $500,000? We run every scenario \u2014 from the safest withdrawal strategies to real estate, dividend ETFs, geo-arbitrage, and hybrid approaches.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.jpg",
+      "tags": [
+        "fire-basics",
+        "retirement-planning",
+        "geo-arbitrage",
+        "saving"
+      ],
+      "readTime": "12 min read",
+      "featured": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
+    },
+    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -142,6 +159,23 @@
     }
   ],
   "all": [
+    {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can I Retire at 35 with $500k?",
+      "subtitle": "Every strategy simulated \u2014 from S&P 500 withdrawals to real estate, JEPI, and geo-arbitrage",
+      "description": "Can you retire at 35 with $500,000? We run every scenario \u2014 from the safest withdrawal strategies to real estate, dividend ETFs, geo-arbitrage, and hybrid approaches.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.jpg",
+      "tags": [
+        "fire-basics",
+        "retirement-planning",
+        "geo-arbitrage",
+        "saving"
+      ],
+      "readTime": "12 min read",
+      "featured": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
+    },
     {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
