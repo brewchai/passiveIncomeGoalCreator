@@ -110,6 +110,22 @@
   ],
   "recent": [
     {
+      "slug": "do-you-actually-need-to-retire",
+      "title": "Do You Actually Need to Retire?",
+      "subtitle": "What if the question isn't how to retire early \u2014 but why you want to escape your life?",
+      "description": "A deeply personal exploration of what retirement really means, the case for and against early retirement, and whether freedom matters more than not working.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.jpg",
+      "tags": [
+        "fire-basics",
+        "personal-story",
+        "retirement-planning"
+      ],
+      "readTime": "10 min read",
+      "featured": false,
+      "url": "/blog/do-you-actually-need-to-retire"
+    },
+    {
       "slug": "can-i-retire-at-35-with-500k",
       "title": "Can I Retire at 35 with $500k?",
       "subtitle": "Every strategy simulated \u2014 from S&P 500 withdrawals to real estate, JEPI, and geo-arbitrage",
@@ -159,6 +175,22 @@
     }
   ],
   "all": [
+    {
+      "slug": "do-you-actually-need-to-retire",
+      "title": "Do You Actually Need to Retire?",
+      "subtitle": "What if the question isn't how to retire early \u2014 but why you want to escape your life?",
+      "description": "A deeply personal exploration of what retirement really means, the case for and against early retirement, and whether freedom matters more than not working.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.jpg",
+      "tags": [
+        "fire-basics",
+        "personal-story",
+        "retirement-planning"
+      ],
+      "readTime": "10 min read",
+      "featured": false,
+      "url": "/blog/do-you-actually-need-to-retire"
+    },
     {
       "slug": "can-i-retire-at-35-with-500k",
       "title": "Can I Retire at 35 with $500k?",
