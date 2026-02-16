@@ -29,7 +29,7 @@
         "coast-fire"
       ],
       "readTime": "7 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-Coast-FIRE"
     },
     {
@@ -44,7 +44,7 @@
         "barista-fire"
       ],
       "readTime": "6 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-barista-FIRE"
     },
     {
@@ -59,7 +59,7 @@
         "lean-fire"
       ],
       "readTime": "7 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
@@ -74,7 +74,7 @@
         "retirement-planning"
       ],
       "readTime": "6 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
@@ -89,7 +89,7 @@
         "comparison"
       ],
       "readTime": "10 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/four-different-types-of-fire"
     },
     {
@@ -104,7 +104,7 @@
         "calculation"
       ],
       "readTime": "8 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/calculating-fire-number"
     }
   ],
@@ -202,7 +202,7 @@
         "coast-fire"
       ],
       "readTime": "7 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-Coast-FIRE"
     },
     {
@@ -217,7 +217,7 @@
         "barista-fire"
       ],
       "readTime": "6 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-barista-FIRE"
     },
     {
@@ -232,7 +232,7 @@
         "lean-fire"
       ],
       "readTime": "7 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
@@ -247,7 +247,7 @@
         "retirement-planning"
       ],
       "readTime": "6 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
@@ -262,7 +262,7 @@
         "comparison"
       ],
       "readTime": "10 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/four-different-types-of-fire"
     },
     {
@@ -277,7 +277,7 @@
         "calculation"
       ],
       "readTime": "8 min read",
-      "featured": true,
+      "featured": false,
       "url": "/blog/calculating-fire-number"
     }
   ],
