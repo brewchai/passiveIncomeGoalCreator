@@ -13,6 +13,7 @@
         "millionaire",
         "fire-journey"
       ],
+      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/40k-debt-to-1m-at-33"
     },
@@ -24,9 +25,10 @@
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "coast-fire"
       ],
+      "readTime": "7 min read",
       "featured": true,
       "url": "/blog/what-is-Coast-FIRE"
     },
@@ -38,9 +40,10 @@
       "date": "2025-11-16",
       "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "barista-fire"
       ],
+      "readTime": "6 min read",
       "featured": true,
       "url": "/blog/what-is-barista-FIRE"
     },
@@ -52,9 +55,10 @@
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "lean-fire"
       ],
+      "readTime": "7 min read",
       "featured": true,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -66,9 +70,10 @@
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "retirement-planning"
       ],
+      "readTime": "6 min read",
       "featured": true,
       "url": "/blog/how-much-need-retire-forty-40"
     },
@@ -80,9 +85,10 @@
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "comparison"
       ],
+      "readTime": "10 min read",
       "featured": true,
       "url": "/blog/four-different-types-of-fire"
     },
@@ -94,9 +100,10 @@
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "calculation"
       ],
+      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/calculating-fire-number"
     }
@@ -109,7 +116,12 @@
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
       "cover": "/blog/posts/living-on-1100-per-month/cover.jpg",
-      "tags": [],
+      "tags": [
+        "personal-story",
+        "geo-arbitrage",
+        "saving"
+      ],
+      "readTime": "9 min read",
       "featured": false,
       "url": "/blog/living-on-1100-per-month"
     },
@@ -121,9 +133,10 @@
       "date": "2025-11-18",
       "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "saving",
+        "tips"
       ],
+      "readTime": "5 min read",
       "featured": false,
       "url": "/blog/How-to-save-500-per-month"
     }
@@ -136,7 +149,12 @@
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
       "cover": "/blog/posts/living-on-1100-per-month/cover.jpg",
-      "tags": [],
+      "tags": [
+        "personal-story",
+        "geo-arbitrage",
+        "saving"
+      ],
+      "readTime": "9 min read",
       "featured": false,
       "url": "/blog/living-on-1100-per-month"
     },
@@ -153,6 +171,7 @@
         "millionaire",
         "fire-journey"
       ],
+      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/40k-debt-to-1m-at-33"
     },
@@ -164,9 +183,10 @@
       "date": "2025-11-18",
       "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "saving",
+        "tips"
       ],
+      "readTime": "5 min read",
       "featured": false,
       "url": "/blog/How-to-save-500-per-month"
     },
@@ -178,9 +198,10 @@
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "coast-fire"
       ],
+      "readTime": "7 min read",
       "featured": true,
       "url": "/blog/what-is-Coast-FIRE"
     },
@@ -192,9 +213,10 @@
       "date": "2025-11-16",
       "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "barista-fire"
       ],
+      "readTime": "6 min read",
       "featured": true,
       "url": "/blog/what-is-barista-FIRE"
     },
@@ -206,9 +228,10 @@
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "lean-fire"
       ],
+      "readTime": "7 min read",
       "featured": true,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -220,9 +243,10 @@
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "retirement-planning"
       ],
+      "readTime": "6 min read",
       "featured": true,
       "url": "/blog/how-much-need-retire-forty-40"
     },
@@ -234,9 +258,10 @@
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "comparison"
       ],
+      "readTime": "10 min read",
       "featured": true,
       "url": "/blog/four-different-types-of-fire"
     },
@@ -248,9 +273,10 @@
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
       "tags": [
-        "featured",
-        "basics"
+        "fire-basics",
+        "calculation"
       ],
+      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/calculating-fire-number"
     }
