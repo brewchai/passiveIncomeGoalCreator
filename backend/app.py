@@ -299,8 +299,33 @@ FIRE Metrics:
 {phase_note}
 """
 
-    # Build the personalized system prompt
-    system_prompt = f"""You are an expert Financial Independence & Retire Early (FIRE) Advisor.
+    # Determine system prompt based on mode
+    mode = data.get('mode', 'financial_advisor')
+    
+    if mode == 'article_assistant':
+        # Article Context Mode
+        article_title = user_context.get('articleTitle', 'Article')
+        variables = user_context.get('variables', {})
+        
+        # Format variables for the prompt
+        var_str = "\n".join([f"- {k}: {v}" for k, v in variables.items()])
+        
+        system_prompt = f"""You are the author of the article "{article_title}".
+Your goal is to help the reader understand the concepts using THEIR numbers.
+Do not sound like a generic AI. Sound like a helpful, knowledgeable friend explaining the math.
+
+USER'S CUSTOM VARIABLES:
+{var_str}
+
+CRITICAL RULES:
+1. Answer the user's question directly.
+2. Use the variables above in your explanation. If they ask "When can I retire?", calculate it using their specific 'income' and 'expenses' if available.
+3. Keep it brief and conversational.
+4. If the user asks about the article content, refer to the concepts in the article.
+"""
+    else:
+        # Default Financial Advisor Mode
+        system_prompt = f"""You are an expert Financial Independence & Retire Early (FIRE) Advisor.
 Your goal is to help the user reach financial independence faster by analyzing their specific numbers.
 
 {context_section}

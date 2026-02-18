@@ -49,6 +49,33 @@ def calculate_read_time(text: str) -> int:
     minutes = max(1, round(words / 200))  # At least 1 minute
     return minutes
 
+def process_live_tags(text: str) -> str:
+    """
+    Replaces:
+      {{ var:name:default }} -> <span class="live-var" data-name="name" contenteditable="true">default</span>
+      {{ calc:formula }}     -> <span class="live-calc" data-formula="formula">...</span>
+    """
+    import re
+    
+    # 1. Variables: {{ var:savings_rate:20% }}
+    # We strip whitespace around name/default
+    def _repl_var(match):
+        name = match.group(1).strip()
+        default_val = match.group(2).strip()
+        # Basic cleanup for numeric display if needed, but keeping it raw is safer for now
+        return f'<span class="live-var" data-name="{name}" contenteditable="true">{default_val}</span>'
+
+    text = re.sub(r"\{\{\s*var:([^:]+):([^}]+)\s*\}\}", _repl_var, text)
+
+    # 2. Calculations: {{ calc: (monthly_expenses * 12) / 0.04 }}
+    def _repl_calc(match):
+        formula = match.group(1).strip()
+        return f'<span class="live-calc" data-formula="{formula}">...</span>'
+
+    text = re.sub(r"\{\{\s*calc:([^}]+)\s*\}\}", _repl_calc, text)
+    
+    return text
+
 
 def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> str:
     title = meta["title"].strip()
@@ -118,13 +145,12 @@ def build_one_post(slug: str, template: str) -> dict:
         raise FileNotFoundError(f"Missing meta.json or post.md in {folder}")
 
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
-    # Required fields
-    for k in ("title", "description", "date"):
-        if not meta.get(k):
-            raise ValueError(f"Missing required meta field '{k}' in {meta_path}")
-
     # Convert Markdown to HTML
     md_text = md_path.read_text(encoding="utf-8")
+    
+    # Pre-process interactions
+    md_text = process_live_tags(md_text)
+
     html_content = markdown.markdown(
         md_text,
         extensions=["extra", "fenced_code", "tables", "toc"]
