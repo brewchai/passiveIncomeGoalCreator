@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Guide: When Can You Retire? | But First Fire</title>
+    <meta name="description" content="A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/blog/interactive-fire-calculator">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Interactive Guide: When Can You Retire?">
+    <meta property="og:description" content="A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.">
+    <meta property="og:url" content="/blog/interactive-fire-calculator">
+    <meta property="og:image" content="/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive Guide: When Can You Retire?">
+    <meta name="twitter:description" content="A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.">
+    <meta name="twitter:image" content="/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000">
+
+    <!-- JSON-LD Article -->
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "Interactive Guide: When Can You Retire?", "description": "A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.", "image": ["/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000"], "datePublished": "2026-02-18", "dateModified": "2026-02-18", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {}}, "mainEntityOfPage": "/blog/interactive-fire-calculator"}
+  </script>
+
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        /* Modern post page design */
+        body {
+            background: #fafbfc;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .post-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-hero img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            margin-top: 1.5rem;
+        }
+
+        .post-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin: 0 0 0.75rem;
+            color: #0f172a;
+        }
+
+        .post-subtitle {
+            color: #475569;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .post-meta {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+
+        .post-content>*:first-child {
+            margin-top: 0;
+        }
+
+        .post-content p {
+            margin: 1.25rem 0;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .post-content li {
+            margin: 0.5rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .post-content strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .post-content em {
+            font-style: italic;
+            color: #334155;
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin: 2.5rem 0 1rem;
+            color: #0f172a;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.75rem;
+            color: #1e293b;
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: #334155;
+        }
+
+        .post-content hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 2.5rem 0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .post-content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.2s;
+        }
+
+        .post-content a:hover {
+            color: #5568d3;
+            border-bottom-color: #5568d3;
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            color: #475569;
+            font-style: italic;
+        }
+
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content code {
+            background: #f1f5f9;
+            color: #e11d48;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-content table {
+                font-size: 0.9rem;
+            }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #fafbfc;
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <a href="/blog" class="nav-link">← All Articles</a>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="post-container">
+            <div class="post-hero">
+                <h1 class="post-title">Interactive Guide: When Can You Retire?</h1>
+                <p class="post-subtitle">A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.</p>
+                <div class="post-meta">By <strong>Ninad</strong> · 📅 2026-02-18 · 1 min read</div>
+                <img src="/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000" alt="Interactive Guide: When Can You Retire? cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">
+            </div>
+
+            <article class="post-content">
+                <p>Traditional financial articles give you static examples that don't apply to you. This article is <strong>alive</strong>.
+Modify the highlighted numbers below to see how they change your specific timeline.</p>
+<hr />
+<h2 id="your-inputs">Your Inputs</h2>
+<p>Let's assume you earn <strong>$ <span class="live-var" data-name="income" contenteditable="true">5000</span></strong> per month (after tax).
+And you spend <strong>$ <span class="live-var" data-name="expenses" contenteditable="true">3000</span></strong> per month.</p>
+<h2 id="the-instant-math">The Instant Math</h2>
+<p>Based on your inputs:
+*   You save <strong>$ <span class="live-calc" data-formula="income - expenses">...</span></strong> every month.
+*   Your savings rate is <strong><span class="live-calc" data-formula="((income - expenses) / income * 100).toFixed(1)">...</span>%</strong>.</p>
+<p>Most financial experts recommend a savings rate of at least 20%. You are currently at <span class="live-calc" data-formula="((income - expenses) / income * 100).toFixed(1)">...</span>%.</p>
+<h2 id="your-fire-number">Your FIRE Number</h2>
+<p>To retire, you generally need <strong>25x</strong> your annual expenses (based on the 4% rule).
+*   Your annual spending is <strong>$ <span class="live-calc" data-formula="expenses * 12">...</span></strong>.
+*   So your FIRE Number is <strong>$ <span class="live-calc" data-formula="expenses * 12 * 25">...</span></strong>.</p>
+<h2 id="how-long-will-it-take">How Long Will It Take?</h2>
+<p>Assuming you start from zero and invest in a diversified index fund (like VTSAX) returning <strong>7%</strong> annually (inflation-adjusted), here is your timeline:</p>
+<p>It will take approximately <strong><span class="live-calc" data-formula="(Math.log((expenses * 12 * 25 * (0.07/12)) / (income - expenses) + 1) / Math.log(1 + (0.07/12)) / 12).toFixed(1)">...</span> years</strong> to reach financial independence.</p>
+<hr />
+<h3 id="try-it-out">Try It Out!</h3>
+<p>Go back and change your <strong>expenses</strong> to be $500 lower. Watch how the years to retirement drop instantly!</p>
+<div style="margin-top: 2rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; text-align: center;">
+    <strong>Want a deeper analysis?</strong><br>
+    Click the "Deep Dive" button below to chat with me (the AI author) about <em>your</em> specific numbers.
+</div>
+
+                <!-- Author Byline -->
+                <div class="author-box"
+                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); border-radius: 12px; margin-top: 2rem;">
+                    <div
+                        style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
+                        N</div>
+                    <div>
+                        <strong style="font-size: 1.1rem; color: #0f172a;">Written by Ninad</strong>
+                        <p style="margin: 0.5rem 0 0; color: #475569; font-size: 0.95rem; line-height: 1.5;">FIRE
+                            enthusiast and software engineer building tools for financial independence. Passionate about
+                            helping others achieve their retirement goals through smart planning and automation.</p>
+                        <a href="/about"
+                            style="color: #667eea; font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3);">Learn
+                            more →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
+</body>
+
+</html>
