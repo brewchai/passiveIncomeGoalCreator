@@ -16,18 +16,18 @@
 
 ---
 
-## What Coast FIRE Means
+## What is Coast FIRE?
 
-Coast FIRE is financial independence with a twist: Instead of saving until you can fully retire, you save enough early on so your investments grow to cover retirement by themselves. Then, you're free to coast — just earning enough to cover current expenses.
+**TL;DR: Coast FIRE (Financial Independence, Retire Early) is when you have saved and invested enough money at an early age that, through the power of compound interest, your portfolio will grow to fully fund your traditional retirement without requiring another dime of contributions. You are then free to "coast" by taking lower-stress jobs just to cover your current living expenses.**
+
+Coast FIRE is financial independence with a twist: Instead of aggressively saving until you can fully leave the workforce, you front-load your investments. You save enough early on so your investments grow to cover retirement by themselves. Then, you're free to coast — just earning enough to cover current expenses.
 
 Coast FIRE is ideal if you:
 
 * Want financial freedom but still enjoy working
 * Prefer flexibility over quitting work entirely
-* Have a solid savings foundation
+* Have a solid savings foundation and understand the safe withdrawal rate
 * Value lower stress and more life balance
-
-Coast FIRE is different from Lean FIRE, which focuses on early retirement with low spending. In Coast FIRE, you **stop saving aggressively**, let compound growth do the work, and prioritize lifestyle.
 
 ---
 
@@ -45,17 +45,16 @@ Here's the essence:
 
 ## Coast FIRE Math: The Growth Formula
 
-The formula behind Coast FIRE is based on compound interest:
+The formula behind calculating your Coast FIRE number relies heavily on compound interest and understanding your safe withdrawal rate. 
 
-```
-Future Value = Present Value x (1 + investment return)^(years to retirement)
-```
+To determine how much you need to have invested today, use this Coast FIRE formula:
 
-To determine how much you need now to coast:
+> **Coast FIRE Number = Retirement Target / (1 + Expected Annual Return) ^ Years to Retirement**
 
-```
-Current Portfolio = Retirement Target / (1 + expected growth rate)^(years left)
-```
+Where:
+* **Retirement Target**: Your desired portfolio value at traditional retirement age (e.g., $1M based on a 4% safe withdrawal rate).
+* **Expected Annual Return**: Your estimated inflation-adjusted portfolio growth (commonly 5-7%).
+* **Years to Retirement**: The time between now and when you want to fully retire.
 
 **For example:**
 
@@ -90,6 +89,18 @@ Here’s what Coast FIRE looks like for different lifestyles and retirement targ
 | Standard Comfort     | $40k                   | $1,000,000           | ~$182,000                                                |
 | Comfortable Travel   | $60k                   | $1,500,000           | ~$273,000                                                |
 | Fat FIRE             | $100k                  | $2,500,000           | ~$455,000                                                |
+
+---
+
+## Coast FIRE vs. Other FIRE Types
+
+To truly understand what Coast FIRE is, it usually helps to compare it to the other popular Financial Independence, Retire Early methodologies.
+
+### Coast FIRE vs. Lean FIRE
+Lean FIRE focuses on accumulating a smaller portfolio (usually under $1M) by drastically minimizing expenses and adopting a highly frugal lifestyle to retire as fast as possible. Coast FIRE, on the other hand, does not require extreme frugality once you hit your Coast number. Instead of retiring early, Coast FIRE adherents continue to work—just at a less demanding pace—while relying on compounding returns for their traditional retirement.
+
+### Coast FIRE vs. Barista FIRE
+Barista FIRE and Coast FIRE look very similar from the outside, but the mechanics are different. [Barista FIRE](/blog/what-is-barista-FIRE) involves retiring from your main career before you hit full FI and picking up a part-time job (often for health insurance benefits) to partially cover your expenses and slow down portfolio withdrawals. Coast FIRE specifically focuses on hitting a math milestone early on so you can entirely stop retirement contributions, using income from any job purely to cover current costs.
 
 ---
 
@@ -165,7 +176,7 @@ Completing this plan will accelerate your timeline and reduce the anxiety around
 
 ---
 
-**Coast FIRE isn’t just about stopping savings — it’s about building early momentum and letting time and compounding do the heavy lifting.** Once you hit that threshold, you buy back your life, choose work on your terms, and let your future self reap the rewards.
+**Coast FIRE isn’t just about stopping savings — it’s about building early momentum and letting compound interest do the heavy lifting for your financial independence.** Once you hit your Coast FIRE number calculator target, you buy back your life, choose work on your terms, and let your future self reap the rewards.
 
 Ready to start coasting?
 
