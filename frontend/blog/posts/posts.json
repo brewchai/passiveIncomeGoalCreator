@@ -1,21 +1,6 @@
 {
   "featured": [
     {
-      "slug": "interactive-fire-calculator",
-      "title": "Interactive Guide: When Can You Retire?",
-      "subtitle": "",
-      "description": "A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.",
-      "date": "2026-02-18",
-      "cover": "/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000",
-      "tags": [
-        "Interactive",
-        "FIRE",
-        "Calculator"
-      ],
-      "featured": true,
-      "url": "/blog/interactive-fire-calculator"
-    },
-    {
       "slug": "40k-debt-to-1m-at-33",
       "title": "The 3 Things That Took Me from $40k in Debt to $1M at 33",
       "subtitle": "Yes a 9-5 made me a millionaire in a decade",
@@ -145,21 +130,6 @@
   ],
   "all": [
     {
-      "slug": "interactive-fire-calculator",
-      "title": "Interactive Guide: When Can You Retire?",
-      "subtitle": "",
-      "description": "A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.",
-      "date": "2026-02-18",
-      "cover": "/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000",
-      "tags": [
-        "Interactive",
-        "FIRE",
-        "Calculator"
-      ],
-      "featured": true,
-      "url": "/blog/interactive-fire-calculator"
-    },
-    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -285,5 +255,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-02-20T17:04:39.883395Z"
+  "_generated_at": "2026-02-20T17:14:06.018892Z"
 }
