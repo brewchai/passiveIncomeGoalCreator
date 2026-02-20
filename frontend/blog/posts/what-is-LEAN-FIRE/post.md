@@ -16,7 +16,9 @@
 
 ---
 
-## What Lean FIRE Means
+## What is Lean FIRE?
+
+**TL;DR: Lean FIRE (Financial Independence, Retire Early) is a strategy for achieving early retirement by ruthlessly minimizing living expenses and adopting a frugal, minimalist lifestyle. Because annual spending is kept incredibly low (typically under $40,000/year), Lean FIRE adherents only need to save a much smaller portfolio to safely retire decades ahead of schedule.**
 
 Lean FIRE is a version of Financial Independence / Retire Early for those seeking freedom while maintaining a smaller annual spending budget. Unlike Fat FIRE, Lean FIRE prioritizes simplicity and efficiency without sacrificing comfort.
 
@@ -40,13 +42,13 @@ LeanFIRE is just one approach to financial independence. If you're curious about
 
 ---
 
-## Core Math: The 4% Rule, Simplified
+## Core Math: The 4% Rule for Extreme Frugality
 
-The 4% rule is a cornerstone of FIRE planning. It states that if you withdraw 4% of your portfolio annually, your money should last 30+ years. For Lean FIRE:
+The 4% rule is a cornerstone of FIRE planning. It states that if you withdraw an inflation-adjusted 4% of your portfolio annually, your money should last 30+ years with a high probability of success. Because Lean FIRE requires such a low annual spend, the required portfolio size drops dramatically.
 
-```
-Annual Expenses x 25 = Required Portfolio
-```
+To calculate your Lean FIRE target:
+
+> **Lean FIRE Portfolio = Annual Expenses x 25**
 
 **Example calculations:**
 
@@ -74,7 +76,7 @@ Lean FIRE works best when your lifestyle aligns with your portfolio. Below is a 
 
 ---
 
-## How Long It Takes — Real Savings Timelines
+## How Long Does it Take to Reach Lean FIRE?
 
 Time to Lean FIRE depends on income and savings rate. Here's a simplified example:
 
@@ -137,13 +139,28 @@ For more flexibility, consider [Barista FIRE](/blog/what-is-barista-FIRE) which 
 
 ---
 
+## Comparing Lean FIRE to Other Variations
+
+Understanding Lean FIRE requires looking at how it measures up against other early retirement pathways:
+
+### Lean FIRE vs. Coast FIRE
+Coast FIRE is about front-loading investments early in your career so compound interest carries you to traditional retirement, giving you the freedom to "coast" in lower-stress, income-covering jobs. Lean FIRE is about hitting a specific (smaller) portfolio target as fast as possible to entirely exit the workforce permanently by relying on a highly frugal lifestyle.
+
+### Lean FIRE vs. Fat FIRE
+Fat FIRE is the opposite end of the spectrum. It requires amassing a huge portfolio ($2.5M to $5M+) to fund a luxurious early retirement filled with travel, fine dining, and zero financial compromise. Lean FIRE achieves freedom quickly by cutting spending; Fat FIRE achieves freedom slowly by maximizing income and investments. 
+
+### Lean FIRE vs. Barista FIRE
+Barista FIRE combines partial early retirement with part-time work, often specifically to secure health insurance benefits in the United States. While Lean FIRE adherents fully retire on a strict budget, Barista FIRE individuals work minimally to subsidize their portfolio withdrawals.
+
+---
+
 ## Psychological & Social Considerations
 
-Lean FIRE isn’t just numbers; mindset matters:
+Extreme early retirement isn’t just numbers; mindset matters:
 
-* **Social pressure:** Friends/family may not understand minimalist lifestyle.
-* **Mental load:** Budgeting requires discipline.
-* **Happiness:** Studies show simple living can increase life satisfaction if aligned with personal values.
+* **Social pressure:** Friends/family may not understand your frugal, minimalist lifestyle.
+* **Mental load:** Strict budgeting requires deep discipline and resilience.
+* **Happiness:** Studies show simple living can increase life satisfaction if aligned with personal values, but extreme deprivation leads to burnout.
 
 ---
 
