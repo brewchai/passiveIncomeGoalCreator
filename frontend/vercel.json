@@ -28,5 +28,12 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
+    ],
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "/blog",
+            "permanent": false
+        }
     ]
 }

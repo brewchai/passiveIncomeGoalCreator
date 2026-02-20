@@ -1,6 +1,21 @@
 {
   "featured": [
     {
+      "slug": "interactive-fire-calculator",
+      "title": "Interactive Guide: When Can You Retire?",
+      "subtitle": "",
+      "description": "A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.",
+      "date": "2026-02-18",
+      "cover": "/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000",
+      "tags": [
+        "Interactive",
+        "FIRE",
+        "Calculator"
+      ],
+      "featured": true,
+      "url": "/blog/interactive-fire-calculator"
+    },
+    {
       "slug": "40k-debt-to-1m-at-33",
       "title": "The 3 Things That Took Me from $40k in Debt to $1M at 33",
       "subtitle": "Yes a 9-5 made me a millionaire in a decade",
@@ -13,7 +28,6 @@
         "millionaire",
         "fire-journey"
       ],
-      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/40k-debt-to-1m-at-33"
     },
@@ -25,11 +39,10 @@
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "coast-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "7 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-Coast-FIRE"
     },
     {
@@ -40,11 +53,10 @@
       "date": "2025-11-16",
       "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "barista-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "6 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-barista-FIRE"
     },
     {
@@ -55,11 +67,10 @@
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "lean-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "7 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
@@ -70,11 +81,10 @@
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
       "tags": [
-        "fire-basics",
-        "retirement-planning"
+        "featured",
+        "basics"
       ],
-      "readTime": "6 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
@@ -85,11 +95,10 @@
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
       "tags": [
-        "fire-basics",
-        "comparison"
+        "featured",
+        "basics"
       ],
-      "readTime": "10 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/four-different-types-of-fire"
     },
     {
@@ -100,48 +109,14 @@
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
       "tags": [
-        "fire-basics",
-        "calculation"
+        "featured",
+        "basics"
       ],
-      "readTime": "8 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/calculating-fire-number"
     }
   ],
   "recent": [
-    {
-      "slug": "do-you-actually-need-to-retire",
-      "title": "Do You Actually Need to Retire?",
-      "subtitle": "What if the question isn't how to retire early \u2014 but why you want to escape your life?",
-      "description": "A deeply personal exploration of what retirement really means, the case for and against early retirement, and whether freedom matters more than not working.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.jpg",
-      "tags": [
-        "fire-basics",
-        "personal-story",
-        "retirement-planning"
-      ],
-      "readTime": "10 min read",
-      "featured": false,
-      "url": "/blog/do-you-actually-need-to-retire"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 with $500k?",
-      "subtitle": "Every strategy simulated \u2014 from S&P 500 withdrawals to real estate, JEPI, and geo-arbitrage",
-      "description": "Can you retire at 35 with $500,000? We run every scenario \u2014 from the safest withdrawal strategies to real estate, dividend ETFs, geo-arbitrage, and hybrid approaches.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.jpg",
-      "tags": [
-        "fire-basics",
-        "retirement-planning",
-        "geo-arbitrage",
-        "saving"
-      ],
-      "readTime": "12 min read",
-      "featured": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
-    },
     {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
@@ -149,12 +124,7 @@
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
       "cover": "/blog/posts/living-on-1100-per-month/cover.jpg",
-      "tags": [
-        "personal-story",
-        "geo-arbitrage",
-        "saving"
-      ],
-      "readTime": "9 min read",
+      "tags": [],
       "featured": false,
       "url": "/blog/living-on-1100-per-month"
     },
@@ -166,47 +136,28 @@
       "date": "2025-11-18",
       "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
       "tags": [
-        "saving",
-        "tips"
+        "featured",
+        "basics"
       ],
-      "readTime": "5 min read",
       "featured": false,
       "url": "/blog/How-to-save-500-per-month"
     }
   ],
   "all": [
     {
-      "slug": "do-you-actually-need-to-retire",
-      "title": "Do You Actually Need to Retire?",
-      "subtitle": "What if the question isn't how to retire early \u2014 but why you want to escape your life?",
-      "description": "A deeply personal exploration of what retirement really means, the case for and against early retirement, and whether freedom matters more than not working.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.jpg",
+      "slug": "interactive-fire-calculator",
+      "title": "Interactive Guide: When Can You Retire?",
+      "subtitle": "",
+      "description": "A live, interactive article where the math updates as you read. Change the numbers to see your own FIRE timeline.",
+      "date": "2026-02-18",
+      "cover": "/blog/posts/interactive-fire-calculator/https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1000",
       "tags": [
-        "fire-basics",
-        "personal-story",
-        "retirement-planning"
+        "Interactive",
+        "FIRE",
+        "Calculator"
       ],
-      "readTime": "10 min read",
-      "featured": false,
-      "url": "/blog/do-you-actually-need-to-retire"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 with $500k?",
-      "subtitle": "Every strategy simulated \u2014 from S&P 500 withdrawals to real estate, JEPI, and geo-arbitrage",
-      "description": "Can you retire at 35 with $500,000? We run every scenario \u2014 from the safest withdrawal strategies to real estate, dividend ETFs, geo-arbitrage, and hybrid approaches.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.jpg",
-      "tags": [
-        "fire-basics",
-        "retirement-planning",
-        "geo-arbitrage",
-        "saving"
-      ],
-      "readTime": "12 min read",
-      "featured": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
+      "featured": true,
+      "url": "/blog/interactive-fire-calculator"
     },
     {
       "slug": "living-on-1100-per-month",
@@ -215,12 +166,7 @@
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
       "cover": "/blog/posts/living-on-1100-per-month/cover.jpg",
-      "tags": [
-        "personal-story",
-        "geo-arbitrage",
-        "saving"
-      ],
-      "readTime": "9 min read",
+      "tags": [],
       "featured": false,
       "url": "/blog/living-on-1100-per-month"
     },
@@ -237,7 +183,6 @@
         "millionaire",
         "fire-journey"
       ],
-      "readTime": "8 min read",
       "featured": true,
       "url": "/blog/40k-debt-to-1m-at-33"
     },
@@ -249,10 +194,9 @@
       "date": "2025-11-18",
       "cover": "/blog/posts/How-to-save-500-per-month/cover.jpg",
       "tags": [
-        "saving",
-        "tips"
+        "featured",
+        "basics"
       ],
-      "readTime": "5 min read",
       "featured": false,
       "url": "/blog/How-to-save-500-per-month"
     },
@@ -264,11 +208,10 @@
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "coast-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "7 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-Coast-FIRE"
     },
     {
@@ -279,11 +222,10 @@
       "date": "2025-11-16",
       "cover": "/blog/posts/what-is-barista-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "barista-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "6 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-barista-FIRE"
     },
     {
@@ -294,11 +236,10 @@
       "date": "2025-11-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
       "tags": [
-        "fire-basics",
-        "lean-fire"
+        "featured",
+        "basics"
       ],
-      "readTime": "7 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
@@ -309,11 +250,10 @@
       "date": "2025-11-10",
       "cover": "/blog/posts/how-much-need-retire-forty-40/cover.jpg",
       "tags": [
-        "fire-basics",
-        "retirement-planning"
+        "featured",
+        "basics"
       ],
-      "readTime": "6 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
@@ -324,11 +264,10 @@
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.jpg",
       "tags": [
-        "fire-basics",
-        "comparison"
+        "featured",
+        "basics"
       ],
-      "readTime": "10 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/four-different-types-of-fire"
     },
     {
@@ -339,13 +278,12 @@
       "date": "2025-10-28",
       "cover": "/blog/posts/calculating-fire-number/cover.jpg",
       "tags": [
-        "fire-basics",
-        "calculation"
+        "featured",
+        "basics"
       ],
-      "readTime": "8 min read",
-      "featured": false,
+      "featured": true,
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-02-02T05:23:35.661358Z"
+  "_generated_at": "2026-02-20T17:04:39.883395Z"
 }

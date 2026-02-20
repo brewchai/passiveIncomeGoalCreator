@@ -10,24 +10,24 @@
     <meta name="description" content="A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://butfirstfire.com/blog/living-on-1100-per-month">
+    <link rel="canonical" href="/blog/living-on-1100-per-month">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment">
     <meta property="og:description" content="A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.">
-    <meta property="og:url" content="https://butfirstfire.com/blog/living-on-1100-per-month">
-    <meta property="og:image" content="https://butfirstfire.com/blog/posts/living-on-1100-per-month/cover.jpg">
+    <meta property="og:url" content="/blog/living-on-1100-per-month">
+    <meta property="og:image" content="/blog/posts/living-on-1100-per-month/cover.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment">
     <meta name="twitter:description" content="A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.">
-    <meta name="twitter:image" content="https://butfirstfire.com/blog/posts/living-on-1100-per-month/cover.jpg">
+    <meta name="twitter:image" content="/blog/posts/living-on-1100-per-month/cover.jpg">
 
     <!-- JSON-LD Article -->
     <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Article", "headline": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment", "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.", "image": ["https://butfirstfire.com/blog/posts/living-on-1100-per-month/cover.jpg"], "datePublished": "2026-02-02", "dateModified": "2026-02-02", "author": {"@type": "Person", "name": "Ninad"}, "publisher": {"@type": "Organization", "name": "But First Fire", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/favicon.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/living-on-1100-per-month"}
+  {"@context": "https://schema.org", "@type": "Article", "headline": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment", "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.", "image": ["/blog/posts/living-on-1100-per-month/cover.jpg"], "datePublished": "2026-02-02", "dateModified": "2026-02-02", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {}}, "mainEntityOfPage": "/blog/living-on-1100-per-month"}
   </script>
 
 
@@ -36,12 +36,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/blog.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
 
     <style>
         /* Modern post page design */
         body {
-            background: #fafbfc;
+            background: var(--background);
         }
 
         .post-container {
@@ -57,7 +56,7 @@
         .post-hero img {
             width: 100%;
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-md);
             margin-top: 1.5rem;
         }
 
@@ -67,11 +66,11 @@
             letter-spacing: -0.02em;
             line-height: 1.15;
             margin: 0 0 0.75rem;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-subtitle {
-            color: #475569;
+            color: var(--text-secondary);
             font-size: 1.25rem;
             line-height: 1.6;
             margin: 0 0 1rem;
@@ -79,7 +78,7 @@
         }
 
         .post-meta {
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 0;
             display: flex;
@@ -90,7 +89,7 @@
         .post-content {
             font-size: 1.125rem;
             line-height: 1.8;
-            color: #1e293b;
+            color: var(--text-primary);
         }
 
         .post-content>*:first-child {
@@ -114,12 +113,12 @@
 
         .post-content strong {
             font-weight: 600;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-content em {
             font-style: italic;
-            color: #334155;
+            color: var(--text-secondary);
         }
 
         .post-content h2 {
@@ -128,7 +127,7 @@
             letter-spacing: -0.01em;
             line-height: 1.3;
             margin: 2.5rem 0 1rem;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-content h3 {
@@ -136,19 +135,19 @@
             font-weight: 600;
             line-height: 1.4;
             margin: 2rem 0 0.75rem;
-            color: #1e293b;
+            color: var(--text-primary);
         }
 
         .post-content h4 {
             font-size: 1.25rem;
             font-weight: 600;
             margin: 1.5rem 0 0.5rem;
-            color: #334155;
+            color: var(--text-secondary);
         }
 
         .post-content hr {
             border: none;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
             margin: 2.5rem 0;
         }
 
@@ -157,11 +156,11 @@
             height: auto;
             border-radius: 12px;
             margin: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-sm);
         }
 
         .post-content a {
-            color: #667eea;
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             border-bottom: 1px solid rgba(102, 126, 234, 0.3);
@@ -169,17 +168,17 @@
         }
 
         .post-content a:hover {
-            color: #5568d3;
-            border-bottom-color: #5568d3;
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
         }
 
         .post-content blockquote {
             margin: 1.5rem 0;
             padding: 1rem 1.5rem;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            border-left: 4px solid #667eea;
+            border-left: 4px solid var(--accent-color);
             border-radius: 8px;
-            color: #475569;
+            color: var(--text-secondary);
             font-style: italic;
         }
 
@@ -188,13 +187,13 @@
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 1rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             border-radius: 8px;
             overflow: hidden;
         }
 
         .post-content thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient);
             color: white;
         }
 
@@ -207,7 +206,7 @@
 
         .post-content td {
             padding: 0.875rem 1rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .post-content tbody tr:last-child td {
@@ -215,11 +214,12 @@
         }
 
         .post-content tbody tr:hover {
-            background: #f8fafc;
+            background: rgba(0, 0, 0, 0.02);
         }
 
         .post-content pre {
             background: #0f172a;
+            /* standard dark code bg */
             color: #e2e8f0;
             padding: 1.25rem;
             border-radius: 12px;
@@ -227,12 +227,13 @@
             font-size: 0.95rem;
             line-height: 1.6;
             margin: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
         }
 
         .post-content code {
-            background: #f1f5f9;
-            color: #e11d48;
+            background: rgba(0, 0, 0, 0.05);
+            /* very light bg relative to current mode */
+            color: var(--accent-color);
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-size: 0.9em;
@@ -279,6 +280,185 @@
             .post-content td {
                 padding: 0.625rem 0.75rem;
             }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--background);
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -297,7 +477,7 @@
                 <h1 class="post-title">From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment</h1>
                 <p class="post-subtitle">How I cut my expenses by 82% without sacrificing quality of life</p>
                 <div class="post-meta">By <strong>Ninad</strong> · 📅 2026-02-02 · 5 min read</div>
-                <img src="/blog/posts/living-on-1100-per-month/cover.jpg" alt="Geo-arbitrage lifestyle — living comfortably abroad on 1100 dollars per month after leaving a 6000 dollar NYC life" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">
+                <img src="/blog/posts/living-on-1100-per-month/cover.jpg" alt="From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">
             </div>
 
             <article class="post-content">
@@ -499,17 +679,19 @@
 
                 <!-- Author Byline -->
                 <div class="author-box"
-                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); border-radius: 12px; margin-top: 2rem;">
+                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--card-background); box-shadow: var(--shadow-sm); border-radius: 12px; margin-top: 2rem;">
                     <div
-                        style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
+                        style="width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
                         N</div>
                     <div>
-                        <strong style="font-size: 1.1rem; color: #0f172a;">Written by Ninad</strong>
-                        <p style="margin: 0.5rem 0 0; color: #475569; font-size: 0.95rem; line-height: 1.5;">FIRE
+                        <strong style="font-size: 1.1rem; color: var(--text-primary);">Written by Ninad</strong>
+                        <p
+                            style="margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                            FIRE
                             enthusiast and software engineer building tools for financial independence. Passionate about
                             helping others achieve their retirement goals through smart planning and automation.</p>
                         <a href="/about"
-                            style="color: #667eea; font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3);">Learn
+                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3);">Learn
                             more →</a>
                     </div>
                 </div>
@@ -528,6 +710,8 @@
             </p>
         </div>
     </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
 </body>
 
 </html>
