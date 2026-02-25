@@ -34,6 +34,11 @@
             "source": "/",
             "destination": "/blog",
             "permanent": false
+        },
+        {
+            "source": "/blog/40k-debt-to-1m-at-33",
+            "destination": "/blog/40k-debt-to-coast-fire-at-33",
+            "permanent": true
         }
     ]
 }

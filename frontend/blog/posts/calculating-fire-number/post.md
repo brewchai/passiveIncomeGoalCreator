@@ -86,7 +86,7 @@ Calculating your FIRE number is the first, most empowering step on your journey 
   The best way to finalize your plan is by using an advanced simulator.  
 
 Ready to see how fast you can get there? See [how much you need to retire at 40](/blog/how-much-need-retire-forty-40) for a real-world example.  
-Use a detailed, interactive online **FIRE calculator** that allows you to input custom withdrawal rates and model how your portfolio might perform across thousands of historical market simulations. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to $1M at 33](/blog/40k-debt-to-1m-at-33).
+Use a detailed, interactive online **FIRE calculator** that allows you to input custom withdrawal rates and model how your portfolio might perform across thousands of historical market simulations. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
 
 ---
 

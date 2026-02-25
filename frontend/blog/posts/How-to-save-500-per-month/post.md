@@ -170,5 +170,5 @@ You don’t need a radical lifestyle overhaul. You don’t need to give up every
 You just need a handful of rules that nudge you toward intention instead of convenience.
 
 And those rules — done consistently — can buy you something priceless:  
-**years of freedom back.** See how I saved 50% of my income in my [journey to $1M at 33](/blog/40k-debt-to-1m-at-33).
+**years of freedom back.** See how I saved 50% of my income in my [journey to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
 

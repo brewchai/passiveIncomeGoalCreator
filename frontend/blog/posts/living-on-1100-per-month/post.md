@@ -35,7 +35,7 @@ The problem? Even with a six-figure tech salary, saving 50% of my income meant I
 
 ## The Shift: Moving Abroad
 
-After hitting my [FIRE number at 33](/blog/40k-debt-to-1m-at-33), I didn't want to keep working just to fund an expensive lifestyle. I wanted freedom.
+After hitting my [Coast FIRE number at 33](/blog/40k-debt-to-coast-fire-at-33), I didn't want to keep working just to fund an expensive lifestyle. I wanted freedom.
 
 So I made a decision: **geographic arbitrage**.
 

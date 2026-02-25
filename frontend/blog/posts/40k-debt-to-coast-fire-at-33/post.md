@@ -1,4 +1,4 @@
-# The 3 Things That Took Me from $40k in Debt to $1M at 33
+# The 3 Things That Took Me from $40k in Debt to Coast FIRE at 33
 
 I grew up lower middle class in a developing country, in a one-bedroom house with my parents. Money was always tight, and luxuries were never part of the conversation. I think we as a family took 2 vacations in the first 23 years of my life, that too within the same state where I grew up.
 
@@ -6,7 +6,7 @@ But that upbringing left me with a lasting skill: the ability to squeeze value o
 
 At 23, I moved to the United States with **–$40,000 in student loans** and nothing close to financial stability. I still remember the first bout of stress that hit me hard when the loan was approved. I was pacing around relentlessly in my living room with doubt taking center stage in my head of whether this is the right decision or not. *The collateral on that loan was my family home after all.*
 
-Ten years later — seven of those actually working — I've crossed **$1 million in net worth at age 33**.
+Ten years later — seven of those actually working — I've hit **Coast FIRE at age 33**. My investments have grown enough that even without contributing another dollar, they'll compound to cover my retirement.
 
 It feels almost surreal to write that sentence. In hindsight, there are 3 things that helped me get here much faster.
 
@@ -14,11 +14,11 @@ It feels almost surreal to write that sentence. In hindsight, there are 3 things
 
 ## 1. Leveraging Tech and RSUs
 
-If you want to hit $1M this early, there's no beating around the bush... **you have to earn a lot of money**. No amount of coupon clipping or aggressive saving can get you there in your early 30s without a high income.
+If you want to hit Coast FIRE this early, there's no beating around the bush... **you have to earn a lot of money**. No amount of coupon clipping or aggressive saving can get you there in your early 30s without a high income.
 
 For me, that came through working in tech. A solid salary gave me the base, but the real accelerator was RSUs, but not because they appreciated abnormally...
 
-**The first six years of my career, the stock was a dud.** It crawled up maybe 3 to 4 percent a year. Nothing glamorous at all and no I didn't appreciate my way up to a million merrily. But here's the key... *I never treated RSUs as cash*. They didn't touch my checking account, they didn't factor into my lifestyle, and I never sold them just to fund day-to-day expenses.
+**The first six years of my career, the stock was a dud.** It crawled up maybe 3 to 4 percent a year. Nothing glamorous at all and no I didn't coast my way to financial independence merrily. But here's the key... *I never treated RSUs as cash*. They didn't touch my checking account, they didn't factor into my lifestyle, and I never sold them just to fund day-to-day expenses.
 
 I could've inflated my life easily — bigger apartments, fancier trips, whatever. But I didn't. I held on, partly to avoid unnecessary taxes, but mostly because I trained myself to see RSUs as untouchable. They stacked quietly in the background while I lived entirely on my salary **and I saved A LOT of it too**. This is essentially [Coast FIRE](/blog/what-is-Coast-FIRE) — where your investments grow without additional contributions.
 
@@ -56,7 +56,7 @@ Housing was the anchor. I always chose modest apartments because rent is the big
 
 *High income gave me the engine, savings gave me the fuel, investing gave me the acceleration.*
 
-Without any of these 3, there's no $1M at 33 coming from a 9-5.
+Without any of these 3, there's no Coast FIRE at 33 coming from a 9-5.
 
 ---
 
@@ -70,4 +70,4 @@ While I'm fortunate enough to be in this position, I've made a lot of mistakes a
 
 If you're starting from debt like I was, know that it's possible. It took me 10 years, but the principles are timeless. Start where you are, use what you have, and stay consistent. To figure out your target number, check out our [complete guide to calculating your FIRE number](/blog/calculating-fire-number).
 
-Your future millionaire self is already thanking you.
+Your future financially independent self is already thanking you.
