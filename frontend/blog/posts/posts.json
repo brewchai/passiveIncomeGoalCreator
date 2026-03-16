@@ -1,6 +1,21 @@
 {
   "featured": [
     {
+      "slug": "why-fire-is-not-for-you",
+      "title": "Do Not Pursue FIRE If You Cannot Pass This Brutal Test",
+      "subtitle": "A harsh, psychological reality check on whether you actually want early retirement, or if you just hate your job and love spending money.",
+      "description": "FIRE is not for everyone. Find out if your relationship with money, possessions, and purpose will make early retirement a dream or a living nightmare.",
+      "date": "2026-03-16",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics",
+        "mindset"
+      ],
+      "featured": true,
+      "url": "/blog/why-fire-is-not-for-you"
+    },
+    {
       "slug": "40k-debt-to-coast-fire-at-33",
       "title": "The 3 Things That Took Me from $40k in Debt to Coast FIRE at 33",
       "subtitle": "Yes a 9-5 helped me reach Coast FIRE in a decade",
@@ -130,6 +145,21 @@
   ],
   "all": [
     {
+      "slug": "why-fire-is-not-for-you",
+      "title": "Do Not Pursue FIRE If You Cannot Pass This Brutal Test",
+      "subtitle": "A harsh, psychological reality check on whether you actually want early retirement, or if you just hate your job and love spending money.",
+      "description": "FIRE is not for everyone. Find out if your relationship with money, possessions, and purpose will make early retirement a dream or a living nightmare.",
+      "date": "2026-03-16",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.jpg",
+      "tags": [
+        "featured",
+        "basics",
+        "mindset"
+      ],
+      "featured": true,
+      "url": "/blog/why-fire-is-not-for-you"
+    },
+    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -255,5 +285,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-03-16T05:47:55.399867Z"
+  "_generated_at": "2026-03-16T06:12:22.560600Z"
 }
