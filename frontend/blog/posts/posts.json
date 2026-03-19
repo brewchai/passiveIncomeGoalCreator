@@ -1,6 +1,22 @@
 {
   "featured": [
     {
+      "slug": "the-truth-about-passive-income",
+      "title": "The Brutal Truth About Passive Income: Why The Internet Is Lying To You",
+      "subtitle": "Passive income is real, but the way it is sold to you is a catastrophic misrepresentation of the suffering required to achieve it.",
+      "description": "An honest, hyper-personal breakdown of the four types of income, the nomadic journey, and why trying to separate your time from your money is the hardest active grind you will ever face.",
+      "date": "2026-03-19",
+      "cover": "/blog/posts/the-truth-about-passive-income/cover.jpg",
+      "tags": [
+        "featured",
+        "mindset",
+        "passive-income",
+        "reality-check"
+      ],
+      "featured": true,
+      "url": "/blog/the-truth-about-passive-income"
+    },
+    {
       "slug": "why-fire-is-not-for-you",
       "title": "Do Not Pursue FIRE If You Cannot Pass This Brutal Test",
       "subtitle": "A harsh, psychological reality check on whether you actually want early retirement, or if you just hate your job and love spending money.",
@@ -145,6 +161,22 @@
   ],
   "all": [
     {
+      "slug": "the-truth-about-passive-income",
+      "title": "The Brutal Truth About Passive Income: Why The Internet Is Lying To You",
+      "subtitle": "Passive income is real, but the way it is sold to you is a catastrophic misrepresentation of the suffering required to achieve it.",
+      "description": "An honest, hyper-personal breakdown of the four types of income, the nomadic journey, and why trying to separate your time from your money is the hardest active grind you will ever face.",
+      "date": "2026-03-19",
+      "cover": "/blog/posts/the-truth-about-passive-income/cover.jpg",
+      "tags": [
+        "featured",
+        "mindset",
+        "passive-income",
+        "reality-check"
+      ],
+      "featured": true,
+      "url": "/blog/the-truth-about-passive-income"
+    },
+    {
       "slug": "why-fire-is-not-for-you",
       "title": "Do Not Pursue FIRE If You Cannot Pass This Brutal Test",
       "subtitle": "A harsh, psychological reality check on whether you actually want early retirement, or if you just hate your job and love spending money.",
@@ -285,5 +317,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-03-16T06:26:54.427141Z"
+  "_generated_at": "2026-03-19T15:31:56.772836Z"
 }
