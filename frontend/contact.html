@@ -42,12 +42,12 @@
             letter-spacing: -0.02em;
             line-height: 1.15;
             margin: 0 0 0.75rem;
-            color: #0f172a;
+            color: var(--text-primary);
             text-align: center;
         }
 
         .page-subtitle {
-            color: #64748b;
+            color: var(--text-secondary);
             font-size: 1.125rem;
             line-height: 1.6;
             margin: 0 0 2.5rem;
@@ -55,8 +55,8 @@
         }
 
         .contact-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
@@ -89,14 +89,14 @@
             border-radius: 10px;
             font-family: inherit;
             transition: border-color 0.2s, box-shadow 0.2s;
-            background: #fff;
+            background: var(--card-background);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
         }
 
@@ -148,12 +148,12 @@
         .success-message h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--text-primary);
             margin: 0 0 0.75rem;
         }
 
         .success-message p {
-            color: #64748b;
+            color: var(--text-secondary);
             margin: 0;
         }
 
@@ -162,7 +162,7 @@
             align-items: center;
             gap: 1rem;
             margin: 2rem 0;
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
@@ -179,7 +179,7 @@
         }
 
         .direct-email p {
-            color: #64748b;
+            color: var(--text-secondary);
             margin: 0 0 0.75rem;
             font-size: 0.95rem;
         }
@@ -188,7 +188,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #667eea;
+            color: var(--accent-color);
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
@@ -206,13 +206,13 @@
         .faq-section h2 {
             font-size: 1.75rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--text-primary);
             margin: 0 0 1.5rem;
             text-align: center;
         }
 
         .faq-item {
-            background: #f8fafc;
+            background: var(--card-background);
             border-radius: 12px;
             padding: 1.25rem 1.5rem;
             margin-bottom: 1rem;
@@ -221,12 +221,12 @@
         .faq-item h4 {
             font-size: 1.05rem;
             font-weight: 600;
-            color: #0f172a;
+            color: var(--text-primary);
             margin: 0 0 0.5rem;
         }
 
         .faq-item p {
-            color: #64748b;
+            color: var(--text-secondary);
             margin: 0;
             font-size: 0.95rem;
             line-height: 1.6;
@@ -341,10 +341,10 @@
         <div class="footer-container">
             <p>&copy; 2026 But First Fire. All rights reserved.</p>
             <p class="footer-links" style="margin-top: 0.75rem;">
-                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
-                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
-                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
-                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+                <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
             </p>
         </div>
     </footer>
