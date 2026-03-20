@@ -19,6 +19,8 @@ REWRITES = {
     '/terms': '/terms.html',
     '/contact': '/contact.html',
     '/blog': '/blog.html',
+    '/tools/geo-arbitrage': '/tools/geo-arbitrage/index.html',
+    '/tools/geo-arbitrage/': '/tools/geo-arbitrage/index.html',
 }
 
 class SPAHandler(http.server.SimpleHTTPRequestHandler):

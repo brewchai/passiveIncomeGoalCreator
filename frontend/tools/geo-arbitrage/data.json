@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "chiang-mai-th",
+    "slug": "digital-nomad-hub",
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "region": "Southeast Asia",
+    "lat": 18.7883,
+    "lng": 98.9853,
+    "internet_mbps": 250,
+    "top_visa": "Destination Thailand Visa for long stays plus strong nomad infrastructure.",
+    "vibe": "Tropical calm, mountain air, cafes, and a huge remote-work scene.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1000,
+        "moderate": 1200,
+        "luxury": 1600
+      },
+      "couple": {
+        "lean": 1600,
+        "moderate": 2000,
+        "luxury": 2650
+      },
+      "family": {
+        "lean": 2300,
+        "moderate": 2800,
+        "luxury": 3700
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "da-nang-vn",
+    "slug": "beach-city-balance",
+    "city": "Da Nang",
+    "country": "Vietnam",
+    "region": "Southeast Asia",
+    "lat": 16.0544,
+    "lng": 108.2022,
+    "internet_mbps": 220,
+    "top_visa": "Vietnam e-visa for short stays with common regional visa-run flexibility.",
+    "vibe": "Beach mornings, modern apartments, and easy urban living.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1050,
+        "moderate": 1250,
+        "luxury": 1700
+      },
+      "couple": {
+        "lean": 1700,
+        "moderate": 2050,
+        "luxury": 2750
+      },
+      "family": {
+        "lean": 2400,
+        "moderate": 2950,
+        "luxury": 3900
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "hoi-an-vn",
+    "slug": "slow-living-by-the-sea",
+    "city": "Hoi An",
+    "country": "Vietnam",
+    "region": "Southeast Asia",
+    "lat": 15.8801,
+    "lng": 108.338,
+    "internet_mbps": 140,
+    "top_visa": "Vietnam e-visa with nearby Da Nang for airport access.",
+    "vibe": "Lantern streets, scooters, beach access, and slower days.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1100,
+        "moderate": 1300,
+        "luxury": 1750
+      },
+      "couple": {
+        "lean": 1750,
+        "moderate": 2150,
+        "luxury": 2850
+      },
+      "family": {
+        "lean": 2450,
+        "moderate": 3050,
+        "luxury": 4050
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "medellin-co",
+    "slug": "spring-weather-city",
+    "city": "Medellin",
+    "country": "Colombia",
+    "region": "Latin America",
+    "lat": 6.2442,
+    "lng": -75.5812,
+    "internet_mbps": 180,
+    "top_visa": "Colombia digital nomad visa for remote earners plus established expat support.",
+    "vibe": "Eternal spring, metro access, and energetic city neighborhoods.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1200,
+        "moderate": 1400,
+        "luxury": 1900
+      },
+      "couple": {
+        "lean": 1900,
+        "moderate": 2300,
+        "luxury": 3100
+      },
+      "family": {
+        "lean": 2650,
+        "moderate": 3300,
+        "luxury": 4350
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "bansko-bg",
+    "slug": "mountain-coworking-base",
+    "city": "Bansko",
+    "country": "Bulgaria",
+    "region": "Eastern Europe",
+    "lat": 41.838,
+    "lng": 23.4885,
+    "internet_mbps": 200,
+    "top_visa": "Bulgaria long-stay pathways with low-cost EU foothold appeal.",
+    "vibe": "Ski-town charm, co-working culture, and low-key mountain focus.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1250,
+        "moderate": 1450,
+        "luxury": 1950
+      },
+      "couple": {
+        "lean": 1950,
+        "moderate": 2400,
+        "luxury": 3200
+      },
+      "family": {
+        "lean": 2750,
+        "moderate": 3400,
+        "luxury": 4500
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "tbilisi-ge",
+    "slug": "easy-residency-ramp",
+    "city": "Tbilisi",
+    "country": "Georgia",
+    "region": "Caucasus",
+    "lat": 41.7151,
+    "lng": 44.8271,
+    "internet_mbps": 160,
+    "top_visa": "Georgia remains attractive for flexible stays and entrepreneur-friendly setups.",
+    "vibe": "Wine bars, old-town texture, and a very forgiving cost curve.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1300,
+        "moderate": 1500,
+        "luxury": 2050
+      },
+      "couple": {
+        "lean": 2050,
+        "moderate": 2500,
+        "luxury": 3300
+      },
+      "family": {
+        "lean": 2850,
+        "moderate": 3500,
+        "luxury": 4650
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "phnom-penh-kh",
+    "slug": "urban-value-play",
+    "city": "Phnom Penh",
+    "country": "Cambodia",
+    "region": "Southeast Asia",
+    "lat": 11.5564,
+    "lng": 104.9282,
+    "internet_mbps": 130,
+    "top_visa": "Cambodia business and ordinary visa routes are popular with long-stay expats.",
+    "vibe": "Riverside living, low prices, and big-city energy without huge costs.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1300,
+        "moderate": 1500,
+        "luxury": 2050
+      },
+      "couple": {
+        "lean": 2050,
+        "moderate": 2500,
+        "luxury": 3300
+      },
+      "family": {
+        "lean": 2850,
+        "moderate": 3500,
+        "luxury": 4650
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "ho-chi-minh-city-vn",
+    "slug": "startup-energy-value",
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "region": "Southeast Asia",
+    "lat": 10.8231,
+    "lng": 106.6297,
+    "internet_mbps": 240,
+    "top_visa": "Vietnam e-visa access plus an enormous remote-work and startup ecosystem.",
+    "vibe": "Fast scooters, rooftop cafes, and nonstop entrepreneurial energy.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1300,
+        "moderate": 1550,
+        "luxury": 2100
+      },
+      "couple": {
+        "lean": 2100,
+        "moderate": 2550,
+        "luxury": 3400
+      },
+      "family": {
+        "lean": 2950,
+        "moderate": 3650,
+        "luxury": 4800
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "bali-id",
+    "slug": "wellness-creator-scene",
+    "city": "Canggu",
+    "country": "Indonesia",
+    "region": "Southeast Asia",
+    "lat": -8.6478,
+    "lng": 115.1385,
+    "internet_mbps": 160,
+    "top_visa": "Indonesia remote-worker and investor paths keep Bali in the conversation.",
+    "vibe": "Surf, villas, creator economy, and a strong wellness social graph.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1350,
+        "moderate": 1600,
+        "luxury": 2150
+      },
+      "couple": {
+        "lean": 2150,
+        "moderate": 2650,
+        "luxury": 3500
+      },
+      "family": {
+        "lean": 3050,
+        "moderate": 3750,
+        "luxury": 4950
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "kuala-lumpur-my",
+    "slug": "big-city-value",
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "region": "Southeast Asia",
+    "lat": 3.139,
+    "lng": 101.6869,
+    "internet_mbps": 300,
+    "top_visa": "Malaysia long-stay and premium visa options remain notable for FIRE expats.",
+    "vibe": "Skyscrapers, easy transit, diverse food, and excellent apartments.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1400,
+        "moderate": 1650,
+        "luxury": 2250
+      },
+      "couple": {
+        "lean": 2250,
+        "moderate": 2700,
+        "luxury": 3650
+      },
+      "family": {
+        "lean": 3150,
+        "moderate": 3900,
+        "luxury": 5100
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "sarajevo-ba",
+    "slug": "underrated-europe",
+    "city": "Sarajevo",
+    "country": "Bosnia and Herzegovina",
+    "region": "Eastern Europe",
+    "lat": 43.8563,
+    "lng": 18.4131,
+    "internet_mbps": 120,
+    "top_visa": "Regional residence routes make Sarajevo a low-profile Balkan base.",
+    "vibe": "History, hills, cafe culture, and solid daily affordability.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1400,
+        "moderate": 1650,
+        "luxury": 2250
+      },
+      "couple": {
+        "lean": 2250,
+        "moderate": 2700,
+        "luxury": 3650
+      },
+      "family": {
+        "lean": 3150,
+        "moderate": 3900,
+        "luxury": 5100
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "porto-pt",
+    "slug": "european-soft-landing",
+    "city": "Porto",
+    "country": "Portugal",
+    "region": "Western Europe",
+    "lat": 41.1579,
+    "lng": -8.6291,
+    "internet_mbps": 250,
+    "top_visa": "Portugal D7 and related residency pathways remain popular with income-based FIRE plans.",
+    "vibe": "Riverside beauty, walkability, and an easier cost curve than Lisbon.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1550,
+        "moderate": 1800,
+        "luxury": 2450
+      },
+      "couple": {
+        "lean": 2450,
+        "moderate": 2950,
+        "luxury": 3950
+      },
+      "family": {
+        "lean": 3400,
+        "moderate": 4250,
+        "luxury": 5600
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "budapest-hu",
+    "slug": "thermal-bath-fi-base",
+    "city": "Budapest",
+    "country": "Hungary",
+    "region": "Central Europe",
+    "lat": 47.4979,
+    "lng": 19.0402,
+    "internet_mbps": 240,
+    "top_visa": "Hungary white card and other residence routes support remote earners.",
+    "vibe": "Grand architecture, baths, nightlife, and reliable urban value.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1550,
+        "moderate": 1800,
+        "luxury": 2450
+      },
+      "couple": {
+        "lean": 2450,
+        "moderate": 2950,
+        "luxury": 3950
+      },
+      "family": {
+        "lean": 3400,
+        "moderate": 4250,
+        "luxury": 5600
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "sofia-bg",
+    "slug": "eu-foot-in-the-door",
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "region": "Eastern Europe",
+    "lat": 42.6977,
+    "lng": 23.3219,
+    "internet_mbps": 280,
+    "top_visa": "Bulgaria offers one of the lower-cost EU bases for long-stay planning.",
+    "vibe": "Functional city life, mountain weekends, and fast internet.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1550,
+        "moderate": 1800,
+        "luxury": 2450
+      },
+      "couple": {
+        "lean": 2450,
+        "moderate": 2950,
+        "luxury": 3950
+      },
+      "family": {
+        "lean": 3400,
+        "moderate": 4250,
+        "luxury": 5600
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "buenos-aires-ar",
+    "slug": "culture-and-cash-runway",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "Latin America",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "internet_mbps": 220,
+    "top_visa": "Argentina digital nomad options and favorable lifestyle math attract FIRE travelers.",
+    "vibe": "Big culture, cafe density, late dinners, and strong neighborhood identity.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1600,
+        "moderate": 1900,
+        "luxury": 2550
+      },
+      "couple": {
+        "lean": 2550,
+        "moderate": 3150,
+        "luxury": 4200
+      },
+      "family": {
+        "lean": 3600,
+        "moderate": 4450,
+        "luxury": 5900
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "mexico-city-mx",
+    "slug": "creative-megacity",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "region": "Latin America",
+    "lat": 19.4326,
+    "lng": -99.1332,
+    "internet_mbps": 220,
+    "top_visa": "Mexico temporary residence remains one of the classic FIRE-friendly setups.",
+    "vibe": "World-class food, deep neighborhoods, and endless urban momentum.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1700,
+        "moderate": 2000,
+        "luxury": 2700
+      },
+      "couple": {
+        "lean": 2700,
+        "moderate": 3300,
+        "luxury": 4400
+      },
+      "family": {
+        "lean": 3800,
+        "moderate": 4700,
+        "luxury": 6200
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "split-hr",
+    "slug": "adriatic-lifestyle-upgrade",
+    "city": "Split",
+    "country": "Croatia",
+    "region": "Southern Europe",
+    "lat": 43.5081,
+    "lng": 16.4402,
+    "internet_mbps": 200,
+    "top_visa": "Croatia digital nomad residence route remains attractive for coastal EU stays.",
+    "vibe": "Stone alleys, sea views, and a summer-weighted social life.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1700,
+        "moderate": 2000,
+        "luxury": 2700
+      },
+      "couple": {
+        "lean": 2700,
+        "moderate": 3300,
+        "luxury": 4400
+      },
+      "family": {
+        "lean": 3800,
+        "moderate": 4700,
+        "luxury": 6200
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "cape-town-za",
+    "slug": "nature-plus-city",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "region": "Africa",
+    "lat": -33.9249,
+    "lng": 18.4241,
+    "internet_mbps": 180,
+    "top_visa": "South Africa remote work pathways continue evolving for foreign earners.",
+    "vibe": "Ocean, mountains, vineyards, and dramatic scenery every week.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1800,
+        "moderate": 2100,
+        "luxury": 2850
+      },
+      "couple": {
+        "lean": 2850,
+        "moderate": 3450,
+        "luxury": 4600
+      },
+      "family": {
+        "lean": 4000,
+        "moderate": 4950,
+        "luxury": 6500
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "valencia-es",
+    "slug": "sunny-euro-balance",
+    "city": "Valencia",
+    "country": "Spain",
+    "region": "Southern Europe",
+    "lat": 39.4699,
+    "lng": -0.3763,
+    "internet_mbps": 300,
+    "top_visa": "Spain non-lucrative and digital nomad options keep Valencia popular.",
+    "vibe": "Beach-city ease, bike lanes, and a more relaxed pace than Madrid.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1850,
+        "moderate": 2200,
+        "luxury": 2950
+      },
+      "couple": {
+        "lean": 2950,
+        "moderate": 3650,
+        "luxury": 4850
+      },
+      "family": {
+        "lean": 4200,
+        "moderate": 5150,
+        "luxury": 6800
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "tallinn-ee",
+    "slug": "digital-government-perk",
+    "city": "Tallinn",
+    "country": "Estonia",
+    "region": "Northern Europe",
+    "lat": 59.437,
+    "lng": 24.7536,
+    "internet_mbps": 350,
+    "top_visa": "Estonia digital nomad and e-residency ecosystem still stands out.",
+    "vibe": "Medieval streets, startup energy, and very strong digital infrastructure.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1850,
+        "moderate": 2200,
+        "luxury": 2950
+      },
+      "couple": {
+        "lean": 2950,
+        "moderate": 3650,
+        "luxury": 4850
+      },
+      "family": {
+        "lean": 4200,
+        "moderate": 5150,
+        "luxury": 6800
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "athens-gr",
+    "slug": "history-and-harbors",
+    "city": "Athens",
+    "country": "Greece",
+    "region": "Southern Europe",
+    "lat": 37.9838,
+    "lng": 23.7275,
+    "internet_mbps": 160,
+    "top_visa": "Greece digital nomad and financial independence routes are well known.",
+    "vibe": "Ancient layers, warm evenings, and island escapes within reach.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1850,
+        "moderate": 2200,
+        "luxury": 2950
+      },
+      "couple": {
+        "lean": 2950,
+        "moderate": 3650,
+        "luxury": 4850
+      },
+      "family": {
+        "lean": 4200,
+        "moderate": 5150,
+        "luxury": 6800
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "belgrade-rs",
+    "slug": "nightlife-value-engine",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "region": "Eastern Europe",
+    "lat": 44.7866,
+    "lng": 20.4489,
+    "internet_mbps": 260,
+    "top_visa": "Serbia remains a practical longer-stay option for many foreign residents.",
+    "vibe": "Rivers, nightlife, and strong value for a European capital.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1850,
+        "moderate": 2200,
+        "luxury": 2950
+      },
+      "couple": {
+        "lean": 2950,
+        "moderate": 3650,
+        "luxury": 4850
+      },
+      "family": {
+        "lean": 4200,
+        "moderate": 5150,
+        "luxury": 6800
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "bucharest-ro",
+    "slug": "fast-internet-value-capital",
+    "city": "Bucharest",
+    "country": "Romania",
+    "region": "Eastern Europe",
+    "lat": 44.4268,
+    "lng": 26.1025,
+    "internet_mbps": 350,
+    "top_visa": "Romania long-stay pathways plus famously fast internet make it interesting.",
+    "vibe": "Wide boulevards, cafe culture, and a lot of everyday convenience for the price.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1900,
+        "moderate": 2250,
+        "luxury": 3050
+      },
+      "couple": {
+        "lean": 3050,
+        "moderate": 3700,
+        "luxury": 4950
+      },
+      "family": {
+        "lean": 4300,
+        "moderate": 5300,
+        "luxury": 7000
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "lisbon-pt",
+    "slug": "premium-fire-portugal",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "region": "Western Europe",
+    "lat": 38.7223,
+    "lng": -9.1393,
+    "internet_mbps": 250,
+    "top_visa": "Portugal D7 remains one of the reference visas for passive-income FIRE planning.",
+    "vibe": "Hills, trams, ocean light, and a giant international expat network.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2100,
+        "moderate": 2500,
+        "luxury": 3400
+      },
+      "couple": {
+        "lean": 3400,
+        "moderate": 4100,
+        "luxury": 5500
+      },
+      "family": {
+        "lean": 4750,
+        "moderate": 5900,
+        "luxury": 7750
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "bratislava-sk",
+    "slug": "small-capital-efficiency",
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "region": "Central Europe",
+    "lat": 48.1486,
+    "lng": 17.1077,
+    "internet_mbps": 260,
+    "top_visa": "Central European residence planning with close access to Vienna and Budapest.",
+    "vibe": "Compact capital, riverfront walks, and efficient day-to-day living.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1950,
+        "moderate": 2300,
+        "luxury": 3100
+      },
+      "couple": {
+        "lean": 3100,
+        "moderate": 3800,
+        "luxury": 5050
+      },
+      "family": {
+        "lean": 4350,
+        "moderate": 5400,
+        "luxury": 7150
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "panama-city-pa",
+    "slug": "retiree-program-advantage",
+    "city": "Panama City",
+    "country": "Panama",
+    "region": "Latin America",
+    "lat": 8.9824,
+    "lng": -79.5199,
+    "internet_mbps": 220,
+    "top_visa": "Panama pensionado and other residency routes are longstanding favorites.",
+    "vibe": "Skyline, tropical weather, and strong retiree infrastructure.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 1950,
+        "moderate": 2300,
+        "luxury": 3100
+      },
+      "couple": {
+        "lean": 3100,
+        "moderate": 3800,
+        "luxury": 5050
+      },
+      "family": {
+        "lean": 4350,
+        "moderate": 5400,
+        "luxury": 7150
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "san-jose-cr",
+    "slug": "nature-first-lifestyle",
+    "city": "San Jose",
+    "country": "Costa Rica",
+    "region": "Central America",
+    "lat": 9.9281,
+    "lng": -84.0907,
+    "internet_mbps": 180,
+    "top_visa": "Costa Rica rentista and digital nomad pathways remain FIRE relevant.",
+    "vibe": "Green landscapes, weekend nature escapes, and stable expat familiarity.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2050,
+        "moderate": 2400,
+        "luxury": 3250
+      },
+      "couple": {
+        "lean": 3250,
+        "moderate": 3950,
+        "luxury": 5300
+      },
+      "family": {
+        "lean": 4550,
+        "moderate": 5650,
+        "luxury": 7450
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "prague-cz",
+    "slug": "storybook-city-break",
+    "city": "Prague",
+    "country": "Czech Republic",
+    "region": "Central Europe",
+    "lat": 50.0755,
+    "lng": 14.4378,
+    "internet_mbps": 230,
+    "top_visa": "Long-stay and business residence pathways make Prague perennially popular.",
+    "vibe": "Historic center, efficient transit, and classic European beauty.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2050,
+        "moderate": 2400,
+        "luxury": 3250
+      },
+      "couple": {
+        "lean": 3250,
+        "moderate": 3950,
+        "luxury": 5300
+      },
+      "family": {
+        "lean": 4550,
+        "moderate": 5650,
+        "luxury": 7450
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "warsaw-pl",
+    "slug": "career-safe-europe",
+    "city": "Warsaw",
+    "country": "Poland",
+    "region": "Central Europe",
+    "lat": 52.2297,
+    "lng": 21.0122,
+    "internet_mbps": 300,
+    "top_visa": "Poland offers practical residence setups for professionals and entrepreneurs.",
+    "vibe": "Modern business city, large parks, and strong infrastructure.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2050,
+        "moderate": 2400,
+        "luxury": 3250
+      },
+      "couple": {
+        "lean": 3250,
+        "moderate": 3950,
+        "luxury": 5300
+      },
+      "family": {
+        "lean": 4550,
+        "moderate": 5650,
+        "luxury": 7450
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "abuja-ng",
+    "slug": "african-capital-value",
+    "city": "Abuja",
+    "country": "Nigeria",
+    "region": "Africa",
+    "lat": 9.0765,
+    "lng": 7.3986,
+    "internet_mbps": 110,
+    "top_visa": "Best approached as a regional base with visa rules checked carefully in advance.",
+    "vibe": "Planned capital, business districts, and a warmer-weather city rhythm.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2050,
+        "moderate": 2400,
+        "luxury": 3250
+      },
+      "couple": {
+        "lean": 3250,
+        "moderate": 3950,
+        "luxury": 5300
+      },
+      "family": {
+        "lean": 4550,
+        "moderate": 5650,
+        "luxury": 7450
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "dubrovnik-hr",
+    "slug": "old-town-sea-premium",
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "region": "Southern Europe",
+    "lat": 42.6507,
+    "lng": 18.0944,
+    "internet_mbps": 160,
+    "top_visa": "Croatia residence options make coastal living possible at a premium.",
+    "vibe": "Walled-city drama, Adriatic swims, and tourism-heavy summers.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2100,
+        "moderate": 2500,
+        "luxury": 3400
+      },
+      "couple": {
+        "lean": 3400,
+        "moderate": 4100,
+        "luxury": 5500
+      },
+      "family": {
+        "lean": 4750,
+        "moderate": 5900,
+        "luxury": 7750
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "santiago-cl",
+    "slug": "andes-backed-city",
+    "city": "Santiago",
+    "country": "Chile",
+    "region": "Latin America",
+    "lat": -33.4489,
+    "lng": -70.6693,
+    "internet_mbps": 240,
+    "top_visa": "Chile temporary residence can appeal to FIRE planners seeking stability.",
+    "vibe": "Mountain backdrop, wine country access, and polished urban pockets.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2100,
+        "moderate": 2500,
+        "luxury": 3400
+      },
+      "couple": {
+        "lean": 3400,
+        "moderate": 4100,
+        "luxury": 5500
+      },
+      "family": {
+        "lean": 4750,
+        "moderate": 5900,
+        "luxury": 7750
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "taipei-tw",
+    "slug": "food-and-transit-ace",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "region": "East Asia",
+    "lat": 25.033,
+    "lng": 121.5654,
+    "internet_mbps": 500,
+    "top_visa": "Taiwan long-stay pathways and excellent infrastructure make it compelling.",
+    "vibe": "Night markets, unbeatable transit, and very high everyday convenience.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2200,
+        "moderate": 2600,
+        "luxury": 3500
+      },
+      "couple": {
+        "lean": 3500,
+        "moderate": 4300,
+        "luxury": 5700
+      },
+      "family": {
+        "lean": 4950,
+        "moderate": 6100,
+        "luxury": 8050
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "tokyo-jp",
+    "slug": "high-functioning-megacity",
+    "city": "Tokyo",
+    "country": "Japan",
+    "region": "East Asia",
+    "lat": 35.6762,
+    "lng": 139.6503,
+    "internet_mbps": 450,
+    "top_visa": "Japan long-stay and business-linked residence routes require more planning.",
+    "vibe": "Order, convenience, neighborhoods for every personality, and incredible food.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2400,
+        "moderate": 2800,
+        "luxury": 3800
+      },
+      "couple": {
+        "lean": 3800,
+        "moderate": 4600,
+        "luxury": 6150
+      },
+      "family": {
+        "lean": 5300,
+        "moderate": 6600,
+        "luxury": 8700
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "seoul-kr",
+    "slug": "hyperconnected-urban-life",
+    "city": "Seoul",
+    "country": "South Korea",
+    "region": "East Asia",
+    "lat": 37.5665,
+    "lng": 126.978,
+    "internet_mbps": 500,
+    "top_visa": "Long-term residence routes vary, but Seoul excels on infrastructure and safety.",
+    "vibe": "24-hour energy, fast trains, and world-class digital infrastructure.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2400,
+        "moderate": 2800,
+        "luxury": 3800
+      },
+      "couple": {
+        "lean": 3800,
+        "moderate": 4600,
+        "luxury": 6150
+      },
+      "family": {
+        "lean": 5300,
+        "moderate": 6600,
+        "luxury": 8700
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "dubai-ae",
+    "slug": "tax-free-aspirational",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "region": "Middle East",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "internet_mbps": 350,
+    "top_visa": "UAE remote work and investor visas remain major draws for global earners.",
+    "vibe": "Luxury towers, convenience, tax appeal, and nonstop international connectivity.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2550,
+        "moderate": 3000,
+        "luxury": 4050
+      },
+      "couple": {
+        "lean": 4050,
+        "moderate": 4950,
+        "luxury": 6600
+      },
+      "family": {
+        "lean": 5700,
+        "moderate": 7050,
+        "luxury": 9300
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "barcelona-es",
+    "slug": "design-forward-coastal",
+    "city": "Barcelona",
+    "country": "Spain",
+    "region": "Southern Europe",
+    "lat": 41.3851,
+    "lng": 2.1734,
+    "internet_mbps": 300,
+    "top_visa": "Spain digital nomad route keeps Barcelona on many shortlists.",
+    "vibe": "Architecture, beach access, and a vibrant international community.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2550,
+        "moderate": 3000,
+        "luxury": 4050
+      },
+      "couple": {
+        "lean": 4050,
+        "moderate": 4950,
+        "luxury": 6600
+      },
+      "family": {
+        "lean": 5700,
+        "moderate": 7050,
+        "luxury": 9300
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "berlin-de",
+    "slug": "creative-eu-platform",
+    "city": "Berlin",
+    "country": "Germany",
+    "region": "Western Europe",
+    "lat": 52.52,
+    "lng": 13.405,
+    "internet_mbps": 250,
+    "top_visa": "Freelancer and longer-stay routes still make Berlin viable for self-directed workers.",
+    "vibe": "Creative energy, green space, and a huge international network.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2650,
+        "moderate": 3100,
+        "luxury": 4200
+      },
+      "couple": {
+        "lean": 4200,
+        "moderate": 5100,
+        "luxury": 6800
+      },
+      "family": {
+        "lean": 5900,
+        "moderate": 7300,
+        "luxury": 9600
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "montreal-ca",
+    "slug": "north-america-lite",
+    "city": "Montreal",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 45.5017,
+    "lng": -73.5673,
+    "internet_mbps": 350,
+    "top_visa": "Best suited to those with established Canadian residency or work paths.",
+    "vibe": "European feel, festivals, and a lower cost base than Toronto or Vancouver.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2700,
+        "moderate": 3200,
+        "luxury": 4300
+      },
+      "couple": {
+        "lean": 4300,
+        "moderate": 5300,
+        "luxury": 7050
+      },
+      "family": {
+        "lean": 6100,
+        "moderate": 7500,
+        "luxury": 9900
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "vienna-at",
+    "slug": "high-comfort-europe",
+    "city": "Vienna",
+    "country": "Austria",
+    "region": "Western Europe",
+    "lat": 48.2082,
+    "lng": 16.3738,
+    "internet_mbps": 280,
+    "top_visa": "Austria residence by means and other structured long-stay routes suit some FIRE profiles.",
+    "vibe": "Elegant daily life, transit excellence, and unusually high quality of life.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2700,
+        "moderate": 3200,
+        "luxury": 4300
+      },
+      "couple": {
+        "lean": 4300,
+        "moderate": 5300,
+        "luxury": 7050
+      },
+      "family": {
+        "lean": 6100,
+        "moderate": 7500,
+        "luxury": 9900
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "amsterdam-nl",
+    "slug": "bikeable-global-hub",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "region": "Western Europe",
+    "lat": 52.3676,
+    "lng": 4.9041,
+    "internet_mbps": 350,
+    "top_visa": "DAFT and other residence pathways can work for entrepreneurs with planning.",
+    "vibe": "Bike-first life, canals, global connectivity, and premium rent pressure.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2900,
+        "moderate": 3400,
+        "luxury": 4600
+      },
+      "couple": {
+        "lean": 4600,
+        "moderate": 5600,
+        "luxury": 7500
+      },
+      "family": {
+        "lean": 6450,
+        "moderate": 8000,
+        "luxury": 10550
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "sydney-au",
+    "slug": "beach-and-income-premium",
+    "city": "Sydney",
+    "country": "Australia",
+    "region": "Oceania",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "internet_mbps": 220,
+    "top_visa": "Australia long-stay options are possible but rarely the easiest FIRE route.",
+    "vibe": "Harbor views, beach lifestyle, and expensive but sunny city living.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 3050,
+        "moderate": 3600,
+        "luxury": 4850
+      },
+      "couple": {
+        "lean": 4850,
+        "moderate": 5950,
+        "luxury": 7900
+      },
+      "family": {
+        "lean": 6850,
+        "moderate": 8450,
+        "luxury": 11150
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "madrid-es",
+    "slug": "big-city-spain",
+    "city": "Madrid",
+    "country": "Spain",
+    "region": "Southern Europe",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "internet_mbps": 300,
+    "top_visa": "Spain digital nomad and non-lucrative visas both keep Madrid relevant.",
+    "vibe": "Late-night culture, polished neighborhoods, and powerful city energy.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 2550,
+        "moderate": 3000,
+        "luxury": 4050
+      },
+      "couple": {
+        "lean": 4050,
+        "moderate": 4950,
+        "luxury": 6600
+      },
+      "family": {
+        "lean": 5700,
+        "moderate": 7050,
+        "luxury": 9300
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "auckland-nz",
+    "slug": "oceania-stability-play",
+    "city": "Auckland",
+    "country": "New Zealand",
+    "region": "Oceania",
+    "lat": -36.8509,
+    "lng": 174.7645,
+    "internet_mbps": 230,
+    "top_visa": "New Zealand works best for those with a pre-existing route to residency.",
+    "vibe": "Harbor city calm, outdoor access, and a high cost of comfort.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 3150,
+        "moderate": 3700,
+        "luxury": 5000
+      },
+      "couple": {
+        "lean": 5000,
+        "moderate": 6100,
+        "luxury": 8150
+      },
+      "family": {
+        "lean": 7050,
+        "moderate": 8700,
+        "luxury": 11450
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "miami-us",
+    "slug": "sunbelt-fi-lifestyle",
+    "city": "Miami",
+    "country": "United States",
+    "region": "North America",
+    "lat": 25.7617,
+    "lng": -80.1918,
+    "internet_mbps": 280,
+    "top_visa": "For U.S. residents this is a domestic lifestyle benchmark rather than a visa play.",
+    "vibe": "Beach, heat, nightlife, and easy Latin America access.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 3400,
+        "moderate": 4000,
+        "luxury": 5400
+      },
+      "couple": {
+        "lean": 5400,
+        "moderate": 6600,
+        "luxury": 8800
+      },
+      "family": {
+        "lean": 7600,
+        "moderate": 9400,
+        "luxury": 12400
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "singapore-sg",
+    "slug": "clean-fast-premium-asia",
+    "city": "Singapore",
+    "country": "Singapore",
+    "region": "Southeast Asia",
+    "lat": 1.3521,
+    "lng": 103.8198,
+    "internet_mbps": 1000,
+    "top_visa": "A highly structured residency path with premium costs and premium infrastructure.",
+    "vibe": "Ultra-clean, hyper-efficient, and one of the easiest cities to function in.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 3550,
+        "moderate": 4200,
+        "luxury": 5650
+      },
+      "couple": {
+        "lean": 5650,
+        "moderate": 6950,
+        "luxury": 9250
+      },
+      "family": {
+        "lean": 8000,
+        "moderate": 9850,
+        "luxury": 13000
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "vancouver-ca",
+    "slug": "nature-nearby-premium",
+    "city": "Vancouver",
+    "country": "Canada",
+    "region": "North America",
+    "lat": 49.2827,
+    "lng": -123.1207,
+    "internet_mbps": 320,
+    "top_visa": "Best suited to users who already have a Canadian immigration path lined up.",
+    "vibe": "Mountains, ocean, and a beautiful but expensive quality-of-life play.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 3550,
+        "moderate": 4200,
+        "luxury": 5650
+      },
+      "couple": {
+        "lean": 5650,
+        "moderate": 6950,
+        "luxury": 9250
+      },
+      "family": {
+        "lean": 8000,
+        "moderate": 9850,
+        "luxury": 13000
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "new-york-us",
+    "slug": "global-ambition-benchmark",
+    "city": "New York City",
+    "country": "United States",
+    "region": "North America",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "internet_mbps": 300,
+    "top_visa": "For U.S. residents this acts as a domestic cost benchmark, not an immigration path.",
+    "vibe": "Infinite ambition, density, and culture at a very real price tag.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 4250,
+        "moderate": 5000,
+        "luxury": 6750
+      },
+      "couple": {
+        "lean": 6750,
+        "moderate": 8250,
+        "luxury": 11000
+      },
+      "family": {
+        "lean": 9500,
+        "moderate": 11750,
+        "luxury": 15500
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "zurich-ch",
+    "slug": "wealth-preservation-mode",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "region": "Western Europe",
+    "lat": 47.3769,
+    "lng": 8.5417,
+    "internet_mbps": 350,
+    "top_visa": "Switzerland is aspirational and highly structured, best for well-capitalized cases.",
+    "vibe": "Precision, safety, lakeside beauty, and premium-everything living.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 4400,
+        "moderate": 5200,
+        "luxury": 7000
+      },
+      "couple": {
+        "lean": 7000,
+        "moderate": 8600,
+        "luxury": 11450
+      },
+      "family": {
+        "lean": 9900,
+        "moderate": 12200,
+        "luxury": 16100
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  },
+  {
+    "id": "san-francisco-us",
+    "slug": "founder-premium-benchmark",
+    "city": "San Francisco",
+    "country": "United States",
+    "region": "North America",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "internet_mbps": 320,
+    "top_visa": "For U.S. residents this is a high-cost benchmark city rather than a visa destination.",
+    "vibe": "Hills, tech gravity, and one of the steepest everyday burn rates on the list.",
+    "last_updated": "2026-03-20",
+    "costs": {
+      "solo": {
+        "lean": 4700,
+        "moderate": 5500,
+        "luxury": 7450
+      },
+      "couple": {
+        "lean": 7450,
+        "moderate": 9100,
+        "luxury": 12100
+      },
+      "family": {
+        "lean": 10450,
+        "moderate": 12900,
+        "luxury": 17050
+      }
+    },
+    "profile_adjustments": {
+      "remote_worker": 150,
+      "retiree": -100
+    }
+  }
+]

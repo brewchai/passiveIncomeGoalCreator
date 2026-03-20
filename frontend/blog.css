@@ -120,6 +120,66 @@ body {
     margin: 0 auto;
 }
 
+.tool-spotlight {
+    margin: 1.5rem auto;
+    padding: 1.3rem 1.45rem;
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 22%),
+        linear-gradient(135deg, rgba(102, 126, 234, 0.94), rgba(24, 166, 131, 0.94));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.tool-spotlight-copy h2 {
+    margin: 0.35rem 0 0.7rem;
+    font-size: 1.55rem;
+    line-height: 1.08;
+}
+
+.tool-spotlight-copy p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 720px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.tool-spotlight-kicker {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.tool-spotlight-link {
+    flex-shrink: 0;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 0.85rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.tool-name-nowrap {
+    white-space: nowrap;
+}
+
+.tool-spotlight-link:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
 /* Search Box */
 .search-container {
     max-width: 560px;
@@ -654,6 +714,11 @@ body {
 @media (max-width: 900px) {
     .hero-post {
         grid-template-columns: 1fr;
+    }
+
+    .tool-spotlight {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .hero-post-image {

@@ -1,0 +1,462 @@
+const MODES = {
+    income: {
+        label: 'Monthly passive income',
+        min: 1000,
+        max: 10000,
+        step: 100,
+        value: 3500,
+        formatter: formatCurrency,
+        monthlyIncome(value) {
+            return value;
+        }
+    },
+    netWorth: {
+        label: 'Net worth',
+        min: 50000,
+        max: 3000000,
+        step: 25000,
+        value: 600000,
+        formatter: formatCurrency,
+        monthlyIncome(value) {
+            return (value * 0.04) / 12;
+        }
+    }
+};
+
+const state = {
+    mode: 'income',
+    value: MODES.income.value,
+    household: 'solo',
+    profile: 'remote_worker',
+    lifestyle: 'lean',
+    allCities: [],
+    affordableCities: [],
+    selectedCityId: null,
+    globe: null,
+    resumeTimeoutId: null,
+    rampIntervalId: null,
+    suppressNextStageClick: false
+};
+
+const DEFAULT_AUTO_ROTATE_SPEED = 0.45;
+const RESUME_AUTO_ROTATE_SPEED = 0.18;
+const RESUME_DELAY_MS = 3000;
+
+const els = {
+    budgetLabel: document.getElementById('budgetLabel'),
+    budgetValue: document.getElementById('budgetValue'),
+    monthlyEquivalentPill: document.getElementById('monthlyEquivalentPill'),
+    budgetSlider: document.getElementById('budgetSlider'),
+    filterChips: document.querySelectorAll('[data-filter-group]'),
+    sliderMin: document.getElementById('sliderMin'),
+    sliderMax: document.getElementById('sliderMax'),
+    affordableCount: document.getElementById('affordableCount'),
+    cheapestCity: document.getElementById('cheapestCity'),
+    fastestInternet: document.getElementById('fastestInternet'),
+    cityList: document.getElementById('cityList'),
+    resultsHint: document.getElementById('resultsHint'),
+    stageValue: document.getElementById('stageValue'),
+    incomeModeButton: document.getElementById('incomeModeButton'),
+    netWorthModeButton: document.getElementById('netWorthModeButton'),
+    cityDrawer: document.getElementById('cityDrawer'),
+    drawerClose: document.getElementById('drawerClose'),
+    drawerTitle: document.getElementById('drawerTitle'),
+    drawerSubtitle: document.getElementById('drawerSubtitle'),
+    drawerContext: document.getElementById('drawerContext'),
+    drawerStats: document.getElementById('drawerStats'),
+    drawerVisa: document.getElementById('drawerVisa'),
+    drawerVibe: document.getElementById('drawerVibe'),
+    datasetStamp: document.getElementById('datasetStamp'),
+    globeViz: document.getElementById('globeViz')
+};
+
+init().catch((error) => {
+    console.error('Failed to initialize globe tool:', error);
+    els.resultsHint.textContent = 'The globe failed to load. Please refresh and try again.';
+});
+
+async function init() {
+    setupInteractions();
+    applyMode('income');
+
+    const response = await fetch('./data.json');
+    if (!response.ok) {
+        throw new Error(`Unable to load data.json: ${response.status}`);
+    }
+
+    state.allCities = await response.json();
+    els.datasetStamp.textContent = `Dataset refreshed ${state.allCities[0]?.last_updated || 'recently'}.`;
+
+    buildGlobe();
+    updateView();
+}
+
+function setupInteractions() {
+    els.budgetSlider.addEventListener('input', (event) => {
+        state.value = Number(event.target.value);
+        updateView();
+    });
+
+    els.incomeModeButton.addEventListener('click', () => applyMode('income'));
+    els.netWorthModeButton.addEventListener('click', () => applyMode('netWorth'));
+    els.drawerClose.addEventListener('click', closeDrawer);
+    els.globeViz.addEventListener('click', handleStageClick);
+    els.filterChips.forEach((button) => {
+        button.addEventListener('click', () => {
+            const group = button.dataset.filterGroup;
+            const value = button.dataset.filterValue;
+            state[group] = value;
+
+            document.querySelectorAll(`[data-filter-group="${group}"]`).forEach((chip) => {
+                chip.classList.toggle('active', chip === button);
+            });
+
+            updateView();
+        });
+    });
+    window.addEventListener('resize', handleResize);
+}
+
+function applyMode(modeName) {
+    const mode = MODES[modeName];
+    state.mode = modeName;
+    state.value = mode.value;
+
+    els.budgetSlider.min = mode.min;
+    els.budgetSlider.max = mode.max;
+    els.budgetSlider.step = mode.step;
+    els.budgetSlider.value = mode.value;
+    els.sliderMin.textContent = formatCurrency(mode.min);
+    els.sliderMax.textContent = formatCurrency(mode.max);
+    els.incomeModeButton.classList.toggle('active', modeName === 'income');
+    els.netWorthModeButton.classList.toggle('active', modeName === 'netWorth');
+
+    updateView();
+}
+
+function buildGlobe() {
+    state.globe = Globe()(els.globeViz)
+        .backgroundColor('rgba(0,0,0,0)')
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+        .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+        .showAtmosphere(true)
+        .atmosphereColor('#6cc6ff')
+        .atmosphereAltitude(0.18)
+        .pointAltitude((point) => (point.affordable ? 0.13 : 0.05))
+        .pointRadius((point) => (point.affordable ? 0.38 : 0.16))
+        .pointColor((point) => point.color)
+        .pointResolution(20)
+        .pointsMerge(false)
+        .pointLabel((point) => tooltipMarkup(point))
+        .labelSize(1.2)
+        .labelDotRadius(0.32)
+        .labelColor(() => '#f2f8ff')
+        .labelText((point) => point.city)
+        .labelAltitude((point) => (point.affordable ? 0.17 : 0.09))
+        .labelLat((point) => point.lat)
+        .labelLng((point) => point.lng)
+        .labelLabel((point) => tooltipMarkup(point))
+        .onPointClick((point) => {
+            state.suppressNextStageClick = true;
+            selectCity(point.id);
+        })
+        .onLabelClick((point) => {
+            state.suppressNextStageClick = true;
+            selectCity(point.id);
+        });
+
+    state.globe.controls().autoRotate = true;
+    state.globe.controls().autoRotateSpeed = DEFAULT_AUTO_ROTATE_SPEED;
+    state.globe.pointOfView({ lat: 20, lng: 12, altitude: 2.15 }, 0);
+    handleResize();
+}
+
+function updateView() {
+    const mode = MODES[state.mode];
+    const monthlyIncome = mode.monthlyIncome(state.value);
+    const formattedInput = mode.formatter(state.value);
+    const formattedMonthly = `${formatCurrency(monthlyIncome)}/mo`;
+    const selectionLabel = describeSelection();
+
+    els.budgetLabel.textContent = mode.label;
+    els.budgetValue.textContent = state.mode === 'netWorth'
+        ? `${formattedInput}`
+        : formattedMonthly.replace('/mo', '');
+    els.monthlyEquivalentPill.textContent = formattedMonthly;
+
+    state.affordableCities = state.allCities
+        .map((city) => ({
+            ...city,
+            effective_monthly_cost: getCityCost(city)
+        }))
+        .filter((city) => city.effective_monthly_cost <= monthlyIncome)
+        .sort((left, right) => {
+            if (left.effective_monthly_cost !== right.effective_monthly_cost) {
+                return left.effective_monthly_cost - right.effective_monthly_cost;
+            }
+            return right.internet_mbps - left.internet_mbps;
+        });
+
+    const fastest = [...state.affordableCities].sort((left, right) => right.internet_mbps - left.internet_mbps)[0];
+    const cheapest = state.affordableCities[0];
+
+    els.affordableCount.textContent = String(state.affordableCities.length);
+    els.cheapestCity.textContent = cheapest ? `${cheapest.city}, ${cheapest.country}` : 'None yet';
+    els.fastestInternet.textContent = fastest ? `${fastest.city} · ${fastest.internet_mbps} Mbps` : 'None yet';
+    els.resultsHint.textContent = state.affordableCities.length
+        ? `${state.affordableCities.length} cities fit ${selectionLabel}.`
+        : `No matches yet for ${selectionLabel}.`;
+    els.stageValue.textContent = `${formattedMonthly} unlocks ${state.affordableCities.length} cities`;
+
+    renderCityList(monthlyIncome);
+    syncGlobe(monthlyIncome);
+
+    if (state.selectedCityId && !state.allCities.find((city) => city.id === state.selectedCityId)) {
+        state.selectedCityId = null;
+    }
+
+    if (state.selectedCityId) {
+        const selected = state.allCities.find((city) => city.id === state.selectedCityId);
+        if (selected) {
+            openDrawer(selected, monthlyIncome);
+        }
+    }
+}
+
+function syncGlobe(monthlyIncome) {
+    if (!state.globe) {
+        return;
+    }
+
+    const pointData = state.allCities.map((city) => {
+        const effectiveMonthlyCost = getCityCost(city);
+        return {
+        ...city,
+        effective_monthly_cost: effectiveMonthlyCost,
+        affordable: effectiveMonthlyCost <= monthlyIncome,
+        color: effectiveMonthlyCost <= monthlyIncome ? '#41e2ba' : 'rgba(159, 182, 207, 0.48)'
+    };
+    });
+
+    const labelData = pointData.filter((city) => city.affordable);
+    const ringData = pointData.filter((city) => city.affordable);
+
+    state.globe
+        .pointsData(pointData)
+        .labelsData(labelData)
+        .ringsData(ringData)
+        .ringColor(() => 'rgba(65, 226, 186, 0.65)')
+        .ringMaxRadius(3.4)
+        .ringPropagationSpeed(1.4)
+        .ringRepeatPeriod(1100);
+}
+
+function renderCityList(monthlyIncome) {
+    const topCities = [...state.affordableCities]
+        .sort((left, right) => right.internet_mbps - left.internet_mbps)
+        .slice(0, 8);
+
+    if (!topCities.length) {
+        els.cityList.innerHTML = `
+            <div class="city-card">
+                <strong>No cities unlocked yet</strong>
+                <p style="margin:0.55rem 0 0;color:var(--muted);">Try a higher monthly budget or switch to net worth mode to see more options.</p>
+            </div>
+        `;
+        return;
+    }
+
+    els.cityList.innerHTML = topCities.map((city) => {
+        const margin = Math.round(monthlyIncome - city.effective_monthly_cost);
+        const isActive = city.id === state.selectedCityId;
+        return `
+            <button class="city-card ${isActive ? 'active' : ''}" data-city-id="${city.id}" type="button">
+                <div class="city-card-head">
+                    <div>
+                        <strong>${city.city}</strong>
+                        <span>${city.country}</span>
+                    </div>
+                    <strong>${formatCurrency(city.effective_monthly_cost)}/mo</strong>
+                </div>
+                <div class="city-card-meta">
+                    <span>${city.internet_mbps} Mbps internet</span>
+                    <span>${margin >= 0 ? `${formatCurrency(margin)} cushion` : 'At limit'}</span>
+                </div>
+            </button>
+        `;
+    }).join('');
+
+    els.cityList.querySelectorAll('[data-city-id]').forEach((button) => {
+        button.addEventListener('click', () => selectCity(button.getAttribute('data-city-id')));
+    });
+}
+
+function selectCity(cityId) {
+    const city = state.affordableCities.find((entry) => entry.id === cityId)
+        || state.allCities.find((entry) => entry.id === cityId);
+    if (!city) {
+        return;
+    }
+
+    pauseAutoRotate();
+    state.selectedCityId = cityId;
+    const monthlyIncome = MODES[state.mode].monthlyIncome(state.value);
+    renderCityList(monthlyIncome);
+    openDrawer(city, monthlyIncome);
+
+    if (state.globe) {
+        state.globe.pointOfView({ lat: city.lat, lng: city.lng, altitude: 1.2 }, 1100);
+    }
+}
+
+function openDrawer(city, monthlyIncome) {
+    const effectiveMonthlyCost = city.effective_monthly_cost ?? getCityCost(city);
+    const surplus = monthlyIncome - effectiveMonthlyCost;
+    const affordText = surplus >= 0 ? `+${formatCurrency(surplus)}` : `-${formatCurrency(Math.abs(surplus))}`;
+
+    els.drawerTitle.textContent = city.city;
+    els.drawerSubtitle.textContent = `${city.country} · ${city.region}`;
+    els.drawerContext.textContent = `Showing costs for ${describeSelection()}.`;
+    els.drawerVisa.textContent = city.top_visa;
+    els.drawerVibe.textContent = city.vibe;
+    els.drawerStats.innerHTML = [
+        statMarkup('Monthly cost', `${formatCurrency(effectiveMonthlyCost)}/mo`),
+        statMarkup('Internet', `${city.internet_mbps} Mbps`),
+        statMarkup('Vs your budget', affordText),
+        statMarkup('Best for', city.slug.replace(/-/g, ' '))
+    ].join('');
+    els.cityDrawer.classList.add('open');
+}
+
+function closeDrawer() {
+    els.cityDrawer.classList.remove('open');
+}
+
+function handleStageClick() {
+    if (state.suppressNextStageClick) {
+        state.suppressNextStageClick = false;
+        return;
+    }
+
+    pauseAutoRotate({ shouldResume: true });
+}
+
+function pauseAutoRotate(options = {}) {
+    const { shouldResume = false, delayMs = RESUME_DELAY_MS } = options;
+
+    clearRotationTimers();
+
+    if (!state.globe) {
+        return;
+    }
+
+    state.globe.controls().autoRotate = false;
+
+    if (shouldResume) {
+        state.resumeTimeoutId = window.setTimeout(() => {
+            resumeAutoRotateGradually();
+        }, delayMs);
+    }
+}
+
+function resumeAutoRotateGradually() {
+    if (!state.globe) {
+        return;
+    }
+
+    const controls = state.globe.controls();
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = RESUME_AUTO_ROTATE_SPEED;
+
+    const rampStart = RESUME_AUTO_ROTATE_SPEED;
+    const rampEnd = DEFAULT_AUTO_ROTATE_SPEED;
+    const rampDurationMs = 2600;
+    const rampTickMs = 120;
+    const startedAt = Date.now();
+
+    state.rampIntervalId = window.setInterval(() => {
+        const elapsed = Date.now() - startedAt;
+        const progress = Math.min(elapsed / rampDurationMs, 1);
+        controls.autoRotateSpeed = rampStart + ((rampEnd - rampStart) * progress);
+
+        if (progress >= 1) {
+            window.clearInterval(state.rampIntervalId);
+            state.rampIntervalId = null;
+        }
+    }, rampTickMs);
+}
+
+function clearRotationTimers() {
+    if (state.resumeTimeoutId) {
+        window.clearTimeout(state.resumeTimeoutId);
+        state.resumeTimeoutId = null;
+    }
+
+    if (state.rampIntervalId) {
+        window.clearInterval(state.rampIntervalId);
+        state.rampIntervalId = null;
+    }
+}
+
+function tooltipMarkup(point) {
+    return `
+        <div class="globe-tooltip">
+            <strong>${point.city}, ${point.country}</strong>
+            <span>${formatCurrency(point.effective_monthly_cost ?? getCityCost(point))}/mo · ${point.internet_mbps} Mbps</span>
+        </div>
+    `;
+}
+
+function getCityCost(city) {
+    const householdCosts = city.costs?.[state.household];
+    const baseCost = householdCosts?.[state.lifestyle];
+    const adjustment = city.profile_adjustments?.[state.profile] ?? 0;
+    return (baseCost ?? 0) + adjustment;
+}
+
+function describeSelection() {
+    const householdLabels = {
+        solo: 'a solo',
+        couple: 'a couple',
+        family: 'a family'
+    };
+    const profileLabels = {
+        remote_worker: 'remote worker',
+        retiree: 'retiree'
+    };
+    const lifestyleLabels = {
+        lean: 'lean lifestyle',
+        moderate: 'moderate lifestyle',
+        luxury: 'luxury lifestyle'
+    };
+
+    return `${householdLabels[state.household]} ${profileLabels[state.profile]} with a ${lifestyleLabels[state.lifestyle]}`;
+}
+
+function statMarkup(label, value) {
+    return `
+        <div class="drawer-stat">
+            <span class="summary-kicker">${label}</span>
+            <strong>${value}</strong>
+        </div>
+    `;
+}
+
+function handleResize() {
+    if (!state.globe) {
+        return;
+    }
+
+    const width = els.globeViz.clientWidth;
+    const height = els.globeViz.clientHeight;
+    state.globe.width(width).height(height);
+}
+
+function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(value);
+}
