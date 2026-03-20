@@ -362,8 +362,8 @@
             // ---- Init ----
             async function init() {
                 try {
-                    const url = `/blog/posts/posts.json?ts=${Date.now()}`;
-                    const res = await fetch(url, { cache: 'no-store' });
+                    const url = '/blog/posts/posts.json';
+                    const res = await fetch(url);
                     if (!res.ok) return;
                     const text = await res.text();
                     if (!text) { console.warn('Empty posts.json response'); return; }
