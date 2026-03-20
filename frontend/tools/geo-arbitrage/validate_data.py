@@ -16,6 +16,7 @@ REQUIRED_FIELDS = {
     "costs",
     "profile_adjustments",
     "internet_mbps",
+    "healthcare_score",
     "top_visa",
     "vibe",
     "last_updated",
@@ -48,6 +49,8 @@ def main() -> int:
             raise ValueError(f"{city['id']} has invalid lng: {city['lng']}")
         if city["internet_mbps"] <= 0:
             raise ValueError(f"{city['id']} has invalid internet_mbps: {city['internet_mbps']}")
+        if city["healthcare_score"] not in (1, 2, 3, 4, 5):
+            raise ValueError(f"{city['id']} has invalid healthcare_score: {city['healthcare_score']}")
 
         for household in ("solo", "couple", "family"):
             if household not in city["costs"]:

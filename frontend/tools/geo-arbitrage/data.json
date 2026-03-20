@@ -31,7 +31,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "da-nang-vn",
@@ -65,7 +66,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "hoi-an-vn",
@@ -99,7 +101,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "medellin-co",
@@ -133,7 +136,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "bansko-bg",
@@ -167,7 +171,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "tbilisi-ge",
@@ -201,7 +206,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "phnom-penh-kh",
@@ -235,7 +241,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 2
   },
   {
     "id": "ho-chi-minh-city-vn",
@@ -269,7 +276,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "bali-id",
@@ -303,7 +311,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "kuala-lumpur-my",
@@ -337,7 +346,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "sarajevo-ba",
@@ -371,7 +381,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "porto-pt",
@@ -405,7 +416,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "budapest-hu",
@@ -439,7 +451,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "sofia-bg",
@@ -473,7 +486,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "buenos-aires-ar",
@@ -507,7 +521,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "mexico-city-mx",
@@ -541,7 +556,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "split-hr",
@@ -575,7 +591,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "cape-town-za",
@@ -609,7 +626,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "valencia-es",
@@ -643,7 +661,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "tallinn-ee",
@@ -677,7 +696,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "athens-gr",
@@ -711,7 +731,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "belgrade-rs",
@@ -745,7 +766,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 3
   },
   {
     "id": "bucharest-ro",
@@ -779,7 +801,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "lisbon-pt",
@@ -813,7 +836,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "bratislava-sk",
@@ -847,7 +871,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "panama-city-pa",
@@ -881,7 +906,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "san-jose-cr",
@@ -915,7 +941,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "prague-cz",
@@ -949,7 +976,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "warsaw-pl",
@@ -983,7 +1011,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "abuja-ng",
@@ -1017,7 +1046,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 2
   },
   {
     "id": "dubrovnik-hr",
@@ -1051,7 +1081,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "santiago-cl",
@@ -1085,7 +1116,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "taipei-tw",
@@ -1119,7 +1151,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "tokyo-jp",
@@ -1153,7 +1186,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "seoul-kr",
@@ -1187,7 +1221,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "dubai-ae",
@@ -1221,7 +1256,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "barcelona-es",
@@ -1255,7 +1291,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "berlin-de",
@@ -1289,7 +1326,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "montreal-ca",
@@ -1323,7 +1361,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "vienna-at",
@@ -1357,7 +1396,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "amsterdam-nl",
@@ -1391,7 +1431,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "sydney-au",
@@ -1425,7 +1466,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "madrid-es",
@@ -1459,7 +1501,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "auckland-nz",
@@ -1493,7 +1536,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "miami-us",
@@ -1527,7 +1571,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 4
   },
   {
     "id": "singapore-sg",
@@ -1561,7 +1606,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "vancouver-ca",
@@ -1595,7 +1641,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "new-york-us",
@@ -1629,7 +1676,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "zurich-ch",
@@ -1663,7 +1711,8 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   },
   {
     "id": "san-francisco-us",
@@ -1697,6 +1746,7 @@
     "profile_adjustments": {
       "remote_worker": 150,
       "retiree": -100
-    }
+    },
+    "healthcare_score": 5
   }
 ]

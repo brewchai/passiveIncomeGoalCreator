@@ -184,6 +184,7 @@ function updateView() {
         : formattedMonthly.replace('/mo', '');
     els.monthlyEquivalentPill.textContent = formattedMonthly;
 
+    const metricLabel = getProfileMetricLabel();
     state.affordableCities = state.allCities
         .map((city) => ({
             ...city,
@@ -194,15 +195,16 @@ function updateView() {
             if (left.effective_monthly_cost !== right.effective_monthly_cost) {
                 return left.effective_monthly_cost - right.effective_monthly_cost;
             }
-            return right.internet_mbps - left.internet_mbps;
+            return getProfileMetricValue(right) - getProfileMetricValue(left);
         });
 
-    const fastest = [...state.affordableCities].sort((left, right) => right.internet_mbps - left.internet_mbps)[0];
+    const strongestMetric = [...state.affordableCities].sort((left, right) => getProfileMetricValue(right) - getProfileMetricValue(left))[0];
     const cheapest = state.affordableCities[0];
 
     els.affordableCount.textContent = String(state.affordableCities.length);
     els.cheapestCity.textContent = cheapest ? `${cheapest.city}, ${cheapest.country}` : 'None yet';
-    els.fastestInternet.textContent = fastest ? `${fastest.city} · ${fastest.internet_mbps} Mbps` : 'None yet';
+    els.fastestInternet.previousElementSibling.textContent = metricLabel;
+    els.fastestInternet.textContent = strongestMetric ? `${strongestMetric.city} · ${formatProfileMetric(strongestMetric)}` : 'None yet';
     els.resultsHint.textContent = state.affordableCities.length
         ? `${state.affordableCities.length} cities fit ${selectionLabel}.`
         : `No matches yet for ${selectionLabel}.`;
@@ -253,7 +255,7 @@ function syncGlobe(monthlyIncome) {
 
 function renderCityList(monthlyIncome) {
     const topCities = [...state.affordableCities]
-        .sort((left, right) => right.internet_mbps - left.internet_mbps)
+        .sort((left, right) => getProfileMetricValue(right) - getProfileMetricValue(left))
         .slice(0, 8);
 
     if (!topCities.length) {
@@ -279,7 +281,7 @@ function renderCityList(monthlyIncome) {
                     <strong>${formatCurrency(city.effective_monthly_cost)}/mo</strong>
                 </div>
                 <div class="city-card-meta">
-                    <span>${city.internet_mbps} Mbps internet</span>
+                    <span>${formatProfileMetric(city)}</span>
                     <span>${margin >= 0 ? `${formatCurrency(margin)} cushion` : 'At limit'}</span>
                 </div>
             </button>
@@ -321,7 +323,7 @@ function openDrawer(city, monthlyIncome) {
     els.drawerVibe.textContent = city.vibe;
     els.drawerStats.innerHTML = [
         statMarkup('Monthly cost', `${formatCurrency(effectiveMonthlyCost)}/mo`),
-        statMarkup('Internet', `${city.internet_mbps} Mbps`),
+        statMarkup(getProfileMetricLabel(true), formatProfileMetric(city)),
         statMarkup('Vs your budget', affordText),
         statMarkup('Best for', city.slug.replace(/-/g, ' '))
     ].join('');
@@ -402,9 +404,29 @@ function tooltipMarkup(point) {
     return `
         <div class="globe-tooltip">
             <strong>${point.city}, ${point.country}</strong>
-            <span>${formatCurrency(point.effective_monthly_cost ?? getCityCost(point))}/mo · ${point.internet_mbps} Mbps</span>
+            <span>${formatCurrency(point.effective_monthly_cost ?? getCityCost(point))}/mo · ${formatProfileMetric(point)}</span>
         </div>
     `;
+}
+
+function getProfileMetricLabel(shortLabel = false) {
+    if (state.profile === 'retiree') {
+        return shortLabel ? 'Healthcare' : 'Best Healthcare';
+    }
+
+    return shortLabel ? 'Internet' : 'Fastest Internet';
+}
+
+function getProfileMetricValue(city) {
+    return state.profile === 'retiree' ? city.healthcare_score : city.internet_mbps;
+}
+
+function formatProfileMetric(city) {
+    if (state.profile === 'retiree') {
+        return `${city.healthcare_score}/5 healthcare`;
+    }
+
+    return `${city.internet_mbps} Mbps internet`;
 }
 
 function getCityCost(city) {
