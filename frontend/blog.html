@@ -171,7 +171,7 @@
                 heroPostEl.innerHTML = `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="hero-post">
                     ${cover
-                        ? `<img class="hero-post-image" src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image">`
+                        ? `<img class="hero-post-image" src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image" loading="eager" fetchpriority="high" decoding="async">`
                         : `<div class="hero-post-image" style="background: var(--gradient); display:flex; align-items:center; justify-content:center; font-size:5rem;">🔥</div>`
                     }
                     <div class="hero-post-content">
