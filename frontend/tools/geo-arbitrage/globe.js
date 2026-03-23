@@ -115,8 +115,10 @@ async function init() {
         throw new Error(`Unable to load data.json: ${response.status}`);
     }
 
-    state.allCities = await response.json();
-    els.datasetStamp.textContent = `Dataset refreshed ${state.allCities[0]?.last_updated || 'recently'}.`;
+    const payload = await response.json();
+    state.allCities = Array.isArray(payload) ? payload : payload.cities || [];
+    const datasetVersion = Array.isArray(payload) ? state.allCities[0]?.last_updated : payload.version;
+    els.datasetStamp.textContent = `Dataset refreshed ${datasetVersion || 'recently'}.`;
 
     buildGlobe();
     updateView();

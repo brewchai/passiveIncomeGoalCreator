@@ -25,10 +25,17 @@ REQUIRED_FIELDS = {
 
 def main() -> int:
     data_path = Path(__file__).with_name("data.json")
-    data = json.loads(data_path.read_text())
+    payload = json.loads(data_path.read_text())
 
+    if not isinstance(payload, dict):
+        raise ValueError("data.json must contain an object payload")
+    for key in ("version", "currency", "methodology", "cities"):
+        if key not in payload:
+            raise ValueError(f"data.json missing top-level key: {key}")
+
+    data = payload["cities"]
     if not isinstance(data, list) or not data:
-        raise ValueError("data.json must contain a non-empty array")
+        raise ValueError("data.json cities must contain a non-empty array")
 
     seen_ids = set()
     for index, city in enumerate(data, start=1):
@@ -38,6 +45,10 @@ def main() -> int:
         missing = REQUIRED_FIELDS - city.keys()
         if missing:
             raise ValueError(f"Entry {index} is missing fields: {', '.join(sorted(missing))}")
+
+        for key in ("cost_basis_usd", "solo_monthly_usd", "assumptions", "confidence"):
+            if key not in city:
+                raise ValueError(f"Entry {index} is missing new-format field: {key}")
 
         if city["id"] in seen_ids:
             raise ValueError(f"Duplicate id found: {city['id']}")
