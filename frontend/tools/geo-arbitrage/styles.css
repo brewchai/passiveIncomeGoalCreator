@@ -68,7 +68,8 @@ a {
 .mobile-list-pane,
 .mobile-nav,
 .mobile-intro,
-.mobile-start-label {
+.mobile-start-label,
+.mobile-globe-expand {
     display: none;
 }
 
@@ -132,6 +133,12 @@ a {
     margin: 0;
     color: var(--muted);
     line-height: 1.6;
+}
+
+.page-fine-print {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.4rem 1.5rem;
 }
 
 .eyebrow,
@@ -683,8 +690,7 @@ a {
 
     .mode-toggle,
     .filter-stack,
-    .budget-card,
-    .fine-print {
+    .budget-card {
         background: var(--panel);
         border: 1px solid var(--line);
         box-shadow: var(--shadow);
@@ -698,8 +704,7 @@ a {
         margin-bottom: 0.9rem;
     }
 
-    .filter-stack,
-    .fine-print {
+    .filter-stack {
         margin-bottom: 1rem;
     }
 
@@ -746,6 +751,26 @@ a {
         color: var(--text);
     }
 
+    .mobile-globe-expand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 0 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 16px;
+        border: 1px solid rgba(65, 226, 186, 0.32);
+        background: rgba(65, 226, 186, 0.08);
+        color: var(--text);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .mobile-globe-expand.mobile-hidden {
+        display: none;
+    }
+
     .mobile-list-pane {
         position: relative;
         display: none;
@@ -779,6 +804,10 @@ a {
         box-shadow: var(--shadow);
     }
 
+    .globe-canvas.mobile-expanded {
+        height: 78svh;
+    }
+
     .globe-legend {
         position: static;
         margin-top: 0.85rem;
@@ -797,6 +826,10 @@ a {
 
     .city-drawer.open {
         transform: translateY(0);
+    }
+
+    .page-fine-print {
+        padding: 0 1rem 1.25rem;
     }
 }
 
@@ -828,5 +861,9 @@ a {
     .globe-canvas {
         height: 52svh;
         min-height: 360px;
+    }
+
+    .globe-canvas.mobile-expanded {
+        height: 72svh;
     }
 }

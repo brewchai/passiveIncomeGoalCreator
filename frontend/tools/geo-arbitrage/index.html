@@ -121,10 +121,6 @@
                     <div class="city-list" id="cityList"></div>
                 </section>
 
-                <section class="fine-print">
-                    <p>Costs are curated estimates for a solo FIRE lifestyle and meant for inspiration, not legal or immigration advice.</p>
-                    <p class="dataset-stamp" id="datasetStamp"></p>
-                </section>
             </div>
         </aside>
 
@@ -142,8 +138,10 @@
                 <button class="mobile-view-chip" id="mobileGlobeTab" type="button" role="tab"
                     aria-selected="false">Globe</button>
                 <button class="mobile-view-chip active" id="mobileListTab" type="button" role="tab"
-                    aria-selected="true">Top Matches</button>
+                    aria-selected="true">List View</button>
             </div>
+            <button class="mobile-globe-expand mobile-hidden" id="mobileGlobeExpand" type="button"
+                aria-expanded="false">Expand Globe</button>
             <section class="mobile-list-pane" id="mobileListPane" aria-label="Mobile list results">
                 <div class="mobile-summary-grid">
                     <article class="summary-tile">
@@ -174,6 +172,11 @@
             </div>
         </main>
     </div>
+
+    <section class="fine-print page-fine-print">
+        <p>Costs are curated estimates for a solo FIRE lifestyle and meant for inspiration, not legal or immigration advice.</p>
+        <p class="dataset-stamp" id="datasetStamp"></p>
+    </section>
 
     <aside class="city-drawer" id="cityDrawer" aria-live="polite">
         <button class="drawer-close" id="drawerClose" type="button" aria-label="Close details">Close</button>

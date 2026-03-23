@@ -31,6 +31,7 @@ const state = {
     lifestyle: 'lean',
     mobileView: 'list',
     mobileSheetOpen: false,
+    mobileGlobeExpanded: false,
     allCities: [],
     affordableCities: [],
     selectedCityId: null,
@@ -70,6 +71,7 @@ const els = {
     netWorthModeButton: document.getElementById('netWorthModeButton'),
     mobileGlobeTab: document.getElementById('mobileGlobeTab'),
     mobileListTab: document.getElementById('mobileListTab'),
+    mobileGlobeExpand: document.getElementById('mobileGlobeExpand'),
     mobileListPane: document.getElementById('mobileListPane'),
     globeLegend: document.querySelector('.globe-legend'),
     cityDrawer: document.getElementById('cityDrawer'),
@@ -117,6 +119,7 @@ function setupInteractions() {
     els.mobileSheetToggle.addEventListener('click', toggleMobileSheet);
     els.mobileGlobeTab.addEventListener('click', () => setMobileView('globe'));
     els.mobileListTab.addEventListener('click', () => setMobileView('list'));
+    els.mobileGlobeExpand.addEventListener('click', toggleMobileGlobeExpand);
     els.drawerClose.addEventListener('click', closeDrawer);
     els.globeViz.addEventListener('click', handleStageClick);
     els.filterChips.forEach((button) => {
@@ -568,6 +571,7 @@ function setMobileView(viewName) {
     els.mobileListPane.classList.toggle('active', activeView === 'list');
     els.globeViz.classList.toggle('mobile-hidden', activeView === 'list');
     els.globeLegend.classList.toggle('mobile-hidden', activeView === 'list');
+    els.mobileGlobeExpand.classList.toggle('mobile-hidden', activeView !== 'globe');
 
     if (activeView === 'globe' && state.globe) {
         state.globe.width(els.globeViz.clientWidth).height(els.globeViz.clientHeight);
@@ -577,10 +581,32 @@ function setMobileView(viewName) {
 function syncMobileLayout() {
     if (!isMobileLayout()) {
         state.mobileSheetOpen = false;
+        state.mobileGlobeExpanded = false;
     }
 
     setMobileView(state.mobileView);
     syncMobileSheet();
+    syncMobileGlobeExpand();
+}
+
+function toggleMobileGlobeExpand() {
+    if (!isMobileLayout() || state.mobileView !== 'globe') {
+        return;
+    }
+
+    state.mobileGlobeExpanded = !state.mobileGlobeExpanded;
+    syncMobileGlobeExpand();
+
+    if (state.globe) {
+        state.globe.width(els.globeViz.clientWidth).height(els.globeViz.clientHeight);
+    }
+}
+
+function syncMobileGlobeExpand() {
+    const isExpanded = isMobileLayout() && state.mobileView === 'globe' && state.mobileGlobeExpanded;
+    els.globeViz.classList.toggle('mobile-expanded', isExpanded);
+    els.mobileGlobeExpand.textContent = isExpanded ? 'Collapse Globe' : 'Expand Globe';
+    els.mobileGlobeExpand.setAttribute('aria-expanded', String(isExpanded));
 }
 
 function formatCurrency(value) {
