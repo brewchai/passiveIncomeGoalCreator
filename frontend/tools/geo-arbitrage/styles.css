@@ -69,9 +69,12 @@ a {
 .mobile-nav,
 .mobile-intro,
 .mobile-start-label,
-.mobile-globe-expand,
-.mobile-globe-shell {
+.mobile-globe-expand {
     display: none;
+}
+
+.mobile-globe-shell {
+    display: block;
 }
 
 .control-panel-content {
