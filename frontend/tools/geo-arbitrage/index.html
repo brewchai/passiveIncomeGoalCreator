@@ -140,8 +140,6 @@
                 <button class="mobile-view-chip active" id="mobileListTab" type="button" role="tab"
                     aria-selected="true">List View</button>
             </div>
-            <button class="mobile-globe-expand mobile-hidden" id="mobileGlobeExpand" type="button"
-                aria-expanded="false" aria-label="Expand globe"></button>
             <section class="mobile-list-pane" id="mobileListPane" aria-label="Mobile list results">
                 <div class="mobile-summary-grid">
                     <article class="summary-tile">
@@ -165,10 +163,14 @@
                     <div class="city-list" id="mobileCityList"></div>
                 </section>
             </section>
-            <div id="globeViz" class="globe-canvas" aria-label="Interactive 3D globe"></div>
-            <div class="globe-legend">
-                <span><i class="legend-dot legend-dot-active"></i> Affordable now</span>
-                <span><i class="legend-dot legend-dot-muted"></i> Above your budget</span>
+            <div class="mobile-globe-shell" id="mobileGlobeShell">
+                <button class="mobile-globe-expand mobile-hidden" id="mobileGlobeExpand" type="button"
+                    aria-expanded="false" aria-label="Expand globe"></button>
+                <div id="globeViz" class="globe-canvas" aria-label="Interactive 3D globe"></div>
+                <div class="globe-legend">
+                    <span><i class="legend-dot legend-dot-active"></i> Affordable now</span>
+                    <span><i class="legend-dot legend-dot-muted"></i> Above your budget</span>
+                </div>
             </div>
         </main>
     </div>

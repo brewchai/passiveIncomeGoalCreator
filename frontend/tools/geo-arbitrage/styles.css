@@ -69,7 +69,8 @@ a {
 .mobile-nav,
 .mobile-intro,
 .mobile-start-label,
-.mobile-globe-expand {
+.mobile-globe-expand,
+.mobile-globe-shell {
     display: none;
 }
 
@@ -755,13 +756,25 @@ body.globe-modal-open {
         color: var(--text);
     }
 
+    .mobile-globe-shell {
+        display: block;
+        position: relative;
+    }
+
+    .mobile-globe-shell.mobile-hidden {
+        display: none;
+    }
+
     .mobile-globe-expand {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         width: 44px;
         height: 44px;
-        margin: 0 0 1rem auto;
         padding: 0;
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -814,18 +827,6 @@ body.globe-modal-open {
         box-shadow: var(--shadow);
     }
 
-    .globe-canvas.mobile-expanded {
-        position: fixed;
-        inset: 0;
-        z-index: 30;
-        width: 100vw;
-        height: 100svh;
-        min-height: 100svh;
-        border-radius: 0;
-        border: 0;
-        box-shadow: none;
-    }
-
     .globe-legend {
         position: static;
         margin-top: 0.85rem;
@@ -833,22 +834,32 @@ body.globe-modal-open {
         padding: 0.85rem 1rem;
     }
 
-    .globe-legend.mobile-expanded {
+    .mobile-globe-shell.mobile-expanded {
         position: fixed;
-        left: 1rem;
-        right: 1rem;
-        bottom: 1rem;
-        z-index: 31;
+        inset: 0;
+        z-index: 40;
+        padding: calc(env(safe-area-inset-top, 0px) + 1rem) 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+        background: #020914;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: 0.9rem;
+    }
+
+    .mobile-globe-shell.mobile-expanded .globe-canvas {
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        border-radius: 28px;
+    }
+
+    .mobile-globe-shell.mobile-expanded .globe-legend {
         margin-top: 0;
         background: rgba(4, 12, 25, 0.82);
     }
 
-    .mobile-globe-expand.mobile-expanded {
-        position: fixed;
-        top: 1rem;
+    .mobile-globe-shell.mobile-expanded .mobile-globe-expand {
+        top: calc(env(safe-area-inset-top, 0px) + 1rem);
         right: 1rem;
-        z-index: 31;
-        margin: 0;
         background: rgba(4, 12, 25, 0.82);
     }
 
@@ -898,9 +909,5 @@ body.globe-modal-open {
     .globe-canvas {
         height: 52svh;
         min-height: 360px;
-    }
-
-    .globe-canvas.mobile-expanded {
-        height: 72svh;
     }
 }

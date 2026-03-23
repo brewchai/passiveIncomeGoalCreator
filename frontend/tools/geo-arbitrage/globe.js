@@ -85,6 +85,7 @@ const els = {
     netWorthModeButton: document.getElementById('netWorthModeButton'),
     mobileGlobeTab: document.getElementById('mobileGlobeTab'),
     mobileListTab: document.getElementById('mobileListTab'),
+    mobileGlobeShell: document.getElementById('mobileGlobeShell'),
     mobileGlobeExpand: document.getElementById('mobileGlobeExpand'),
     mobileListPane: document.getElementById('mobileListPane'),
     globeLegend: document.querySelector('.globe-legend'),
@@ -582,13 +583,15 @@ function syncMobileSheet() {
 function setMobileView(viewName) {
     const activeView = isMobileLayout() ? viewName : 'globe';
     state.mobileView = activeView;
+    if (activeView !== 'globe') {
+        state.mobileGlobeExpanded = false;
+    }
     els.mobileGlobeTab.classList.toggle('active', activeView === 'globe');
     els.mobileListTab.classList.toggle('active', activeView === 'list');
     els.mobileGlobeTab.setAttribute('aria-selected', String(activeView === 'globe'));
     els.mobileListTab.setAttribute('aria-selected', String(activeView === 'list'));
     els.mobileListPane.classList.toggle('active', activeView === 'list');
-    els.globeViz.classList.toggle('mobile-hidden', activeView === 'list');
-    els.globeLegend.classList.toggle('mobile-hidden', activeView === 'list');
+    els.mobileGlobeShell.classList.toggle('mobile-hidden', activeView === 'list');
     els.mobileGlobeExpand.classList.toggle('mobile-hidden', activeView !== 'globe');
 
     if (activeView === 'globe' && state.globe) {
@@ -622,9 +625,7 @@ function toggleMobileGlobeExpand() {
 
 function syncMobileGlobeExpand() {
     const isExpanded = isMobileLayout() && state.mobileView === 'globe' && state.mobileGlobeExpanded;
-    els.globeViz.classList.toggle('mobile-expanded', isExpanded);
-    els.globeLegend.classList.toggle('mobile-expanded', isExpanded);
-    els.mobileGlobeExpand.classList.toggle('mobile-expanded', isExpanded);
+    els.mobileGlobeShell.classList.toggle('mobile-expanded', isExpanded);
     els.mobileGlobeExpand.innerHTML = isExpanded ? CLOSE_ICON : EXPAND_ICON;
     els.mobileGlobeExpand.setAttribute('aria-expanded', String(isExpanded));
     els.mobileGlobeExpand.setAttribute('aria-label', isExpanded ? 'Close expanded globe' : 'Expand globe');
