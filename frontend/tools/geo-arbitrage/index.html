@@ -19,92 +19,101 @@
 <body>
     <div class="geo-shell">
         <aside class="control-panel">
-            <a class="brand-link" href="/blog">But First Fire</a>
-            <h1>Geo Arbitrage Portal</h1>
-            <p class="panel-copy">Find the best geo-arbitrage cities based on cost of living, monthly income, or net worth. Compare affordable retirement and remote work destinations for solo living, couples, and families using this interactive FIRE calculator.</p>
+            <button class="mobile-sheet-toggle" id="mobileSheetToggle" type="button" aria-expanded="false"
+                aria-controls="controlPanelContent">
+                <span class="mobile-sheet-handle" aria-hidden="true"></span>
+                <span class="mobile-sheet-label">Adjust income & filters</span>
+                <span class="mobile-sheet-summary" id="mobileSheetSummary">$3,500/mo · Solo · Remote Worker · Lean</span>
+            </button>
 
-            <div class="mode-toggle" role="group" aria-label="Budget mode">
-                <button class="mode-chip active" id="incomeModeButton" type="button">Monthly Income</button>
-                <button class="mode-chip" id="netWorthModeButton" type="button">Net Worth via 4% Rule</button>
+            <div class="control-panel-content" id="controlPanelContent">
+                <a class="brand-link" href="/blog">But First Fire</a>
+                <h1>Geo Arbitrage Portal</h1>
+                <p class="panel-copy">Find the best geo-arbitrage cities based on cost of living, monthly income, or net worth. Compare affordable retirement and remote work destinations for solo living, couples, and families using this interactive FIRE calculator.</p>
+
+                <div class="mode-toggle" role="group" aria-label="Budget mode">
+                    <button class="mode-chip active" id="incomeModeButton" type="button">Monthly Income</button>
+                    <button class="mode-chip" id="netWorthModeButton" type="button">Net Worth via 4% Rule</button>
+                </div>
+
+                <section class="filter-stack" aria-label="Lifestyle filters">
+                    <div class="filter-group">
+                        <div class="section-header">
+                            <h2>Household</h2>
+                        </div>
+                        <div class="segmented-control" id="householdFilters">
+                            <button class="filter-chip active" type="button" data-filter-group="household" data-filter-value="solo">Solo</button>
+                            <button class="filter-chip" type="button" data-filter-group="household" data-filter-value="couple">Couple</button>
+                            <button class="filter-chip" type="button" data-filter-group="household" data-filter-value="family">Family</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="section-header">
+                            <h2>Profile</h2>
+                        </div>
+                        <div class="segmented-control" id="profileFilters">
+                            <button class="filter-chip active" type="button" data-filter-group="profile" data-filter-value="remote_worker">Remote Worker</button>
+                            <button class="filter-chip" type="button" data-filter-group="profile" data-filter-value="retiree">Retiree</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="section-header">
+                            <h2>Lifestyle</h2>
+                        </div>
+                        <div class="segmented-control" id="lifestyleFilters">
+                            <button class="filter-chip active" type="button" data-filter-group="lifestyle" data-filter-value="lean">Lean</button>
+                            <button class="filter-chip" type="button" data-filter-group="lifestyle" data-filter-value="moderate">Moderate</button>
+                            <button class="filter-chip" type="button" data-filter-group="lifestyle" data-filter-value="luxury">Luxury</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="budget-card">
+                    <div class="budget-head">
+                        <div>
+                            <p class="budget-label" id="budgetLabel">Monthly income</p>
+                            <p class="budget-value" id="budgetValue">$3,500</p>
+                        </div>
+                        <div class="budget-pill" id="monthlyEquivalentPill">$3,500/mo</div>
+                    </div>
+                    <input id="budgetSlider" class="budget-slider" type="range" min="1000" max="10000" step="100"
+                        value="3500">
+                    <div class="slider-scale">
+                        <span id="sliderMin">$1,000</span>
+                        <span id="sliderMax">$10,000</span>
+                    </div>
+                </section>
+
+                <section class="summary-grid" aria-label="Results summary">
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Affordable Cities</p>
+                        <p class="summary-number" id="affordableCount">0</p>
+                    </article>
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Cheapest Match</p>
+                        <p class="summary-number summary-text" id="cheapestCity">None</p>
+                    </article>
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Fastest Internet</p>
+                        <p class="summary-number summary-text" id="fastestInternet">None</p>
+                    </article>
+                </section>
+
+                <section class="city-list-card">
+                    <div class="section-header">
+                        <h2>Best Matches Right Now</h2>
+                        <p id="resultsHint">Move the slider to update the globe.</p>
+                    </div>
+                    <div class="city-list" id="cityList"></div>
+                </section>
+
+                <section class="fine-print">
+                    <p>Costs are curated estimates for a solo FIRE lifestyle and meant for inspiration, not legal or immigration advice.</p>
+                    <p class="dataset-stamp" id="datasetStamp"></p>
+                </section>
             </div>
-
-            <section class="filter-stack" aria-label="Lifestyle filters">
-                <div class="filter-group">
-                    <div class="section-header">
-                        <h2>Household</h2>
-                    </div>
-                    <div class="segmented-control" id="householdFilters">
-                        <button class="filter-chip active" type="button" data-filter-group="household" data-filter-value="solo">Solo</button>
-                        <button class="filter-chip" type="button" data-filter-group="household" data-filter-value="couple">Couple</button>
-                        <button class="filter-chip" type="button" data-filter-group="household" data-filter-value="family">Family</button>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <div class="section-header">
-                        <h2>Profile</h2>
-                    </div>
-                    <div class="segmented-control" id="profileFilters">
-                        <button class="filter-chip active" type="button" data-filter-group="profile" data-filter-value="remote_worker">Remote Worker</button>
-                        <button class="filter-chip" type="button" data-filter-group="profile" data-filter-value="retiree">Retiree</button>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <div class="section-header">
-                        <h2>Lifestyle</h2>
-                    </div>
-                    <div class="segmented-control" id="lifestyleFilters">
-                        <button class="filter-chip active" type="button" data-filter-group="lifestyle" data-filter-value="lean">Lean</button>
-                        <button class="filter-chip" type="button" data-filter-group="lifestyle" data-filter-value="moderate">Moderate</button>
-                        <button class="filter-chip" type="button" data-filter-group="lifestyle" data-filter-value="luxury">Luxury</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="budget-card">
-                <div class="budget-head">
-                    <div>
-                        <p class="budget-label" id="budgetLabel">Monthly income</p>
-                        <p class="budget-value" id="budgetValue">$3,500</p>
-                    </div>
-                    <div class="budget-pill" id="monthlyEquivalentPill">$3,500/mo</div>
-                </div>
-                <input id="budgetSlider" class="budget-slider" type="range" min="1000" max="10000" step="100"
-                    value="3500">
-                <div class="slider-scale">
-                    <span id="sliderMin">$1,000</span>
-                    <span id="sliderMax">$10,000</span>
-                </div>
-            </section>
-
-            <section class="summary-grid" aria-label="Results summary">
-                <article class="summary-tile">
-                    <p class="summary-kicker">Affordable Cities</p>
-                    <p class="summary-number" id="affordableCount">0</p>
-                </article>
-                <article class="summary-tile">
-                    <p class="summary-kicker">Cheapest Match</p>
-                    <p class="summary-number summary-text" id="cheapestCity">None</p>
-                </article>
-                <article class="summary-tile">
-                    <p class="summary-kicker">Fastest Internet</p>
-                    <p class="summary-number summary-text" id="fastestInternet">None</p>
-                </article>
-            </section>
-
-            <section class="city-list-card">
-                <div class="section-header">
-                    <h2>Best Matches Right Now</h2>
-                    <p id="resultsHint">Move the slider to update the globe.</p>
-                </div>
-                <div class="city-list" id="cityList"></div>
-            </section>
-
-            <section class="fine-print">
-                <p>Costs are curated estimates for a solo FIRE lifestyle and meant for inspiration, not legal or immigration advice.</p>
-                <p class="dataset-stamp" id="datasetStamp"></p>
-            </section>
         </aside>
 
         <main class="globe-stage">
@@ -117,7 +126,36 @@
                 </div>
                 <a class="stage-link" href="/blog">Back to the blog</a>
             </div>
+            <div class="mobile-view-toggle" role="tablist" aria-label="Mobile view mode">
+                <button class="mobile-view-chip active" id="mobileGlobeTab" type="button" role="tab"
+                    aria-selected="true">Globe View</button>
+                <button class="mobile-view-chip" id="mobileListTab" type="button" role="tab"
+                    aria-selected="false">List View</button>
+            </div>
             <div id="globeViz" class="globe-canvas" aria-label="Interactive 3D globe"></div>
+            <section class="mobile-list-pane" id="mobileListPane" aria-label="Mobile list results">
+                <div class="mobile-summary-grid">
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Affordable Cities</p>
+                        <p class="summary-number" id="mobileAffordableCount">0</p>
+                    </article>
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Cheapest Match</p>
+                        <p class="summary-number summary-text" id="mobileCheapestCity">None</p>
+                    </article>
+                    <article class="summary-tile">
+                        <p class="summary-kicker">Fastest Internet</p>
+                        <p class="summary-number summary-text" id="mobileFastestInternet">None</p>
+                    </article>
+                </div>
+                <section class="mobile-list-card">
+                    <div class="section-header">
+                        <h2>Best Matches Right Now</h2>
+                        <p id="mobileResultsHint">Move the slider to update the list.</p>
+                    </div>
+                    <div class="city-list" id="mobileCityList"></div>
+                </section>
+            </section>
             <div class="globe-legend">
                 <span><i class="legend-dot legend-dot-active"></i> Affordable now</span>
                 <span><i class="legend-dot legend-dot-muted"></i> Above your budget</span>

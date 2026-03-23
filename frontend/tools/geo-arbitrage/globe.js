@@ -29,6 +29,8 @@ const state = {
     household: 'solo',
     profile: 'remote_worker',
     lifestyle: 'lean',
+    mobileView: 'globe',
+    mobileSheetOpen: false,
     allCities: [],
     affordableCities: [],
     selectedCityId: null,
@@ -43,6 +45,9 @@ const RESUME_AUTO_ROTATE_SPEED = 0.18;
 const RESUME_DELAY_MS = 3000;
 
 const els = {
+    controlPanel: document.querySelector('.control-panel'),
+    mobileSheetToggle: document.getElementById('mobileSheetToggle'),
+    mobileSheetSummary: document.getElementById('mobileSheetSummary'),
     budgetLabel: document.getElementById('budgetLabel'),
     budgetValue: document.getElementById('budgetValue'),
     monthlyEquivalentPill: document.getElementById('monthlyEquivalentPill'),
@@ -53,11 +58,19 @@ const els = {
     affordableCount: document.getElementById('affordableCount'),
     cheapestCity: document.getElementById('cheapestCity'),
     fastestInternet: document.getElementById('fastestInternet'),
+    mobileAffordableCount: document.getElementById('mobileAffordableCount'),
+    mobileCheapestCity: document.getElementById('mobileCheapestCity'),
+    mobileFastestInternet: document.getElementById('mobileFastestInternet'),
     cityList: document.getElementById('cityList'),
+    mobileCityList: document.getElementById('mobileCityList'),
     resultsHint: document.getElementById('resultsHint'),
+    mobileResultsHint: document.getElementById('mobileResultsHint'),
     stageValue: document.getElementById('stageValue'),
     incomeModeButton: document.getElementById('incomeModeButton'),
     netWorthModeButton: document.getElementById('netWorthModeButton'),
+    mobileGlobeTab: document.getElementById('mobileGlobeTab'),
+    mobileListTab: document.getElementById('mobileListTab'),
+    mobileListPane: document.getElementById('mobileListPane'),
     cityDrawer: document.getElementById('cityDrawer'),
     drawerClose: document.getElementById('drawerClose'),
     drawerTitle: document.getElementById('drawerTitle'),
@@ -99,6 +112,9 @@ function setupInteractions() {
 
     els.incomeModeButton.addEventListener('click', () => applyMode('income'));
     els.netWorthModeButton.addEventListener('click', () => applyMode('netWorth'));
+    els.mobileSheetToggle.addEventListener('click', toggleMobileSheet);
+    els.mobileGlobeTab.addEventListener('click', () => setMobileView('globe'));
+    els.mobileListTab.addEventListener('click', () => setMobileView('list'));
     els.drawerClose.addEventListener('click', closeDrawer);
     els.globeViz.addEventListener('click', handleStageClick);
     els.filterChips.forEach((button) => {
@@ -115,6 +131,7 @@ function setupInteractions() {
         });
     });
     window.addEventListener('resize', handleResize);
+    syncMobileLayout();
 }
 
 function applyMode(modeName) {
@@ -158,11 +175,11 @@ function buildGlobe() {
         .labelLabel((point) => tooltipMarkup(point))
         .onPointClick((point) => {
             state.suppressNextStageClick = true;
-            selectCity(point.id);
+            selectCity(point.id, { mobileView: 'globe' });
         })
         .onLabelClick((point) => {
             state.suppressNextStageClick = true;
-            selectCity(point.id);
+            selectCity(point.id, { mobileView: 'globe' });
         });
 
     state.globe.controls().autoRotate = true;
@@ -177,12 +194,14 @@ function updateView() {
     const formattedInput = mode.formatter(state.value);
     const formattedMonthly = `${formatCurrency(monthlyIncome)}/mo`;
     const selectionLabel = describeSelection();
+    const selectionSummary = describeSelectionCompact();
 
     els.budgetLabel.textContent = mode.label;
     els.budgetValue.textContent = state.mode === 'netWorth'
         ? `${formattedInput}`
         : formattedMonthly.replace('/mo', '');
     els.monthlyEquivalentPill.textContent = formattedMonthly;
+    els.mobileSheetSummary.textContent = `${formattedMonthly} · ${selectionSummary}`;
 
     const metricLabel = getProfileMetricLabel();
     state.affordableCities = state.allCities
@@ -202,10 +221,17 @@ function updateView() {
     const cheapest = state.affordableCities[0];
 
     els.affordableCount.textContent = String(state.affordableCities.length);
+    els.mobileAffordableCount.textContent = String(state.affordableCities.length);
     els.cheapestCity.textContent = cheapest ? `${cheapest.city}, ${cheapest.country}` : 'None yet';
+    els.mobileCheapestCity.textContent = cheapest ? `${cheapest.city}, ${cheapest.country}` : 'None yet';
     els.fastestInternet.previousElementSibling.textContent = metricLabel;
     els.fastestInternet.textContent = strongestMetric ? `${strongestMetric.city} · ${formatProfileMetric(strongestMetric)}` : 'None yet';
+    els.mobileFastestInternet.previousElementSibling.textContent = metricLabel;
+    els.mobileFastestInternet.textContent = strongestMetric ? `${strongestMetric.city} · ${formatProfileMetric(strongestMetric)}` : 'None yet';
     els.resultsHint.textContent = state.affordableCities.length
+        ? `${state.affordableCities.length} cities fit ${selectionLabel}.`
+        : `No matches yet for ${selectionLabel}.`;
+    els.mobileResultsHint.textContent = state.affordableCities.length
         ? `${state.affordableCities.length} cities fit ${selectionLabel}.`
         : `No matches yet for ${selectionLabel}.`;
     els.stageValue.textContent = `${formattedMonthly} unlocks ${state.affordableCities.length} cities`;
@@ -259,16 +285,18 @@ function renderCityList(monthlyIncome) {
         .slice(0, 8);
 
     if (!topCities.length) {
-        els.cityList.innerHTML = `
+        const emptyMarkup = `
             <div class="city-card">
                 <strong>No cities unlocked yet</strong>
                 <p style="margin:0.55rem 0 0;color:var(--muted);">Try a higher monthly budget or switch to net worth mode to see more options.</p>
             </div>
         `;
+        els.cityList.innerHTML = emptyMarkup;
+        els.mobileCityList.innerHTML = emptyMarkup;
         return;
     }
 
-    els.cityList.innerHTML = topCities.map((city) => {
+    const cardMarkup = topCities.map((city) => {
         const margin = Math.round(monthlyIncome - city.effective_monthly_cost);
         const isActive = city.id === state.selectedCityId;
         return `
@@ -287,13 +315,16 @@ function renderCityList(monthlyIncome) {
             </button>
         `;
     }).join('');
+    els.cityList.innerHTML = cardMarkup;
+    els.mobileCityList.innerHTML = cardMarkup;
 
-    els.cityList.querySelectorAll('[data-city-id]').forEach((button) => {
-        button.addEventListener('click', () => selectCity(button.getAttribute('data-city-id')));
+    document.querySelectorAll('[data-city-id]').forEach((button) => {
+        button.addEventListener('click', () => selectCity(button.getAttribute('data-city-id'), { mobileView: 'list' }));
     });
 }
 
-function selectCity(cityId) {
+function selectCity(cityId, options = {}) {
+    const { mobileView = state.mobileView } = options;
     const city = state.affordableCities.find((entry) => entry.id === cityId)
         || state.allCities.find((entry) => entry.id === cityId);
     if (!city) {
@@ -303,6 +334,10 @@ function selectCity(cityId) {
     pauseAutoRotate();
     state.selectedCityId = cityId;
     const monthlyIncome = MODES[state.mode].monthlyIncome(state.value);
+    if (isMobileLayout()) {
+        setMobileView(mobileView);
+        closeMobileSheet();
+    }
     renderCityList(monthlyIncome);
     openDrawer(city, monthlyIncome);
 
@@ -338,6 +373,10 @@ function handleStageClick() {
     if (state.suppressNextStageClick) {
         state.suppressNextStageClick = false;
         return;
+    }
+
+    if (isMobileLayout() && state.mobileSheetOpen) {
+        closeMobileSheet();
     }
 
     pauseAutoRotate({ shouldResume: true });
@@ -455,6 +494,25 @@ function describeSelection() {
     return `${householdLabels[state.household]} ${profileLabels[state.profile]} with a ${lifestyleLabels[state.lifestyle]}`;
 }
 
+function describeSelectionCompact() {
+    const householdLabels = {
+        solo: 'Solo',
+        couple: 'Couple',
+        family: 'Family'
+    };
+    const profileLabels = {
+        remote_worker: 'Remote Worker',
+        retiree: 'Retiree'
+    };
+    const lifestyleLabels = {
+        lean: 'Lean',
+        moderate: 'Moderate',
+        luxury: 'Luxury'
+    };
+
+    return `${householdLabels[state.household]} · ${profileLabels[state.profile]} · ${lifestyleLabels[state.lifestyle]}`;
+}
+
 function statMarkup(label, value) {
     return `
         <div class="drawer-stat">
@@ -465,6 +523,7 @@ function statMarkup(label, value) {
 }
 
 function handleResize() {
+    syncMobileLayout();
     if (!state.globe) {
         return;
     }
@@ -472,6 +531,50 @@ function handleResize() {
     const width = els.globeViz.clientWidth;
     const height = els.globeViz.clientHeight;
     state.globe.width(width).height(height);
+}
+
+function isMobileLayout() {
+    return window.innerWidth <= 860;
+}
+
+function toggleMobileSheet() {
+    if (!isMobileLayout()) {
+        return;
+    }
+
+    state.mobileSheetOpen = !state.mobileSheetOpen;
+    syncMobileSheet();
+}
+
+function closeMobileSheet() {
+    state.mobileSheetOpen = false;
+    syncMobileSheet();
+}
+
+function syncMobileSheet() {
+    const isOpen = isMobileLayout() && state.mobileSheetOpen;
+    els.controlPanel.classList.toggle('mobile-open', isOpen);
+    els.mobileSheetToggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+function setMobileView(viewName) {
+    const activeView = isMobileLayout() ? viewName : 'globe';
+    state.mobileView = activeView;
+    els.mobileGlobeTab.classList.toggle('active', activeView === 'globe');
+    els.mobileListTab.classList.toggle('active', activeView === 'list');
+    els.mobileGlobeTab.setAttribute('aria-selected', String(activeView === 'globe'));
+    els.mobileListTab.setAttribute('aria-selected', String(activeView === 'list'));
+    els.mobileListPane.classList.toggle('active', activeView === 'list');
+    els.globeViz.classList.toggle('mobile-hidden', activeView === 'list');
+}
+
+function syncMobileLayout() {
+    if (!isMobileLayout()) {
+        state.mobileSheetOpen = false;
+    }
+
+    setMobileView(state.mobileView);
+    syncMobileSheet();
 }
 
 function formatCurrency(value) {
