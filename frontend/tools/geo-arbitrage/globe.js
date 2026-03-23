@@ -29,7 +29,7 @@ const state = {
     household: 'solo',
     profile: 'remote_worker',
     lifestyle: 'lean',
-    mobileView: 'globe',
+    mobileView: 'list',
     mobileSheetOpen: false,
     allCities: [],
     affordableCities: [],
@@ -71,6 +71,7 @@ const els = {
     mobileGlobeTab: document.getElementById('mobileGlobeTab'),
     mobileListTab: document.getElementById('mobileListTab'),
     mobileListPane: document.getElementById('mobileListPane'),
+    globeLegend: document.querySelector('.globe-legend'),
     cityDrawer: document.getElementById('cityDrawer'),
     drawerClose: document.getElementById('drawerClose'),
     drawerTitle: document.getElementById('drawerTitle'),
@@ -102,6 +103,7 @@ async function init() {
 
     buildGlobe();
     updateView();
+    syncMobileLayout();
 }
 
 function setupInteractions() {
@@ -131,7 +133,6 @@ function setupInteractions() {
         });
     });
     window.addEventListener('resize', handleResize);
-    syncMobileLayout();
 }
 
 function applyMode(modeName) {
@@ -566,6 +567,11 @@ function setMobileView(viewName) {
     els.mobileListTab.setAttribute('aria-selected', String(activeView === 'list'));
     els.mobileListPane.classList.toggle('active', activeView === 'list');
     els.globeViz.classList.toggle('mobile-hidden', activeView === 'list');
+    els.globeLegend.classList.toggle('mobile-hidden', activeView === 'list');
+
+    if (activeView === 'globe' && state.globe) {
+        state.globe.width(els.globeViz.clientWidth).height(els.globeViz.clientHeight);
+    }
 }
 
 function syncMobileLayout() {

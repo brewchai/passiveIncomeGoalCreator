@@ -27,10 +27,22 @@
             </button>
 
             <div class="control-panel-content" id="controlPanelContent">
+                <div class="mobile-nav">
+                    <a class="mobile-back-link" href="/blog">← Back to blog</a>
+                    <span class="mobile-nav-title">Geo Arbitrage Portal</span>
+                </div>
+
+                <section class="mobile-intro">
+                    <p class="mobile-intro-kicker">Geo Arbitrage Portal</p>
+                    <h2>Find cities that fit your income.</h2>
+                    <p>Adjust your monthly income, household, profile, and lifestyle to compare affordable places around the world.</p>
+                </section>
+
                 <a class="brand-link" href="/blog">But First Fire</a>
                 <h1>Geo Arbitrage Portal</h1>
                 <p class="panel-copy">Find the best geo-arbitrage cities based on cost of living, monthly income, or net worth. Compare affordable retirement and remote work destinations for solo living, couples, and families using this interactive FIRE calculator.</p>
 
+                <p class="mobile-start-label">Start here: choose your budget and lifestyle.</p>
                 <div class="mode-toggle" role="group" aria-label="Budget mode">
                     <button class="mode-chip active" id="incomeModeButton" type="button">Monthly Income</button>
                     <button class="mode-chip" id="netWorthModeButton" type="button">Net Worth via 4% Rule</button>
@@ -127,12 +139,11 @@
                 <a class="stage-link" href="/blog">Back to the blog</a>
             </div>
             <div class="mobile-view-toggle" role="tablist" aria-label="Mobile view mode">
-                <button class="mobile-view-chip active" id="mobileGlobeTab" type="button" role="tab"
-                    aria-selected="true">Globe View</button>
-                <button class="mobile-view-chip" id="mobileListTab" type="button" role="tab"
-                    aria-selected="false">List View</button>
+                <button class="mobile-view-chip" id="mobileGlobeTab" type="button" role="tab"
+                    aria-selected="false">Globe</button>
+                <button class="mobile-view-chip active" id="mobileListTab" type="button" role="tab"
+                    aria-selected="true">Top Matches</button>
             </div>
-            <div id="globeViz" class="globe-canvas" aria-label="Interactive 3D globe"></div>
             <section class="mobile-list-pane" id="mobileListPane" aria-label="Mobile list results">
                 <div class="mobile-summary-grid">
                     <article class="summary-tile">
@@ -156,6 +167,7 @@
                     <div class="city-list" id="mobileCityList"></div>
                 </section>
             </section>
+            <div id="globeViz" class="globe-canvas" aria-label="Interactive 3D globe"></div>
             <div class="globe-legend">
                 <span><i class="legend-dot legend-dot-active"></i> Affordable now</span>
                 <span><i class="legend-dot legend-dot-muted"></i> Above your budget</span>

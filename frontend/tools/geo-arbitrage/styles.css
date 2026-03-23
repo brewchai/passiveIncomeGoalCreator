@@ -65,7 +65,10 @@ a {
 
 .mobile-sheet-toggle,
 .mobile-view-toggle,
-.mobile-list-pane {
+.mobile-list-pane,
+.mobile-nav,
+.mobile-intro,
+.mobile-start-label {
     display: none;
 }
 
@@ -81,6 +84,54 @@ a {
     background: rgba(255, 255, 255, 0.06);
     color: var(--muted);
     font-size: 0.9rem;
+}
+
+.mobile-nav {
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mobile-back-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.mobile-nav-title {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mobile-intro {
+    margin-bottom: 1rem;
+}
+
+.mobile-intro-kicker,
+.mobile-start-label {
+    margin: 0 0 0.45rem;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.mobile-intro h2 {
+    margin: 0 0 0.55rem;
+    font-size: clamp(1.7rem, 6vw, 2.2rem);
+    line-height: 1.05;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.mobile-intro p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
 }
 
 .eyebrow,
@@ -416,7 +467,12 @@ a {
 
 .globe-canvas.mobile-hidden {
     visibility: hidden;
+    display: none;
     pointer-events: none;
+}
+
+.globe-legend.mobile-hidden {
+    display: none;
 }
 
 .globe-legend {
@@ -575,103 +631,99 @@ a {
 
 @media (max-width: 860px) {
     body {
-        overflow: hidden;
+        overflow: auto;
     }
 
     .geo-shell {
-        height: 100svh;
-        display: block;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     .control-panel {
-        position: fixed;
-        left: 0.75rem;
-        right: 0.75rem;
-        bottom: 0.75rem;
-        top: auto;
-        z-index: 8;
-        padding: 0;
+        position: relative;
+        z-index: 3;
+        padding: 1rem 1rem 0;
         border-right: 0;
-        border-bottom: 0;
-        border-radius: 28px;
-        max-height: calc(100svh - 1.5rem);
-        overflow: hidden;
-        transform: translateY(calc(100% - 6.5rem));
-        transition: transform 0.32s ease, box-shadow 0.32s ease;
-        overscroll-behavior: contain;
-    }
-
-    .control-panel.mobile-open {
-        transform: translateY(0);
+        max-height: none;
+        overflow: visible;
+        background: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
     }
 
     .control-panel-content {
         display: block;
-        padding: 0 1rem 1rem;
-        max-height: calc(100svh - 8rem);
-        overflow-y: auto;
-        scrollbar-width: thin;
+        padding: 0;
+        max-height: none;
+        overflow: visible;
     }
 
-    .mobile-sheet-toggle {
-        width: 100%;
-        display: grid;
-        gap: 0.3rem;
-        text-align: left;
-        border: 0;
-        padding: 0.85rem 1rem 1rem;
-        background: linear-gradient(180deg, rgba(4, 12, 25, 0.98), rgba(6, 18, 34, 0.9));
-        color: var(--text);
-        cursor: pointer;
-    }
-
-    .mobile-sheet-handle {
-        width: 48px;
-        height: 5px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.2);
-        justify-self: center;
-        margin-bottom: 0.2rem;
-    }
-
-    .mobile-sheet-label {
-        font-size: 0.95rem;
-        font-weight: 700;
-    }
-
-    .mobile-sheet-summary {
-        color: var(--muted);
-        font-size: 0.82rem;
-        line-height: 1.4;
-    }
-
-    .brand-link,
-    .control-panel h1,
-    .panel-copy,
     .summary-grid,
     .city-list-card {
         display: none;
     }
 
-    .globe-stage {
-        min-height: 100svh;
-        height: 100svh;
+    .mobile-sheet-toggle,
+    .brand-link,
+    .control-panel h1,
+    .panel-copy {
+        display: none;
     }
 
-    .globe-canvas {
-        height: 100svh;
+    .mobile-nav,
+    .mobile-intro,
+    .mobile-start-label {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+
+    .mode-toggle,
+    .filter-stack,
+    .budget-card,
+    .fine-print {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        border-radius: 24px;
+        padding: 1rem;
+    }
+
+    .mode-toggle,
+    .budget-card,
+    .filter-stack {
+        margin-bottom: 0.9rem;
+    }
+
+    .filter-stack,
+    .fine-print {
+        margin-bottom: 1rem;
+    }
+
+    .filter-group {
+        padding: 0.9rem;
+    }
+
+    .globe-stage {
+        min-height: auto;
+        height: auto;
+        padding: 0 1rem 1rem;
+    }
+
+    .stage-topbar {
+        display: none;
     }
 
     .mobile-view-toggle {
-        position: absolute;
-        top: 6.2rem;
-        left: 1rem;
-        right: 1rem;
-        z-index: 3;
+        position: static;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.65rem;
         padding: 0.35rem;
+        margin-bottom: 1rem;
         border-radius: 999px;
         background: rgba(4, 12, 25, 0.72);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -695,16 +747,10 @@ a {
     }
 
     .mobile-list-pane {
-        position: absolute;
-        top: 10.2rem;
-        left: 1rem;
-        right: 1rem;
-        bottom: 8rem;
-        z-index: 2;
+        position: relative;
         display: none;
         gap: 0.85rem;
-        overflow-y: auto;
-        padding-right: 0.15rem;
+        overflow: visible;
     }
 
     .mobile-list-pane.active {
@@ -724,9 +770,25 @@ a {
         box-shadow: var(--shadow);
     }
 
+    .globe-canvas {
+        height: 58svh;
+        min-height: 420px;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+    }
+
+    .globe-legend {
+        position: static;
+        margin-top: 0.85rem;
+        border-radius: 20px;
+        padding: 0.85rem 1rem;
+    }
+
     .city-drawer {
         top: auto;
-        bottom: 7.5rem;
+        bottom: 0.75rem;
         left: 0.75rem;
         right: 0.75rem;
         width: auto;
@@ -755,29 +817,16 @@ a {
         max-width: 100%;
     }
 
-    .stage-topbar {
-        top: 1rem;
-        left: 1rem;
-        right: 1rem;
-    }
-
     .stage-value {
         font-size: 1.08rem;
     }
 
-    .globe-legend {
-        left: 1rem;
-        right: 1rem;
-        bottom: 7rem;
-        border-radius: 20px;
+    .mobile-intro h2 {
+        font-size: 1.95rem;
     }
 
-    .mobile-view-toggle {
-        top: 5.6rem;
-    }
-
-    .mobile-list-pane {
-        top: 9.4rem;
-        bottom: 7.5rem;
+    .globe-canvas {
+        height: 52svh;
+        min-height: 360px;
     }
 }
