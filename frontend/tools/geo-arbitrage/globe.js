@@ -58,6 +58,11 @@ const CLOSE_ICON = `
         <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
 `;
+const LIFESTYLE_EXPLANATIONS = {
+    lean: 'Lower-cost apartment, local-food-heavy routine, and tighter discretionary spending.',
+    moderate: 'Comfortable apartment, regular cafes and meals out, and a balanced everyday lifestyle.',
+    luxury: 'Better location, stronger comfort, and more convenience, dining out, and premium spending.'
+};
 
 const els = {
     controlPanel: document.querySelector('.control-panel'),
@@ -70,6 +75,7 @@ const els = {
     filterChips: document.querySelectorAll('[data-filter-group]'),
     sliderMin: document.getElementById('sliderMin'),
     sliderMax: document.getElementById('sliderMax'),
+    lifestyleDetail: document.getElementById('lifestyleDetail'),
     affordableCount: document.getElementById('affordableCount'),
     cheapestCity: document.getElementById('cheapestCity'),
     fastestInternet: document.getElementById('fastestInternet'),
@@ -223,6 +229,7 @@ function updateView() {
         : formattedMonthly.replace('/mo', '');
     els.monthlyEquivalentPill.textContent = formattedMonthly;
     els.mobileSheetSummary.textContent = `${formattedMonthly} · ${selectionSummary}`;
+    els.lifestyleDetail.textContent = LIFESTYLE_EXPLANATIONS[state.lifestyle];
 
     const metricLabel = getProfileMetricLabel();
     state.affordableCities = state.allCities
