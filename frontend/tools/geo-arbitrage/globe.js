@@ -1,6 +1,6 @@
 const MODES = {
     income: {
-        label: 'Monthly passive income',
+        label: 'Monthly income',
         min: 1000,
         max: 10000,
         step: 100,
