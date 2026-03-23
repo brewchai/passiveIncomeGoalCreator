@@ -31,11 +31,10 @@
     {"@context": "https://schema.org", "@type": "Blog", "name": "But First Fire Blog", "description": "Learn about FIRE, passive income strategies, and financial independence through our expert articles and guides.", "url": "https://butfirstfire.com/blog", "publisher": {"@type": "Organization", "name": "But First Fire", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/favicon.png"}}}
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preload" as="image" href="/blog/posts/the-truth-about-passive-income/cover-1600.jpg"
+        imagesrcset="/blog/posts/the-truth-about-passive-income/cover-1600.jpg 1600w, /blog/posts/the-truth-about-passive-income/cover.jpg 6000w"
+        imagesizes="(max-width: 900px) 100vw, 60vw">
     <link rel="stylesheet" href="blog.css">
 </head>
 
@@ -84,7 +83,24 @@
 
         <!-- Hero Featured Post -->
         <div id="heroPost">
-            <!-- Populated by JS -->
+            <a href="/blog/the-truth-about-passive-income" class="hero-post">
+                <img class="hero-post-image" src="/blog/posts/the-truth-about-passive-income/cover-1600.jpg"
+                    srcset="/blog/posts/the-truth-about-passive-income/cover-1600.jpg 1600w, /blog/posts/the-truth-about-passive-income/cover.jpg 6000w"
+                    sizes="(max-width: 900px) 100vw, 60vw"
+                    alt="The Brutal Truth About Passive Income: Why The Internet Is Lying To You — cover image"
+                    width="1600" height="1066" loading="eager" fetchpriority="high" decoding="async">
+                <div class="hero-post-content">
+                    <div class="hero-post-meta">
+                        <span class="article-tag">Featured</span>
+                        <span class="meta-date">March 19, 2026</span>
+                        <span class="meta-dot">●</span>
+                        <span class="read-time">5 min read</span>
+                    </div>
+                    <h2>The Brutal Truth About Passive Income: Why The Internet Is Lying To You</h2>
+                    <p class="hero-excerpt">Passive income is real, but the way it is sold to you is a catastrophic misrepresentation of the suffering required to achieve it.</p>
+                    <span class="hero-read-more">Read Article →</span>
+                </div>
+            </a>
         </div>
 
         <!-- Articles Grid -->
@@ -152,6 +168,14 @@
                 return (s || '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
             }
 
+            function getHeroImageAttrs(post) {
+                if (post.slug === 'the-truth-about-passive-income') {
+                    return 'src="/blog/posts/the-truth-about-passive-income/cover-1600.jpg" srcset="/blog/posts/the-truth-about-passive-income/cover-1600.jpg 1600w, /blog/posts/the-truth-about-passive-income/cover.jpg 6000w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1066"';
+                }
+
+                return `src="${htmlEscape(post.cover)}"`;
+            }
+
             // ---- Tag label mapping ----
             const TAG_LABELS = {
                 'all': 'All',
@@ -171,7 +195,7 @@
                 heroPostEl.innerHTML = `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="hero-post">
                     ${cover
-                        ? `<img class="hero-post-image" src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image" loading="eager" fetchpriority="high" decoding="async">`
+                        ? `<img class="hero-post-image" ${getHeroImageAttrs(post)} alt="${htmlEscape(post.title)} — cover image" loading="eager" fetchpriority="high" decoding="async">`
                         : `<div class="hero-post-image" style="background: var(--gradient); display:flex; align-items:center; justify-content:center; font-size:5rem;">🔥</div>`
                     }
                     <div class="hero-post-content">
@@ -193,7 +217,7 @@
                 const cover = post.cover && post.cover.trim() ? post.cover : '';
                 const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
                 const imgBlock = cover
-                    ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image" loading="lazy"></div>`
+                    ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image" loading="lazy" decoding="async"></div>`
                     : `<div class="article-thumbnail-placeholder">📝</div>`;
                 return `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="article-card-wrap">
