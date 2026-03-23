@@ -94,18 +94,18 @@ a {
     margin-bottom: 1rem;
 }
 
-.mobile-back-link {
-    text-decoration: none;
+.mobile-nav-title {
     color: var(--text);
+    font-size: 1.1rem;
     font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
-.mobile-nav-title {
+.mobile-blog-link {
+    text-decoration: none;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 .mobile-intro {
@@ -139,6 +139,10 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.4rem 1.5rem;
+}
+
+body.globe-modal-open {
+    overflow: hidden;
 }
 
 .eyebrow,
@@ -755,16 +759,22 @@ a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        margin: 0 0 1rem;
-        padding: 0.85rem 1rem;
-        border-radius: 16px;
-        border: 1px solid rgba(65, 226, 186, 0.32);
-        background: rgba(65, 226, 186, 0.08);
+        width: 44px;
+        height: 44px;
+        margin: 0 0 1rem auto;
+        padding: 0;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(4, 12, 25, 0.72);
         color: var(--text);
-        font: inherit;
-        font-weight: 700;
         cursor: pointer;
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow);
+    }
+
+    .mobile-globe-expand svg {
+        width: 18px;
+        height: 18px;
     }
 
     .mobile-globe-expand.mobile-hidden {
@@ -805,7 +815,15 @@ a {
     }
 
     .globe-canvas.mobile-expanded {
-        height: 78svh;
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        width: 100vw;
+        height: 100svh;
+        min-height: 100svh;
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
     }
 
     .globe-legend {
@@ -813,6 +831,25 @@ a {
         margin-top: 0.85rem;
         border-radius: 20px;
         padding: 0.85rem 1rem;
+    }
+
+    .globe-legend.mobile-expanded {
+        position: fixed;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 31;
+        margin-top: 0;
+        background: rgba(4, 12, 25, 0.82);
+    }
+
+    .mobile-globe-expand.mobile-expanded {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 31;
+        margin: 0;
+        background: rgba(4, 12, 25, 0.82);
     }
 
     .city-drawer {

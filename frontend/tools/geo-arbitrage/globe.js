@@ -44,6 +44,20 @@ const state = {
 const DEFAULT_AUTO_ROTATE_SPEED = 0.45;
 const RESUME_AUTO_ROTATE_SPEED = 0.18;
 const RESUME_DELAY_MS = 3000;
+const EXPAND_ICON = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <polyline points="9 21 3 21 3 15"></polyline>
+        <line x1="21" y1="3" x2="14" y2="10"></line>
+        <line x1="3" y1="21" x2="10" y2="14"></line>
+    </svg>
+`;
+const CLOSE_ICON = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+`;
 
 const els = {
     controlPanel: document.querySelector('.control-panel'),
@@ -379,6 +393,10 @@ function handleStageClick() {
         return;
     }
 
+    if (state.mobileGlobeExpanded) {
+        return;
+    }
+
     if (isMobileLayout() && state.mobileSheetOpen) {
         closeMobileSheet();
     }
@@ -605,8 +623,12 @@ function toggleMobileGlobeExpand() {
 function syncMobileGlobeExpand() {
     const isExpanded = isMobileLayout() && state.mobileView === 'globe' && state.mobileGlobeExpanded;
     els.globeViz.classList.toggle('mobile-expanded', isExpanded);
-    els.mobileGlobeExpand.textContent = isExpanded ? 'Collapse Globe' : 'Expand Globe';
+    els.globeLegend.classList.toggle('mobile-expanded', isExpanded);
+    els.mobileGlobeExpand.classList.toggle('mobile-expanded', isExpanded);
+    els.mobileGlobeExpand.innerHTML = isExpanded ? CLOSE_ICON : EXPAND_ICON;
     els.mobileGlobeExpand.setAttribute('aria-expanded', String(isExpanded));
+    els.mobileGlobeExpand.setAttribute('aria-label', isExpanded ? 'Close expanded globe' : 'Expand globe');
+    document.body.classList.toggle('globe-modal-open', isExpanded);
 }
 
 function formatCurrency(value) {
