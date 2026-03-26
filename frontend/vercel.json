@@ -25,6 +25,10 @@
             "destination": "/blog/posts/:slug/index.html"
         },
         {
+            "source": "/tools",
+            "destination": "/tools.html"
+        },
+        {
             "source": "/tools/geo-arbitrage",
             "destination": "/tools/geo-arbitrage/index.html"
         },

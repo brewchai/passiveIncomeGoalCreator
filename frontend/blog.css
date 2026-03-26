@@ -122,8 +122,8 @@ body {
 
 .tool-spotlight {
     margin: 1.5rem auto;
-    padding: 1.3rem 1.45rem;
-    border-radius: 24px;
+    padding: 0.85rem 1.25rem;
+    border-radius: 16px;
     background:
         radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 22%),
         linear-gradient(135deg, rgba(102, 126, 234, 0.94), rgba(24, 166, 131, 0.94));
@@ -132,7 +132,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .tool-spotlight-copy h2 {
