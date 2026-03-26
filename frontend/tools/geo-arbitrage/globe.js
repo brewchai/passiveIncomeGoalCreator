@@ -129,6 +129,12 @@ async function init() {
     buildGlobe();
     updateView();
     syncMobileLayout();
+
+    // Hide loader
+    const loader = document.getElementById('globeLoader');
+    if (loader) {
+        loader.classList.add('hidden');
+    }
 }
 
 function setupInteractions() {
