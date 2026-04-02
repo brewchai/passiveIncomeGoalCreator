@@ -46,6 +46,7 @@
             <div style="display: flex; gap: 1.5rem; align-items: center;">
                 <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
                 <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
                 <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
@@ -53,85 +54,72 @@
 
     <!-- Main Content -->
     <main class="blog-container">
-        <!-- Hero Section -->
-        <section class="blog-hero">
-            <h1>The <span class="gradient-text">FIRE</span> Blog</h1>
-            <div style="max-width: 600px; margin: 0 auto; padding-top: 1rem;">
-                <p style="margin-bottom: 1.5rem; line-height: 1.6;">Hey, I'm Ninad. I'm a software engineer and nomad documenting my raw, unfiltered journey toward Financial Independence and Retire Early (FIRE). I write about the reality of passive income, escaping the standard salary trap, and engineering a life by design.</p>
-                <a href="/about" style="color: var(--accent-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3); font-size: 1.05rem; transition: all 0.2s;">Get to know me →</a>
-            </div>
-        </section>
-
-        <section class="tool-spotlight">
-            <div class="tool-spotlight-copy">
-                <p class="tool-spotlight-kicker">New Interactive Tool</p>
-                <p style="margin-top: 0.25rem;">Use the <b class="tool-name-nowrap">Geo-Arbitrage Portal</b> to spin a live 3D globe, set your passive income or net worth, and instantly see which cities already fit your FIRE numbers.</p>
-            </div>
-            <a class="tool-spotlight-link" href="/tools/geo-arbitrage/">
-                Launch the Portal <span aria-hidden="true">→</span>
-            </a>
-        </section>
-
-        <!-- Search Box -->
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-box" id="searchInput" placeholder="Search articles...">
-            <button class="search-clear" id="searchClear" style="display:none;" aria-label="Clear search">✕</button>
-        </div>
-
-        <!-- Tag Filters -->
-        <div class="tag-filters" id="tagFilters">
-            <!-- Populated by JS -->
-        </div>
-
-        <!-- Hero Featured Post -->
-        <div id="heroPost">
-            <a href="/blog/the-truth-about-passive-income" class="hero-post">
-                <img class="hero-post-image" src="/blog/posts/the-truth-about-passive-income/cover-1600.jpg"
-                    srcset="/blog/posts/the-truth-about-passive-income/cover-1600.jpg 1600w, /blog/posts/the-truth-about-passive-income/cover.jpg 6000w"
-                    sizes="(max-width: 900px) 100vw, 60vw"
-                    alt="The Brutal Truth About Passive Income: Why The Internet Is Lying To You — cover image"
-                    width="1600" height="1066" loading="eager" fetchpriority="high" decoding="async">
-                <div class="hero-post-content">
-                    <div class="hero-post-meta">
-                        <span class="article-tag">Featured</span>
-                        <span class="meta-date">March 19, 2026</span>
-                        <span class="meta-dot">●</span>
-                        <span class="read-time">5 min read</span>
-                    </div>
-                    <h2>The Brutal Truth About Passive Income: Why The Internet Is Lying To You</h2>
-                    <p class="hero-excerpt">Passive income is real, but the way it is sold to you is a catastrophic misrepresentation of the suffering required to achieve it.</p>
-                    <span class="hero-read-more">Read Article →</span>
+        <!-- Main Column Content (Moved Up) -->
+        <div class="blog-layout">
+            <div class="main-content">
+                <!-- Hidden H1 for SEO -->
+                <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">The FIRE Blog - But First Fire</h1>
+                
+                <!-- Search Box (Hidden) -->
+                <div class="search-container" style="display: none;">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-box" id="searchInput" placeholder="Search articles...">
+                    <button class="search-clear" id="searchClear" style="display:none;" aria-label="Clear search">✕</button>
                 </div>
-            </a>
+
+                <!-- Hero Featured Post -->
+                <div id="heroPost">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Articles Grid -->
+                <section class="recent-section">
+                    <div class="articles-list" id="articlesGrid">
+                        <!-- Populated from posts.json -->
+                    </div>
+                    <div id="infiniteScrollSentinel" style="height: 1px;"></div>
+                    <div id="noResults" class="no-results" style="display:none;">
+                        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+                        <p style="font-size:1.125rem; font-weight:500; color: var(--text-primary); margin:0 0 0.5rem;">No articles found</p>
+                        <p style="margin:0; color: var(--text-secondary);">Try a different search term or <a href="#" id="clearSearchLink"
+                                style="color: var(--accent-color); text-decoration:none; font-weight:500;">browse all articles</a></p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="blog-sidebar">
+                <!-- Tool Spotlight (Ad Style) -->
+                <section class="tool-spotlight-sidebar">
+                    <p class="tool-spotlight-kicker">Interactive Tool</p>
+                    <h3 class="tool-spotlight-title">Geo-Arbitrage Portal</h3>
+                    <p class="tool-spotlight-desc">Spin a live 3D globe to instantly find cities that fit your FIRE numbers.</p>
+                    <a class="tool-spotlight-btn" href="/tools/geo-arbitrage/">
+                        Launch Portal →
+                    </a>
+                </section>
+
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Trending Topics</h3>
+                    <!-- Tag Filters -->
+                    <div class="tag-filters sidebar-tags" id="tagFilters">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="sidebar-widget newsletter-widget">
+                    <div class="newsletter-widget-content">
+                        <h3 class="newsletter-title">Join the FIRE<br>Movement</h3>
+                        <p class="newsletter-text">Get exclusive tips, tools, and stories delivered to your inbox. Start your journey to freedom today.</p>
+                        <form class="sidebar-newsletter-form" action="https://formspree.io/f/mqkenwbp" method="POST">
+                            <input type="text" name="name" class="sidebar-input" placeholder="First Name" required>
+                            <input type="email" name="email" class="sidebar-input" placeholder="Email Address" required>
+                            <input type="text" name="_gotcha" style="display:none">
+                            <button type="submit" class="sidebar-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
         </div>
-
-        <!-- Articles Grid -->
-        <section class="recent-section">
-            <div class="articles-list" id="articlesGrid">
-                <!-- Populated from posts.json -->
-            </div>
-            <div class="load-more-container">
-                <button id="loadMoreBtn" class="load-more-btn">Load More</button>
-            </div>
-            <div id="noResults" class="no-results" style="display:none;">
-                <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
-                <p style="font-size:1.125rem; font-weight:500; color: var(--text-primary); margin:0 0 0.5rem;">No articles found</p>
-                <p style="margin:0; color: var(--text-secondary);">Try a different search term or <a href="#" id="clearSearchLink"
-                        style="color: var(--accent-color); text-decoration:none; font-weight:500;">browse all articles</a></p>
-            </div>
-        </section>
-
-        <!-- Newsletter CTA (uncomment when backend is ready)
-        <section class="newsletter-cta" id="newsletterCTA">
-            <h3>🔥 Get FIRE Tips in Your Inbox</h3>
-            <p>Join thousands on the path to financial independence. No spam, ever.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-        </section>
-        -->
     </main>
 
     <!-- Footer -->
@@ -158,7 +146,8 @@
             const clearSearchLink = document.getElementById('clearSearchLink');
             const heroPostEl = document.getElementById('heroPost');
             const tagFiltersEl = document.getElementById('tagFilters');
-            const PAGE_SIZE = 6;
+            const sentinel = document.getElementById('infiniteScrollSentinel');
+            const PAGE_SIZE = 12; // 3-4 rows initial load is fast and fills screen
             let allPosts = [];
             let filteredPosts = [];
             let remainingPosts = []; // posts minus hero
@@ -299,8 +288,8 @@
                     heroPostEl.innerHTML = '';
                     remainingPosts = filteredPosts;
                 } else {
-                    // Show featured post as hero, or first post if none featured
-                    const featuredPost = filteredPosts.find(p => p.featured) || filteredPosts[0];
+                    // Always show CoastFIRE article if available, otherwise fallback
+                    const featuredPost = filteredPosts.find(p => p.slug === '40k-debt-to-coast-fire-at-33') || filteredPosts.find(p => p.featured) || filteredPosts[0];
                     if (featuredPost) {
                         renderHeroPost(featuredPost);
                         remainingPosts = filteredPosts.filter(p => p.slug !== featuredPost.slug);
@@ -323,11 +312,11 @@
                 gridEl.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
                 renderedCount += next.length;
 
-                // Load more visibility
+                // Update sentinel visibility
                 if (isSearching || activeTag !== 'all' || renderedCount >= posts.length) {
-                    loadMoreBtn.style.display = 'none';
+                    sentinel.style.display = 'none';
                 } else {
-                    loadMoreBtn.style.display = 'inline-block';
+                    sentinel.style.display = 'block';
                 }
 
                 // No results
@@ -382,9 +371,12 @@
                 clearSearch();
             });
 
-            loadMoreBtn.addEventListener('click', function () {
-                renderPosts(remainingPosts, true);
-            });
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && renderedCount < remainingPosts.length && !isSearching && activeTag === 'all') {
+                    renderPosts(remainingPosts, true);
+                }
+            }, { rootMargin: '200px' });
+            observer.observe(sentinel);
 
             // ---- Init ----
             async function init() {
