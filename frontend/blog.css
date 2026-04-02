@@ -95,13 +95,13 @@ body {
 
 /* Tool Spotlight (Sidebar Card Version) */
 .tool-spotlight-sidebar {
-    padding: 1.5rem;
+    padding: 1.25rem 1rem;
     border-radius: 20px;
     background: 
         radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 40%),
         linear-gradient(135deg, #667eea 0%, #18a683 100%);
     color: white;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     box-shadow: var(--shadow-md);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -124,31 +124,31 @@ body {
 }
 
 .tool-spotlight-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
     line-height: 1.2;
     letter-spacing: -0.02em;
 }
 
 .tool-spotlight-desc {
-    font-size: 0.92rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .tool-spotlight-btn {
     display: inline-block;
     width: 100%;
     text-align: center;
-    padding: 0.85rem;
+    padding: 0.65rem;
     background: rgba(255, 255, 255, 1);
     color: #18a683;
     text-decoration: none;
     border-radius: 12px;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     transition: all 0.25s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -370,7 +370,7 @@ body {
 .blog-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.25rem;
     position: sticky;
     top: 6rem;
 }
@@ -378,17 +378,17 @@ body {
 .sidebar-widget {
     background: var(--card-background);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
 }
 
 .sidebar-title {
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
     color: var(--text-primary);
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -419,10 +419,10 @@ body {
 }
 
 .newsletter-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
     line-height: 1.25;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     color: var(--text-primary);
     display: flex;
     align-items: center;
@@ -434,10 +434,10 @@ body {
 }
 
 .newsletter-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
 }
 
 .sidebar-newsletter-form {

@@ -36,6 +36,7 @@
         imagesrcset="/blog/posts/the-truth-about-passive-income/cover-1600.jpg 1600w, /blog/posts/the-truth-about-passive-income/cover.jpg 6000w"
         imagesizes="(max-width: 900px) 100vw, 60vw">
     <link rel="stylesheet" href="blog.css">
+    <script src="/config.js"></script>
 </head>
 
 <body>
@@ -44,10 +45,14 @@
         <div class="header-container">
             <a href="/" class="blog-logo">But First Fire</a>
             <div style="display: flex; gap: 1.5rem; align-items: center;">
-                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
-                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
-                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
-                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+                <a href="/about" class="nav-link"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/tools" class="nav-link"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link"
+                    style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
     </header>
@@ -58,13 +63,16 @@
         <div class="blog-layout">
             <div class="main-content">
                 <!-- Hidden H1 for SEO -->
-                <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">The FIRE Blog - But First Fire</h1>
-                
+                <h1
+                    style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+                    The FIRE Blog - But First Fire</h1>
+
                 <!-- Search Box (Hidden) -->
                 <div class="search-container" style="display: none;">
                     <span class="search-icon">🔍</span>
                     <input type="text" class="search-box" id="searchInput" placeholder="Search articles...">
-                    <button class="search-clear" id="searchClear" style="display:none;" aria-label="Clear search">✕</button>
+                    <button class="search-clear" id="searchClear" style="display:none;"
+                        aria-label="Clear search">✕</button>
                 </div>
 
                 <!-- Hero Featured Post -->
@@ -80,9 +88,12 @@
                     <div id="infiniteScrollSentinel" style="height: 1px;"></div>
                     <div id="noResults" class="no-results" style="display:none;">
                         <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
-                        <p style="font-size:1.125rem; font-weight:500; color: var(--text-primary); margin:0 0 0.5rem;">No articles found</p>
-                        <p style="margin:0; color: var(--text-secondary);">Try a different search term or <a href="#" id="clearSearchLink"
-                                style="color: var(--accent-color); text-decoration:none; font-weight:500;">browse all articles</a></p>
+                        <p style="font-size:1.125rem; font-weight:500; color: var(--text-primary); margin:0 0 0.5rem;">
+                            No articles found</p>
+                        <p style="margin:0; color: var(--text-secondary);">Try a different search term or <a href="#"
+                                id="clearSearchLink"
+                                style="color: var(--accent-color); text-decoration:none; font-weight:500;">browse all
+                                articles</a></p>
                     </div>
                 </section>
             </div>
@@ -92,30 +103,32 @@
                 <section class="tool-spotlight-sidebar">
                     <p class="tool-spotlight-kicker">Interactive Tool</p>
                     <h3 class="tool-spotlight-title">Geo-Arbitrage Portal</h3>
-                    <p class="tool-spotlight-desc">Spin a live 3D globe to instantly find cities that fit your FIRE numbers.</p>
+                    <p class="tool-spotlight-desc">Spin a live 3D globe to instantly find cities that fit your FIRE
+                        numbers.</p>
                     <a class="tool-spotlight-btn" href="/tools/geo-arbitrage/">
                         Launch Portal →
                     </a>
                 </section>
 
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Trending Topics</h3>
-                    <!-- Tag Filters -->
-                    <div class="tag-filters sidebar-tags" id="tagFilters">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
                 <div class="sidebar-widget newsletter-widget">
                     <div class="newsletter-widget-content">
                         <h3 class="newsletter-title">Join the FIRE<br>Movement</h3>
-                        <p class="newsletter-text">Get exclusive tips, tools, and stories delivered to your inbox. Start your journey to freedom today.</p>
+                        <p class="newsletter-text">Get exclusive tips, tools, and stories delivered to your inbox. Start
+                            your journey to freedom today.</p>
                         <form class="sidebar-newsletter-form" action="https://formspree.io/f/mqkenwbp" method="POST">
                             <input type="text" name="name" class="sidebar-input" placeholder="First Name" required>
                             <input type="email" name="email" class="sidebar-input" placeholder="Email Address" required>
                             <input type="text" name="_gotcha" style="display:none">
                             <button type="submit" class="sidebar-btn">Subscribe</button>
                         </form>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Trending Topics</h3>
+                    <!-- Tag Filters -->
+                    <div class="tag-filters sidebar-tags" id="tagFilters">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </aside>
@@ -129,9 +142,12 @@
             <p style="margin-top: 0.5rem; font-size: 0.875rem;">Empowering your journey to financial independence</p>
             <p class="footer-links" style="margin-top: 0.75rem;">
                 <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
-                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
-                <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
-                <a href="/contact" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
+                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy
+                    Policy</a>
+                <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of
+                    Service</a>
+                <a href="/contact"
+                    style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
             </p>
         </div>
     </footer>
@@ -408,6 +424,50 @@
                 } catch (e) {
                     console.error('Failed to load posts.json', e);
                 }
+            }
+
+            // ---- Newsletter Form ----
+            const newsletterForm = document.querySelector('.sidebar-newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const btn = form.querySelector('.sidebar-btn');
+
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Subscribing...';
+                    btn.disabled = true;
+
+                    try {
+                        const emailInput = form.querySelector('input[name="email"]').value;
+                        const nameInput = form.querySelector('input[name="name"]')?.value || '';
+
+                        // Convert explicitly to form-data because Google Scripts handles this natively without breaking
+                        const formData = new URLSearchParams();
+                        formData.append('email', emailInput);
+                        formData.append('name', nameInput);
+
+                        // Send directly to the web app URL
+                        const endpoint = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
+
+                        const res = await fetch(endpoint, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            body: formData
+                        });
+
+                        // Google Apps Script with no-cors returns an 'opaque' response (status 0).
+                        // It won't have res.ok = true, so we assume success if no network error triggered catch().
+                        form.innerHTML = '<div style="text-align:center; padding: 1rem 0; color: #10b981; font-weight: 600; font-size: 1.1rem;">Thanks for subscribing! 🔥</div>';
+                    } catch (error) {
+                        console.error('Newsletter error:', error);
+                        btn.textContent = 'Error! Try again.';
+                        setTimeout(() => {
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                        }, 3000);
+                    }
+                });
             }
 
             init();
