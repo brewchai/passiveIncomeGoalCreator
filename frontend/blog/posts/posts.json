@@ -134,6 +134,20 @@
   ],
   "recent": [
     {
+      "slug": "accidentally-negotiated-200k-more",
+      "title": "This one call helped me retire 4 years faster",
+      "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
+      "description": "How I processed the fact that I'd just negotiated $200K more than what they initially offered me at Meta. Here are 4 things I did which helped me make money quicker and fast track my way into an early retirement.",
+      "date": "2026-04-03",
+      "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.png",
+      "tags": [
+        "personal-story",
+        "life-after-fire"
+      ],
+      "featured": false,
+      "url": "/blog/accidentally-negotiated-200k-more"
+    },
+    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -160,6 +174,20 @@
     }
   ],
   "all": [
+    {
+      "slug": "accidentally-negotiated-200k-more",
+      "title": "This one call helped me retire 4 years faster",
+      "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
+      "description": "How I processed the fact that I'd just negotiated $200K more than what they initially offered me at Meta. Here are 4 things I did which helped me make money quicker and fast track my way into an early retirement.",
+      "date": "2026-04-03",
+      "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.png",
+      "tags": [
+        "personal-story",
+        "life-after-fire"
+      ],
+      "featured": false,
+      "url": "/blog/accidentally-negotiated-200k-more"
+    },
     {
       "slug": "the-truth-about-passive-income",
       "title": "The Brutal Truth About Passive Income: Why The Internet Is Lying To You",
@@ -317,5 +345,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-04-01T10:22:27.899065Z"
+  "_generated_at": "2026-04-03T04:24:00.230017Z"
 }
