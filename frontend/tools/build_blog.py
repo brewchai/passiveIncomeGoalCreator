@@ -92,7 +92,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
         cover = f"/blog/posts/{slug}/{cover}"
     cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover) else cover
 
-    hero_html = f'<img src="{cover_abs}" alt="{title} cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;">' if cover_abs else ''
+    hero_html = f'<img src="{cover_abs}" alt="{title} cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if cover_abs else ''
 
     # Remove duplicate H1 at top of content
     html_body = strip_leading_h1(html_content)
