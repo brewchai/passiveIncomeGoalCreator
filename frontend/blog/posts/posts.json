@@ -148,6 +148,20 @@
       "url": "/blog/accidentally-negotiated-200k-more"
     },
     {
+      "slug": "psychology-of-not-negotiating",
+      "title": "The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer",
+      "subtitle": "And how this psychological trap could cost you $500,000+ over your career",
+      "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
+      "date": "2026-04-03",
+      "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
+      "tags": [
+        "mindset",
+        "personal-story"
+      ],
+      "featured": false,
+      "url": "/blog/psychology-of-not-negotiating"
+    },
+    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -187,6 +201,20 @@
       ],
       "featured": false,
       "url": "/blog/accidentally-negotiated-200k-more"
+    },
+    {
+      "slug": "psychology-of-not-negotiating",
+      "title": "The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer",
+      "subtitle": "And how this psychological trap could cost you $500,000+ over your career",
+      "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
+      "date": "2026-04-03",
+      "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
+      "tags": [
+        "mindset",
+        "personal-story"
+      ],
+      "featured": false,
+      "url": "/blog/psychology-of-not-negotiating"
     },
     {
       "slug": "the-truth-about-passive-income",
@@ -345,5 +373,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-04-03T04:47:33.848355Z"
+  "_generated_at": "2026-04-03T04:59:04.716525Z"
 }
