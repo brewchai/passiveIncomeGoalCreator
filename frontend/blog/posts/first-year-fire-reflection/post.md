@@ -1,10 +1,10 @@
-# I Quit Corporate Tech at 33. Here’s the Brutal, Beautiful Reality of My First Year in FIRE.
+# I Quit Corporate Tech at 33: The Beautiful Reality of My First Year in FIRE
 
 The corporate grind is a comfortable, well-paying lie we tell ourselves over and over again. We trade our youth, our physical health, and our core personalities for a steady paycheck, some stock options, and a pathetic two weeks of vacation, convincing ourselves that we’ll actually start living *someday*. We tell ourselves that the stress is temporary, that the burnout is just a necessary stepping stone, and that "next quarter" things will finally slow down. But they never do. 
 
 For years, my "someday" in the high-stakes tech world of New York consisted of soul-crushing 12 to 14-hour workdays. It was an endless cycle of suffocating commutes, pretending to care about urgent weekend emails, and willfully ignoring my own physical and mental collapse. I had achieved what on paper looked like incredible success. I was a senior person making a lot of money in a prestigious industry. But beneath the surface, I was trapped in a narrowly defined bounding box. No matter how high you climb the corporate ladder, you are still operating within the strict confines of a box built by someone else. You are told exactly what to work on, when to work on it, and how much of your life you need to sacrifice to get it done. The independence is entirely an illusion.
 
-Then, at the age of 33, I finally pulled the plug. I claimed my Financial Independence and Retired Early (FIRE). I stepped entirely outside of the bounding box of the corporate environment. 
+Then, at the age of 33, I finally pulled the plug. I claimed my Financial Independence and Retired Early ([FIRE](/blog/four-different-types-of-fire)). I stepped entirely outside of the bounding box of the corporate environment. 
 
 Here is an unfiltered, brutally honest reflection on my first 365 days outside the corporate matrix. If you've ever found yourself staring at a spreadsheet at 8:00 PM on a Tuesday, wondering what the other side actually looks like when the paychecks stop and the absolute freedom begins, this is the reality.
 
@@ -16,7 +16,7 @@ The biggest shock of early retirement wasn't the sudden financial freedom or the
 
 Over the last year, all of that vanished. Instead of a panicked rush, my mornings became profoundly intentional and wonderfully quiet. One of the most amazing highlights of my first year of FIRE has simply been the mornings. I find myself sitting in local cafes, drinking incredibly good coffee, and actually having the mental bandwidth to just *think*. 
 
-When was the last time you sat in silence and actually thought about what you want your life to look like, without the suffocating weight of financial pressure dictating your answers? Being able to sit in a coffee shop, take my time, and plan out my existence without finances being a hindrance is a level of luxury that corporate money alone cannot buy. For the first time in my adult life, I could map out my existence without the constant underlying panic of *"how will this affect my career trajectory"* or *"can I afford to take this risk."* The finances were handled. The mornings were finally mine. 
+When was the last time you sat in silence and actually thought about what you want your life to look like, without the suffocating weight of financial pressure dictating your answers? Being able to sit in a coffee shop, take my time, and plan out my existence without finances being a hindrance is a level of luxury that corporate money alone cannot buy. For the first time in my adult life, I could map out my existence without the constant underlying panic of *"how will this affect my career trajectory"* or *"can I afford to take this risk."* The [finances were mathematically handled](/blog/calculating-fire-number). The mornings were finally mine. 
 
 ## Buying Back My Health (Literally Adding Years to My Life)
 
@@ -48,7 +48,7 @@ Here is a harsh, incredibly painful truth that no one in the high-earning tech w
 
 And looking back with a clear head, it makes perfect, logical sense. How could I possibly succeed at dating? I was spending 12 to 14 hours every single day either working or commuting. On the weekends, I was often still chained to my laptop, working. As I mentioned earlier, I completely ignored my health and wasn't taking care of my body. I was fundamentally exhausted, perpetually stressed, and mentally absent. 
 
-When you sit down across from someone on a date, they are looking for a complete human being. They are looking for engagement, passion, and personality. What the hell did I actually have to offer a partner besides the fact that I was making a lot of money? The answer was nothing. I was an empty suit with a nice bank account, and the dating market in New York aggressively rejected that. 
+When you sit down across from someone on a date, they are looking for a complete human being. They are looking for engagement, passion, and personality. What the hell did I actually have to offer a partner besides the fact that I was [making a lot of money in tech](/blog/accidentally-negotiated-200k-more)? The answer was nothing. I was an empty suit with a nice bank account, and the dating market in New York aggressively rejected that. 
 
 Retiring wasn't just about quitting a job; it was about taking the time to build an actual, three-dimensional personality. It was about becoming a person who had interests, hobbies, and the mental energy to focus on another human being. 
 
