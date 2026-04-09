@@ -1,0 +1,51 @@
+name: Build Blog from Notion Drafts
+
+on:
+  push:
+    paths:
+      - 'frontend/blog/posts/**/post.md'
+      - 'frontend/blog/posts/**/meta.json'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          # Required to trigger subsequent events (like Vercel deployments)
+          # if necessary, though [skip ci] typically prevents loop.
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown
+      
+      - name: Build Blog
+        run: |
+          cd frontend
+          python tools/build_blog.py
+      
+      - name: Commit and Push built files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add the generated files
+          git add frontend/blog/posts/**/index.html
+          git add frontend/blog/posts/posts.json
+          
+          # Commit only if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-build blog posts [skip ci]"
+          
+          # Push the changes back to the repository
+          git push
