@@ -19,18 +19,18 @@
     <meta property="og:description"
         content="What if retirement isn't the answer? A philosophical take on work, freedom, identity, and why most people are asking the wrong question.">
     <meta property="og:url" content="https://butfirstfire.com/blog/do-you-actually-need-to-retire">
-    <meta property="og:image" content="https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.jpg">
+    <meta property="og:image" content="https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.webp">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Do You Actually Need to Retire? A Case For and Against Early Retirement">
     <meta name="twitter:description"
         content="What if retirement isn't the answer? A philosophical take on work, freedom, identity, and why most people are asking the wrong question.">
-    <meta name="twitter:image" content="https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.jpg">
+    <meta name="twitter:image" content="https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.webp">
 
     <!-- JSON-LD Article -->
     <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Article", "headline": "Do You Actually Need to Retire? A Case For and Against Early Retirement", "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.", "image": ["https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.jpg"], "datePublished": "2026-02-16", "dateModified": "2026-02-16", "author": {"@type": "Person", "name": "Ninad"}, "publisher": {"@type": "Organization", "name": "But First Fire", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/favicon.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/do-you-actually-need-to-retire"}
+  {"@context": "https://schema.org", "@type": "Article", "headline": "Do You Actually Need to Retire? A Case For and Against Early Retirement", "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.", "image": ["https://butfirstfire.com/blog/posts/do-you-actually-need-to-retire/cover.webp"], "datePublished": "2026-02-16", "dateModified": "2026-02-16", "author": {"@type": "Person", "name": "Ninad"}, "publisher": {"@type": "Organization", "name": "But First Fire", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/favicon.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/do-you-actually-need-to-retire"}
   </script>
 
 
@@ -44,7 +44,7 @@
     <style>
         /* Modern post page design */
         body {
-            background: #fafbfc;
+            background: var(--background);
         }
 
         .post-container {
@@ -60,7 +60,7 @@
         .post-hero img {
             width: 100%;
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-md);
             margin-top: 1.5rem;
         }
 
@@ -70,11 +70,11 @@
             letter-spacing: -0.02em;
             line-height: 1.15;
             margin: 0 0 0.75rem;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-subtitle {
-            color: #475569;
+            color: var(--text-secondary);
             font-size: 1.25rem;
             line-height: 1.6;
             margin: 0 0 1rem;
@@ -82,7 +82,7 @@
         }
 
         .post-meta {
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 0;
             display: flex;
@@ -93,7 +93,7 @@
         .post-content {
             font-size: 1.125rem;
             line-height: 1.8;
-            color: #1e293b;
+            color: var(--text-primary);
         }
 
         .post-content>*:first-child {
@@ -117,12 +117,12 @@
 
         .post-content strong {
             font-weight: 600;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-content em {
             font-style: italic;
-            color: #334155;
+            color: var(--text-secondary);
         }
 
         .post-content h2 {
@@ -131,7 +131,7 @@
             letter-spacing: -0.01em;
             line-height: 1.3;
             margin: 2.5rem 0 1rem;
-            color: #0f172a;
+            color: var(--text-primary);
         }
 
         .post-content h3 {
@@ -139,19 +139,19 @@
             font-weight: 600;
             line-height: 1.4;
             margin: 2rem 0 0.75rem;
-            color: #1e293b;
+            color: var(--text-primary);
         }
 
         .post-content h4 {
             font-size: 1.25rem;
             font-weight: 600;
             margin: 1.5rem 0 0.5rem;
-            color: #334155;
+            color: var(--text-secondary);
         }
 
         .post-content hr {
             border: none;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
             margin: 2.5rem 0;
         }
 
@@ -160,11 +160,11 @@
             height: auto;
             border-radius: 12px;
             margin: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-sm);
         }
 
         .post-content a {
-            color: #667eea;
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             border-bottom: 1px solid rgba(102, 126, 234, 0.3);
@@ -172,30 +172,83 @@
         }
 
         .post-content a:hover {
-            color: #5568d3;
-            border-bottom-color: #5568d3;
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
         }
 
         .post-content blockquote {
             margin: 1.5rem 0;
             padding: 1rem 1.5rem;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            border-left: 4px solid #667eea;
+            border-left: 4px solid var(--accent-color);
             border-radius: 8px;
-            color: #475569;
+            color: var(--text-secondary);
             font-style: italic;
         }
 
-        .pullquote {
-            font-size: 1.5rem;
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
             font-weight: 600;
-            color: #667eea;
-            line-height: 1.4;
-            margin: 2rem 0;
-            padding: 1.5rem 2rem;
-            border-left: 4px solid #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.04) 0%, rgba(118, 75, 162, 0.04) 100%);
-            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            /* standard dark code bg */
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.05);
+            /* very light bg relative to current mode */
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
         }
 
         @media (max-width: 768px) {
@@ -223,10 +276,193 @@
                 font-size: 1.25rem;
             }
 
-            .pullquote {
-                font-size: 1.25rem;
-                padding: 1rem 1.25rem;
+            .post-content table {
+                font-size: 0.9rem;
             }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--background);
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -528,6 +764,8 @@
             </p>
         </div>
     </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
 </body>
 
 </html>
