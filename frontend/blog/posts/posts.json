@@ -149,6 +149,21 @@
   ],
   "recent": [
     {
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
+      "tags": [
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
+      ],
+      "featured": false,
+      "url": "/blog/owning-home-nomadic-fire"
+    },
+    {
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
@@ -245,6 +260,21 @@
       ],
       "featured": true,
       "url": "/blog/first-year-fire-reflection"
+    },
+    {
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
+      "tags": [
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
+      ],
+      "featured": false,
+      "url": "/blog/owning-home-nomadic-fire"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -459,5 +489,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-04-11T08:42:49.460248Z"
+  "_generated_at": "2026-04-11T08:48:54.830831Z"
 }
