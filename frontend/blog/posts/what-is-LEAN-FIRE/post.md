@@ -57,13 +57,19 @@ To calculate your absolute maximum Lean FIRE target, use the **Rule of 25**:
 
 > **Lean FIRE Portfolio = Annual Expenses x 25**
 
+*To establish your exact required portfolio size based on your annual expenses, see our guide on [Calculating Your FIRE Number](/blog/calculating-fire-number).*
+
 **Basic Lean FIRE Calculations (At 4%):**
+
+<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
 
 | Annual Spending | Monthly Budget | Required Portfolio |
 | --------------- | -------------- | ------------------ |
 | $24,000         | $2,000         | $600,000           |
 | $30,000         | $2,500         | $750,000           |
 | $40,000         | $3,333         | $1,000,000         |
+
+</div>
 
 ### Why Lean FIRE Requires "Padding" (The 3.25% Rule)
 
@@ -85,12 +91,16 @@ Because early retirees are looking at horizons of 40 to 50 years, Lean FIRE prac
 
 What does the actual timeline look like to hit these numbers? Below is a concrete timeline guide showing the required annual savings (invested at an inflation-adjusted 7% return) starting from age 25, to hit a solid Lean FIRE number of **$1,000,000** (generating $40k/year at 4% or $32.5k at 3.25%).
 
+<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+
 | Target Retirement Age | Years to Invest | Annual Savings Needed | Monthly Savings Needed |
 | --------------------- | --------------- | --------------------- | ---------------------- |
 | Age 35 (10 Years)     | 10              | ~$67,500/year         | $5,625/mo              |
 | Age 40 (15 Years)     | 15              | ~$37,000/year         | $3,083/mo              |
 | Age 45 (20 Years)     | 20              | ~$22,500/year         | $1,875/mo              |
 | Age 50 (25 Years)     | 25              | ~$14,000/year         | $1,166/mo              |
+
+</div>
 
 *Note: Achieving Lean FIRE by 35 requires intense, superhuman savings or a massive liquidity event. Age 45 is the sweet spot where standard middle-class incomes ($60k-$90k) can comfortably reach Lean FIRE through aggressive, but sustainable, frugality.*
 
