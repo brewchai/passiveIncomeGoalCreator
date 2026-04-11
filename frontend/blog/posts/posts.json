@@ -149,32 +149,19 @@
   ],
   "recent": [
     {
-      "slug": "do-you-actually-need-to-retire",
-      "title": "Do You Actually Need to Retire? A Case For and Against Early Retirement",
-      "subtitle": "What if the question isn't 'how do I retire early' \u2014 but 'why do I want to escape my life?'",
-      "description": "What if retirement isn't the answer? A philosophical take on work, freedom, identity, and why most people are asking the wrong question.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
       "tags": [
-        "philosophy",
-        "mindset"
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
       ],
       "featured": false,
-      "url": "/blog/do-you-actually-need-to-retire"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 with $500k? A Complete Strategy Breakdown",
-      "subtitle": "Every strategy simulated \u2014 from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.",
-      "description": "We run every scenario \u2014 S&P 500 withdrawals, real estate rentals, JEPI dividends, geo-arbitrage, and hybrid strategies.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
-      "tags": [
-        "strategies",
-        "retirement planning"
-      ],
-      "featured": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
+      "url": "/blog/owning-home-nomadic-fire"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -194,7 +181,7 @@
       "slug": "psychology-of-not-negotiating",
       "title": "The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer",
       "subtitle": "And how this psychological trap could cost you $500,000+ over your career",
-      "description": "A breakdown of the cognitive biases\u2014loss aversion, risk aversion, and the authority trap\u2014that cause 55% of workers to accept the first number on the table.",
+      "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
       "date": "2026-04-03",
       "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
       "tags": [
@@ -203,6 +190,20 @@
       ],
       "featured": false,
       "url": "/blog/psychology-of-not-negotiating"
+    },
+    {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can I Retire at 35 with $500k? A Complete Strategy Breakdown",
+      "subtitle": "Every strategy simulated — from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.",
+      "description": "Can you retire at 35 with $500,000? We run every scenario — from the safest S&P 500 withdrawal strategies to real estate, dividend ETFs like JEPI, geo-arbitrage, house hacking, and hybrid approaches.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "tags": [
+        "strategies",
+        "retirement planning"
+      ],
+      "featured": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "living-on-1100-per-month",
@@ -232,34 +233,6 @@
   ],
   "all": [
     {
-      "slug": "do-you-actually-need-to-retire",
-      "title": "Do You Actually Need to Retire? A Case For and Against Early Retirement",
-      "subtitle": "What if the question isn't 'how do I retire early' \u2014 but 'why do I want to escape my life?'",
-      "description": "What if retirement isn't the answer? A philosophical take on work, freedom, identity, and why most people are asking the wrong question.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
-      "tags": [
-        "philosophy",
-        "mindset"
-      ],
-      "featured": false,
-      "url": "/blog/do-you-actually-need-to-retire"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 with $500k? A Complete Strategy Breakdown",
-      "subtitle": "Every strategy simulated \u2014 from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.",
-      "description": "We run every scenario \u2014 S&P 500 withdrawals, real estate rentals, JEPI dividends, geo-arbitrage, and hybrid strategies.",
-      "date": "2026-02-16",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
-      "tags": [
-        "strategies",
-        "retirement planning"
-      ],
-      "featured": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
-    },
-    {
       "slug": "first-year-fire-reflection",
       "title": "I Quit Corporate Tech at 33: The Beautiful Reality of My First Year in FIRE",
       "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
@@ -273,6 +246,21 @@
       ],
       "featured": true,
       "url": "/blog/first-year-fire-reflection"
+    },
+    {
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
+      "tags": [
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
+      ],
+      "featured": false,
+      "url": "/blog/owning-home-nomadic-fire"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -292,7 +280,7 @@
       "slug": "psychology-of-not-negotiating",
       "title": "The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer",
       "subtitle": "And how this psychological trap could cost you $500,000+ over your career",
-      "description": "A breakdown of the cognitive biases\u2014loss aversion, risk aversion, and the authority trap\u2014that cause 55% of workers to accept the first number on the table.",
+      "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
       "date": "2026-04-03",
       "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
       "tags": [
@@ -332,6 +320,20 @@
       ],
       "featured": true,
       "url": "/blog/why-fire-is-not-for-you"
+    },
+    {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can I Retire at 35 with $500k? A Complete Strategy Breakdown",
+      "subtitle": "Every strategy simulated — from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.",
+      "description": "Can you retire at 35 with $500,000? We run every scenario — from the safest S&P 500 withdrawal strategies to real estate, dividend ETFs like JEPI, geo-arbitrage, house hacking, and hybrid approaches.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "tags": [
+        "strategies",
+        "retirement planning"
+      ],
+      "featured": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "living-on-1100-per-month",
@@ -459,5 +461,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-04-09T13:37:22.133056Z"
+  "_generated_at": "2026-04-11T03:42:40.868249Z"
 }
