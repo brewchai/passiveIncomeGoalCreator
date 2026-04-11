@@ -149,6 +149,21 @@
   ],
   "recent": [
     {
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
+      "tags": [
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
+      ],
+      "featured": false,
+      "url": "/blog/owning-home-nomadic-fire"
+    },
+    {
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
@@ -191,6 +206,20 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "do-you-actually-need-to-retire",
+      "title": "Do You Actually Need to Retire?",
+      "subtitle": "What if the question isn't 'how do I retire early' — but 'why do I want to escape my life?'",
+      "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
+      "tags": [
+        "philosophy",
+        "mindset"
+      ],
+      "featured": false,
+      "url": "/blog/do-you-actually-need-to-retire"
+    },
+    {
       "slug": "living-on-1100-per-month",
       "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
@@ -231,6 +260,21 @@
       ],
       "featured": true,
       "url": "/blog/first-year-fire-reflection"
+    },
+    {
+      "slug": "owning-home-nomadic-fire",
+      "title": "Can You Be a Nomad and Still Own a Home? (The Ultimate FIRE Math)",
+      "subtitle": "A rigorous numerical breakdown of real estate vs index investing for the nomadic lifestyle.",
+      "description": "Deeply analyzing whether being nomadic prevents you from owning a home, calculating the exact 10-year return of a Nomadic Landlord versus a Geo-Arbitrage Stock Indexer.",
+      "date": "2026-04-09",
+      "cover": "/blog/posts/owning-home-nomadic-fire/cover.png",
+      "tags": [
+        "Real Estate",
+        "Geo-Arbitrage",
+        "Math"
+      ],
+      "featured": false,
+      "url": "/blog/owning-home-nomadic-fire"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -304,6 +348,20 @@
       ],
       "featured": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
+    },
+    {
+      "slug": "do-you-actually-need-to-retire",
+      "title": "Do You Actually Need to Retire?",
+      "subtitle": "What if the question isn't 'how do I retire early' — but 'why do I want to escape my life?'",
+      "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
+      "date": "2026-02-16",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
+      "tags": [
+        "philosophy",
+        "mindset"
+      ],
+      "featured": false,
+      "url": "/blog/do-you-actually-need-to-retire"
     },
     {
       "slug": "living-on-1100-per-month",
@@ -431,5 +489,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-04-11T03:46:08.669194Z"
+  "_generated_at": "2026-04-11T08:40:23.416416Z"
 }
