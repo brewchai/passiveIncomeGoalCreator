@@ -37,6 +37,14 @@
             "destination": "/tools/geo-arbitrage/index.html"
         },
         {
+            "source": "/tools/sequence-risk",
+            "destination": "/tools/sequence-risk/index.html"
+        },
+        {
+            "source": "/tools/sequence-risk/",
+            "destination": "/tools/sequence-risk/index.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }

@@ -23,6 +23,8 @@ REWRITES = {
     '/tools/': '/tools.html',
     '/tools/geo-arbitrage': '/tools/geo-arbitrage/index.html',
     '/tools/geo-arbitrage/': '/tools/geo-arbitrage/index.html',
+    '/tools/sequence-risk': '/tools/sequence-risk/index.html',
+    '/tools/sequence-risk/': '/tools/sequence-risk/index.html',
 }
 
 class SPAHandler(http.server.SimpleHTTPRequestHandler):
