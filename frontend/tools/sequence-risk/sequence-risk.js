@@ -17,6 +17,7 @@
         lineLegend: byId('lineLegend'),
         sequenceTableHead: byId('sequenceTableHead'),
         sequenceTableBody: byId('sequenceTableBody'),
+        sequenceTableHeading: byId('sequenceTableHeading'),
         sequenceNote: byId('sequenceNote'),
         infoModal: byId('infoModal'),
         openModal: byId('openModal'),
@@ -116,55 +117,111 @@
         const initialRate = startVal > 0 ? initialWithdrawal / startVal : 0;
         
         const vals = [startVal];
-        const withdrawals = []; // Array of actual withdrawals taken
+        const withdrawals = []; // Actual withdrawals taken each year
+        const rows = [];
 
         for (let y = 1; y <= years; y++) {
+            let startPort = port;
             let thisYearW = w;
 
-            // 1. Determine this year's withdrawal
+            // 1. Determine this year's withdrawal (overrides baseline if set)
             if (customWithdrawals && customWithdrawals[y - 1] !== undefined && customWithdrawals[y - 1] !== null) {
-                // Manual override by user
                 thisYearW = customWithdrawals[y - 1];
                 w = thisYearW; // Reset baseline for future years!
-            } else if (isGuardrails && y > 1) {
-                // Apply Guardrails rules
-                const currentRate = port > 0 ? w / port : 0;
-                const prevReturn = returnsPct[y - 2];
-                
-                if (currentRate > initialRate * 1.2) {
-                    thisYearW = w * 0.9; // 10% Pay Cut
-                } else if (currentRate < initialRate * 0.8) {
-                    thisYearW = w * 1.1; // 10% Pay Raise
-                } else if (prevReturn < 0) {
-                    thisYearW = w; // No inflation increase
-                } else {
-                    thisYearW = w * (1 + infl);
+            }
+
+            // 2. Check if portfolio is depleted before market returns
+            if (port < thisYearW) {
+                const actualWithdrawal = port;
+                withdrawals.push(actualWithdrawal);
+
+                rows.push({
+                    year: y,
+                    startPort: startPort,
+                    withdrawal: actualWithdrawal,
+                    startWR: startPort > 0 ? actualWithdrawal / startPort : 0,
+                    returnPct: returnsPct[y - 1],
+                    endPort: 0,
+                    endWR: 0,
+                    trigger: '-',
+                    nextW: 0
+                });
+                vals.push(0);
+
+                for (let futureYear = y + 1; futureYear <= years; futureYear++) {
+                    vals.push(0);
+                    withdrawals.push(0);
+                    rows.push({
+                        year: futureYear,
+                        startPort: 0,
+                        withdrawal: 0,
+                        startWR: 0,
+                        returnPct: returnsPct[futureYear - 1],
+                        endPort: 0,
+                        endWR: 0,
+                        trigger: '-',
+                        nextW: 0
+                    });
                 }
-                w = thisYearW;
-            } else if (y > 1) {
-                // Standard constant inflation
-                thisYearW = w * (1 + infl);
-                w = thisYearW;
+                return { survived: false, failYear: y, endVal: 0, minVal: 0, vals, withdrawals, rows };
             }
 
             withdrawals.push(thisYearW);
 
-            if (port < thisYearW) {
-                vals.push(0);
-                for (let i = vals.length; i <= years; i++) {
-                    vals.push(0);
-                    if(withdrawals.length < years) withdrawals.push(0);
-                }
-                return { survived: false, failYear: y, endVal: 0, minVal: 0, vals, withdrawals };
-            }
-
+            // 3. Process withdrawal and market return
             port -= thisYearW;
             minVal = Math.min(minVal, port);
             port *= (1 + returnsPct[y - 1] / 100);
             minVal = Math.min(minVal, port);
             vals.push(port);
+
+            // 4. End of year evaluation for NEXT year's withdrawal (Guardrail test)
+            let endWR = port > 0 ? thisYearW / port : 0;
+            let forwardTrigger = 'Standard';
+            let nextW = thisYearW;
+
+            if (y < years) {
+                if (customWithdrawals && customWithdrawals[y] !== undefined && customWithdrawals[y] !== null) {
+                    nextW = customWithdrawals[y];
+                    forwardTrigger = 'Manual Override';
+                } else if (isGuardrails) {
+                    if (endWR > initialRate * 1.2) {
+                        nextW = thisYearW * 0.9;
+                        forwardTrigger = 'Pay Cut (-10%)';
+                    } else if (endWR < initialRate * 0.8) {
+                        nextW = thisYearW * 1.1;
+                        forwardTrigger = 'Pay Raise (+10%)';
+                    } else if (returnsPct[y - 1] < 0) {
+                        nextW = thisYearW;
+                        forwardTrigger = 'Skip Inflation';
+                    } else {
+                        nextW = thisYearW * (1 + infl);
+                        forwardTrigger = 'Inflation Adjust';
+                    }
+                } else {
+                    nextW = thisYearW * (1 + infl);
+                    forwardTrigger = 'Inflation Adjust';
+                }
+                // Prepare the 'w' for the top of the next loop
+                w = nextW;
+            } else {
+                forwardTrigger = '-';
+                nextW = 0;
+            }
+
+            rows.push({
+                year: y,
+                startPort: startPort,
+                withdrawal: thisYearW,
+                startWR: startPort > 0 ? thisYearW / startPort : 0,
+                returnPct: returnsPct[y - 1],
+                endPort: port,
+                endWR: endWR,
+                trigger: forwardTrigger,
+                nextW: nextW
+            });
         }
-        return { survived: true, failYear: null, endVal: port, minVal, vals, withdrawals };
+        return { survived: true, failYear: null, endVal: port, minVal, vals, withdrawals, rows };
     }
 
     function classify({ survived, failYear, years, startVal, endVal, minVal }) {
@@ -289,48 +346,72 @@
         drawLineChart(el.portfolioLineChart, series, years, fmtCompact);
         renderLegend(series);
 
-        renderSequenceTable(currentData, currentResult.withdrawals, years, inputs);
+        renderSequenceTable(inputs);
     }
 
     // ── Sequence table ──
-    function renderSequenceTable(currentData, withdrawals, years, inputs) {
+    function renderSequenceTable(inputs) {
         clear(el.sequenceTableHead);
         clear(el.sequenceTableBody);
 
+        if (el.sequenceTableHeading) {
+            el.sequenceTableHeading.textContent = inputs.isGuardrails ? 'Withdrawal and guardrail details' : 'Withdrawal details';
+        }
+
         // Header
         const headTr = document.createElement('tr');
-        ['Year', 'Return', 'Rate', 'Withdrawal'].forEach(t => {
+        const headers = inputs.isGuardrails
+            ? ['Year', 'Start Portfolio', 'Withdrawal Rate', 'Withdrawal', 'Return %', 'End Portfolio', 'End WR', 'Trigger', 'Next Year W.']
+            : ['Year', 'Start Portfolio', 'Withdrawal Rate', 'Withdrawal', 'Return %', 'End Portfolio'];
+
+        headers.forEach(t => {
             const th = document.createElement('th');
             th.textContent = t;
             headTr.appendChild(th);
         });
         el.sequenceTableHead.appendChild(headTr);
 
-        const resultVals = state.lastResults.currentResult.vals;
+        const rows = state.lastResults.currentResult.rows;
 
-        for (let y = 0; y < years; y++) {
+        for (let y = 0; y < rows.length; y++) {
+            const r = rows[y];
             const tr = document.createElement('tr');
             
             // Year
-            const tdY = document.createElement('td'); tdY.textContent = y + 1; tdY.className = 'year-col'; tr.appendChild(tdY);
+            const tdY = document.createElement('td'); tdY.textContent = r.year; tdY.className = 'year-col'; tr.appendChild(tdY);
             
-            // Return
-            const tdC = document.createElement('td');
-            tdC.textContent = fmtSignedPct(currentData[y]);
-            tdC.className = currentData[y] >= 0 ? 'return-pos' : 'return-neg';
-            tr.appendChild(tdC);
+            // Start Portfolio
+            const tdSP = document.createElement('td'); tdSP.textContent = fmtMoney(r.startPort); tr.appendChild(tdSP);
 
             // Withdrawal Rate
-            const balAtStart = resultVals[y];
-            const wRate = balAtStart > 0 ? (withdrawals[y] / balAtStart) * 100 : 0;
-            const tdR = document.createElement('td');
-            tdR.textContent = fmtPct(wRate);
-            tr.appendChild(tdR);
+            const tdSWR = document.createElement('td'); tdSWR.textContent = fmtPct(r.startWR * 100); tr.appendChild(tdSWR);
+            
+            // Withdrawal
+            const tdW = document.createElement('td'); tdW.textContent = fmtMoney(r.withdrawal); tr.appendChild(tdW);
+            
+            // Return %
+            const tdRet = document.createElement('td'); 
+            tdRet.textContent = fmtSignedPct(r.returnPct);
+            tdRet.className = r.returnPct >= 0 ? 'return-pos' : 'return-neg';
+            tr.appendChild(tdRet);
 
-            // Withdrawal Amount
-            const tdW = document.createElement('td');
-            tdW.textContent = fmtMoney(withdrawals[y]);
-            tr.appendChild(tdW);
+            // End Portfolio
+            const tdEP = document.createElement('td'); tdEP.textContent = fmtMoney(r.endPort); tr.appendChild(tdEP);
+
+            if (inputs.isGuardrails) {
+                // End WR
+                const tdEWR = document.createElement('td'); tdEWR.textContent = fmtPct(r.endWR * 100); tr.appendChild(tdEWR);
+
+                // Trigger
+                const tdTrig = document.createElement('td');
+                tdTrig.textContent = r.trigger;
+                if (r.trigger.includes('Cut')) tdTrig.className = 'return-neg';
+                if (r.trigger.includes('Raise')) tdTrig.className = 'return-pos';
+                tr.appendChild(tdTrig);
+
+                // Next W
+                const tdNW = document.createElement('td'); tdNW.textContent = r.nextW > 0 ? fmtMoney(r.nextW) : '-'; tr.appendChild(tdNW);
+            }
 
             el.sequenceTableBody.appendChild(tr);
         }
