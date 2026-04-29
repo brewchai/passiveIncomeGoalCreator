@@ -71,6 +71,7 @@
     };
 
     let activePreset = 'historical_average';
+    let customSourcePreset = 'historical_average';
     let currentCustomData = null; // Holds the currently active sequence data
     let currentCustomWithdrawals = []; // Holds manually overridden withdrawals
     let isCalculating = false;
@@ -90,6 +91,9 @@
     function fmtPct(v, d = 1) { return `${(Number.isFinite(+v) ? (+v).toFixed(d) : '0')}%`; }
     function fmtSignedPct(v, d = 1) { const n = +v; return `${n > 0 ? '+' : ''}${Number.isFinite(n) ? n.toFixed(d) : '0'}%`; }
     function clear(n) { while (n && n.firstChild) n.removeChild(n.firstChild); }
+    function setActivePresetButton(presetId) {
+        el.presetBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.preset === presetId));
+    }
 
     // ── Scenario generation ──
     function buildSequence(presetId, avgPct, years) {
@@ -283,6 +287,18 @@
             currentData: currentCustomData,
             baselineData
         };
+    }
+
+    function resetManualOverridesForFreshRun() {
+        if (activePreset === 'custom') {
+            activePreset = customSourcePreset;
+            setActivePresetButton(activePreset);
+        }
+
+        currentCustomData = null;
+        currentCustomWithdrawals = [];
+        state.activePopupYear = null;
+        if (el.chartPopup) el.chartPopup.style.display = 'none';
     }
 
     // ── Render ──
@@ -540,6 +556,7 @@
         el.runButton.addEventListener('click', () => {
             if (isCalculating) return;
             isCalculating = true;
+            resetManualOverridesForFreshRun();
             
             el.runButton.classList.add('loading');
             el.runButton.disabled = true;
@@ -565,9 +582,9 @@
 
     el.presetBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            el.presetBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
             activePreset = e.target.dataset.preset;
+            customSourcePreset = activePreset;
+            setActivePresetButton(activePreset);
             currentCustomData = null; 
             currentCustomWithdrawals = []; // Reset overrides
             showPreview(activePreset);
@@ -669,6 +686,7 @@
                 if (!isNaN(newRet)) currentCustomData[state.activePopupYear] = newRet;
                 if (!isNaN(newW)) currentCustomWithdrawals[state.activePopupYear] = newW;
                 
+                if (activePreset !== 'custom') customSourcePreset = activePreset;
                 activePreset = 'custom';
                 el.presetBtns.forEach(b => b.classList.remove('active'));
                 
