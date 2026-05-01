@@ -6,6 +6,15 @@ Achieving this number signifies true financial freedom, offering the choice to w
 
 ---
 
+## Key Takeaways
+
+* Your FIRE number is the amount of invested money needed to make paid work optional.
+* The basic formula is **Annual Expenses × 25**, which assumes a 4% withdrawal rate.
+* If you plan to retire very early, a lower withdrawal rate like 3.5% may be safer because your money needs to last longer.
+* The FIRE number is only a starting target. You still need to test taxes, healthcare, sequence risk, and flexible spending.
+
+---
+
 ## What is the FIRE Number?
 
 The FIRE number is typically calculated using the **25x Rule**, which is directly linked to the **4% Rule**. To find your number, you first estimate your desired annual expenses in retirement and then multiply that figure by 25.
@@ -65,13 +74,23 @@ Your retirement time horizon significantly impacts your required multiplier:
 
 - **Expected Returns & Other Income:**  
   If you anticipate receiving reliable guaranteed income (like a pension, social security, or passive real estate rental income), you can **subtract that annual income** from your desired annual expenses before applying the multiplier.  
-  This effectively lowers the total portfolio amount you need to save.
+This effectively lowers the total portfolio amount you need to save.
 
 **Example:**
 
 If you need **$50,000/year** but expect **$10,000** from a rental property, you only need to multiply:
 
 ($50,000 - $10,000) × 25 = $1,000,000
+
+---
+
+## Why Your FIRE Number Still Needs a Stress Test
+
+Your FIRE number tells you the portfolio target, but it does not prove the plan survives bad timing. Two retirees can have the same average return and the same withdrawal rate, yet end with completely different outcomes if one faces a crash early in retirement.
+
+That timing problem is called **sequence of returns risk**. It matters most after you stop saving and start withdrawing from the portfolio. A market crash in the first few years can force you to sell investments while prices are low, permanently reducing the portfolio's ability to recover.
+
+After calculating your FIRE number, run the plan through the [Sequence Risk Calculator](/tools/sequence-risk/). Use it to compare constant withdrawals against guardrail strategies, where spending can adjust after major portfolio gains or losses.
 
 ---
 
@@ -86,7 +105,6 @@ Calculating your FIRE number is the first, most empowering step on your journey 
   The best way to finalize your plan is by using an advanced simulator.  
 
 Ready to see how fast you can get there? See [how much you need to retire at 40](/blog/how-much-need-retire-forty-40) for a real-world example.  
-Use a detailed, interactive online **FIRE calculator** that allows you to input custom withdrawal rates and model how your portfolio might perform across thousands of historical market simulations. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
+Use the [Sequence Risk Calculator](/tools/sequence-risk/) to model how your portfolio might perform under different return orders, inflation assumptions, and guardrail withdrawals. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
 
 ---
-

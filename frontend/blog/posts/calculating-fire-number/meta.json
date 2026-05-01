@@ -1,5 +1,5 @@
 {
-    "title": "The Complete Guide to Calculating Your FIRE Number",
+    "title": "How to Calculate Your FIRE Number",
     "subtitle": "A practical walkthrough of the 4% rule and personalization",
     "description": "Learn how to use the 4% rule to determine precisely how much you need to retire. Complete with examples of target portfolios and Lean FIRE annual expenses.",
     "date": "2025-10-28",
@@ -8,5 +8,19 @@
         "basics"
     ],
     "cover": "/blog/posts/calculating-fire-number/cover.webp",
-    "featured": true
+    "featured": true,
+    "faqs": [
+        {
+            "question": "What is a FIRE number?",
+            "answer": "A FIRE number is the amount of invested money you need to cover annual expenses without relying on a traditional paycheck."
+        },
+        {
+            "question": "How do you calculate your FIRE number?",
+            "answer": "The simplest FIRE number formula is annual expenses multiplied by 25, which is based on a 4% withdrawal rate."
+        },
+        {
+            "question": "Should early retirees use a lower withdrawal rate?",
+            "answer": "Early retirees often use a lower withdrawal rate, such as 3.5%, because their portfolios may need to last longer than a traditional 30-year retirement."
+        }
+    ]
 }
