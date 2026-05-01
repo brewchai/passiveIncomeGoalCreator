@@ -2,9 +2,9 @@
   "featured": [
     {
       "slug": "first-year-fire-reflection",
-      "title": "I Quit Corporate Tech at 33: The Beautiful Reality of My First Year in FIRE",
+      "title": "My First Year After Leaving Corporate Tech",
       "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
-      "description": "What does the first year of FIRE actually look like? Reflections on escaping the corporate tech bubble, building health, and finding purpose after retiring early at 33.",
+      "description": "A candid look at the first year after leaving corporate tech at 33, from health and purpose to the emotional reality of FIRE.",
       "date": "2026-04-09",
       "cover": "/blog/posts/first-year-fire-reflection/cover.png",
       "tags": [
@@ -48,7 +48,7 @@
     },
     {
       "slug": "40k-debt-to-coast-fire-at-33",
-      "title": "The 3 Things That Took Me from $40k in Debt to Coast FIRE at 33",
+      "title": "From $40k Debt to Coast FIRE at 33",
       "subtitle": "Yes a 9-5 helped me reach Coast FIRE in a decade",
       "description": "How a 9-5 job, strategic saving, and consistent investing helped me reach Coast FIRE in a decade",
       "date": "2026-01-29",
@@ -120,9 +120,9 @@
     },
     {
       "slug": "four-different-types-of-fire",
-      "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
       "subtitle": "And which is the right one for you?",
-      "description": "A detailed breaddown of different flavors of FIRE",
+      "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
       "tags": [
@@ -152,7 +152,7 @@
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
-      "description": "How I processed the fact that I'd just negotiated $200K more than what they initially offered me at Meta. Here are 4 things I did which helped me make money quicker and fast track my way into an early retirement.",
+      "description": "How one compensation negotiation added $200K to my offer and helped speed up my path to early retirement.",
       "date": "2026-04-03",
       "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.webp",
       "tags": [
@@ -206,7 +206,7 @@
     },
     {
       "slug": "living-on-1100-per-month",
-      "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
+      "title": "Living Abroad on $1,100 a Month",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
@@ -233,9 +233,9 @@
   "all": [
     {
       "slug": "first-year-fire-reflection",
-      "title": "I Quit Corporate Tech at 33: The Beautiful Reality of My First Year in FIRE",
+      "title": "My First Year After Leaving Corporate Tech",
       "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
-      "description": "What does the first year of FIRE actually look like? Reflections on escaping the corporate tech bubble, building health, and finding purpose after retiring early at 33.",
+      "description": "A candid look at the first year after leaving corporate tech at 33, from health and purpose to the emotional reality of FIRE.",
       "date": "2026-04-09",
       "cover": "/blog/posts/first-year-fire-reflection/cover.png",
       "tags": [
@@ -250,7 +250,7 @@
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
-      "description": "How I processed the fact that I'd just negotiated $200K more than what they initially offered me at Meta. Here are 4 things I did which helped me make money quicker and fast track my way into an early retirement.",
+      "description": "How one compensation negotiation added $200K to my offer and helped speed up my path to early retirement.",
       "date": "2026-04-03",
       "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.webp",
       "tags": [
@@ -335,7 +335,7 @@
     },
     {
       "slug": "living-on-1100-per-month",
-      "title": "From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment",
+      "title": "Living Abroad on $1,100 a Month",
       "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
       "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
       "date": "2026-02-02",
@@ -346,7 +346,7 @@
     },
     {
       "slug": "40k-debt-to-coast-fire-at-33",
-      "title": "The 3 Things That Took Me from $40k in Debt to Coast FIRE at 33",
+      "title": "From $40k Debt to Coast FIRE at 33",
       "subtitle": "Yes a 9-5 helped me reach Coast FIRE in a decade",
       "description": "How a 9-5 job, strategic saving, and consistent investing helped me reach Coast FIRE in a decade",
       "date": "2026-01-29",
@@ -432,9 +432,9 @@
     },
     {
       "slug": "four-different-types-of-fire",
-      "title": "LeanFIRE vs FatFIRE vs BaristaFIRE vs CoastFIRE: The Ultimate Guide to Financial Independence",
+      "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
       "subtitle": "And which is the right one for you?",
-      "description": "A detailed breaddown of different flavors of FIRE",
+      "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
       "date": "2025-11-05",
       "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
       "tags": [
@@ -459,5 +459,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-05-01T08:42:00.796043Z"
+  "_generated_at": "2026-05-01T08:44:12.403089Z"
 }
