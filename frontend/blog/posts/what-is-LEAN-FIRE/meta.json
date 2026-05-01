@@ -1,12 +1,26 @@
 {
-    "title": "The Brutal Reality of Lean FIRE: Retiring on $30k Without Going Crazy",
+    "title": "What Is Lean FIRE? Expenses, Number, and Tradeoffs",
     "subtitle": "The Complete Lean FIRE Blueprint: How to Retire Early on a Modest Income",
-    "description": "Can you survive early retirement on $30k/year? Uncover the strict math, the 3.25% rule, and the ruthless sacrifices needed for a successful Lean FIRE in the US & UK.",
+    "description": "Learn typical Lean FIRE annual expenses, spending ranges, portfolio targets, and the tradeoffs of retiring early on a lean budget.",
     "date": "2025-11-14",
     "tags": [
         "featured",
         "basics"
     ],
     "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
-    "featured": true
+    "featured": true,
+    "faqs": [
+        {
+            "question": "What is Lean FIRE?",
+            "answer": "Lean FIRE is a financial independence strategy built around very low annual expenses, usually requiring a smaller portfolio than traditional FIRE but much less lifestyle flexibility."
+        },
+        {
+            "question": "What are typical Lean FIRE annual expenses?",
+            "answer": "Typical Lean FIRE annual expenses often fall between $20,000 and $40,000 for a single person or frugal couple, depending heavily on housing, healthcare, and location."
+        },
+        {
+            "question": "How do you calculate a Lean FIRE number?",
+            "answer": "A Lean FIRE number is calculated by dividing annual expenses by the planned withdrawal rate, such as multiplying expenses by 25 for a 4% withdrawal rate."
+        }
+    ]
 }

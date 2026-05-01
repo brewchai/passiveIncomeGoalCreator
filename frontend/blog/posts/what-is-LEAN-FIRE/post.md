@@ -26,9 +26,58 @@
 
 **TL;DR: Lean FIRE (Financial Independence, Retire Early) is a strategy for achieving early retirement by ruthlessly minimizing living expenses and adopting a highly optimized, minimalist lifestyle. Because annual spending is kept incredibly low (typically between $20,000 and $40,000/year), Lean FIRE adherents only need to accumulate a much smaller portfolio to safely retire decades ahead of schedule compared to traditional retirees.**
 
+## Key Takeaways
+
+* Lean FIRE usually means annual expenses of roughly **$20,000 to $40,000** for a single person or frugal couple.
+* Your Lean FIRE number is your annual spending divided by your withdrawal rate. At 4%, $30,000/year requires about **$750,000** invested.
+* A more conservative 3.25% to 3.5% withdrawal rate is often safer for Lean FIRE because there is less discretionary spending to cut during downturns.
+* Housing, healthcare, transportation, and location determine whether Lean FIRE feels sustainable or brittle.
+
 Lean FIRE is the purest distillation of the Financial Independence movement. It flips the script on the standard American Dream. Instead of asking, "How can I earn enough to buy everything I want?" Lean FIRE asks, "How little do I actually need to be completely free?" 
 
 Unlike Fat FIRE, which focuses on accumulating massive wealth to sustain a luxurious lifestyle, Lean FIRE prioritizes simplicity, efficiency, and time freedom over extreme wealth accumulation. It requires intentional living, rejecting consumerism, and learning to find deep joy in low-cost or free activities.
+
+---
+
+## What Are Typical Lean FIRE Annual Expenses?
+
+Typical Lean FIRE annual expenses usually land between **$20,000 and $40,000 per year** for a single person or very frugal couple. Below that range, the plan usually depends on unusually cheap housing, international geo-arbitrage, paid-off assets, or subsidized healthcare. Above that range, the plan starts looking more like regular FIRE.
+
+The exact number depends less on coffee or streaming subscriptions and more on four categories: housing, healthcare, transportation, and food. If those fixed costs are low, Lean FIRE becomes mathematically possible. If they are high, no amount of coupon clipping will save the plan.
+
+## What Is a Lean FIRE Annual Spending Range?
+
+A realistic Lean FIRE annual spending range looks like this:
+
+<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+
+| Annual Spending | Monthly Spending | What It Usually Means |
+| --------------- | ---------------- | --------------------- |
+| $20,000         | $1,667           | Extremely lean, usually requires paid-off housing, roommates, or geo-arbitrage |
+| $30,000         | $2,500           | Common Lean FIRE target for a single person in a lower-cost area |
+| $40,000         | $3,333           | Upper Lean FIRE range with more room for healthcare, repairs, and travel |
+
+</div>
+
+## How Do You Calculate Your Lean FIRE Number?
+
+Your Lean FIRE number is the portfolio required to support your annual expenses. The quick formula is:
+
+> **Lean FIRE Number = Annual Expenses / Withdrawal Rate**
+
+At a 4% withdrawal rate, this is the same as multiplying annual expenses by 25. At a more conservative 3.25% withdrawal rate, multiply annual expenses by about 31.
+
+<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+
+| Annual Spending | FIRE Number at 4% | FIRE Number at 3.25% |
+| --------------- | ----------------- | -------------------- |
+| $24,000         | $600,000          | $738,461             |
+| $30,000         | $750,000          | $923,077             |
+| $40,000         | $1,000,000        | $1,230,769           |
+
+</div>
+
+For a deeper walkthrough, use the [FIRE number guide](/blog/calculating-fire-number) and then stress-test the withdrawal plan with the [Sequence Risk Calculator](/tools/sequence-risk/).
 
 ---
 
