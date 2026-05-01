@@ -38,7 +38,8 @@
         popupReturn: byId('popupReturn'),
         popupWithdrawal: byId('popupWithdrawal'),
         popupSave: byId('popupSave'),
-        popupCancel: byId('popupCancel')
+        popupCancel: byId('popupCancel'),
+        resetManualEdits: byId('resetManualEdits')
     };
 
     // ── Data Models ──
@@ -75,7 +76,7 @@
     let currentCustomData = null; // Holds the currently active sequence data
     let currentCustomWithdrawals = []; // Holds manually overridden withdrawals
     let isCalculating = false;
-    const state = { lastResults: null, chartCoords: [], activePopupYear: null };
+    const state = { lastResults: null, lastCleanRun: null, hasManualEdits: false, chartCoords: [], activePopupYear: null };
 
     // ── Utilities ──
     function safeNum(v, fb) { const n = Number(v); return Number.isFinite(n) ? n : fb; }
@@ -91,6 +92,7 @@
     function fmtPct(v, d = 1) { return `${(Number.isFinite(+v) ? (+v).toFixed(d) : '0')}%`; }
     function fmtSignedPct(v, d = 1) { const n = +v; return `${n > 0 ? '+' : ''}${Number.isFinite(n) ? n.toFixed(d) : '0'}%`; }
     function clear(n) { while (n && n.firstChild) n.removeChild(n.firstChild); }
+    function clonePlain(v) { return JSON.parse(JSON.stringify(v)); }
     function setActivePresetButton(presetId) {
         el.presetBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.preset === presetId));
     }
@@ -297,8 +299,37 @@
 
         currentCustomData = null;
         currentCustomWithdrawals = [];
+        state.hasManualEdits = false;
         state.activePopupYear = null;
         if (el.chartPopup) el.chartPopup.style.display = 'none';
+        if (el.resetManualEdits) el.resetManualEdits.style.display = 'none';
+    }
+
+    function saveCleanRunSnapshot() {
+        state.lastCleanRun = {
+            activePreset,
+            customSourcePreset,
+            currentCustomData: currentCustomData ? [...currentCustomData] : null,
+            currentCustomWithdrawals: [...currentCustomWithdrawals],
+            lastResults: clonePlain(state.lastResults)
+        };
+    }
+
+    function restoreLastCleanRun() {
+        if (!state.lastCleanRun) return;
+
+        activePreset = state.lastCleanRun.activePreset;
+        customSourcePreset = state.lastCleanRun.customSourcePreset;
+        currentCustomData = state.lastCleanRun.currentCustomData ? [...state.lastCleanRun.currentCustomData] : null;
+        currentCustomWithdrawals = [...state.lastCleanRun.currentCustomWithdrawals];
+        state.lastResults = clonePlain(state.lastCleanRun.lastResults);
+        state.hasManualEdits = false;
+        state.activePopupYear = null;
+
+        setActivePresetButton(activePreset);
+        if (el.chartPopup) el.chartPopup.style.display = 'none';
+        if (el.resetManualEdits) el.resetManualEdits.style.display = 'none';
+        render();
     }
 
     // ── Render ──
@@ -308,6 +339,7 @@
         const { startVal, initialWithdrawal, inflPct, avgPct, years, finalWithdrawal, isGuardrails } = inputs;
         
         el.resultsContainer.style.display = 'block';
+        if (el.resetManualEdits) el.resetManualEdits.style.display = state.hasManualEdits ? 'inline-flex' : 'none';
 
         const st = classify({ survived: currentResult.survived, failYear: currentResult.failYear, years, startVal, endVal: currentResult.endVal, minVal: currentResult.minVal });
         
@@ -568,6 +600,7 @@
             
             setTimeout(() => {
                 compute();
+                saveCleanRunSnapshot();
                 render();
                 
                 isCalculating = false;
@@ -689,12 +722,17 @@
                 if (activePreset !== 'custom') customSourcePreset = activePreset;
                 activePreset = 'custom';
                 el.presetBtns.forEach(b => b.classList.remove('active'));
+                state.hasManualEdits = true;
                 
                 compute(); 
                 render(); 
             }
             if(el.chartPopup) el.chartPopup.style.display = 'none';
         });
+    }
+
+    if (el.resetManualEdits) {
+        el.resetManualEdits.addEventListener('click', restoreLastCleanRun);
     }
 
     if (el.popupCancel) {
