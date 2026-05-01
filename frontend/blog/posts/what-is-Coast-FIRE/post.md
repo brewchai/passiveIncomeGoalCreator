@@ -20,6 +20,8 @@
 
 **TL;DR: Coast FIRE (Financial Independence, Retire Early) is when you have saved and invested enough money at an early age that, through the power of compound interest, your portfolio will grow to fully fund your traditional retirement without requiring another dime of contributions. You are then free to "coast" by taking lower-stress jobs just to cover your current living expenses.**
 
+Coast FIRE means your retirement contributions are mathematically handled. You may still work to pay today's bills, but your existing investments can grow into your future retirement portfolio without more savings.
+
 Coast FIRE is financial independence with a twist: Instead of aggressively saving until you can fully leave the workforce, you front-load your investments. You save enough early on so your investments grow to cover retirement by themselves. Then, you're free to coast — just earning enough to cover current expenses.
 
 Coast FIRE is ideal if you:
@@ -36,6 +38,8 @@ Coast FIRE is ideal if you:
 The magic of Coast FIRE lies in understanding when you’ve saved enough — even if it doesn’t look like it.
 
 Once your investment balance hits a critical point, you can stop contributing and let growth carry you to retirement.
+
+For a real example of how this can happen from an ordinary career path, read the [Coast FIRE case study from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
 
 Here's the essence:
 

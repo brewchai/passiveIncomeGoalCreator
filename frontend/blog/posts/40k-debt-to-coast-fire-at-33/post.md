@@ -10,6 +10,8 @@ Ten years later — seven of those actually working — I've hit **Coast FIRE at
 
 It feels almost surreal to write that sentence. In hindsight, there are 3 things that helped me get here much faster.
 
+If you want the definition and formula first, start with [what Coast FIRE means](/blog/what-is-Coast-FIRE). This article is the personal case study: the messy path from debt, immigration, tech compensation, and aggressive saving to that milestone.
+
 For the more emotional side of what happened after hitting this milestone, I wrote a separate reflection on [my first year after leaving corporate tech](/blog/first-year-fire-reflection).
 
 ---

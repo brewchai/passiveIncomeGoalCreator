@@ -49,8 +49,8 @@
     {
       "slug": "40k-debt-to-coast-fire-at-33",
       "title": "From $40k Debt to Coast FIRE at 33",
-      "subtitle": "Yes a 9-5 helped me reach Coast FIRE in a decade",
-      "description": "How a 9-5 job, strategic saving, and consistent investing helped me reach Coast FIRE in a decade",
+      "subtitle": "A personal case study of how a 9-5 helped me reach Coast FIRE in a decade",
+      "description": "A personal Coast FIRE case study showing how a 9-5 job, strategic saving, and consistent investing erased debt and built freedom.",
       "date": "2026-01-29",
       "cover": "/blog/posts/40k-debt-to-coast-fire-at-33/ninad-retirement.webp",
       "tags": [
@@ -64,9 +64,9 @@
     },
     {
       "slug": "what-is-Coast-FIRE",
-      "title": "What is Coast F.I.R.E?",
-      "subtitle": "The Complete Coast FIRE Blueprint: How to Stop worrying about retirement and live for today",
-      "description": "A detailed breakdown of the math behind Coast FIRE",
+      "title": "What Is Coast FIRE? Meaning, Formula, and Examples",
+      "subtitle": "The Coast FIRE blueprint: how to stop worrying about retirement and live for today",
+      "description": "Learn what Coast FIRE means, how to calculate your Coast FIRE number, and when you can stop saving for traditional retirement.",
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.webp",
       "tags": [
@@ -347,8 +347,8 @@
     {
       "slug": "40k-debt-to-coast-fire-at-33",
       "title": "From $40k Debt to Coast FIRE at 33",
-      "subtitle": "Yes a 9-5 helped me reach Coast FIRE in a decade",
-      "description": "How a 9-5 job, strategic saving, and consistent investing helped me reach Coast FIRE in a decade",
+      "subtitle": "A personal case study of how a 9-5 helped me reach Coast FIRE in a decade",
+      "description": "A personal Coast FIRE case study showing how a 9-5 job, strategic saving, and consistent investing erased debt and built freedom.",
       "date": "2026-01-29",
       "cover": "/blog/posts/40k-debt-to-coast-fire-at-33/ninad-retirement.webp",
       "tags": [
@@ -376,9 +376,9 @@
     },
     {
       "slug": "what-is-Coast-FIRE",
-      "title": "What is Coast F.I.R.E?",
-      "subtitle": "The Complete Coast FIRE Blueprint: How to Stop worrying about retirement and live for today",
-      "description": "A detailed breakdown of the math behind Coast FIRE",
+      "title": "What Is Coast FIRE? Meaning, Formula, and Examples",
+      "subtitle": "The Coast FIRE blueprint: how to stop worrying about retirement and live for today",
+      "description": "Learn what Coast FIRE means, how to calculate your Coast FIRE number, and when you can stop saving for traditional retirement.",
       "date": "2025-11-17",
       "cover": "/blog/posts/what-is-Coast-FIRE/cover.webp",
       "tags": [
@@ -459,5 +459,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-05-01T08:47:32.370269Z"
+  "_generated_at": "2026-05-01T08:50:49.079955Z"
 }
