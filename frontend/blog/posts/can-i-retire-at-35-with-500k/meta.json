@@ -1,9 +1,23 @@
 {
-    "title": "Can I Retire at 35 with $500k? A Complete Strategy Breakdown",
+    "title": "Can I Retire at 35 With $500k?",
     "subtitle": "Every strategy simulated — from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.",
-    "description": "Can you retire at 35 with $500,000? We run every scenario — from the safest S&P 500 withdrawal strategies to real estate, dividend ETFs like JEPI, geo-arbitrage, house hacking, and hybrid approaches.",
+    "description": "Can you retire at 35 with $500k? See the math for U.S. costs, withdrawal rates, dividends, real estate, and geo-arbitrage.",
     "date": "2026-02-16",
     "cover": "cover.webp",
     "tags": ["strategies", "retirement planning"],
-    "featured": false
+    "featured": false,
+    "faqs": [
+        {
+            "question": "Can I retire at 35 with $500k in the United States?",
+            "answer": "For most people, retiring at 35 with $500k in the United States is not realistic because the portfolio must support 50 or more years of expenses, healthcare, taxes, and inflation."
+        },
+        {
+            "question": "How much income does $500k produce with the 4% rule?",
+            "answer": "A $500k portfolio produces about $20,000 per year, or $1,667 per month, using a 4% withdrawal rate before taxes."
+        },
+        {
+            "question": "Can geo-arbitrage make retiring at 35 with $500k possible?",
+            "answer": "Geo-arbitrage can make a $500k retirement more realistic if annual expenses fall low enough, especially in lower-cost countries or very low-cost domestic locations."
+        }
+    ]
 }

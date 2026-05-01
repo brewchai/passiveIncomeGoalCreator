@@ -1,12 +1,26 @@
 {
     "title": "How much do you need to retire at 40?",
     "subtitle": "A detailed breakdown of the math behind early retirement",
-    "description": "A detailed breakdown of the math behind early retirement",
+    "description": "See how much money you need to retire at 40 using annual expenses, safe withdrawal rates, bridge accounts, and realistic savings targets.",
     "date": "2025-11-10",
     "tags": [
         "featured",
         "basics"
     ],
     "cover": "/blog/posts/how-much-need-retire-forty-40/cover.webp",
-    "featured": true
+    "featured": true,
+    "faqs": [
+        {
+            "question": "How much money do you need to retire at 40?",
+            "answer": "A common target for retiring at 40 is 30 to 33 times annual expenses, because the portfolio may need to last 50 years or more."
+        },
+        {
+            "question": "Is the 4% rule safe for retiring at 40?",
+            "answer": "The 4% rule is often too aggressive for retiring at 40 because it was designed around a traditional 30-year retirement, not a 50- to 60-year horizon."
+        },
+        {
+            "question": "What withdrawal rate should a 40-year-old retiree consider?",
+            "answer": "Many early retirees planning to stop work at 40 use a more conservative withdrawal rate around 3.0% to 3.5%."
+        }
+    ]
 }

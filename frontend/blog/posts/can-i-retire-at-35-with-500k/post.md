@@ -2,11 +2,21 @@
 
 This is the question I see everywhere: Reddit, X (Twitter), FIRE forums, group chats. *"I have $500k saved. Can I quit everything at 35 and never work again?"*
 
-The short answer for the United States? **Almost certainly no.**
+The short answer for the United States? **Almost certainly no.** A $500k portfolio produces only about **$20,000/year** at a 4% withdrawal rate, and retiring at 35 means that money may need to last 55 years or more.
 
 The real answer? It depends on *where* you live, *how* you invest, and *how honest* you are with yourself about what $500k can actually buy you over 55 years.
 
 I'm going to run every realistic scenario — from the most conservative to the most aggressive — using real 2026 numbers, historical data, and actual strategies people use. No hand-waving. No "just cut back on lattes." Just math.
+
+---
+
+## Key Takeaways
+
+* Retiring at 35 with $500k is usually not viable in the United States because healthcare, housing, and inflation overwhelm the income.
+* At a 4% withdrawal rate, $500k produces about **$1,667/month** before taxes.
+* A 55-year retirement requires more caution than the standard 30-year 4% rule.
+* Geo-arbitrage, house hacking, part-time income, or a hybrid strategy can make the math more realistic.
+* Before quitting work, stress-test the plan with the [Sequence Risk Calculator](/tools/sequence-risk/) because early market losses can permanently damage a small portfolio.
 
 ---
 

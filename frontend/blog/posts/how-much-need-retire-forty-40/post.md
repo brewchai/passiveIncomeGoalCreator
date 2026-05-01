@@ -23,6 +23,28 @@ Let’s break it down with brutal honesty, clear numbers, and simple assumptions
 
 ---
 
+## Key Takeaways
+
+* To retire at 40, use a more conservative target than the classic 25x rule because the portfolio may need to last 50 to 60 years.
+* A practical baseline is **30.8x annual expenses**, which equals a 3.25% withdrawal rate.
+* A $48,000/year lifestyle needs roughly **$1.48 million** invested before counting home equity.
+* You need accessible money outside retirement accounts to bridge the gap between age 40 and age 59 1/2.
+* After estimating the number, test the first decade with the [Sequence Risk Calculator](/tools/sequence-risk/).
+
+## Quick Retirement-at-40 Targets
+
+<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+
+| Annual Spending | Target at 3.5% | Target at 3.25% | Target at 3.0% |
+|-----------------|----------------|-----------------|----------------|
+| $36,000 | $1.03M | $1.11M | $1.20M |
+| $48,000 | $1.37M | $1.48M | $1.60M |
+| $60,000 | $1.71M | $1.85M | $2.00M |
+
+</div>
+
+---
+
 ## 1. Why Retiring at 40 Demands a Completely Different Formula
 
 The standard FIRE formula uses the famous **4% Rule** (from the Trinity Study). This rule dictates that you can safely withdraw 4% of your investment portfolio, adjusted for inflation every year, without running out of money.
@@ -232,7 +254,7 @@ For these case studies, we will calculate estimated post-tax take-home pay, typi
 
 Early retirement is fragile if executed blindly. Here are the five real dangers you must plan for:
 
-1. **Sequence of Returns Risk:** If the stock market crashes by 40% in your *first five years* of retirement, selling stocks at rock-bottom prices can permanently cripple your portfolio’s longevity. You must hold emergency cash or bond buffers.
+1. **Sequence of Returns Risk:** If the stock market crashes by 40% in your *first five years* of retirement, selling stocks at rock-bottom prices can permanently cripple your portfolio’s longevity. You must hold emergency cash or bond buffers, and you should test the plan with the [Sequence Risk Calculator](/tools/sequence-risk/).
 2. **Healthcare Inflation:** A subsidized $600/month ACA plan today could easily become $2,000+ in 15 years. You must over-index your healthcare sinking funds.
 3. **Housing Volatility:** If you continue to rent, market spikes can destroy fixed budgets. Owning a home or securing geographic stability is crucial.
 4. **Boredom and Lifestyle Creep:** The first two years of FIRE are glorious. By year three, the boredom kicks in. Suddenly, you start taking expensive hobbies, dining out more, and traveling heavily. Spending naturally drifts upward. 
