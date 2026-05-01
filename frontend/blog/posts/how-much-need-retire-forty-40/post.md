@@ -34,13 +34,36 @@ Let’s break it down with brutal honesty, clear numbers, and simple assumptions
 ## Quick Retirement-at-40 Targets
 
 <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-
-| Annual Spending | Target at 3.5% | Target at 3.25% | Target at 3.0% |
-|-----------------|----------------|-----------------|----------------|
-| $36,000 | $1.03M | $1.11M | $1.20M |
-| $48,000 | $1.37M | $1.48M | $1.60M |
-| $60,000 | $1.71M | $1.85M | $2.00M |
-
+<table>
+<thead>
+<tr>
+<th>Annual Spending</th>
+<th>Target at 3.5%</th>
+<th>Target at 3.25%</th>
+<th>Target at 3.0%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$36,000</td>
+<td>$1.03M</td>
+<td>$1.11M</td>
+<td>$1.20M</td>
+</tr>
+<tr>
+<td>$48,000</td>
+<td>$1.37M</td>
+<td>$1.48M</td>
+<td>$1.60M</td>
+</tr>
+<tr>
+<td>$60,000</td>
+<td>$1.71M</td>
+<td>$1.85M</td>
+<td>$2.00M</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 ---
