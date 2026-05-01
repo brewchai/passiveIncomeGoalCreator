@@ -18,6 +18,8 @@ Whether you're dreaming of early retirement on a beach or just want the freedom 
 
 **LeanFIRE** is for those willing to live frugally and keep expenses extremely low. It often requires a lower savings target but also means accepting a simpler lifestyle.
 
+For a deeper breakdown of annual expenses, spending ranges, and risks, read the full [Lean FIRE guide](/blog/what-is-LEAN-FIRE).
+
 ### Key Traits
 
 * Retire on $30k–$40k or less annually
@@ -96,6 +98,8 @@ Combined, Mike (engineer) and Sarah (pharmacist) saved $3.5M by age 50. They now
 
 **BaristaFIRE** blends passive income with part-time work. The idea: you don’t need to save *everything* before quitting — you earn enough to cover some expenses, while investments grow.
 
+For the full math and tradeoffs, read the detailed [Barista FIRE guide](/blog/what-is-barista-FIRE).
+
 The name comes from the idea of working a low-pressure job (like *Starbucks*, which offers benefits even to part-time employees).
 
 ### Who BaristaFIRE Appeals To
@@ -133,6 +137,8 @@ Raj quit his tech job but now teaches yoga and works part-time at a community ca
 ## CoastFIRE: Let Compound Interest Do the Heavy Lifting
 
 **CoastFIRE** means you've saved *enough* early in life that if your investments simply grow over time (unaided), they'll fully fund retirement when you reach traditional age. You can now stop contributing to retirement, and only work to cover current expenses.
+
+For the mechanics and target-number math, read the full [Coast FIRE guide](/blog/what-is-Coast-FIRE). For a personal version of this path, read how I went [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
 
 ### Why It’s Called "Coasting"
 

@@ -42,7 +42,7 @@ That's when I found FIRE. And it felt like someone had handed me the key to my p
 
 *Just save 70% of your income for 10 years and you'll never have to work again.*
 
-I latched onto that like it was scripture. [I paid off the debt, built to $1M by 33](/blog/40k-debt-to-coast-fire-at-33), moved to Vietnam, and [brought my expenses down to $1,100/month](/blog/living-on-1100-per-month). By every FIRE metric, I'd made it.
+I latched onto that like it was scripture. [I paid off the debt, built to $1M by 33](/blog/40k-debt-to-coast-fire-at-33), moved to Vietnam, and [brought my expenses down to $1,100/month](/blog/living-on-1100-per-month). By every FIRE metric, I'd made it. I unpack more of that transition in [my first year after leaving corporate tech](/blog/first-year-fire-reflection), but the short version is this: financial freedom solved the money problem, not the identity problem.
 
 But here's what nobody in the FIRE community talks about honestly: the day after you "retire," **you're still you**. You still wake up at the same time. You still have the same brain. The same anxieties. The same restlessness.
 
