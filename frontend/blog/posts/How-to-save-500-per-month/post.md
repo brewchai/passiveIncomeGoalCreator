@@ -21,7 +21,7 @@ Below are six practical saving strategies that help you reliably hit that $500/m
 
 ---
 
-# 1. One “No-Spend Day” Per Week  
+## 1. One “No-Spend Day” Per Week  
 A no-spend day is not about deprivation. It’s about interrupting the constant stream of micro-purchases that bleed your wallet dry without you noticing.
 
 ### How it works:
@@ -39,7 +39,7 @@ Most unnecessary purchases happen in micro-moments of boredom or convenience. Re
 
 ---
 
-# 2. The “Add to Cart, Wait One Week” Rule  
+## 2. The “Add to Cart, Wait One Week” Rule  
 Impulse spending is the silent killer of FIRE progress. You think you’re making one-off purchases, but they snowball. This trick turns impulsivity into intentionality.
 
 ### How it works:
@@ -57,7 +57,7 @@ The average person eliminates $100–$300/month of unnecessary items with this d
 
 ---
 
-# 3. The “No Uber Under 3 Miles” Rule  
+## 3. The “No Uber Under 3 Miles” Rule  
 This rule is simple and brutal — but ridiculously effective.
 
 ### How it works:
@@ -79,7 +79,7 @@ Cutting 10–15 short rides a month easily saves:
 
 ---
 
-# 4. Review Subscriptions Monthly  
+## 4. Review Subscriptions Monthly  
 Subscriptions multiply quietly. You sign up for a $7 app here, a $14 trial there, a $20 upgrade next month — and suddenly you’re at $250–$400/month without noticing.
 
 ### How it works:
@@ -102,7 +102,7 @@ You’ll usually find:
 
 ---
 
-# 5. Buy a Coffee Maker (French Press or Moka Pot)  
+## 5. Buy a Coffee Maker (French Press or Moka Pot)  
 At ButFirstFire, we are huge fans of coffee ourselves. Hence the pun in the title. But coffee expenses add up fast. The $5 coffee quickly becomes a $7 coffee with tips and taxes and $10 if you can't resist getting the  cookie as well. Coffee expenses therefore need to be watched.
 
 ### How it works:
@@ -121,7 +121,7 @@ Most people save $60–$150/month with this alone.
 
 ---
 
-# 6. Marketplace Before Amazon, Refurbished Before New  
+## 6. Marketplace Before Amazon, Refurbished Before New  
 Amazon is the easy button. They now have a one-click buy button. It's the doom of impulse buyers. But “easy” kills FIRE goals.
 
 ### How it works:
@@ -146,7 +146,7 @@ Most people save $100–$200/month with this rule, *without sacrificing quality.
 
 ---
 
-# Putting It All Together
+## Putting It All Together
 
 If you implement every rule aggressively:
 - **Minimum savings:** ~$450/month  
@@ -171,4 +171,3 @@ You just need a handful of rules that nudge you toward intention instead of conv
 
 And those rules — done consistently — can buy you something priceless:  
 **years of freedom back.** See how I saved 50% of my income in my [journey to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
-

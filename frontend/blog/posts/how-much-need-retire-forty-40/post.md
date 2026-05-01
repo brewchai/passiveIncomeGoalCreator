@@ -195,7 +195,7 @@ $43,200 a year in sheer investments is a staggering amount of money. Is it actua
 
 That depends entirely on your income, your geography, and your discipline with the Two-Pronged Approach. Let’s run three distinct case studies to see the reality.
 
-# 🔍 **Case Study Comparisons (US)**
+## Case Study Comparisons (US)
 
 For these case studies, we will calculate estimated post-tax take-home pay, typical FIRE living expenses, resulting savings potential, and the final net worth at age 40 (assuming a 7% return over 18 years).
 
