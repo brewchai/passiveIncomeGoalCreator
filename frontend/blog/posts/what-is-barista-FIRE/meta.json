@@ -8,5 +8,15 @@
         "basics"
     ],
     "cover": "/blog/posts/what-is-barista-FIRE/cover.webp",
-    "featured": true
+    "featured": true,
+    "faqs": [
+        {
+            "question": "What is Barista FIRE?",
+            "answer": "Barista FIRE is a partial early retirement strategy where investments cover part of your expenses while lower-stress part-time work covers the rest."
+        },
+        {
+            "question": "How is Barista FIRE different from traditional FIRE?",
+            "answer": "Traditional FIRE requires enough invested assets to cover nearly all living expenses, while Barista FIRE relies on a smaller portfolio plus ongoing flexible income."
+        }
+    ]
 }

@@ -76,6 +76,38 @@ def process_live_tags(text: str) -> str:
     
     return text
 
+def build_faq_json_ld(meta: dict) -> str:
+    faqs = meta.get("faqs", [])
+    if not isinstance(faqs, list):
+        return ""
+
+    main_entity = []
+    for item in faqs:
+        if not isinstance(item, dict):
+            continue
+        question = str(item.get("question", "")).strip()
+        answer = str(item.get("answer", "")).strip()
+        if not question or not answer:
+            continue
+        main_entity.append({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": answer
+            }
+        })
+
+    if not main_entity:
+        return ""
+
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": main_entity
+    }
+    return f'<script type="application/ld+json">\n  {json.dumps(json_ld, ensure_ascii=False)}\n  </script>'
+
 
 def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> str:
     title = meta["title"].strip()
@@ -132,6 +164,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
         "mainEntityOfPage": canonical_abs,
     }
     page = page.replace("{{ARTICLE_JSON_LD}}", json.dumps(json_ld, ensure_ascii=False))
+    page = page.replace("{{FAQ_JSON_LD}}", build_faq_json_ld(meta))
 
     return page
 
