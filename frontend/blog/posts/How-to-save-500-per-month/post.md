@@ -7,17 +7,26 @@ Take a look at the dashboard below to see how the extra $500/month can move your
 
 ![ButFirstFIRE Dashboard](/blog/posts/images/dashboard-screenshot-before-savings.png)
 
-An average american making a modest $80k salary and spending American Averages can retire 3 years earlier by using the tips laid down below. 
+An average American making a modest $80k salary and spending around national averages can retire roughly 3 years earlier by using the rules below consistently.
 
 ![ButFirstFIRE Dashboard](/blog/posts/images/dashboard-screenshot-after-savings.png)
 
 If you’re currently saving 10% and jump to 20%, your FIRE timeline doesn’t speed up by 10%. It can speed up by *Years*. This is the magic of compounding combined with a higher savings rate.
 
-On [**ButFirstFIRE**](https://butfirstfire.com), We break down your exact numbers — your income, your expenses, your FI number, and your projected retirement year — and show *exactly* how the extra $500 affects your timeline. The dashboard shows, in real time, how each spending habit pushes your FIRE date earlier or later.
+On [**ButFirstFIRE**](https://butfirstfire.com), we break down your exact numbers — your income, your expenses, your FI number, and your projected retirement year — and show *exactly* how the extra $500 affects your timeline. The dashboard shows, in real time, how each spending habit pushes your FIRE date earlier or later.
 
 The good news: getting to that extra $500/month doesn’t require extreme frugality. You don’t need to live like a monk, eat rice and lentils for eternity, or swear off joy. You just need structure, a few simple behavioral tricks, and some guardrails that make saving the default instead of the exception.
 
 Below are six practical saving strategies that help you reliably hit that $500/month mark… and they don’t feel like punishment.
+
+---
+
+## Key Takeaways
+
+* Saving $500 a month equals **$6,000 per year** before investment growth.
+* Invested consistently, $500/month can become roughly **$260,000 over 20 years** at a 7% annual return.
+* You do not need one huge sacrifice. Six smaller rules can combine into a reliable $500/month savings gap.
+* The FIRE benefit comes from two forces at once: lower annual expenses and more money invested.
 
 ---
 

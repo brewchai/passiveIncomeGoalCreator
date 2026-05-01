@@ -1,12 +1,26 @@
 {
-    "title": "Here's how you can save upto $500 each month",
+    "title": "How to Save $500 a Month",
     "subtitle": "And retire years earlier than you thought you could",
-    "description": "Psychological tips and tricks that can help you save more money than you can think of",
+    "description": "Use practical spending rules to save $500 a month, invest the difference, and move your FIRE timeline earlier.",
     "date": "2025-11-18",
     "tags": [
         "featured",
         "basics"
     ],
     "cover": "/blog/posts/How-to-save-500-per-month/cover.webp",
-    "featured": false
+    "featured": false,
+    "faqs": [
+        {
+            "question": "How can I save $500 a month?",
+            "answer": "You can save $500 a month by combining several smaller rules, such as no-spend days, delayed purchases, fewer short rides, subscription reviews, home coffee, and buying used or refurbished items."
+        },
+        {
+            "question": "How much is saving $500 a month per year?",
+            "answer": "Saving $500 a month equals $6,000 per year before investment growth."
+        },
+        {
+            "question": "Can saving $500 a month help with FIRE?",
+            "answer": "Saving and investing $500 a month can materially improve a FIRE timeline because it increases savings rate and adds invested capital that can compound over time."
+        }
+    ]
 }
