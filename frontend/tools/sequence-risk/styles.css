@@ -725,3 +725,73 @@ textarea:focus {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ── Download CTA Card ── */
+.download-cta-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary, #667eea);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.download-cta-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.download-cta-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex: none;
+}
+
+.download-cta-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+}
+
+.download-cta-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── Download Modal form extras ── */
+.modal-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0.5rem 0 1.25rem;
+    line-height: 1.6;
+}
+
+.download-email-form .field-control {
+    background: rgba(0,0,0,0.08);
+}
+
+.download-error {
+    color: #EF4444;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .download-cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .download-cta-card .primary-btn {
+        width: 100%;
+    }
+}

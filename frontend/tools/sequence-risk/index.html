@@ -49,7 +49,7 @@
                     <button class="modal-close" id="closeModal">&times;</button>
                     <h2>What is sequence of returns risk?</h2>
                     <div class="prose">
-                        <p>Imagine two retirees, <strong>Alice</strong> and <strong>Bob</strong>. They both invest $1M, withdraw $50k/year, and average a 7% return over 30 years.</p>
+                        <p>Imagine two retirees, <strong>Alice</strong> and <strong>Bob</strong>. They both invest $1M, withdraw $50k/year, and average a 7% return over their retirement.</p>
                         <p>However, <strong>Alice</strong> experiences a market crash in her first three years of retirement, while <strong>Bob</strong> experiences the same crash in his final three years.</p>
                         <p>Alice goes broke after 15 years because she had to sell off her portfolio at rock-bottom prices just to pay for groceries. Her portfolio never recovered. Bob dies with $3M in the bank.</p>
                         <p><strong>Sequence risk</strong> is the danger of experiencing poor market returns early in retirement. When you are withdrawing money during a crash, you permanently destroy your portfolio's ability to bounce back.</p>
@@ -124,10 +124,10 @@
                     </label>
                 </form>
 
-                    <label class="field" style="display: none;">
+                    <label class="field">
                         <span class="field-label">Retirement Length</span>
                         <div class="field-control field-control-years">
-                            <input id="retirementYears" type="number" inputmode="numeric" min="1" max="80" step="1" value="30">
+                            <input id="retirementYears" type="number" inputmode="numeric" min="1" max="80" step="1" value="50">
                             <span class="field-suffix">years</span>
                         </div>
                     </label>
@@ -167,7 +167,7 @@
                 
                 <!-- THE CHART -->
                 <section class="section">
-                    <h2 class="section-heading" id="chartHeading">30-Year Portfolio Value</h2>
+                    <h2 class="section-heading" id="chartHeading">Portfolio Value Over Time</h2>
                     <p class="section-desc" id="chartSubHeading">Projected Scenario</p>
                     <div class="chart-card">
                         <div class="chart-shell" style="position: relative;">
@@ -221,6 +221,40 @@
                     <p class="sequence-note" id="sequenceNote"></p>
                 </section>
                 
+                <!-- DOWNLOAD CTA -->
+                <section class="section" id="downloadSection">
+                    <div class="download-cta-card">
+                        <div class="download-cta-content">
+                            <span class="download-cta-icon">📥</span>
+                            <div>
+                                <h3 class="download-cta-title">Save your Guardrails plan</h3>
+                                <p class="download-cta-desc">Download a year-by-year CSV of your withdrawal schedule, portfolio values, and guardrail triggers.</p>
+                            </div>
+                        </div>
+                        <button class="primary-btn" id="openDownloadModal" type="button">Download CSV</button>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- EMAIL GATE MODAL -->
+            <div id="downloadModal" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                    <button class="modal-close" id="closeDownloadModal">&times;</button>
+                    <h2>Get your retirement plan</h2>
+                    <p class="modal-desc">Enter your email and we'll send you FIRE tips — your CSV downloads instantly.</p>
+                    <form id="downloadEmailForm" class="download-email-form">
+                        <div class="field">
+                            <label class="field-label" for="downloadEmail">Email Address</label>
+                            <div class="field-control">
+                                <input id="downloadEmail" type="email" inputmode="email" placeholder="you@example.com" autocomplete="email" required>
+                            </div>
+                        </div>
+                        <button class="primary-btn" id="downloadSubmitBtn" type="submit" style="width: 100%; margin-top: 1rem;">Download CSV →</button>
+                        <p id="downloadEmailError" class="download-error" style="display:none;">Please enter a valid email address.</p>
+                    </form>
+                    <p class="fine-print" style="margin-top: 1rem; margin-bottom: 0;">No spam, ever. Unsubscribe anytime.</p>
+                </div>
             </div>
 
             <p class="fine-print">This calculator is for educational purposes only. It does not account for taxes, investment fees, changing asset allocation, or individual financial circumstances. This is not financial advice.</p>
