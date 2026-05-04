@@ -46,6 +46,10 @@ body {
 }
 
 /* Header */
+:root {
+    --header-h: 84px;
+}
+
 .blog-header {
     background: var(--card-background);
     border-bottom: 1px solid var(--border-color);

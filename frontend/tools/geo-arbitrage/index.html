@@ -25,6 +25,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
     <link rel="stylesheet" href="./styles.css">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is geo-arbitrage?","acceptedAnswer":{"@type":"Answer","text":"Geo-arbitrage means using location differences in cost of living to make the same income or portfolio support a higher savings rate or lower retirement budget."}},{"@type":"Question","name":"What does the geo-arbitrage calculator compare?","acceptedAnswer":{"@type":"Answer","text":"The calculator compares cities by monthly income, net worth, household size, lifestyle level, and FIRE profile to estimate where your money may go further."}},{"@type":"Question","name":"Can geo-arbitrage help with FIRE?","acceptedAnswer":{"@type":"Answer","text":"Geo-arbitrage can help FIRE by reducing annual expenses, which lowers the portfolio size needed to reach financial independence."}}]}
@@ -32,6 +33,18 @@
 </head>
 
 <body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
     <div class="geo-shell">
         <aside class="control-panel">
             <button class="mobile-sheet-toggle" id="mobileSheetToggle" type="button" aria-expanded="false"
@@ -53,7 +66,6 @@
                     <p>Adjust your monthly income, household, profile, and lifestyle to compare affordable places around the world.</p>
                 </section>
 
-                <a class="brand-link" href="/blog">But First Fire</a>
                 <h1>Geo Arbitrage Portal</h1>
                 <p class="panel-copy">Find the best geo-arbitrage cities based on cost of living, monthly income, or net worth. Compare affordable retirement and remote work destinations for solo living, couples, and families using this interactive FIRE calculator.</p>
 
@@ -155,7 +167,7 @@
                     <p class="stage-kicker">Current Threshold</p>
                     <p class="stage-value" id="stageValue">$3,500/mo buys 0 cities</p>
                 </div>
-                <a class="stage-link" href="/blog">Back to the blog</a>
+                <a class="stage-link" href="/tools">← All Tools</a>
             </div>
             <div class="mobile-view-toggle" role="tablist" aria-label="Mobile view mode">
                 <button class="mobile-view-chip" id="mobileGlobeTab" type="button" role="tab"

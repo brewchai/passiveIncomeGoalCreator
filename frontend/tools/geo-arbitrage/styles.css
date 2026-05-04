@@ -37,7 +37,7 @@ a {
 }
 
 .geo-shell {
-    height: 100vh;
+    height: calc(100vh - var(--header-h));
     display: grid;
     grid-template-columns: minmax(320px, 420px) 1fr;
     overflow: hidden;
@@ -52,7 +52,7 @@ a {
     backdrop-filter: blur(18px);
     overflow-y: auto;
     min-height: 0;
-    max-height: 100vh;
+    max-height: calc(100vh - var(--header-h));
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
@@ -463,7 +463,7 @@ body.globe-modal-open {
 
 .globe-stage {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-h));
     min-width: 0;
     overflow: hidden;
 }
@@ -557,7 +557,7 @@ body.globe-modal-open {
 
 .globe-canvas {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - var(--header-h));
 }
 
 .globe-canvas.mobile-hidden {
