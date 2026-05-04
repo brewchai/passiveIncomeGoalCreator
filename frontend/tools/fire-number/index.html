@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIRE Number Calculator | But First Fire</title>
+    <meta name="description" content="Calculate exactly how much money you need to retire early. Enter your expenses, savings rate, and expected return to find your FIRE number and years to financial independence.">
+    <link rel="canonical" href="https://butfirstfire.com/tools/fire-number/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FIRE Number Calculator | But First Fire">
+    <meta property="og:description" content="Calculate exactly how much money you need to retire early. Find your FIRE number and see exactly how many years until financial independence.">
+    <meta property="og:url" content="https://butfirstfire.com/tools/fire-number/">
+    <meta property="og:image" content="https://butfirstfire.com/favicon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FIRE Number Calculator | But First Fire">
+    <meta name="twitter:description" content="Find your FIRE number and years to financial independence with this free calculator.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./fire-number.js" defer></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a FIRE number?","acceptedAnswer":{"@type":"Answer","text":"Your FIRE number is the total portfolio value you need to retire early and never run out of money. It is calculated by dividing your annual expenses by your chosen safe withdrawal rate. At the standard 4% rule, your FIRE number is 25 times your annual spending."}},{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule states that you can withdraw 4% of your portfolio in year one of retirement, then adjust for inflation each year, and your portfolio will last at least 30 years. Research by William Bengen and the Trinity Study showed this held through every historical market period including the Great Depression."}},{"@type":"Question","name":"Should I use 3.5% or 4% withdrawal rate for early retirement?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule was designed for a 30-year retirement. If you plan to retire early — say at 35 or 40 — your money needs to last 50+ years. Many FIRE practitioners use a 3% to 3.5% withdrawal rate to add a safety margin for longer retirements."}}]}
+    </script>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="fire-shell">
+
+            <!-- MODAL: WHAT IS THE 4% RULE? -->
+            <div id="infoModal" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                    <button class="modal-close" id="closeModal">&times;</button>
+                    <h2>The 4% Rule, explained</h2>
+                    <div class="prose">
+                        <p>In 1994, financial advisor William Bengen analysed every 30-year retirement period since 1926. He found that a retiree who withdrew <strong>4% of their portfolio in year one</strong> — then adjusted for inflation each year after — never ran out of money. Not even in 1929. Not even in 1966.</p>
+                        <p>The <strong>Trinity Study</strong> (1998) confirmed this. It became the bedrock of FIRE planning.</p>
+                        <p>The mathematical shortcut: <strong>FIRE Number = Annual Expenses ÷ Withdrawal Rate</strong>. At 4%, that's 25× your annual spend. At 3.5%, it's 28.6×.</p>
+                        <p>If you plan to retire <strong>very early</strong> (before 40), many practitioners use 3%–3.5% to account for a 50+ year retirement horizon.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL GATE MODAL removed — replaced by inline newsletter CTA -->
+
+            <div class="title-row">
+                <h1 class="page-title">FIRE Number Calculator</h1>
+                <button id="openModal" class="info-link">What is the 4% rule?</button>
+            </div>
+            <p class="page-desc">Find exactly how much money you need to retire early — and how many years away you are.</p>
+
+            <!-- INPUTS -->
+            <section class="section card" id="inputsSection">
+                <div class="card-head">
+                    <h2>Your numbers</h2>
+                </div>
+                <form class="input-grid" id="fireForm">
+                    <label class="field">
+                        <span class="field-label">Annual Spending in Retirement</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="annualSpend" type="number" inputmode="numeric" min="0" step="1000" value="60000">
+                        </div>
+                        <span class="field-help">Your expected yearly expenses once retired</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Current Portfolio Value</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="currentPortfolio" type="number" inputmode="numeric" min="0" step="5000" value="100000">
+                        </div>
+                        <span class="field-help">Total investments (stocks, bonds, 401k, IRA, etc.)</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Annual Savings (Contributions)</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="annualSavings" type="number" inputmode="numeric" min="0" step="1000" value="30000">
+                        </div>
+                        <span class="field-help">How much you add to investments per year</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Expected Annual Return</span>
+                        <div class="field-control field-control-percent">
+                            <input id="expectedReturn" type="number" inputmode="decimal" min="0" max="20" step="0.1" value="7.0">
+                            <span class="field-suffix">%</span>
+                        </div>
+                        <span class="field-help">After-inflation real return (7% nominal → ~4% real)</span>
+                    </label>
+                </form>
+
+                <!-- Withdrawal Rate Slider -->
+                <div class="wr-section">
+                    <div class="wr-header">
+                        <span class="field-label">Withdrawal Rate</span>
+                        <span class="wr-value-display" id="wrDisplay">4.0%</span>
+                    </div>
+                    <input type="range" id="withdrawalRate" min="2.5" max="5" step="0.5" value="4.0" class="wr-slider">
+                    <div class="wr-labels">
+                        <span>2.5% — Ultra safe</span>
+                        <span>3.5% — Early retiree</span>
+                        <span>5% — Aggressive</span>
+                    </div>
+                </div>
+
+                <div class="field-actions" style="padding: 0 1.25rem 1.25rem;">
+                    <button class="primary-btn" id="calcButton" type="button" style="width: 100%;">
+                        Calculate my FIRE number
+                    </button>
+                </div>
+            </section>
+
+            <!-- RESULTS (hidden initially) -->
+            <div id="resultsContainer" style="display: none;">
+
+                <!-- HERO RESULT -->
+                <section class="section">
+                    <div class="fire-hero-result" id="heroResult">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+
+                <!-- PROGRESS BAR -->
+                <section class="section">
+                    <h2 class="section-heading">How close are you?</h2>
+                    <div class="progress-card">
+                        <div class="progress-labels">
+                            <span id="progressPct" class="progress-pct">0%</span>
+                            <span id="progressRemaining" class="progress-rem"></span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-ends">
+                            <span>$0</span>
+                            <span id="progressTarget"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CHART -->
+                <section class="section">
+                    <h2 class="section-heading">Portfolio growth to FIRE</h2>
+                    <p class="section-desc" id="chartSubDesc"></p>
+                    <div class="chart-card">
+                        <div class="chart-shell" style="position: relative;">
+                            <canvas id="fireChart" class="chart-canvas" aria-label="Portfolio growth to FIRE number"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- WITHDRAWAL RATE COMPARISON -->
+                <section class="section">
+                    <h2 class="section-heading">Withdrawal rate comparison</h2>
+                    <p class="section-desc">How your FIRE number and timeline change at different withdrawal rates.</p>
+                    <div class="wr-compare-grid" id="wrCompareGrid">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+
+                <!-- NEWSLETTER CTA -->
+                <section class="section">
+                    <div class="newsletter-cta-card" id="newsletterCta">
+                        <div class="newsletter-cta-text">
+                            <h3 class="newsletter-cta-title">Stay in the loop 🔥</h3>
+                            <p class="newsletter-cta-desc">Get the latest on FIRE strategies, new tools, and real money stories — straight to your inbox. No fluff.</p>
+                        </div>
+                        <form class="newsletter-cta-form" id="newsletterCtaForm">
+                            <div class="newsletter-cta-input-row">
+                                <input id="newsletterCtaEmail" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" required class="newsletter-cta-input">
+                                <button type="submit" class="primary-btn newsletter-cta-btn">Subscribe</button>
+                            </div>
+                            <p id="newsletterCtaMsg" class="newsletter-cta-msg" style="display:none;"></p>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- FAQ -->
+            <section class="section faq-section">
+                <h2 class="section-heading">Frequently asked questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary class="faq-q">What is a FIRE number?</summary>
+                        <p class="faq-a">Your FIRE number is the total invested portfolio you need to retire early and live off withdrawals indefinitely. At the 4% rule, it's 25× your annual expenses. So if you spend $60,000/year, your FIRE number is $1,500,000.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">What withdrawal rate should I use?</summary>
+                        <p class="faq-a">If you plan to retire at a traditional age (60s), 4% is well-tested. If you're planning an early retirement lasting 40–50+ years, most FIRE practitioners use 3%–3.5% as a safety margin. The lower the rate, the larger your FIRE number — but also the safer your plan.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">Does this account for inflation?</summary>
+                        <p class="faq-a">Use the "Expected Annual Return" field to enter a <em>real</em> (inflation-adjusted) return. The historical US stock market has returned ~10% nominally and ~7% in real (after-inflation) terms. Entering 7% here means your projections are already inflation-adjusted.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">What about Social Security or pension income?</summary>
+                        <p class="faq-a">Reduce your "Annual Spending in Retirement" by any guaranteed income you'll receive. If you'll get $15,000/year from Social Security, and you spend $60,000/year, enter $45,000 as your annual spend — that's the gap your portfolio needs to cover.</p>
+                    </details>
+                </div>
+            </section>
+
+            <p class="fine-print">This calculator is for educational purposes only. It does not account for taxes, investment fees, changing asset allocation, or individual financial circumstances. This is not financial advice.</p>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
