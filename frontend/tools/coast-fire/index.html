@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coast FIRE Calculator | But First Fire</title>
+    <meta name="description" content="Find your Coast FIRE number — the amount you need invested today so you never have to save another dollar and still retire on time. You might already be coasting.">
+    <link rel="canonical" href="https://butfirstfire.com/tools/coast-fire/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Coast FIRE Calculator | But First Fire">
+    <meta property="og:description" content="Calculate your Coast FIRE number instantly. You might already be coasting and not know it.">
+    <meta property="og:url" content="https://butfirstfire.com/tools/coast-fire/">
+    <meta property="og:image" content="https://butfirstfire.com/favicon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Coast FIRE Calculator | But First Fire">
+    <meta name="twitter:description" content="Find your Coast FIRE number and see if you can stop contributing today.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./coast-fire.js" defer></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Coast FIRE?","acceptedAnswer":{"@type":"Answer","text":"Coast FIRE is a milestone where your invested portfolio is large enough that — with no further contributions — it will grow to your full FIRE number by your target retirement age, purely through compound growth. Once you hit it, you only need to earn enough to cover your current living expenses."}},{"@type":"Question","name":"How is the Coast FIRE number calculated?","acceptedAnswer":{"@type":"Answer","text":"Coast FIRE Number = FIRE Number ÷ (1 + annual return)^(years until retirement). For example, if you need $1.5M at 60, expect 7% returns, and are currently 35, your Coast FIRE number is $1,500,000 ÷ (1.07)^25 ≈ $274,000."}},{"@type":"Question","name":"What happens after you hit Coast FIRE?","acceptedAnswer":{"@type":"Answer","text":"After reaching Coast FIRE, you can stop saving for retirement entirely and only need income to cover your day-to-day living expenses. Your portfolio does the heavy lifting from there. Many people use this milestone to switch to lower-stress, part-time, or more meaningful work."}}]}
+    </script>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="coast-shell">
+
+            <!-- INFO MODAL -->
+            <div id="infoModal" class="modal-overlay" style="display:none;">
+                <div class="modal-content">
+                    <button class="modal-close" id="closeModal">&times;</button>
+                    <h2>What is Coast FIRE?</h2>
+                    <div class="prose">
+                        <p>Coast FIRE is the point where your portfolio is large enough that — <strong>with zero new contributions</strong> — it will grow to your full FIRE number by your target retirement age through compound interest alone.</p>
+                        <p>The formula: <strong>Coast FIRE Number = FIRE Number ÷ (1 + r)ⁿ</strong>, where r is your annual return and n is years until retirement.</p>
+                        <p>Once you hit Coast FIRE, you've "won the savings game." You still need income to pay bills, but you're done building the nest egg. That's when people switch to part-time work, passion projects, or lower-paying jobs they actually enjoy.</p>
+                        <p>Many people are <strong>closer than they think</strong> — or already there.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title-row">
+                <h1 class="page-title">Coast FIRE Calculator</h1>
+                <button id="openModal" class="info-link">What is Coast FIRE?</button>
+            </div>
+            <p class="page-desc">Find the number you need today so compound growth does the rest. You might already be coasting.</p>
+
+            <!-- INPUTS -->
+            <section class="section card" id="inputsSection">
+                <div class="card-head"><h2>Your numbers</h2></div>
+                <form class="input-grid" id="coastForm">
+                    <label class="field">
+                        <span class="field-label">Current Age</span>
+                        <div class="field-control">
+                            <input id="currentAge" type="number" inputmode="numeric" min="18" max="80" step="1" value="30">
+                        </div>
+                        <span class="field-help">Your age today</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Target Retirement Age</span>
+                        <div class="field-control">
+                            <input id="retirementAge" type="number" inputmode="numeric" min="40" max="80" step="1" value="60">
+                        </div>
+                        <span class="field-help">When you want to fully retire</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Annual Spending in Retirement</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="annualSpend" type="number" inputmode="numeric" min="0" step="1000" value="60000">
+                        </div>
+                        <span class="field-help">Your expected yearly expenses once retired</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Current Portfolio Value</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="currentPortfolio" type="number" inputmode="numeric" min="0" step="5000" value="100000">
+                        </div>
+                        <span class="field-help">Total investments today (401k, IRA, taxable, etc.)</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Annual Contributions</span>
+                        <div class="field-control field-control-money">
+                            <span class="field-prefix">$</span>
+                            <input id="annualContrib" type="number" inputmode="numeric" min="0" step="1000" value="20000">
+                        </div>
+                        <span class="field-help">How much you add per year currently</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Expected Annual Return</span>
+                        <div class="field-control field-control-percent">
+                            <input id="expectedReturn" type="number" inputmode="decimal" min="0" max="20" step="0.1" value="7.0">
+                            <span class="field-suffix">%</span>
+                        </div>
+                        <span class="field-help">Real (inflation-adjusted) return rate</span>
+                    </label>
+                </form>
+
+                <!-- WR Slider -->
+                <div class="wr-section">
+                    <div class="wr-header">
+                        <span class="field-label">Withdrawal Rate (for FIRE number)</span>
+                        <span class="wr-value-display" id="wrDisplay">4.0%</span>
+                    </div>
+                    <input type="range" id="withdrawalRate" min="2.5" max="5" step="0.5" value="4.0" class="wr-slider">
+                    <div class="wr-labels">
+                        <span>2.5% — Ultra safe</span>
+                        <span>3.5% — Early retiree</span>
+                        <span>5% — Aggressive</span>
+                    </div>
+                </div>
+
+                <div style="padding: 0 1.25rem 1.25rem;">
+                    <button class="primary-btn" id="calcButton" type="button" style="width:100%;">
+                        Calculate my Coast FIRE number
+                    </button>
+                </div>
+            </section>
+
+            <!-- RESULTS -->
+            <div id="resultsContainer" style="display:none;">
+
+                <!-- HERO -->
+                <section class="section">
+                    <div class="coast-hero" id="coastHero"></div>
+                </section>
+
+                <!-- PROGRESS -->
+                <section class="section">
+                    <h2 class="section-heading">How close are you to coasting?</h2>
+                    <div class="progress-card">
+                        <div class="progress-labels">
+                            <span id="progressPct" class="progress-pct">0%</span>
+                            <span id="progressRem" class="progress-rem"></span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-ends">
+                            <span>$0</span>
+                            <span id="progressTarget"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CHART -->
+                <section class="section">
+                    <h2 class="section-heading">Your two-phase journey</h2>
+                    <p class="section-desc" id="chartDesc"></p>
+                    <div class="chart-card">
+                        <div class="chart-legend" id="chartLegend"></div>
+                        <div class="chart-shell">
+                            <canvas id="coastChart" class="chart-canvas" aria-label="Coast FIRE two-phase projection chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- COMPARISON -->
+                <section class="section">
+                    <h2 class="section-heading">Coast FIRE vs. Traditional FIRE</h2>
+                    <p class="section-desc">How the two milestones compare for your situation.</p>
+                    <div class="compare-grid" id="compareGrid"></div>
+                </section>
+
+                <!-- NEWSLETTER CTA -->
+                <section class="section">
+                    <div class="newsletter-cta-card">
+                        <div class="newsletter-cta-text">
+                            <h3 class="newsletter-cta-title">Stay in the loop 🔥</h3>
+                            <p class="newsletter-cta-desc">Get the latest on FIRE strategies, new tools, and real money stories — straight to your inbox. No fluff.</p>
+                        </div>
+                        <form class="newsletter-cta-form" id="newsletterForm">
+                            <div class="newsletter-cta-input-row">
+                                <input id="newsletterEmail" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" required class="newsletter-cta-input">
+                                <button type="submit" class="primary-btn newsletter-cta-btn">Subscribe</button>
+                            </div>
+                            <p id="newsletterMsg" class="newsletter-cta-msg" style="display:none;"></p>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- FAQ -->
+            <section class="section faq-section">
+                <h2 class="section-heading">Frequently asked questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary class="faq-q">What is Coast FIRE?</summary>
+                        <p class="faq-a">Coast FIRE is the point where your portfolio can grow to your full retirement number — with no further contributions — purely through compound interest. You still need income to live on, but you're done "building the nest egg."</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">How is the Coast FIRE number calculated?</summary>
+                        <p class="faq-a">Coast FIRE Number = FIRE Number ÷ (1 + annual return)<sup>years until retirement</sup>. This is the present value of your future FIRE target, discounted at your expected return rate. Once your portfolio exceeds this number, you're coasting.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">What can I do once I hit Coast FIRE?</summary>
+                        <p class="faq-a">You only need to cover your current living expenses — no more retirement saving required. Many Coast FIRE people switch to lower-stress or part-time jobs (sometimes called Barista FIRE), travel, start a business, or pursue creative work without the financial pressure.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">Is Coast FIRE risky over a long time horizon?</summary>
+                        <p class="faq-a">The main risk is sequence risk in the late stage — a bad market in the years before retirement can reduce the final portfolio below your FIRE target. Many Coast FIRE practitioners use a conservative return assumption (5–6%) to build in a safety margin, or keep minimal contributions going as a buffer.</p>
+                    </details>
+                </div>
+            </section>
+
+            <p class="fine-print">This calculator is for educational purposes only and does not account for taxes, fees, inflation changes, or individual financial circumstances. This is not financial advice.</p>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top:0.75rem;">
+                <a href="/about" style="color:var(--text-muted);text-decoration:none;margin:0 0.75rem;">About</a>
+                <a href="/privacy" style="color:var(--text-muted);text-decoration:none;margin:0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color:var(--text-muted);text-decoration:none;margin:0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color:var(--text-muted);text-decoration:none;margin:0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
