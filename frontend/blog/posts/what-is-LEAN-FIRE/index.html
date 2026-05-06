@@ -89,7 +89,15 @@
             margin-bottom: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
 
         .post-content {
@@ -477,6 +485,7 @@
                 <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
                 <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
                 <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
                 <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
@@ -487,7 +496,7 @@
             <div class="post-hero">
                 <h1 class="post-title">Lean FIRE Annual Expenses: My Real $1,800/Month Life in Vietnam</h1>
                 <p class="post-subtitle">My actual numbers, what I gave up, what I got back, and how to calculate yours</p>
-                <div class="post-meta">By <strong>Ninad</strong> · 📅 2025-11-14 · 12 min read</div>
+                <div class="post-meta"><span>By <strong>Ninad</strong></span><span class="post-meta-right">📅 2025-11-14 · 11 min read</span></div>
                 <img src="/blog/posts/what-is-LEAN-FIRE/cover.webp" alt="Lean FIRE Annual Expenses: My Real $1,800/Month Life in Vietnam cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
             </div>
 
@@ -556,18 +565,49 @@
 <li><strong>Food culture</strong> — places with vibrant street food scenes cost a fraction of supermarkets</li>
 </ol>
 <p>Here's the full spending range with real portfolio implications:</p>
-<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-
-| Monthly Spend | Annual Spend | FIRE Number (4%) | FIRE Number (3.25%) | What it usually looks like |
-|---|---|---|---|---|
-| $1,500 | $18,000 | $450,000 | $554,000 | Southeast Asia, paid-off housing, near-zero healthcare |
-| **$1,800** | **$21,600** | **$540,000** | **$664,000** | **My Vietnam life** |
-| $2,000 | $24,000 | $600,000 | $738,000 | SE Asia with more comfort, or LCOL US + Medicaid |
-| $2,500 | $30,000 | $750,000 | $923,000 | Common US Lean FIRE target |
-| $3,300 | $40,000 | $1,000,000 | $1,231,000 | Upper Lean FIRE, US-based, some flexibility |
-
-</div>
-
+<table>
+<thead>
+<tr>
+<th>Monthly</th>
+<th>Annual</th>
+<th>FIRE Number (4%)</th>
+<th>FIRE Number (3.25%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$1,500</td>
+<td>$18,000</td>
+<td>$450,000</td>
+<td>$554,000</td>
+</tr>
+<tr>
+<td><strong>$1,800</strong></td>
+<td><strong>$21,600</strong></td>
+<td><strong>$540,000</strong></td>
+<td><strong>$664,000</strong></td>
+</tr>
+<tr>
+<td>$2,000</td>
+<td>$24,000</td>
+<td>$600,000</td>
+<td>$738,000</td>
+</tr>
+<tr>
+<td>$2,500</td>
+<td>$30,000</td>
+<td>$750,000</td>
+<td>$923,000</td>
+</tr>
+<tr>
+<td>$3,300</td>
+<td>$40,000</td>
+<td>$1,000,000</td>
+<td>$1,231,000</td>
+</tr>
+</tbody>
+</table>
+<p><em>My $1,800/month Vietnam life sits at the bold row — $540K needed at 4%, $664K at the safer 3.25% rate.</em></p>
 <hr />
 <h2 id="what-is-the-lean-fire-number">What Is the Lean FIRE Number?</h2>
 <p>Your Lean FIRE number = Annual expenses ÷ Withdrawal rate.</p>

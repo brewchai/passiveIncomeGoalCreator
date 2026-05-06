@@ -89,7 +89,15 @@
             margin-bottom: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
 
         .post-content {
@@ -477,6 +485,7 @@
                 <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
                 <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
                 <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
                 <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
@@ -487,7 +496,7 @@
             <div class="post-hero">
                 <h1 class="post-title">Can I Retire at 35 With $500k?</h1>
                 <p class="post-subtitle">Every strategy simulated — from the safest withdrawal plans to real estate, dividend income, and geo-arbitrage. No hand-waving. Just math.</p>
-                <div class="post-meta">By <strong>Ninad</strong> · 📅 2026-02-16 · 15 min read</div>
+                <div class="post-meta"><span>By <strong>Ninad</strong></span><span class="post-meta-right">📅 2026-02-16 · 15 min read</span></div>
                 <img src="/blog/posts/can-i-retire-at-35-with-500k/cover.webp" alt="Can I Retire at 35 With $500k? cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
             </div>
 

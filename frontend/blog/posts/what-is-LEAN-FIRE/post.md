@@ -55,17 +55,15 @@ What determines where you fall in that range? Not your coffee habit. Four things
 
 Here's the full spending range with real portfolio implications:
 
-<div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+| Monthly | Annual | FIRE Number (4%) | FIRE Number (3.25%) |
+|---|---|---|---|
+| $1,500 | $18,000 | $450,000 | $554,000 |
+| **$1,800** | **$21,600** | **$540,000** | **$664,000** |
+| $2,000 | $24,000 | $600,000 | $738,000 |
+| $2,500 | $30,000 | $750,000 | $923,000 |
+| $3,300 | $40,000 | $1,000,000 | $1,231,000 |
 
-| Monthly Spend | Annual Spend | FIRE Number (4%) | FIRE Number (3.25%) | What it usually looks like |
-|---|---|---|---|---|
-| $1,500 | $18,000 | $450,000 | $554,000 | Southeast Asia, paid-off housing, near-zero healthcare |
-| **$1,800** | **$21,600** | **$540,000** | **$664,000** | **My Vietnam life** |
-| $2,000 | $24,000 | $600,000 | $738,000 | SE Asia with more comfort, or LCOL US + Medicaid |
-| $2,500 | $30,000 | $750,000 | $923,000 | Common US Lean FIRE target |
-| $3,300 | $40,000 | $1,000,000 | $1,231,000 | Upper Lean FIRE, US-based, some flexibility |
-
-</div>
+*My $1,800/month Vietnam life sits at the bold row — $540K needed at 4%, $664K at the safer 3.25% rate.*
 
 ---
 

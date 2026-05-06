@@ -89,7 +89,15 @@
             margin-bottom: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
 
         .post-content {
@@ -477,6 +485,7 @@
                 <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
                 <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
                 <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
                 <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
@@ -487,7 +496,7 @@
             <div class="post-hero">
                 <h1 class="post-title">How much do you need to retire at 40?</h1>
                 <p class="post-subtitle">A detailed breakdown of the math behind early retirement</p>
-                <div class="post-meta">By <strong>Ninad</strong> · 📅 2025-11-10 · 16 min read</div>
+                <div class="post-meta"><span>By <strong>Ninad</strong></span><span class="post-meta-right">📅 2025-11-10 · 16 min read</span></div>
                 <img src="/blog/posts/how-much-need-retire-forty-40/cover.webp" alt="How much do you need to retire at 40? cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
             </div>
 

@@ -87,7 +87,15 @@
             margin-bottom: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
 
         .post-content {
@@ -475,6 +483,7 @@
                 <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
                 <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
                 <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
                 <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
@@ -485,7 +494,7 @@
             <div class="post-hero">
                 <h1 class="post-title">The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer</h1>
                 <p class="post-subtitle">And how this psychological trap could cost you $500,000+ over your career</p>
-                <div class="post-meta">By <strong>Ninad</strong> · 📅 2026-04-03 · 4 min read</div>
+                <div class="post-meta"><span>By <strong>Ninad</strong></span><span class="post-meta-right">📅 2026-04-03 · 4 min read</span></div>
                 <img src="/blog/posts/psychology-of-not-negotiating/cover.webp" alt="The Brutal Psychology of Why You Won't Negotiate Your Next Job Offer cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
             </div>
 
