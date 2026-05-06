@@ -1,7 +1,7 @@
 {
-    "title": "What Is Lean FIRE? Expenses, Number, and Tradeoffs",
-    "subtitle": "The Complete Lean FIRE Blueprint: How to Retire Early on a Modest Income",
-    "description": "Learn typical Lean FIRE annual expenses, spending ranges, portfolio targets, and the tradeoffs of retiring early on a lean budget.",
+    "title": "Lean FIRE Annual Expenses: My Real $1,800/Month Life in Vietnam",
+    "subtitle": "My actual numbers, what I gave up, what I got back, and how to calculate yours",
+    "description": "My real Lean FIRE annual expenses: $1,800/month ($21,600/year) living in Vietnam. Rent $375, food $600, visa $100. That's a $540,000 FIRE number. Here's the honest breakdown — what I sacrifice and what I don't.",
     "date": "2025-11-14",
     "tags": [
         "featured",
@@ -11,16 +11,24 @@
     "featured": true,
     "faqs": [
         {
-            "question": "What is Lean FIRE?",
-            "answer": "Lean FIRE is a financial independence strategy built around very low annual expenses, usually requiring a smaller portfolio than traditional FIRE but much less lifestyle flexibility."
+            "question": "What is the typical Lean FIRE annual spending amount?",
+            "answer": "Lean FIRE annual expenses typically run $20,000–$40,000/year for a single person in the US. Internationally, particularly in Southeast Asia, you can sustain a full lifestyle on $18,000–$25,000/year. A real example: $1,800/month ($21,600/year) in Vietnam covers rent, food, visa costs, and travel."
+        },
+        {
+            "question": "What does Lean FIRE mean?",
+            "answer": "Lean FIRE (Financial Independence, Retire Early) is early retirement on a minimal but intentional budget — typically $20,000–$40,000/year for a single person. It requires a much smaller portfolio than traditional FIRE by keeping annual expenses low, usually through geographic arbitrage, housing optimisation, or both."
+        },
+        {
+            "question": "How do you calculate your Lean FIRE number?",
+            "answer": "Divide your annual expenses by your target withdrawal rate. At 4%, multiply annual expenses by 25. At a safer 3.25%, multiply by 31. For example, $21,600/year × 25 = $540,000 at 4%, or $669,600 at 3.25%."
         },
         {
             "question": "What are typical Lean FIRE annual expenses?",
-            "answer": "Typical Lean FIRE annual expenses often fall between $20,000 and $40,000 for a single person or frugal couple, depending heavily on housing, healthcare, and location."
+            "answer": "Typical Lean FIRE annual expenses range from $18,000 to $40,000 per year depending on location and lifestyle. In Southeast Asia or LCOL countries, $20,000–$25,000/year is achievable. In the US, $25,000–$40,000 is the more realistic range for Lean FIRE."
         },
         {
-            "question": "How do you calculate a Lean FIRE number?",
-            "answer": "A Lean FIRE number is calculated by dividing annual expenses by the planned withdrawal rate, such as multiplying expenses by 25 for a 4% withdrawal rate."
+            "question": "How do I start Lean FIRE planning?",
+            "answer": "Lean FIRE planning starts with three steps: (1) Track your real spending for 90 days to find your honest baseline. (2) Multiply your annual spend by 25 (4% rule) or 31 (3.25% conservative rule) to get your portfolio target. (3) Calculate how many years at your current savings rate to reach that number."
         }
     ]
 }
