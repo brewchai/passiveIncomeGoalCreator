@@ -1,7 +1,7 @@
 html, body { overflow-x: hidden; }
 
 .sequence-shell {
-    max-width: 820px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
 }
@@ -203,6 +203,34 @@ html, body { overflow-x: hidden; }
     overflow-y: auto;
 }
 
+/* ── Table Column Toggles ── */
+.table-col-toggles {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.col-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.col-toggle:hover {
+    background: var(--surface-light);
+    color: var(--text-secondary);
+}
+.col-toggle.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
 .sequence-table {
     width: 100%;
     border-collapse: collapse;

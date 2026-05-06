@@ -225,7 +225,12 @@
 
                 <!-- THE SEQUENCES TABLE -->
                 <section class="section">
-                    <h2 class="section-heading" id="sequenceTableHeading">Withdrawal details</h2>
+                    <h2 class="section-heading" id="sequenceTableHeading">Year-by-Year Breakdown</h2>
+                    <div class="table-col-toggles" id="tableColToggles" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.75rem;">
+                        <span style="font-size:0.8rem; color:var(--text-muted); align-self:center; margin-right:0.25rem;">Show columns:</span>
+                        <button class="col-toggle active" data-col="inflation-target" id="toggleInflTarget">Inflation Target</button>
+                        <button class="col-toggle active" data-col="next-year-budget" id="toggleNextYear">Next Year Budget</button>
+                    </div>
                     <div class="table-wrap" role="region" tabindex="0">
                         <table class="sequence-table" id="sequenceTable">
                             <thead id="sequenceTableHead"></thead>

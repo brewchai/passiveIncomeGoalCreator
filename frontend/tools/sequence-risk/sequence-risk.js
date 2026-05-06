@@ -42,7 +42,9 @@
         resetManualEdits: byId('resetManualEdits'),
         presetInjectBtns: document.querySelectorAll('.preset-inject-btn'),
         guardrailsFloorContainer: byId('guardrailsFloorContainer'),
-        guardrailsFloor: byId('guardrailsFloor')
+        guardrailsFloor: byId('guardrailsFloor'),
+        toggleInflTarget: byId('toggleInflTarget'),
+        toggleNextYear: byId('toggleNextYear')
     };
 
     // ── Data Models ──
@@ -414,85 +416,116 @@
     }
 
     // ── Sequence table ──
+    const colVisibility = { 'inflation-target': true, 'next-year-budget': true };
+
+    function applyColVisibility() {
+        const table = byId('sequenceTable');
+        if (!table) return;
+        ['inflation-target', 'next-year-budget'].forEach(col => {
+            const cells = table.querySelectorAll(`[data-col="${col}"]`);
+            cells.forEach(c => { c.style.display = colVisibility[col] ? '' : 'none'; });
+        });
+    }
+
     function renderSequenceTable(inputs) {
         clear(el.sequenceTableHead);
         clear(el.sequenceTableBody);
 
         if (el.sequenceTableHeading) {
-            el.sequenceTableHeading.textContent = inputs.isGuardrails ? 'Withdrawal and guardrail details' : 'Withdrawal details';
+            el.sequenceTableHeading.textContent = 'Year-by-Year Breakdown';
         }
 
         // Header
         const headTr = document.createElement('tr');
-        const headers = inputs.isGuardrails
-            ? ['Year', 'Start Portfolio', 'Withdrawal Rate', 'Withdrawal', 'Return %', 'End Portfolio', 'End WR', 'Trigger', 'Next Year W.']
-            : ['Year', 'Start Portfolio', 'Withdrawal Rate', 'Withdrawal', 'Return %', 'End Portfolio'];
+        const coreCols = [
+            { label: 'Year', col: null },
+            { label: 'Portfolio Value', col: null },
+            { label: 'Withdrawal', col: null },
+            { label: 'Inflation Target', col: 'inflation-target' },
+            { label: 'Market Return', col: null },
+        ];
+        const guardrailCols = inputs.isGuardrails ? [
+            { label: 'Guardrail Rule', col: null },
+            { label: 'Next Year Budget', col: 'next-year-budget' },
+        ] : [];
+        const allCols = [...coreCols, ...guardrailCols];
 
-        headers.forEach(t => {
+        allCols.forEach(({ label, col }) => {
             const th = document.createElement('th');
-            th.textContent = t;
+            th.textContent = label;
+            if (col) th.setAttribute('data-col', col);
             headTr.appendChild(th);
         });
         el.sequenceTableHead.appendChild(headTr);
 
         const rows = state.lastResults.currentResult.rows;
+        const floorBreaches = state.lastResults.currentResult.floorBreaches || [];
 
         for (let y = 0; y < rows.length; y++) {
             const r = rows[y];
             const tr = document.createElement('tr');
-            
+            const isBreach = inputs.isGuardrails && inputs.minFloor > 0 && floorBreaches.includes(r.year);
+
+            if (isBreach) {
+                tr.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+                tr.title = 'Withdrawal fell below your absolute minimum lifestyle floor (inflation adjusted)';
+            }
+
             // Year
             const tdY = document.createElement('td'); tdY.textContent = r.year; tdY.className = 'year-col'; tr.appendChild(tdY);
-            
-            // Start Portfolio
-            const tdSP = document.createElement('td'); tdSP.textContent = fmtMoney(r.startPort); tr.appendChild(tdSP);
 
-            // Withdrawal Rate
-            const tdSWR = document.createElement('td'); tdSWR.textContent = fmtPct(r.startWR * 100); tr.appendChild(tdSWR);
-            
-            // Withdrawal
-            const tdW = document.createElement('td'); 
-            tdW.textContent = fmtMoney(r.withdrawal); 
+            // Portfolio Value (end of year — tells the story: are you growing or dying?)
+            const tdEP = document.createElement('td');
+            tdEP.textContent = fmtMoney(r.endPort);
+            if (r.endPort < inputs.startVal * 0.5) tdEP.style.color = '#ef4444';
+            else if (r.endPort > inputs.startVal) tdEP.style.color = '#4ade80';
+            tr.appendChild(tdEP);
+
+            // Actual Withdrawal
+            const tdW = document.createElement('td');
+            tdW.textContent = fmtMoney(r.withdrawal);
+            if (isBreach) { tdW.style.color = '#ef4444'; tdW.style.fontWeight = '700'; }
             tr.appendChild(tdW);
 
-            if (inputs.isGuardrails && inputs.minFloor > 0 && state.lastResults.currentResult.floorBreaches.includes(r.year)) {
-                tr.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
-                tr.style.color = '#fca5a5';
-                tdW.style.color = '#ef4444';
-                tdW.style.fontWeight = '700';
-                tr.title = 'Warning: Withdrawal fell below your absolute minimum lifestyle floor (inflation adjusted)';
-            }
-            
-            // Return %
-            const tdRet = document.createElement('td'); 
+            // Inflation Target (toggleable)
+            const inflationTarget = inputs.initialWithdrawal * Math.pow(1 + inputs.inflPct / 100, r.year - 1);
+            const tdIT = document.createElement('td');
+            tdIT.textContent = fmtMoney(inflationTarget);
+            tdIT.style.color = 'var(--text-muted)';
+            tdIT.style.fontStyle = 'italic';
+            tdIT.setAttribute('data-col', 'inflation-target');
+            tr.appendChild(tdIT);
+
+            // Market Return
+            const tdRet = document.createElement('td');
             tdRet.textContent = fmtSignedPct(r.returnPct);
             tdRet.className = r.returnPct >= 0 ? 'return-pos' : 'return-neg';
             tr.appendChild(tdRet);
 
-            // End Portfolio
-            const tdEP = document.createElement('td'); tdEP.textContent = fmtMoney(r.endPort); tr.appendChild(tdEP);
-
             if (inputs.isGuardrails) {
-                // End WR
-                const tdEWR = document.createElement('td'); tdEWR.textContent = fmtPct(r.endWR * 100); tr.appendChild(tdEWR);
-
-                // Trigger
+                // Guardrail Rule
                 const tdTrig = document.createElement('td');
                 tdTrig.textContent = r.trigger;
-                if (r.trigger.includes('Cut')) tdTrig.className = 'return-neg';
-                if (r.trigger.includes('Raise')) tdTrig.className = 'return-pos';
+                if (r.trigger.includes('Cut')) { tdTrig.className = 'return-neg'; }
+                else if (r.trigger.includes('Raise')) { tdTrig.className = 'return-pos'; }
+                else { tdTrig.style.color = 'var(--text-muted)'; }
                 tr.appendChild(tdTrig);
 
-                // Next W
-                const tdNW = document.createElement('td'); tdNW.textContent = r.nextW > 0 ? fmtMoney(r.nextW) : '-'; tr.appendChild(tdNW);
+                // Next Year Budget (toggleable)
+                const tdNW = document.createElement('td');
+                tdNW.textContent = r.nextW > 0 ? fmtMoney(r.nextW) : '—';
+                tdNW.setAttribute('data-col', 'next-year-budget');
+                tr.appendChild(tdNW);
             }
 
             el.sequenceTableBody.appendChild(tr);
         }
 
+        applyColVisibility();
+
         if (el.sequenceNote) {
-            const stratStr = inputs.isGuardrails ? "Guardrails (Guyton-Klinger) strategy" : "Constant Purchasing Power strategy";
-            el.sequenceNote.textContent = `Using ${stratStr}. Withdrawals start at ${fmtMoney(inputs.initialWithdrawal)}.`;
+            const stratStr = inputs.isGuardrails ? 'Guardrails (Guyton-Klinger)' : 'Constant Purchasing Power';
+            el.sequenceNote.textContent = `Strategy: ${stratStr}. Year 1 withdrawal: ${fmtMoney(inputs.initialWithdrawal)}. Inflation Target shows what the same lifestyle costs each year.`;
         }
     }
 
@@ -805,6 +838,22 @@
             el.chartPopup.style.display = 'none';
         }
     });
+
+    if (el.toggleInflTarget) {
+        el.toggleInflTarget.addEventListener('click', () => {
+            colVisibility['inflation-target'] = !colVisibility['inflation-target'];
+            el.toggleInflTarget.classList.toggle('active', colVisibility['inflation-target']);
+            applyColVisibility();
+        });
+    }
+
+    if (el.toggleNextYear) {
+        el.toggleNextYear.addEventListener('click', () => {
+            colVisibility['next-year-budget'] = !colVisibility['next-year-budget'];
+            el.toggleNextYear.classList.toggle('active', colVisibility['next-year-budget']);
+            applyColVisibility();
+        });
+    }
 
     if (typeof ResizeObserver !== 'undefined') {
         const ro = new ResizeObserver(() => { if (state.lastResults) render(); });
