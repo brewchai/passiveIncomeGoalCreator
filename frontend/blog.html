@@ -158,13 +158,7 @@
                     </div>
                 </div>
 
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Trending Topics</h3>
-                    <!-- Tag Filters -->
-                    <div class="tag-filters sidebar-tags" id="tagFilters">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
+
             </aside>
         </div>
     </main>
@@ -279,6 +273,7 @@
 
             // ---- Tag Filters ----
             function buildTagFilters() {
+                if (!tagFiltersEl) return;
                 // Collect unique tags
                 const tagSet = new Set();
                 allPosts.forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
@@ -299,7 +294,9 @@
                         applyFilters();
 
                         // Update active pill
-                        tagFiltersEl.querySelectorAll('.tag-pill').forEach(b => b.classList.remove('active'));
+                        if (tagFiltersEl) {
+                            tagFiltersEl.querySelectorAll('.tag-pill').forEach(b => b.classList.remove('active'));
+                        }
                         this.classList.add('active');
                     });
                 });
@@ -398,9 +395,11 @@
                 isSearching = false;
                 searchClear.style.display = 'none';
                 activeTag = 'all';
-                tagFiltersEl.querySelectorAll('.tag-pill').forEach(b => b.classList.remove('active'));
-                const allBtn = tagFiltersEl.querySelector('[data-tag="all"]');
-                if (allBtn) allBtn.classList.add('active');
+                if (tagFiltersEl) {
+                    tagFiltersEl.querySelectorAll('.tag-pill').forEach(b => b.classList.remove('active'));
+                    const allBtn = tagFiltersEl.querySelector('[data-tag="all"]');
+                    if (allBtn) allBtn.classList.add('active');
+                }
                 applyFilters();
                 history.replaceState(null, '', '/blog');
                 searchInput.focus();
