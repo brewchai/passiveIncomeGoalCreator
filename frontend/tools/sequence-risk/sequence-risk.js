@@ -39,7 +39,10 @@
         popupWithdrawal: byId('popupWithdrawal'),
         popupSave: byId('popupSave'),
         popupCancel: byId('popupCancel'),
-        resetManualEdits: byId('resetManualEdits')
+        resetManualEdits: byId('resetManualEdits'),
+        presetInjectBtns: document.querySelectorAll('.preset-inject-btn'),
+        guardrailsFloorContainer: byId('guardrailsFloorContainer'),
+        guardrailsFloor: byId('guardrailsFloor')
     };
 
     // ── Data Models ──
@@ -114,7 +117,7 @@
     }
 
     // ── Simulation ──
-    function simulate({ portfolio: startVal, initialWithdrawal, inflPct, returnsPct, isGuardrails, customWithdrawals }) {
+    function simulate({ portfolio: startVal, initialWithdrawal, inflPct, returnsPct, isGuardrails, minFloor, customWithdrawals }) {
         const years = returnsPct.length;
         const infl = inflPct / 100;
         let port = startVal;
@@ -125,6 +128,8 @@
         const vals = [startVal];
         const withdrawals = []; // Actual withdrawals taken each year
         const rows = [];
+        const floorBreaches = [];
+        let currentMinFloor = minFloor || 0;
 
         for (let y = 1; y <= years; y++) {
             let startPort = port;
@@ -169,7 +174,11 @@
                         nextW: 0
                     });
                 }
-                return { survived: false, failYear: y, endVal: 0, minVal: 0, vals, withdrawals, rows };
+                return { survived: false, failYear: y, endVal: 0, minVal: 0, vals, withdrawals, rows, floorBreaches };
+            }
+
+            if (isGuardrails && currentMinFloor > 0 && thisYearW < currentMinFloor) {
+                floorBreaches.push(y);
             }
 
             withdrawals.push(thisYearW);
@@ -226,8 +235,9 @@
                 trigger: forwardTrigger,
                 nextW: nextW
             });
+            currentMinFloor *= (1 + infl);
         }
-        return { survived: true, failYear: null, endVal: port, minVal, vals, withdrawals, rows };
+        return { survived: true, failYear: null, endVal: port, minVal, vals, withdrawals, rows, floorBreaches };
     }
 
     function classify({ survived, failYear, years, startVal, endVal, minVal }) {
@@ -251,6 +261,7 @@
         const avgPct = clamp(safeNum(el.avgReturn.value, 7.0), -20, 30);
         const years = clamp(Math.floor(safeNum(el.retirementYears.value, 50)), 1, 80);
         const isGuardrails = el.useGuardrails ? el.useGuardrails.checked : false;
+        const minFloor = isGuardrails && el.guardrailsFloor ? Math.max(0, safeNum(el.guardrailsFloor.value, 40000)) : 0;
 
         currentCustomData = buildSequence(activePreset, avgPct, years);
         
@@ -268,6 +279,7 @@
             inflPct, 
             returnsPct: currentCustomData,
             isGuardrails,
+            minFloor,
             customWithdrawals: currentCustomWithdrawals
         });
         
@@ -283,7 +295,7 @@
         const finalWithdrawal = initialWithdrawal * Math.pow(1 + inflPct / 100, years - 1);
         
         state.lastResults = { 
-            inputs: { startVal, initialWithdrawal, inflPct, avgPct, years, finalWithdrawal, isGuardrails }, 
+            inputs: { startVal, initialWithdrawal, inflPct, avgPct, years, finalWithdrawal, isGuardrails, minFloor }, 
             currentResult, 
             baselineResult,
             currentData: currentCustomData,
@@ -355,6 +367,10 @@
             }
         } else {
             desc = `Your portfolio depleted in Year ${currentResult.failYear} due to negative returns combined with ongoing withdrawals. Once the balance hits zero, there is no way to recover even if the market bounces back.`;
+        }
+
+        if (inputs.isGuardrails && inputs.minFloor > 0 && currentResult.floorBreaches && currentResult.floorBreaches.length > 0) {
+            desc += `<br><br><span style="color: #ef4444;"><strong>Warning:</strong> The guardrails strategy forced your spending below your absolute minimum floor ($${inputs.minFloor.toLocaleString()} in today's money) in ${currentResult.floorBreaches.length} different years. During these years, you may not be able to withstand your desired lifestyle without supplemental income.</span>`;
         }
 
         const peakVal = Math.max(...currentResult.vals);
@@ -435,7 +451,17 @@
             const tdSWR = document.createElement('td'); tdSWR.textContent = fmtPct(r.startWR * 100); tr.appendChild(tdSWR);
             
             // Withdrawal
-            const tdW = document.createElement('td'); tdW.textContent = fmtMoney(r.withdrawal); tr.appendChild(tdW);
+            const tdW = document.createElement('td'); 
+            tdW.textContent = fmtMoney(r.withdrawal); 
+            tr.appendChild(tdW);
+
+            if (inputs.isGuardrails && inputs.minFloor > 0 && state.lastResults.currentResult.floorBreaches.includes(r.year)) {
+                tr.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+                tr.style.color = '#fca5a5';
+                tdW.style.color = '#ef4444';
+                tdW.style.fontWeight = '700';
+                tr.title = 'Warning: Withdrawal fell below your absolute minimum lifestyle floor (inflation adjusted)';
+            }
             
             // Return %
             const tdRet = document.createElement('td'); 
@@ -575,7 +601,7 @@
         if(el.resultsContainer) el.resultsContainer.style.display = 'none';
     }
 
-    ['startingPortfolio', 'annualWithdrawal', 'inflationRate', 'avgReturn', 'retirementYears', 'useGuardrails'].forEach(id => {
+    ['startingPortfolio', 'annualWithdrawal', 'inflationRate', 'avgReturn', 'retirementYears', 'useGuardrails', 'guardrailsFloor'].forEach(id => {
         const e = byId(id); if (e) e.addEventListener('input', () => {
             updateWR();
             if (activePreset !== 'custom') {
@@ -583,6 +609,12 @@
             }
         });
     });
+
+    if (el.useGuardrails && el.guardrailsFloorContainer) {
+        el.useGuardrails.addEventListener('change', () => {
+            el.guardrailsFloorContainer.style.display = el.useGuardrails.checked ? 'block' : 'none';
+        });
+    }
 
     if (el.runButton) {
         el.runButton.addEventListener('click', () => {
@@ -596,6 +628,7 @@
             if(el.runButtonLoader) el.runButtonLoader.style.display = 'block';
             if(el.resultsContainer) el.resultsContainer.style.display = 'none';
 
+            const delay = Math.floor(Math.random() * 2000) + 2000;
             setTimeout(() => {
                 compute();
                 saveCleanRunSnapshot();
@@ -607,7 +640,7 @@
                 if(el.runButtonText) el.runButtonText.style.opacity = '1';
                 if(el.runButtonLoader) el.runButtonLoader.style.display = 'none';
                 if(el.resultsContainer) el.resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            }, delay);
         });
     }
 
@@ -726,6 +759,34 @@
                 render(); 
             }
             if(el.chartPopup) el.chartPopup.style.display = 'none';
+        });
+    }
+
+    if (el.presetInjectBtns) {
+        el.presetInjectBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (state.activePopupYear !== null) {
+                    const presetKey = btn.getAttribute('data-inject');
+                    const presetData = PRESETS[presetKey]?.data;
+                    if (presetData && presetData.length > 0) {
+                        if (activePreset !== 'custom') customSourcePreset = activePreset;
+                        activePreset = 'custom';
+                        el.presetBtns.forEach(b => b.classList.remove('active'));
+                        state.hasManualEdits = true;
+                        
+                        let startYear = state.activePopupYear;
+                        for (let i = 0; i < presetData.length; i++) {
+                            if (startYear + i <= state.lastResults.inputs.years) {
+                                currentCustomData[startYear + i] = presetData[i];
+                            }
+                        }
+                        
+                        compute(); 
+                        render();
+                    }
+                }
+                if(el.chartPopup) el.chartPopup.style.display = 'none';
+            });
         });
     }
 
