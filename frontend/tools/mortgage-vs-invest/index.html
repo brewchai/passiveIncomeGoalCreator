@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Off Mortgage or Invest Calculator | But First Fire</title>
+    <meta name="description" content="Should you pay off your house early or invest the extra cash? Calculate exactly how much wealth you lose or gain by paying off your low-interest mortgage early.">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Pay Off Mortgage vs. Invest Calculator">
+    <meta property="og:description" content="Calculate exactly how much wealth you lose or gain by paying off your mortgage early instead of investing the difference.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://butfirstfire.com/tools/mortgage-vs-invest/">
+    
+    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="./styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD FAQ Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Should I pay off my mortgage before maxing out my 401(k)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. You should almost never pay extra on your mortgage before capturing your full 401(k) employer match, which is effectively a guaranteed 100% return on your money. Even after the match, maxing out a traditional 401(k) lowers your taxable income, saving you 20-30% in taxes upfront. Only after tax-advantaged accounts are maxed out should you compare taxable investing against paying down your house."
+        }
+      }, {
+        "@type": "Question",
+        "name": "At what interest rate should you pay off a mortgage instead of investing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The FIRE community generally follows this rule of thumb: If your mortgage rate is under 4%, investing mathematically dominates. If your rate is between 4% and 6%, a hybrid approach (investing some, paying down some) balances math and peace of mind. If your mortgage rate is above 6%, the guaranteed, tax-free return of paying off the debt is incredibly hard to beat safely in the stock market."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does paying off a mortgage early affect my early retirement date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paying off your mortgage lowers your total net worth compared to investing, but it drastically reduces your required monthly expenses. If your mortgage was $2,000 a month, paying it off means you need $24,000 less per year to survive. Under the 4% rule, needing $24,000 less per year means your required target portfolio size drops by $600,000. Hitting this smaller FIRE number without a mortgage is often faster and safer."
+        }
+      }]
+    }
+    </script>
+</head>
+<body class="dark-mode">
+
+    <!-- Global Header -->
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="tool-layout">
+        <div class="tool-container">
+            
+            <!-- Tool Header -->
+            <header class="tool-header">
+                <p class="tool-kicker">Interactive Tool</p>
+                <h1 class="tool-title">Pay Off Mortgage vs. Invest</h1>
+                <p class="tool-intro">The ultimate financial debate. Enter your numbers below to see the exact mathematical difference between peace of mind and maximum wealth.</p>
+            </header>
+
+            <div class="tool-grid">
+                
+                <!-- Left Column: Inputs -->
+                <div class="tool-inputs-panel">
+                    <h2 class="section-heading">Your Numbers</h2>
+                    
+                    <div class="input-group">
+                        <label for="mortgageBalance">Remaining Mortgage Balance</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="mortgageBalance" value="300000" min="0" step="10000">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="mortgageRate">Mortgage Interest Rate</label>
+                        <div class="input-wrapper slider-wrapper">
+                            <input type="range" id="mortgageRate" min="1.0" max="10.0" value="4.0" step="0.1">
+                            <span class="slider-value"><span id="mortgageRateValue">4.0</span>%</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="remainingTerm">Remaining Term (Years)</label>
+                        <div class="input-wrapper slider-wrapper">
+                            <input type="range" id="remainingTerm" min="1" max="30" value="25" step="1">
+                            <span class="slider-value" id="remainingTermValue">25</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="extraCash">Extra Monthly Cash Available</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="extraCash" value="500" min="0" step="100">
+                        </div>
+                        <p class="input-help">The extra money you want to either invest or apply to the principal.</p>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                        <label for="marketReturn">Expected Market Return (Annual)</label>
+                        <div class="input-wrapper slider-wrapper">
+                            <input type="range" id="marketReturn" min="1.0" max="12.0" value="8.0" step="0.5">
+                            <span class="slider-value"><span id="marketReturnValue">8.0</span>%</span>
+                        </div>
+                        <p class="input-help">Historically, the S&P 500 returns around 8-10% annually before inflation.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Results -->
+                <div class="tool-results-panel">
+                    <h2 class="section-heading">The Verdict</h2>
+                    
+                    <div class="result-card primary-result" id="verdictCard">
+                        <h3 class="result-label" id="verdictHeadlineLabel">Mathematical Winner</h3>
+                        <div class="result-value huge" id="verdictDifference">$0</div>
+                        <p class="result-desc" id="verdictDesc">Calculating the difference...</p>
+                    </div>
+
+                    <!-- Side-by-Side Comparison -->
+                    <div class="comparison-grid">
+                        
+                        <!-- Scenario A: Pay Off -->
+                        <div class="scenario-card" id="cardPayoff">
+                            <div class="scenario-header">
+                                <h3>Path A: Pay Off Early</h3>
+                                <p>Peace of Mind</p>
+                            </div>
+                            <div class="scenario-body">
+                                <div class="metric-row">
+                                    <span>Debt-Free Date:</span>
+                                    <strong id="payoffDateA">Year X</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Total Interest Paid:</span>
+                                    <strong id="interestPaidA" class="text-warning">$0</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Investments at Year <span class="termLabel">30</span>:</span>
+                                    <strong id="finalPortfolioA" class="text-success">$0</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scenario B: Invest -->
+                        <div class="scenario-card" id="cardInvest">
+                            <div class="scenario-header">
+                                <h3>Path B: Invest the Extra</h3>
+                                <p>Maximum Wealth</p>
+                            </div>
+                            <div class="scenario-body">
+                                <div class="metric-row">
+                                    <span>Debt-Free Date:</span>
+                                    <strong id="payoffDateB">Year Y</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Total Interest Paid:</span>
+                                    <strong id="interestPaidB" class="text-warning">$0</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Investments at Year <span class="termLabel">30</span>:</span>
+                                    <strong id="finalPortfolioB" class="text-success">$0</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Timeline Visualizer -->
+                    <div class="timeline-container mt-4">
+                        <h4 style="font-size: 0.85rem; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Debt Timeline</h4>
+                        <div class="timeline-track">
+                            <div class="timeline-bar payoff-bar" id="timelineBarA">
+                                <span>Path A Payoff</span>
+                            </div>
+                            <div class="timeline-bar invest-bar" id="timelineBarB">
+                                <span>Path B Payoff</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SEO Content Section -->
+            <article class="seo-article mt-5">
+                <h2>Should You Pay Off Your Mortgage Early or Invest? (The Ultimate FIRE Guide)</h2>
+                <p>The decision to pay off your house early or invest the extra cash is one of the most hotly debated topics in personal finance. On one side, traditional advice from financial gurus often pushes the emotional relief of being 100% debt-free. On the other side, the FIRE (Financial Independence, Retire Early) community heavily favors the raw mathematical superiority of investing.</p>
+                <p>But the right answer isn't just a spreadsheet calculation—it's a delicate balance between maximizing your wealth and sleeping soundly at night. Let's break down the exact math, the psychological factors, and the hybrid strategies early retirees use to get the best of both worlds.</p>
+                
+                <h3>Understanding "The Spread"</h3>
+                <p>To understand why investing often wins mathematically, you have to understand <strong>The Spread</strong>. The spread is the difference between the interest rate you pay on your debt and the rate of return you earn on your investments.</p>
+                <p>If you have a 30-year fixed-rate mortgage at 4%, the bank is lending you money relatively cheaply. If you take an extra $500 a month and apply it to your principal, you are effectively locking in a guaranteed, risk-free 4% return on that money. You save 4% in interest you otherwise would have paid.</p>
+                <p>However, if you take that same $500 and invest it in a broad-market S&P 500 index fund, historical averages suggest you could earn a 7% to 10% annual return over a long time horizon. The difference between that 8% expected market return and your 4% mortgage rate is a positive spread of 4%. Over decades, compounding that 4% spread can result in hundreds of thousands of dollars in extra wealth.</p>
+
+                <h3>The Hidden Superpower of Mortgages: Inflation</h3>
+                <p>When you take out a 30-year fixed-rate mortgage, your monthly payment is locked in forever. But due to inflation, the value of the dollar decreases over time. A $2,000 mortgage payment today will feel much cheaper in 20 years because your income will likely have risen, and the purchasing power of $2,000 will have fallen.</p>
+                <p>In high-inflation environments, inflation actively erodes the real value of your debt. By paying the minimum on your mortgage, you are effectively paying the bank back with future dollars that are worth less than the dollars you borrowed. This makes holding low-interest, fixed-rate debt an incredible hedge against inflation.</p>
+
+                <div style="background: rgba(99, 102, 241, 0.05); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 2rem 0;">
+                    <h4 style="margin-top: 0; color: var(--text-primary);">Pros of Investing the Difference</h4>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>Higher Net Worth:</strong> The math historically favors the stock market over low-interest debt.</li>
+                        <li><strong>Liquidity:</strong> Money tied up in home equity is illiquid. You can't easily buy groceries with brick and mortar. A brokerage account can be sold for cash in three days.</li>
+                        <li><strong>Inflation Hedging:</strong> As mentioned, inflation eats away at the real cost of your fixed debt over 30 years.</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(74, 222, 128, 0.05); border-left: 4px solid #4ade80; padding: 1.5rem; border-radius: 0 8px 8px 0; margin: 2rem 0;">
+                    <h4 style="margin-top: 0; color: var(--text-primary);">Pros of Paying Off the Mortgage</h4>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>Guaranteed Return:</strong> Stock market returns are an average; mortgage interest savings are guaranteed.</li>
+                        <li><strong>Lower Sequence of Returns Risk:</strong> In early retirement, a paid-off house drastically reduces your required monthly cash flow, protecting you from having to sell stocks during a market crash.</li>
+                        <li><strong>Unbeatable Peace of Mind:</strong> The psychological weight of owing a bank hundreds of thousands of dollars disappears entirely.</li>
+                    </ul>
+                </div>
+
+                <h3>Sequence of Returns Risk: Why Early Retirees Love Paid-Off Houses</h3>
+                <p>While the accumulation phase (saving for FIRE) favors investing, the withdrawal phase (actual retirement) changes the rules. If you retire at 40 with a massive mortgage, your required monthly income is very high. If the stock market crashes in your first two years of retirement (known as <em>Sequence of Returns Risk</em>), you are forced to sell off a large chunk of your depressed portfolio just to make your mortgage payment.</p>
+                <p>A paid-off house acts as the ultimate defensive shield. By eliminating your largest monthly expense, your "Lean FIRE" survival number drops to almost nothing. You can easily weather a brutal bear market without selling off your precious index funds.</p>
+
+                <h3>The "Mortgage FI" Hybrid Strategy</h3>
+                <p>If you are torn between the two paths, the FIRE community has developed a perfect compromise: <strong>The Hybrid Approach</strong>.</p>
+                <p>Instead of paying extra principal to the bank every month, you aggressively invest that extra cash into a taxable brokerage account. You let it compound and grow liquidly. You track two numbers: Your Remaining Mortgage Balance, and your Brokerage Account Balance.</p>
+                <p>The day your brokerage account equals your mortgage balance, you have reached <em>Mortgage FI</em>. You have the total freedom to write a single check and own your house free and clear whenever you want. Many people hold the money in the market while they are working, and pull the trigger to pay off the house on the exact day they hand in their resignation letter, guaranteeing a low-stress, low-expense early retirement.</p>
+
+                <h3 style="margin-top: 3rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color);">Frequently Asked Questions</h3>
+                
+                <div class="faq-section">
+                    <details class="faq-item">
+                        <summary>Should I pay off my mortgage before maxing out my 401(k)?</summary>
+                        <div class="faq-content">
+                            <p>No. You should almost never pay extra on your mortgage before capturing your full 401(k) employer match. An employer match is effectively a guaranteed 100% return on your money—something paying off debt can never beat. Furthermore, maxing out a traditional 401(k) lowers your taxable income, instantly saving you 20% to 30% in taxes depending on your tax bracket. Only after your tax-advantaged accounts (401k, HSA, IRA) are maxed out should you debate applying extra cash to your mortgage versus a taxable brokerage account.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>At what interest rate should you pay off a mortgage instead of investing?</summary>
+                        <div class="faq-content">
+                            <p>While it depends on your personal risk tolerance, the FIRE community generally follows a basic rule of thumb based on the interest rate environment. If your mortgage rate is <strong>under 4%</strong>, investing mathematically dominates; you should pay the minimum and invest the rest. If your rate is between <strong>4% and 6%</strong>, a hybrid approach (e.g., investing half your extra cash and applying half to the mortgage) balances optimization with peace of mind. If your mortgage rate is <strong>above 6%</strong>, the guaranteed, tax-free return of paying off the debt is incredibly hard to beat safely in the stock market, making aggressive debt payoff the superior choice.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>How does paying off a mortgage early affect my early retirement date?</summary>
+                        <div class="faq-content">
+                            <p>Paying off your mortgage will usually result in a lower total net worth compared to investing, but it comes with a massive secret weapon: it drastically reduces your required monthly expenses. For example, if your mortgage payment is $2,000 a month, paying off the house means you need $24,000 <em>less</em> per year to survive.</p>
+                            <p>Under the 4% safe withdrawal rule, needing $24,000 less per year means your required FIRE number (target portfolio size) instantly drops by <strong>$600,000</strong>. For many people, it is much faster—and psychologically safer—to hit a smaller portfolio target with a paid-off house than to try and grow a massive portfolio designed to support a 30-year mortgage payment.</p>
+                        </div>
+                    </details>
+                </div>
+
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/contact" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="./mortgage.js"></script>
+</body>
+</html>
