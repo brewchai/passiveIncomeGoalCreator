@@ -1,0 +1,32 @@
+{
+  "title": "What Cancer Actually Costs When You Have No Insurance",
+  "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
+  "description": "A personal account of a parent's triple-negative breast cancer diagnosis in India, why we had no health insurance, and the full out-of-pocket financial cost of treatment — and what it means for a FIRE plan.",
+  "date": "2026-06-28",
+  "cover": "cover.webp",
+  "tags": [
+    "Personal Finance",
+    "Health",
+    "FIRE Journey",
+    "Insurance"
+  ],
+  "featured": false,
+  "faqs": [
+    {
+      "question": "How much does cancer treatment cost out of pocket without insurance?",
+      "answer": "In our case, treating early-stage triple-negative breast cancer in Pune, India is projected to cost roughly $17,000 to $20,000 total, with chemotherapy around $500 per cycle and immunotherapy (pembrolizumab) around $1,700 per dose before patient-assistance discounts."
+    },
+    {
+      "question": "Can you buy health insurance after a cancer diagnosis?",
+      "answer": "Generally no. We applied within days of the first reports, even while the initial biopsy still read as benign, and were rejected. A single finding in your medical history can make you uninsurable, which is why coverage must be purchased while you are healthy."
+    },
+    {
+      "question": "How can you reduce the cost of cancer drugs?",
+      "answer": "Ask about patient-assistance programs. We roughly halved the cost of our most expensive drug through a manufacturer buy-one-get-one assistance program, which saved several thousand dollars over the full course of treatment."
+    },
+    {
+      "question": "How can you save money on cancer treatment costs?",
+      "answer": "Do not automatically buy your medicines from the hospital pharmacy, where they are often marked up significantly. Where it is safe and your oncologist approves, source the same drugs from generic providers or outside pharmacies, which can be dramatically cheaper for the identical medication."
+    }
+  ]
+}

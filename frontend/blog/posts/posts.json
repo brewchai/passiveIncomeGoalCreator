@@ -149,6 +149,22 @@
   ],
   "recent": [
     {
+      "slug": "cost-of-cancer-without-insurance",
+      "title": "What Cancer Actually Costs When You Have No Insurance",
+      "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
+      "description": "A personal account of a parent's triple-negative breast cancer diagnosis in India, why we had no health insurance, and the full out-of-pocket financial cost of treatment — and what it means for a FIRE plan.",
+      "date": "2026-06-28",
+      "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
+      "tags": [
+        "Personal Finance",
+        "Health",
+        "FIRE Journey",
+        "Insurance"
+      ],
+      "featured": false,
+      "url": "/blog/cost-of-cancer-without-insurance"
+    },
+    {
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
@@ -231,6 +247,22 @@
     }
   ],
   "all": [
+    {
+      "slug": "cost-of-cancer-without-insurance",
+      "title": "What Cancer Actually Costs When You Have No Insurance",
+      "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
+      "description": "A personal account of a parent's triple-negative breast cancer diagnosis in India, why we had no health insurance, and the full out-of-pocket financial cost of treatment — and what it means for a FIRE plan.",
+      "date": "2026-06-28",
+      "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
+      "tags": [
+        "Personal Finance",
+        "Health",
+        "FIRE Journey",
+        "Insurance"
+      ],
+      "featured": false,
+      "url": "/blog/cost-of-cancer-without-insurance"
+    },
     {
       "slug": "first-year-fire-reflection",
       "title": "My First Year After Leaving Corporate Tech",
@@ -459,5 +491,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-05-06T09:37:25.161745Z"
+  "_generated_at": "2026-06-28T17:29:30.689575Z"
 }
