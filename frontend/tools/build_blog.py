@@ -18,7 +18,9 @@ TEMPLATE_PATH = BLOG_DIR / "post_template.html"
 OUTPUT_INDEX = "index.html"
 
 # Config
-BASE_URL = os.environ.get("BASE_URL", "").rstrip("/")  # e.g., https://your-domain.com
+# Default to the production domain so canonical/og/image URLs are absolute
+# (search engines and social scrapers strongly prefer absolute URLs).
+BASE_URL = os.environ.get("BASE_URL", "https://butfirstfire.com").rstrip("/")
 
 ASSET_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
 
@@ -111,9 +113,14 @@ def build_faq_json_ld(meta: dict) -> str:
 
 def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> str:
     title = meta["title"].strip()
+    # SEO title for the <title> tag; falls back to the on-page title.
+    # Lets the SERP title differ from the visible H1 when useful.
+    page_title = meta.get("meta_title", "").strip() or title
     description = meta.get("description", "").strip()
     subtitle = meta.get("subtitle", "").strip() or description
     date = iso_date(meta["date"])
+    # dateModified defaults to the publish date unless explicitly set.
+    date_modified = iso_date(meta["date_modified"]) if meta.get("date_modified") else date
     cover = meta.get("cover", "").strip()
     # Canonical path/URL
     canonical_path = f"/blog/{slug}"
@@ -134,7 +141,8 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
 
     # Simple placeholder replacement
     page = (
-        template.replace("{{TITLE}}", title)
+        template.replace("{{PAGE_TITLE}}", page_title)
+        .replace("{{TITLE}}", title)
         .replace("{{DESCRIPTION}}", description)
         .replace("{{SUBTITLE}}", subtitle)
         .replace("{{DATE}}", date)
@@ -154,7 +162,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
         "description": description,
         "image": [cover_abs] if cover_abs else [],
         "datePublished": date,
-        "dateModified": date,
+        "dateModified": date_modified,
         "author": {"@type": "Person", "name": "FIRE Planner"},
         "publisher": {
             "@type": "Organization",

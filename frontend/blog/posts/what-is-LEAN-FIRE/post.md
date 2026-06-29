@@ -1,4 +1,8 @@
-# Lean FIRE Annual Expenses: My Real $1,800/Month Life in Vietnam
+# What Is Lean FIRE? My Real $1,800/Month Life in Vietnam
+
+**Lean FIRE is early retirement on a deliberately small budget — usually $20,000 to $40,000 a year for one person.** Instead of building a huge portfolio to bankroll a big lifestyle, you keep your expenses low enough that a much smaller portfolio can carry you for life. Save up roughly 25 times your annual spending and you're there.
+
+That's the textbook answer. I'm going to give you the lived-in one. I actually do this — $1,800 a month in Vietnam, a $540,000 Lean FIRE number, for a life that doesn't feel lean at all. Below is the real definition, the exact math, and an honest look at where every dollar goes.
 
 ## Table of Contents
 

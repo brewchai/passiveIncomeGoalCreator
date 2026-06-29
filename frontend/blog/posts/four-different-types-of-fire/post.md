@@ -18,7 +18,7 @@ Whether you're dreaming of early retirement on a beach or just want the freedom 
 
 **LeanFIRE** is for those willing to live frugally and keep expenses extremely low. It often requires a lower savings target but also means accepting a simpler lifestyle.
 
-For a deeper breakdown of annual expenses, spending ranges, and risks, read the full [Lean FIRE guide](/blog/what-is-LEAN-FIRE).
+For a deeper breakdown of annual expenses, spending ranges, and risks, read the full guide to [what Lean FIRE is and what it really costs](/blog/what-is-LEAN-FIRE).
 
 ### Key Traits
 
