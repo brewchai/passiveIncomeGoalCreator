@@ -24,19 +24,49 @@
     // ── State ──
     let lastResults = null;
 
+    // ── Region modes ──
+    const MODES = {
+        us: {
+            symbol: '$', locale: 'en-US', currency: 'USD',
+            defaultWr: 4.0,
+            defaults: { spend: 60000, portfolio: 100000, savings: 30000 },
+            step:     { spend: 1000, portfolio: 5000, savings: 1000 },
+            infoLabel: 'What is the 4% rule?',
+            note: 'US mode: 4% rule → 25× your annual spending, shown in $.'
+        },
+        in: {
+            symbol: '₹', locale: 'en-IN', currency: 'INR',
+            defaultWr: 3.0,
+            defaults: { spend: 1200000, portfolio: 2000000, savings: 600000 },
+            step:     { spend: 10000, portfolio: 50000, savings: 10000 },
+            infoLabel: 'Why 3% (33×) for India?',
+            note: 'India mode: 3% withdrawal rate → 33× your annual spending, shown in ₹ (lakhs & crores).'
+        }
+    };
+    let modeKey = 'us';
+    let mode = MODES.us;
+
     // ── Utilities ──
     function safeNum(v, fb) { const n = Number(v); return Number.isFinite(n) ? n : fb; }
     function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
 
     function fmtMoney(v) {
-        return Math.max(0, v).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+        return Math.max(0, v).toLocaleString(mode.locale, { style: 'currency', currency: mode.currency, maximumFractionDigits: 0 });
     }
 
     function fmtCompact(v) {
         v = Math.max(0, v);
-        if (v >= 1e9) return `$${(v / 1e9).toFixed(2)}B`;
-        if (v >= 1e6) return `$${(v / 1e6).toFixed(2)}M`;
-        if (v >= 1e3) return `$${(v / 1e3).toFixed(0)}k`;
+        const s = mode.symbol;
+        if (modeKey === 'in') {
+            // Indian numbering: crore (1e7) and lakh (1e5)
+            if (v >= 1e7) return `${s}${(v / 1e7).toFixed(2)} Cr`;
+            if (v >= 1e5) return `${s}${(v / 1e5).toFixed(2)} L`;
+            if (v >= 1e3) return `${s}${(v / 1e3).toFixed(0)}k`;
+            return fmtMoney(v);
+        }
+        if (v >= 1e9) return `${s}${(v / 1e9).toFixed(2)}B`;
+        if (v >= 1e6) return `${s}${(v / 1e6).toFixed(2)}M`;
+        if (v >= 1e3) return `${s}${(v / 1e3).toFixed(0)}k`;
         return fmtMoney(v);
     }
 
@@ -271,13 +301,16 @@
     }
 
     // ── Slider live update ──
+    function setSliderFill(val) {
+        if (!wrSlider) return;
+        const pct = ((val - 2.5) / (5.0 - 2.5)) * 100;
+        wrSlider.style.background = `linear-gradient(to right, #667eea 0%, #667eea ${pct}%, rgba(148,163,184,0.25) ${pct}%, rgba(148,163,184,0.25) 100%)`;
+    }
     if (wrSlider) {
         wrSlider.addEventListener('input', () => {
             const val = parseFloat(wrSlider.value);
             if (wrDisplay) wrDisplay.textContent = `${val.toFixed(1)}%`;
-            // Update gradient fill position
-            const pct = ((val - 2.5) / (5.0 - 2.5)) * 100;
-            wrSlider.style.background = `linear-gradient(to right, #667eea 0%, #667eea ${pct}%, rgba(148,163,184,0.25) ${pct}%, rgba(148,163,184,0.25) 100%)`;
+            setSliderFill(val);
         });
     }
 
@@ -329,6 +362,62 @@
             if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
         });
     }
+
+    // ── Region mode switch ──
+    function detectMode() {
+        try {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+            if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta') return 'in';
+            const lang = (navigator.language || '').toLowerCase();
+            if (lang === 'en-in' || lang.startsWith('hi')) return 'in';
+        } catch (_) { /* ignore */ }
+        return 'us';
+    }
+
+    function applyMode(key, { resetInputs = true } = {}) {
+        modeKey = (key === 'in') ? 'in' : 'us';
+        mode = MODES[modeKey];
+
+        // Toggle buttons
+        document.querySelectorAll('.mode-btn').forEach((b) => {
+            const on = b.dataset.mode === modeKey;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        // Currency symbols
+        document.querySelectorAll('.currency-prefix').forEach((el) => { el.textContent = mode.symbol; });
+
+        // Explainer highlight
+        document.querySelectorAll('.why-col').forEach((c) => c.classList.toggle('active', c.dataset.mode === modeKey));
+
+        // Mode note + info link label
+        const noteEl = byId('modeNote');
+        if (noteEl) noteEl.textContent = mode.note;
+        if (openModalBtn) openModalBtn.textContent = mode.infoLabel;
+
+        // Reset inputs + steps to region defaults
+        if (resetInputs) {
+            if (annualSpendEl)   { annualSpendEl.value   = mode.defaults.spend;     annualSpendEl.step   = mode.step.spend; }
+            if (currentPortEl)   { currentPortEl.value   = mode.defaults.portfolio; currentPortEl.step   = mode.step.portfolio; }
+            if (annualSavingsEl) { annualSavingsEl.value = mode.defaults.savings;   annualSavingsEl.step = mode.step.savings; }
+        }
+
+        // Withdrawal rate → region default
+        if (wrSlider) wrSlider.value = mode.defaultWr;
+        if (wrDisplay) wrDisplay.textContent = `${mode.defaultWr.toFixed(1)}%`;
+        setSliderFill(mode.defaultWr);
+
+        // Recompute if results are already on screen
+        if (lastResults) { compute(); render(); }
+    }
+
+    document.querySelectorAll('.mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => applyMode(btn.dataset.mode));
+    });
+
+    // Initialise from detected region
+    applyMode(detectMode());
 
     // ── Resize ──
     if (typeof ResizeObserver !== 'undefined') {

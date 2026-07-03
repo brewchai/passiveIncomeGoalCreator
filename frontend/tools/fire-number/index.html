@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIRE Number Calculator | But First Fire</title>
-    <meta name="description" content="Calculate exactly how much money you need to retire early. Enter your expenses, savings rate, and expected return to find your FIRE number and years to financial independence.">
+    <title>FIRE Number Calculator — US (25×) &amp; India (33×) | But First Fire</title>
+    <meta name="description" content="Free FIRE number calculator for the US (4% rule, 25×) and India (3% rule, 33×). Switch currency to ₹ INR with lakhs and crores, and see why India needs a bigger cushion.">
     <link rel="canonical" href="https://butfirstfire.com/tools/fire-number/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="FIRE Number Calculator | But First Fire">
-    <meta property="og:description" content="Calculate exactly how much money you need to retire early. Find your FIRE number and see exactly how many years until financial independence.">
+    <meta property="og:title" content="FIRE Number Calculator — US (25×) &amp; India (33×) | But First Fire">
+    <meta property="og:description" content="Calculate your FIRE number for the US or India. Toggle 25× (4%) vs 33× (3%), switch to INR, and see your target in lakhs and crores.">
     <meta property="og:url" content="https://butfirstfire.com/tools/fire-number/">
     <meta property="og:image" content="https://butfirstfire.com/favicon.png">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="FIRE Number Calculator | But First Fire">
-    <meta name="twitter:description" content="Find your FIRE number and years to financial independence with this free calculator.">
+    <meta name="twitter:title" content="FIRE Number Calculator — US &amp; India | But First Fire">
+    <meta name="twitter:description" content="Find your FIRE number for the US (25×) or India (33×), in $ or ₹.">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="./fire-number.js" defer></script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a FIRE number?","acceptedAnswer":{"@type":"Answer","text":"Your FIRE number is the total portfolio value you need to retire early and never run out of money. It is calculated by dividing your annual expenses by your chosen safe withdrawal rate. At the standard 4% rule, your FIRE number is 25 times your annual spending."}},{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule states that you can withdraw 4% of your portfolio in year one of retirement, then adjust for inflation each year, and your portfolio will last at least 30 years. Research by William Bengen and the Trinity Study showed this held through every historical market period including the Great Depression."}},{"@type":"Question","name":"Should I use 3.5% or 4% withdrawal rate for early retirement?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule was designed for a 30-year retirement. If you plan to retire early — say at 35 or 40 — your money needs to last 50+ years. Many FIRE practitioners use a 3% to 3.5% withdrawal rate to add a safety margin for longer retirements."}}]}
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a FIRE number?","acceptedAnswer":{"@type":"Answer","text":"Your FIRE number is the total portfolio value you need to retire early and never run out of money. It is calculated by dividing your annual expenses by your chosen safe withdrawal rate. At the standard 4% rule, your FIRE number is 25 times your annual spending."}},{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule states that you can withdraw 4% of your portfolio in year one of retirement, then adjust for inflation each year, and your portfolio will last at least 30 years. Research by William Bengen and the Trinity Study showed this held through every historical market period including the Great Depression."}},{"@type":"Question","name":"Should I use 3.5% or 4% withdrawal rate for early retirement?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule was designed for a 30-year retirement. If you plan to retire early — say at 35 or 40 — your money needs to last 50+ years. Many FIRE practitioners use a 3% to 3.5% withdrawal rate to add a safety margin for longer retirements."}},{"@type":"Question","name":"How much do I need to retire early in India?","acceptedAnswer":{"@type":"Answer","text":"In India, a more conservative 3% withdrawal rate is widely recommended, so your FIRE number is about 33 times your annual expenses. If you expect to spend ₹12,00,000 a year, your FIRE number is roughly ₹4 crore. Higher inflation, a shorter market history, and steep healthcare costs are why India uses a bigger multiple than the US 25×."}},{"@type":"Question","name":"Why is the FIRE multiplier 33× for India instead of 25×?","acceptedAnswer":{"@type":"Answer","text":"The 25× (4%) rule is based on US market history and relatively low, stable inflation. India has run higher inflation (around 5–6%), has a shorter and more volatile market record, and faces steep healthcare inflation with no universal coverage. A 3% withdrawal rate — 33× annual expenses — builds in the extra safety margin those factors require."}}]}
     </script>
 </head>
 <body>
@@ -52,6 +52,7 @@
                         <p>The <strong>Trinity Study</strong> (1998) confirmed this. It became the bedrock of FIRE planning.</p>
                         <p>The mathematical shortcut: <strong>FIRE Number = Annual Expenses ÷ Withdrawal Rate</strong>. At 4%, that's 25× your annual spend. At 3.5%, it's 28.6×.</p>
                         <p>If you plan to retire <strong>very early</strong> (before 40), many practitioners use 3%–3.5% to account for a 50+ year retirement horizon.</p>
+                        <p><strong>Retiring in India?</strong> Because of higher inflation, a shorter market history, and steep healthcare costs, most Indian FIRE planners use a <strong>3% withdrawal rate — 33× your annual expenses</strong> — instead of 25×. Switch the calculator to India mode to use it.</p>
                     </div>
                 </div>
             </div>
@@ -64,6 +65,13 @@
             </div>
             <p class="page-desc">Find exactly how much money you need to retire early — and how many years away you are.</p>
 
+            <!-- REGION MODE TOGGLE -->
+            <div class="mode-toggle" role="tablist" aria-label="Region">
+                <button class="mode-btn active" data-mode="us" role="tab" aria-selected="true" type="button">🇺🇸 US · 25×</button>
+                <button class="mode-btn" data-mode="in" role="tab" aria-selected="false" type="button">🇮🇳 India · 33×</button>
+            </div>
+            <p class="mode-note" id="modeNote">US mode: 4% rule → 25× your annual spending, shown in $.</p>
+
             <!-- INPUTS -->
             <section class="section card" id="inputsSection">
                 <div class="card-head">
@@ -73,7 +81,7 @@
                     <label class="field">
                         <span class="field-label">Annual Spending in Retirement</span>
                         <div class="field-control field-control-money">
-                            <span class="field-prefix">$</span>
+                            <span class="field-prefix currency-prefix">$</span>
                             <input id="annualSpend" type="number" inputmode="numeric" min="0" step="1000" value="60000">
                         </div>
                         <span class="field-help">Your expected yearly expenses once retired</span>
@@ -81,7 +89,7 @@
                     <label class="field">
                         <span class="field-label">Current Portfolio Value</span>
                         <div class="field-control field-control-money">
-                            <span class="field-prefix">$</span>
+                            <span class="field-prefix currency-prefix">$</span>
                             <input id="currentPortfolio" type="number" inputmode="numeric" min="0" step="5000" value="100000">
                         </div>
                         <span class="field-help">Total investments (stocks, bonds, 401k, IRA, etc.)</span>
@@ -89,7 +97,7 @@
                     <label class="field">
                         <span class="field-label">Annual Savings (Contributions)</span>
                         <div class="field-control field-control-money">
-                            <span class="field-prefix">$</span>
+                            <span class="field-prefix currency-prefix">$</span>
                             <input id="annualSavings" type="number" inputmode="numeric" min="0" step="1000" value="30000">
                         </div>
                         <span class="field-help">How much you add to investments per year</span>
@@ -192,6 +200,36 @@
 
             </div>
 
+            <!-- WHY THE MULTIPLIER DIFFERS -->
+            <section class="section why-section">
+                <h2 class="section-heading">Why 25× in the US but 33× in India?</h2>
+                <p class="section-desc">The math is the same everywhere — <strong>FIRE number = annual expenses ÷ withdrawal rate</strong> — but the <em>safe</em> withdrawal rate isn't. Here's the honest reason the multiple is bigger for India.</p>
+                <div class="why-grid">
+                    <div class="why-col" data-mode="us">
+                        <div class="why-flag">🇺🇸 United States</div>
+                        <div class="why-multiple">25×</div>
+                        <div class="why-rate">4% withdrawal rate</div>
+                        <ul class="why-list">
+                            <li>Backed by the Bengen &amp; Trinity studies of US market history since 1926.</li>
+                            <li>US equities delivered ~7% real returns with relatively low, stable inflation (~2–3%).</li>
+                            <li>A 4% withdrawal survived every historical 30-year window — including 1929 and 1966.</li>
+                        </ul>
+                    </div>
+                    <div class="why-col" data-mode="in">
+                        <div class="why-flag">🇮🇳 India</div>
+                        <div class="why-multiple">33×</div>
+                        <div class="why-rate">3% withdrawal rate</div>
+                        <ul class="why-list">
+                            <li><strong>Higher inflation.</strong> India's CPI has run ~5–6% vs ~2–3% in the US — it erodes real returns and raises next year's spending.</li>
+                            <li><strong>Shorter, choppier market history.</strong> Less long-run data and deeper drawdowns raise sequence-of-returns risk.</li>
+                            <li><strong>Brutal healthcare inflation.</strong> With no universal coverage, medical costs compound far faster than general prices.</li>
+                            <li><strong>Longer horizons.</strong> Indian FIRE skews young — a 40–50+ year retirement needs more cushion than a 30-year rule assumes.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="why-foot">Bottom line: a ~3% withdrawal (33×) is the more honest target for India. It's not that Indians save worse — it's that the same rupee has to survive a rougher ride.</p>
+            </section>
+
             <!-- FAQ -->
             <section class="section faq-section">
                 <h2 class="section-heading">Frequently asked questions</h2>
@@ -199,6 +237,14 @@
                     <details class="faq-item">
                         <summary class="faq-q">What is a FIRE number?</summary>
                         <p class="faq-a">Your FIRE number is the total invested portfolio you need to retire early and live off withdrawals indefinitely. At the 4% rule, it's 25× your annual expenses. So if you spend $60,000/year, your FIRE number is $1,500,000.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">How much do I need to retire early in India?</summary>
+                        <p class="faq-a">In India, plan on roughly <strong>33× your annual expenses</strong> (a 3% withdrawal rate). Spend ₹12,00,000 a year and your FIRE number is about <strong>₹4 crore</strong>. Switch this calculator to <strong>India mode</strong> to run it in rupees, with results in lakhs and crores.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-q">Why 33× for India instead of the usual 25×?</summary>
+                        <p class="faq-a">The 25× (4%) rule comes from US market history with low, stable inflation. India runs higher inflation (~5–6%), has a shorter, more volatile market record, and faces steep healthcare costs with no universal coverage — so a safer 3% withdrawal (33×) builds in the margin those risks demand.</p>
                     </details>
                     <details class="faq-item">
                         <summary class="faq-q">What withdrawal rate should I use?</summary>
