@@ -116,7 +116,7 @@ One hard rule: **visa rules in this region change fast — Thailand just proved 
 
 ## Food, Health, and Community as an Indian
 
-**Food.** International food is best and most accessible in Thailand, with the healthiest options too. Vietnam is close behind. India is the reverse: Indian food is the best and cheapest on earth, but international food carries a premium — improving city by city, but still a premium.
+**Food.** International food is best and most accessible in Thailand; Vietnam is close behind. But healthy eating is best and easiest in Vietnam — it's basically the default, whereas in Thailand and India eating well is a hard, conscious choice you have to make on purpose. On cuisine, India is the flip side: Indian food is the best and cheapest on earth, but international food carries a premium — improving city by city, but still a premium.
 
 **Health.** If I rank lifestyle healthiness honestly: **Vietnam first, then Thailand and India roughly tied.** Better air, more walking, fresher food, less of the grind. It adds up in a way you feel physically within months.
 
@@ -180,7 +180,7 @@ Vietnam has no retirement visa — you use an e-visa and do periodic visa runs. 
 Vietnam is cheaper, has the best air, and a buzzing expat scene. Thailand costs a bit more but wins on international food, social experience, and flights home. A common move is to base in Vietnam for cost and use Thailand for lifestyle.
 
 ### Do you get Indian food, healthy food, and community abroad?
-Healthy and international food is easiest in Thailand and very accessible in Vietnam. Pure Indian food is cheapest and best in India. Community is easy to build in hubs like Da Nang if you have some international exposure — you create it rather than inherit it.
+Healthy eating is best and easiest in Vietnam — it's basically the default. In Thailand and India you can eat well, but it's a hard, conscious choice you have to make. International food is best and most accessible in Thailand; pure Indian food is cheapest and best in India. Community is easy to build in hubs like Da Nang if you have some international exposure — you create it rather than inherit it.
 
 ---
 
