@@ -50,6 +50,8 @@ The standard definition: Lean FIRE is early retirement on annual expenses of **$
 
 The searcher-friendly answer: **Lean FIRE annual expenses for a single person typically run $1,500–$3,300/month, or $18,000–$40,000/year.** My actual number is $1,800/month, which puts me at the lower-middle of this range.
 
+If you're Indian and weighing this route specifically, I've written a full breakdown of [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian) — real costs in Vietnam vs Thailand, how it compares to Pune, and the visa reality on an Indian passport.
+
 What determines where you fall in that range? Not your coffee habit. Four things:
 
 1. **Housing** — the biggest lever by far

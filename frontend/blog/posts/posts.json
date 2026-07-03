@@ -1,6 +1,20 @@
 {
   "featured": [
     {
+      "slug": "retire-in-southeast-asia-as-an-indian",
+      "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
+      "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
+      "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
+      "date": "2026-07-03",
+      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
+      "tags": [
+        "featured",
+        "geo-arbitrage"
+      ],
+      "featured": true,
+      "url": "/blog/retire-in-southeast-asia-as-an-indian"
+    },
+    {
       "slug": "first-year-fire-reflection",
       "title": "My First Year After Leaving Corporate Tech",
       "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
@@ -248,6 +262,20 @@
   ],
   "all": [
     {
+      "slug": "retire-in-southeast-asia-as-an-indian",
+      "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
+      "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
+      "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
+      "date": "2026-07-03",
+      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
+      "tags": [
+        "featured",
+        "geo-arbitrage"
+      ],
+      "featured": true,
+      "url": "/blog/retire-in-southeast-asia-as-an-indian"
+    },
+    {
       "slug": "cost-of-cancer-without-insurance",
       "title": "What Cancer Actually Costs When You Have No Insurance",
       "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
@@ -491,5 +519,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-06-29T17:55:57.974911Z"
+  "_generated_at": "2026-07-03T14:54:34.612203Z"
 }
