@@ -1,8 +1,23 @@
 # Retiring in Southeast Asia as an Indian: The Honest Math
 
-**Yes, an Indian can retire comfortably in Southeast Asia — I've done it across Vietnam and Thailand for roughly $1,800–$2,300 a month (about ₹1.5–1.9 lakh).** But here's the part nobody tells you: measured against a genuinely good life in Pune, the money roughly balances out. What actually changes is the lifestyle. That is the real lever, and this whole guide is about pulling it well.
+Type "retire in Southeast Asia" into Google and you'll drown in the same fantasy: white-sand beaches, $400 rent, cocktails at sunset, your savings lasting forever. It's a pretty picture. It's also not quite the truth — especially if you're Indian, because the maths, the visa, and the honest comparison to just staying home all work differently for us than they do for the Americans and Brits writing most of these articles.
 
-I'm not writing this from a spreadsheet. I grew up in Pune, spent 10 years in the US, worked in big tech, and now I actually live this — Da Nang in Vietnam, time in Thailand, my investments sitting abroad. So this is the honest version: real numbers, real trade-offs, and the visa friction most articles conveniently skip.
+I know because I actually did it. So here's the version I wish someone had handed me before I packed a bag.
+
+**The short version: yes, an Indian can retire comfortably in Southeast Asia — I've done it across Vietnam and Thailand for roughly $1,800–$2,300 a month (about ₹1.5–1.9 lakh).** But here's the part nobody tells you: measured against a genuinely good life in Pune, the money roughly balances out. What actually changes is the lifestyle. That is the real lever, and this whole guide is about learning to pull it well.
+
+I'm not writing this from a spreadsheet or a week-long holiday. I grew up in Pune, spent 10 years in the US, worked in big tech, and now I live this — Da Nang in Vietnam, time in Thailand, my investments sitting abroad. So what follows is the honest version: real numbers, real trade-offs, and the visa friction most articles conveniently skip.
+
+Here's exactly what we'll walk through, in order:
+
+- **What it actually costs** each month in Vietnam and Thailand — real numbers, in both dollars and rupees
+- **How that stacks up against Pune** — and why the total is far closer than you'd expect
+- **Where to actually base yourself** — Vietnam vs Thailand, broken down honestly
+- **The visa reality on an Indian passport** — the part that trips most people up
+- **Food, health, community, and flights home** to India
+- **Whether this life is genuinely right for you** — because it isn't for everyone
+
+No brochure talk. Just what I've learned living it.
 
 ## Table of Contents
 
