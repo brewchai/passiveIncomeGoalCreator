@@ -4,7 +4,11 @@ Type "retire in Southeast Asia" into Google and you'll drown in the same fantasy
 
 I know because I stumbled into it. I didn't plan any of this — I was just burnt out. A year and a half at Meta in New York, doing infinite, high-effort work I knew for a fact wouldn't make anyone's life better. One day in January 2025 I cold-quit and got on a plane with no real plan.
 
-Here's the part that matters: the obvious move for an exhausted Indian in NYC is to just fly home to Pune and regroup. I didn't. I went the other way and gave myself Southeast Asia first — Thailand, then Vietnam. I still remember the overnight bus to Chiang Mai, freezing and uncomfortable with zero certainty, feeling more hope than I'd had in years, because for once I was on my own strange, special journey. Eighteen months later I'm still out here, mostly in Da Nang. So here's the version I wish someone had handed me before I packed that bag.
+Here's the part that matters: the obvious move for an exhausted Indian in NYC is to just fly home to Pune and regroup. I didn't. I went the other way and gave myself Southeast Asia first — Thailand, then Vietnam. I still remember the overnight bus to Chiang Mai, freezing and uncomfortable with zero certainty, feeling more hope than I'd had in years, because for once I was on my own strange, special journey. Eighteen months later I'm still out here, mostly in Da Nang.
+
+Here's the part I didn't see coming: I left to escape, not to retire. But the moment I landed in Southeast Asia and saw how little a genuinely good life costs here, my brain started whirling. I ran my numbers — not once, a hundred times, at every hour of the night. And the math kept landing on the same answer: I didn't need to go back and grind for a bigger pile. I could just stop. So I leaned all the way into retired life — no more chasing the next number, no more accumulating for the sake of it. That quiet pivot, from "I'm burnt out and travelling" to "I'm actually retired," is what this whole article is really about.
+
+So here's the version I wish someone had handed me before I packed that bag.
 
 **The short version: yes, an Indian can retire comfortably in Southeast Asia — I've done it across Vietnam and Thailand for roughly $1,800–$2,300 a month (about ₹1.5–1.9 lakh).** But here's the part nobody tells you: measured against a genuinely good life in Pune, the money roughly balances out. What actually changes is the lifestyle. That is the real lever, and this whole guide is about learning to pull it well.
 
