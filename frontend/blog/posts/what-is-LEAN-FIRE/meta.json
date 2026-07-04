@@ -21,6 +21,10 @@
             "answer": "Lean FIRE (Financial Independence, Retire Early) is early retirement on a minimal but intentional budget — typically $20,000–$40,000/year for a single person. It requires a much smaller portfolio than traditional FIRE by keeping annual expenses low, usually through geographic arbitrage, housing optimisation, or both."
         },
         {
+            "question": "Is Lean FIRE the same as Skinny FIRE?",
+            "answer": "Basically, yes. Skinny FIRE is just another name for Lean FIRE — early retirement funded by a small portfolio and a lean budget, roughly $18,000–$40,000 per year for one person. Some people reserve Skinny FIRE for the very leanest end of that range, but in practice the two terms describe the same strategy."
+        },
+        {
             "question": "How do you calculate your Lean FIRE number?",
             "answer": "Divide your annual expenses by your target withdrawal rate. At 4%, multiply annual expenses by 25. At a safer 3.25%, multiply by 31. For example, $21,600/year × 25 = $540,000 at 4%, or $669,600 at 3.25%."
         },

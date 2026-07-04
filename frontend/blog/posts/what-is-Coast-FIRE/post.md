@@ -101,7 +101,7 @@ Here’s what Coast FIRE looks like for different lifestyles and retirement targ
 To truly understand what Coast FIRE is, it usually helps to compare it to the other popular Financial Independence, Retire Early methodologies.
 
 ### Coast FIRE vs. Lean FIRE
-Lean FIRE focuses on accumulating a smaller portfolio (usually under $1M) by drastically minimizing expenses and adopting a highly frugal lifestyle to retire as fast as possible. Coast FIRE, on the other hand, does not require extreme frugality once you hit your Coast number. Instead of retiring early, Coast FIRE adherents continue to work—just at a less demanding pace—while relying on compounding returns for their traditional retirement.
+[Lean FIRE](/blog/what-is-LEAN-FIRE) focuses on accumulating a smaller portfolio (usually under $1M) by drastically minimizing expenses and adopting a highly frugal lifestyle to retire as fast as possible. Coast FIRE, on the other hand, does not require extreme frugality once you hit your Coast number. Instead of retiring early, Coast FIRE adherents continue to work—just at a less demanding pace—while relying on compounding returns for their traditional retirement.
 
 ### Coast FIRE vs. Barista FIRE
 Barista FIRE and Coast FIRE look very similar from the outside, but the mechanics are different. [Barista FIRE](/blog/what-is-barista-FIRE) involves retiring from your main career before you hit full FI and picking up a part-time job (often for health insurance benefits) to partially cover your expenses and slow down portfolio withdrawals. Coast FIRE specifically focuses on hitting a math milestone early on so you can entirely stop retirement contributions, using income from any job purely to cover current costs.

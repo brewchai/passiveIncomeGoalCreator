@@ -48,7 +48,7 @@ I want to be honest with you: am I making sacrifices? In some ways, yes. But Vie
 
 The standard definition: Lean FIRE is early retirement on annual expenses of **$20,000 to $40,000/year**. It's the opposite of Fat FIRE — instead of accumulating a massive portfolio to fund a luxury lifestyle, you reduce the lifestyle enough that a much smaller portfolio can sustain it.
 
-The searcher-friendly answer: **Lean FIRE annual expenses for a single person typically run $1,500–$3,300/month, or $18,000–$40,000/year.** My actual number is $1,800/month, which puts me at the lower-middle of this range.
+The searcher-friendly answer: **Lean FIRE annual expenses for a single person typically run $1,500–$3,300/month, or $18,000–$40,000/year.** My actual number is $1,800/month, which puts me at the lower-middle of this range. (You'll sometimes see this same idea called **Skinny FIRE** — it's the same strategy under a different name.)
 
 If you're Indian and weighing this route specifically, I've written a full breakdown of [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian) — real costs in Vietnam vs Thailand, how it compares to Pune, and the visa reality on an Indian passport.
 
@@ -243,6 +243,10 @@ For a single person in the US, Lean FIRE annual expenses typically run **$20,000
 ### What does Lean FIRE mean?
 
 Lean FIRE (Financial Independence, Retire Early) is early retirement on a minimal but intentional budget — typically $20,000–$40,000/year for a single person. Unlike traditional retirement planning, which assumes decades of work, Lean FIRE front-loads financial discipline to exit the workforce 10–30 years early by keeping the required portfolio small.
+
+### Is Lean FIRE the same as Skinny FIRE?
+
+Basically, yes. "Skinny FIRE" is just another name for Lean FIRE — early retirement funded by a small portfolio and a lean budget (roughly $18,000–$40,000/year for one person). Some people reserve "Skinny FIRE" for the very leanest end of that range, but in practice the two terms describe the same strategy.
 
 ### How do I calculate my Lean FIRE number?
 
