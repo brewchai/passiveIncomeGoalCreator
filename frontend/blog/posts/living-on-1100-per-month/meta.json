@@ -1,8 +1,28 @@
 {
     "title": "Living Abroad on $1,100 a Month",
-    "subtitle": "How I cut my expenses by 82% without sacrificing quality of life",
-    "description": "A detailed breakdown of how I went from spending $6,000/month in New York City to living comfortably on $1,100/month through geographic arbitrage.",
+    "meta_title": "Living on $1,100/Month in Da Nang, Vietnam: Real Costs",
+    "subtitle": "How I cut my expenses by 82% without sacrificing quality of life — and the honest all-in number",
+    "description": "A real, line-by-line breakdown of how I went from $6,000/month in NYC to a ~$1,100 core cost of living in Da Nang, Vietnam — plus the honest $1,800 all-in number most geo-arbitrage posts hide.",
     "date": "2026-02-02",
+    "date_modified": "2026-07-05",
     "author": "Ninad Mundalik",
-    "cover": "cover.webp"
+    "cover": "cover.webp",
+    "faqs": [
+        {
+            "question": "How much does it cost to live in Da Nang, Vietnam?",
+            "answer": "My core cost of living in Da Nang is about $1,100/month: a modern 1-bedroom near the beach for $375, food for $600, gym $20, and a scooter for $75. My honest all-in number is closer to $1,800/month once I include a personal trainer, visa runs, flights home, and family support."
+        },
+        {
+            "question": "Can you really live on $1,100 a month in Vietnam?",
+            "answer": "Yes — $1,100/month covers a comfortable core lifestyle in Da Nang: a modern beachside apartment, eating out most meals, a gym, and a scooter. But plan realistically on more like $1,800/month all-in once you add visa costs, flights home, and anything you send to family."
+        },
+        {
+            "question": "What is geo-arbitrage in FIRE?",
+            "answer": "Geo-arbitrage means earning or holding wealth in a strong currency while living somewhere with a much lower cost of living. It slashes your annual expenses — and therefore your FIRE number. Going from $72,000/year in NYC to roughly $21,600/year in Vietnam cut my FIRE target from $1.8 million to about $540,000."
+        },
+        {
+            "question": "How much do you need to retire in Vietnam?",
+            "answer": "Using a real all-in spend of about $21,600/year and the 25x rule, a FIRE number of roughly $540,000 supports early retirement in Vietnam. On a bare-bones core budget of ~$13,200/year the target drops to about $330,000, but planning on the higher all-in number is the honest approach."
+        }
+    ]
 }

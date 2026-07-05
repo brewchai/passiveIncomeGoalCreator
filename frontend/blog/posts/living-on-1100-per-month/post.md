@@ -1,18 +1,18 @@
 # From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment
 
-When I tell people I went from spending **$6,000 a month in New York City** to living comfortably on **$1,100 a month** abroad, they assume I'm either lying or living in a tent. 
+When I tell people I went from spending **$6,000 a month in New York City** to living comfortably on **$1,100 a month** in Vietnam, they assume I'm either lying or living in a tent.
 
 Neither is true.
 
-I'm living in a modern apartment, eating well, staying fit with a personal trainer, and maintaining the same quality of life I had in Manhattan — just for **82% less money**.
+I'm in a modern apartment steps from the beach, eating better than I did in Manhattan, training with a coach three times a week, and waking up without an alarm. Same quality of life I had in NYC — arguably better — for a fraction of the money.
 
-This is what geo-arbitrage looks like in practice. Not theoretical blog advice. Real numbers. Real life.
+This isn't theoretical blog advice. These are my real numbers, and I'll reconcile them honestly with my [full Lean FIRE budget](/blog/what-is-LEAN-FIRE) at the end, because the "$1,100" figure needs an asterisk and I'm not going to hide it.
 
 ---
 
 ## The NYC Reality: $6,000/Month
 
-Let me break down what I was spending in New York:
+I spent a year and a half at Meta in New York doing infinite, high-effort work I knew wouldn't make anyone's life better. Here's what it cost me just to *exist* while I did it:
 
 | Category | Monthly Cost |
 |----------|--------------|
@@ -25,178 +25,110 @@ Let me break down what I was spending in New York:
 | Health insurance | $370 |
 | **Total** | **$6,000** |
 
-That's **$72,000 a year** just to exist in New York.
-
-And I wasn't living extravagantly. No penthouse. No Michelin-star dinners every week. Just a normal, comfortable life in one of the most expensive cities in the world.
-
-The problem? Even with a six-figure tech salary, saving 50% of my income meant I was still burning through $72k annually on lifestyle.
+That's **$72,000 a year** to live a normal, comfortable life. No penthouse, no Michelin dinners. Just New York's baseline price of admission. Even saving half my tech salary, I was still lighting $72k on fire every year for a lifestyle that was slowly burning me out.
 
 ---
 
-## The Shift: Moving Abroad
+## The Shift: I Didn't Move Home, I Went the Other Way
 
-After hitting my [Coast FIRE number at 33](/blog/40k-debt-to-coast-fire-at-33), I didn't want to keep working just to fund an expensive lifestyle. I wanted freedom.
+In January 2025 I cold-quit and got on a plane with no real plan. The obvious move for a burnt-out Indian in NYC is to fly home and regroup. I didn't. I explored Southeast Asia first — Thailand, then Vietnam — and ended up in **Da Nang**, a coastal city with real beaches, fast internet, and a buzzing expat and digital-nomad scene.
 
-So I made a decision: **geographic arbitrage**.
-
-I moved to Vietnam — specifically Da Nang, a coastal city with beaches, modern infrastructure, and a thriving expat community — and completely restructured my expenses.
-
-Here's what my life costs now:
+I didn't leave to retire. But once I saw how little a genuinely good life costs here, I ran my numbers a hundred times and realised I could stop grinding for a bigger pile. So I restructured everything. Here's what my core cost of living looks like now:
 
 | Category | Monthly Cost |
 |----------|--------------|
-| Apartment + utilities | $350 |
-| Food budget ($20/day) | $600 |
-| Gym membership | $20 |
-| Scooter rental + gas | $75 |
-| Personal trainer (3x/week) | $190 |
-| **Total** | **$1,235** |
+| Apartment + utilities (1BR near the beach) | $375 |
+| Food | $600 |
+| Gym | $20 |
+| Scooter + gas | $75 |
+| **Core cost of living** | **~$1,070** |
 
-Let's round it to **$1,100–$1,200/month** depending on the month.
-
-That's **$14,400/year** instead of $72,000.
+Call it **~$1,100/month** for the essentials. That's **$13,200/year** against New York's $72,000 — for a better daily life. (More on the honest all-in number below; it's higher, and I'll show you exactly why.)
 
 ---
 
 ## Breaking Down the Numbers
 
-### Apartment + Utilities: $350
-I live in a modern 1-bedroom apartment **steps from the beach** with:
-- Air conditioning
-- Fast WiFi (100+ Mbps)
-- Balcony with ocean breeze
-- 24/7 security
-- Walking distance to everything
+### Apartment + Utilities: $375
+A modern 1-bedroom **steps from the beach** — air conditioning, 100+ Mbps WiFi, a balcony with an ocean breeze, 24/7 security. In NYC this is $3,000+. In Da Nang it's $375 all-in.
 
-In NYC, this would cost $3,000+ easily. Here in Da Nang? $350 all-in.
+One honest caveat: apartments here are genuinely hit-or-miss. I spent two weeks viewing places before signing. Tourists who search in the obvious areas pay $600–900 for the same square footage. Do the legwork.
 
-### Food: $20/Day ($600/Month)
-I eat out almost every meal. Thai food, Western food, healthy bowls, smoothies — whatever I want.
+### Food: $600
+I eat out most meals and eat *well*. A banh mi is a dollar or two, a proper bowl of pho is $1.50, a sit-down meal with a drink is $5–8. Fresh produce from the morning market costs almost nothing.
 
-$20/day gets you:
-- Breakfast: $3–$5
-- Lunch: $5–$7
-- Dinner: $7–$10
-- Coffee/snacks: $3–$5
+The real unlock isn't just price — it's that eating healthy here is the **default**, not a discipline. In New York, eating this well took effort and money. Here it's just Tuesday. (The one thing that *is* stupidly expensive: imported whey and supplements. Small price to pay.)
 
-In New York, one meal out was $20–$30 minimum. Here, I'm eating better for less.
+### Gym + Trainer: $20 + a coach
+The gym is $20/month. Then I added the thing I could never justify in Manhattan: a **personal trainer, three times a week, at $19 a session** — roughly $240/month. In NYC that was $100+ a session, so I simply didn't do it. I'm in the best shape of my life now, and it's a rounding error on my budget.
 
-### Gym: $20/Month
-A solid gym with free weights, machines, and cardio equipment. No frills, but everything I need.
-
-(If I wanted the luxury gym with pool, sauna, and classes, it's $42/month — still a fraction of the $300/month I was paying in NYC.)
-
-### Scooter Rental + Gas: $75/Month
-I rent a scooter for $50/month and spend ~$25 on gas.
-
-This replaces the $300/month I spent on subway passes and Ubers in NYC.
-
-### Personal Trainer: $190/Month
-I train 3x/week with a certified trainer. Sessions are $15 each.
-
-In New York, personal training was $100+ per session. I couldn't afford it.
-
-Now? I'm in the best shape of my life for a fraction of the cost.
+### Scooter + Gas: $75
+I rent a scooter for ~$50 and spend ~$25 on gas. It replaces the $150/month I spent on the subway and Ubers, and I get anywhere in the city in ten minutes.
 
 ---
 
-## What I Gave Up (Spoiler: Not Much)
+## The Honest Asterisk: $1,100 vs $1,800
 
-People assume moving abroad means sacrificing comfort. Here's what I actually gave up:
+Here's the part most "I live on $X abroad" posts conveniently skip.
 
-- ❌ Expensive rent
-- ❌ $25 cocktails
-- ❌ $8 coffees
-- ❌ Overpriced everything
+**$1,100 is my core cost of living.** But my *true* all-in number is closer to **$1,800/month**, and I won't pretend otherwise. The gap is the stuff that isn't really "living in Da Nang":
 
-Here's what I **didn't** give up:
+- **The personal trainer** (~$240) — a luxury, not a necessity
+- **Visa runs** (~$100/month averaged) — the Vietnam tax on an Indian passport
+- **Flights home and family support** (~$460) — I fly back to India, and I send money to people I care about
 
-- ✅ Modern apartment (with beach access!)
-- ✅ Great food
-- ✅ Fitness routine (actually better now)
-- ✅ Fast internet
-- ✅ Social life
-- ✅ Safety and comfort
-- ✅ Living by the ocean
+Add it up and you land at about $1,800/month — which is exactly the number I break down, line by line, in my [full Lean FIRE budget](/blog/what-is-LEAN-FIRE). So when you plan your own version of this, **plan on the all-in number, not the shiny headline one.**
 
-If anything, my quality of life **improved**. I have more time, less stress, I'm healthier, and I wake up to ocean views every day.
+---
+
+## What I Gave Up (Honestly, Not Much)
+
+I gave up a permanent home base, easy proximity to family, and career momentum. Those are real, and I don't wave them away.
+
+What I *didn't* give up: a modern apartment on the beach, great food, a fitness routine that's actually better now, fast internet, and a social life. Da Nang is buzzing — you build community fast here if you make any effort. My mornings are coffee, a beach walk, yoga or pickleball; my evenings are board games and casual meetups with other remote folks or work from a good café.
+
+Honestly, it's a level of calm and happiness I had never felt in New York.
 
 ---
 
 ## The FIRE Math: How This Changes Everything
 
-Living on $1,200/month instead of $6,000/month completely changes your [FIRE number](/blog/calculating-fire-number).
+Your spending sets your [FIRE number](/blog/calculating-fire-number) — annual expenses × 25 (the 4% rule).
 
 **In NYC:**
-- Annual expenses: $72,000
-- FIRE number (25x rule): **$1.8 million**
+- Annual expenses: $72,000 → FIRE number: **$1.8 million**
 
-**Abroad:**
-- Annual expenses: $14,400
-- FIRE number (25x rule): **$360,000**
+**In Da Nang (all-in, the honest number):**
+- Annual expenses: ~$21,600 → FIRE number: **$540,000**
 
-That's a **$1.44 million difference**.
-
-By moving abroad, I effectively "bought" my freedom **years earlier** than if I had stayed in New York.
+Even on my *bare* $1,100 core, that's a $330,000 target — but I'd never tell you to plan on the bare number. Use the all-in $540k. Either way, geo-arbitrage bought my freedom **years earlier** than staying in New York ever could.
 
 ---
 
 ## Is This Sustainable Long-Term?
 
-The most common question I get: *"Yeah, but can you live like this forever?"*
+The question I get most: *"Can you actually live like this forever?"*
 
-Honestly? I don't know. And I don't need to.
-
-Here's the beauty of geo-arbitrage: **it's flexible**.
-
-- If I want to move back to the U.S., I can.
-- If I want to try another country, I can.
-- If I want to increase my budget, I can.
-
-The point isn't to live on $1,100/month forever. The point is that I **can** if I want to. And that optionality is freedom.
-
-Right now, I'm letting my investments compound while spending a fraction of what I used to. In a few years, I'll have even more options.
+Honestly, I don't know — and I don't need to. The beauty of geo-arbitrage is optionality. I can move back to the US, try another country, or raise my budget whenever I want. Right now I'm letting my investments compound (I live off a cash buffer, not by selling them) while spending a fraction of what I used to. The point was never to live on $1,100 forever. The point is that I *can*.
 
 ---
 
-## The Real Cost of NYC (That Nobody Talks About)
+## The Real Cost of NYC That Nobody Prices In
 
-Living in New York wasn't just expensive financially. It was expensive in other ways:
+New York wasn't just expensive in dollars:
 
-- **Time**: 1+ hour commutes, waiting for trains, sitting in traffic
-- **Stress**: Noise, crowds, constant hustle
-- **Health**: Less sleep, more takeout, gym too expensive to justify a trainer
+- **Time** — hour-plus commutes, waiting on trains
+- **Stress** — noise, crowds, the permanent hum of the hustle
+- **Health** — less sleep, more takeout, a gym too pricey to use properly
 
-Moving abroad gave me back:
-
-- **Time**: I work from home, scooter everywhere in 10 minutes
-- **Calm**: Quiet mornings, less chaos
-- **Health**: Personal trainer 3x/week, better food, more sleep
-
-These aren't things you can put a price on, but they matter more than the $6,000/month I was spending.
+Da Nang gave those back. I work from home, scooter everywhere in ten minutes, sleep well, eat fresh, and train three times a week. You can't put a clean dollar figure on that, but it mattered more than the $6,000 ever did.
 
 ---
 
 ## Final Thoughts
 
-I'm not saying everyone should move to Vietnam. Geo-arbitrage looks different for everyone.
+I'm not saying move to Vietnam. Geo-arbitrage looks different for everyone — SF to Austin, London to Lisbon, NYC to Da Nang. If you're specifically weighing Southeast Asia, I wrote a full breakdown of [retiring in SE Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian).
 
-Maybe it's:
-- Moving from San Francisco to Austin
-- Moving from NYC to Portugal or Da Nang
-- Moving from LA to Mexico
-- Moving from London to Bali
+The principle is the same everywhere: **cut your cost of living without cutting your quality of life.** For me, going from $6,000 to a real all-in $1,800 was the unlock — it bought freedom, health, and time. Location is the biggest lever on the FIRE path, and most people never touch it.
 
-The principle is the same: **reduce your cost of living without reducing your quality of life**.
-
-For me, going from $6,000/month to $1,100/month was the unlock. It gave me freedom, health, and time.
-
-And honestly? I'm happier now than I ever was in New York.
-
-If you're on the FIRE path and feeling stuck because your expenses are too high, consider this: **location is the biggest lever you can pull**.
-
-You don't need to earn more. You just need to spend smarter.
-
-Start by [saving $500/month](/blog/How-to-save-500-per-month), then explore [Coast FIRE](/blog/what-is-Coast-FIRE) as a stepping stone to full financial independence.
-
-Your future self will thank you.
+If your expenses feel too high to ever escape, start smaller: [save $500/month](/blog/How-to-save-500-per-month) first, then look at [Coast FIRE](/blog/what-is-Coast-FIRE) as a stepping stone. You don't necessarily need to earn more. Sometimes you just need to spend somewhere smarter.

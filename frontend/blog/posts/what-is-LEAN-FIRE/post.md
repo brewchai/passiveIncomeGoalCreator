@@ -40,6 +40,8 @@ At a 4% withdrawal rate, that's a **Lean FIRE number of $540,000**.
 
 Half a million dollars. That's it. For a real, full life — not a bare-survival existence, but one with good food, a nice apartment, international travel, and enough left over to support people I care about.
 
+A good chunk of that $1,800 is travel and family support. Strip those out and my pure local cost of living is closer to $1,100/month — I break that down in [From $6,000/month in NYC to $1,100 abroad](/blog/living-on-1100-per-month).
+
 I want to be honest with you: am I making sacrifices? In some ways, yes. But Vietnam gives back in ways that are hard to put a price on. More on that below.
 
 ---
