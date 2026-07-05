@@ -14,16 +14,16 @@ This isn't theoretical blog advice. These are my real numbers, and I'll reconcil
 
 I spent a year and a half at Meta in New York doing infinite, high-effort work I knew wouldn't make anyone's life better. Here's what it cost me just to *exist* while I did it:
 
-| Category | Monthly Cost |
-|----------|--------------|
-| Rent (1BR in Manhattan) | $3,200 |
-| Food & dining out | $1,200 |
-| Gym membership | $300 |
-| Transportation (subway + Ubers) | $150 |
-| Utilities & internet | $180 |
-| Entertainment & misc | $600 |
-| Health insurance | $370 |
-| **Total** | **$6,000** |
+| Category | Monthly (USD) | ≈ INR |
+|----------|--------------|-------|
+| Rent (1BR in Manhattan) | $3,200 | ₹3 lakh |
+| Food & dining out | $1,200 | ₹1.13 lakh |
+| Gym membership | $300 | ₹28,000 |
+| Transportation (subway + Ubers) | $150 | ₹14,000 |
+| Utilities & internet | $180 | ₹17,000 |
+| Entertainment & misc | $600 | ₹57,000 |
+| Health insurance | $370 | ₹35,000 |
+| **Total** | **$6,000** | **₹5.7 lakh** |
 
 That's **$72,000 a year** — about **₹68 lakh** — to live a normal, comfortable life. No penthouse, no Michelin dinners. Just New York's baseline price of admission. Even saving half my tech salary, I was still lighting $72k on fire every year for a lifestyle that was slowly burning me out.
 
@@ -35,13 +35,13 @@ In January 2025 I cold-quit and got on a plane with no real plan. The obvious mo
 
 I didn't leave to retire. But once I saw how little a genuinely good life costs here, I ran my numbers a hundred times and realised I could stop grinding for a bigger pile. So I restructured everything. Here's what my core cost of living looks like now:
 
-| Category | Monthly Cost |
-|----------|--------------|
-| Apartment + utilities (1BR near the beach) | $375 |
-| Food | $600 |
-| Gym | $20 |
-| Scooter + gas | $75 |
-| **Core cost of living** | **~$1,070** |
+| Category | Monthly (USD) | ≈ INR |
+|----------|--------------|-------|
+| Apartment + utilities (1BR near the beach) | $375 | ₹35,000 |
+| Food | $600 | ₹57,000 |
+| Gym | $20 | ₹1,900 |
+| Scooter + gas | $75 | ₹7,100 |
+| **Core cost of living** | **~$1,070** | **~₹1 lakh** |
 
 Call it **~$1,100/month** (about **₹1 lakh**) for the essentials. That's **$13,200/year** — roughly **₹12.5 lakh** — against New York's $72,000 — for a better daily life. (More on the honest all-in number below; it's higher, and I'll show you exactly why.)
 
