@@ -4,7 +4,7 @@ This is the question I see everywhere: Reddit, X (Twitter), FIRE forums, group c
 
 The short answer for the United States? **Almost certainly no.** A $500k portfolio produces only about **$20,000/year** (~₹18.9 lakh) at a 4% withdrawal rate, and retiring at 35 means that money may need to last 55 years or more.
 
-The real answer? It depends almost entirely on *where* you live. And I'm not theorising here — **I'm an Indian who left a US tech job and effectively FIRE'd on roughly $540k by moving to Southeast Asia.** $500k (about **₹4.7 crore**, at ₹94.5 to the dollar) is within a whisker of exactly what I live on today.
+The real answer? It depends almost entirely on *where* you live. And I'm not theorising here — **I left a US tech job and now live the exact kind of low-cost Southeast Asia life that makes a $500k portfolio actually work.** The lifestyle I live has a Lean FIRE number of about $540k (roughly **₹4.7 crore**, at ₹94.5 to the dollar) — so I know from the inside what a portfolio around $500k can and can't buy you at 35.
 
 So I'll run every realistic scenario — conservative to aggressive, with real 2026 numbers — but I'll also tell you which one I actually *live*, and how it plays out for an NRI. No hand-waving. No "just cut back on lattes." Just math.
 
