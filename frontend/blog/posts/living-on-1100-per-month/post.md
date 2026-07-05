@@ -65,6 +65,31 @@ The gym is $20/month. Then I added the thing I could never justify in Manhattan:
 ### Scooter + Gas: $75
 I rent a scooter for ~$50 and spend ~$25 on gas. It replaces the $150/month I spent on the subway and Ubers, and I get anywhere in the city in ten minutes.
 
+### Healthcare: Cheaper Than You'd Guess
+The cost that scares people off — healthcare — is a non-issue day to day. Da Nang has [Vinmec](https://www.vinmec.com/eng/hospital/vinmec-da-nang-hospital), a JCI-accredited international hospital, plus a stack of international clinics. A doctor's visit runs a few dollars and out-of-pocket costs are a fraction of US prices. For anything serious I carry international health insurance — which, unlike the $370/month I bled on insurance in NYC, actually feels like a rounding error. It's not in my $1,100 core because it's cheap enough that it barely moves the needle.
+
+---
+
+## Where to Live in Da Nang (and Where I Work)
+
+Da Nang splits into two worlds, and both have their own charm: the **beachside** (east of the Han River) and the **riverside** (the Han River waterfront and downtown). I'm a beach person, so here's the lay of the land:
+
+- **An Thuong** — the expat and digital-nomad hub. Walkable, packed with cafés, bars, and restaurants, a two-minute scooter from My Khe beach. If you're new here, start in An Thuong.
+- **My An** — right next door, a touch calmer, still beachside.
+- **Son Tra** — the peninsula, and my favourite. Green, quiet, and genuinely stunning — monkeys in the hills, the winding road up to Ban Co peak. It's so calm that Bill Gates picked it for his Vietnam holiday, reportedly around $30,000 a night in villas at the [InterContinental Sun Peninsula](https://www.danang.intercontinental.com/). I live minutes away for $375 a month.
+
+I found my place the boring way: two weeks of viewing apartments in a *local* neighbourhood instead of the tourist strip. Same square footage, half the price.
+
+**Where I actually work:** the café scene here is unreal. I rotate between [The Hideout](https://www.facebook.com/thehideoutcafedanang/) in An Thuong (get the coconut coffee) and [Lighthouse](https://www.instagram.com/lighthouse_dn/) over on the Son Tra side, which roasts its own beans. When I need to lock in and get real work done, I book a desk at [Enouvo / Enosta Space](https://enostaspace.com/), the main coworking spot in town.
+
+---
+
+## Cheap Doesn't Mean Rundown
+
+People hear "$1,100 a month" and picture something shabby. Da Nang is the opposite — it's a city on a steep rise. Robert De Niro's [Nobu](https://www.savills.com.vn/blog/article/220935/vietnam-eng/0325-nobu-residences-danang-officially-launches-handover-scheduled-for-q3-2027.aspx) brand is building its first residences in all of Southeast Asia right on My Khe beach, handing over in 2027. Global money is pouring in.
+
+I'm not part of any of that. I just live a ten-minute scooter ride from all of it, on a fraction of what I spent to merely *survive* in New York. That's the quiet magic of this place: the luxury and the affordability sit side by side, and you get to pick your slice.
+
 ---
 
 ## The Honest Asterisk: $1,100 vs $1,800
@@ -109,7 +134,9 @@ Even on my *bare* $1,100 core, that's a $330,000 target — but I'd never tell y
 
 The question I get most: *"Can you actually live like this forever?"*
 
-Honestly, I don't know — and I don't need to. The beauty of geo-arbitrage is optionality. I can move back to the US, try another country, or raise my budget whenever I want. Right now I'm letting my investments compound (I live off a cash buffer, not by selling them) while spending a fraction of what I used to. The point was never to live on $1,100 forever. The point is that I *can*.
+Honestly, I don't know — and I don't need to. The beauty of geo-arbitrage is optionality. I can move back to the US, try another country, or raise my budget whenever I want.
+
+Here's how I actually fund it: I don't sell investments to live. I keep a cash buffer parked in **high-yield savings and short-term CDs** and draw from that, letting the portfolio compound untouched. Because my spend is a fraction of what it was, that buffer stretches for years. The point was never to live on $1,100 forever — the point is that I *can*.
 
 ---
 
