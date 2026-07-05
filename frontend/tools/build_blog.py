@@ -239,13 +239,29 @@ def write_posts_index(records: list[dict]) -> None:
     featured = [r for r in sorted_records if r.get("featured")]
     recent = [r for r in sorted_records if not r.get("featured")]
 
+    # Meaningful payload — excludes the volatile _generated_at timestamp.
     payload = {
         "featured": featured,
         "recent": recent,
         "all": sorted_records,  # convenience
-        "_generated_at": datetime.utcnow().isoformat() + "Z",
     }
-    (POSTS_DIR / "posts.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    out_path = POSTS_DIR / "posts.json"
+    # Only rewrite when something meaningful changed. Otherwise the timestamp
+    # churns on every build and causes needless git conflicts (local vs CI).
+    if out_path.exists():
+        try:
+            existing = json.loads(out_path.read_text(encoding="utf-8"))
+            existing.pop("_generated_at", None)
+            if existing == payload:
+                print("  posts.json: no change — skipped")
+                return
+        except Exception:
+            pass
+
+    payload["_generated_at"] = datetime.utcnow().isoformat() + "Z"
+    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("  posts.json: updated")
 
 def update_sitemap(records: list[dict]) -> None:
     """Regenerate the blog <url> block in sitemap.xml between the BLOG markers.
