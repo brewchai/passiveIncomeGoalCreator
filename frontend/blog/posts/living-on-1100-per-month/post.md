@@ -1,6 +1,6 @@
 # From $6,000/Month in NYC to $1,100 Abroad: My Geo-Arbitrage Experiment
 
-When I tell people I went from spending **$6,000 a month in New York City** to living comfortably on **$1,100 a month** in Vietnam, they assume I'm either lying or living in a tent.
+When I tell people I went from spending **$6,000 a month in New York City** (about **₹5.7 lakh**, at ₹94.5 to the dollar) to living comfortably on **$1,100 a month** (roughly **₹1 lakh**) in Vietnam, they assume I'm either lying or living in a tent.
 
 Neither is true.
 
@@ -25,7 +25,7 @@ I spent a year and a half at Meta in New York doing infinite, high-effort work I
 | Health insurance | $370 |
 | **Total** | **$6,000** |
 
-That's **$72,000 a year** to live a normal, comfortable life. No penthouse, no Michelin dinners. Just New York's baseline price of admission. Even saving half my tech salary, I was still lighting $72k on fire every year for a lifestyle that was slowly burning me out.
+That's **$72,000 a year** — about **₹68 lakh** — to live a normal, comfortable life. No penthouse, no Michelin dinners. Just New York's baseline price of admission. Even saving half my tech salary, I was still lighting $72k on fire every year for a lifestyle that was slowly burning me out.
 
 ---
 
@@ -43,7 +43,7 @@ I didn't leave to retire. But once I saw how little a genuinely good life costs 
 | Scooter + gas | $75 |
 | **Core cost of living** | **~$1,070** |
 
-Call it **~$1,100/month** for the essentials. That's **$13,200/year** against New York's $72,000 — for a better daily life. (More on the honest all-in number below; it's higher, and I'll show you exactly why.)
+Call it **~$1,100/month** (about **₹1 lakh**) for the essentials. That's **$13,200/year** — roughly **₹12.5 lakh** — against New York's $72,000 — for a better daily life. (More on the honest all-in number below; it's higher, and I'll show you exactly why.)
 
 ---
 
@@ -96,7 +96,7 @@ I'm not part of any of that. I just live a ten-minute scooter ride from all of i
 
 Here's the part most "I live on $X abroad" posts conveniently skip.
 
-**$1,100 is my core cost of living.** But my *true* all-in number is closer to **$1,800/month**, and I won't pretend otherwise. The gap is the stuff that isn't really "living in Da Nang":
+**$1,100 is my core cost of living.** But my *true* all-in number is closer to **$1,800/month** (about **₹1.7 lakh**), and I won't pretend otherwise. The gap is the stuff that isn't really "living in Da Nang":
 
 - **The personal trainer** (~$240) — a luxury, not a necessity
 - **Visa runs** (~$100/month averaged) — the Vietnam tax on an Indian passport
@@ -121,12 +121,12 @@ Honestly, it's a level of calm and happiness I had never felt in New York.
 Your spending sets your [FIRE number](/blog/calculating-fire-number) — annual expenses × 25 (the 4% rule).
 
 **In NYC:**
-- Annual expenses: $72,000 → FIRE number: **$1.8 million**
+- Annual expenses: $72,000 (~₹68 lakh) → FIRE number: **$1.8 million** (~**₹17 crore**)
 
 **In Da Nang (all-in, the honest number):**
-- Annual expenses: ~$21,600 → FIRE number: **$540,000**
+- Annual expenses: ~$21,600 (~₹20 lakh) → FIRE number: **$540,000** (~**₹5.1 crore**)
 
-Even on my *bare* $1,100 core, that's a $330,000 target — but I'd never tell you to plan on the bare number. Use the all-in $540k. Either way, geo-arbitrage bought my freedom **years earlier** than staying in New York ever could.
+Even on my *bare* $1,100 core, that's a $330,000 (~₹3.1 crore) target — but I'd never tell you to plan on the bare number. Use the all-in $540k. Either way, geo-arbitrage bought my freedom **years earlier** than staying in New York ever could.
 
 ---
 
