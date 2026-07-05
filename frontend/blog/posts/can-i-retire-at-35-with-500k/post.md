@@ -2,11 +2,11 @@
 
 This is the question I see everywhere: Reddit, X (Twitter), FIRE forums, group chats. *"I have $500k saved. Can I quit everything at 35 and never work again?"*
 
-The short answer for the United States? **Almost certainly no.** A $500k portfolio produces only about **$20,000/year** at a 4% withdrawal rate, and retiring at 35 means that money may need to last 55 years or more.
+The short answer for the United States? **Almost certainly no.** A $500k portfolio produces only about **$20,000/year** (~₹18.9 lakh) at a 4% withdrawal rate, and retiring at 35 means that money may need to last 55 years or more.
 
-The real answer? It depends on *where* you live, *how* you invest, and *how honest* you are with yourself about what $500k can actually buy you over 55 years.
+The real answer? It depends almost entirely on *where* you live. And I'm not theorising here — **I'm an Indian who left a US tech job and effectively FIRE'd on roughly $540k by moving to Southeast Asia.** $500k (about **₹4.7 crore**, at ₹94.5 to the dollar) is within a whisker of exactly what I live on today.
 
-I'm going to run every realistic scenario — from the most conservative to the most aggressive — using real 2026 numbers, historical data, and actual strategies people use. No hand-waving. No "just cut back on lattes." Just math.
+So I'll run every realistic scenario — conservative to aggressive, with real 2026 numbers — but I'll also tell you which one I actually *live*, and how it plays out for an NRI. No hand-waving. No "just cut back on lattes." Just math.
 
 ---
 
@@ -17,6 +17,8 @@ I'm going to run every realistic scenario — from the most conservative to the 
 * A 55-year retirement requires more caution than the standard 30-year 4% rule.
 * Geo-arbitrage, house hacking, part-time income, or a hybrid strategy can make the math more realistic.
 * Before quitting work, stress-test the plan with the [Sequence Risk Calculator](/tools/sequence-risk/) because early market losses can permanently damage a small portfolio.
+* **Abroad, $500k works cleanly.** In Southeast Asia, $500k at a conservative 3% withdrawal covers a full life with a 96%+ 55-year success rate — roughly my own **$540k Lean FIRE number**.
+* **For NRIs:** $500k (~₹4.7 crore) in USD investments paired with Southeast Asian geo-arbitrage is arguably the cleanest early-retirement path — you keep earning strong-currency returns while spending in a low-cost one.
 
 ---
 
@@ -261,7 +263,18 @@ At $1,200/month in Southeast Asia with $500k invested in VTI at a conservative 3
 - Buffer: $600/year
 - **55-year success rate: 96%+**
 
-Here's the part most people miss: your portfolio keeps growing. At 7% real returns minus 3% withdrawals, your $500k becomes roughly **$1.5M in 25 years** in real (inflation-adjusted) terms. You get *richer* in retirement. By 60, you could move back to the U.S. comfortably if you wanted.
+Here's the part most people miss: your portfolio keeps growing. At 7% real returns minus 3% withdrawals, your $500k becomes roughly **$1.5M in 25 years** (~₹14 crore) in real (inflation-adjusted) terms. You get *richer* in retirement. By 60, you could move back to the U.S. comfortably if you wanted.
+
+### The NRI Playbook (Why This Fits Indians Abroad Perfectly)
+
+If you're an NRI, this strategy is almost tailor-made for you — and it's the exact path I took. Your income and investments are likely in a strong currency, but you have a natural low-cost base right next door in Asia. Instead of the two default moves — grind on in the US, or move back to India — you geo-arbitrage a *third* way:
+
+- Keep your **$500k (~₹4.7 crore) invested in USD**. You don't repatriate to rupees or scramble to chase Indian-market returns — the dollars keep compounding while you spend elsewhere.
+- Live in Southeast Asia on **$1,100–$1,800/month (~₹1–1.7 lakh)** — a full life, not a frugal one.
+- Da Nang is a short hop from most Indian metros (round trips run **₹20,000–40,000**), so family stays within reach.
+- The one real friction is the **visa on an Indian passport**. I break down the Vietnam-vs-Thailand cost *and* the visa reality in [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian).
+
+Run your own number in both currencies with the [FIRE Number Calculator](/tools/fire-number/) — flip it to **India mode** to see your target in ₹, and why Indians often plan on a safer 33× number instead of 25×.
 
 > ✅ **Verdict: YES.** This is the single most powerful lever for retiring at 35 with $500k. If you're willing to live abroad — and I mean *actually* willing, not daydream-willing — **the math works cleanly**. You live well, your portfolio grows, and you have optionality for the rest of your life.
 
@@ -323,9 +336,9 @@ After 10 years, your VTI bucket has roughly doubled. You now have a $400k growth
 
 Let me be blunt: **you cannot retire at 35 with $500k in the United States.** Not in a major city, not in a small town, not even in the cheapest rural area — unless you're willing to live in genuine poverty. Healthcare alone will cost $6,000–$10,000/year in 2026. Add rent, food, a car, insurance, and emergencies, and $500k simply doesn't generate enough passive income to sustain a 55-year retirement domestically.
 
-But if you're willing to think globally — and I mean *really* willing, not just daydreaming — **$500k is more than enough.**
+But if you're willing to think globally — and I mean *really* willing, not just daydreaming — **$500k (~₹4.7 crore) is more than enough.**
 
-I know this because [I'm living it](/blog/living-on-1100-per-month). Vietnam, Thailand, Portugal, Mexico, Colombia — these aren't sacrifices. They're upgrades in quality of life at a fraction of the cost. I live better now on $1,100/month than I ever did spending $6,000/month in Manhattan.
+I know this because [I'm living it](/blog/living-on-1100-per-month) — an NRI from Pune who FIRE'd not by moving back to India, but by [geo-arbitraging to Southeast Asia](/blog/retire-in-southeast-asia-as-an-indian). My own Lean FIRE number is about $540k, and I live better now on $1,100/month than I ever did spending $6,000/month in Manhattan. Vietnam, Thailand, Portugal, Mexico, Colombia — these aren't sacrifices. They're upgrades in quality of life at a fraction of the cost.
 
 The hybrid approach — growth stocks + dividend income + a SEA rental property, all paired with geo-arbitrage — is what I'd do if starting fresh at 35 with $500k. Multiple income engines, inflation protection, a growing safety net, and a lifestyle most people can't even afford while working.
 

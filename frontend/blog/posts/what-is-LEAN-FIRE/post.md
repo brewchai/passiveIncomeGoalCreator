@@ -83,7 +83,7 @@ Your Lean FIRE number = Annual expenses ÷ Withdrawal rate.
 
 At 4%, that's the same as multiplying your annual spend by 25. At a more conservative 3.25%, multiply by roughly 31.
 
-Mine: $21,600 × 25 = **$540,000 at 4%**. Or $21,600 × 31 = **$669,600 at 3.25%** if I want to be more conservative about sequence risk.
+Mine: $21,600 × 25 = **$540,000 at 4%**. Or $21,600 × 31 = **$669,600 at 3.25%** if I want to be more conservative about sequence risk. (If your portfolio is closer to $500k, I ran every strategy for [retiring at 35 with $500k](/blog/can-i-retire-at-35-with-500k) — geography, not the amount, decides whether it works.)
 
 Why might you want the more conservative number? Because Lean FIRE portfolios have almost no fat to trim during a market crash. A Fat FIRE retiree losing 40% of a $3M portfolio cuts the travel budget. A Lean FIRE retiree losing 40% of $600K cuts food. There's a meaningful difference in how that feels.
 
