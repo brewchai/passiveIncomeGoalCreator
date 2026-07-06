@@ -76,7 +76,7 @@ On any high-cost cancer drug, **find the assistance program before you pay a sin
 
 ## Two More Ways to Cut the Bill
 
-- **Never buy medicines from the hospital pharmacy.** The markup is brutal. The same molecule as a **generic**, from an outside pharmacy, costs a fraction. Ask your oncologist to write the generic name, not the brand, and source it yourself — over a full course this alone is a five-figure saving.
+- **Never buy medicines from the hospital pharmacy.** The markup is outrageous. The same molecule as a **generic**, from an outside pharmacy, costs a fraction. Ask your oncologist to write the generic name, not the brand, and source it yourself — over a full course this alone is a five-figure saving.
 - **Ask about hospital charity and NGO schemes.** Beyond the drug-maker programs, hospitals and cancer NGOs run their own support funds. They exist, but you have to seek them out and apply.
 
 ## What This Did to My Financial Plan

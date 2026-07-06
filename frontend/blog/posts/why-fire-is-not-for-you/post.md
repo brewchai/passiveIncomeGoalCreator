@@ -1,6 +1,6 @@
-# Do Not Pursue FIRE If You Cannot Pass This Brutal Test
+# Do Not Pursue FIRE If You Cannot Pass This Honest Test
 
-I need to be brutally honest with you. Every single day, I watch people flock to the FIRE (Financial Independence, Retire Early) movement because they read a catchy headline or saw an Instagram reel showing someone drinking a piña colada at 11:00 AM on a Tuesday. 
+I need to be completely honest with you. Every single day, I watch people flock to the FIRE (Financial Independence, Retire Early) movement because they read a catchy headline or saw an Instagram reel showing someone drinking a piña colada at 11:00 AM on a Tuesday. 
 
 They look at the math, they download a spreadsheet, they calculate their "FIRE Number," and they become obsessed. They think that getting to $1.5 million or $2 million is the finish line. They think that the moment their portfolio hits that magic number, a golden portal will open, their stress will vanish, and they will live in uninterrupted bliss until they die.
 
@@ -8,7 +8,7 @@ I am here to tell you that for a massive percentage of you reading this right no
 
 FIRE is not a spreadsheet. It is not an accounting trick. It is not a trendy life hack. 
 
-FIRE is a complete, fundamental rewiring of your psychological relationship with money, possessions, and societal expectations. If your core values do not align with the brutal realities of the FIRE lifestyle, early retirement will not feel like freedom. It will feel like a prison sentence. 
+FIRE is a complete, fundamental rewiring of your psychological relationship with money, possessions, and societal expectations. If your core values do not align with the harsh realities of the FIRE lifestyle, early retirement will not feel like freedom. It will feel like a prison sentence. 
 
 Before you spend the next ten years aggressively grinding, saving half your income, and sacrificing your youth on the altar of a massive vanguard portfolio, I need you to pass a test. 
 
@@ -182,11 +182,11 @@ If your identity and self-worth are tied to being "one of the guys" at the offic
 
 ---
 
-## The Brutal Conclusion
+## The Hard Conclusion
 
 I did not write this to completely discourage you. In fact, my goal was the exact opposite. 
 
-If you read through this entire brutal audit and found yourself furiously nodding along—if you realize you genuinely crave sovereign time over societal status, if you are completely immune to the hedonic treadmill of consumerism, if you have a burning, creative purpose outside of a cubicle, and if you take intense, quiet pride in austere resilience and DIY problem-solving—then congratulations.
+If you read through this entire unflinching audit and found yourself furiously nodding along—if you realize you genuinely crave sovereign time over societal status, if you are completely immune to the hedonic treadmill of consumerism, if you have a burning, creative purpose outside of a cubicle, and if you take intense, quiet pride in austere resilience and DIY problem-solving—then congratulations.
 
 You are the exact demographic that FIRE was built for. The math will work beautifully for you, and the psychological freedom you achieve will be unimaginable to the average consumer. You will thrive. 
 

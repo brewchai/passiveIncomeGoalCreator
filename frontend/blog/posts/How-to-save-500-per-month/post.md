@@ -67,7 +67,7 @@ The average person eliminates $100–$300/month of unnecessary items with this d
 ---
 
 ## 3. The “No Uber Under 3 Miles” Rule  
-This rule is simple and brutal — but ridiculously effective.
+This rule is simple and unforgiving — but ridiculously effective.
 
 ### How it works:
 - If your destination is 3 miles or less, you don’t Uber.

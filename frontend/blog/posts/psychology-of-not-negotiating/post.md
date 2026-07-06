@@ -1,6 +1,6 @@
 The picture I’m gonna paint is not farfetched. It happens in the life of almost every single 9–5 worker multiple times in his life time. So picture this…
 
-You’ve scrutinized every single line of your resume, sent it to friends, mentors and strangers for review. You’ve applied to hundreds of jobs in this brutal market, filling out soul-killing forms, creating login after login on career portals you’ll never open again.
+You’ve scrutinized every single line of your resume, sent it to friends, mentors and strangers for review. You’ve applied to hundreds of jobs in this punishing market, filling out soul-killing forms, creating login after login on career portals you’ll never open again.
 
 You’ve cold-messaged LinkedIn connections, followed up with people who ghosted you, and begged for referrals.
 
@@ -63,9 +63,9 @@ So when the recruiter says, “This is the best we can do according to our marke
 
 But studies show most offers have 10–20% wiggle room baked in. That’s easy money you could unlock — if you pushed.
 
-## The Brutal Math
+## The Hard Math
 
-Here is the brutal math…if you fail to negotiate once you could lose $10K–$20K.
+Here is the hard math…if you fail to negotiate once you could lose $10K–$20K.
 
 But if you never get better at it and always stay quiet, that compounds into **$500,000+** over a career.
 

@@ -19,7 +19,7 @@ This comprehensive guide will walk you through exactly how to reverse-engineer y
 - Case studies at $50k, $100k, and $200k income levels.
 - The existential question: What will you actually do with all that time?
 
-Let’s break it down with brutal honesty, clear numbers, and simple assumptions based on US averages.
+Let’s break it down with unflinching honesty, clear numbers, and simple assumptions based on US averages.
 
 ---
 
@@ -107,7 +107,7 @@ When aiming for extreme early retirement, the single greatest asset you possess 
 
 The human brain is terrible at understanding exponential growth. We think linearly, but investments grow exponentially through compounding. Starting at age 22 versus starting at age 30 fundamentally changes the trajectory of your life. 
 
-Let's look at a brutal comparison of two individuals aiming for a $1.5 Million portfolio by age 40, assuming a highly realistic 7% inflation-adjusted annual return:
+Let's look at a stark comparison of two individuals aiming for a $1.5 Million portfolio by age 40, assuming a highly realistic 7% inflation-adjusted annual return:
 
 * **Person A (Starts at Age 22):** They have an 18-year runway. To hit $1.5M, they must invest roughly **$3,600 per month**. It requires discipline, but for a high earner or a dual-income couple, it is entirely feasible.
 * **Person B (Starts at Age 30):** They have a 10-year runway. To hit the exact same $1.5M, they must invest roughly **$8,600 per month**. That is a staggering $103,200 per year in purely invested capital (not including taxes or living expenses).

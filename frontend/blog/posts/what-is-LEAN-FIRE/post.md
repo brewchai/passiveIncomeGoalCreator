@@ -57,7 +57,7 @@ If you're Indian and weighing this route specifically, I've written a full break
 What determines where you fall in that range? Not your coffee habit. Four things:
 
 1. **Housing** — the biggest lever by far
-2. **Healthcare** — brutal in the US, cheap or free abroad
+2. **Healthcare** — punishing in the US, cheap or free abroad
 3. **Location** — domestic vs. international geo-arbitrage changes everything
 4. **Food culture** — places with vibrant street food scenes cost a fraction of supermarkets
 

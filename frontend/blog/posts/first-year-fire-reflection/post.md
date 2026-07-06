@@ -6,7 +6,7 @@ For years, my "someday" in the high-stakes tech world of New York consisted of s
 
 Then, at the age of 33, I finally pulled the plug. I claimed my Financial Independence and Retired Early ([FIRE](/blog/four-different-types-of-fire)). I stepped entirely outside of the bounding box of the corporate environment. 
 
-Here is an unfiltered, brutally honest reflection on my first 365 days outside the corporate matrix. If you've ever found yourself staring at a spreadsheet at 8:00 PM on a Tuesday, wondering what the other side actually looks like when the paychecks stop and the absolute freedom begins, this is the reality.
+Here is an unfiltered, painfully honest reflection on my first 365 days outside the corporate matrix. If you've ever found yourself staring at a spreadsheet at 8:00 PM on a Tuesday, wondering what the other side actually looks like when the paychecks stop and the absolute freedom begins, this is the reality.
 
 ## The Death of the Morning Panic
 
@@ -26,7 +26,7 @@ During this past year, I realized I had accumulated a massive, life-threatening 
 
 Without exaggerating, I seriously believe I’ve added years back to my life over the last 12 months. When I retired, I didn’t just casually join a gym; I committed to rebuilding my physical health as my new primary occupation. I finally had the time and energy to dedicate to my body. 
 
-In my first year of retirement, I completed 70 dedicated personal training sessions. I had to systematically undo the atrophy and the stiffness that corporate life had embedded into my muscles. I started playing pickleball on an average of twice a week, which gave me not just a brutal cardiovascular workout, but also a chance to sweat and compete in a way that wasn't tied to performance reviews. 
+In my first year of retirement, I completed 70 dedicated personal training sessions. I had to systematically undo the atrophy and the stiffness that corporate life had embedded into my muscles. I started playing pickleball on an average of twice a week, which gave me not just a punishing cardiovascular workout, but also a chance to sweat and compete in a way that wasn't tied to performance reviews. 
 
 I incorporated yoga into my routine a few times a month to fix a broken, desk-bound spinal posture and regain the flexibility I had lost. And perhaps most importantly, I started going on long, endlessly long walks. These weren't power-walks to get from point A to point B in a hurry. They were completely stress-free, deeply meditative walks through the city, allowing my nervous system to finally down-regulate. 
 
@@ -42,7 +42,7 @@ I made a deliberate, conscious choice to violently break out of that bubble. I s
 
 Meeting these people completely reframed my worldview. It opened my eyes to the incredible variety of ways people navigate the world, how they claim success, and how they become successful on their own terms. Climbing the corporate ladder at a tech company is just one incredibly specific, rigid path. Shaking off the "tech bro" identity and learning to converse with the rest of the world was one of the most intellectually rewarding parts of my first year.
 
-## The Brutal Reality of Dating When You Have No Personality
+## The Harsh Reality of Dating When You Have No Personality
 
 Here is a harsh, incredibly painful truth that no one in the high-earning tech world wants to admit: when I was grinding in New York, I had absolutely zero success with dating. It was a complete disaster. 
 
@@ -68,7 +68,7 @@ I dove headfirst into content creation as my "post-corporate" project. I started
 
 But writing wasn't enough. I also felt a deep calling to start a couple of YouTube channels aimed at increasing the scientific temperament of the general population—a topic I'm incredibly passionate about. I wanted to create science-related content that was accessible and engaging. 
 
-This is where I realized the brutal difficulty of the creator economy. I learned just how much relentless effort it is to run a channel, and more importantly, how utterly crucial it is to possess the skills to tell a beautiful, engaging story. When you are dealing with hard, highly technical scientific topics, raw information isn't enough; you have to weave it into a narrative that keeps people watching. I had to learn the granular details of pacing and scripting. I started working closely with various video editors, learning from them and acquiring the necessary visual storytelling skills to keep an audience hooked. I am building skills I would have never touched in my corporate life.
+This is where I realized the punishing difficulty of the creator economy. I learned just how much relentless effort it is to run a channel, and more importantly, how utterly crucial it is to possess the skills to tell a beautiful, engaging story. When you are dealing with hard, highly technical scientific topics, raw information isn't enough; you have to weave it into a narrative that keeps people watching. I had to learn the granular details of pacing and scripting. I started working closely with various video editors, learning from them and acquiring the necessary visual storytelling skills to keep an audience hooked. I am building skills I would have never touched in my corporate life.
 
 ## The Disclaimers: The Dark Side of Early Retirement
 

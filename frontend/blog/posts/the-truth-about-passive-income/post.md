@@ -1,4 +1,4 @@
-# The Brutal Truth About Passive Income: Why The Internet Is Lying To You
+# The Hard Truth About Passive Income: Why The Internet Is Lying To You
 
 Let's be honest for a second. We've all seen the videos on YouTube, Instagram, or TikTok—someone typing on a Macbook from a pristine beach in Bali, selling the ultimate modern fantasy: *Passive Income*. 
 
@@ -38,7 +38,7 @@ The good part is that it has been incredibly exciting. Waking up every day with 
 
 But the bad part? The deeply sobering, agonizing truth? 
 
-**Making passive income is brutally, mercilessly hard.**
+**Making passive income is punishingly, mercilessly hard.**
 
 And herein lies the great irony of my current life: I am currently working harder, longer, and more actively than I ever have in my entire life, entirely for the purpose of trying to make "passive" income. I am actively stressing, actively grinding, and actively solving complex problems every single day just to build systems that might, eventually, pay me while I sleep.
 
@@ -77,7 +77,7 @@ In Managed Asset-Based income, the required upfront financial investment is typi
 
 Because the capital risk is immense, the financial returns can also be extremely high. Real estate leverages debt to amplify returns, and small businesses can generate massive localized cash flow. Furthermore, there is a slight, tangible disconnect between your direct, hour-by-hour work and the income generated. If you own a duplex and sleep for eight hours, your tenant is technically paying you rent while you sleep.
 
-But here is the brutal reality: **It is not, in any functional sense, fully passive.**
+But here is the hard reality: **It is not, in any functional sense, fully passive.**
 
 Managed Asset-Based income realistically requires constant, low-level anxiety and periodic intense intervention. It is essentially a second job. 
 
@@ -103,7 +103,7 @@ The allure of the Digital Asset is its scalability. Once I write a highly optimi
 
 But this is exactly what the internet gurus completely misrepresent. 
 
-Building a digital asset that actually generates meaningful revenue is a brutal, psychologically taxing grind. It requires you to work in the dark, often for years, with absolutely zero financial positive reinforcement. When you are writing code at midnight on a Friday, no boss is paying you overtime. 
+Building a digital asset that actually generates meaningful revenue is a punishing, psychologically taxing grind. It requires you to work in the dark, often for years, with absolutely zero financial positive reinforcement. When you are writing code at midnight on a Friday, no boss is paying you overtime. 
 
 And even when you finally succeed, Digital Assets are notoriously fragile. Technology changes. Google updates its search algorithm and wipes out your blog traffic overnight. A competitor clones your app and releases it for free. To keep a digital asset generating income, you have to constantly update it, market it, and defend it. 
 
