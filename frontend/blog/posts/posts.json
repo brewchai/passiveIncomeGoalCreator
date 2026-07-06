@@ -175,11 +175,11 @@
   "recent": [
     {
       "slug": "cost-of-cancer-without-insurance",
-      "title": "What Cancer Actually Costs When You Have No Insurance",
-      "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
-      "description": "A personal account of a parent's triple-negative breast cancer diagnosis in India, why we had no health insurance, and the full out-of-pocket financial cost of treatment — and what it means for a FIRE plan.",
+      "title": "What Breast Cancer Cost Us in India — and What It Did to My FIRE Plan",
+      "subtitle": "The real, itemised out-of-pocket cost of a triple-negative breast cancer treatment in Pune — and what a ₹40-lakh bill does to a retirement plan.",
+      "description": "The real, itemised cost of breast cancer treatment in India without insurance (Pune, 2026): chemotherapy, immunotherapy, surgery, radiation and scans — close to ₹40 lakh — plus how we cut the bill and what it did to a FIRE plan.",
       "date": "2026-06-28",
-      "date_modified": "2026-06-28",
+      "date_modified": "2026-07-05",
       "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
       "tags": [
         "Personal Finance",
@@ -296,11 +296,11 @@
     },
     {
       "slug": "cost-of-cancer-without-insurance",
-      "title": "What Cancer Actually Costs When You Have No Insurance",
-      "subtitle": "My mom's cancer diagnosis, the policy we never bought in time, and the real out-of-pocket cost of treatment.",
-      "description": "A personal account of a parent's triple-negative breast cancer diagnosis in India, why we had no health insurance, and the full out-of-pocket financial cost of treatment — and what it means for a FIRE plan.",
+      "title": "What Breast Cancer Cost Us in India — and What It Did to My FIRE Plan",
+      "subtitle": "The real, itemised out-of-pocket cost of a triple-negative breast cancer treatment in Pune — and what a ₹40-lakh bill does to a retirement plan.",
+      "description": "The real, itemised cost of breast cancer treatment in India without insurance (Pune, 2026): chemotherapy, immunotherapy, surgery, radiation and scans — close to ₹40 lakh — plus how we cut the bill and what it did to a FIRE plan.",
       "date": "2026-06-28",
-      "date_modified": "2026-06-28",
+      "date_modified": "2026-07-05",
       "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
       "tags": [
         "Personal Finance",
@@ -555,5 +555,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-05T07:56:06.116477Z"
+  "_generated_at": "2026-07-06T03:58:53.906733Z"
 }
