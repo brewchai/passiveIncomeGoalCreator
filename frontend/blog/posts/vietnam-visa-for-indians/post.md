@@ -47,9 +47,12 @@ A **luxury coach to the Laos border and back**, run by local agents. Roughly **$
 ### Option 2 — A real trip (what I actually do)
 I fly to **KL or Bangkok for 3–4 days.** Yes, it costs more — but it keeps my passport clean (no suspicious same-day in-and-out), and honestly, I reframe it as a **forced mini-vacation.** Rough budget:
 
+- Round-trip flight: **$150–200** if you book a bit ahead (Da Nang → KL or Bangkok)
 - Hotel: **$30–40/night** (decent budget place)
 - Food: **$20–30/day**
 - Transport + whatever you get up to: **$10–20/day**
+
+Book the flight last-minute and it's a lot more — so plan your runs a few weeks out and this stays cheap.
 
 For a few hundred dollars every three months I get a change of scene and zero immigration side-eye. Worth it to me.
 
