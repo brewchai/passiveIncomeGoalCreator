@@ -109,7 +109,7 @@ Your FIRE number tells you the portfolio target, but it does not prove the plan 
 
 That timing problem is called **sequence of returns risk**. It matters most after you stop saving and start withdrawing from the portfolio. A market crash in the first few years can force you to sell investments while prices are low, permanently reducing the portfolio's ability to recover.
 
-After calculating your FIRE number, run the plan through the [Sequence Risk Calculator](/tools/sequence-risk/). Use it to compare constant withdrawals against guardrail strategies, where spending can adjust after major portfolio gains or losses.
+After calculating your FIRE number, run the plan through the [Sequence Risk Calculator](/tools/sequence-risk/). Use it to compare constant withdrawals against guardrail strategies, where spending can adjust after major portfolio gains or losses. It's also why I hold a [multi-year cash bucket](/blog/three-bucket-strategy-fire) — so a bad early year doesn't force me to sell at the bottom.
 
 ---
 

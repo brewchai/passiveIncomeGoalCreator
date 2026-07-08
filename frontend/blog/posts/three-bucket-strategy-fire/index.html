@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The 3-Bucket Strategy for Early Retirement (FIRE) | But First Fire</title>
+    <meta name="description" content="The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://butfirstfire.com/blog/three-bucket-strategy-fire">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The 3 Buckets I Use to Fund Early Retirement (Warts and All)">
+    <meta property="og:description" content="The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.">
+    <meta property="og:url" content="https://butfirstfire.com/blog/three-bucket-strategy-fire">
+    <meta property="og:image" content="https://butfirstfire.com/blog/posts/three-bucket-strategy-fire/cover.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The 3 Buckets I Use to Fund Early Retirement (Warts and All)">
+    <meta name="twitter:description" content="The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.">
+    <meta name="twitter:image" content="https://butfirstfire.com/blog/posts/three-bucket-strategy-fire/cover.webp">
+
+    <!-- JSON-LD Article -->
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "The 3 Buckets I Use to Fund Early Retirement (Warts and All)", "description": "The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.", "image": ["https://butfirstfire.com/blog/posts/three-bucket-strategy-fire/cover.webp"], "datePublished": "2026-07-08", "dateModified": "2026-07-08", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/og-image.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/three-bucket-strategy-fire"}
+  </script>
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the bucket strategy for retirement?", "acceptedAnswer": {"@type": "Answer", "text": "It splits your portfolio into buckets by when you will spend the money: a cash or short-term bucket for near-term spending, a growth (equities) bucket for the medium term, and long-term or locked accounts for later. The point is to spend from cash during downturns instead of selling investments at a loss."}}, {"@type": "Question", "name": "How many years of cash should the first bucket hold?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single right answer — anywhere from 2 to 10 or more years is common. I hold about 10 years of spending in a CD ladder because it lets me ignore market crashes entirely. A shorter cushion means less cash drag but requires more nerve."}}, {"@type": "Question", "name": "Why use CDs instead of bonds for the cash bucket?", "acceptedAnswer": {"@type": "Answer", "text": "For me, CDs offered a better rate than treasuries at the time, avoided the complexity of a bond portfolio for little extra yield, and their shorter maturities meant I was not locked out of higher rates later. A CD ladder also frees up predictable cash each year."}}, {"@type": "Question", "name": "Does holding that much cash hurt your returns?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, on paper — cash earning around 4% underperforms equities at around 7% over time. I accept that drag as the price of never being forced to sell equities in a crash, and because the cash doubles as optionality: a potential home purchase, or dry powder to buy the dip."}}, {"@type": "Question", "name": "What withdrawal rate does a bucket strategy support?", "acceptedAnswer": {"@type": "Answer", "text": "My structure supports around 3%, but in practice it varies a lot year to year — I spent under 2% one year and closer to 3.5% another. Real spending is lumpy, so a rigid straight-line withdrawal rate is not how it actually works."}}]}
+  </script>
+
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        /* Modern post page design */
+        body {
+            background: var(--background);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .post-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-hero img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+            object-fit: cover;
+        }
+
+        .post-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin: 0 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .post-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .post-content>*:first-child {
+            margin-top: 0;
+        }
+
+        .post-content p {
+            margin: 1.25rem 0;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .post-content li {
+            margin: 0.5rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .post-content strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .post-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.2s;
+        }
+
+        .post-content a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            /* standard dark code bg */
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.05);
+            /* very light bg relative to current mode */
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-content table {
+                font-size: 0.9rem;
+            }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--background);
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="post-container">
+            <div class="post-hero">
+                <h1 class="post-title">The 3 Buckets I Use to Fund Early Retirement (Warts and All)</h1>
+                <p class="post-subtitle">A CD ladder, an equities engine, and a locked backstop — the real, imperfect portfolio structure behind my FIRE</p>
+                <div class="post-meta"><span>By <strong>Ninad</strong></span><span class="post-meta-right">📅 2026-07-08 · 10 min read</span></div>
+                <img src="https://butfirstfire.com/blog/posts/three-bucket-strategy-fire/cover.webp" alt="The 3 Buckets I Use to Fund Early Retirement (Warts and All) cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
+            </div>
+
+            <article class="post-content">
+                <p>Everyone wants the optimised answer — the perfect allocation, the spreadsheet that squeezes out every last basis point. I don't have that, and I'm not going to pretend I do.</p>
+<p>What I have is <strong>three buckets</strong> that I <em>gravitated</em> toward because they match how I actually think about money and risk — not because a model told me to. Here's the whole machine: a <strong>cash bucket that covers my first ~10 years</strong>, a <strong>big equities bucket that grows untouched</strong>, and a <strong>locked retirement bucket I can't touch for ~25 years.</strong></p>
+<p>I'll keep everything here in <strong>percentages, not dollars</strong> — the ratios are the lesson, and my net worth is nobody's business. I'm an Indian who left a US tech job and <a href="/blog/what-is-LEAN-FIRE">FIRE'd by keeping expenses low</a>. This is the money engine behind that life. It is not perfect. I'll show you exactly where it isn't.</p>
+<h2 id="why-buckets-instead-of-just-the-4-rule">Why Buckets Instead of Just the 4% Rule?</h2>
+<p>The standard FIRE answer is: pile everything into equities, withdraw 4% a year, done. The math works on average. But I don't retire on <em>average</em> — I retire once, on a specific set of years, and the <em>order</em> of those years can make or break me.</p>
+<p>That's <strong>sequence-of-returns risk</strong>: if the market drops 30% in my first couple of years and I'm selling shares to eat, I lock in those losses permanently and the portfolio may never recover. It's the single biggest threat to an early retirement — I dug into it in <a href="/blog/can-i-retire-at-35-with-500k">can you retire at 35 with $500k</a>, and you can stress-test it yourself with the <a href="/tools/sequence-risk/">Sequence Risk Calculator</a>.</p>
+<p>My buckets exist to answer one question: <strong>what do I sell in a crash?</strong> The answer is <em>nothing risky.</em> I spend from cash while equities recover. That's it. Everything below is just detail on that idea.</p>
+<h2 id="the-three-buckets">The Three Buckets</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>~Share</th>
+<th>Role</th>
+<th>Return (pre-inflation)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — CD ladder (cash)</strong></td>
+<td>~27%</td>
+<td>Funds my <strong>first ~10 years</strong> of spending</td>
+<td>4–4.5%</td>
+</tr>
+<tr>
+<td><strong>2 — Equities</strong></td>
+<td>~49%</td>
+<td>The growth engine (roughly years 10–25)</td>
+<td>~7%</td>
+</tr>
+<tr>
+<td><strong>3 — 401(k), locked</strong></td>
+<td>~24%</td>
+<td>Long-term backstop, untouchable ~25 years</td>
+<td>compounding</td>
+</tr>
+</tbody>
+</table>
+<p>Roughly a quarter, about half, and the last quarter locked away. Let me walk through each — and why I made some choices that a purist would argue with.</p>
+<h3 id="bucket-1-the-cd-ladder-my-first-10-years">Bucket 1 — The CD Ladder (my first 10 years)</h3>
+<p>This is the bucket that lets me sleep. It holds <strong>about ten years of spending</strong> — literally sized at 10× my annual expenses — as a <strong>ladder of CDs</strong> with staggered maturities, so a chunk matures and frees up cash every year.</p>
+<p>Why CDs specifically? I get asked this a lot:
+- <strong>Not just a HYSA</strong> — I keep one, but I want the higher locked rate for money I won't need for years.
+- <strong>Not treasuries</strong> — the rates were simply lower when I built this.
+- <strong>Not bonds</strong> — the added complexity wasn't buying me enough extra yield to bother.
+- <strong>CDs because of the shorter maturities</strong> — I don't want to lock myself out of <em>higher</em> interest later. A ladder keeps me flexible.</p>
+<p>At 4–4.5% it's not exciting money. That's the point. Its job isn't to grow — it's to exist, guaranteed, so I never have to sell an equity share in a bad year. I manage the whole ladder manually, which is less work than it sounds.</p>
+<h3 id="bucket-2-equities-the-growth-engine">Bucket 2 — Equities (the growth engine)</h3>
+<p>About half the portfolio sits in equities, assuming a <strong>~7% pre-inflation</strong> long-run return. This is what actually funds the <em>back half</em> of retirement and outruns inflation over decades.</p>
+<p>I don't just let it drift. Even now, I <strong>trim overpriced positions very minimally to rebalance</strong> — small, occasional trims, not market-timing. And here's a quiet rule I follow: <strong>if I don't see a good opportunity in equities, I top up the CD bucket instead.</strong> Cash isn't a failure to invest; it's a position.</p>
+<h3 id="bucket-3-the-locked-retirement-bucket-and-an-honest-confession">Bucket 3 — The Locked Retirement Bucket (and an honest confession)</h3>
+<p>The last quarter is in a <strong>401(k)</strong> — locked until 59½, roughly 25 years away. It's the long-term backstop I mentally write off until then.</p>
+<p>Here's the imperfect part, and I'm not going to dress it up: <strong>it's a 401(k) only, mostly for the employer match.</strong> After that match, I didn't have enough left over to fund <em>both</em> a taxable equities portfolio <em>and</em> a Roth — so I picked the taxable equities portfolio, because I wanted money I could actually <em>reach</em> before 60. A textbook optimiser would probably yell at me about tax-advantaged space. They might be right. But an early retirement you can't fund until you're 59½ isn't early retirement.</p>
+<h2 id="how-the-buckets-actually-flow">How the Buckets Actually Flow</h2>
+<p>The buckets aren't static jars — they feed each other:
+- In <strong>good years</strong>, I trim a little from overpriced equities and let the cash ladder refill.
+- If <strong>equities look expensive and I see nothing worth buying</strong>, cash builds up.
+- In a <strong>crash</strong>, I stop selling equities entirely and spend from the CD ladder while the market does its thing.</p>
+<p>And here's the reassurance that makes the cash bucket sane: <strong>corrections rarely last 5–10 years.</strong> In my experience the market recovers well inside my cash runway — so I can even <em>add</em> to equities after a correction, then rebuild the ladder once prices are healthy again. The 10-year cushion isn't there because I think a decade-long depression is likely; it's there so I never have to <em>find out</em> how long one lasts while I'm the one holding the bag.</p>
+<h2 id="the-withdrawal-rate-reality-there-is-no-straight-line">The Withdrawal Rate Reality (there is no straight line)</h2>
+<p>On paper, this structure comfortably supports a <strong>3% withdrawal rate.</strong> In real life?
+- <strong>Last year I lived on about 1.9%.</strong>
+- <strong>This year I'll draw closer to 3.5%.</strong></p>
+<p>Because life doesn't move in a straight line, and you cannot implement any plan perfectly. The reason this year jumps is real and heavy: a big chunk of it is funding my mother's cancer treatment out of pocket — I wrote about <a href="/blog/cost-of-cancer-without-insurance">what that actually cost, and what it did to my numbers</a>. A one-year spike from under 2% to 3.5% didn't break anything, precisely <em>because</em> the buckets were built for a bad year I couldn't predict. That's the whole case for this approach in one real example.</p>
+<h2 id="the-honest-criticism-isnt-27-in-4-cds-a-drag">The Honest Criticism: Isn't 27% in 4% CDs a Drag?</h2>
+<p>Yes. On paper, holding a quarter of the portfolio in 4% CDs instead of ~7% equities is "wasted" growth, and a spreadsheet will tell you I'm leaving money on the table. Fair.</p>
+<p>But that cash isn't only a safety cushion — it's <strong>optionality</strong>, and here's the honest backstory: <strong>I originally saved it to buy real estate.</strong> I still might. It sits in CDs because it's house money in waiting. And if I <em>don't</em> buy the house? Then it's <strong>dry powder</strong> — enough fuel to pour into equities during a correction. Either way it has a job.</p>
+<p>Is it the mathematically optimal move? Probably not. But "optimal" assumes I know the future, and I don't. I'd rather hold flexible money and sleep than optimise myself into a corner. Might not be the smartest allocation on a spreadsheet. It's the one I can actually live with.</p>
+<h2 id="the-nri-angle-why-us-not-indian-instruments">The NRI Angle (why US, not Indian, instruments)</h2>
+<p>A reasonable question for a fellow Indian: why US CDs and equities instead of Indian FDs and mutual funds? A few reasons:
+- <strong>Tax:</strong> as an NRI currently in the <strong>RNOR</strong> window, my US CDs and equities aren't taxed for me right now. That's a real, time-limited advantage.
+- <strong>Familiarity and trust:</strong> I've invested in the US market for years — my research, my instincts, my whole mental model lives there.</p>
+<p>The honest caveat: <strong>this is not settled.</strong> RNOR status is temporary, and I plan to sit down with an <strong>NRI tax advisor within the next year</strong> and likely adjust the structure. I'm telling you what I do today, not handing you a permanent tax plan. Get your own advice — this stuff is individual.</p>
+<h2 id="what-could-actually-break-this">What Could Actually Break This</h2>
+<p>I try to know how my plans fail. This one's biggest threats:
+- <strong>Crazy inflation</strong> — sustained high inflation quietly eats the CD bucket alive; 4–4.5% is comforting until prices run at 6–7%.
+- <strong>A change of plans</strong> — buy the house, move, a big life shift.
+- <strong>Wanting more</strong> — if I get tired of a lean lifestyle and want bigger purchases, the whole low-withdrawal math changes.</p>
+<p>Notice none of those are "the market crashes." That risk is the one I've actually engineered around. The threats that remain are mostly about <em>me</em> changing, not the market.</p>
+<h2 id="should-you-copy-this">Should You Copy This?</h2>
+<p>Honestly? Take the <em>principles</em>, not my percentages.</p>
+<p>The principle that matters is: <strong>hold enough safe money to never sell risk assets in a downturn, and don't overcomplicate the rest.</strong> Whether that cushion is 5 years or 10, CDs or a bond ladder, a quarter of the portfolio or a third — that's yours to figure out based on your spending, your nerves, and your timeline. Run your own number in the <a href="/tools/fire-number/">FIRE Number Calculator</a> and pressure-test it in the <a href="/tools/sequence-risk/">Sequence Risk Calculator</a>.</p>
+<p>I gravitated to three buckets because they fit how I think. They're not optimised. They've got a confession or two baked in. But they let me spend a market crash reading on a beach in Da Nang instead of refreshing my brokerage app — and for me, that was always the actual goal.</p>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<h3 id="what-is-the-bucket-strategy-for-retirement">What is the bucket strategy for retirement?</h3>
+<p>It's splitting your portfolio into separate "buckets" by when you'll spend the money: a cash/short-term bucket for near-term spending, a growth (equities) bucket for the medium term, and long-term/locked accounts for later. The point is to spend from cash during market downturns instead of selling investments at a loss.</p>
+<h3 id="how-many-years-of-cash-should-the-first-bucket-hold">How many years of cash should the first bucket hold?</h3>
+<p>There's no single right answer — anywhere from 2 to 10+ years is used. I hold about 10 years (sized at 10× annual spending) in a CD ladder, mainly because it lets me ignore market crashes entirely. A shorter cushion means less cash drag but more nerve required.</p>
+<h3 id="why-use-cds-instead-of-bonds-for-the-cash-bucket">Why use CDs instead of bonds for the cash bucket?</h3>
+<p>For me: CDs offered a better rate than treasuries at the time, avoided the complexity of a bond portfolio for little extra yield, and their shorter maturities meant I wasn't locked out of higher interest rates later. A CD ladder also frees up predictable cash each year.</p>
+<h3 id="does-holding-that-much-cash-hurt-your-returns">Does holding that much cash hurt your returns?</h3>
+<p>Yes, on paper — cash earning ~4% underperforms equities' ~7% over time. I accept that drag as the price of never being forced to sell equities in a crash, and because that cash doubles as optionality (a potential home purchase, or dry powder to buy the dip).</p>
+<h3 id="what-withdrawal-rate-does-this-support">What withdrawal rate does this support?</h3>
+<p>The structure supports around 3%. In practice it varies a lot year to year — I spent under 2% one year and closer to 3.5% another. Real spending is lumpy; a rigid straight-line withdrawal rate isn't how life actually works.</p>
+<hr />
+<p><em>This is a personal account of how I structure my own money, in percentages only — not financial advice, and not a recommendation. Everyone's tax situation, spending, and risk tolerance is different, and NRI tax rules in particular are individual and change over time. Talk to a qualified advisor before copying anything here.</em></p>
+
+                <!-- Author Byline -->
+                <div class="author-box"
+                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--card-background); box-shadow: var(--shadow-sm); border-radius: 12px; margin-top: 2rem;">
+                    <div
+                        style="width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
+                        N</div>
+                    <div>
+                        <strong style="font-size: 1.1rem; color: var(--text-primary);">Written by Ninad</strong>
+                        <p
+                            style="margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                            FIRE
+                            enthusiast and software engineer building tools for financial independence. Passionate about
+                            helping others achieve their retirement goals through smart planning and automation.</p>
+                        <a href="/about"
+                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3);">Learn
+                            more →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
+</body>
+
+</html>

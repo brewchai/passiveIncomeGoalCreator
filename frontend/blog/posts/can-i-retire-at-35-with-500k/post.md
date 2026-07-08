@@ -106,7 +106,7 @@ Ditch the bonds entirely. Put all $500k into a total market index fund like VTI 
 
 Over 30+ year periods, 100% equities have historically outperformed 60/40 portfolios by a wide margin. The higher 10.2% CAGR (vs 8.5% for 60/40) means your $500k has a better chance of growing even while withdrawing.
 
-The downside: **sequence of returns risk**. If the market drops 40% in your first 2 years of retirement (like 2008–2009), you're withdrawing from a cratered portfolio. That early damage compounds and can be fatal to your plan.
+The downside: **sequence of returns risk**. If the market drops 40% in your first 2 years of retirement (like 2008–2009), you're withdrawing from a cratered portfolio. That early damage compounds and can be fatal to your plan. (The way I manage it: a [three-bucket structure with a ~10-year cash cushion](/blog/three-bucket-strategy-fire), so I never sell equities in a crash.)
 
 I lived through this during COVID. My portfolio dropped 25%, and I watched the numbers fall hard. The difference was [I was still working and doubled down](/blog/40k-debt-to-coast-fire-at-33). A retiree with $0 income doesn't have that luxury.
 
