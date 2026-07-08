@@ -174,6 +174,21 @@
   ],
   "recent": [
     {
+      "slug": "vietnam-visa-for-indians",
+      "title": "Living in Vietnam on an Indian Passport: My Real Visa Setup",
+      "subtitle": "The e-visa, the port-of-entry rule, and how I actually handle visa runs — from someone living it in Da Nang",
+      "description": "How Indians get a Vietnam visa and stay long-term: the official e-visa ($25 single / $50 multiple, up to 90 days), the port-of-entry rule, and real visa-run options — first-hand from an Indian living in Da Nang.",
+      "date": "2026-07-05",
+      "date_modified": "2026-07-05",
+      "cover": "/blog/posts/vietnam-visa-for-indians/cover.webp",
+      "tags": [
+        "geo-arbitrage",
+        "visa"
+      ],
+      "featured": false,
+      "url": "/blog/vietnam-visa-for-indians"
+    },
+    {
       "slug": "cost-of-cancer-without-insurance",
       "title": "What Breast Cancer Cost Us in India — and What It Did to My FIRE Plan",
       "subtitle": "The real, itemised out-of-pocket cost of a triple-negative breast cancer treatment in Pune — and what a ₹40-lakh bill does to a retirement plan.",
@@ -279,6 +294,21 @@
     }
   ],
   "all": [
+    {
+      "slug": "vietnam-visa-for-indians",
+      "title": "Living in Vietnam on an Indian Passport: My Real Visa Setup",
+      "subtitle": "The e-visa, the port-of-entry rule, and how I actually handle visa runs — from someone living it in Da Nang",
+      "description": "How Indians get a Vietnam visa and stay long-term: the official e-visa ($25 single / $50 multiple, up to 90 days), the port-of-entry rule, and real visa-run options — first-hand from an Indian living in Da Nang.",
+      "date": "2026-07-05",
+      "date_modified": "2026-07-05",
+      "cover": "/blog/posts/vietnam-visa-for-indians/cover.webp",
+      "tags": [
+        "geo-arbitrage",
+        "visa"
+      ],
+      "featured": false,
+      "url": "/blog/vietnam-visa-for-indians"
+    },
     {
       "slug": "retire-in-southeast-asia-as-an-indian",
       "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
@@ -555,5 +585,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-06T08:21:32.942918Z"
+  "_generated_at": "2026-07-08T08:22:55.181134Z"
 }

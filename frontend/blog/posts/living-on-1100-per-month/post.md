@@ -99,7 +99,7 @@ Here's the part most "I live on $X abroad" posts conveniently skip.
 **$1,100 is my core cost of living.** But my *true* all-in number is closer to **$1,800/month** (about **₹1.7 lakh**), and I won't pretend otherwise. The gap is the stuff that isn't really "living in Da Nang":
 
 - **The personal trainer** (~$240) — a luxury, not a necessity
-- **Visa runs** (~$100/month averaged) — the Vietnam tax on an Indian passport
+- **[Visa runs](/blog/vietnam-visa-for-indians)** (~$100/month averaged) — the Vietnam tax on an Indian passport
 - **Flights home and family support** (~$460) — I fly back to India, and I send money to people I care about
 
 Add it up and you land at about $1,800/month — which is exactly the number I break down, line by line, in my [full Lean FIRE budget](/blog/what-is-LEAN-FIRE). So when you plan your own version of this, **plan on the all-in number, not the shiny headline one.**

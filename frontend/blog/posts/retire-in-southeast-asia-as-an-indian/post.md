@@ -106,7 +106,7 @@ Neither is objectively "better." They're different trades on the same theme.
 
 This is the part that actually decides whether you can do this — and it's the part generic guides gloss over. On an Indian passport, the visa is your real friction, not the rent.
 
-**Vietnam:** there is no retirement visa. In practice you run on an e-visa and do periodic **visa runs** or renewals. It's manageable and predictable, but it's overhead you have to plan around. Don't imagine you'll just settle in permanently and forget about it.
+**Vietnam:** there is no retirement visa. In practice you run on an e-visa and do periodic **visa runs** or renewals — [here's exactly how I handle the Vietnam visa on an Indian passport](/blog/vietnam-visa-for-indians), start to finish. It's manageable and predictable, but it's overhead you have to plan around. Don't imagine you'll just settle in permanently and forget about it.
 
 **Thailand:** the older visa-exempt entry situation tightened in 2026, so don't rely on walking in visa-free. The route that matters now for people like us is the **DTV (Destination Thailand Visa)** — a multi-year, multi-entry visa built specifically for people whose income comes from *outside* Thailand. If you're an NRI living on foreign or remote income, that's your profile. (If you're 50+, Thailand's retirement visa track is a separate option.)
 

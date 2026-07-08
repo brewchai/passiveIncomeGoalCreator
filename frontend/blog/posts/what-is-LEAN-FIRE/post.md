@@ -111,7 +111,7 @@ In contrast, my food spend in the US was closer to $700/month and that was with 
 
 ### Visa — $100/month
 
-This is the one line item that's purely a Vietnam-specific overhead. Every 3 months I renew my visa. It costs roughly $300–$400 per renewal depending on the type. I've averaged $100/month accounting for those cycles.
+This is the one line item that's purely a Vietnam-specific overhead. Every 3 months I renew my visa — I break down [the full Vietnam visa process for Indians](/blog/vietnam-visa-for-indians) (e-visa, costs, and visa runs) separately. It costs roughly $300–$400 per renewal depending on the type. I've averaged $100/month accounting for those cycles.
 
 This is the "Vietnam tax." I pay it, it's predictable, and it's still cheaper than what I'd spend on commuting costs in a US city.
 
