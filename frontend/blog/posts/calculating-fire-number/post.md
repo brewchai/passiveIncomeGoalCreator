@@ -28,6 +28,8 @@ If you estimate needing **$48,000 per year** to cover your living costs, your ta
 
 $48,000 × 25 = $1,200,000
 
+The same math works in any currency. Retiring in India and need **₹12,00,000 a year** (about ₹1 lakh a month)? Your FIRE number is ₹12,00,000 × 25 = **₹3 crore** — and closer to **₹4 crore** at the safer 3% withdrawal most Indian planners prefer (more on why below).
+
 ---
 
 ## Explaining the 4% Rule and Why It Matters
@@ -69,8 +71,7 @@ Your retirement time horizon significantly impacts your required multiplier:
 ### 2. Adjustments for Location and Expected Returns
 
 - **Location / Lifestyle:**  
-  Your estimated annual expenses should be realistic for your desired retirement location. If you plan to move to a lower cost of living (LCOL) area — a concept known as *Geo-arbitrage* — your annual expenses will drop, dramatically lowering your FIRE number.  
-  Ensure you accurately account for major non-negotiable costs, like healthcare premiums before Medicare eligibility.
+  Your estimated annual expenses should be realistic for your desired retirement location. If you move to a lower cost of living (LCOL) area — a concept known as *Geo-arbitrage* — your annual expenses drop and your FIRE number drops with them. It's the single biggest lever there is: I cut mine dramatically by [going from $6,000/month in NYC to about $1,100 in Vietnam](/blog/living-on-1100-per-month), and [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian) breaks down exactly how that math works. Just account for major non-negotiable costs, like healthcare.
 
 - **Expected Returns & Other Income:**  
   If you anticipate receiving reliable guaranteed income (like a pension, social security, or passive real estate rental income), you can **subtract that annual income** from your desired annual expenses before applying the multiplier.  
@@ -81,6 +82,24 @@ This effectively lowers the total portfolio amount you need to save.
 If you need **$50,000/year** but expect **$10,000** from a rental property, you only need to multiply:
 
 ($50,000 - $10,000) × 25 = $1,000,000
+
+---
+
+## Calculating Your FIRE Number in India (₹ and Crores)
+
+The formula doesn't change across borders — but the *safe withdrawal rate* does. In India, most FIRE planners lean toward a more conservative **3% withdrawal (a 33× multiplier) instead of the US-standard 4% (25×).** Why? Higher inflation (India's CPI has run ~5–6% vs ~2–3% in the US), a shorter market history to lean on, and steep healthcare costs. That extra cushion earns its keep.
+
+So your Indian FIRE number, by annual spend:
+
+| Annual spend | 25× (4% rule) | 33× (3% rule — safer for India) |
+|---|---|---|
+| ₹6,00,000 (₹50k/mo) | ₹1.5 crore | ₹2 crore |
+| ₹12,00,000 (₹1 lakh/mo) | ₹3 crore | ₹4 crore |
+| ₹24,00,000 (₹2 lakh/mo) | ₹6 crore | ₹8 crore |
+
+Run your own number in rupees — the [FIRE Number Calculator](/tools/fire-number/) has an **India mode** that switches to ₹ and the 33× multiplier automatically, and shows your target in lakhs and crores.
+
+And if you're an NRI or open to geo-arbitrage, the number drops fast. I live in Vietnam on roughly ₹1.5 lakh a month — about a [$540k (₹5 crore) Lean FIRE number](/blog/what-is-LEAN-FIRE) — and I break down whether [$500k (₹4 crore) is enough to retire at 35](/blog/can-i-retire-at-35-with-500k). Geography, not just the amount, decides it.
 
 ---
 
@@ -102,7 +121,7 @@ Calculating your FIRE number is the first, most empowering step on your journey 
   Get a crystal-clear, detailed understanding of your current and future annual spending, especially incorporating costs like travel and early-retirement healthcare.
 
 - **Model Your Scenario:**  
-  The best way to finalize your plan is by using an advanced simulator.  
+  Plug your numbers into the [FIRE Number Calculator](/tools/fire-number/) — switch between US (25×) and India (33×) mode to see your exact target in dollars or rupees — then finalize with an advanced simulator.  
 
 Ready to see how fast you can get there? See [how much you need to retire at 40](/blog/how-much-need-retire-forty-40) for a real-world example.  
 Use the [Sequence Risk Calculator](/tools/sequence-risk/) to model how your portfolio might perform under different return orders, inflation assumptions, and guardrail withdrawals. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).

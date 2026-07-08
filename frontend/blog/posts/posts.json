@@ -159,10 +159,10 @@
     {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
-      "subtitle": "A practical walkthrough of the 4% rule and personalization",
-      "description": "Learn how to use the 4% rule to determine precisely how much you need to retire. Complete with examples of target portfolios and Lean FIRE annual expenses.",
+      "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
+      "description": "How to calculate your FIRE number in dollars or rupees: the 25× (4%) rule for the US, the safer 33× (3%) rule for India, real examples in ₹/crores, and a free calculator.",
       "date": "2025-10-28",
-      "date_modified": "2025-10-28",
+      "date_modified": "2026-07-08",
       "cover": "/blog/posts/calculating-fire-number/cover.webp",
       "tags": [
         "featured",
@@ -572,10 +572,10 @@
     {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
-      "subtitle": "A practical walkthrough of the 4% rule and personalization",
-      "description": "Learn how to use the 4% rule to determine precisely how much you need to retire. Complete with examples of target portfolios and Lean FIRE annual expenses.",
+      "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
+      "description": "How to calculate your FIRE number in dollars or rupees: the 25× (4%) rule for the US, the safer 33× (3%) rule for India, real examples in ₹/crores, and a free calculator.",
       "date": "2025-10-28",
-      "date_modified": "2025-10-28",
+      "date_modified": "2026-07-08",
       "cover": "/blog/posts/calculating-fire-number/cover.webp",
       "tags": [
         "featured",
@@ -585,5 +585,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-08T08:22:55.181134Z"
+  "_generated_at": "2026-07-08T10:34:07.085980Z"
 }

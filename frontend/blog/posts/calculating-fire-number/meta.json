@@ -1,8 +1,10 @@
 {
     "title": "How to Calculate Your FIRE Number",
-    "subtitle": "A practical walkthrough of the 4% rule and personalization",
-    "description": "Learn how to use the 4% rule to determine precisely how much you need to retire. Complete with examples of target portfolios and Lean FIRE annual expenses.",
+    "meta_title": "How to Calculate Your FIRE Number (US 25× & India 33×)",
+    "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
+    "description": "How to calculate your FIRE number in dollars or rupees: the 25× (4%) rule for the US, the safer 33× (3%) rule for India, real examples in ₹/crores, and a free calculator.",
     "date": "2025-10-28",
+    "date_modified": "2026-07-08",
     "tags": [
         "featured",
         "basics"
@@ -21,6 +23,14 @@
         {
             "question": "Should early retirees use a lower withdrawal rate?",
             "answer": "Early retirees often use a lower withdrawal rate, such as 3.5%, because their portfolios may need to last longer than a traditional 30-year retirement."
+        },
+        {
+            "question": "How do you calculate your FIRE number in India?",
+            "answer": "Use the same formula but a safer 3% withdrawal rate (a 33x multiplier) rather than 4% (25x), because Indian inflation and healthcare costs run higher. For example, spending ₹12,00,000 a year means a FIRE number of about ₹3 crore at 25x, or ₹4 crore at the more conservative 33x."
+        },
+        {
+            "question": "What is the FIRE number in crores?",
+            "answer": "It depends on your annual spending. At the safer Indian 33x multiplier: ₹6 lakh a year is about ₹2 crore, ₹12 lakh a year is about ₹4 crore, and ₹24 lakh a year is about ₹8 crore. Geo-arbitrage to a lower-cost location can cut the number significantly."
         }
     ]
 }
