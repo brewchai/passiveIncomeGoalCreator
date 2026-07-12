@@ -8,5 +8,6 @@
         "basics"
     ],
     "cover": "/blog/posts/what-is-Coast-FIRE/cover.webp",
-    "featured": true
+    "featured": true,
+    "noindex": true
 }

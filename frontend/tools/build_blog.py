@@ -128,6 +128,8 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     # dateModified defaults to the publish date unless explicitly set.
     date_modified = iso_date(meta["date_modified"]) if meta.get("date_modified") else date
     cover = meta.get("cover", "").strip()
+    # Benched pages: keep live for internal links but drop from Google's index.
+    robots_meta = '<meta name="robots" content="noindex, follow">' if meta.get("noindex") else ''
     # Canonical path/URL
     canonical_path = f"/blog/{slug}"
     canonical_abs = f"{BASE_URL}{canonical_path}" if BASE_URL else canonical_path
@@ -153,6 +155,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
         .replace("{{SUBTITLE}}", subtitle)
         .replace("{{DATE}}", date)
         .replace("{{READ_TIME}}", str(read_time))
+        .replace("{{ROBOTS_META}}", robots_meta)
         .replace("{{CANONICAL}}", canonical_abs)
         .replace("{{CANONICAL_PATH}}", canonical_path)
         .replace("{{COVER}}", cover_abs)
@@ -223,6 +226,7 @@ def build_one_post(slug: str, template: str) -> dict:
         "cover": cover_for_json,
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
+        "noindex": bool(meta.get("noindex", False)),
         "url": f"/blog/{slug}",
     }
 
@@ -234,6 +238,8 @@ def collect_posts() -> list[dict]:
     return sorted(slugs)
 
 def write_posts_index(records: list[dict]) -> None:
+    # Benched (noindex) posts are hidden from the /blog listing.
+    records = [r for r in records if not r.get("noindex")]
     # Split featured and recent
     sorted_records = sorted(records, key=lambda r: r["date"], reverse=True)
     featured = [r for r in sorted_records if r.get("featured")]
@@ -275,6 +281,8 @@ def update_sitemap(records: list[dict]) -> None:
         print("  sitemap: BLOG markers not found — skipping sitemap update")
         return
 
+    # Never advertise benched (noindex) pages in the sitemap.
+    records = [r for r in records if not r.get("noindex")]
     recs = sorted(records, key=lambda r: r.get("date", ""), reverse=True)
     blocks = []
     for r in recs:

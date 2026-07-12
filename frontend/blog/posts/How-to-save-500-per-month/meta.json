@@ -22,5 +22,6 @@
             "question": "Can saving $500 a month help with FIRE?",
             "answer": "Saving and investing $500 a month can materially improve a FIRE timeline because it increases savings rate and adds invested capital that can compound over time."
         }
-    ]
+    ],
+    "noindex": true
 }

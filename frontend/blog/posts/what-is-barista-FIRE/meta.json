@@ -18,5 +18,6 @@
             "question": "How is Barista FIRE different from traditional FIRE?",
             "answer": "Traditional FIRE requires enough invested assets to cover nearly all living expenses, while Barista FIRE relies on a smaller portfolio plus ongoing flexible income."
         }
-    ]
+    ],
+    "noindex": true
 }
