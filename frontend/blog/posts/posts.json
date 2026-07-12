@@ -69,22 +69,22 @@
       "url": "/blog/why-fire-is-not-for-you"
     },
     {
-      "slug": "40k-debt-to-coast-fire-at-33",
-      "title": "From $40k Debt to Coast FIRE at 33",
-      "subtitle": "A personal case study of how a 9-5 helped me reach Coast FIRE in a decade",
-      "description": "A personal Coast FIRE case study showing how a 9-5 job, strategic saving, and consistent investing erased debt and built freedom.",
+      "slug": "40k-debt-to-lean-fire-at-33",
+      "title": "From $40k in Debt to Lean FIRE at 33",
+      "subtitle": "The real journey from student loan debt to living lean and free by 33",
+      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
       "date": "2026-01-29",
-      "date_modified": "2026-01-29",
-      "cover": "/blog/posts/40k-debt-to-coast-fire-at-33/ninad-retirement.webp",
+      "date_modified": "2026-07-08",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
       "tags": [
         "personal-story",
         "debt-payoff",
-        "coast-fire",
+        "lean-fire",
         "fire-journey"
       ],
       "featured": true,
       "noindex": false,
-      "url": "/blog/40k-debt-to-coast-fire-at-33"
+      "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
       "slug": "what-is-LEAN-FIRE",
@@ -477,22 +477,22 @@
       "url": "/blog/living-on-1100-per-month"
     },
     {
-      "slug": "40k-debt-to-coast-fire-at-33",
-      "title": "From $40k Debt to Coast FIRE at 33",
-      "subtitle": "A personal case study of how a 9-5 helped me reach Coast FIRE in a decade",
-      "description": "A personal Coast FIRE case study showing how a 9-5 job, strategic saving, and consistent investing erased debt and built freedom.",
+      "slug": "40k-debt-to-lean-fire-at-33",
+      "title": "From $40k in Debt to Lean FIRE at 33",
+      "subtitle": "The real journey from student loan debt to living lean and free by 33",
+      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
       "date": "2026-01-29",
-      "date_modified": "2026-01-29",
-      "cover": "/blog/posts/40k-debt-to-coast-fire-at-33/ninad-retirement.webp",
+      "date_modified": "2026-07-08",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
       "tags": [
         "personal-story",
         "debt-payoff",
-        "coast-fire",
+        "lean-fire",
         "fire-journey"
       ],
       "featured": true,
       "noindex": false,
-      "url": "/blog/40k-debt-to-coast-fire-at-33"
+      "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
       "slug": "what-is-LEAN-FIRE",
@@ -559,5 +559,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-12T09:08:38.103192Z"
+  "_generated_at": "2026-07-12T09:55:26.590848Z"
 }

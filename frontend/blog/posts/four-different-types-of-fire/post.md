@@ -138,7 +138,7 @@ Raj quit his tech job but now teaches yoga and works part-time at a community ca
 
 **CoastFIRE** means you've saved *enough* early in life that if your investments simply grow over time (unaided), they'll fully fund retirement when you reach traditional age. You can now stop contributing to retirement, and only work to cover current expenses.
 
-For the mechanics and target-number math, read the full [Coast FIRE guide](/blog/what-is-Coast-FIRE). For a personal version of this path, read how I went [from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
+For the mechanics and target-number math, read the full [Coast FIRE guide](/blog/what-is-Coast-FIRE). For a personal version of this path, read how I went [from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33).
 
 ### Why It’s Called "Coasting"
 

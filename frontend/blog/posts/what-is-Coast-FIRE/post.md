@@ -39,7 +39,7 @@ The magic of Coast FIRE lies in understanding when you’ve saved enough — eve
 
 Once your investment balance hits a critical point, you can stop contributing and let growth carry you to retirement.
 
-For a real example of how this can happen from an ordinary career path, read the [Coast FIRE case study from $40k debt to Coast FIRE at 33](/blog/40k-debt-to-coast-fire-at-33).
+For a real example of how this can happen from an ordinary career path, read how I went [from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33).
 
 Here's the essence:
 
