@@ -56,6 +56,20 @@ This is also exactly how I demolished the original debt. I cleared the entire $4
 
 ---
 
+## The Actual Numbers I Lived On, Year by Year
+
+People love the big ideas, and they rarely believe the small numbers sitting underneath them, so let me lay mine out plainly for you.
+
+My first 2 years in the US were my masters years, and they were the leanest of my entire life. I shared one apartment with 3 roommates the whole way through. My slice of the rent came to $198 a month, and with utilities piled on top it landed around $250. Once I folded in food and everything else, my total cost of living sat close to $500 a month. I bought no new clothes, I owned no car, and I did absolutely nothing fancy. It was a genuinely small life, and I was mostly happy living inside it.
+
+By my third year things loosened up a little. I moved into my own place and my rent jumped to $1,100 a month, or about $1,250 once the utilities came in. I bought a $100 bus pass to get around, because I still flatly refused to own a car. My eating out crept up to roughly $400 a month, which honestly felt luxurious after living on $500 for everything not long before.
+
+From there my spending climbed slowly and steadily, maybe 10% higher each year for the next 5 years. Some of that was gentle lifestyle creep, and plenty of it was simply life getting more expensive as I got older. I kept a close eye on the whole thing, and I never once let it run away from me.
+
+Then came the real jump. I landed a significant pay bump and moved into a senior role, and my spending rose to meet the moment. There was a stretch in New York where I spent close to $6,000 a month, most of it pouring into that luxury building beside Times Square I mentioned earlier. Here is the crucial part though. Even as my spending climbed, my savings rate held near half the entire time, because my income was climbing right alongside it. The lifestyle grew, and that untouchable pile grew even faster.
+
+---
+
 ## How Long Does It Actually Take to Reach Lean FIRE?
 
 People always want a clean number for this, so here is my honest one. The whole thing took me 10 years from first landing in debt to reaching my Lean FIRE number, and only 7 of those years were actually spent earning a paycheck. Your own timeline will swing hard based on three levers, which are how much you earn, how much of it you refuse to spend, and how early you let the compounding start working for you.
@@ -85,7 +99,7 @@ You reach Lean FIRE by combining a strong income with a high savings rate and co
 For me the entire journey ran about 10 years from being in debt to hitting my Lean FIRE number, with only 7 of those years actually spent working a job. Your timeline depends heavily on your income, your savings rate, and how early you start investing, and a savings rate near 50% can make a single decade genuinely realistic.
 
 ### How much do you need to save for Lean FIRE?
-A common rule of thumb is 25 times your annual expenses, so a lean lifestyle that costs $1,100 to $1,800 a month leaves you with a far smaller target than a normal retirement would. I walk through the exact math in my [guide to calculating your FIRE number](/blog/calculating-fire-number), and my own low cost life is broken down fully in [living on $1,100 a month](/blog/living-on-1100-per-month).
+A common rule of thumb is 25 times your annual expenses, so a lean lifestyle that costs $1,100 to $1,800 a month leaves you with a far smaller target than a normal retirement would. In rupee terms that same lean life runs roughly ₹1 lakh to ₹1.7 lakh a month, which points to a Lean FIRE number somewhere around ₹3 crore to ₹5 crore at the 25 times rule, and closer to ₹4 crore to ₹6 crore if you use the safer 33 times multiple that most Indian planners lean toward. I walk through the exact math in my [guide to calculating your FIRE number](/blog/calculating-fire-number), and my own low cost life is broken down fully in [living on $1,100 a month](/blog/living-on-1100-per-month).
 
 ### Can you reach Lean FIRE if you start in debt?
 Yes, and I am living proof that you can, because I started at 23 with $40,000 of student loans and my family home held up as collateral. I cleared that entire debt in a single year by cutting groceries hard, living cheaply, and skipping a car, then I poured all of that same discipline straight into investing.

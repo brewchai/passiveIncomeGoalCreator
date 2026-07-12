@@ -226,6 +226,7 @@ def build_one_post(slug: str, template: str) -> dict:
         "cover": cover_for_json,
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
+        "pinned": bool(meta.get("pinned", False)),
         "noindex": bool(meta.get("noindex", False)),
         "url": f"/blog/{slug}",
     }
@@ -240,8 +241,8 @@ def collect_posts() -> list[dict]:
 def write_posts_index(records: list[dict]) -> None:
     # Benched (noindex) posts are hidden from the /blog listing.
     records = [r for r in records if not r.get("noindex")]
-    # Split featured and recent
-    sorted_records = sorted(records, key=lambda r: r["date"], reverse=True)
+    # Split featured and recent. Pinned posts always sort first, then by date.
+    sorted_records = sorted(records, key=lambda r: (r.get("pinned", False), r["date"]), reverse=True)
     featured = [r for r in sorted_records if r.get("featured")]
     recent = [r for r in sorted_records if not r.get("featured")]
 

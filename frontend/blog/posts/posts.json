@@ -1,6 +1,25 @@
 {
   "featured": [
     {
+      "slug": "40k-debt-to-lean-fire-at-33",
+      "title": "From $40k in Debt to Lean FIRE at 33",
+      "subtitle": "The real journey from student loan debt to living lean and free by 33",
+      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
+      "date": "2026-07-12",
+      "date_modified": "2026-07-12",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
+      "tags": [
+        "personal-story",
+        "debt-payoff",
+        "lean-fire",
+        "fire-journey"
+      ],
+      "featured": true,
+      "pinned": true,
+      "noindex": false,
+      "url": "/blog/40k-debt-to-lean-fire-at-33"
+    },
+    {
       "slug": "retire-in-southeast-asia-as-an-indian",
       "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
       "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
@@ -13,6 +32,7 @@
         "geo-arbitrage"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
     },
@@ -30,6 +50,7 @@
         "Life After F.i.R.E."
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/first-year-fire-reflection"
     },
@@ -48,6 +69,7 @@
         "reality-check"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
     },
@@ -65,26 +87,9 @@
         "mindset"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
-    },
-    {
-      "slug": "40k-debt-to-lean-fire-at-33",
-      "title": "From $40k in Debt to Lean FIRE at 33",
-      "subtitle": "The real journey from student loan debt to living lean and free by 33",
-      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
-      "date": "2026-01-29",
-      "date_modified": "2026-07-08",
-      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
-      "tags": [
-        "personal-story",
-        "debt-payoff",
-        "lean-fire",
-        "fire-journey"
-      ],
-      "featured": true,
-      "noindex": false,
-      "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
       "slug": "what-is-LEAN-FIRE",
@@ -99,6 +104,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -115,6 +121,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/how-much-need-retire-forty-40"
     },
@@ -131,6 +138,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/four-different-types-of-fire"
     },
@@ -147,6 +155,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
     }
@@ -165,6 +174,7 @@
         "strategies"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
     },
@@ -181,6 +191,7 @@
         "visa"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
     },
@@ -199,6 +210,7 @@
         "Insurance"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/cost-of-cancer-without-insurance"
     },
@@ -215,6 +227,7 @@
         "life-after-fire"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
     },
@@ -231,6 +244,7 @@
         "personal-story"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
     },
@@ -247,6 +261,7 @@
         "retirement planning"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
@@ -263,6 +278,7 @@
         "mindset"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
     },
@@ -276,11 +292,31 @@
       "cover": "/blog/posts/living-on-1100-per-month/cover.webp",
       "tags": [],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/living-on-1100-per-month"
     }
   ],
   "all": [
+    {
+      "slug": "40k-debt-to-lean-fire-at-33",
+      "title": "From $40k in Debt to Lean FIRE at 33",
+      "subtitle": "The real journey from student loan debt to living lean and free by 33",
+      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
+      "date": "2026-07-12",
+      "date_modified": "2026-07-12",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
+      "tags": [
+        "personal-story",
+        "debt-payoff",
+        "lean-fire",
+        "fire-journey"
+      ],
+      "featured": true,
+      "pinned": true,
+      "noindex": false,
+      "url": "/blog/40k-debt-to-lean-fire-at-33"
+    },
     {
       "slug": "three-bucket-strategy-fire",
       "title": "The 3 Buckets I Use to Fund Early Retirement (Warts and All)",
@@ -294,6 +330,7 @@
         "strategies"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
     },
@@ -310,6 +347,7 @@
         "visa"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
     },
@@ -326,6 +364,7 @@
         "geo-arbitrage"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
     },
@@ -344,6 +383,7 @@
         "Insurance"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/cost-of-cancer-without-insurance"
     },
@@ -361,6 +401,7 @@
         "Life After F.i.R.E."
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/first-year-fire-reflection"
     },
@@ -377,6 +418,7 @@
         "life-after-fire"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
     },
@@ -393,6 +435,7 @@
         "personal-story"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
     },
@@ -411,6 +454,7 @@
         "reality-check"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
     },
@@ -428,6 +472,7 @@
         "mindset"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
     },
@@ -444,6 +489,7 @@
         "retirement planning"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
@@ -460,6 +506,7 @@
         "mindset"
       ],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
     },
@@ -473,26 +520,9 @@
       "cover": "/blog/posts/living-on-1100-per-month/cover.webp",
       "tags": [],
       "featured": false,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/living-on-1100-per-month"
-    },
-    {
-      "slug": "40k-debt-to-lean-fire-at-33",
-      "title": "From $40k in Debt to Lean FIRE at 33",
-      "subtitle": "The real journey from student loan debt to living lean and free by 33",
-      "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
-      "date": "2026-01-29",
-      "date_modified": "2026-07-08",
-      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
-      "tags": [
-        "personal-story",
-        "debt-payoff",
-        "lean-fire",
-        "fire-journey"
-      ],
-      "featured": true,
-      "noindex": false,
-      "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
       "slug": "what-is-LEAN-FIRE",
@@ -507,6 +537,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -523,6 +554,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/how-much-need-retire-forty-40"
     },
@@ -539,6 +571,7 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/four-different-types-of-fire"
     },
@@ -555,9 +588,10 @@
         "basics"
       ],
       "featured": true,
+      "pinned": false,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-12T09:55:26.590848Z"
+  "_generated_at": "2026-07-12T10:14:19.954747Z"
 }
