@@ -88,6 +88,8 @@ I know I am fortunate to be sitting exactly where I am today, and I have made pl
 
 If you are starting out from debt exactly like I once was, I promise you that it is genuinely possible from here. It took me 10 years of steady consistency, and every one of these principles is timeless. Start from wherever you happen to be right now, use whatever you already have in hand, and stay stubbornly consistent about all of it. When you want to work out your own target, run the math with our [complete guide to calculating your FIRE number](/blog/calculating-fire-number), and when you want the structure that holds everything together once you arrive, read how I split it all into [three simple buckets](/blog/three-bucket-strategy-fire).
 
+Before you commit to any of this though, it is worth asking whether a lean life would actually suit you in the first place. I walk through that honestly in [is Lean FIRE right for you](/blog/is-lean-fire-right-for-you), which covers the 6 questions I would make you answer before you leap.
+
 ---
 
 ## Frequently Asked Questions

@@ -20,6 +20,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "is-lean-fire-right-for-you",
+      "title": "Is Lean FIRE Right For You?",
+      "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
+      "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
+      "date": "2026-07-13",
+      "date_modified": "2026-07-13",
+      "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/is-lean-fire-right-for-you"
+    },
+    {
       "slug": "retire-in-southeast-asia-as-an-indian",
       "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
       "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
@@ -318,6 +337,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "is-lean-fire-right-for-you",
+      "title": "Is Lean FIRE Right For You?",
+      "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
+      "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
+      "date": "2026-07-13",
+      "date_modified": "2026-07-13",
+      "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/is-lean-fire-right-for-you"
+    },
+    {
       "slug": "three-bucket-strategy-fire",
       "title": "The 3 Buckets I Use to Fund Early Retirement (Warts and All)",
       "subtitle": "A CD ladder, an equities engine, and a locked backstop — the real, imperfect portfolio structure behind my FIRE",
@@ -593,5 +631,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-12T10:14:19.954747Z"
+  "_generated_at": "2026-07-13T08:11:14.000068Z"
 }

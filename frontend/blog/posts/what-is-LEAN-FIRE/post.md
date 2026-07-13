@@ -234,6 +234,8 @@ It probably isn't if:
 
 I'm not going to tell you Lean FIRE is for everyone. It isn't. But I will tell you that $1,800/month in Vietnam is not a life of scarcity. It's a life I chose, built intentionally around what matters to me.
 
+If you're genuinely weighing it, I turned this exact question into a full decision guide. Walk through [the six honest questions I'd make you answer before you leap](/blog/is-lean-fire-right-for-you) — from whether you'd actually enjoy living lean to how you'd fill your days once work is gone.
+
 ---
 
 ## Frequently Asked Questions
