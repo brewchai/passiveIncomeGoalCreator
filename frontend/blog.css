@@ -279,8 +279,9 @@ body {
     width: 100%;
     height: 100%;
     min-height: 340px;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    object-position: center top;
     display: block;
 }
 
@@ -606,7 +607,7 @@ body {
 
 .article-thumbnail {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
 }
 
@@ -614,6 +615,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
     transition: transform 0.4s ease;
 }
@@ -930,8 +932,9 @@ body {
     }
 
     .hero-post-image {
-        min-height: 220px;
-        max-height: 280px;
+        min-height: 0;
+        max-height: none;
+        height: auto;
     }
 
     .hero-post-content {
