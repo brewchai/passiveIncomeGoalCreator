@@ -332,8 +332,8 @@
                     heroPostEl.innerHTML = '';
                     remainingPosts = filteredPosts;
                 } else {
-                    // Always show CoastFIRE article if available, otherwise fallback
-                    const featuredPost = filteredPosts.find(p => p.slug === '40k-debt-to-coast-fire-at-33') || filteredPosts.find(p => p.featured) || filteredPosts[0];
+                    // Pinned post always leads as the hero, otherwise fall back to first featured.
+                    const featuredPost = filteredPosts.find(p => p.pinned) || filteredPosts.find(p => p.featured) || filteredPosts[0];
                     if (featuredPost) {
                         renderHeroPost(featuredPost);
                         remainingPosts = filteredPosts.filter(p => p.slug !== featuredPost.slug);
@@ -438,7 +438,8 @@
                         ? data.all
                         : [...(data.featured || []), ...(data.recent || [])];
 
-                    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    // Pinned posts always sort first, then by date descending.
+                    allPosts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || new Date(b.date) - new Date(a.date));
 
                     buildTagFilters();
 
