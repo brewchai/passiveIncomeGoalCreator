@@ -21,6 +21,24 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "what-is-LEAN-FIRE",
+      "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
+      "subtitle": "The plain English definition, the math, and exactly where my money goes",
+      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
+      "date": "2025-11-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 2,
+      "noindex": false,
+      "url": "/blog/what-is-LEAN-FIRE"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -36,7 +54,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 2,
+      "order": 3,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
     },
@@ -56,7 +74,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 4,
+      "order": 5,
       "noindex": false,
       "url": "/blog/first-year-of-lean-fire"
     },
@@ -74,7 +92,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 6,
+      "order": 7,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
     },
@@ -94,7 +112,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 7,
+      "order": 8,
       "noindex": false,
       "url": "/blog/can-a-major-illness-end-lean-fire"
     },
@@ -138,24 +156,6 @@
       "url": "/blog/why-fire-is-not-for-you"
     },
     {
-      "slug": "what-is-LEAN-FIRE",
-      "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
-      "subtitle": "The plain English definition, the math, and exactly where my money goes",
-      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
-      "date": "2025-11-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
-      "tags": [
-        "featured",
-        "basics"
-      ],
-      "featured": true,
-      "pinned": false,
-      "order": null,
-      "noindex": false,
-      "url": "/blog/what-is-LEAN-FIRE"
-    },
-    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -189,7 +189,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 3,
+      "order": 4,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
     },
@@ -207,7 +207,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 5,
+      "order": 6,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
     },
@@ -225,7 +225,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 8,
+      "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
@@ -306,6 +306,24 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "what-is-LEAN-FIRE",
+      "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
+      "subtitle": "The plain English definition, the math, and exactly where my money goes",
+      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
+      "date": "2025-11-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+      "tags": [
+        "featured",
+        "basics"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 2,
+      "noindex": false,
+      "url": "/blog/what-is-LEAN-FIRE"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -321,7 +339,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 2,
+      "order": 3,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
     },
@@ -339,7 +357,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 3,
+      "order": 4,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
     },
@@ -359,7 +377,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 4,
+      "order": 5,
       "noindex": false,
       "url": "/blog/first-year-of-lean-fire"
     },
@@ -377,7 +395,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 5,
+      "order": 6,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
     },
@@ -395,7 +413,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 6,
+      "order": 7,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
     },
@@ -415,7 +433,7 @@
       ],
       "featured": true,
       "pinned": false,
-      "order": 7,
+      "order": 8,
       "noindex": false,
       "url": "/blog/can-a-major-illness-end-lean-fire"
     },
@@ -433,7 +451,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "order": 8,
+      "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
@@ -531,24 +549,6 @@
       "url": "/blog/do-you-actually-need-to-retire"
     },
     {
-      "slug": "what-is-LEAN-FIRE",
-      "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
-      "subtitle": "The plain English definition, the math, and exactly where my money goes",
-      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
-      "date": "2025-11-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
-      "tags": [
-        "featured",
-        "basics"
-      ],
-      "featured": true,
-      "pinned": false,
-      "order": null,
-      "noindex": false,
-      "url": "/blog/what-is-LEAN-FIRE"
-    },
-    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -567,5 +567,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T14:58:44.154529Z"
+  "_generated_at": "2026-07-14T15:00:52.355566Z"
 }

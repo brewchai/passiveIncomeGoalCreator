@@ -1,44 +1,45 @@
 {
-    "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
-    "meta_title": "What Is Lean FIRE? Definition + My Real $1,800/Month Example",
-    "subtitle": "The plain English definition, the math, and exactly where my money goes",
-    "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
-    "date": "2025-11-14",
-    "date_modified": "2026-07-14",
-    "tags": [
-        "featured",
-        "basics"
-    ],
-    "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
-    "featured": true,
-    "faqs": [
-        {
-            "question": "What is the typical Lean FIRE annual spending amount?",
-            "answer": "For a single person in the US, Lean FIRE annual expenses typically run $20,000 to $40,000 a year. Internationally, especially in Southeast Asia and parts of Latin America and Eastern Europe, you can run a full lifestyle on $18,000 to $25,000 a year. My actual spend in Vietnam was $21,600 a year."
-        },
-        {
-            "question": "What does Lean FIRE mean?",
-            "answer": "Lean FIRE means Financial Independence, Retire Early on a minimal but intentional budget, typically $20,000 to $40,000 a year for a single person. It needs a much smaller portfolio than traditional FIRE, because you keep annual expenses low through geographic arbitrage, housing choices, or both."
-        },
-        {
-            "question": "Can you really live on $1,100 a month in Vietnam?",
-            "answer": "Yes, and $1,100 a month covers a comfortable core lifestyle in Da Nang, with a modern beachside apartment, eating out most meals, a gym, and a scooter. Plan realistically on closer to $1,800 a month all in once you add visa costs, flights home, and anything you send to family."
-        },
-        {
-            "question": "Is Lean FIRE the same as Skinny FIRE?",
-            "answer": "Basically yes. Skinny FIRE is just another name for Lean FIRE, early retirement funded by a small portfolio and a lean budget of roughly $18,000 to $40,000 a year for one person. Some people reserve Skinny FIRE for the very leanest end of that range, and in practice the two terms describe the same strategy."
-        },
-        {
-            "question": "How do you calculate your Lean FIRE number?",
-            "answer": "Divide your annual expenses by your target withdrawal rate. At 4% you multiply annual expenses by 25, and at a safer 3.25% you multiply by 31. My own math is $21,600 a year times 25, which is $540,000 at 4%, or $669,600 at 3.25%."
-        },
-        {
-            "question": "Can I do Lean FIRE in the US without moving abroad?",
-            "answer": "Yes, and the specific lever is housing. Cities like Tulsa, Columbus, Tucson, and much of the rural South and Midwest have cost structures where $25,000 to $35,000 a year is genuinely liveable. Going international simply accelerates the math a lot faster."
-        },
-        {
-            "question": "Is Lean FIRE deprivation?",
-            "answer": "Only if you trade away things that actually matter to you. I gave up a permanent home and geographic stability, which I do not particularly need right now, and I kept great food, full control of my time, and community. That is a trade I made with my eyes wide open."
-        }
-    ]
+  "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
+  "meta_title": "What Is Lean FIRE? Definition + My Real $1,800/Month Example",
+  "subtitle": "The plain English definition, the math, and exactly where my money goes",
+  "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
+  "date": "2025-11-14",
+  "date_modified": "2026-07-14",
+  "tags": [
+    "featured",
+    "basics"
+  ],
+  "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+  "featured": true,
+  "faqs": [
+    {
+      "question": "What is the typical Lean FIRE annual spending amount?",
+      "answer": "For a single person in the US, Lean FIRE annual expenses typically run $20,000 to $40,000 a year. Internationally, especially in Southeast Asia and parts of Latin America and Eastern Europe, you can run a full lifestyle on $18,000 to $25,000 a year. My actual spend in Vietnam was $21,600 a year."
+    },
+    {
+      "question": "What does Lean FIRE mean?",
+      "answer": "Lean FIRE means Financial Independence, Retire Early on a minimal but intentional budget, typically $20,000 to $40,000 a year for a single person. It needs a much smaller portfolio than traditional FIRE, because you keep annual expenses low through geographic arbitrage, housing choices, or both."
+    },
+    {
+      "question": "Can you really live on $1,100 a month in Vietnam?",
+      "answer": "Yes, and $1,100 a month covers a comfortable core lifestyle in Da Nang, with a modern beachside apartment, eating out most meals, a gym, and a scooter. Plan realistically on closer to $1,800 a month all in once you add visa costs, flights home, and anything you send to family."
+    },
+    {
+      "question": "Is Lean FIRE the same as Skinny FIRE?",
+      "answer": "Basically yes. Skinny FIRE is just another name for Lean FIRE, early retirement funded by a small portfolio and a lean budget of roughly $18,000 to $40,000 a year for one person. Some people reserve Skinny FIRE for the very leanest end of that range, and in practice the two terms describe the same strategy."
+    },
+    {
+      "question": "How do you calculate your Lean FIRE number?",
+      "answer": "Divide your annual expenses by your target withdrawal rate. At 4% you multiply annual expenses by 25, and at a safer 3.25% you multiply by 31. My own math is $21,600 a year times 25, which is $540,000 at 4%, or $669,600 at 3.25%."
+    },
+    {
+      "question": "Can I do Lean FIRE in the US without moving abroad?",
+      "answer": "Yes, and the specific lever is housing. Cities like Tulsa, Columbus, Tucson, and much of the rural South and Midwest have cost structures where $25,000 to $35,000 a year is genuinely liveable. Going international simply accelerates the math a lot faster."
+    },
+    {
+      "question": "Is Lean FIRE deprivation?",
+      "answer": "Only if you trade away things that actually matter to you. I gave up a permanent home and geographic stability, which I do not particularly need right now, and I kept great food, full control of my time, and community. That is a trade I made with my eyes wide open."
+    }
+  ],
+  "order": 2
 }
