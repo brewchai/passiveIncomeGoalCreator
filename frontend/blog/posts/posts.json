@@ -20,6 +20,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "first-year-of-lean-fire",
+      "title": "My First Year of Lean FIRE: The Real Experience",
+      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
+      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "tags": [
+        "lean-fire",
+        "fire-journey",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/first-year-of-lean-fire"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -54,24 +73,6 @@
       "pinned": false,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
-    },
-    {
-      "slug": "first-year-fire-reflection",
-      "title": "My First Year After Leaving Corporate Tech",
-      "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
-      "description": "A candid look at the first year after leaving corporate tech at 33, from health and purpose to the emotional reality of FIRE.",
-      "date": "2026-04-09",
-      "date_modified": "2026-04-09",
-      "cover": "/blog/posts/first-year-fire-reflection/cover.png",
-      "tags": [
-        "FIRE Journey",
-        "Personal Finance",
-        "Life After F.i.R.E."
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/first-year-fire-reflection"
     },
     {
       "slug": "the-truth-about-passive-income",
@@ -337,6 +338,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "first-year-of-lean-fire",
+      "title": "My First Year of Lean FIRE: The Real Experience",
+      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
+      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "tags": [
+        "lean-fire",
+        "fire-journey",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/first-year-of-lean-fire"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -424,24 +444,6 @@
       "pinned": false,
       "noindex": false,
       "url": "/blog/cost-of-cancer-without-insurance"
-    },
-    {
-      "slug": "first-year-fire-reflection",
-      "title": "My First Year After Leaving Corporate Tech",
-      "subtitle": "An unfiltered reflection on the first 365 days outside the corporate matrix.",
-      "description": "A candid look at the first year after leaving corporate tech at 33, from health and purpose to the emotional reality of FIRE.",
-      "date": "2026-04-09",
-      "date_modified": "2026-04-09",
-      "cover": "/blog/posts/first-year-fire-reflection/cover.png",
-      "tags": [
-        "FIRE Journey",
-        "Personal Finance",
-        "Life After F.i.R.E."
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/first-year-fire-reflection"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -631,5 +633,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-13T08:11:14.000068Z"
+  "_generated_at": "2026-07-14T12:38:32.888055Z"
 }
