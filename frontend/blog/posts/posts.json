@@ -114,10 +114,10 @@
     {
       "slug": "what-is-LEAN-FIRE",
       "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
-      "subtitle": "The plain-English definition, the math, and exactly where my money goes",
-      "description": "Lean FIRE means retiring early on $20K–$40K a year. Here's the full definition, how to calculate your Lean FIRE number, and my real $1,800/month example living in Vietnam.",
+      "subtitle": "The plain English definition, the math, and exactly where my money goes",
+      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
       "date": "2025-11-14",
-      "date_modified": "2026-06-29",
+      "date_modified": "2026-07-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
       "tags": [
         "featured",
@@ -301,20 +301,6 @@
       "pinned": false,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
-    },
-    {
-      "slug": "living-on-1100-per-month",
-      "title": "Living Abroad on $1,100 a Month",
-      "subtitle": "How I cut my expenses by 82% without sacrificing quality of life — and the honest all-in number",
-      "description": "A real, line-by-line breakdown of how I went from $6,000/month in NYC to a ~$1,100 core cost of living in Da Nang, Vietnam — plus the honest $1,800 all-in number most geo-arbitrage posts hide.",
-      "date": "2026-02-02",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/living-on-1100-per-month/cover.webp",
-      "tags": [],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/living-on-1100-per-month"
     }
   ],
   "all": [
@@ -551,26 +537,12 @@
       "url": "/blog/do-you-actually-need-to-retire"
     },
     {
-      "slug": "living-on-1100-per-month",
-      "title": "Living Abroad on $1,100 a Month",
-      "subtitle": "How I cut my expenses by 82% without sacrificing quality of life — and the honest all-in number",
-      "description": "A real, line-by-line breakdown of how I went from $6,000/month in NYC to a ~$1,100 core cost of living in Da Nang, Vietnam — plus the honest $1,800 all-in number most geo-arbitrage posts hide.",
-      "date": "2026-02-02",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/living-on-1100-per-month/cover.webp",
-      "tags": [],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/living-on-1100-per-month"
-    },
-    {
       "slug": "what-is-LEAN-FIRE",
       "title": "What Is Lean FIRE? My Real $1,800/Month Life in Vietnam",
-      "subtitle": "The plain-English definition, the math, and exactly where my money goes",
-      "description": "Lean FIRE means retiring early on $20K–$40K a year. Here's the full definition, how to calculate your Lean FIRE number, and my real $1,800/month example living in Vietnam.",
+      "subtitle": "The plain English definition, the math, and exactly where my money goes",
+      "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
       "date": "2025-11-14",
-      "date_modified": "2026-06-29",
+      "date_modified": "2026-07-14",
       "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
       "tags": [
         "featured",
@@ -633,5 +605,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T12:38:32.888055Z"
+  "_generated_at": "2026-07-14T13:20:59.641569Z"
 }

@@ -42,7 +42,7 @@ That's when I found FIRE. And it felt like someone had handed me the key to my p
 
 *Just save 70% of your income for 10 years and you'll never have to work again.*
 
-I latched onto that like it was scripture. [I paid off the debt, built to $1M by 33](/blog/40k-debt-to-lean-fire-at-33), moved to Vietnam, and [brought my expenses down to $1,100/month](/blog/living-on-1100-per-month). By every FIRE metric, I'd made it. I unpack more of that transition in [my first year of Lean FIRE](/blog/first-year-of-lean-fire), but the short version is this: financial freedom solved the money problem, not the identity problem.
+I latched onto that like it was scripture. [I paid off the debt, built to $1M by 33](/blog/40k-debt-to-lean-fire-at-33), moved to Vietnam, and [brought my expenses down to $1,100/month](/blog/what-is-LEAN-FIRE). By every FIRE metric, I'd made it. I unpack more of that transition in [my first year of Lean FIRE](/blog/first-year-of-lean-fire), but the short version is this: financial freedom solved the money problem, not the identity problem.
 
 But here's what nobody in the FIRE community talks about honestly: the day after you "retire," **you're still you**. You still wake up at the same time. You still have the same brain. The same anxieties. The same restlessness.
 
@@ -82,7 +82,7 @@ I hit my FIRE number. I "retired." I moved to Vietnam. For the first few months,
 
 Around month four, something changed. I started feeling restless. Not bored exactly — but *untethered*. Like I was floating. No deadlines. No team depending on me. No problems that needed solving urgently. It sounds like paradise, and in many ways it was. But humans aren't really built for paradise. We're built for problems.
 
-So I started building things again. Not because I needed the money — [my expenses are $1,100/month](/blog/living-on-1100-per-month) and my portfolio covers that easily. But because I realised that what I hated was never *work*. What I hated was **working on someone else's dream, on someone else's schedule, for someone else's reasons**.
+So I started building things again. Not because I needed the money — [my expenses are $1,100/month](/blog/what-is-LEAN-FIRE) and my portfolio covers that easily. But because I realised that what I hated was never *work*. What I hated was **working on someone else's dream, on someone else's schedule, for someone else's reasons**.
 
 I write this blog now. I build tools. I'm learning things I never had time for when I was optimising for a promotion I didn't want. I work maybe 4 hours a day, on whatever I feel like, from wherever I am. Is that retired? Is that working? I genuinely don't know. And I've stopped caring about the label.
 

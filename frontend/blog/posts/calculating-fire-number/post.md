@@ -71,7 +71,7 @@ Your retirement time horizon significantly impacts your required multiplier:
 ### 2. Adjustments for Location and Expected Returns
 
 - **Location / Lifestyle:**  
-  Your estimated annual expenses should be realistic for your desired retirement location. If you move to a lower cost of living (LCOL) area — a concept known as *Geo-arbitrage* — your annual expenses drop and your FIRE number drops with them. It's the single biggest lever there is: I cut mine dramatically by [going from $6,000/month in NYC to about $1,100 in Vietnam](/blog/living-on-1100-per-month), and [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian) breaks down exactly how that math works. Just account for major non-negotiable costs, like healthcare.
+  Your estimated annual expenses should be realistic for your desired retirement location. If you move to a lower cost of living (LCOL) area — a concept known as *Geo-arbitrage* — your annual expenses drop and your FIRE number drops with them. It's the single biggest lever there is: I cut mine dramatically by [going from $6,000/month in NYC to about $1,100 in Vietnam](/blog/what-is-LEAN-FIRE), and [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian) breaks down exactly how that math works. Just account for major non-negotiable costs, like healthcare.
 
 - **Expected Returns & Other Income:**  
   If you anticipate receiving reliable guaranteed income (like a pension, social security, or passive real estate rental income), you can **subtract that annual income** from your desired annual expenses before applying the multiplier.  

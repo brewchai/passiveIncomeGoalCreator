@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "reel-ui",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "ui", "--prefix", "/Users/ninadmundalik/Documents/workspace/remotion-claude"],
+      "port": 5173
+    }
+  ]
+}

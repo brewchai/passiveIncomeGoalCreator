@@ -69,7 +69,7 @@ One more thing that's easy to miss: depending on where you fly in — **notably 
 
 I fold all of this — the e-visa fees plus the periodic runs — into what I call my **"Vietnam tax,"** roughly **$100/month averaged out**. It's the one genuinely Vietnam-specific overhead in my [Lean FIRE budget](/blog/what-is-LEAN-FIRE), and it's still cheaper than what I'd spend just commuting in a US city.
 
-If you're weighing this whole life, the visa is the friction — but it's manageable friction. I break down the full cost of living behind it in [$1,100 a month in Da Nang](/blog/living-on-1100-per-month), and the bigger picture of [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian).
+If you're weighing this whole life, the visa is the friction — but it's manageable friction. I break down the full cost of living behind it in [$1,100 a month in Da Nang](/blog/what-is-LEAN-FIRE), and the bigger picture of [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian).
 
 ## Frequently Asked Questions
 

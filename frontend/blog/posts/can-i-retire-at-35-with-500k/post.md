@@ -245,7 +245,7 @@ In a low-cost city or abroad, that $125k portfolio + rental income combination b
 
 Keep your $500k invested in the market. Slash your expenses by moving to a low-cost-of-living country where your dollar goes 3–5x further.
 
-This isn't theoretical for me. [I went from $6,000/month in NYC to $1,100/month in Vietnam](/blog/living-on-1100-per-month) — same quality of life, 82% cheaper. Modern apartment near the beach, personal trainer 3x/week, eating out every meal, 100+ Mbps internet. It's not a downgrade; it's an upgrade in every way that matters.
+This isn't theoretical for me. [I went from $6,000/month in NYC to $1,100/month in Vietnam](/blog/what-is-LEAN-FIRE) — same quality of life, 82% cheaper. Modern apartment near the beach, personal trainer 3x/week, eating out every meal, 100+ Mbps internet. It's not a downgrade; it's an upgrade in every way that matters.
 
 ### The Math (2026 Prices)
 
@@ -338,7 +338,7 @@ Let me be blunt: **you cannot retire at 35 with $500k in the United States.** No
 
 But if you're willing to think globally — and I mean *really* willing, not just daydreaming — **$500k (~₹4.7 crore) is more than enough.**
 
-I know this because [I'm living it](/blog/living-on-1100-per-month) — an NRI from Pune who FIRE'd not by moving back to India, but by [geo-arbitraging to Southeast Asia](/blog/retire-in-southeast-asia-as-an-indian). My own Lean FIRE number is about $540k, and I live better now on $1,100/month than I ever did spending $6,000/month in Manhattan. Vietnam, Thailand, Portugal, Mexico, Colombia — these aren't sacrifices. They're upgrades in quality of life at a fraction of the cost.
+I know this because [I'm living it](/blog/what-is-LEAN-FIRE) — an NRI from Pune who FIRE'd not by moving back to India, but by [geo-arbitraging to Southeast Asia](/blog/retire-in-southeast-asia-as-an-indian). My own Lean FIRE number is about $540k, and I live better now on $1,100/month than I ever did spending $6,000/month in Manhattan. Vietnam, Thailand, Portugal, Mexico, Colombia — these aren't sacrifices. They're upgrades in quality of life at a fraction of the cost.
 
 The hybrid approach — growth stocks + dividend income + a SEA rental property, all paired with geo-arbitrage — is what I'd do if starting fresh at 35 with $500k. Multiple income engines, inflation protection, a growing safety net, and a lifestyle most people can't even afford while working.
 

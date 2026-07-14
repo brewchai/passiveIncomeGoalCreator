@@ -40,7 +40,7 @@ That is exactly where I ran headfirst into the punishing difficulty of the creat
 
 ## What This Lean Life Actually Costs
 
-The word lean in Lean FIRE is doing a lot of quiet work, so let me put real numbers on it for you. My whole life in Da Nang runs on somewhere between $1,100 and $1,800 a month, and I break it down line by line in [living on $1,100 a month](/blog/living-on-1100-per-month). A comfortable one bedroom apartment, endless good coffee, eating out whenever I feel like it, and regular travel all fit neatly inside that number, and it still feels generous rather than tight.
+The word lean in Lean FIRE is doing a lot of quiet work, so let me put real numbers on it for you. My whole life in Da Nang runs on somewhere between $1,100 and $1,800 a month, and I break it down line by line in [living on $1,100 a month](/blog/what-is-LEAN-FIRE). A comfortable one bedroom apartment, endless good coffee, eating out whenever I feel like it, and regular travel all fit neatly inside that number, and it still feels generous rather than tight.
 
 The move abroad is what made the math work so beautifully, and I lay out the full logic in [retiring in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian). I happily dropped the enormous New York rent, the car, the renters insurance, and the punishing gym fees the moment I left, and I replaced almost none of it. I fund this whole life from a cash bucket of high yield savings and short term CDs, so I rarely have to sell any of my invested money, and I walk through that entire structure in [my three bucket approach](/blog/three-bucket-strategy-fire). My one shameless indulgence these days is coffee, and it costs close to nothing over here.
 
