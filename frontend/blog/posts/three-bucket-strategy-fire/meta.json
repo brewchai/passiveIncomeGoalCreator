@@ -1,36 +1,37 @@
 {
-    "title": "The 3 Buckets I Use to Fund Early Retirement (Warts and All)",
-    "meta_title": "The 3-Bucket Strategy for Early Retirement (FIRE)",
-    "subtitle": "A CD ladder, an equities engine, and a locked backstop — the real, imperfect portfolio structure behind my FIRE",
-    "description": "The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.",
-    "date": "2026-07-08",
-    "date_modified": "2026-07-08",
-    "tags": [
-        "geo-arbitrage",
-        "strategies"
-    ],
-    "cover": "/blog/posts/three-bucket-strategy-fire/cover.webp",
-    "featured": false,
-    "faqs": [
-        {
-            "question": "What is the bucket strategy for retirement?",
-            "answer": "It splits your portfolio into buckets by when you will spend the money: a cash or short-term bucket for near-term spending, a growth (equities) bucket for the medium term, and long-term or locked accounts for later. The point is to spend from cash during downturns instead of selling investments at a loss."
-        },
-        {
-            "question": "How many years of cash should the first bucket hold?",
-            "answer": "There is no single right answer — anywhere from 2 to 10 or more years is common. I hold about 10 years of spending in a CD ladder because it lets me ignore market crashes entirely. A shorter cushion means less cash drag but requires more nerve."
-        },
-        {
-            "question": "Why use CDs instead of bonds for the cash bucket?",
-            "answer": "For me, CDs offered a better rate than treasuries at the time, avoided the complexity of a bond portfolio for little extra yield, and their shorter maturities meant I was not locked out of higher rates later. A CD ladder also frees up predictable cash each year."
-        },
-        {
-            "question": "Does holding that much cash hurt your returns?",
-            "answer": "Yes, on paper — cash earning around 4% underperforms equities at around 7% over time. I accept that drag as the price of never being forced to sell equities in a crash, and because the cash doubles as optionality: a potential home purchase, or dry powder to buy the dip."
-        },
-        {
-            "question": "What withdrawal rate does a bucket strategy support?",
-            "answer": "My structure supports around 3%, but in practice it varies a lot year to year — I spent under 2% one year and closer to 3.5% another. Real spending is lumpy, so a rigid straight-line withdrawal rate is not how it actually works."
-        }
-    ]
+  "title": "The 3 Buckets I Use to Fund Early Retirement (Warts and All)",
+  "meta_title": "The 3-Bucket Strategy for Early Retirement (FIRE)",
+  "subtitle": "A CD ladder, an equities engine, and a locked backstop — the real, imperfect portfolio structure behind my FIRE",
+  "description": "The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.",
+  "date": "2026-07-08",
+  "date_modified": "2026-07-08",
+  "tags": [
+    "geo-arbitrage",
+    "strategies"
+  ],
+  "cover": "/blog/posts/three-bucket-strategy-fire/cover.webp",
+  "featured": false,
+  "faqs": [
+    {
+      "question": "What is the bucket strategy for retirement?",
+      "answer": "It splits your portfolio into buckets by when you will spend the money: a cash or short-term bucket for near-term spending, a growth (equities) bucket for the medium term, and long-term or locked accounts for later. The point is to spend from cash during downturns instead of selling investments at a loss."
+    },
+    {
+      "question": "How many years of cash should the first bucket hold?",
+      "answer": "There is no single right answer — anywhere from 2 to 10 or more years is common. I hold about 10 years of spending in a CD ladder because it lets me ignore market crashes entirely. A shorter cushion means less cash drag but requires more nerve."
+    },
+    {
+      "question": "Why use CDs instead of bonds for the cash bucket?",
+      "answer": "For me, CDs offered a better rate than treasuries at the time, avoided the complexity of a bond portfolio for little extra yield, and their shorter maturities meant I was not locked out of higher rates later. A CD ladder also frees up predictable cash each year."
+    },
+    {
+      "question": "Does holding that much cash hurt your returns?",
+      "answer": "Yes, on paper — cash earning around 4% underperforms equities at around 7% over time. I accept that drag as the price of never being forced to sell equities in a crash, and because the cash doubles as optionality: a potential home purchase, or dry powder to buy the dip."
+    },
+    {
+      "question": "What withdrawal rate does a bucket strategy support?",
+      "answer": "My structure supports around 3%, but in practice it varies a lot year to year — I spent under 2% one year and closer to 3.5% another. Real spending is lumpy, so a rigid straight-line withdrawal rate is not how it actually works."
+    }
+  ],
+  "order": 3
 }

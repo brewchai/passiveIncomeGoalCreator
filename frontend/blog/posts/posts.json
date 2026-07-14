@@ -16,46 +16,9 @@
       ],
       "featured": true,
       "pinned": true,
+      "order": null,
       "noindex": false,
       "url": "/blog/40k-debt-to-lean-fire-at-33"
-    },
-    {
-      "slug": "can-a-major-illness-end-lean-fire",
-      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
-      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
-      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
-      "date": "2026-07-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
-      "tags": [
-        "lean-fire",
-        "fire-planning",
-        "early-retirement",
-        "personal-story"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/can-a-major-illness-end-lean-fire"
-    },
-    {
-      "slug": "first-year-of-lean-fire",
-      "title": "My First Year of Lean FIRE: The Real Experience",
-      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
-      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
-      "date": "2026-07-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
-      "tags": [
-        "lean-fire",
-        "fire-journey",
-        "early-retirement",
-        "personal-story"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/first-year-of-lean-fire"
     },
     {
       "slug": "is-lean-fire-right-for-you",
@@ -73,8 +36,29 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": 2,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
+    },
+    {
+      "slug": "first-year-of-lean-fire",
+      "title": "My First Year of Lean FIRE: The Real Experience",
+      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
+      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "tags": [
+        "lean-fire",
+        "fire-journey",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 4,
+      "noindex": false,
+      "url": "/blog/first-year-of-lean-fire"
     },
     {
       "slug": "retire-in-southeast-asia-as-an-indian",
@@ -90,8 +74,29 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": 6,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
+    },
+    {
+      "slug": "can-a-major-illness-end-lean-fire",
+      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
+      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
+      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 7,
+      "noindex": false,
+      "url": "/blog/can-a-major-illness-end-lean-fire"
     },
     {
       "slug": "the-truth-about-passive-income",
@@ -109,6 +114,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
     },
@@ -127,6 +133,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
     },
@@ -144,6 +151,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -161,6 +169,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
     }
@@ -180,6 +189,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": 3,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
     },
@@ -197,8 +207,27 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": 5,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
+    },
+    {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can You Retire at 35 With $500k? A Lean FIRE Reality Check",
+      "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
+      "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
+      "date": "2026-02-16",
+      "date_modified": "2026-07-05",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "tags": [
+        "strategies",
+        "retirement planning"
+      ],
+      "featured": false,
+      "pinned": false,
+      "order": 8,
+      "noindex": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -214,6 +243,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
     },
@@ -231,25 +261,9 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 With $500k? A Lean FIRE Reality Check",
-      "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
-      "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
-      "date": "2026-02-16",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
-      "tags": [
-        "strategies",
-        "retirement planning"
-      ],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "do-you-actually-need-to-retire",
@@ -265,6 +279,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
     }
@@ -286,46 +301,9 @@
       ],
       "featured": true,
       "pinned": true,
+      "order": null,
       "noindex": false,
       "url": "/blog/40k-debt-to-lean-fire-at-33"
-    },
-    {
-      "slug": "can-a-major-illness-end-lean-fire",
-      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
-      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
-      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
-      "date": "2026-07-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
-      "tags": [
-        "lean-fire",
-        "fire-planning",
-        "early-retirement",
-        "personal-story"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/can-a-major-illness-end-lean-fire"
-    },
-    {
-      "slug": "first-year-of-lean-fire",
-      "title": "My First Year of Lean FIRE: The Real Experience",
-      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
-      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
-      "date": "2026-07-14",
-      "date_modified": "2026-07-14",
-      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
-      "tags": [
-        "lean-fire",
-        "fire-journey",
-        "early-retirement",
-        "personal-story"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/first-year-of-lean-fire"
     },
     {
       "slug": "is-lean-fire-right-for-you",
@@ -343,6 +321,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": 2,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
     },
@@ -360,8 +339,29 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": 3,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
+    },
+    {
+      "slug": "first-year-of-lean-fire",
+      "title": "My First Year of Lean FIRE: The Real Experience",
+      "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
+      "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "tags": [
+        "lean-fire",
+        "fire-journey",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 4,
+      "noindex": false,
+      "url": "/blog/first-year-of-lean-fire"
     },
     {
       "slug": "vietnam-visa-for-indians",
@@ -377,6 +377,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": 5,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
     },
@@ -394,8 +395,47 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": 6,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
+    },
+    {
+      "slug": "can-a-major-illness-end-lean-fire",
+      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
+      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
+      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "order": 7,
+      "noindex": false,
+      "url": "/blog/can-a-major-illness-end-lean-fire"
+    },
+    {
+      "slug": "can-i-retire-at-35-with-500k",
+      "title": "Can You Retire at 35 With $500k? A Lean FIRE Reality Check",
+      "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
+      "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
+      "date": "2026-02-16",
+      "date_modified": "2026-07-05",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "tags": [
+        "strategies",
+        "retirement planning"
+      ],
+      "featured": false,
+      "pinned": false,
+      "order": 8,
+      "noindex": false,
+      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -411,6 +451,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
     },
@@ -428,6 +469,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
     },
@@ -447,6 +489,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
     },
@@ -465,25 +508,9 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
-    },
-    {
-      "slug": "can-i-retire-at-35-with-500k",
-      "title": "Can I Retire at 35 With $500k? A Lean FIRE Reality Check",
-      "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
-      "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
-      "date": "2026-02-16",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
-      "tags": [
-        "strategies",
-        "retirement planning"
-      ],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
       "slug": "do-you-actually-need-to-retire",
@@ -499,6 +526,7 @@
       ],
       "featured": false,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
     },
@@ -516,6 +544,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
     },
@@ -533,9 +562,10 @@
       ],
       "featured": true,
       "pinned": false,
+      "order": null,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T14:52:30.879953Z"
+  "_generated_at": "2026-07-14T14:58:44.154529Z"
 }

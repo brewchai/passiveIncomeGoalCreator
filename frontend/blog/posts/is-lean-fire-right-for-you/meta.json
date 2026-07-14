@@ -1,38 +1,39 @@
 {
-    "title": "Is Lean FIRE Right For You?",
-    "meta_title": "Is Lean FIRE Right For You? 6 Questions to Ask First",
-    "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
-    "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
-    "date": "2026-07-13",
-    "date_modified": "2026-07-13",
-    "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
-    "tags": [
-        "lean-fire",
-        "fire-planning",
-        "early-retirement",
-        "personal-story"
-    ],
-    "featured": true,
-    "faqs": [
-        {
-            "question": "Is Lean FIRE right for everyone?",
-            "answer": "No, and that is the honest truth of it. Lean FIRE fits people who genuinely enjoy a simple life and have planned carefully for health, emergencies, and how they will spend their time, and it goes poorly for anyone whose happiness leans on spending or whose identity is tied tightly to a job."
-        },
-        {
-            "question": "How do I know if I am ready for Lean FIRE?",
-            "answer": "You are ready once you have actually lived lean for a real stretch and enjoyed it, secured every predictable expense with insurance or money set aside, stress tested your plan against a bad few years in the market, and worked out how you will fill your days. If any of those pieces are missing, you simply have preparation left to do."
-        },
-        {
-            "question": "What is the hardest part of Lean FIRE?",
-            "answer": "For most people the hardest part has nothing to do with money, and everything to do with time and identity. Leaving a career removes your routine, your social life, and a big part of who you thought you were, and filling that space with something meaningful is the challenge that catches people off guard."
-        },
-        {
-            "question": "Can you do Lean FIRE with a family?",
-            "answer": "Yes, though you have to run your expenses decades forward rather than freezing them at today. Children, schooling, healthcare, and old age all add real cost over time, so a family lean plan needs a bigger cushion and a much longer view than a single person's plan does."
-        },
-        {
-            "question": "How much do you need for Lean FIRE?",
-            "answer": "It depends entirely on your annual spending, since the common rule is roughly 25 times your yearly expenses. A lean life costing $1,100 to $1,800 a month points to a far smaller target than a normal retirement, and you can work out your own figure in the guide to calculating your FIRE number."
-        }
-    ]
+  "title": "Is Lean FIRE Right For You?",
+  "meta_title": "Is Lean FIRE Right For You? 6 Questions to Ask First",
+  "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
+  "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
+  "date": "2026-07-13",
+  "date_modified": "2026-07-13",
+  "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+  "tags": [
+    "lean-fire",
+    "fire-planning",
+    "early-retirement",
+    "personal-story"
+  ],
+  "featured": true,
+  "faqs": [
+    {
+      "question": "Is Lean FIRE right for everyone?",
+      "answer": "No, and that is the honest truth of it. Lean FIRE fits people who genuinely enjoy a simple life and have planned carefully for health, emergencies, and how they will spend their time, and it goes poorly for anyone whose happiness leans on spending or whose identity is tied tightly to a job."
+    },
+    {
+      "question": "How do I know if I am ready for Lean FIRE?",
+      "answer": "You are ready once you have actually lived lean for a real stretch and enjoyed it, secured every predictable expense with insurance or money set aside, stress tested your plan against a bad few years in the market, and worked out how you will fill your days. If any of those pieces are missing, you simply have preparation left to do."
+    },
+    {
+      "question": "What is the hardest part of Lean FIRE?",
+      "answer": "For most people the hardest part has nothing to do with money, and everything to do with time and identity. Leaving a career removes your routine, your social life, and a big part of who you thought you were, and filling that space with something meaningful is the challenge that catches people off guard."
+    },
+    {
+      "question": "Can you do Lean FIRE with a family?",
+      "answer": "Yes, though you have to run your expenses decades forward rather than freezing them at today. Children, schooling, healthcare, and old age all add real cost over time, so a family lean plan needs a bigger cushion and a much longer view than a single person's plan does."
+    },
+    {
+      "question": "How much do you need for Lean FIRE?",
+      "answer": "It depends entirely on your annual spending, since the common rule is roughly 25 times your yearly expenses. A lean life costing $1,100 to $1,800 a month points to a far smaller target than a normal retirement, and you can work out your own figure in the guide to calculating your FIRE number."
+    }
+  ],
+  "order": 2
 }

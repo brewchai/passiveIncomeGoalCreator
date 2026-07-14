@@ -445,8 +445,15 @@
                         ? data.all
                         : [...(data.featured || []), ...(data.recent || [])];
 
-                    // Pinned posts always sort first, then by date descending.
-                    allPosts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || new Date(b.date) - new Date(a.date));
+                    // Pinned first, then explicit `order` ascending, then date descending.
+                    allPosts.sort((a, b) => {
+                        const pa = a.pinned ? 0 : 1, pb = b.pinned ? 0 : 1;
+                        if (pa !== pb) return pa - pb;
+                        const oa = (a.order != null) ? a.order : Infinity;
+                        const ob = (b.order != null) ? b.order : Infinity;
+                        if (oa !== ob) return oa - ob;
+                        return new Date(b.date) - new Date(a.date);
+                    });
 
                     buildTagFilters();
 

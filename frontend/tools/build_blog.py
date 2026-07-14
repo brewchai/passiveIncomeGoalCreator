@@ -227,6 +227,7 @@ def build_one_post(slug: str, template: str) -> dict:
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
         "pinned": bool(meta.get("pinned", False)),
+        "order": meta.get("order"),
         "noindex": bool(meta.get("noindex", False)),
         "url": f"/blog/{slug}",
     }
@@ -241,8 +242,14 @@ def collect_posts() -> list[dict]:
 def write_posts_index(records: list[dict]) -> None:
     # Benched (noindex) posts are hidden from the /blog listing.
     records = [r for r in records if not r.get("noindex")]
-    # Split featured and recent. Pinned posts always sort first, then by date.
-    sorted_records = sorted(records, key=lambda r: (r.get("pinned", False), r["date"]), reverse=True)
+    # Ordering: pinned first, then an explicit `order` (ascending), then date desc.
+    # Two stable passes keep date-desc for posts without an explicit order.
+    sorted_records = sorted(records, key=lambda r: r["date"], reverse=True)
+    sorted_records = sorted(sorted_records, key=lambda r: (
+        0 if r.get("pinned") else 1,
+        0 if r.get("order") is not None else 1,
+        r.get("order") if r.get("order") is not None else 0,
+    ))
     featured = [r for r in sorted_records if r.get("featured")]
     recent = [r for r in sorted_records if not r.get("featured")]
 

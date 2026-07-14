@@ -1,33 +1,37 @@
 {
-    "title": "Can I Retire at 35 With $500k? A Lean FIRE Reality Check",
-    "meta_title": "Can I Retire at 35 With $500k? Lean FIRE & NRI Math",
-    "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
-    "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
-    "date": "2026-02-16",
-    "date_modified": "2026-07-05",
-    "cover": "cover.webp",
-    "tags": ["strategies", "retirement planning"],
-    "featured": false,
-    "faqs": [
-        {
-            "question": "Can I retire at 35 with $500k in the United States?",
-            "answer": "For most people, retiring at 35 with $500k in the United States is not realistic because the portfolio must support 50 or more years of expenses, healthcare, taxes, and inflation."
-        },
-        {
-            "question": "How much income does $500k produce with the 4% rule?",
-            "answer": "A $500k portfolio produces about $20,000 per year, or $1,667 per month, using a 4% withdrawal rate before taxes."
-        },
-        {
-            "question": "Can geo-arbitrage make retiring at 35 with $500k possible?",
-            "answer": "Geo-arbitrage can make a $500k retirement more realistic if annual expenses fall low enough, especially in lower-cost countries or very low-cost domestic locations."
-        },
-        {
-            "question": "Can an NRI retire at 35 with $500k in Southeast Asia?",
-            "answer": "Yes. For an NRI, keeping about $500k (~₹4.7 crore) invested in USD and living in Southeast Asia on roughly $1,100–$1,800 a month is one of the cleanest early-retirement paths. At a conservative 3% withdrawal it has a 96%+ chance of lasting 55 years, and the portfolio typically keeps growing in real terms."
-        },
-        {
-            "question": "Is ₹4–5 crore enough to retire early abroad?",
-            "answer": "Roughly ₹4–5 crore (about $500k) is not enough to retire at 35 in a US city, but it comfortably funds early retirement in Southeast Asia — Vietnam, Thailand and similar — where a full lifestyle costs around ₹1–1.7 lakh a month. Geography, not the amount alone, decides whether it works."
-        }
-    ]
+  "title": "Can You Retire at 35 With $500k? A Lean FIRE Reality Check",
+  "meta_title": "Can You Retire at 35 With $500k? Lean FIRE & NRI Math",
+  "subtitle": "Every strategy simulated — withdrawal plans, real estate, dividends, and the geo-arbitrage path an NRI actually used to FIRE in Southeast Asia. Just math.",
+  "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
+  "date": "2026-02-16",
+  "date_modified": "2026-07-05",
+  "cover": "cover.webp",
+  "tags": [
+    "strategies",
+    "retirement planning"
+  ],
+  "featured": false,
+  "faqs": [
+    {
+      "question": "Can I retire at 35 with $500k in the United States?",
+      "answer": "For most people, retiring at 35 with $500k in the United States is not realistic because the portfolio must support 50 or more years of expenses, healthcare, taxes, and inflation."
+    },
+    {
+      "question": "How much income does $500k produce with the 4% rule?",
+      "answer": "A $500k portfolio produces about $20,000 per year, or $1,667 per month, using a 4% withdrawal rate before taxes."
+    },
+    {
+      "question": "Can geo-arbitrage make retiring at 35 with $500k possible?",
+      "answer": "Geo-arbitrage can make a $500k retirement more realistic if annual expenses fall low enough, especially in lower-cost countries or very low-cost domestic locations."
+    },
+    {
+      "question": "Can an NRI retire at 35 with $500k in Southeast Asia?",
+      "answer": "Yes. For an NRI, keeping about $500k (~₹4.7 crore) invested in USD and living in Southeast Asia on roughly $1,100–$1,800 a month is one of the cleanest early-retirement paths. At a conservative 3% withdrawal it has a 96%+ chance of lasting 55 years, and the portfolio typically keeps growing in real terms."
+    },
+    {
+      "question": "Is ₹4–5 crore enough to retire early abroad?",
+      "answer": "Roughly ₹4–5 crore (about $500k) is not enough to retire at 35 in a US city, but it comfortably funds early retirement in Southeast Asia — Vietnam, Thailand and similar — where a full lifestyle costs around ₹1–1.7 lakh a month. Geography, not the amount alone, decides whether it works."
+    }
+  ],
+  "order": 8
 }

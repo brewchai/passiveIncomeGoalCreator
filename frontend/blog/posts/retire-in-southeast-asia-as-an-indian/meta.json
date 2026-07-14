@@ -1,40 +1,41 @@
 {
-    "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
-    "meta_title": "Retire in Southeast Asia as an Indian: The Real Cost",
-    "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
-    "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
-    "date": "2026-07-03",
-    "date_modified": "2026-07-03",
-    "tags": [
-        "featured",
-        "geo-arbitrage"
-    ],
-    "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
-    "featured": true,
-    "faqs": [
-        {
-            "question": "Can an Indian retire in Southeast Asia?",
-            "answer": "Yes. Vietnam and Thailand are the two most practical bases for Indians, with a comfortable lifestyle costing roughly $1,800–$2,300/month (about ₹1.5–1.9 lakh). The bigger constraints are visas on an Indian passport and how your income is structured, not day-to-day cost."
-        },
-        {
-            "question": "How much does it cost to retire in Southeast Asia as an Indian?",
-            "answer": "A full, comfortable lifestyle runs about $1,800/month in Vietnam (Da Nang) and roughly 25–30% more in Thailand, or about $2,250–$2,350/month. That's approximately ₹1.5 lakh and ₹1.9 lakh respectively. Most Southeast Asian cities stay within a 15% band of each other."
-        },
-        {
-            "question": "Is it cheaper for an Indian to retire in Southeast Asia than in India?",
-            "answer": "Not really — the money roughly balances out against a genuinely comparable lifestyle in a city like Pune. Indian food and some services are cheaper in India, but cafes, wellness, nature access, travel, and international food cost more or barely exist. The real difference is lifestyle quality, not the total bill."
-        },
-        {
-            "question": "What visa do Indians need to retire in Vietnam or Thailand?",
-            "answer": "Vietnam has no retirement visa — in practice you use an e-visa and do periodic visa runs or renewals. Thailand's Destination Thailand Visa (DTV) is a multi-year, multi-entry option built for people with income from outside Thailand, which fits many Indians with foreign or remote earnings. Visa rules change fast, so confirm current requirements on official sources before committing."
-        },
-        {
-            "question": "Vietnam or Thailand — which is better for an Indian?",
-            "answer": "Vietnam (Da Nang) is cheaper, has the best air quality, and a buzzing expat scene you can plug into. Thailand costs a bit more but has the best international food, the friendliest social experience, and the best flight connectivity back to India. Many people base in Vietnam for cost and Thailand for lifestyle."
-        },
-        {
-            "question": "Can you get Indian food, healthy food, and community as an Indian in Southeast Asia?",
-            "answer": "Healthy eating is best and easiest in Vietnam, where it is basically the default. In Thailand and India you can eat well, but it is a hard, conscious choice. International food is best and most accessible in Thailand, while pure Indian food is cheapest and best in India. Community is easy to build in hubs like Da Nang if you have some international exposure — you create it rather than inherit it."
-        }
-    ]
+  "title": "Retiring in Southeast Asia as an Indian: The Honest Math",
+  "meta_title": "Retire in Southeast Asia as an Indian: The Real Cost",
+  "subtitle": "Vietnam and Thailand vs Pune — where the money actually goes, and the one lever nobody tells you about",
+  "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
+  "date": "2026-07-03",
+  "date_modified": "2026-07-03",
+  "tags": [
+    "featured",
+    "geo-arbitrage"
+  ],
+  "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
+  "featured": true,
+  "faqs": [
+    {
+      "question": "Can an Indian retire in Southeast Asia?",
+      "answer": "Yes. Vietnam and Thailand are the two most practical bases for Indians, with a comfortable lifestyle costing roughly $1,800–$2,300/month (about ₹1.5–1.9 lakh). The bigger constraints are visas on an Indian passport and how your income is structured, not day-to-day cost."
+    },
+    {
+      "question": "How much does it cost to retire in Southeast Asia as an Indian?",
+      "answer": "A full, comfortable lifestyle runs about $1,800/month in Vietnam (Da Nang) and roughly 25–30% more in Thailand, or about $2,250–$2,350/month. That's approximately ₹1.5 lakh and ₹1.9 lakh respectively. Most Southeast Asian cities stay within a 15% band of each other."
+    },
+    {
+      "question": "Is it cheaper for an Indian to retire in Southeast Asia than in India?",
+      "answer": "Not really — the money roughly balances out against a genuinely comparable lifestyle in a city like Pune. Indian food and some services are cheaper in India, but cafes, wellness, nature access, travel, and international food cost more or barely exist. The real difference is lifestyle quality, not the total bill."
+    },
+    {
+      "question": "What visa do Indians need to retire in Vietnam or Thailand?",
+      "answer": "Vietnam has no retirement visa — in practice you use an e-visa and do periodic visa runs or renewals. Thailand's Destination Thailand Visa (DTV) is a multi-year, multi-entry option built for people with income from outside Thailand, which fits many Indians with foreign or remote earnings. Visa rules change fast, so confirm current requirements on official sources before committing."
+    },
+    {
+      "question": "Vietnam or Thailand — which is better for an Indian?",
+      "answer": "Vietnam (Da Nang) is cheaper, has the best air quality, and a buzzing expat scene you can plug into. Thailand costs a bit more but has the best international food, the friendliest social experience, and the best flight connectivity back to India. Many people base in Vietnam for cost and Thailand for lifestyle."
+    },
+    {
+      "question": "Can you get Indian food, healthy food, and community as an Indian in Southeast Asia?",
+      "answer": "Healthy eating is best and easiest in Vietnam, where it is basically the default. In Thailand and India you can eat well, but it is a hard, conscious choice. International food is best and most accessible in Thailand, while pure Indian food is cheapest and best in India. Community is easy to build in hubs like Da Nang if you have some international exposure — you create it rather than inherit it."
+    }
+  ],
+  "order": 6
 }
