@@ -123,7 +123,7 @@ Calculating your FIRE number is the first, most empowering step on your journey 
 - **Model Your Scenario:**  
   Plug your numbers into the [FIRE Number Calculator](/tools/fire-number/) — switch between US (25×) and India (33×) mode to see your exact target in dollars or rupees — then finalize with an advanced simulator.  
 
-Ready to see how fast you can get there? See [how much you need to retire at 40](/blog/how-much-need-retire-forty-40) for a real-world example.  
+Ready to see how fast you can get there? See [how I went from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33) for a real-world example.  
 Use the [Sequence Risk Calculator](/tools/sequence-risk/) to model how your portfolio might perform under different return orders, inflation assumptions, and guardrail withdrawals. This will help you manage risk and finalize your personal goal with confidence. For a real example, read [from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33).
 
 ---

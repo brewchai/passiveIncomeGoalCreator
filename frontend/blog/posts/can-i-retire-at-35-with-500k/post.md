@@ -1,4 +1,4 @@
-# Can I Retire at 35 with $500k? A Complete Strategy Breakdown
+# Can I Retire at 35 with $500k? A Lean FIRE Reality Check
 
 This is the question I see everywhere: Reddit, X (Twitter), FIRE forums, group chats. *"I have $500k saved. Can I quit everything at 35 and never work again?"*
 
