@@ -1,12 +1,13 @@
 {
-    "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
-    "subtitle": "And which is the right one for you?",
-    "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
-    "date": "2025-11-05",
-    "tags": [
-        "featured",
-        "basics"
-    ],
-    "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
-    "featured": true
+  "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
+  "subtitle": "And which is the right one for you?",
+  "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
+  "date": "2025-11-05",
+  "tags": [
+    "featured",
+    "basics"
+  ],
+  "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
+  "featured": true,
+  "noindex": true
 }

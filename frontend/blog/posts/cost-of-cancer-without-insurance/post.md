@@ -81,7 +81,7 @@ On any high-cost cancer drug, **find the assistance program before you pay a sin
 
 ## What This Did to My Financial Plan
 
-People who follow [FIRE](/blog/four-different-types-of-fire) obsess over one question: *what happens when reality finally tests the spreadsheet?* This was my test.
+People who follow [FIRE](/blog/what-is-LEAN-FIRE) obsess over one question: *what happens when reality finally tests the spreadsheet?* This was my test.
 
 I'm deliberately not going to talk in absolute figures, because the numbers that matter are the ratios. In a normal year, my planned spending runs at roughly **1.85%** of my portfolio — a comfortably low withdrawal rate, well under the classic 4% rule. This year, funding my mom's treatment entirely out of pocket pushes it to about **2.76%**.
 

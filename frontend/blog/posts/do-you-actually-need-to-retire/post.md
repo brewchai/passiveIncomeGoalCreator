@@ -98,7 +98,7 @@ Not your Saturday. Not your vacation. Your *Tuesday*.
 
 Because that's what retirement actually is. It's 10,000 Tuesdays. And if you can't answer that question with some clarity and some genuine excitement, then maybe the problem isn't that you need to retire faster. Maybe it's that you haven't figured out yet what you're retiring *to*.
 
-The math of FIRE is genuinely straightforward. [Calculate your number](/blog/calculating-fire-number), pick a [flavor of FIRE](/blog/four-different-types-of-fire), execute. The harder part — the part nobody talks about — is deciding what your life is actually for.
+The math of FIRE is genuinely straightforward. [Calculate your number](/blog/calculating-fire-number), pick a [flavor of FIRE](/blog/what-is-LEAN-FIRE), execute. The harder part — the part nobody talks about — is deciding what your life is actually for.
 
 Don't retire *from* something. Retire *to* something.
 

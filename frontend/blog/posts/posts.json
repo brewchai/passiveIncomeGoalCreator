@@ -146,23 +146,6 @@
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
-      "slug": "four-different-types-of-fire",
-      "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
-      "subtitle": "And which is the right one for you?",
-      "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
-      "date": "2025-11-05",
-      "date_modified": "2025-11-05",
-      "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
-      "tags": [
-        "featured",
-        "basics"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/four-different-types-of-fire"
-    },
-    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -571,23 +554,6 @@
       "url": "/blog/how-much-need-retire-forty-40"
     },
     {
-      "slug": "four-different-types-of-fire",
-      "title": "Lean FIRE vs Fat FIRE vs Barista FIRE vs Coast FIRE",
-      "subtitle": "And which is the right one for you?",
-      "description": "Compare Lean FIRE, Fat FIRE, Barista FIRE, and Coast FIRE so you can choose the financial independence path that fits your life.",
-      "date": "2025-11-05",
-      "date_modified": "2025-11-05",
-      "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
-      "tags": [
-        "featured",
-        "basics"
-      ],
-      "featured": true,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/four-different-types-of-fire"
-    },
-    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -605,5 +571,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T13:20:59.641569Z"
+  "_generated_at": "2026-07-14T13:47:45.764546Z"
 }
