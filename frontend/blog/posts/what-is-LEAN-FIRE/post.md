@@ -206,36 +206,11 @@ Here is how I actually fund it. I do not sell investments to pay for my life. I 
 
 ---
 
-## Lean FIRE vs Other FIRE Types
-
-Here is how Lean FIRE sits against the other main paths.
-
-| Type | Annual Spend | Portfolio Needed | The trade |
-|---|---|---|---|
-| **Lean FIRE** | $18k to $40k | $450k to $1M | Smaller number, more lifestyle constraints |
-| **Barista FIRE** | Any | Smaller than Lean | Part time work supplements the portfolio |
-| **Coast FIRE** | Any | Front loaded | Stop contributing early and coast to retirement |
-| **Fat FIRE** | $80k to $200k+ | $2M to $5M+ | Full lifestyle, much longer to reach |
-
-If you want the full comparison of all of them side by side, I broke down [the 4 different types of FIRE](/blog/four-different-types-of-fire) in detail.
-
----
-
-## Is Lean FIRE Right for You?
-
-It probably is if location flexibility does not scare you, you can name 2 or 3 material things you genuinely do not care about like a car or house size or status goods, controlling your calendar matters more to you than earning more, and you have lived on less before without finding it miserable.
-
-It probably is not if you are doing it mainly to run away from something, because Lean FIRE works best as a destination you move toward rather than a place you flee to. It also gets much harder if you have kids or plan to, since a family of 4 needs more like $60,000 to $75,000 and that is no longer lean, and it asks a lot of you if you hate uncertainty, because visa renewals and healthcare questions and market swings all require a certain comfort with ambiguity.
-
-I am not going to tell you Lean FIRE is for everyone, because it is not. I will tell you that $1,800 a month in Vietnam feels nothing like scarcity, because it is a life I chose and built deliberately around what matters to me. If you are genuinely weighing it, I turned that whole question into a proper guide, so walk through [whether Lean FIRE is right for you](/blog/is-lean-fire-right-for-you).
-
----
-
 ## Final Thoughts
 
 I am not telling you to move to Vietnam. Geo arbitrage looks different for everyone, whether that is San Francisco to Austin, London to Lisbon, or New York to Da Nang. The principle underneath it all is the same everywhere, which is to cut your cost of living without cutting your quality of life. For me, going from $6,000 to a real all in $1,800 was the whole unlock, and it bought freedom and health and time. Location is the biggest lever on the FIRE path and most people never once touch it.
 
-When you are ready to work out your own target, run the math with our [guide to calculating your FIRE number](/blog/calculating-fire-number), and if the numbers feel impossibly far away today, remember that I started from $40,000 of debt and got here inside a decade, which I walk through in [going from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33).
+When you are ready to work out your own target, run the math with our [guide to calculating your FIRE number](/blog/calculating-fire-number), and if the numbers feel impossibly far away today, remember that I started from $40,000 of debt and got here inside a decade, which I walk through in [going from $40k debt to Lean FIRE at 33](/blog/40k-debt-to-lean-fire-at-33). And if you are still weighing whether this life would genuinely suit you, I wrote a full guide on [whether Lean FIRE is right for you](/blog/is-lean-fire-right-for-you).
 
 ---
 
