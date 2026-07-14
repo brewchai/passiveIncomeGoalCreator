@@ -54,7 +54,7 @@ The reassurance that makes holding all that cash feel sane, rather than just laz
 
 On paper this whole structure comfortably supports a 3% withdrawal rate, but real life has never once cooperated with a number that clean. Last year I actually lived on somewhere around 1.9%, and this year I'm going to draw closer to 3.5%, and the gap between those two is the whole lesson.
 
-The reason this year jumps so much is real and it's heavy, because a big chunk of that spending is funding my mother's cancer treatment out of pocket, and I wrote openly about [what that actually cost us and what it did to my numbers](/blog/cost-of-cancer-without-insurance). What matters for this article is that a one-year jump from under 2% all the way to 3.5% didn't break anything at all, and it didn't break anything precisely because the buckets were built for exactly this kind of bad year that I couldn't have predicted. That single real example is basically the entire case for doing it this way.
+The reason this year jumps so much is real and it's heavy, because a big chunk of that spending is funding my mother's cancer treatment out of pocket, and I wrote openly about [what that actually cost us and what it did to my numbers](/blog/can-a-major-illness-end-lean-fire). What matters for this article is that a one-year jump from under 2% all the way to 3.5% didn't break anything at all, and it didn't break anything precisely because the buckets were built for exactly this kind of bad year that I couldn't have predicted. That single real example is basically the entire case for doing it this way.
 
 ## The Honest Criticism: Isn't 27% in 4% CDs a Drag?
 

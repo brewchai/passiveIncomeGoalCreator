@@ -20,6 +20,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "can-a-major-illness-end-lean-fire",
+      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
+      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
+      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/can-a-major-illness-end-lean-fire"
+    },
+    {
       "slug": "first-year-of-lean-fire",
       "title": "My First Year of Lean FIRE: The Real Experience",
       "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
@@ -182,25 +201,6 @@
       "url": "/blog/vietnam-visa-for-indians"
     },
     {
-      "slug": "cost-of-cancer-without-insurance",
-      "title": "What Breast Cancer Cost Us in India — and What It Did to My FIRE Plan",
-      "subtitle": "The real, itemised out-of-pocket cost of a triple-negative breast cancer treatment in Pune — and what a ₹40-lakh bill does to a retirement plan.",
-      "description": "The real, itemised cost of breast cancer treatment in India without insurance (Pune, 2026): chemotherapy, immunotherapy, surgery, radiation and scans — close to ₹40 lakh — plus how we cut the bill and what it did to a FIRE plan.",
-      "date": "2026-06-28",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
-      "tags": [
-        "Personal Finance",
-        "Health",
-        "FIRE Journey",
-        "Insurance"
-      ],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/cost-of-cancer-without-insurance"
-    },
-    {
       "slug": "accidentally-negotiated-200k-more",
       "title": "This one call helped me retire 4 years faster",
       "subtitle": "4 things I did which helped me make money quicker and fast track my way into an early retirement at just 33.",
@@ -290,6 +290,25 @@
       "url": "/blog/40k-debt-to-lean-fire-at-33"
     },
     {
+      "slug": "can-a-major-illness-end-lean-fire",
+      "title": "Can a Major Illness Kick You Out of Lean FIRE?",
+      "subtitle": "What a full uninsured cancer bill actually did to my lean withdrawal rate",
+      "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
+      "date": "2026-07-14",
+      "date_modified": "2026-07-14",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "noindex": false,
+      "url": "/blog/can-a-major-illness-end-lean-fire"
+    },
+    {
       "slug": "first-year-of-lean-fire",
       "title": "My First Year of Lean FIRE: The Real Experience",
       "subtitle": "What the first 12 months of a small and free life abroad actually looked like",
@@ -377,25 +396,6 @@
       "pinned": false,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
-    },
-    {
-      "slug": "cost-of-cancer-without-insurance",
-      "title": "What Breast Cancer Cost Us in India — and What It Did to My FIRE Plan",
-      "subtitle": "The real, itemised out-of-pocket cost of a triple-negative breast cancer treatment in Pune — and what a ₹40-lakh bill does to a retirement plan.",
-      "description": "The real, itemised cost of breast cancer treatment in India without insurance (Pune, 2026): chemotherapy, immunotherapy, surgery, radiation and scans — close to ₹40 lakh — plus how we cut the bill and what it did to a FIRE plan.",
-      "date": "2026-06-28",
-      "date_modified": "2026-07-05",
-      "cover": "/blog/posts/cost-of-cancer-without-insurance/cover.webp",
-      "tags": [
-        "Personal Finance",
-        "Health",
-        "FIRE Journey",
-        "Insurance"
-      ],
-      "featured": false,
-      "pinned": false,
-      "noindex": false,
-      "url": "/blog/cost-of-cancer-without-insurance"
     },
     {
       "slug": "accidentally-negotiated-200k-more",
@@ -537,5 +537,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T14:26:14.045802Z"
+  "_generated_at": "2026-07-14T14:52:30.879953Z"
 }

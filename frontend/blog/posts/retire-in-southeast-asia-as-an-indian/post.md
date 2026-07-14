@@ -130,7 +130,7 @@ Distance from family is the real cost of this life, so flights matter.
 
 **Thailand has the best connectivity** to India's major cities, and honestly it's not a big deal — round trips typically run **₹20,000–₹40,000**, and the flights are short enough that going home a few times a year is easy. **Vietnam is a bit further out**, so factor slightly more time and cost if that's your base.
 
-But the hardest part of this life was never the flight cost — it's what the flights are *for*. Caring for my parents from a distance is the real weight on the other side of the scale. My mother is going through breast cancer, and there is no arbitrage, no calculator, no clean spreadsheet answer for that. It's part of why I ended up writing about [what cancer treatment actually costs without insurance](/blog/cost-of-cancer-without-insurance). If your family needs you close, be completely honest with yourself about that before you go. No cheap rent makes up for missing the moments that matter.
+But the hardest part of this life was never the flight cost — it's what the flights are *for*. Caring for my parents from a distance is the real weight on the other side of the scale. My mother is going through breast cancer, and there is no arbitrage, no calculator, no clean spreadsheet answer for that. It's part of why I ended up writing about [what a major illness does to a lean plan](/blog/can-a-major-illness-end-lean-fire). If your family needs you close, be completely honest with yourself about that before you go. No cheap rent makes up for missing the moments that matter.
 
 ---
 

@@ -38,5 +38,6 @@
       "question": "Can you buy health insurance after a cancer diagnosis?",
       "answer": "Effectively no. Once there is any finding in your medical file — even a benign one — insurers will decline or exclude it. We applied within days of a benign first biopsy and were still rejected. Insurance must be bought while you are healthy."
     }
-  ]
+  ],
+  "noindex": true
 }

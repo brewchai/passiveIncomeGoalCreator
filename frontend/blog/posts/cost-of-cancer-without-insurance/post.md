@@ -91,7 +91,7 @@ I want to be very clear about *why*, because it's the whole point. It's **not** 
 
 That is the quiet violence of being uninsured: **the bill is the same for everyone, but the *damage* it does scales inversely with how much you've saved.** The people least able to afford catastrophe are the ones it hits hardest.
 
-This is also why, if you're chasing early retirement — especially the [geo-arbitrage / abroad route](/blog/retire-in-southeast-asia-as-an-indian) — a catastrophic health event is the single risk most likely to break your plan. Model it explicitly. [Whether $500k is "enough"](/blog/can-i-retire-at-35-with-500k) can change entirely the year a ₹40-lakh bill arrives.
+This is also why, if you're chasing early retirement — especially the [geo-arbitrage / abroad route](/blog/retire-in-southeast-asia-as-an-indian) — a catastrophic health event is the single risk most likely to break your plan. I dig into that exact question in [can a major illness kick you out of Lean FIRE?](/blog/can-a-major-illness-end-lean-fire). Model it explicitly. [Whether $500k is "enough"](/blog/can-i-retire-at-35-with-500k) can change entirely the year a ₹40-lakh bill arrives.
 
 ## What I Want You To Actually Do
 
