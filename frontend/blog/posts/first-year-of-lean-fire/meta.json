@@ -5,7 +5,7 @@
   "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
   "date": "2026-07-14",
   "date_modified": "2026-07-14",
-  "cover": "first-year-of-lean-fire-da-nang.png",
+  "cover": "first-year-of-lean-fire.webp",
   "tags": [
     "lean-fire",
     "fire-journey",
@@ -36,5 +36,5 @@
     }
   ],
   "order": 5,
-  "cover_alt": "First year of Lean FIRE relaxing in a Da Nang cafe in Vietnam"
+  "cover_alt": "Ninad on a coastal trip during his first year of Lean FIRE"
 }

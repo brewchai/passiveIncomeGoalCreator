@@ -27,7 +27,7 @@ import argparse, json, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     sys.exit("Pillow is required: pip install pillow")
 
@@ -36,16 +36,18 @@ POSTS_DIR = FRONTEND / "blog" / "posts"
 
 
 def load_image(path: Path) -> "Image.Image":
-    """Open any image. Falls back to macOS `sips` for HEIC and friends."""
+    """Open any image (HEIC via macOS `sips` fallback) with EXIF orientation applied."""
     try:
-        return Image.open(path).convert("RGB")
+        im = Image.open(path)
     except Exception:
         if not shutil.which("sips"):
             sys.exit(f"Could not read {path} and `sips` is unavailable for HEIC.")
         tmp = Path(tempfile.mktemp(suffix=".png"))
         subprocess.run(["sips", "-s", "format", "png", str(path), "--out", str(tmp)],
                        check=True, capture_output=True)
-        return Image.open(tmp).convert("RGB")
+        im = Image.open(tmp)
+    # Respect the camera's EXIF orientation flag, or the photo comes out sideways.
+    return ImageOps.exif_transpose(im).convert("RGB")
 
 
 def crop_16_9(im: "Image.Image", focus: str = "center") -> "Image.Image":
