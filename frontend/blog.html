@@ -235,7 +235,7 @@
                 heroPostEl.innerHTML = `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="hero-post">
                     ${cover
-                        ? `<img class="hero-post-image" ${getHeroImageAttrs(post)} alt="${htmlEscape(post.title)} — cover image" loading="eager" fetchpriority="high" decoding="async">`
+                        ? `<img class="hero-post-image" ${getHeroImageAttrs(post)} alt="${htmlEscape(post.cover_alt || post.title)}" loading="eager" fetchpriority="high" decoding="async">`
                         : `<div class="hero-post-image" style="background: var(--gradient); display:flex; align-items:center; justify-content:center; font-size:5rem;">🔥</div>`
                     }
                     <div class="hero-post-content">
@@ -257,7 +257,7 @@
                 const cover = post.cover && post.cover.trim() ? post.cover : '';
                 const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
                 const imgBlock = cover
-                    ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.title)} — cover image" loading="lazy" decoding="async"></div>`
+                    ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.cover_alt || post.title)}" loading="lazy" decoding="async"></div>`
                     : `<div class="article-thumbnail-placeholder">📝</div>`;
                 return `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="article-card-wrap">

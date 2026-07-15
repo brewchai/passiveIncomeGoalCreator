@@ -1,9 +1,13 @@
 {
-    "title": "Do You Actually Need to Retire?",
-    "subtitle": "What if the question isn't 'how do I retire early' — but 'why do I want to escape my life?'",
-    "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
-    "date": "2026-02-16",
-    "cover": "cover.webp",
-    "tags": ["philosophy", "mindset"],
-    "featured": false
+  "title": "Do You Actually Need to Retire?",
+  "subtitle": "What if the question isn't 'how do I retire early' — but 'why do I want to escape my life?'",
+  "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
+  "date": "2026-02-16",
+  "cover": "do-you-actually-need-to-retire-early.webp",
+  "tags": [
+    "philosophy",
+    "mindset"
+  ],
+  "featured": false,
+  "cover_alt": "Do you actually need to retire early to feel free"
 }

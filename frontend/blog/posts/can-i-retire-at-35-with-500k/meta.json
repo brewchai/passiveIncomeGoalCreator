@@ -5,7 +5,7 @@
   "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
   "date": "2026-02-16",
   "date_modified": "2026-07-05",
-  "cover": "cover.webp",
+  "cover": "retire-at-35-with-500k-lean-fire.webp",
   "tags": [
     "strategies",
     "retirement planning"
@@ -33,5 +33,6 @@
       "answer": "Roughly ₹4–5 crore (about $500k) is not enough to retire at 35 in a US city, but it comfortably funds early retirement in Southeast Asia — Vietnam, Thailand and similar — where a full lifestyle costs around ₹1–1.7 lakh a month. Geography, not the amount alone, decides whether it works."
     }
   ],
-  "order": 9
+  "order": 9,
+  "cover_alt": "Can you retire at 35 with $500k using Lean FIRE and geo arbitrage"
 }

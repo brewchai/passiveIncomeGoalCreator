@@ -5,7 +5,7 @@
   "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
   "date": "2026-07-14",
   "date_modified": "2026-07-14",
-  "cover": "cover.webp",
+  "cover": "major-illness-lean-fire-risk.webp",
   "tags": [
     "lean-fire",
     "fire-planning",
@@ -39,5 +39,6 @@
       "answer": "A full out of pocket treatment can be enormous. My family paid close to ₹40 lakh, about $42,000, at sticker price for a triple negative breast cancer course in India, with the immunotherapy drug alone around ₹34 lakh. A manufacturer assistance program more than halved ours, but a bill of that size lands entirely on your own savings when there is no insurance behind it."
     }
   ],
-  "order": 8
+  "order": 8,
+  "cover_alt": "How a major illness and medical costs can affect a Lean FIRE plan"
 }

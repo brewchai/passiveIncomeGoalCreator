@@ -9,7 +9,7 @@
     "featured",
     "basics"
   ],
-  "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+  "cover": "lean-fire-nyc-to-vietnam-geo-arbitrage.webp",
   "featured": true,
   "faqs": [
     {
@@ -41,5 +41,6 @@
       "answer": "Only if you trade away things that actually matter to you. I gave up a permanent home and geographic stability, which I do not particularly need right now, and I kept great food, full control of my time, and community. That is a trade I made with my eyes wide open."
     }
   ],
-  "order": 2
+  "order": 2,
+  "cover_alt": "Lean FIRE geo arbitrage from $6,000 a month in New York to $1,100 in Vietnam"
 }

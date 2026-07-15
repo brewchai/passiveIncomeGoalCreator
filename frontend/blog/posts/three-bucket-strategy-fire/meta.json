@@ -9,7 +9,7 @@
     "geo-arbitrage",
     "strategies"
   ],
-  "cover": "/blog/posts/three-bucket-strategy-fire/cover.webp",
+  "cover": "three-bucket-strategy-lean-fire.webp",
   "featured": false,
   "faqs": [
     {
@@ -33,5 +33,6 @@
       "answer": "My structure supports around 3%, but in practice it varies a lot year to year — I spent under 2% one year and closer to 3.5% another. Real spending is lumpy, so a rigid straight-line withdrawal rate is not how it actually works."
     }
   ],
-  "order": 4
+  "order": 4,
+  "cover_alt": "The three bucket strategy for a Lean FIRE portfolio"
 }

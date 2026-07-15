@@ -5,7 +5,7 @@
   "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
   "date": "2026-07-13",
   "date_modified": "2026-07-13",
-  "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+  "cover": "is-lean-fire-right-for-you.webp",
   "tags": [
     "lean-fire",
     "fire-planning",
@@ -35,5 +35,6 @@
       "answer": "It depends entirely on your annual spending, since the common rule is roughly 25 times your yearly expenses. A lean life costing $1,100 to $1,800 a month points to a far smaller target than a normal retirement, and you can work out your own figure in the guide to calculating your FIRE number."
     }
   ],
-  "order": 3
+  "order": 3,
+  "cover_alt": "Deciding whether Lean FIRE is right for you over morning coffee"
 }

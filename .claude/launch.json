@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "ui", "--prefix", "/Users/ninadmundalik/Documents/workspace/remotion-claude"],
       "port": 5173
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4599", "--directory", "frontend"],
+      "port": 4599
     }
   ]
 }

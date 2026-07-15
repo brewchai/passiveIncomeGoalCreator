@@ -7,7 +7,7 @@
       "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
       "date": "2026-07-12",
       "date_modified": "2026-07-12",
-      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/40k-debt-to-lean-fire-at-33.webp",
       "tags": [
         "personal-story",
         "debt-payoff",
@@ -16,6 +16,7 @@
       ],
       "featured": true,
       "pinned": true,
+      "cover_alt": "From $40k in student debt to Lean FIRE at 33 living in Vietnam",
       "order": null,
       "noindex": false,
       "url": "/blog/40k-debt-to-lean-fire-at-33"
@@ -27,13 +28,14 @@
       "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
       "date": "2025-11-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/lean-fire-nyc-to-vietnam-geo-arbitrage.webp",
       "tags": [
         "featured",
         "basics"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Lean FIRE geo arbitrage from $6,000 a month in New York to $1,100 in Vietnam",
       "order": 2,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
@@ -45,7 +47,7 @@
       "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
       "date": "2026-07-13",
       "date_modified": "2026-07-13",
-      "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+      "cover": "/blog/posts/is-lean-fire-right-for-you/is-lean-fire-right-for-you.webp",
       "tags": [
         "lean-fire",
         "fire-planning",
@@ -54,6 +56,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Deciding whether Lean FIRE is right for you over morning coffee",
       "order": 3,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
@@ -65,7 +68,7 @@
       "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
       "date": "2026-07-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "cover": "/blog/posts/first-year-of-lean-fire/first-year-of-lean-fire-da-nang.png",
       "tags": [
         "lean-fire",
         "fire-journey",
@@ -74,6 +77,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "First year of Lean FIRE relaxing in a Da Nang cafe in Vietnam",
       "order": 5,
       "noindex": false,
       "url": "/blog/first-year-of-lean-fire"
@@ -85,13 +89,14 @@
       "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
       "date": "2026-07-03",
       "date_modified": "2026-07-03",
-      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
+      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/retire-in-southeast-asia-as-an-indian.webp",
       "tags": [
         "featured",
         "geo-arbitrage"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Retiring in Southeast Asia as an Indian on a Lean FIRE budget",
       "order": 7,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
@@ -103,7 +108,7 @@
       "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
       "date": "2026-07-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/major-illness-lean-fire-risk.webp",
       "tags": [
         "lean-fire",
         "fire-planning",
@@ -112,6 +117,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "How a major illness and medical costs can affect a Lean FIRE plan",
       "order": 8,
       "noindex": false,
       "url": "/blog/can-a-major-illness-end-lean-fire"
@@ -123,7 +129,7 @@
       "description": "An honest, hyper-personal breakdown of the four types of income, the nomadic journey, and why trying to separate your time from your money is the hardest active grind you will ever face.",
       "date": "2026-03-19",
       "date_modified": "2026-03-19",
-      "cover": "/blog/posts/the-truth-about-passive-income/cover.webp",
+      "cover": "/blog/posts/the-truth-about-passive-income/truth-about-passive-income-fire.webp",
       "tags": [
         "featured",
         "mindset",
@@ -132,6 +138,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "The honest truth about passive income for financial independence",
       "order": null,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
@@ -143,7 +150,7 @@
       "description": "FIRE is not for everyone. Find out if your relationship with money, possessions, and purpose will make early retirement a dream or a living nightmare.",
       "date": "2026-03-16",
       "date_modified": "2026-03-16",
-      "cover": "/blog/posts/why-fire-is-not-for-you/cover.webp",
+      "cover": "/blog/posts/why-fire-is-not-for-you/why-fire-is-not-for-you.webp",
       "tags": [
         "featured",
         "basics",
@@ -151,6 +158,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Why the FIRE movement might not be right for you",
       "order": null,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
@@ -162,13 +170,14 @@
       "description": "How to calculate your FIRE number in dollars or rupees: the 25× (4%) rule for the US, the safer 33× (3%) rule for India, real examples in ₹/crores, and a free calculator.",
       "date": "2025-10-28",
       "date_modified": "2026-07-08",
-      "cover": "/blog/posts/calculating-fire-number/cover.webp",
+      "cover": "/blog/posts/calculating-fire-number/how-to-calculate-your-fire-number.webp",
       "tags": [
         "featured",
         "basics"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "How to calculate your FIRE number with the 25x rule",
       "order": null,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
@@ -182,13 +191,14 @@
       "description": "The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.",
       "date": "2026-07-08",
       "date_modified": "2026-07-08",
-      "cover": "/blog/posts/three-bucket-strategy-fire/cover.webp",
+      "cover": "/blog/posts/three-bucket-strategy-fire/three-bucket-strategy-lean-fire.webp",
       "tags": [
         "geo-arbitrage",
         "strategies"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "The three bucket strategy for a Lean FIRE portfolio",
       "order": 4,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
@@ -200,13 +210,14 @@
       "description": "How Indians get a Vietnam visa and stay long-term: the official e-visa ($25 single / $50 multiple, up to 90 days), the port-of-entry rule, and real visa-run options — first-hand from an Indian living in Da Nang.",
       "date": "2026-07-05",
       "date_modified": "2026-07-05",
-      "cover": "/blog/posts/vietnam-visa-for-indians/cover.webp",
+      "cover": "/blog/posts/vietnam-visa-for-indians/vietnam-visa-for-indians.webp",
       "tags": [
         "geo-arbitrage",
         "visa"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Vietnam visa guide for Indian passport holders retiring in Da Nang",
       "order": 6,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
@@ -218,13 +229,14 @@
       "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
       "date": "2026-02-16",
       "date_modified": "2026-07-05",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/retire-at-35-with-500k-lean-fire.webp",
       "tags": [
         "strategies",
         "retirement planning"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Can you retire at 35 with $500k using Lean FIRE and geo arbitrage",
       "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
@@ -236,13 +248,14 @@
       "description": "How one compensation negotiation added $200K to my offer and helped speed up my path to early retirement.",
       "date": "2026-04-03",
       "date_modified": "2026-04-03",
-      "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.webp",
+      "cover": "/blog/posts/accidentally-negotiated-200k-more/negotiated-200k-more-tech-salary.webp",
       "tags": [
         "personal-story",
         "life-after-fire"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "How I negotiated $200k more in a tech salary",
       "order": null,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
@@ -254,13 +267,14 @@
       "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
       "date": "2026-04-03",
       "date_modified": "2026-04-03",
-      "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
+      "cover": "/blog/posts/psychology-of-not-negotiating/psychology-of-not-negotiating-salary.webp",
       "tags": [
         "mindset",
         "personal-story"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "The psychology behind not negotiating your salary",
       "order": null,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
@@ -272,13 +286,14 @@
       "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
       "date": "2026-02-16",
       "date_modified": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/do-you-actually-need-to-retire-early.webp",
       "tags": [
         "philosophy",
         "mindset"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Do you actually need to retire early to feel free",
       "order": null,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
@@ -292,7 +307,7 @@
       "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
       "date": "2026-07-12",
       "date_modified": "2026-07-12",
-      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/ninad-retirement.webp",
+      "cover": "/blog/posts/40k-debt-to-lean-fire-at-33/40k-debt-to-lean-fire-at-33.webp",
       "tags": [
         "personal-story",
         "debt-payoff",
@@ -301,6 +316,7 @@
       ],
       "featured": true,
       "pinned": true,
+      "cover_alt": "From $40k in student debt to Lean FIRE at 33 living in Vietnam",
       "order": null,
       "noindex": false,
       "url": "/blog/40k-debt-to-lean-fire-at-33"
@@ -312,13 +328,14 @@
       "description": "Lean FIRE means retiring early on $20K to $40K a year. The full definition, how to calculate your Lean FIRE number, and my real numbers going from $6,000/month in NYC to $1,100 to $1,800 in Vietnam.",
       "date": "2025-11-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/what-is-LEAN-FIRE/cover.webp",
+      "cover": "/blog/posts/what-is-LEAN-FIRE/lean-fire-nyc-to-vietnam-geo-arbitrage.webp",
       "tags": [
         "featured",
         "basics"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Lean FIRE geo arbitrage from $6,000 a month in New York to $1,100 in Vietnam",
       "order": 2,
       "noindex": false,
       "url": "/blog/what-is-LEAN-FIRE"
@@ -330,7 +347,7 @@
       "description": "Lean FIRE is about far more than a savings number. Here are the 6 honest questions I worked through before retiring lean in Vietnam, from securing health costs to knowing how you will fill your days.",
       "date": "2026-07-13",
       "date_modified": "2026-07-13",
-      "cover": "/blog/posts/is-lean-fire-right-for-you/cover.webp",
+      "cover": "/blog/posts/is-lean-fire-right-for-you/is-lean-fire-right-for-you.webp",
       "tags": [
         "lean-fire",
         "fire-planning",
@@ -339,6 +356,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Deciding whether Lean FIRE is right for you over morning coffee",
       "order": 3,
       "noindex": false,
       "url": "/blog/is-lean-fire-right-for-you"
@@ -350,13 +368,14 @@
       "description": "The 3-bucket strategy I use to fund early retirement: a ~10-year CD ladder, an equities growth bucket, and a locked 401(k) backstop. Percentages, real trade-offs, and how it survived a 3.5% year.",
       "date": "2026-07-08",
       "date_modified": "2026-07-08",
-      "cover": "/blog/posts/three-bucket-strategy-fire/cover.webp",
+      "cover": "/blog/posts/three-bucket-strategy-fire/three-bucket-strategy-lean-fire.webp",
       "tags": [
         "geo-arbitrage",
         "strategies"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "The three bucket strategy for a Lean FIRE portfolio",
       "order": 4,
       "noindex": false,
       "url": "/blog/three-bucket-strategy-fire"
@@ -368,7 +387,7 @@
       "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
       "date": "2026-07-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/first-year-of-lean-fire/cover.png",
+      "cover": "/blog/posts/first-year-of-lean-fire/first-year-of-lean-fire-da-nang.png",
       "tags": [
         "lean-fire",
         "fire-journey",
@@ -377,6 +396,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "First year of Lean FIRE relaxing in a Da Nang cafe in Vietnam",
       "order": 5,
       "noindex": false,
       "url": "/blog/first-year-of-lean-fire"
@@ -388,13 +408,14 @@
       "description": "How Indians get a Vietnam visa and stay long-term: the official e-visa ($25 single / $50 multiple, up to 90 days), the port-of-entry rule, and real visa-run options — first-hand from an Indian living in Da Nang.",
       "date": "2026-07-05",
       "date_modified": "2026-07-05",
-      "cover": "/blog/posts/vietnam-visa-for-indians/cover.webp",
+      "cover": "/blog/posts/vietnam-visa-for-indians/vietnam-visa-for-indians.webp",
       "tags": [
         "geo-arbitrage",
         "visa"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Vietnam visa guide for Indian passport holders retiring in Da Nang",
       "order": 6,
       "noindex": false,
       "url": "/blog/vietnam-visa-for-indians"
@@ -406,13 +427,14 @@
       "description": "An Indian's real cost of retiring in Southeast Asia: Vietnam and Thailand vs Pune, visas on an Indian passport, and why the money is a wash but the life isn't.",
       "date": "2026-07-03",
       "date_modified": "2026-07-03",
-      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/cover.webp",
+      "cover": "/blog/posts/retire-in-southeast-asia-as-an-indian/retire-in-southeast-asia-as-an-indian.webp",
       "tags": [
         "featured",
         "geo-arbitrage"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Retiring in Southeast Asia as an Indian on a Lean FIRE budget",
       "order": 7,
       "noindex": false,
       "url": "/blog/retire-in-southeast-asia-as-an-indian"
@@ -424,7 +446,7 @@
       "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
       "date": "2026-07-14",
       "date_modified": "2026-07-14",
-      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/cover.webp",
+      "cover": "/blog/posts/can-a-major-illness-end-lean-fire/major-illness-lean-fire-risk.webp",
       "tags": [
         "lean-fire",
         "fire-planning",
@@ -433,6 +455,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "How a major illness and medical costs can affect a Lean FIRE plan",
       "order": 8,
       "noindex": false,
       "url": "/blog/can-a-major-illness-end-lean-fire"
@@ -444,13 +467,14 @@
       "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
       "date": "2026-02-16",
       "date_modified": "2026-07-05",
-      "cover": "/blog/posts/can-i-retire-at-35-with-500k/cover.webp",
+      "cover": "/blog/posts/can-i-retire-at-35-with-500k/retire-at-35-with-500k-lean-fire.webp",
       "tags": [
         "strategies",
         "retirement planning"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Can you retire at 35 with $500k using Lean FIRE and geo arbitrage",
       "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
@@ -462,13 +486,14 @@
       "description": "How one compensation negotiation added $200K to my offer and helped speed up my path to early retirement.",
       "date": "2026-04-03",
       "date_modified": "2026-04-03",
-      "cover": "/blog/posts/accidentally-negotiated-200k-more/cover.webp",
+      "cover": "/blog/posts/accidentally-negotiated-200k-more/negotiated-200k-more-tech-salary.webp",
       "tags": [
         "personal-story",
         "life-after-fire"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "How I negotiated $200k more in a tech salary",
       "order": null,
       "noindex": false,
       "url": "/blog/accidentally-negotiated-200k-more"
@@ -480,13 +505,14 @@
       "description": "A breakdown of the cognitive biases—loss aversion, risk aversion, and the authority trap—that cause 55% of workers to accept the first number on the table.",
       "date": "2026-04-03",
       "date_modified": "2026-04-03",
-      "cover": "/blog/posts/psychology-of-not-negotiating/cover.webp",
+      "cover": "/blog/posts/psychology-of-not-negotiating/psychology-of-not-negotiating-salary.webp",
       "tags": [
         "mindset",
         "personal-story"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "The psychology behind not negotiating your salary",
       "order": null,
       "noindex": false,
       "url": "/blog/psychology-of-not-negotiating"
@@ -498,7 +524,7 @@
       "description": "An honest, hyper-personal breakdown of the four types of income, the nomadic journey, and why trying to separate your time from your money is the hardest active grind you will ever face.",
       "date": "2026-03-19",
       "date_modified": "2026-03-19",
-      "cover": "/blog/posts/the-truth-about-passive-income/cover.webp",
+      "cover": "/blog/posts/the-truth-about-passive-income/truth-about-passive-income-fire.webp",
       "tags": [
         "featured",
         "mindset",
@@ -507,6 +533,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "The honest truth about passive income for financial independence",
       "order": null,
       "noindex": false,
       "url": "/blog/the-truth-about-passive-income"
@@ -518,7 +545,7 @@
       "description": "FIRE is not for everyone. Find out if your relationship with money, possessions, and purpose will make early retirement a dream or a living nightmare.",
       "date": "2026-03-16",
       "date_modified": "2026-03-16",
-      "cover": "/blog/posts/why-fire-is-not-for-you/cover.webp",
+      "cover": "/blog/posts/why-fire-is-not-for-you/why-fire-is-not-for-you.webp",
       "tags": [
         "featured",
         "basics",
@@ -526,6 +553,7 @@
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "Why the FIRE movement might not be right for you",
       "order": null,
       "noindex": false,
       "url": "/blog/why-fire-is-not-for-you"
@@ -537,13 +565,14 @@
       "description": "What if retirement isn't the answer? A deeply personal exploration of what retirement really means, why we chase it, whether it's worth it, and what happens when you get there.",
       "date": "2026-02-16",
       "date_modified": "2026-02-16",
-      "cover": "/blog/posts/do-you-actually-need-to-retire/cover.webp",
+      "cover": "/blog/posts/do-you-actually-need-to-retire/do-you-actually-need-to-retire-early.webp",
       "tags": [
         "philosophy",
         "mindset"
       ],
       "featured": false,
       "pinned": false,
+      "cover_alt": "Do you actually need to retire early to feel free",
       "order": null,
       "noindex": false,
       "url": "/blog/do-you-actually-need-to-retire"
@@ -555,17 +584,18 @@
       "description": "How to calculate your FIRE number in dollars or rupees: the 25× (4%) rule for the US, the safer 33× (3%) rule for India, real examples in ₹/crores, and a free calculator.",
       "date": "2025-10-28",
       "date_modified": "2026-07-08",
-      "cover": "/blog/posts/calculating-fire-number/cover.webp",
+      "cover": "/blog/posts/calculating-fire-number/how-to-calculate-your-fire-number.webp",
       "tags": [
         "featured",
         "basics"
       ],
       "featured": true,
       "pinned": false,
+      "cover_alt": "How to calculate your FIRE number with the 25x rule",
       "order": null,
       "noindex": false,
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-14T15:00:52.355566Z"
+  "_generated_at": "2026-07-15T07:34:17.770438Z"
 }

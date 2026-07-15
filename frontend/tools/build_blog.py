@@ -138,8 +138,10 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     if cover and not cover.startswith("/"):
         cover = f"/blog/posts/{slug}/{cover}"
     cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover) else cover
+    # Descriptive, keyword-rich alt for image SEO; falls back to the title.
+    cover_alt = (meta.get("cover_alt") or title).strip()
 
-    hero_html = f'<img src="{cover_abs}" alt="{title} cover" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if cover_abs else ''
+    hero_html = f'<img src="{cover_abs}" alt="{cover_alt}" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if cover_abs else ''
 
     # Remove duplicate H1 at top of content
     html_body = strip_leading_h1(html_content)
@@ -227,6 +229,7 @@ def build_one_post(slug: str, template: str) -> dict:
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
         "pinned": bool(meta.get("pinned", False)),
+        "cover_alt": (meta.get("cover_alt") or meta["title"]).strip(),
         "order": meta.get("order"),
         "noindex": bool(meta.get("noindex", False)),
         "url": f"/blog/{slug}",

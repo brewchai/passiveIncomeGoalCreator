@@ -9,7 +9,7 @@
     "geo-arbitrage",
     "visa"
   ],
-  "cover": "/blog/posts/vietnam-visa-for-indians/cover.webp",
+  "cover": "vietnam-visa-for-indians.webp",
   "featured": false,
   "faqs": [
     {
@@ -37,5 +37,6 @@
       "answer": "Not in most cases. On an Indian passport it is routine with clean documents. The main thing to get right is entering through the exact port of entry named on a single-entry e-visa."
     }
   ],
-  "order": 6
+  "order": 6,
+  "cover_alt": "Vietnam visa guide for Indian passport holders retiring in Da Nang"
 }
