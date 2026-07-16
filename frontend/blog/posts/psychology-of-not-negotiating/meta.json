@@ -10,5 +10,6 @@
   ],
   "cover": "psychology-of-not-negotiating-salary.webp",
   "featured": false,
-  "cover_alt": "The psychology behind not negotiating your salary"
+  "cover_alt": "The psychology behind not negotiating your salary",
+  "noindex": true
 }

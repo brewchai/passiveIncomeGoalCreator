@@ -10,5 +10,6 @@
   ],
   "cover": "negotiated-200k-more-tech-salary.webp",
   "featured": false,
-  "cover_alt": "How I negotiated $200k more in a tech salary"
+  "cover_alt": "How I negotiated $200k more in a tech salary",
+  "noindex": true
 }

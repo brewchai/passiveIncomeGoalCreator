@@ -11,5 +11,6 @@
     "reality-check"
   ],
   "featured": true,
-  "cover_alt": "The honest truth about passive income for financial independence"
+  "cover_alt": "The honest truth about passive income for financial independence",
+  "noindex": true
 }

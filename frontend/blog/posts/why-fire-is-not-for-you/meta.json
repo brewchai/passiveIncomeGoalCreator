@@ -10,5 +10,6 @@
   ],
   "cover": "why-fire-is-not-for-you.webp",
   "featured": true,
-  "cover_alt": "Why the FIRE movement might not be right for you"
+  "cover_alt": "Why the FIRE movement might not be right for you",
+  "noindex": true
 }

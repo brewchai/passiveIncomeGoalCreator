@@ -9,5 +9,6 @@
     "mindset"
   ],
   "featured": false,
-  "cover_alt": "Do you actually need to retire early to feel free"
+  "cover_alt": "Do you actually need to retire early to feel free",
+  "noindex": true
 }
