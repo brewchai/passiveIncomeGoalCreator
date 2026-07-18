@@ -123,6 +123,27 @@
       "url": "/blog/can-a-major-illness-end-lean-fire"
     },
     {
+      "slug": "lean-fire-to-regular-fire",
+      "title": "Why I Want to Go From Lean FIRE to Regular FIRE (and How I Plan To)",
+      "subtitle": "Two ideas that changed how I think about money and time, and the plan that follows from them",
+      "description": "Once your investments grow past a point, compounding does more than saving ever can. Here is why I want to move from Lean FIRE to Regular FIRE, and how I plan to get there without trading my time for a salary.",
+      "date": "2026-07-15",
+      "date_modified": "2026-07-15",
+      "cover": "/blog/posts/lean-fire-to-regular-fire/lean-fire-to-regular-fire.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "cover_alt": "Thinking about moving from Lean FIRE to Regular FIRE",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/lean-fire-to-regular-fire"
+    },
+    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -382,6 +403,27 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "lean-fire-to-regular-fire",
+      "title": "Why I Want to Go From Lean FIRE to Regular FIRE (and How I Plan To)",
+      "subtitle": "Two ideas that changed how I think about money and time, and the plan that follows from them",
+      "description": "Once your investments grow past a point, compounding does more than saving ever can. Here is why I want to move from Lean FIRE to Regular FIRE, and how I plan to get there without trading my time for a salary.",
+      "date": "2026-07-15",
+      "date_modified": "2026-07-15",
+      "cover": "/blog/posts/lean-fire-to-regular-fire/lean-fire-to-regular-fire.webp",
+      "tags": [
+        "lean-fire",
+        "fire-planning",
+        "early-retirement",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "cover_alt": "Thinking about moving from Lean FIRE to Regular FIRE",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/lean-fire-to-regular-fire"
+    },
+    {
       "slug": "calculating-fire-number",
       "title": "How to Calculate Your FIRE Number",
       "subtitle": "A practical walkthrough of the 4% rule, the India 33× rule, and how to personalize your number",
@@ -401,5 +443,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-16T11:37:55.583474Z"
+  "_generated_at": "2026-07-18T09:40:38.471210Z"
 }
