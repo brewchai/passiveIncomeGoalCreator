@@ -41,6 +41,27 @@
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
+      "slug": "fire-in-india-how-many-crores",
+      "title": "How Many Crores to FIRE in India? Honest Math From a Guy Who Did It at 33",
+      "subtitle": "The personalized walkthrough nobody gives you: parents, city tiers, kids, 33x, and the 2040 rupee trap",
+      "description": "How many crores do you actually need to FIRE in India? Honest math from someone who reached financial independence at 33: the 33x rule, crore tables by monthly spend, parents, tier 1 vs tier 2, kids, and the 2040 inflation trap.",
+      "date": "2026-07-19",
+      "date_modified": "2026-07-19",
+      "cover": "/blog/posts/fire-in-india-how-many-crores/fire-in-india-how-many-crores.webp",
+      "tags": [
+        "fire-india",
+        "lean-fire",
+        "fire-planning",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "cover_alt": "How many crores do you need to FIRE in India, weighing 1 to 6 crore on a Pune street",
+      "order": 2.5,
+      "noindex": false,
+      "url": "/blog/fire-in-india-how-many-crores"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -264,6 +285,27 @@
       "url": "/blog/what-is-LEAN-FIRE"
     },
     {
+      "slug": "fire-in-india-how-many-crores",
+      "title": "How Many Crores to FIRE in India? Honest Math From a Guy Who Did It at 33",
+      "subtitle": "The personalized walkthrough nobody gives you: parents, city tiers, kids, 33x, and the 2040 rupee trap",
+      "description": "How many crores do you actually need to FIRE in India? Honest math from someone who reached financial independence at 33: the 33x rule, crore tables by monthly spend, parents, tier 1 vs tier 2, kids, and the 2040 inflation trap.",
+      "date": "2026-07-19",
+      "date_modified": "2026-07-19",
+      "cover": "/blog/posts/fire-in-india-how-many-crores/fire-in-india-how-many-crores.webp",
+      "tags": [
+        "fire-india",
+        "lean-fire",
+        "fire-planning",
+        "personal-story"
+      ],
+      "featured": true,
+      "pinned": false,
+      "cover_alt": "How many crores do you need to FIRE in India, weighing 1 to 6 crore on a Pune street",
+      "order": 2.5,
+      "noindex": false,
+      "url": "/blog/fire-in-india-how-many-crores"
+    },
+    {
       "slug": "is-lean-fire-right-for-you",
       "title": "Is Lean FIRE Right For You?",
       "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
@@ -443,5 +485,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-18T09:40:38.471210Z"
+  "_generated_at": "2026-07-19T09:58:12.252945Z"
 }

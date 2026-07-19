@@ -1,0 +1,44 @@
+{
+  "title": "How Many Crores to FIRE in India? Honest Math From a Guy Who Did It at 33",
+  "meta_title": "How Many Crores to FIRE in India? Honest Math From a Guy Who Did It at 33",
+  "subtitle": "The personalized walkthrough nobody gives you: parents, city tiers, kids, 33x, and the 2040 rupee trap",
+  "description": "How many crores do you actually need to FIRE in India? Honest math from someone who reached financial independence at 33: the 33x rule, crore tables by monthly spend, parents, tier 1 vs tier 2, kids, and the 2040 inflation trap.",
+  "date": "2026-07-19",
+  "date_modified": "2026-07-19",
+  "cover": "fire-in-india-how-many-crores.webp",
+  "tags": [
+    "fire-india",
+    "lean-fire",
+    "fire-planning",
+    "personal-story"
+  ],
+  "featured": true,
+  "order": 2.5,
+  "faqs": [
+    {
+      "question": "How many crores do you need to FIRE in India?",
+      "answer": "It depends almost entirely on your monthly spend. At the safer 33x multiple, a couple spending ₹1 lakh a month needs about ₹4 crore, ₹1.5 lakh a month needs about ₹6 crore, and ₹2 lakh a month needs about ₹8 crore, all in today's rupees. Parents, children, and a tier 1 city without a paid off home all push the number higher."
+    },
+    {
+      "question": "Should Indians use 25x or 33x for their FIRE number?",
+      "answer": "Use 30x to 40x, and I personally plan at 33x. The American 25x rule assumes lower inflation, a century of deep market history, and a state safety net. India runs hotter inflation near 6%, has a shorter market record, and leaves healthcare and education largely private, so the bigger cushion earns its keep."
+    },
+    {
+      "question": "How do you account for supporting parents in a FIRE plan?",
+      "answer": "Treat parent support as a normal expense line, so multiply the annual amount you give them by 33, which means ₹25,000 a month adds about ₹1 crore to your corpus. On top of that, buy them health insurance while they are still insurable, or hold a dedicated medical buffer of ₹30 lakh to ₹50 lakh if they are not."
+    },
+    {
+      "question": "Do you need a bigger corpus in a tier 1 city?",
+      "answer": "Yes, unless your home there is already fully paid off. Rent is what breaks tier 1 FIRE math, since a decent flat costs ₹60,000 to ₹1 lakh a month in Mumbai or Bangalore against ₹25,000 to ₹35,000 in a tier 2 city. With the home paid off, a tier 1 corpus lands within roughly 10% to 15% of a tier 2 corpus that includes rent."
+    },
+    {
+      "question": "Should I calculate my FIRE number in today's rupees or future rupees?",
+      "answer": "Either works, and mixing them is the mistake. In today's rupees, take 33x of current annual spend and pair it with inflation adjusted returns. In future rupees, inflate your spending first, at 6% for 14 years prices roughly multiply by 2.26, and pair that with full nominal returns. Both give the same answer in different clothes."
+    },
+    {
+      "question": "How much does raising a child change the FIRE number in India?",
+      "answer": "Plan for it as its own tier. Researched ranges put private schooling at ₹50,000 to ₹1.5 lakh a year for regular schools and ₹4 lakh to ₹15 lakh for international ones, with fees inflating 6% to 12% annually, and a commonly cited total of ₹1.5 crore to ₹2 crore per child from birth through a degree in today's rupees."
+    }
+  ],
+  "cover_alt": "How many crores do you need to FIRE in India, weighing 1 to 6 crore on a Pune street"
+}
