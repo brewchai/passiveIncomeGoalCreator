@@ -1,14 +1,25 @@
 /* Interactive widgets for /blog/fire-in-india-how-many-crores
    Vanilla JS, no dependencies. State persists in localStorage.
-   The article remains fully readable with JS disabled. */
+   The article remains fully readable with JS disabled.
+   The multiplier is fixed at 33x, which is the article's stated stance. */
 (function () {
   'use strict';
 
-  var STORE_KEY = 'bffFireIndia_v1';
+  var STORE_KEY = 'bffFireIndia_v2';
   var LAKH = 100000;
   var CRORE = 10000000;
-  var KID_COST = { budget: 50 * LAKH, middle: 1 * CRORE, premium: 2 * CRORE };
+  var MULT = 33;
+  var KID_COST = { local: 50 * LAKH, premium: 1 * CRORE, international: 2 * CRORE };
+  var KID_LABEL = { local: 'solid local private', premium: 'premium private', international: 'international' };
   var PARENT_BUFFER = 40 * LAKH;
+  var CITY_NOTE = {
+    t1rent: 'Honest nudge: make sure the monthly spend you enter later truly includes tier 1 rent, which is usually ₹60,000 or more.',
+    t1own: 'With the home paid off, your corpus lands close to a tier 2 number. Make sure society charges and maintenance still sit inside your monthly spend.',
+    t2rent: 'The sweet spot for most FIRE plans. Keep the rent inside your monthly spend.',
+    t2own: 'Strong position. Keep society charges, maintenance, and property tax inside your monthly spend.',
+    t3: 'Your costs will be the lowest here. Be honest about healthcare access and whether you will actually enjoy living there year round.',
+    abroad: 'Run this article in rupees anyway, and read my Southeast Asia breakdown for the abroad specifics.'
+  };
 
   var state = load();
 
@@ -40,11 +51,9 @@
 
   /* ---------- the math contract ---------- */
   function parts() {
-    var mult = state.mult || 0;
     var spend = state.spend || 0;
-    var base = spend * 12 * mult;
-    var parentsAnnual = (state.parentsSupport || 0) * 12;
-    var parents = parentsAnnual * mult;
+    var base = spend * 12 * MULT;
+    var parents = (state.parentsSupport || 0) * 12 * MULT;
     var buffer = state.parentsInsurable === 'no' ? PARENT_BUFFER : 0;
     var kids = 0;
     if (state.kidsCount > 0 && state.kidsTier) {
@@ -58,15 +67,14 @@
   /* ---------- completion (forced revisit) ---------- */
   function missing() {
     var out = [];
-    if (!state.mult) out.push(['w-mult', 'your multiplier']);
-    if (!(state.spend > 0)) out.push(['w-spend', 'your monthly spend']);
     if (!state.city) out.push(['w-city', 'your city choice']);
+    if (!state.housing || (state.housing === 'buy' && !(state.houseBudget > 0)))
+      out.push(['w-house', 'your housing section']);
+    if (!(state.spend > 0)) out.push(['w-spend', 'your monthly spend']);
     if (state.parentsSupport === undefined || !state.parentsInsurable)
       out.push(['w-parents', 'your parents section']);
     if (state.kidsCount === undefined || (state.kidsCount > 0 && !state.kidsTier))
       out.push(['w-kids', 'your kids section']);
-    if (!state.housing || (state.housing === 'buy' && !(state.houseBudget > 0)))
-      out.push(['w-house', 'your housing section']);
     return out;
   }
 
@@ -80,10 +88,8 @@
   }
 
   function renderAll() {
-    markButtons('w-mult', 'mult', state.mult);
     markButtons('w-city', 'city', state.city);
     markButtons('w-parents', 'insurable', state.parentsInsurable);
-    markButtons('w-kids', 'kids', state.kidsCount);
     markButtons('w-kids', 'tier', state.kidsTier);
     markButtons('w-house', 'housing', state.housing);
 
@@ -99,6 +105,9 @@
     if (psEl && document.activeElement !== psEl && state.parentsSupport !== undefined)
       psEl.value = state.parentsSupport;
 
+    var kidsSel = document.getElementById('kids-select');
+    if (kidsSel && state.kidsCount !== undefined) kidsSel.value = String(state.kidsCount);
+
     var hbWrap = document.getElementById('house-budget-wrap');
     if (hbWrap) hbWrap.style.display = state.housing === 'buy' ? 'block' : 'none';
     var hbEl = document.getElementById('house-input');
@@ -109,10 +118,7 @@
     if (tierWrap) tierWrap.style.display = state.kidsCount > 0 ? 'block' : 'none';
 
     var cityNote = document.getElementById('city-note');
-    if (cityNote) cityNote.textContent =
-      state.city === 't1rent'
-        ? 'Honest nudge: make sure the monthly spend you entered truly includes tier 1 rent, which is usually ₹60,000 or more.'
-        : '';
+    if (cityNote) cityNote.textContent = CITY_NOTE[state.city] || '';
 
     renderReveal();
   }
@@ -133,11 +139,11 @@
     }
     var p = parts();
     var rows = [
-      ['Your life at ' + state.mult + 'x', p.base],
+      ['Your life at 33x', p.base],
       ['Supporting your parents', p.parents]
     ];
     if (p.buffer) rows.push(['Parent medical buffer', p.buffer]);
-    if (p.kids) rows.push([state.kidsCount + (state.kidsCount > 1 ? ' kids' : ' kid') + ' (' + state.kidsTier + ')', p.kids]);
+    if (p.kids) rows.push([state.kidsCount + (state.kidsCount > 1 ? ' kids' : ' kid') + ', ' + KID_LABEL[state.kidsTier] + ' education', p.kids]);
     if (p.house) rows.push(['The house, outside the corpus', p.house]);
 
     var table = rows.map(function (r) {
@@ -159,6 +165,7 @@
       var s = document.getElementById('spend-input'); if (s) s.value = '';
       var pi = document.getElementById('parents-input'); if (pi) pi.value = '';
       var hi = document.getElementById('house-input'); if (hi) hi.value = '';
+      var ks = document.getElementById('kids-select'); if (ks) ks.value = '';
       renderAll();
     });
   }
@@ -183,20 +190,21 @@
 
   function init() {
     if (!document.getElementById('w-reveal')) return;
-    onClick('w-mult', 'mult', function (v) { set('mult', parseInt(v, 10)); });
-    onInput('spend-input', function (v) { set('spend', v); });
     onClick('w-city', 'city', function (v) { set('city', v); });
+    onClick('w-house', 'housing', function (v) { set('housing', v); });
+    onInput('house-input', function (v) { set('houseBudget', v); });
+    onInput('spend-input', function (v) { set('spend', v); });
     onInput('parents-input', function (v) { set('parentsSupport', v === undefined ? undefined : v); });
     onClick('w-parents', 'insurable', function (v) { set('parentsInsurable', v); });
-    onClick('w-kids', 'kids', function (v) {
-      var n = parseInt(v, 10);
+    var kidsSel = document.getElementById('kids-select');
+    if (kidsSel) kidsSel.addEventListener('change', function () {
+      if (kidsSel.value === '') return;
+      var n = parseInt(kidsSel.value, 10);
       state.kidsCount = n;
       if (n === 0) delete state.kidsTier;
       save(); renderAll();
     });
     onClick('w-kids', 'tier', function (v) { set('kidsTier', v); });
-    onClick('w-house', 'housing', function (v) { set('housing', v); });
-    onInput('house-input', function (v) { set('houseBudget', v); });
     renderAll();
   }
 
