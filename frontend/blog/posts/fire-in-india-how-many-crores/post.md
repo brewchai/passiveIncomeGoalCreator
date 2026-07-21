@@ -120,21 +120,9 @@ If owning a home matters to you, decide up front whether the house lives inside 
 
 ---
 
-## The Crore Tables
+## Your Real Monthly Spend Is the Whole Game
 
-With the 33x logic in place, here is the honest table in today's rupees. Find your true monthly spend as a couple and read across.
-
-| Monthly spend | Annual spend | 25x (US rule) | 33x (safer for India) |
-|---|---|---|---|
-| ₹75,000 | ₹9 lakh | ₹2.25 crore | ₹3 crore |
-| ₹1 lakh | ₹12 lakh | ₹3 crore | ₹4 crore |
-| ₹1.5 lakh | ₹18 lakh | ₹4.5 crore | ₹6 crore |
-| ₹2 lakh | ₹24 lakh | ₹6 crore | ₹8 crore |
-| ₹3 lakh | ₹36 lakh | ₹9 crore | ₹12 crore |
-
-Two things to notice. First, the popular ₹3 crore to ₹5 crore range you see quoted everywhere is real, and it corresponds to a fairly lean couple spending ₹75,000 to ₹1.25 lakh a month. Second, the jump between 25x and 33x is enormous in absolute rupees, which is exactly why the multiplier debate matters more here than any other single choice.
-
-These tables assume the corpus carries everything. Your parents and your kids will change the picture, so keep reading before you circle your number.
+Everything from here builds on a single number, which is what your life actually costs each month as a couple. Get this one honest and the rest is just arithmetic. Get it wrong and no multiplier on earth will save the plan. The mechanic itself is boring on purpose, because your annual spend multiplied by 33 forms the core of your corpus, and the box below handles that part for you. The real work, and the reason most plans quietly fail, is being ruthless about what your monthly spend genuinely includes.
 
 <div class="fire-widget" id="w-spend">
 <p class="fw-label">Your turn</p>
