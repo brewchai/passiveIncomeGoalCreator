@@ -6,6 +6,30 @@ Every article on this topic hands you a number in the first paragraph, and that 
 
 Here is my one condition though. If you plan to actually act on this number, do not skip ahead. Every section below changes the answer, and the people who get burned are always the ones who grabbed a headline figure and never walked through the parts that applied to them. This is a personalization exercise, and there are no shortcuts in it.
 
+To hold you to that, this article is interactive. As you read, you will find small boxes asking for your own numbers and choices, and by the time you reach the end, your own personal FIRE number will be waiting for you, built from your answers. Your inputs stay in your browser and go nowhere else.
+
+<style>
+.fire-widget { background: var(--card-background); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.35rem 1.5rem; margin: 2.25rem 0; box-shadow: var(--shadow-sm); }
+.fw-label { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 0.6rem; }
+.fire-widget p { margin: 0.5rem 0; font-size: 1.02rem; }
+.fire-widget .fw-q { color: var(--text-primary); font-weight: 600; }
+.fire-widget button { border: 1px solid var(--border-color); background: transparent; color: var(--text-primary); border-radius: 999px; padding: 0.5rem 1.1rem; margin: 0.3rem 0.4rem 0.3rem 0; font-size: 0.98rem; cursor: pointer; transition: all 0.15s; }
+.fire-widget button.on { background: var(--gradient); color: #fff; border-color: transparent; }
+.fire-widget input[type="text"], .fire-widget input[type="number"] { background: transparent; border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); padding: 0.55rem 0.9rem; font-size: 1.05rem; width: 12rem; max-width: 100%; }
+.fw-echo { color: var(--text-secondary); font-size: 0.95rem; min-height: 1.2rem; }
+.fw-total { font-size: 2.6rem; font-weight: 800; margin: 0.25rem 0 0; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.fw-sub { color: var(--text-secondary); margin-top: 0; }
+.fw-table { width: 100%; margin: 1rem 0; font-size: 0.98rem; }
+.fw-table td { padding: 0.45rem 0.25rem; border-bottom: 1px solid var(--border-color); }
+.fw-table td:last-child { text-align: right; font-weight: 600; }
+.fw-note { color: var(--text-secondary); font-size: 0.9rem; }
+.fw-note button { font-size: 0.85rem; padding: 0.3rem 0.8rem; }
+#w-reveal a { color: var(--accent-color); }
+.fire-widget select { background: var(--card-background); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); padding: 0.55rem 0.9rem; font-size: 1.02rem; }
+.fire-widget ul { margin: 0.6rem 0 0.9rem; padding-left: 1.3rem; }
+.fire-widget ul li { margin: 0.25rem 0; font-size: 0.98rem; }
+</style>
+
 ---
 
 ## Why 25x Does Not Work Here, and Why I Use 33x
@@ -14,7 +38,7 @@ The famous American rule says you need 25 times your annual expenses, because th
 
 Our inflation runs hotter. India has averaged closer to 6% while the US research assumed something nearer 3%, and inflation is the silent tax on every retirement plan. Our market history is also shorter and thinner, so leaning on 100 years of American stock data to plan an Indian retirement is borrowed confidence. And most importantly, there is no meaningful safety net waiting to catch you here, which brings me to the part of this conversation that almost nobody writes down.
 
-I go deeper on the general math in my [guide to calculating your FIRE number](/blog/calculating-fire-number), so in this article I will stay focused on what makes the Indian answer different.
+I go deeper on the general math in my [guide to calculating your FIRE number](/blog/calculating-fire-number), so in this article I will stay focused on what makes the Indian answer different. One housekeeping note before we move on. Every interactive box below runs on 33x, because that is the version of this math I actually trust. If you prefer 30x or 40x, you can redo the sums on paper, and the walkthrough itself does not change.
 
 ---
 
@@ -46,6 +70,56 @@ One honest note on those figures. That ₹1 lakh to ₹1.7 lakh covers a couple,
 
 ---
 
+## Tier 1 vs Tier 2: The Question Nobody Prices Honestly
+
+Here is my genuinely held view after living in New York, Pune, and Da Nang. The people chasing FIRE are rarely chasing a tier 1 life in the first place. The whole point of this movement is clarity, quiet, and time, and that kind of life is far easier to find in a tier 2 city than in the middle of Mumbai's hustle. Most of us want out of the noise, and the noise is precisely what tier 1 charges you a premium for.
+
+Tier 1 FIRE genuinely makes sense in a few cases. You already own a home there that is fully paid off. Your family and roots are there and leaving would cost you more in life than it saves in money. Or you are honestly aiming at a near Fat FIRE corpus and the city is part of the lifestyle you are buying.
+
+Now the math that surprises people. Rent is the single thing that breaks tier 1 FIRE. A decent 2 BHK runs ₹60,000 to ₹1 lakh a month in Mumbai or Bangalore against ₹25,000 to ₹35,000 in Pune or Indore. Strip rent out of both columns and the remaining tier 1 premium on food, services, and society charges is roughly 15% to 25%, which lands surprisingly close to what a tier 2 renter pays in total. So a tier 1 corpus with a home already paid off comes out almost the same as a tier 2 corpus with rent included, usually within 10% to 15%.
+
+Put simply, a flat that is fully paid off in Mumbai buys you a tier 2 cost of living in a tier 1 city. If you do not own that flat, the honest move is to either build a meaningfully bigger corpus or point your FIRE plan at a quieter city.
+
+<div class="fire-widget" id="w-city">
+<p class="fw-label">Your turn</p>
+<p class="fw-q">Where will your FIRE life actually happen?</p>
+<p>
+<button type="button" data-city="t1rent">Tier 1, renting</button>
+<button type="button" data-city="t1own">Tier 1, home paid off</button>
+<button type="button" data-city="t2rent">Tier 2, renting</button>
+<button type="button" data-city="t2own">Tier 2, home paid off</button>
+<button type="button" data-city="t3">Tier 3 or my hometown</button>
+<button type="button" data-city="abroad">Outside India</button>
+</p>
+<p class="fw-echo" id="city-note"></p>
+</div>
+
+---
+
+## What I Left Out of My Number, and What It Taught Me
+
+One confession, so you can learn from it rather than repeat it. My FIRE number never included buying a home. I built a corpus that funds my living expenses, and home ownership stayed outside the plan, which is my biggest open item and honestly my biggest regret so far. It is also exactly why I am now working toward a bigger number, which I wrote about in [why I want to go from Lean FIRE to Regular FIRE](/blog/lean-fire-to-regular-fire).
+
+If owning a home matters to you, decide up front whether the house lives inside your corpus or beside it as a separate goal, and size the plan accordingly. A ₹1 crore or ₹2 crore home held outside your corpus is effectively a second FIRE number, and discovering that after you retire is the wrong time.
+
+<div class="fire-widget" id="w-house">
+<p class="fw-label">Your turn</p>
+<p class="fw-q">Will you rent for life, or does a home you own belong in your plan?</p>
+<p>
+<button type="button" data-housing="rent">Rent, it lives inside my monthly spend</button>
+<button type="button" data-housing="buy">Buy, without a loan</button>
+</p>
+<div id="house-budget-wrap" style="display:none">
+<p class="fw-q">What would that home roughly cost today?</p>
+<p>₹ <input type="text" id="house-input" inputmode="numeric" placeholder="20000000"></p>
+<p class="fw-echo">Enter the full amount in rupees, so ₹2 crore is 20000000.</p>
+</div>
+</div>
+
+---
+
+---
+
 ## The Crore Tables
 
 With the 33x logic in place, here is the honest table in today's rupees. Find your true monthly spend as a couple and read across.
@@ -60,19 +134,31 @@ With the 33x logic in place, here is the honest table in today's rupees. Find yo
 
 Two things to notice. First, the popular ₹3 crore to ₹5 crore range you see quoted everywhere is real, and it corresponds to a fairly lean couple spending ₹75,000 to ₹1.25 lakh a month. Second, the jump between 25x and 33x is enormous in absolute rupees, which is exactly why the multiplier debate matters more here than any other single choice.
 
-These tables assume the corpus carries everything. Housing and parents can change the picture significantly, so keep reading before you circle your number.
+These tables assume the corpus carries everything. Your parents and your kids will change the picture, so keep reading before you circle your number.
 
----
-
-## Tier 1 vs Tier 2: The Question Nobody Prices Honestly
-
-Here is my genuinely held view after living in New York, Pune, and Da Nang. The people chasing FIRE are rarely chasing a tier 1 life in the first place. The whole point of this movement is clarity, quiet, and time, and that kind of life is far easier to find in a tier 2 city than in the middle of Mumbai's hustle. Most of us want out of the noise, and the noise is precisely what tier 1 charges you a premium for.
-
-Tier 1 FIRE genuinely makes sense in a few cases. You already own a home there that is fully paid off. Your family and roots are there and leaving would cost you more in life than it saves in money. Or you are honestly aiming at a near Fat FIRE corpus and the city is part of the lifestyle you are buying.
-
-Now the math that surprises people. Rent is the single thing that breaks tier 1 FIRE. A decent 2 BHK runs ₹60,000 to ₹1 lakh a month in Mumbai or Bangalore against ₹25,000 to ₹35,000 in Pune or Indore. Strip rent out of both columns and the remaining tier 1 premium on food, services, and society charges is roughly 15% to 25%, which lands surprisingly close to what a tier 2 renter pays in total. So a tier 1 corpus with a home already paid off comes out almost the same as a tier 2 corpus with rent included, usually within 10% to 15%.
-
-Put simply, a flat that is fully paid off in Mumbai buys you a tier 2 cost of living in a tier 1 city. If you do not own that flat, the honest move is to either build a meaningfully bigger corpus or point your FIRE plan at a quieter city.
+<div class="fire-widget" id="w-spend">
+<p class="fw-label">Your turn</p>
+<p class="fw-q">What does your life honestly cost per month, as a couple, in rupees?</p>
+<p>Before you type anything, check your number against this list, because the plans that fail are almost always the ones that quietly forgot 2 or 3 of these:</p>
+<ul>
+<li>Rent, or society charges and maintenance if you own</li>
+<li>Utilities, internet, and phones</li>
+<li>Groceries and eating out</li>
+<li>Transport, fuel, cabs, and vehicle upkeep</li>
+<li>Health insurance premiums for both of you, plus routine medical costs</li>
+<li>Term life insurance premiums</li>
+<li>Domestic help</li>
+<li>Gym, sports, and hobbies</li>
+<li>Travel, including the flights you take to family every year</li>
+<li>Festivals, gifting, and the weddings you attend</li>
+<li>Subscriptions and entertainment</li>
+<li>Clothes, devices, and replacements</li>
+<li>An honest buffer for surprise repairs and deposits</li>
+</ul>
+<p>Leave your parents and your kids out of this number. They get their own boxes later in the article.</p>
+<p>₹ <input type="text" id="spend-input" inputmode="numeric" placeholder="150000"> per month</p>
+<p class="fw-echo" id="spend-echo"></p>
+</div>
 
 ---
 
@@ -98,6 +184,17 @@ I learned this one the hard way, because my family funded a full cancer treatmen
 
 For the percentage minded, the same math viewed differently: meaningful parent support tends to add somewhere between 17% and 33% to your total corpus. Most people find the expense line version easier to act on, and both arrive at the same place.
 
+<div class="fire-widget" id="w-parents">
+<p class="fw-label">Your turn</p>
+<p class="fw-q">How much will you send or spend on your parents each month? Enter 0 if this truly does not apply to you.</p>
+<p>₹ <input type="text" id="parents-input" inputmode="numeric" placeholder="25000"> per month</p>
+<p class="fw-q">Are your parents still insurable today?</p>
+<p>
+<button type="button" data-insurable="yes">Yes, insurable</button>
+<button type="button" data-insurable="no">No, we hold the risk</button>
+</p>
+</div>
+
 ---
 
 ## FIRE in India Is a Family Decision
@@ -110,6 +207,29 @@ This might be the most important section in this article, and it contains no for
 
 **And then there are kids.** I will be straight with you here, because my rule on this site is to only speak firmly from lived experience. I do not have children, and I have only just started studying this seriously for my own future. So treat what follows as careful research rather than experience. Regular private schools in India run roughly ₹50,000 to ₹1.5 lakh a year once you count uniforms, transport, and activities. International schools run from about ₹1.5 lakh a year at the budget end, ₹4 lakh to ₹7 lakh for the middle tier, and ₹8 lakh to ₹15 lakh or more at the premium end. The sharpest detail is that school fees in metros have been rising 6% to 12% a year, which outruns general inflation, so a child's education inflates faster than the rest of your plan. A commonly cited planning figure for private everything, from birth through a degree, is ₹1.5 crore to ₹2 crore per child in today's rupees. If kids are in your future, your FIRE number needs a serious tier of its own for them, and anyone who tells you otherwise has not looked at a fee receipt lately.
 
+<div class="fire-widget" id="w-kids">
+<p class="fw-label">Your turn</p>
+<p class="fw-q">How many kids are in your plan?</p>
+<p><select id="kids-select">
+<option value="" selected disabled>Choose a number</option>
+<option value="0">None</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select></p>
+<div id="kids-tier-wrap" style="display:none">
+<p class="fw-q">And what quality of education are you planning for?</p>
+<p>
+<button type="button" data-tier="local">Solid local private</button>
+<button type="button" data-tier="premium">Premium private</button>
+<button type="button" data-tier="international">International</button>
+</p>
+<p class="fw-echo">The cost of your choice appears in your final breakdown, using researched planning estimates in today's rupees.</p>
+</div>
+</div>
+
 ---
 
 ## Where Your Money Sits Does Not Change the Math
@@ -120,19 +240,19 @@ People sometimes assume a US portfolio breaks the Indian math, and in practice t
 
 ---
 
-## What I Left Out of My Number, and What It Taught Me
-
-One confession, so you can learn from it rather than repeat it. My FIRE number never included buying a home. I built a corpus that funds my living expenses, and home ownership stayed outside the plan, which is my biggest open item and honestly my biggest regret so far. It is also exactly why I am now working toward a bigger number, which I wrote about in [why I want to go from Lean FIRE to Regular FIRE](/blog/lean-fire-to-regular-fire).
-
-If owning a home matters to you, decide up front whether the house lives inside your corpus or beside it as a separate goal, and size the plan accordingly. A ₹1 crore or ₹2 crore home held outside your corpus is effectively a second FIRE number, and discovering that after you retire is the wrong time.
-
----
-
 ## So, How Many Crores Do You Need?
 
-Walk it in order, because each step feeds the next. Find your honest couple level monthly spend. Choose your city tier with clear eyes about what you actually want from this life. Multiply the annual number by 33. Add your parents as a real expense line plus a medical buffer. Decide where the house lives. Stress test the whole thing against the 2040 version of prices so nominal numbers never scare you off course. And make sure the person you share your life with has genuinely signed up for the same plan.
+If you answered every box along the way, your own number is waiting for you right here. If you skipped some, this box will send you back, because that was the deal we made at the top.
 
-For most couples that lands between ₹3 crore and ₹8 crore in today's rupees, with parents, kids, and tier 1 ambitions pushing it higher. Run your own inputs through the [India FIRE calculator](/tools/fire-number/), and if you want to see what this looks like when a real person actually pulls the trigger, my whole journey from [$40k of student debt to financial independence at 33](/blog/40k-debt-to-lean-fire-at-33) is on this site, numbers and all.
+<div class="fire-widget" id="w-reveal">
+<p class="fw-label">Your personal FIRE number</p>
+<p>Answer the boxes through the article and your number will appear here.</p>
+<noscript><p>This interactive number needs JavaScript. Without it, use the tables above with the 33x rule, or the <a href="/tools/fire-number/">India FIRE calculator</a>.</p></noscript>
+</div>
+
+For most couples this lands between ₹3 crore and ₹8 crore in today's rupees, with parents, kids, and tier 1 ambitions pushing it higher. Whatever your number turned out to be, remember that it is a target in today's rupees, it already carries its own inflation protection through the 33x logic, and it will only stay honest if you revisit it once a year as your life changes. And if you want to see what this looks like when a real person actually pulls the trigger, my whole journey from [$40k of student debt to financial independence at 33](/blog/40k-debt-to-lean-fire-at-33) is on this site, numbers and all.
+
+<script defer src="/js/fire-india.js"></script>
 
 ---
 
