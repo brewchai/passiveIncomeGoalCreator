@@ -58,7 +58,10 @@
       '.bff-toast-link:hover{text-decoration:underline;}' +
       '.bff-toast-x{position:absolute;top:8px;right:10px;border:none;background:transparent;color:var(--text-muted);' +
       'font-size:1.15rem;line-height:1;cursor:pointer;padding:.2rem;}' +
-      '.bff-toast-x:hover{color:var(--text-primary);}';
+      '.bff-toast-x:hover{color:var(--text-primary);}' +
+      '.bff-toast-progress{position:absolute;left:0;bottom:0;width:100%;height:3px;overflow:hidden;border-radius:0 0 14px 14px;}' +
+      '.bff-toast-progress i{display:block;height:100%;width:100%;background:var(--gradient);transform-origin:left center;transform:scaleX(1);}' +
+      '@keyframes bffDeplete{from{transform:scaleX(1);}to{transform:scaleX(0);}}';
     var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
   }
 
@@ -71,7 +74,8 @@
       '<button class="bff-toast-x" aria-label="Dismiss these quotes">&times;</button>' +
       '<span class="bff-toast-kicker">From the blog</span>' +
       '<p class="bff-toast-q"></p>' +
-      '<a class="bff-toast-link" href="#"></a>';
+      '<a class="bff-toast-link" href="#"></a>' +
+      '<div class="bff-toast-progress"><i></i></div>';
     el.querySelector('.bff-toast-x').addEventListener('click', dismiss);
     // clicking the link lets navigation happen; also stop nagging afterwards
     el.querySelector('.bff-toast-link').addEventListener('click', function () {
@@ -91,6 +95,14 @@
 
     el.classList.add('in');
     if (!reduced) { el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse'); }
+
+    // stories-style countdown bar that depletes over the visible window
+    var fill = el.querySelector('.bff-toast-progress i');
+    if (fill && !reduced) {
+      fill.style.animation = 'none';
+      void fill.offsetWidth;
+      fill.style.animation = 'bffDeplete ' + CFG.visible + 'ms linear forwards';
+    }
 
     shows++;
     clearTimeout(hideTimer);
