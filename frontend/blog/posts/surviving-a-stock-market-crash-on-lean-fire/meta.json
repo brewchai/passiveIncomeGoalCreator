@@ -5,7 +5,7 @@
   "description": "What really happens to lean FIRE when the stock market crashes? The honest version, using the guardrails withdrawal strategy: you become your own boss and cut your own salary in a bad year. Includes an interactive builder in dollars or rupees.",
   "date": "2026-07-22",
   "date_modified": "2026-07-22",
-  "cover": "",
+  "cover": "surviving-a-stock-market-crash-on-lean-fire.webp",
   "tags": [
     "lean-fire",
     "market-crash",
@@ -13,7 +13,7 @@
     "withdrawal-strategy",
     "sequence-risk"
   ],
-  "featured": false,
+  "featured": true,
   "faqs": [
     {
       "question": "What happens to your FIRE plan if the stock market crashes right after you retire?",
@@ -43,5 +43,6 @@
       "question": "How does sequence of returns risk affect early retirement?",
       "answer": "It means the order of your returns matters as much as the average. Bad years early in retirement hurt far more than the same years late, because early losses come out of a portfolio you are actively drawing down. Early retirees are exposed to it for longer than traditional retirees, which is why dynamic strategies like guardrails and a cash buffer are close to essential for FIRE."
     }
-  ]
+  ],
+  "cover_alt": "Man in a red sweater calmly signing his own pay cut letter at a desk while a red stock market crash chart falls in the window behind him"
 }
