@@ -241,6 +241,28 @@
       "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
+    },
+    {
+      "slug": "surviving-a-stock-market-crash-on-lean-fire",
+      "title": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
+      "subtitle": "The guardrails strategy in plain English, plus a builder that shows the exact pay cut a crash would hand you, in dollars or rupees",
+      "description": "What really happens to lean FIRE when the stock market crashes? The honest version, using the guardrails withdrawal strategy: you become your own boss and cut your own salary in a bad year. Includes an interactive builder in dollars or rupees.",
+      "date": "2026-07-22",
+      "date_modified": "2026-07-22",
+      "cover": "",
+      "tags": [
+        "lean-fire",
+        "market-crash",
+        "guardrails",
+        "withdrawal-strategy",
+        "sequence-risk"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/surviving-a-stock-market-crash-on-lean-fire"
     }
   ],
   "all": [
@@ -445,6 +467,28 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "surviving-a-stock-market-crash-on-lean-fire",
+      "title": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
+      "subtitle": "The guardrails strategy in plain English, plus a builder that shows the exact pay cut a crash would hand you, in dollars or rupees",
+      "description": "What really happens to lean FIRE when the stock market crashes? The honest version, using the guardrails withdrawal strategy: you become your own boss and cut your own salary in a bad year. Includes an interactive builder in dollars or rupees.",
+      "date": "2026-07-22",
+      "date_modified": "2026-07-22",
+      "cover": "",
+      "tags": [
+        "lean-fire",
+        "market-crash",
+        "guardrails",
+        "withdrawal-strategy",
+        "sequence-risk"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/surviving-a-stock-market-crash-on-lean-fire"
+    },
+    {
       "slug": "lean-fire-to-regular-fire",
       "title": "Why I Want to Go From Lean FIRE to Regular FIRE (and How I Plan To)",
       "subtitle": "Two ideas that changed how I think about money and time, and the plan that follows from them",
@@ -485,5 +529,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-07-21T18:14:38.957952Z"
+  "_generated_at": "2026-07-22T07:32:57.625390Z"
 }

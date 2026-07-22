@@ -1,0 +1,43 @@
+{
+  "title": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
+  "meta_title": "Surviving a Stock Market Crash on Lean FIRE: The Honest Version",
+  "subtitle": "The guardrails strategy in plain English, plus a builder that shows the exact pay cut a crash would hand you, in dollars or rupees",
+  "description": "What really happens to lean FIRE when the stock market crashes? The honest version, using the guardrails withdrawal strategy: you become your own boss and cut your own salary in a bad year. Includes an interactive builder in dollars or rupees.",
+  "date": "2026-07-22",
+  "date_modified": "2026-07-22",
+  "cover": "",
+  "tags": [
+    "lean-fire",
+    "market-crash",
+    "guardrails",
+    "withdrawal-strategy",
+    "sequence-risk"
+  ],
+  "featured": false,
+  "faqs": [
+    {
+      "question": "What happens to your FIRE plan if the stock market crashes right after you retire?",
+      "answer": "This is the most dangerous moment, because of sequence of returns risk. Selling shares to live while they are cheap does lasting damage that a later crash would not. The fix is to avoid selling into the crash by spending from a cash bucket, and to cut your withdrawal using guardrail rules you set in advance, so a bad first year forces a temporary pay cut rather than a permanent failure."
+    },
+    {
+      "question": "What is the guardrails withdrawal strategy?",
+      "answer": "It is a dynamic withdrawal method from Guyton and Klinger. You set a starting withdrawal, usually 4%, then draw an upper and a lower guardrail around it, typically 20% on each side. If your withdrawal rate rises past the upper rail because the portfolio fell, you cut spending 10%. If it falls below the lower rail because the portfolio grew, you raise spending 10%. Between the rails you change nothing."
+    },
+    {
+      "question": "Is the guardrails strategy better than the 4% rule?",
+      "answer": "For most early retirees, yes, because it reacts to reality. The plain 4% rule keeps paying the same inflation adjusted amount even during a deep crash, which is what actually drains a portfolio to zero in the worst historical runs. Guardrails trim spending in bad years and raise it in good ones, which lets you both survive crashes and enjoy more money when markets are kind."
+    },
+    {
+      "question": "How much do you cut your spending when the market crashes in early retirement?",
+      "answer": "Under standard guardrails, one 10% pay cut each time your withdrawal rate breaches the upper rail. A normal 20% correction usually triggers a single 10% trim. A severe crash near 50% can push you into a second annual trim if it drags on, which is exactly why a cash bucket and some discretionary slack matter so much for a lean plan."
+    },
+    {
+      "question": "Can lean FIRE survive a recession or a 50% market crash?",
+      "answer": "It can, but only if you built in the ability to flex. A single guardrail cut cannot offset a 50% crash on its own. Surviving one takes three things working together: a cash cushion so you avoid selling at the bottom, guardrail rules that trim spending, and enough discretionary spending that a 10% or 20% cut is uncomfortable rather than impossible."
+    },
+    {
+      "question": "How does sequence of returns risk affect early retirement?",
+      "answer": "It means the order of your returns matters as much as the average. Bad years early in retirement hurt far more than the same years late, because early losses come out of a portfolio you are actively drawing down. Early retirees are exposed to it for longer than traditional retirees, which is why dynamic strategies like guardrails and a cash buffer are close to essential for FIRE."
+    }
+  ]
+}
