@@ -24,7 +24,7 @@
     { q: 'I cleared $40,000 of debt in a single year, then poured that same discipline into investing.', title: 'From $40k Debt to Lean FIRE at 33', url: '/blog/40k-debt-to-lean-fire-at-33' }
   ];
 
-  var CFG = { first: 20000, visible: 9000, gap: 60000, maxShows: 5 };
+  var CFG = { first: 5000, visible: 9000, gap: 60000, maxShows: 5 };
   var DISMISS_KEY = 'bffQuoteToastDismissed';
 
   // guards: desktop only, not dismissed this session
@@ -42,7 +42,7 @@
 
   function injectStyles() {
     var css =
-      '.bff-toast{position:fixed;left:24px;bottom:24px;z-index:1200;width:340px;max-width:calc(100vw - 48px);' +
+      '.bff-toast{position:fixed;right:24px;bottom:24px;z-index:1200;width:340px;max-width:calc(100vw - 48px);' +
       'background:var(--card-background);border:1px solid var(--border-color);border-radius:14px;padding:1rem 1.15rem 1.05rem;' +
       'box-shadow:0 12px 34px rgba(0,0,0,.28);opacity:0;transform:translateY(16px);' +
       'transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1);pointer-events:none;}' +
