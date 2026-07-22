@@ -78,7 +78,7 @@ The genius is that you decide the rules in advance. When the crash actually land
 Enough theory. Build your own version and watch the exact pay cut a crash would hand you.
 
 <div class="fire-widget" id="w-setup">
-<p class="fw-label">Step 1 · Set your salary</p>
+<p class="fw-label">Step 1 · Set up your company</p>
 <p class="fw-q">Which currency do you think in?</p>
 <p>
 <button type="button" data-cur="usd">Dollars</button>
@@ -98,6 +98,7 @@ Enough theory. Build your own version and watch the exact pay cut a crash would 
 <div class="fw-rails" id="setup-out">
 <p class="fw-sub">Enter a portfolio above and your salary and guardrails appear here.</p>
 </div>
+<p class="fw-note" style="margin-top:1rem">This builder runs one what if at a time. If you want the full year by year simulation across real market history, I built a more detailed <a href="/tools/sequence-risk/">Sequence Risk Calculator</a> that stress tests your plan against decades of returns.</p>
 </div>
 
 <div class="fire-widget" id="w-stress">
