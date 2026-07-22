@@ -36,6 +36,10 @@
       "answer": "It can, but only if you built in the ability to flex. A single guardrail cut cannot offset a 50% crash on its own. Surviving one takes three things working together: a cash cushion so you avoid selling at the bottom, guardrail rules that trim spending, and enough discretionary spending that a 10% or 20% cut is uncomfortable rather than impossible."
     },
     {
+      "question": "What if the stock market falls for several years in a row?",
+      "answer": "Consecutive down years are rare. Since 1928 the US market has fallen 3 years in a row only twice and 4 years in a row once, during the Great Depression, while about 3 in 4 years finish positive. With a guardrails plan each down year can trigger another 10% pay cut, so a 3 year streak stacks to roughly a 27% smaller salary that then has to hold through the recovery. Plan for a 3 year decline plus a multi year climb back, keep 2 to 3 years of cash, and keep enough discretionary spending that stacked cuts land on comforts rather than essentials."
+    },
+    {
       "question": "How does sequence of returns risk affect early retirement?",
       "answer": "It means the order of your returns matters as much as the average. Bad years early in retirement hurt far more than the same years late, because early losses come out of a portfolio you are actively drawing down. Early retirees are exposed to it for longer than traditional retirees, which is why dynamic strategies like guardrails and a cash buffer are close to essential for FIRE."
     }

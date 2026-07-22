@@ -34,6 +34,7 @@
   if (state.currency === undefined) state.currency = 'usd';
   if (state.rate === undefined) state.rate = 4;      // percent
   if (state.move === undefined) state.move = 0;      // percent
+  if (state.years === undefined) state.years = 1;    // consecutive years the move repeats
 
   function load() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { return {}; } }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
@@ -80,30 +81,36 @@
     };
   }
 
-  function afterMove(m) {
+  // Run the move for N consecutive years. Each year the market moves, then the
+  // guardrail reassesses once, so a losing streak stacks pay cuts.
+  function simulate(m) {
+    var years = state.years || 1;
     var move = state.move / 100;
-    var p = m.portfolio * (1 + move);
-    if (p <= 0) p = 1;
-    var curRate = m.annual / p;
-    var action, newAnnual;
-    if (curRate >= m.upperRate) { action = 'cut'; newAnnual = m.annual * (1 - ADJUST); }
-    else if (curRate <= m.lowerRate) { action = 'raise'; newAnnual = m.annual * (1 + ADJUST); }
-    else { action = 'cruise'; newAnnual = m.annual; }
-    var newRate = newAnnual / p;
+    var p = m.portfolio, sal = m.annual, cuts = 0, raises = 0;
+    for (var i = 0; i < years; i++) {
+      p = p * (1 + move);
+      if (p <= 0) p = 1;
+      var rate = sal / p;
+      if (rate >= m.upperRate) { sal = sal * (1 - ADJUST); cuts++; }
+      else if (rate <= m.lowerRate) { sal = sal * (1 + ADJUST); raises++; }
+    }
     return {
-      portfolio: p, curRate: curRate, action: action,
-      newAnnual: newAnnual, newRate: newRate,
-      stillHigh: action === 'cut' && newRate > m.upperRate
+      portfolio: p, newAnnual: sal, cuts: cuts, raises: raises,
+      rawRate: m.annual / p,               // rate before any cut, for the gauge
+      finalRate: sal / p,
+      action: cuts > 0 ? 'cut' : (raises > 0 ? 'raise' : 'cruise'),
+      stillHigh: cuts > 0 && (sal / p) > m.upperRate,
+      cumDrop: 1 - (p / m.portfolio)
     };
   }
 
-  // Years for a portfolio down x to reclaim its old high at the regime growth rate.
-  function recoveryYears() {
-    if (state.move >= 0) return 0;
+  // Years for a fallen portfolio to reclaim its old high at the regime growth rate.
+  function recoveryYears(cumDrop) {
+    if (!(cumDrop > 0)) return 0;
     var g = REGIME[state.currency].growth / 100;
-    var drop = 1 + state.move / 100;      // e.g. 0.7 after a 30% fall
-    if (drop <= 0) drop = 0.01;
-    return Math.log(1 / drop) / Math.log(1 + g);
+    var remaining = 1 - cumDrop;
+    if (remaining <= 0) remaining = 0.01;
+    return Math.log(1 / remaining) / Math.log(1 + g);
   }
 
   /* ---------- rendering ---------- */
@@ -154,11 +161,13 @@
     var slider = document.getElementById('move-slider');
     if (slider && document.activeElement !== slider) slider.value = String(state.move);
     markButtons('w-stress', 'move', String(state.move));
+    markButtons('w-stress', 'years', String(state.years));
 
     var gauge = document.getElementById('gauge');
     var mark = document.getElementById('gauge-mark');
     var verdict = document.getElementById('verdict');
     var recover = document.getElementById('recover');
+    var hist = document.getElementById('hist');
     var letterWrap = document.getElementById('letter-wrap');
     var letterBody = document.getElementById('letter-body');
     var gut = document.getElementById('gut');
@@ -166,6 +175,7 @@
     if (!(m.portfolio > 0)) {
       if (verdict) verdict.textContent = 'Set your portfolio in step 1 first, then drag the market here.';
       if (recover) recover.textContent = '';
+      if (hist) hist.textContent = '';
       if (letterWrap) letterWrap.style.display = 'none';
       if (gut) gut.textContent = '';
       if (gauge) gauge.style.background = 'var(--border-color)';
@@ -173,22 +183,34 @@
       return;
     }
 
-    var r = afterMove(m);
+    var r = simulate(m);
+    var yrs = state.years;
+    var growth = REGIME[state.currency].growth;
 
-    // gauge domain: 0 to a bit above the cut rail
+    // gauge domain: 0 to a bit above the cut rail. Marker shows the raw rate
+    // reached before the guardrail cut, so a streak pushes deep into the red.
     var domainMax = m.upperRate * 1.9;
     var lowPct = (m.lowerRate / domainMax) * 100;
     var upPct = (m.upperRate / domainMax) * 100;
     if (gauge) gauge.style.background =
       'linear-gradient(90deg,#4a6fa5 0 ' + lowPct.toFixed(1) + '%,#3f9d6b ' + lowPct.toFixed(1) + '% ' + upPct.toFixed(1) + '%,#c0554e ' + upPct.toFixed(1) + '% 100%)';
     if (mark) {
-      var markPct = Math.max(0, Math.min(100, (r.curRate / domainMax) * 100));
+      var markPct = Math.max(0, Math.min(100, (r.rawRate / domainMax) * 100));
       mark.style.left = 'calc(' + markPct.toFixed(1) + '% - 2px)';
     }
 
     var oldM = monthly(m.annual), newM = monthly(r.newAnnual);
     var deltaMonthly = Math.abs(toDisplay(m.annual - r.newAnnual) / 12);
     var deltaStr = state.currency === 'inr' ? fmtINR(deltaMonthly) : fmtUSD(deltaMonthly);
+    var pctLower = Math.round((1 - r.newAnnual / m.annual) * 100);
+    var streakTxt = yrs === 1 ? 'that' : (state.move < 0 ? 'a drop like that ' + yrs + ' years running' : 'a run like that ' + yrs + ' years running');
+
+    // history note only when a losing streak is being modelled
+    if (hist) {
+      hist.textContent = (state.move < 0 && yrs > 1)
+        ? 'History check: since 1928 the US market has fallen 3 years running only twice, in 2000 to 2002 and 1939 to 1941, and 4 years running once, in 1929 to 1932. Three in a row is the realistic worst case to plan for.'
+        : '';
+    }
 
     if (r.action === 'cruise') {
       if (verdict) verdict.textContent = 'You are still inside your guardrails. No change. You keep paying yourself ' + newM + ' a month and you carry on.';
@@ -196,24 +218,30 @@
       if (letterWrap) letterWrap.style.display = 'none';
       if (gut) gut.textContent = '';
     } else if (r.action === 'raise') {
-      if (verdict) verdict.textContent = 'Good year. The company grew past your upper cushion, so you get to give yourself a raise.';
+      if (verdict) verdict.textContent = 'Good year. The company grew past your upper cushion, so you get to give yourself a raise' + (r.raises > 1 ? ' ' + r.raises + ' years in a row' : '') + '.';
       if (recover) recover.textContent = '';
       if (letterWrap) letterWrap.style.display = 'block';
       if (letterBody) letterBody.innerHTML =
-        'Effective next year, your salary rises from <b>' + oldM + '</b> to <b>' + newM + '</b> a month, a bump of about <b>' + deltaStr + '</b> a month. Your portfolio did the work, so enjoy it without guilt.';
+        'Effective going forward, your salary rises from <b>' + oldM + '</b> to <b>' + newM + '</b> a month, about <b>' + Math.abs(pctLower) + '%</b> higher. Your portfolio earned it, so enjoy it without guilt.';
       if (gut) gut.textContent = 'This is the half nobody talks about. Guardrails do not only cut in bad years, they hand you a raise in good ones.';
     } else {
-      var years = recoveryYears();
+      var years = recoveryYears(r.cumDrop);
       var yearStr = years >= 1 ? (Math.round(years * 10) / 10) + ' years' : 'under a year';
-      if (verdict) verdict.textContent = 'The market fell ' + Math.abs(state.move) + '%. Your withdrawal rate jumped to ' + (r.curRate * 100).toFixed(1) + '%, past your ceiling, so the pay cut rule fires.';
-      if (recover) recover.textContent = 'At ' + REGIME[state.currency].growth + '% growth, your company claws back to its old value in about ' + yearStr + '. That is how long the smaller salary has to hold.';
+      var dropPct = Math.round(r.cumDrop * 100);
+      if (yrs === 1) {
+        if (verdict) verdict.textContent = 'The market fell ' + Math.abs(state.move) + '%. Your withdrawal rate jumped to ' + (r.rawRate * 100).toFixed(1) + '%, past your ceiling, so the pay cut rule fires.';
+      } else {
+        if (verdict) verdict.textContent = 'The market fell ' + Math.abs(state.move) + '% a year for ' + yrs + ' years straight, a cumulative drop of ' + dropPct + '%. The pay cut rule fired ' + r.cuts + ' ' + (r.cuts === 1 ? 'time' : 'times') + ', once each year.';
+      }
+      if (recover) recover.textContent = 'At ' + growth + '% growth, your company recovers to its old value in about ' + yearStr + '. That is how long the smaller salary has to hold.';
       if (letterWrap) letterWrap.style.display = 'block';
       var tail = r.stillHigh
-        ? 'Even after this trim your rate is still <b>' + (r.newRate * 100).toFixed(1) + '%</b>, above your ceiling, so a second trim may follow if the slump drags on. A cut this deep is where your cash bucket does the heavy lifting, not the pay rule alone.'
-        : 'That drops you back inside your guardrails. Hold here until the market climbs back, then the raise rule takes over.';
-      if (letterBody) letterBody.innerHTML =
-        'Effective immediately, your salary moves from <b>' + oldM + '</b> to <b>' + newM + '</b> a month, a trim of about <b>' + deltaStr + '</b> a month. ' + tail;
-      if (gut) gut.textContent = 'So here is the real question. Could you live on ' + newM + ' a month for ' + yearStr + '? If yes, a crash cannot end your retirement. If it makes you flinch, you need a bigger cushion or more room to cut.';
+        ? 'Even after this, your rate is still <b>' + (r.finalRate * 100).toFixed(1) + '%</b>, above your ceiling, so more trimming would follow if the slump kept going. A hit this deep is where your cash bucket matters most, because the pay rule alone will not be enough.'
+        : 'That leaves you back inside your guardrails, holding here until the market recovers and the raise rule takes over.';
+      if (letterBody) letterBody.innerHTML = (yrs === 1
+        ? 'Effective immediately, your salary moves from <b>' + oldM + '</b> to <b>' + newM + '</b> a month, a trim of about <b>' + deltaStr + '</b> a month. '
+        : 'Over ' + yrs + ' years your salary steps down ' + r.cuts + ' ' + (r.cuts === 1 ? 'time' : 'times') + ', from <b>' + oldM + '</b> to <b>' + newM + '</b> a month, about <b>' + pctLower + '%</b> lower. ') + tail;
+      if (gut) gut.textContent = 'So here is the real question. Could you live on ' + newM + ' a month for ' + yearStr + '? If yes, even a losing streak cannot end your retirement. If it makes you flinch, you need a bigger cushion or more room to cut.';
     }
   }
 
@@ -268,6 +296,9 @@
     onClick('w-stress', 'move', function (v) {
       state.move = parseInt(v, 10); save(); renderAll();
     });
+    onClick('w-stress', 'years', function (v) {
+      state.years = parseInt(v, 10); save(); renderStress();
+    });
 
     var copy = document.getElementById('copy-letter');
     if (copy) copy.addEventListener('click', function () {
@@ -282,7 +313,7 @@
 
     var reset = document.getElementById('reset-crash');
     if (reset) reset.addEventListener('click', function () {
-      state = { currency: state.currency, rate: 4, move: 0 };
+      state = { currency: state.currency, rate: 4, move: 0, years: 1 };
       save();
       var pi = document.getElementById('portfolio-input'); if (pi) pi.value = '';
       renderAll();

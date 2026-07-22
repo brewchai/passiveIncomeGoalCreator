@@ -2,7 +2,7 @@
 
 The question comes up every single time I talk to someone about lean FIRE. What happens if the stock market crashes the year after I quit my job? It is exactly the right thing to worry about, and almost nobody answers it honestly. The usual reply is a shrug and a line about how the 4% rule already survived 1929 and 2008, so you should relax. That answer would have gotten me to quit and then quietly panic through the first red year.
 
-Here is the honest version. The day you reach financial independence, you stop being an employee and you become 3 people at once. You are your own boss, your own HR, and your own only employee. Surviving a stock market crash on lean FIRE is nothing more complicated than being a disciplined boss who cuts their own salary in a bad year, on purpose, using rules you wrote while the sky was still blue.
+Here is the honest version. The day you reach financial independence, you stop being an employee and you become 3 people at once. You are your own boss, your own HR, and your own only employee. Surviving a stock market crash on lean FIRE is nothing more complicated than being a disciplined boss who cuts their own salary in a bad year, on purpose, using rules you wrote in advance, before anything went wrong.
 
 This article explains that system in plain language, it lets you build your own version below in either dollars or rupees, and it tells you the messy parts that most withdrawal guides leave out.
 
@@ -39,6 +39,8 @@ This article explains that system in plain language, it lets you build your own 
 .fw-gauge-key { display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem; }
 .fw-verdict { font-size:1.02rem; color:var(--text-primary); margin:1rem 0 0; }
 .fw-recover { color:var(--text-secondary); font-size:0.95rem; margin:0.4rem 0 0; }
+.fw-hist { color:var(--text-muted); font-size:0.88rem; margin:0.7rem 0 0; padding-left:0.8rem; border-left:2px solid var(--border-color); }
+.fw-hist:empty { display:none; }
 .fw-letter { border:1px solid var(--border-color); border-left:4px solid var(--accent-color); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0 0; background:rgba(127,127,127,0.04); }
 .fw-letter .fw-letter-head { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin:0 0 0.5rem; }
 .fw-letter .fw-letter-body { font-size:1.02rem; color:var(--text-primary); line-height:1.5; margin:0; }
@@ -71,7 +73,7 @@ Now you put on your HR hat and you write 2 rules into your own pay policy, while
 
 Those 2 lines are your guardrails. The 20% of wiggle room on either side of your starting rate and the 10% adjustment are the standard settings from Jonathan Guyton and William Klinger, the researchers who formalized this in 2006. You will hear it called the guardrails strategy or dynamic withdrawal, and it beats the plain 4% rule for one simple reason. The 4% rule tells you to keep paying yourself the same inflation adjusted salary even while the company burns, which is exactly how a bad boss bankrupts a business.
 
-The genius is that you decide the rules in advance. When the crash actually lands and your hands are shaking, you are not making a fresh decision under fear. HR already signed off on it months ago in good weather. Your only job is to open the folder and follow the policy.
+The genius is that you decide the rules in advance. When the crash actually lands and you are frightened, you are not making a fresh decision under pressure. Your HR already signed off on the policy months earlier, when nothing was wrong. Your only job is to open the folder and follow the policy.
 
 Enough theory. Build your own version and watch the exact pay cut a crash would hand you.
 
@@ -109,12 +111,19 @@ Enough theory. Build your own version and watch the exact pay cut a crash would 
 <button type="button" data-move="-30">A bad year, 30%</button>
 <button type="button" data-move="-50">A full 2008</button>
 </div>
+<p class="fw-q" style="margin-top:1rem">And how many years in a row does it fall like that?</p>
+<div class="fw-quick" id="years-row">
+<button type="button" data-years="1">1 year</button>
+<button type="button" data-years="2">2 in a row</button>
+<button type="button" data-years="3">3 in a row</button>
+</div>
 <div class="fw-gauge-wrap">
 <div class="fw-gauge" id="gauge"><div class="fw-gauge-mark" id="gauge-mark"></div></div>
 <div class="fw-gauge-key"><span>over-saving</span><span>your safe zone</span><span>pay cut zone</span></div>
 </div>
 <p class="fw-verdict" id="verdict"></p>
 <p class="fw-recover" id="recover"></p>
+<p class="fw-hist" id="hist"></p>
 <div class="fw-letter" id="letter-wrap" style="display:none">
 <p class="fw-letter-head">Revised salary letter · from you, to you</p>
 <p class="fw-letter-body" id="letter-body"></p>
@@ -124,27 +133,51 @@ Enough theory. Build your own version and watch the exact pay cut a crash would 
 <noscript><p class="fw-sub">This builder needs JavaScript. The worked example in the next section walks through the same math by hand.</p></noscript>
 </div>
 
+## What If the Market Falls for Several Years in a Row?
+
+A single year crash is survivable for almost anyone, because the recovery tends to come quickly. The real threat is a losing streak, so let me show you what the record actually says, because it is calmer than the fear in your head.
+
+Since 1928 the American market has almost never strung together long losing streaks. It has fallen 4 years in a row exactly once, during the Great Depression. It has fallen 3 years in a row only twice, and 2 years in a row only once. Roughly 3 in every 4 years finish positive, so a single down year is ordinary rather than a warning sign.
+
+| Losing streak | When | How deep | What caused it |
+|---|---|---|---|
+| 4 years | 1929 to 1932 | index fell about 86% peak to trough | Great Depression, the only time |
+| 3 years | 2000 to 2002 | about 38% off | dot-com bust |
+| 3 years | 1939 to 1941 | milder | early World War 2 |
+| 2 years | 1973 to 1974 | about 37% off | oil shock and stagflation |
+
+The catch with guardrails is that consecutive down years mean consecutive pay cuts, and those cuts stack on top of each other. Fall 3 years running and you trim 10% three separate times, which compounds to a salary about 27% smaller. On the 3,333 a month example from the builder, the stacking looks like this.
+
+| Years falling in a row | Pay cuts stacked | Salary you keep | 3,333 a month becomes |
+|---|---|---|---|
+| 1 | one | 90% | 3,000 |
+| 2 | two | 81% | 2,700 |
+| 3 | three | 73% | 2,430 |
+| 4, a full 1929 | four | 66% | 2,187 |
+
+So the number to design around is a 3 year streak, which is the worst realistic case outside an actual depression, followed by a recovery that can stretch 5 to 10 years or longer. The 2000 to 2013 lost decade is the honest benchmark for how slow a real climb back can be. Set the builder above to 2 or 3 years in a row and watch the salary grind down, then ask yourself the only question that matters. Could you live on that smaller number for the years it takes the market to recover?
+
 ## What a Salary Cut Really Looks Like on Lean FIRE
 
 Here is the part the framework will never tell you, and it is the whole reason lean FIRE is different. Guardrails only work if you actually have a salary you can cut. A 10% trim sounds gentle right up until you look at where the 10% has to come from. If nearly everything you spend goes on rent, food, and insurance, there is nothing left to shave, and the pay cut rule cannot rescue you. The rule quietly assumes you kept some slack in your life, some spending that is genuinely optional.
 
-On a spreadsheet that slack is called your discretionary bucket. In my real life it had a name too. The first thing that went when I decided to spend less was my personal trainer. I moved to a cheaper gym and kept training on my own, and nobody starved. That is what a guardrail cut looks like in practice, one comfortable line item stepping down a level, not an empty cupboard. It is the same lesson I lean on in my [India crores builder](/blog/fire-in-india-how-many-crores), where the fun and lifestyle categories are the parts you can flex without the plan collapsing.
+On a spreadsheet that slack is called your discretionary bucket. In my real life it had a name too. The first thing that went when I decided to spend less was my personal trainer. I moved to a cheaper gym and kept training on my own, and it changed nothing that mattered. That is what a guardrail cut looks like in practice, one comfortable line item stepping down a level while the essentials stay untouched. It is the same lesson I lean on in my [India crores builder](/blog/fire-in-india-how-many-crores), where the fun and lifestyle categories are the parts you can flex without the plan collapsing.
 
-So a lean plan needs a little fat on purpose. Not enough to bloat your number, just enough that when the pay cut letter arrives you have somewhere real to cut. If you are still deciding whether this life even fits you, I wrote honestly about that in [is lean FIRE right for you](/blog/is-lean-fire-right-for-you).
+So a lean plan needs a little slack built in on purpose. Not enough to bloat your number, just enough that when the pay cut letter arrives you have somewhere real to cut. If you are still deciding whether this life even fits you, I wrote honestly about that in [is lean FIRE right for you](/blog/is-lean-fire-right-for-you).
 
 ## The Cash Bucket Is What Stops the First Cut
 
-The smartest way to survive year one is to not sell a single share in the crash. Keep 2 to 3 years of spending sitting in cash and short bonds. When the market falls, you spend from that pile and you leave your shares completely alone to recover, which often means you never even touch the pay cut rail in the first place. Guardrails and a cash cushion are teammates, not rivals. One buys you time, the other tells you what to do if the slump outlasts the cushion. I laid out the full setup in my [three bucket strategy](/blog/three-bucket-strategy-fire), and it is the single thing I would tell any lean retiree to get right before they quit.
+The smartest way to survive year one is to not sell a single share in the crash. Keep 2 to 3 years of spending sitting in cash and short bonds. When the market falls, you spend from that reserve and you leave your shares completely alone to recover, which often means you never even touch the pay cut rail at all. Guardrails and a cash cushion work together. The cash buys you time, and the guardrails tell you what to do if the slump outlasts the cushion. I laid out the full setup in my [three bucket strategy](/blog/three-bucket-strategy-fire), and it is the single thing I would tell any lean retiree to get right before they quit.
 
 ## Crashes Hit Different in Rupees
 
-If you are Indian or an NRI like me, flip the toggle in the builder to rupees and 2 things shift. Your cost of living climbs at roughly 6% a year instead of the 3% an American plans around, so the year you freeze your own inflation raise pinches harder. And Indian equity has tended to grow faster in nominal terms, closer to 11%, which means a beaten down portfolio tends to claw its way back sooner. The recovery clock in the builder runs at that faster speed when you switch currencies. The guardrail logic itself does not change one bit. If you want the full India picture with healthcare and family costs layered in, that lives in my [how many crores to FIRE in India](/blog/fire-in-india-how-many-crores) guide.
+If you are Indian or an NRI like me, flip the toggle in the builder to rupees and 2 things shift. Your cost of living climbs at roughly 6% a year instead of the 3% an American plans around, so the year you freeze your own inflation raise pinches harder. And Indian equity has tended to grow faster in nominal terms, closer to 11%, which means a fallen portfolio tends to recover sooner. The recovery clock in the builder runs at that faster speed when you switch currencies. The guardrail logic itself does not change one bit. If you want the full India picture with healthcare and family costs layered in, that lives in my [how many crores to FIRE in India](/blog/fire-in-india-how-many-crores) guide.
 
 ## A Crash Cannot Fire You
 
-The reason I sleep fine through a sea of red is almost boring. No crash can lay me off, because I am the boss. The worst thing a market collapse can do is force me to cut my own pay for a year or 2, and I already know the exact line items I would cut before I would ever touch the essentials. That is the entire secret, and it is smaller than the fear that surrounds it.
+The reason I stay calm on the worst market days is almost boring. No crash can lay me off, because I am the boss. The worst thing a market collapse can do is force me to cut my own pay for a year or 2, and I already know the exact line items I would cut before I would ever touch the essentials. That is the entire secret, and it is smaller than the fear that surrounds it.
 
-Decide your pay cut rules today while nothing is on fire. Keep a cash bucket so you rarely have to use them. Hold on to a few comforts you would be willing to lose. Do those 3 things and a stock market crash stops being the monster that ends your lean FIRE. It becomes a bad year you already have a signed plan for. If you want to see where this whole story started for me, it runs from [$40k of debt to financial independence at 33](/blog/40k-debt-to-lean-fire-at-33).
+Decide your pay cut rules today, before a crash arrives. Keep a cash bucket so you rarely have to use them. Keep a few comforts you would be willing to lose. Do those 3 things and a stock market crash stops being the thing that ends your lean FIRE. It becomes a bad year you already have a signed plan for. If you want to see where this whole story started for me, it runs from [$40k of debt to financial independence at 33](/blog/40k-debt-to-lean-fire-at-33).
 
 <script defer src="/js/crash-survival.js"></script>
 
@@ -166,6 +199,9 @@ Under standard guardrails, one 10% pay cut each time your withdrawal rate breach
 
 ### Can lean FIRE survive a recession or a 50% market crash?
 It can, but only if you built in the ability to flex. A single guardrail cut cannot offset a 50% crash on its own. Surviving one takes 3 things working together: a cash cushion so you avoid selling at the bottom, guardrail rules that trim spending, and enough discretionary spending that a 10% or 20% cut is uncomfortable rather than impossible.
+
+### What if the stock market falls for several years in a row?
+Consecutive down years are rare. Since 1928 the US market has fallen 3 years in a row only twice and 4 years in a row once, during the Great Depression, while about 3 in 4 years finish positive. With a guardrails plan each down year can trigger another 10% pay cut, so a 3 year streak stacks to roughly a 27% smaller salary that then has to hold through the recovery. Plan for a 3 year decline plus a multi year climb back, keep 2 to 3 years of cash, and keep enough discretionary spending that stacked cuts land on comforts rather than essentials.
 
 ### How does sequence of returns risk affect early retirement?
 It means the order of your returns matters as much as the average. Bad years early in retirement hurt far more than the same years late, because early losses come out of a portfolio you are actively drawing down. Early retirees are exposed to it for longer than traditional retirees, which is why dynamic strategies like guardrails and a cash buffer are close to essential for FIRE.
