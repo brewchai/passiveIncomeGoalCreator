@@ -1,6 +1,7 @@
 /* Rotating "from the blog" quote toast. Loaded ONLY on /blog.
-   Desktop only, gentle (no strobe), dismissible for the session.
-   Each toast links to its article. No dependencies, no tracking.
+   Desktop only, gentle (no strobe). Closing a toast dismisses only that
+   one, and the rotation keeps going. Each toast links to its article.
+   No dependencies, no tracking.
    Test hook: add ?toastnow to the URL to show immediately. */
 (function () {
   'use strict';
@@ -24,12 +25,10 @@
     { q: 'I cleared $40,000 of debt in a single year, then poured that same discipline into investing.', title: 'From $40k Debt to Lean FIRE at 33', url: '/blog/40k-debt-to-lean-fire-at-33' }
   ];
 
-  var CFG = { first: 5000, visible: 20000, gap: 20000, maxShows: 5 };
-  var DISMISS_KEY = 'bffQuoteToastDismissed';
+  var CFG = { first: 5000, visible: 20000, gap: 5000, maxShows: 5 };
 
-  // guards: desktop only, not dismissed this session
+  // guard: desktop only. The toast is a nice-to-have, not for small screens.
   if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
-  try { if (sessionStorage.getItem(DISMISS_KEY)) return; } catch (e) {}
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var params = new URLSearchParams(location.search);
@@ -77,10 +76,7 @@
       '<a class="bff-toast-link" href="#"></a>' +
       '<div class="bff-toast-progress"><i></i></div>';
     el.querySelector('.bff-toast-x').addEventListener('click', dismiss);
-    // clicking the link lets navigation happen; also stop nagging afterwards
-    el.querySelector('.bff-toast-link').addEventListener('click', function () {
-      try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
-    });
+    // the link is a plain anchor; clicking it just navigates to the article
     document.body.appendChild(el);
   }
 
@@ -114,10 +110,10 @@
     if (shows < CFG.maxShows) { clearTimeout(gapTimer); gapTimer = setTimeout(show, CFG.gap); }
   }
 
+  // Closing the current toast just hides it and lets the rotation continue.
   function dismiss() {
-    clearTimeout(hideTimer); clearTimeout(gapTimer);
-    if (el) el.classList.remove('in');
-    try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) {}
+    clearTimeout(hideTimer);
+    hide();
   }
 
   function start() { injectStyles(); setTimeout(show, CFG.first); }
