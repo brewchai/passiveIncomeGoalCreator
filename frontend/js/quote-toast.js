@@ -24,7 +24,7 @@
     { q: 'I cleared $40,000 of debt in a single year, then poured that same discipline into investing.', title: 'From $40k Debt to Lean FIRE at 33', url: '/blog/40k-debt-to-lean-fire-at-33' }
   ];
 
-  var CFG = { first: 5000, visible: 9000, gap: 60000, maxShows: 5 };
+  var CFG = { first: 5000, visible: 20000, gap: 20000, maxShows: 5 };
   var DISMISS_KEY = 'bffQuoteToastDismissed';
 
   // guards: desktop only, not dismissed this session
