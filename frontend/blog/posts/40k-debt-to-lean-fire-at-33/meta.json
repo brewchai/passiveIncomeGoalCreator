@@ -1,10 +1,10 @@
 {
   "title": "From $40k in Debt to Lean FIRE at 33",
   "meta_title": "How I Reached Lean FIRE at 33, From $40k in Debt",
-  "description": "How I went from $40,000 in student loan debt to Lean FIRE at 33: the high income, the untouchable savings habit, a 50% savings rate, and how long it really took.",
+  "description": "How I went from $40,000 in student debt to Lean FIRE at 33: paying off 12% debt before investing, living on $500 a month, saving half, and hunting value on everything.",
   "subtitle": "The real journey from student loan debt to living lean and free by 33",
   "date": "2026-07-12",
-  "date_modified": "2026-07-12",
+  "date_modified": "2026-07-24",
   "cover": "40k-debt-to-lean-fire-at-33.webp",
   "tags": [
     "personal-story",
@@ -16,8 +16,16 @@
   "pinned": true,
   "faqs": [
     {
+      "question": "Should you pay off debt or invest first?",
+      "answer": "Compare the interest rate on your debt to the return you could realistically earn by investing. My student loan charged around 12%, and paying it off handed me a guaranteed 12% return with no risk and no tax, which no index fund can promise. So I cleared the entire loan before I invested a single dollar. For high interest debt this is almost always the stronger move, while for very low interest debt it can make sense to invest alongside it."
+    },
+    {
+      "question": "How did you live on $500 a month?",
+      "answer": "During my debt payoff year I shared an apartment with 3 roommates, so my share of the rent was only $198 a month, and I owned no car and used public transport for everything. With food and small expenses added, the total came to about $500 a month. It was a deliberately small life for a short period, and it let me send every other dollar straight to my loan."
+    },
+    {
       "question": "How do you reach Lean FIRE?",
-      "answer": "You reach Lean FIRE by combining a strong income with a high savings rate and consistent long term investing, while keeping your expenses genuinely low. In my case that meant saving around half of my salary, treating my equity compensation as completely untouchable, and never interrupting the compounding, which got me to my number by 33."
+      "answer": "You reach Lean FIRE by clearing high interest debt first, then pairing a strong income with a savings rate near half and consistent long term investing, while keeping your expenses genuinely low. In my case I paid off $40,000 of student loans in a year, treated my equity as untouchable, invested only money I did not need, and never interrupted the compounding, which got me to my number by 33."
     },
     {
       "question": "How long does it take to reach Lean FIRE?",
@@ -25,16 +33,16 @@
     },
     {
       "question": "How much do you need to save for Lean FIRE?",
-      "answer": "A common rule of thumb is 25 times your annual expenses, so a lean lifestyle that costs $1,100 to $1,800 a month leaves you with a far smaller target than a normal retirement would. In rupee terms that same lean life runs roughly ₹1 lakh to ₹1.7 lakh a month, which points to a Lean FIRE number around ₹3 crore to ₹5 crore at the 25 times rule, and closer to ₹4 crore to ₹6 crore at the safer 33 times multiple most Indian planners prefer. The lower your spending, the smaller your Lean FIRE number becomes."
+      "answer": "A common rough guideline is 25 times your annual expenses, so a lean lifestyle that costs $1,100 to $1,800 a month leaves you with a far smaller target than a normal retirement would. In rupee terms that same lean life runs roughly ₹1 lakh to ₹1.7 lakh a month, which points to a Lean FIRE number around ₹3 crore to ₹5 crore at the 25 times rule, and closer to ₹4 crore to ₹6 crore at the safer 33 times multiple most Indian planners prefer. The lower your spending, the smaller your Lean FIRE number becomes."
     },
     {
       "question": "Can you reach Lean FIRE if you start in debt?",
-      "answer": "Yes. I started at 23 with $40,000 of student loans and my family home held up as collateral, and I cleared that entire debt in a single year by cutting groceries hard, living cheaply, and skipping a car, then I poured all of that same discipline straight into investing."
+      "answer": "Yes, you absolutely can, and I am living proof of it. I started at 23 with $40,000 of student loans and my family home as collateral, and I cleared the entire debt in a single year by living on about $500 a month, sharing rent with 3 roommates, owning no car, and sending every other dollar straight to the loan. After that I put all of that same discipline into investing."
     },
     {
       "question": "What savings rate do you need for Lean FIRE?",
-      "answer": "I saved roughly 50% of my income for years, and that single number did more heavy lifting than any clever strategy ever could. The higher your savings rate climbs, the sooner your Lean FIRE date arrives, because you are spending less and investing more at the same time."
+      "answer": "I saved roughly 50% of my income for years, and that single number did more for me than any clever strategy ever could. The higher your savings rate climbs, the sooner your Lean FIRE date arrives, because you are spending less and investing more at the same time."
     }
   ],
-  "cover_alt": "From k in student debt to Lean FIRE at 33, overlooking the hills in Vietnam"
+  "cover_alt": "From $40k in student debt to Lean FIRE at 33, overlooking the hills in Vietnam"
 }
