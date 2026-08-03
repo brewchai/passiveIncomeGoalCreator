@@ -2,13 +2,13 @@
 
 Every article on this topic hands you a number in the first paragraph, and that is exactly why most of those numbers are useless. Your FIRE number depends on a handful of very personal inputs, and in India those inputs carry weight that no American calculator was ever built to handle. I reached financial independence at 33, I ran this math close to 100 times before I trusted it, and I am going to walk you through every single input properly.
 
-This article is a builder. Below you will find 5 short steps, and as you answer each one, your own personal FIRE number quietly assembles itself. By the last step it is waiting for you, broken down category by category. Your inputs stay in your browser and go nowhere else. There is one rule, which is that you cannot skip a step, because every one of them changes the answer.
+This article is a builder. Below you will find 5 short steps, and as you answer each one, your own personal FIRE number quietly assembles itself. By the last step it is waiting for you, broken down category by category. Your inputs stay in your browser and go nowhere else. There are 2 rules. You cannot skip a step, because every one of them changes the answer, and you must enter every amount in today's rupees, meaning what it costs right now, because the builder adds the inflation for you.
 
 <style>
 .fire-widget { background: var(--card-background); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.35rem 1.5rem; margin: 2rem 0; box-shadow: var(--shadow-sm); }
 .fw-step-badge { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); border:1px solid var(--border-color); border-radius:999px; padding:0.2rem 0.7rem; margin-bottom:0.7rem; }
 .fw-step-badge.done { color:#fff; background:var(--gradient); border-color:transparent; }
-.fw-label { display:inline-block; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0 0 0.6rem; }
+.fw-label { display:block; font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0.35rem 0 0.55rem; }
 .fire-widget p { margin:0.5rem 0; font-size:1.02rem; }
 .fire-widget .fw-q { color:var(--text-primary); font-weight:600; }
 .fire-widget button { border:1px solid var(--border-color); background:transparent; color:var(--text-primary); border-radius:999px; padding:0.5rem 1.1rem; margin:0.3rem 0.4rem 0.3rem 0; font-size:0.98rem; cursor:pointer; transition:all 0.15s; }
@@ -168,11 +168,11 @@ Now the two obligations that make the Indian number what it is. I price both as 
 <div id="kids-tier-wrap" style="display:none">
 <p class="fw-q">And what quality of education are you planning for each child?</p>
 <p>
-<button type="button" data-tier="local">Solid local private</button>
-<button type="button" data-tier="premium">Premium private</button>
-<button type="button" data-tier="international">International</button>
+<button type="button" data-tier="local">Solid local private · ₹1 lakh/yr</button>
+<button type="button" data-tier="premium">Premium private · ₹3 lakh/yr</button>
+<button type="button" data-tier="international">International · ₹8 lakh/yr</button>
 </p>
-<p class="fw-echo">Your choice maps to a current annual fee and is streamed over about 22 years at 10% education inflation. The rupee cost lands in your final breakdown.</p>
+<p class="fw-echo">Those are today's annual fees per child, across the 3 tiers that cover most real choices. Your pick is streamed over about 22 years at 10% education inflation, and the rupee cost appears in your final breakdown.</p>
 </div>
 </div>
 
@@ -218,15 +218,11 @@ The last step is the one people are shy to admit, which is the joyful, non essen
 
 ---
 
-## Today's Rupees or 2040 Rupees? Both, and Never Mixed
+## One Rule: Enter Today's Numbers, Not Future Ones
 
-Your number above is in today's rupees, so let me settle the argument that always breaks out in the comments. There are 2 correct ways to state a FIRE number, and 1 popular way to get it badly wrong.
+Since the builder can only work with what you type, this is the single thing you have to get right. Enter every amount in today's rupees, meaning what each thing actually costs you right now. Do not try to guess what it will cost in 2040, because the builder already adds the correct inflation to every category on its own, faster for healthcare, faster still for education, and slower for everyday costs, which is the whole reason each category carries its own multiplier.
 
-**Path A, today's rupees.** Use the multipliers above on your current costs and you are done. The inflation protection already sits inside each multiplier, because a real return is a return after inflation. You do not inflate anything further.
-
-**Path B, future rupees.** If you retire in 2040, you can instead inflate your spending first. At 6% general inflation, prices roughly multiply by 2.26 over 14 years, so a ₹1.5 lakh lifestyle costs about ₹3.4 lakh a month by then, and the target grows to match. It looks terrifying, and it is the exact same answer wearing 2040 clothes.
-
-**The trap is mixing them.** People take today's target and then grow their investments at a full nominal 12% to see how quickly they reach it. That treats inflation as a friend on the growth side while ignoring it on the spending side, and it makes the plan look years easier than it is. Pick one path and state every number in it.
+The one way to break your own number is to inflate your spending to some future year yourself, and then separately let a calculator grow your investments at a full nominal return. That counts inflation twice, once on the spending side and once on the growth side, and it makes the plan look years easier than it truly is. Keep every figure in today's rupees, let the builder handle the inflation, and the number it gives you will be honest.
 
 ---
 

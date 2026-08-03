@@ -30,7 +30,7 @@
 
   var CITY_NOTE = {
     t1: 'Tier 1 is the most expensive base. Rent is the number that breaks these plans, so be honest about it in your housing cost.',
-    t2: 'Tier 2 is the sweet spot for most FIRE plans, quieter and far cheaper on housing.',
+    t2: 'Tier 2 is the best balance for most FIRE plans, quieter and far cheaper on housing.',
     t3: 'Tier 3 or your hometown gives the lowest costs. Be honest about healthcare access and whether you will enjoy it year round.',
     abroad: 'Run the whole thing in rupees anyway, since your spending will be in rupees.'
   };
