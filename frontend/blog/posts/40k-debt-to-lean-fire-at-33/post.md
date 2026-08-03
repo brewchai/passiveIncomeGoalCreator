@@ -82,9 +82,21 @@ From there my spending rose slowly, maybe 10% higher each year for the next 5 ye
 
 ---
 
+## Phase 3: I Moved to Where My Money Goes Much Further
+
+The first 2 phases built the money, and this last one is what made it genuinely enough. I am an NRI, so the obvious assumption is that an Indian who wants a cheaper life simply moves back to India. I did something different. I used geographic arbitrage and moved to Southeast Asia, and I have lived in Da Nang, Vietnam for a while now.
+
+Here is the idea that took me years to fully understand. Your FIRE number is not only about how much you have saved, it is just as much about where you decide to spend it. The same portfolio that felt small in New York feels genuinely comfortable in Vietnam, because a good life here costs a fraction of what it costs there. That one move took my spending from close to $6,000 a month in New York down to the $1,100 to $1,800 a month I live on now, and my quality of life improved at the same time.
+
+That is why geo arbitrage was the biggest factor of all for me. It lowered my monthly costs, and it also shrank the entire number I needed to reach, because a lean life in Da Nang requires a far smaller corpus than the same life in a Western city. A portfolio that would have kept me working for several more years in the United States was already enough the moment I landed in Southeast Asia. I wrote the full version of this move in [how to retire in Southeast Asia as an Indian](/blog/retire-in-southeast-asia-as-an-indian), and I break the monthly spend down properly in [living on $1,100 a month](/blog/what-is-LEAN-FIRE).
+
+It does come with real downsides though, and I want to be honest about that. On an Indian passport I do a visa run every 3 months, which costs me around $300 each time and is simply the price of this life, and I covered all of it in [the Vietnam visa guide for Indians](/blog/vietnam-visa-for-indians). Even with that cost added on top, the difference is still enormous. Geography alone decides whether a number like $500k is plenty or barely sufficient, which is the exact case I worked through in [can you retire at 35 with $500k](/blog/can-i-retire-at-35-with-500k).
+
+---
+
 ## How Long Does It Actually Take to Reach Lean FIRE?
 
-Here is my honest number. The whole thing took 10 years from first landing in debt to reaching my Lean FIRE number, and only 7 of those years were spent earning a paycheck. Your own timeline will move based on 3 factors, which are how much you earn, how much of it you refuse to spend, and how early you let the compounding start.
+Here is my honest number. The whole thing took 10 years from first landing in debt to reaching my Lean FIRE number, and only 7 of those years were spent earning a paycheck. Your own timeline will move based on 4 factors, which are how much you earn, how much of it you refuse to spend, how early you let the compounding start, and where you choose to live once you stop working.
 
 I paid the debt off in year 1 because I put everything toward it. The real wealth then grew quietly across the years that followed, mostly while I ignored it and let it grow on its own. If you earn well and hold your savings rate near half, a Lean FIRE number is genuinely reachable inside a single decade, even when you start from real debt the way I did.
 
@@ -98,6 +110,7 @@ I know I am fortunate to be where I am today, and I made plenty of mistakes alon
 2. Keep living lean after the debt is gone, and save close to half of what you earn.
 3. Invest only money you do not need, then never interrupt the compounding.
 4. Find value in every expense, and make disciplined tools like credit card rewards work for you.
+5. If your lean number still feels far away, change your geography, because the same money goes much further in the right place.
 
 If you are starting from debt exactly like I once was, it is genuinely possible from here. It took me 10 years of steady consistency, and every one of these habits still works today. To work out your own target, run the math with my [guide to calculating your FIRE number](/blog/calculating-fire-number), and to see how I keep it all organized once you arrive, read how I split it into [3 simple buckets](/blog/three-bucket-strategy-fire). Before you commit to any of it, it is worth asking whether a lean life would actually suit you, which I cover honestly in [is Lean FIRE right for you](/blog/is-lean-fire-right-for-you).
 
@@ -125,6 +138,9 @@ Yes, you absolutely can, and I am living proof of it. I started at 23 with $40,0
 
 ### What savings rate do you need for Lean FIRE?
 I saved roughly 50% of my income for years, and that single number did more for me than any clever strategy ever could. The higher your savings rate climbs, the sooner your Lean FIRE date arrives, because you are spending less and investing more at the same time.
+
+### Can moving abroad help you reach Lean FIRE faster?
+Yes, and it was the single biggest move for me. I used geographic arbitrage and left the United States for Da Nang, Vietnam, which took my spending from close to $6,000 a month in New York down to $1,100 to $1,800 a month for a better quality of life. It cuts your monthly costs and it also shrinks the whole number you need to reach, because a lean life in Southeast Asia requires a far smaller corpus than the same life in a Western city. The main ongoing cost for an Indian passport holder is a visa run every 3 months at around $300 each time.
 
 ---
 
