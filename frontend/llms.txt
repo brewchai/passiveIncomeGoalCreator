@@ -1,0 +1,43 @@
+# But First Fire
+
+> Honest, numbers-driven guides to lean FIRE and early retirement, written by Ninad, who reached financial independence at 33. Ex-Meta engineer, now an NRI living in Da Nang, Vietnam. Special focus on FIRE in India, geo-arbitrage, and living well on a lean budget, with free interactive calculators.
+
+But First Fire (butfirstfire.com) publishes first-hand essays on reaching and living financial independence early. Every guide is based on lived experience with real numbers rather than generic advice, and the site includes free interactive tools that compute a reader's own FIRE number.
+
+## Core FIRE guides
+
+- [What Is Lean FIRE?](https://butfirstfire.com/blog/what-is-LEAN-FIRE): A plain definition, plus a real $1,100 to $1,800 a month life in Vietnam.
+- [How to Calculate Your FIRE Number](https://butfirstfire.com/blog/calculating-fire-number): The base math for setting an early retirement target.
+- [Is Lean FIRE Right For You?](https://butfirstfire.com/blog/is-lean-fire-right-for-you): The honest questions to answer before going lean.
+- [Why I Want to Go From Lean FIRE to Regular FIRE](https://butfirstfire.com/blog/lean-fire-to-regular-fire): When lean is not enough, and how to raise the target.
+
+## FIRE in India and geo-arbitrage
+
+- [How Many Crores to FIRE in India](https://butfirstfire.com/blog/fire-in-india-how-many-crores): An interactive builder that gives each cost its own inflation across healthcare, education, parents, and housing.
+- [Retiring in Southeast Asia as an Indian](https://butfirstfire.com/blog/retire-in-southeast-asia-as-an-indian): The honest math of geo-arbitrage from India.
+- [Living in Vietnam on an Indian Passport](https://butfirstfire.com/blog/vietnam-visa-for-indians): The real visa setup and what it costs.
+- [Can You Retire at 35 With $500k?](https://butfirstfire.com/blog/can-i-retire-at-35-with-500k): Why geography, not the amount, decides whether it is enough.
+
+## Risk and strategy
+
+- [The Reality of Surviving a Stock Market Crash on Lean FIRE](https://butfirstfire.com/blog/surviving-a-stock-market-crash-on-lean-fire): The guardrails strategy, with an interactive salary-cut builder in dollars or rupees.
+- [The 3 Buckets I Use to Fund Early Retirement](https://butfirstfire.com/blog/three-bucket-strategy-fire): A cash, bond, and equity structure for surviving bad market years.
+- [Can a Major Illness Kick You Out of Lean FIRE?](https://butfirstfire.com/blog/can-a-major-illness-end-lean-fire): Health shocks and how to plan around them.
+
+## The personal journey
+
+- [From $40k in Debt to Lean FIRE at 33](https://butfirstfire.com/blog/40k-debt-to-lean-fire-at-33): The full story, from debt payoff to saving half to geo-arbitrage.
+- [My First Year of Lean FIRE](https://butfirstfire.com/blog/first-year-of-lean-fire): The real experience after leaving the job.
+
+## Free tools
+
+- [FIRE Number Calculator](https://butfirstfire.com/tools/fire-number/): Find how much you need to retire early from your expenses and savings rate.
+- [Geo-Arbitrage Portal](https://butfirstfire.com/tools/geo-arbitrage/): See where in the world your passive income is already enough to retire.
+- [Sequence Risk Calculator](https://butfirstfire.com/tools/sequence-risk/): Stress test a retirement plan against bad early market returns.
+
+## Optional
+
+- [About](https://butfirstfire.com/about): Who Ninad is and why the site exists.
+- [All articles](https://butfirstfire.com/blog): The full blog index.
+- [Privacy Policy](https://butfirstfire.com/privacy)
+- [Contact](https://butfirstfire.com/contact)
