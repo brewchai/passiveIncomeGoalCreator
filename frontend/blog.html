@@ -66,10 +66,10 @@
 
                 <!-- Search Box (Hidden) -->
                 <div class="search-container" style="display: none;">
-                    <span class="search-icon">🔍</span>
+                    <span class="search-icon"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-magnifying-glass"/></svg></span>
                     <input type="text" class="search-box" id="searchInput" placeholder="Search articles...">
                     <button class="search-clear" id="searchClear" style="display:none;"
-                        aria-label="Clear search">✕</button>
+                        aria-label="Clear search"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-x"/></svg></button>
                 </div>
 
                 <!-- Hero Featured Post -->
@@ -126,7 +126,7 @@
                     </div>
                     <div id="infiniteScrollSentinel" style="height: 1px;"></div>
                     <div id="noResults" class="no-results" style="display:none;">
-                        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+                        <div style="font-size:3rem; margin-bottom:1rem;"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-magnifying-glass"/></svg></div>
                         <p style="font-size:1.125rem; font-weight:500; color: var(--text-primary); margin:0 0 0.5rem;">
                             No articles found</p>
                         <p style="margin:0; color: var(--text-secondary);">Try a different search term or <a href="#"
@@ -234,7 +234,7 @@
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="hero-post">
                     ${cover
                         ? `<img class="hero-post-image" ${getHeroImageAttrs(post)} alt="${htmlEscape(post.cover_alt || post.title)}" loading="eager" fetchpriority="high" decoding="async">`
-                        : `<div class="hero-post-image" style="background: var(--gradient); display:flex; align-items:center; justify-content:center; font-size:5rem;">🔥</div>`
+                        : `<div class="hero-post-image" style="background: var(--gradient); display:flex; align-items:center; justify-content:center; font-size:5rem;"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-image"/></svg></div>`
                     }
                     <div class="hero-post-content">
                         <div class="hero-post-meta">
@@ -256,7 +256,7 @@
                 const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
                 const imgBlock = cover
                     ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.cover_alt || post.title)}" loading="lazy" decoding="async"></div>`
-                    : `<div class="article-thumbnail-placeholder">📝</div>`;
+                    : `<div class="article-thumbnail-placeholder"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-image"/></svg></div>`;
                 return `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="article-card-wrap">
                   <article class="article-card">
@@ -501,7 +501,7 @@
 
                         // Google Apps Script with no-cors returns an 'opaque' response (status 0).
                         // It won't have res.ok = true, so we assume success if no network error triggered catch().
-                        form.innerHTML = '<div style="text-align:center; padding: 1rem 0; color: #10b981; font-weight: 600; font-size: 1.1rem;">Thanks for subscribing! 🔥</div>';
+                        form.innerHTML = '<div style="text-align:center; padding: 1rem 0; color: #10b981; font-weight: 600; font-size: 1.1rem;">Thanks for subscribing!</div>';
                     } catch (error) {
                         console.error('Newsletter error:', error);
                         btn.textContent = 'Error! Try again.';

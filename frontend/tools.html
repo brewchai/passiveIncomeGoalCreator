@@ -9,11 +9,7 @@
         content="Free tools and calculators for financial independence and early retirement.">
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    <!-- Fonts & Styles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/blog.css">
+    <!-- Fonts & Styles -->    <link rel="stylesheet" href="/blog.css">
 
     <style>
         .page-container {
@@ -74,14 +70,14 @@
             padding: 8px 16px;
             font-weight: 600;
             border-radius: 8px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
             color: var(--accent-color);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(var(--accent-rgb, 158, 69, 32), 0.2);
             transition: all 0.2s;
         }
 
         .tool-card:hover .btn-launch {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--accent-fill, #9E4520);
             color: #ffffff;
             border-color: transparent;
         }
@@ -119,19 +115,19 @@
             <p class="page-subtitle">Interactive tools to help you reach financial independence faster.</p>
 
             <a href="/tools/fire-number/" class="tool-card">
-                <h3>🧮 FIRE Number Calculator</h3>
+                <h3>FIRE Number Calculator</h3>
                 <p>Find exactly how much money you need to retire early. Enter your annual expenses and savings rate — get your FIRE number, years to financial independence, and a year-by-year roadmap.</p>
                 <div class="btn-launch">Calculate my FIRE number →</div>
             </a>
 
             <a href="/tools/geo-arbitrage/" class="tool-card">
-                <h3>🌍 Geo-Arbitrage Portal</h3>
+                <h3>Geo-Arbitrage Portal</h3>
                 <p>Use the Geo-Arbitrage Portal to spin a live 3D globe, set your passive income, and instantly see where in the world you can retire today.</p>
                 <div class="btn-launch">Launch Tool →</div>
             </a>
 
             <a href="/tools/sequence-risk/" class="tool-card">
-                <h3>📊 Sequence Risk Calculator</h3>
+                <h3>Sequence Risk Calculator</h3>
                 <p>Same average return. Different order. Completely different retirement outcome.</p>
                 <p>Average returns do not tell the whole story. Timing matters when you are withdrawing money.</p>
                 <div class="btn-launch">Run Calculator →</div>

@@ -112,10 +112,12 @@ function initNativeAI() {
     `;
     document.body.appendChild(panel);
 
-    // Floating Trigger
+    // Floating Trigger — hidden for now (set to true to re-enable)
+    const DEEP_DIVE_ENABLED = false;
     const trigger = document.createElement('button');
     trigger.id = 'ai-trigger';
-    trigger.innerText = '✨ Deep Dive';
+    trigger.innerText = 'Deep Dive';
+    if (!DEEP_DIVE_ENABLED) trigger.style.display = 'none';
     trigger.onclick = () => {
         panel.classList.add('open');
         trigger.classList.add('hidden');

@@ -25,11 +25,7 @@
     <meta name="twitter:description"
         content="Learn about But First Fire, a free set of FIRE calculators and planning tools for financial independence and early retirement.">
     <meta name="twitter:image" content="https://butfirstfire.com/dashboard-screenshot.png">
-    <!-- Fonts & Styles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/blog.css">
+    <!-- Fonts & Styles -->    <link rel="stylesheet" href="/blog.css">
 
     <style>
         .page-container {
@@ -81,7 +77,7 @@
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            background: rgba(var(--accent-rgb, 158, 69, 32), 0.08);
             border-left: 4px solid var(--accent-color);
             border-radius: 8px;
             padding: 1.5rem;
@@ -121,17 +117,17 @@
             font-weight: 600;
             border-radius: 12px;
             border: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--accent-fill, #9E4520);
             color: #ffffff;
             text-decoration: none;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 12px rgba(var(--accent-rgb, 158, 69, 32), 0.4);
         }
 
         .btn-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 6px 20px rgba(var(--accent-rgb, 158, 69, 32), 0.5);
         }
 
         .values-grid {
@@ -228,7 +224,7 @@
 
                 <!-- Author Profile Card -->
                 <div
-                    style="display: flex; align-items: flex-start; gap: 1.5rem; padding: 2rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); border-radius: 16px; margin: 1.5rem 0;">
+                    style="display: flex; align-items: flex-start; gap: 1.5rem; padding: 2rem; background: rgba(var(--accent-rgb, 158, 69, 32), 0.05); border-radius: 16px; margin: 1.5rem 0;">
                     <img src="/ninad-headshot.jpg"
                         alt="Ninad — founder of But First Fire, reached Coast FIRE at 33 after starting with 40K debt"
                         style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">

@@ -7,12 +7,7 @@
     <title>Page Not Found - But First Fire</title>
     <meta name="description" content="The page you're looking for doesn't exist. Head back to But First Fire to plan your financial independence journey.">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="robots" content="noindex">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/blog.css">
+    <meta name="robots" content="noindex">    <link rel="stylesheet" href="/blog.css">
 
     <style>
         .error-container {
@@ -27,10 +22,7 @@
             font-weight: 800;
             letter-spacing: -0.04em;
             line-height: 1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent-color, #9E4520);
             margin: 0 0 1rem;
         }
 
@@ -67,17 +59,17 @@
             font-weight: 600;
             border-radius: 12px;
             border: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--accent-fill, #9E4520);
             color: #ffffff;
             text-decoration: none;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 12px rgba(var(--accent-rgb, 158, 69, 32), 0.4);
         }
 
         .btn-home:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 6px 20px rgba(var(--accent-rgb, 158, 69, 32), 0.5);
         }
 
         .secondary-links {
@@ -95,7 +87,7 @@
         }
 
         .secondary-links a:hover {
-            color: #5568d3;
+            color: var(--accent-color, #9E4520);
             text-decoration: underline;
         }
 
@@ -126,7 +118,7 @@
 
     <main class="blog-container">
         <div class="error-container">
-            <div class="error-emoji">🔥</div>
+            
             <div class="error-code">404</div>
             <h1 class="error-title">This page went up in smoke</h1>
             <p class="error-message">

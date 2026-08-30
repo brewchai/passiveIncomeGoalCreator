@@ -1,3 +1,15 @@
+/* Globe palette — see /DESIGN.md. The globe canvas is dark in both themes, so these
+   are fixed at the dark-mode end of the site palette rather than reading the tokens.
+   Green = affordable is a data encoding, kept; the hue is the site's olive (from cover
+   foliage), not the stock mint. */
+const GLOBE = {
+  affordable: '#9DBF63',                    // --toast-accent, dark-mode value
+  aboveBudget: 'rgba(176, 164, 152, 0.45)', // warm neutral (was blue-grey)
+  ring: 'rgba(157, 191, 99, 0.65)',
+  atmosphere: '#E08A57',                    // --accent-color, dark-mode value — warm rim
+  label: '#F4EFE9'                          // --text-primary, dark-mode value
+};
+
 const MODES = {
     income: {
         label: 'Monthly income',
@@ -190,7 +202,7 @@ function buildGlobe() {
         .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
         .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
         .showAtmosphere(true)
-        .atmosphereColor('#6cc6ff')
+        .atmosphereColor(GLOBE.atmosphere)
         .atmosphereAltitude(0.18)
         .pointAltitude((point) => (point.affordable ? 0.13 : 0.05))
         .pointRadius((point) => (point.affordable ? 0.38 : 0.16))
@@ -200,7 +212,7 @@ function buildGlobe() {
         .pointLabel((point) => tooltipMarkup(point))
         .labelSize(1.2)
         .labelDotRadius(0.32)
-        .labelColor(() => '#f2f8ff')
+        .labelColor(() => GLOBE.label)
         .labelText((point) => point.city)
         .labelAltitude((point) => (point.affordable ? 0.17 : 0.09))
         .labelLat((point) => point.lat)
@@ -296,7 +308,7 @@ function syncGlobe(monthlyIncome) {
         ...city,
         effective_monthly_cost: effectiveMonthlyCost,
         affordable: effectiveMonthlyCost <= monthlyIncome,
-        color: effectiveMonthlyCost <= monthlyIncome ? '#41e2ba' : 'rgba(159, 182, 207, 0.48)'
+        color: effectiveMonthlyCost <= monthlyIncome ? GLOBE.affordable : GLOBE.aboveBudget
     };
     });
 
@@ -307,7 +319,7 @@ function syncGlobe(monthlyIncome) {
         .pointsData(pointData)
         .labelsData(labelData)
         .ringsData(ringData)
-        .ringColor(() => 'rgba(65, 226, 186, 0.65)')
+        .ringColor(() => GLOBE.ring)
         .ringMaxRadius(3.4)
         .ringPropagationSpeed(1.4)
         .ringRepeatPeriod(1100);

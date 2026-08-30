@@ -140,7 +140,7 @@
 
         // ── Hero ──
         const yearsText = years === 0
-            ? 'You\'ve already hit your FIRE number! 🎉'
+            ? 'You\'ve already hit your FIRE number!'
             : years === Infinity
             ? 'Cannot reach FIRE at current savings rate'
             : `${years} year${years === 1 ? '' : 's'} to go (${fireYear})`;
@@ -271,7 +271,8 @@
 
         // Portfolio growth line (gradient)
         const grad = ctx.createLinearGradient(pad.l, 0, w - pad.r, 0);
-        grad.addColorStop(0, '#667eea');
+        grad.addColorStop(0, getComputedStyle(document.documentElement)
+            .getPropertyValue('--accent-color').trim() || '#9E4520');
         grad.addColorStop(1, '#18a683');
         ctx.strokeStyle = grad; ctx.lineWidth = 3;
         ctx.beginPath();
@@ -283,8 +284,8 @@
 
         // Fill under line
         const areaGrad = ctx.createLinearGradient(0, pad.t, 0, h - pad.b);
-        areaGrad.addColorStop(0, 'rgba(102, 126, 234, 0.18)');
-        areaGrad.addColorStop(1, 'rgba(102, 126, 234, 0)');
+        areaGrad.addColorStop(0, 'rgba(var(--accent-rgb, 158, 69, 32), 0.18)');
+        areaGrad.addColorStop(1, 'rgba(var(--accent-rgb, 158, 69, 32), 0)');
         ctx.fillStyle = areaGrad;
         ctx.beginPath();
         ctx.moveTo(xPx(0), yPx(projection[0]));
@@ -304,7 +305,9 @@
     function setSliderFill(val) {
         if (!wrSlider) return;
         const pct = ((val - 2.5) / (5.0 - 2.5)) * 100;
-        wrSlider.style.background = `linear-gradient(to right, #667eea 0%, #667eea ${pct}%, rgba(148,163,184,0.25) ${pct}%, rgba(148,163,184,0.25) 100%)`;
+        const ac = getComputedStyle(document.documentElement)
+            .getPropertyValue('--accent-color').trim() || '#9E4520';
+        wrSlider.style.background = `linear-gradient(to right, ${ac} 0%, ${ac} ${pct}%, rgba(148,163,184,0.25) ${pct}%, rgba(148,163,184,0.25) 100%)`;
     }
     if (wrSlider) {
         wrSlider.addEventListener('input', () => {
@@ -357,7 +360,7 @@
                 fd.append('source', 'fire-number-calculator');
                 await fetch(NEWSLETTER_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd });
             } catch (_) { /* silent */ }
-            if (ctaMsg) { ctaMsg.textContent = '🔥 You\'re in! Watch your inbox for FIRE updates.'; ctaMsg.className = 'newsletter-cta-msg success'; ctaMsg.style.display = 'block'; }
+            if (ctaMsg) { ctaMsg.textContent = 'You\'re in! Watch your inbox for FIRE updates.'; ctaMsg.className = 'newsletter-cta-msg success'; ctaMsg.style.display = 'block'; }
             if (ctaEmail) ctaEmail.value = '';
             if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
         });

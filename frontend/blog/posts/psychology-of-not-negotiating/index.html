@@ -32,11 +32,7 @@
     
 
 
-    <!-- Fonts & Styles -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/blog.css">
+    <!-- Fonts & Styles -->    <link rel="stylesheet" href="/blog.css">
 
     <style>
         /* Modern post page design */
@@ -65,10 +61,10 @@
         }
 
         .post-title {
-            font-size: 2.75rem;
-            font-weight: 800;
+            font-size: var(--t-4);
+            font-weight: var(--w-display);
             letter-spacing: -0.02em;
-            line-height: 1.15;
+            line-height: var(--lh-tight);
             margin: 0 0 0.75rem;
             color: var(--text-primary);
         }
@@ -99,10 +95,16 @@
         }
 
         .post-content {
-            font-size: 1.125rem;
-            line-height: 1.8;
+            font-size: var(--t-0);
+            line-height: 1.75;
             color: var(--text-primary);
         }
+        .post-content p,
+        .post-content li,
+        .post-content blockquote {
+            max-width: var(--measure);
+        }
+
 
         .post-content>*:first-child {
             margin-top: 0;
@@ -175,7 +177,7 @@
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            border-bottom: 1px solid rgba(var(--accent-rgb, 158, 69, 32), 0.3);
             transition: all 0.2s;
         }
 
@@ -187,7 +189,7 @@
         .post-content blockquote {
             margin: 1.5rem 0;
             padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            background: rgba(var(--accent-rgb, 158, 69, 32), 0.05);
             border-left: 4px solid var(--accent-color);
             border-radius: 8px;
             color: var(--text-secondary);
@@ -312,7 +314,7 @@
         }
 
         .live-var:focus {
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
             border-radius: 4px;
         }
 
@@ -494,7 +496,7 @@
             <div class="post-hero">
                 <h1 class="post-title">The Painful Psychology of Why You Won't Negotiate Your Next Job Offer</h1>
                 <p class="post-subtitle">And how this psychological trap could cost you $500,000+ over your career</p>
-                <div class="post-meta"><span>By <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;"><strong>Nomad Ninad</strong></a></span><span class="post-meta-right">📅 2026-04-03 · 4 min read</span></div>
+                <div class="post-meta"><span>By <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;"><strong>Nomad Ninad</strong></a></span><span class="post-meta-right">2026-04-03 · 4 min read</span></div>
                 <img src="https://butfirstfire.com/blog/posts/psychology-of-not-negotiating/psychology-of-not-negotiating-salary.webp" alt="The psychology behind not negotiating your salary" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">
             </div>
 
@@ -562,7 +564,7 @@
                         <p
                             style="margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Ninad is a former Meta engineer from Pune who moved to the US with $40k of student debt, cleared it, reached Lean FIRE by 33, and now lives on about $1,800 a month in Da Nang, Vietnam. He writes butfirstfire.com from wherever he happens to be.</p>
                         <a href="/about"
-                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(102, 126, 234, 0.3);">Learn
+                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb, 158, 69, 32), 0.3);">Learn
                             more →</a>
                     </div>
                 </div>

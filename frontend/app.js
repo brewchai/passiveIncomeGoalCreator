@@ -3659,7 +3659,7 @@ function openFIYearModal() {
                 document.getElementById('simCount').textContent = results.simulationsRun.toLocaleString();
                 resultsDiv.style.display = 'block';
 
-                runBtn.textContent = '🔄 Run Again';
+                runBtn.textContent = 'Run Again';
                 runBtn.style.display = 'block';
             }, 3500);
         };
