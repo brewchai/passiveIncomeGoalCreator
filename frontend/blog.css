@@ -673,14 +673,6 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-
-
-
-
-.article-card:hover 
-
-
-
 .article-content {
     padding: 1.25rem;
     flex: 1;
@@ -709,28 +701,16 @@ body {
     letter-spacing: 0.5px;
 }
 
-.article-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
 .article-excerpt {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     flex: 1;
     line-height: 1.5;
     font-size: 0.9rem;
+    /* was clamped to 2 lines, which cut subtitles mid-sentence. The tile has room. */
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
