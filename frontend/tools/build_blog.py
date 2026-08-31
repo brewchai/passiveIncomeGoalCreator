@@ -152,21 +152,12 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     # The <img> must be site-relative: an absolute production URL makes every local
     # page load its hero from butfirstfire.com, so local preview never shows local work.
     # cover_abs stays absolute for og:image and JSON-LD, where scrapers require it.
-    # Article hero shows the ORIGINAL photograph, not the composite card: the title sits
-    # directly above it, so a burned-in hook would say the same thing twice. The card is
-    # for og:image, where the image travels alone.
-    # Only for live posts (noindex marks a post as benched), and never for type_only posts
-    # — those have no honest photograph, which is the whole reason they are type_only.
-    hero_rel = cover
-    if not meta.get("noindex") and not meta.get("type_only"):
-        _base = (meta.get("cover_base") or "").strip()
-        if _base:
-            _base = _base if _base.startswith(("/", "http")) else f"/blog/posts/{slug}/{_base}"
-            _bf = FRONTEND / _base.lstrip("/")
-            if _bf.exists():
-                hero_rel = f"{_base}?v={int(_bf.stat().st_mtime)}"
-    hero_src = hero_rel if hero_rel else ''
-    hero_html = f'<img src="{hero_src}" alt="{cover_alt}" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if hero_src else ''
+    # No hero image inside the article. The title and subtitle carry the top of the page,
+    # and the image was the LCP element on every post — dropping it removes a request and
+    # the layout shift with it. The cover still exists for og:image / twitter:image /
+    # JSON-LD (built from cover_abs below) and for the listing, which blog.html renders
+    # independently of this script.
+    hero_html = ''
 
     # Remove duplicate H1 at top of content
     html_body = strip_leading_h1(html_content)
