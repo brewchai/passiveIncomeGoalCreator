@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import re
 from pathlib import Path
 from datetime import datetime
 
@@ -117,7 +118,70 @@ def build_faq_json_ld(meta: dict) -> str:
     return f'<script type="application/ld+json">\n  {json.dumps(json_ld, ensure_ascii=False)}\n  </script>'
 
 
-def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> str:
+
+def build_index() -> dict:
+    """Lightweight map of every live post, for choosing Related items."""
+    idx = {}
+    for slug in collect_posts():
+        mp = POSTS_DIR / slug / "meta.json"
+        if not mp.exists() or not (POSTS_DIR / slug / "post.md").exists():
+            continue
+        m = json.loads(mp.read_text(encoding="utf-8"))
+        if m.get("noindex"):
+            continue                      # benched posts are never suggested
+        idx[slug] = {
+            "slug": slug,
+            "title": m.get("title", ""),
+            "eyebrow": (m.get("eyebrow") or "").strip(),
+            "tags": m.get("tags") or [],
+            "date": iso_date(m.get("date", "")) if m.get("date") else "",
+        }
+    return idx
+
+
+def pick_related(slug: str, html_content: str, index: dict, want: int = 3, floor: int = 2) -> list:
+    """Articles this one links to, in the order they appear; topped up when short.
+
+    An article that links to nothing would otherwise show an empty rail, so the
+    shortfall is filled first from posts sharing a tag, then from the most recent.
+    The rail is never shorter than `floor`.
+    """
+    me = index.get(slug, {})
+    picked = []
+    for m in re.finditer(r'href="/blog/([A-Za-z0-9\-_]+)"', html_content):
+        s2 = m.group(1)
+        if s2 != slug and s2 in index and s2 not in picked:
+            picked.append(s2)
+    if len(picked) < want:                      # top up on shared tags
+        mine = set(me.get("tags") or [])
+        same = [s2 for s2, v in index.items()
+                if s2 != slug and s2 not in picked and mine & set(v.get("tags") or [])]
+        same.sort(key=lambda s2: index[s2]["date"], reverse=True)
+        picked += same[: want - len(picked)]
+    if len(picked) < want:                      # then the most recent
+        rest = [s2 for s2 in index if s2 != slug and s2 not in picked]
+        rest.sort(key=lambda s2: index[s2]["date"], reverse=True)
+        picked += rest[: want - len(picked)]
+    picked = picked[:want]
+    return picked if len(picked) >= floor else []
+
+
+def related_html(slugs: list, index: dict) -> str:
+    if not slugs:
+        return ""
+    items = "".join(
+        f'<a class="rel-item" href="/blog/{s2}">'
+        f'<span class="rel-eyebrow">{html_escape(index[s2]["eyebrow"] or "Read next")}</span>'
+        f'<span class="rel-title">{html_escape(index[s2]["title"])}</span></a>'
+        for s2 in slugs)
+    return f'<aside class="related-rail"><h4>Related</h4>{items}</aside>'
+
+
+def html_escape(t: str) -> str:
+    return (t or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def render_html(template: str, *, slug: str, meta: dict, html_content: str, related: str = '') -> str:
     title = meta["title"].strip()
     # SEO title for the <title> tag; falls back to the on-page title.
     # Lets the SERP title differ from the visible H1 when useful.
@@ -178,6 +242,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
         .replace("{{CANONICAL_PATH}}", canonical_path)
         .replace("{{COVER}}", cover_abs)
         .replace("{{HERO_IMAGE}}", hero_html)
+        .replace("{{RELATED}}", related)
         .replace("{{CONTENT}}", html_body)
     )
 
@@ -203,7 +268,7 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
 
     return page
 
-def build_one_post(slug: str, template: str) -> dict:
+def build_one_post(slug: str, template: str, index: dict | None = None) -> dict:
     folder = POSTS_DIR / slug
     meta_path = folder / "meta.json"
     md_path = folder / "post.md"
@@ -225,7 +290,10 @@ def build_one_post(slug: str, template: str) -> dict:
     )
 
     # Render final HTML
-    html = render_html(template, slug=slug, meta=meta, html_content=html_content)
+    index = index or {}
+    rel = '' if meta.get('noindex') else related_html(
+        pick_related(slug, html_content, index), index)
+    html = render_html(template, slug=slug, meta=meta, html_content=html_content, related=rel)
     out_path.write_text(html, encoding="utf-8")
 
     # Minimal record for posts.json
@@ -349,13 +417,14 @@ def update_sitemap(records: list[dict]) -> None:
 
 def main():
     template = load_template()
+    index = build_index()
     posts = []
     for slug in collect_posts():
         folder = POSTS_DIR / slug
         # Only treat as a post if it has meta.json and post.md
         if (folder / "meta.json").exists() and (folder / "post.md").exists():
             print(f"Building: {slug}")
-            record = build_one_post(slug, template)
+            record = build_one_post(slug, template, index)
             posts.append(record)
     write_posts_index(posts)
     update_sitemap(posts)

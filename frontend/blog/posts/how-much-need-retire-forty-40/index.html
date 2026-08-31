@@ -96,6 +96,53 @@
             white-space: nowrap;
         }
 
+
+        /* ── Related rail ────────────────────────────────────────────────
+           Title, subtitle, byline and body all share one measure, so the
+           article has a single right edge instead of three. The rail fills
+           the space that opens up beside it. */
+        .post-container {
+            max-width: 1010px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 268px;
+            column-gap: 44px;
+            align-items: start;
+        }
+        .post-hero, .post-content { grid-column: 1; }
+        .post-title, .post-subtitle, .post-meta { max-width: var(--measure); }
+
+        .related-rail {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            position: sticky;
+            top: calc(var(--header-h, 84px) + 20px);
+        }
+        .related-rail h4 {
+            font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--text-muted); margin: 0 0 0.8rem;
+        }
+        .rel-item {
+            display: block; text-decoration: none;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1rem; margin-bottom: 0.7rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .rel-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .rel-eyebrow {
+            display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent-color); margin-bottom: 0.35rem;
+        }
+        .rel-title {
+            display: block; font-size: 0.95rem; line-height: 1.25; font-weight: 600;
+            letter-spacing: -0.015em; color: var(--text-primary);
+        }
+        @media (max-width: 900px) {
+            .post-container { grid-template-columns: 1fr; }
+            .related-rail { grid-column: 1; grid-row: auto; position: static; margin-top: 2.5rem; }
+        }
+
         .post-content {
             font-size: var(--t-0);
             line-height: 1.75;
@@ -816,6 +863,8 @@ Every single one of your friends is at work. Your kids are at school.
                     </div>
                 </div>
             </article>
+
+            
         </div>
     </main>
 
