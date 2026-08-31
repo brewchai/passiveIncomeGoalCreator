@@ -5,7 +5,7 @@
   "description": "Can you retire at 35 with $500k (~₹4.7 crore)? Every strategy run with real math — withdrawal rates, dividends, real estate, and the geo-arbitrage route an NRI used to FIRE in Southeast Asia.",
   "date": "2026-02-16",
   "date_modified": "2026-07-05",
-  "cover": "retire-at-35-with-500k-lean-fire.webp",
+  "cover": "retire-at-35-with-500k-lean-fire-card.webp",
   "tags": [
     "strategies",
     "retirement planning"
@@ -34,5 +34,10 @@
     }
   ],
   "order": 9,
-  "cover_alt": "Can you retire at 35 with $500k using Lean FIRE and geo arbitrage"
+  "cover_alt": "Watching the sun set over desert dunes, working out whether 500k is enough to retire at 35",
+  "hook": "Is $500k enough at 35?",
+  "hook_accent": "$500k",
+  "scrim_side": "right",
+  "eyebrow": "Reality check",
+  "cover_base": "retire-at-35-with-500k-lean-fire.webp"
 }

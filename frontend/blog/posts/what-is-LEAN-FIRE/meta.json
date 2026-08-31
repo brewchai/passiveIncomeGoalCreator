@@ -9,7 +9,7 @@
     "featured",
     "basics"
   ],
-  "cover": "lean-fire-nyc-to-vietnam-geo-arbitrage.webp",
+  "cover": "lean-fire-daily-life-vietnam-card.webp",
   "featured": true,
   "faqs": [
     {
@@ -42,5 +42,10 @@
     }
   ],
   "order": 2,
-  "cover_alt": "Lean FIRE geo arbitrage from $6,000 a month in New York to $1,100 in Vietnam"
+  "cover_alt": "Walking through a park in Da Nang on a Lean FIRE budget of 1,800 dollars a month",
+  "hook": "I retired on $1,800 a month",
+  "hook_accent": "$1,800",
+  "scrim_side": "left",
+  "eyebrow": "Lean FIRE",
+  "cover_base": "lean-fire-daily-life-vietnam.webp"
 }

@@ -6,7 +6,7 @@
   "date": "2026-02-02",
   "date_modified": "2026-07-05",
   "author": "Ninad Mundalik",
-  "cover": "cover.webp",
+  "cover": "living-on-1100-per-month-vietnam.webp",
   "faqs": [
     {
       "question": "How much does it cost to live in Da Nang, Vietnam?",
@@ -25,5 +25,6 @@
       "answer": "Using a real all-in spend of about $21,600/year and the 25x rule, a FIRE number of roughly $540,000 supports early retirement in Vietnam. On a bare-bones core budget of ~$13,200/year the target drops to about $330,000, but planning on the higher all-in number is the honest approach."
     }
   ],
-  "noindex": true
+  "noindex": true,
+  "cover_alt": "Inside a local Vietnamese barbershop, the kind of prices that make 1,100 dollars a month work"
 }

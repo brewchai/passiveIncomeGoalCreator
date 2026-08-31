@@ -272,7 +272,7 @@
         // Portfolio growth line (gradient)
         const grad = ctx.createLinearGradient(pad.l, 0, w - pad.r, 0);
         grad.addColorStop(0, getComputedStyle(document.documentElement)
-            .getPropertyValue('--accent-color').trim() || '#9E4520');
+            .getPropertyValue('--accent-color').trim() || '#7C2432');
         grad.addColorStop(1, '#18a683');
         ctx.strokeStyle = grad; ctx.lineWidth = 3;
         ctx.beginPath();
@@ -284,8 +284,8 @@
 
         // Fill under line
         const areaGrad = ctx.createLinearGradient(0, pad.t, 0, h - pad.b);
-        areaGrad.addColorStop(0, 'rgba(var(--accent-rgb, 158, 69, 32), 0.18)');
-        areaGrad.addColorStop(1, 'rgba(var(--accent-rgb, 158, 69, 32), 0)');
+        areaGrad.addColorStop(0, 'rgba(var(--accent-rgb, 124, 36, 50), 0.18)');
+        areaGrad.addColorStop(1, 'rgba(var(--accent-rgb, 124, 36, 50), 0)');
         ctx.fillStyle = areaGrad;
         ctx.beginPath();
         ctx.moveTo(xPx(0), yPx(projection[0]));
@@ -306,7 +306,7 @@
         if (!wrSlider) return;
         const pct = ((val - 2.5) / (5.0 - 2.5)) * 100;
         const ac = getComputedStyle(document.documentElement)
-            .getPropertyValue('--accent-color').trim() || '#9E4520';
+            .getPropertyValue('--accent-color').trim() || '#7C2432';
         wrSlider.style.background = `linear-gradient(to right, ${ac} 0%, ${ac} ${pct}%, rgba(148,163,184,0.25) ${pct}%, rgba(148,163,184,0.25) 100%)`;
     }
     if (wrSlider) {

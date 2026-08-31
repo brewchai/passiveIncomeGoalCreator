@@ -9,7 +9,7 @@
     "featured",
     "basics"
   ],
-  "cover": "how-to-calculate-your-fire-number.webp",
+  "cover": "how-to-calculate-your-fire-number-card.webp",
   "featured": true,
   "faqs": [
     {
@@ -33,5 +33,12 @@
       "answer": "It depends on your annual spending. At the safer Indian 33x multiplier: ₹6 lakh a year is about ₹2 crore, ₹12 lakh a year is about ₹4 crore, and ₹24 lakh a year is about ₹8 crore. Geo-arbitrage to a lower-cost location can cut the number significantly."
     }
   ],
-  "cover_alt": "How to calculate your FIRE number with the 25x rule"
+  "cover_alt": "Sitting on steps working through how to calculate a FIRE number",
+  "hook": "Your number, in plain math",
+  "hook_accent": "Your number",
+  "scrim_side": "left",
+  "eyebrow": "The basics",
+  "cover_base": "how-to-calculate-your-fire-number-photo.webp",
+  "photo_pos": "28% 18%",
+  "photo_zoom": "110%"
 }

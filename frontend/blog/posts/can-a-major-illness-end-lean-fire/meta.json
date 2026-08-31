@@ -5,7 +5,7 @@
   "description": "A major illness is the risk most likely to break a lean early retirement. Here is what an uninsured cancer bill did to my withdrawal rate, and the two shields that keep a health shock from ending your Lean FIRE.",
   "date": "2026-07-14",
   "date_modified": "2026-07-14",
-  "cover": "major-illness-lean-fire-risk.webp",
+  "cover": "major-illness-lean-fire-risk-card.webp",
   "tags": [
     "lean-fire",
     "fire-planning",
@@ -40,5 +40,13 @@
     }
   ],
   "order": 8,
-  "cover_alt": "How a major illness and medical costs can affect a Lean FIRE plan"
+  "cover_alt": "Can a major illness kick you out of Lean FIRE",
+  "hook": "One hospital bill can end this",
+  "hook_accent": "One",
+  "scrim_side": "left",
+  "eyebrow": "Risk",
+  "cover_base": "major-illness-lean-fire-risk-photo.webp",
+  "photo_pos": "center 30%",
+  "photo_zoom": "cover",
+  "type_only": true
 }

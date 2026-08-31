@@ -5,7 +5,7 @@
   "description": "How many crores do you actually need to FIRE in India? A 5-step builder from someone who retired at 33, giving each cost its own inflation (healthcare 12%, education 10%, lifestyle 6%) instead of a single lazy multiplier.",
   "date": "2026-07-19",
   "date_modified": "2026-07-29",
-  "cover": "fire-in-india-how-many-crores.webp",
+  "cover": "fire-in-india-how-many-crores-card.webp",
   "tags": [
     "fire-india",
     "lean-fire",
@@ -39,5 +39,13 @@
       "question": "Should I calculate my FIRE number in today's rupees or future rupees?",
       "answer": "Either works, and mixing them is the mistake. In today's rupees, apply the multipliers to your current costs and pair them with real returns. In future rupees, inflate your spending first and pair it with full nominal returns. Both give the same answer in different clothes."
     }
-  ]
+  ],
+  "hook": "How many crores is actually enough?",
+  "hook_accent": "crores",
+  "scrim_side": "left",
+  "eyebrow": "FIRE in India",
+  "cover_base": "fire-in-india-how-many-crores-photo.webp",
+  "photo_pos": "38% 12%",
+  "photo_zoom": "104%",
+  "cover_alt": "Portrait outdoors in a denim jacket, working out how many crores it takes to FIRE in India"
 }

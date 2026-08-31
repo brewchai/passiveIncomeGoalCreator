@@ -5,7 +5,7 @@
   "description": "Once your investments grow past a point, compounding does more than saving ever can. Here is why I want to move from Lean FIRE to Regular FIRE, and how I plan to get there without trading my time for a salary.",
   "date": "2026-07-15",
   "date_modified": "2026-07-15",
-  "cover": "lean-fire-to-regular-fire.webp",
+  "cover": "lean-fire-to-regular-fire-card.webp",
   "tags": [
     "lean-fire",
     "fire-planning",
@@ -35,5 +35,12 @@
       "answer": "Not if you protect your floor. Keep the money that guarantees your freedom completely safe and never gamble with it. Take your risks only with your time and small amounts, so a failed bet costs you effort rather than your security."
     }
   ],
-  "cover_alt": "Thinking about moving from Lean FIRE to Regular FIRE"
+  "cover_alt": "Looking out over limestone karsts in Vietnam, moving from Lean FIRE to regular FIRE",
+  "hook": "Lean was never the finish line",
+  "hook_accent": "never",
+  "scrim_side": "left",
+  "eyebrow": "Lean FIRE",
+  "cover_base": "lean-fire-to-regular-fire-photo.webp",
+  "photo_pos": "34% 52%",
+  "photo_zoom": "106%"
 }

@@ -13,6 +13,9 @@ Reflex dump from the session that produced this file — these arrived unearned:
 2. Keeping Inter and nudging `--text-secondary` to `#64748B` to "fix" contrast.
 3. One accent doing links + buttons + badges + chart series + logo, undifferentiated.
 4. Choosing an accent because it "feels financial" — from memory, not from anything real.
+5. Any accent in the 10–30° warm-orange band — that is Claude's own brand colour, and a
+   derivation from warm source photography walks straight into it. Check every candidate
+   against `#D97757` before adopting it.
 
 Plus `~/.claude/skills/ui-design/references/banned-defaults.md` and the slop-watch dossier.
 
@@ -31,13 +34,17 @@ Plus `~/.claude/skills/ui-design/references/banned-defaults.md` and the slop-wat
 **Color — source: the site's own cover photography.**
 25 post covers sampled; saturated pixels cluster 68% in the 15–30° red-orange/orange band
 (Da Nang light, terracotta, skin) with a 13% cyan-blue secondary (sky, water). The accent is
-drawn from the dominant family, then pulled toward brown by lowering value and
-nudging hue to 18°, keeping chroma high (0.80) — a first attempt at 0.64 read as muted, and darkened until it clears AA. Nothing here came from memory.
+drawn from the dominant family, then abandoned. The warm 15–25° band that the photos
+pointed to lands on Claude's own brand orange: the derived `#E08A57` sat 7.6° from `#D97757`
+at identical saturation and value. Deriving from source data does not protect you from
+converging on the tool's own palette. The accent is now **oxblood** `#7C2432` (hue 350°),
+chosen from a slate of four alternatives; its dark partner is held at saturation 0.49 so it
+reads red rather than dusty rose. The original warm derivation still governs the neutrals, and darkened until it clears AA. Nothing here came from memory.
 
 | Token | Light | Dark | Job |
 |---|---|---|---|
-| `--accent-color` | `#9E4520` 5.91:1 | `#E08A57` 7.12:1 | links, active state, one emphasis per view |
-| `--accent-fill` | `#9E4520` | `#E08A57` |
+| `--accent-color` | `#7C2432` 9.12:1 | `#D26C79` 5.52:1 | links, active state, one emphasis per view |
+| `--accent-fill` | `#7C2432` | `#D26C79` |
 | `--toast-accent` | `#4A6B22` 5.75:1 | `#9DBF63` 9.02:1 | the article toast only | solid fill for buttons/pills — **replaces the gradient** |
 | `--background` | `#FAF7F3` | `#14110E` | ground |
 | `--card-background` | `#FFFFFF` | `#1E1A16` | raised surface |

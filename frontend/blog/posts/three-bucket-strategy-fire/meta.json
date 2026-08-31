@@ -9,7 +9,7 @@
     "geo-arbitrage",
     "strategies"
   ],
-  "cover": "three-bucket-strategy-lean-fire.webp",
+  "cover": "three-bucket-strategy-lean-fire-card.webp",
   "featured": false,
   "faqs": [
     {
@@ -34,5 +34,12 @@
     }
   ],
   "order": 4,
-  "cover_alt": "The three bucket strategy for a Lean FIRE portfolio"
+  "cover_alt": "Sitting in a garden in Vietnam, thinking through the three bucket strategy that funds early retirement",
+  "hook": "Three buckets, warts and all",
+  "hook_accent": "Three",
+  "scrim_side": "left",
+  "eyebrow": "Strategy",
+  "cover_base": "three-bucket-strategy-lean-fire-photo.webp",
+  "photo_pos": "center 36%",
+  "photo_zoom": "cover"
 }

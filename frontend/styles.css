@@ -63,7 +63,7 @@
 :root {
     --primary-color: #2E2620;
     --secondary-color: #4A4038;
-    --accent-color: #9E4520;
+    --accent-color: #7C2432;
     --success-color: #48BB78;
     --background: #FAF7F3;
     --card-background: #FFFFFF;
@@ -73,7 +73,7 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --accent-rgb: 158, 69, 32;   /* channels of --accent-color, for tints */
+    --accent-rgb: 124, 36, 50;   /* channels of --accent-color, for tints */
     --toast-accent: #4A6B22;   /* olive, sampled from cover foliage (90–100°) — 5.75:1 */
     --toast-rgb: 74, 107, 34;
     --radius-control: 4px;     /* form controls — one value, was 8/12/24 */
@@ -84,9 +84,9 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --accent-color: #E08A57;   /* 7.12:1 on #14110E */
-        --accent-secondary: #E08A57;
-        --accent-rgb: 224, 138, 87;
+        --accent-color: #D26C79;   /* 5.52:1 on #14110E */
+        --accent-secondary: #D26C79;
+        --accent-rgb: 210, 108, 121;
         --toast-accent: #9DBF63;   /* 9.02:1 on #14110E */
         --toast-rgb: 157, 191, 99;
         --accent-fill: var(--accent-color);
@@ -171,7 +171,7 @@ body {
 }
 
 .summary-item.highlight {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .summary-label {
@@ -365,7 +365,7 @@ body {
 }
 
 .goal-investment-compact {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     padding: 0.5rem;
     border-radius: 6px;
     margin-bottom: 0.5rem;
@@ -505,7 +505,7 @@ body {
 }
 
 .feature-pill-link:hover {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .feature-icon {
@@ -524,7 +524,7 @@ body {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(var(--accent-rgb, 158, 69, 32), 0.3);
+    box-shadow: 0 8px 20px rgba(var(--accent-rgb, 124, 36, 50), 0.3);
     transition: all 0.3s ease;
     font-family: var(--font-sans);
     text-decoration: none;
@@ -538,19 +538,19 @@ body {
 
     0%,
     100% {
-        box-shadow: 0 8px 20px rgba(var(--accent-rgb, 158, 69, 32), 0.3);
+        box-shadow: 0 8px 20px rgba(var(--accent-rgb, 124, 36, 50), 0.3);
         transform: scale(1);
     }
 
     50% {
-        box-shadow: 0 8px 30px rgba(var(--accent-rgb, 158, 69, 32), 0.5);
+        box-shadow: 0 8px 30px rgba(var(--accent-rgb, 124, 36, 50), 0.5);
         transform: scale(1.02);
     }
 }
 
 .btn-cta:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(var(--accent-rgb, 158, 69, 32), 0.4);
+    box-shadow: 0 12px 30px rgba(var(--accent-rgb, 124, 36, 50), 0.4);
     animation: none;
 }
 
@@ -820,7 +820,7 @@ body {
 }
 
 .landing-keywords {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.05);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.05);
     padding: 2rem;
     border-radius: 16px;
     text-align: center;
@@ -969,7 +969,7 @@ h4 {
 }
 
 .highlight-box {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     padding: 2rem;
     border-radius: 12px;
     border-left: 4px solid var(--accent-color);
@@ -1400,7 +1400,7 @@ h4 {
 }
 
 .summary-item.highlight {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .summary-label {
@@ -1594,7 +1594,7 @@ h4 {
 }
 
 .goal-investment-compact {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     padding: 0.5rem;
     border-radius: 6px;
     margin-bottom: 0.5rem;
@@ -1824,7 +1824,7 @@ h4 {
 
 /* Goal Investment Needed */
 .goal-investment-needed {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     padding: 0.75rem;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -2322,7 +2322,7 @@ h4 {
     flex-direction: column;
     z-index: 9999;
     transition: all 0.3s ease;
-    border: 1px solid rgba(var(--accent-rgb, 158, 69, 32), 0.2);
+    border: 1px solid rgba(var(--accent-rgb, 124, 36, 50), 0.2);
 }
 
 .chatbot-container.minimized {
@@ -2407,7 +2407,7 @@ h4 {
 }
 
 .chatbot-messages::-webkit-scrollbar-thumb {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.3);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.3);
     border-radius: 3px;
 }
 
@@ -2439,8 +2439,8 @@ h4 {
 }
 
 .bot-message .message-content {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
-    border: 1px solid rgba(var(--accent-rgb, 158, 69, 32), 0.2);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
+    border: 1px solid rgba(var(--accent-rgb, 124, 36, 50), 0.2);
     color: var(--text-primary);
     align-self: flex-start;
 }
@@ -2473,7 +2473,7 @@ h4 {
 
 .chatbot-input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .chatbot-send {
@@ -2568,7 +2568,7 @@ h4 {
 
 .frequency-btn:hover {
     border-color: var(--accent-color);
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.05);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.05);
 }
 
 .frequency-btn.active {
@@ -2642,7 +2642,7 @@ h4 {
     font-weight: 500;
     color: var(--text-primary);
     padding: 1rem;
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.05);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.05);
     border-radius: 8px;
     border: 2px solid transparent;
     transition: all 0.2s ease;
@@ -2650,7 +2650,7 @@ h4 {
 
 .checkbox-label:hover {
     border-color: var(--accent-color);
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -2748,7 +2748,7 @@ h4 {
 }
 
 .summary-box {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     border: 2px solid var(--accent-color);
     border-radius: 12px;
     padding: 1.5rem;
@@ -2897,7 +2897,7 @@ h4 {
 
 .btn-tip-refresh:hover {
     transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 10px 22px rgba(var(--accent-rgb, 158, 69, 32), 0.32);
+    box-shadow: 0 10px 22px rgba(var(--accent-rgb, 124, 36, 50), 0.32);
 }
 
 .btn-tip-refresh:active {

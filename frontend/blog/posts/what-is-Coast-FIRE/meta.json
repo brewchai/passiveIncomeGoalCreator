@@ -1,13 +1,14 @@
 {
-    "title": "What Is Coast FIRE? Meaning, Formula, and Examples",
-    "subtitle": "The Coast FIRE blueprint: how to stop worrying about retirement and live for today",
-    "description": "Learn what Coast FIRE means, how to calculate your Coast FIRE number, and when you can stop saving for traditional retirement.",
-    "date": "2025-11-17",
-    "tags": [
-        "featured",
-        "basics"
-    ],
-    "cover": "/blog/posts/what-is-Coast-FIRE/cover.webp",
-    "featured": true,
-    "noindex": true
+  "title": "What Is Coast FIRE? Meaning, Formula, and Examples",
+  "subtitle": "The Coast FIRE blueprint: how to stop worrying about retirement and live for today",
+  "description": "Learn what Coast FIRE means, how to calculate your Coast FIRE number, and when you can stop saving for traditional retirement.",
+  "date": "2025-11-17",
+  "tags": [
+    "featured",
+    "basics"
+  ],
+  "cover": "coast-fire-relaxed-dog-cafe.webp",
+  "featured": true,
+  "noindex": true,
+  "cover_alt": "Sitting with a dog at a cafe, coasting to retirement after hitting the Coast FIRE number"
 }

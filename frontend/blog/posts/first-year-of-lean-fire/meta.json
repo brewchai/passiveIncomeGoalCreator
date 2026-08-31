@@ -5,7 +5,7 @@
   "description": "An honest first person account of my first year of Lean FIRE: leaving burnout in New York, landing in Da Nang, and building a free life on $1,100 to $1,800 a month.",
   "date": "2026-07-14",
   "date_modified": "2026-07-14",
-  "cover": "first-year-of-lean-fire.webp",
+  "cover": "first-year-of-lean-fire-card.webp",
   "tags": [
     "lean-fire",
     "fire-journey",
@@ -36,5 +36,10 @@
     }
   ],
   "order": 5,
-  "cover_alt": "Ninad on a coastal trip during his first year of Lean FIRE"
+  "cover_alt": "Ninad on a coastal trip during his first year of Lean FIRE",
+  "hook": "My first year of not working",
+  "hook_accent": "first year",
+  "scrim_side": "left",
+  "eyebrow": "Lean FIRE",
+  "cover_base": "first-year-of-lean-fire.webp"
 }

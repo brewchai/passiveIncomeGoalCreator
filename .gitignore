@@ -48,3 +48,6 @@ Thumbs.db
 # Coverage/Reports
 coverage/
 .coverage
+
+# Raw photo originals (HEIC/zip) — source material, not for deploy
+frontend/blog/images/

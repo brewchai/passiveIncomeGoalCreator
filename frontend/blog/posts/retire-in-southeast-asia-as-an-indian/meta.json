@@ -9,7 +9,7 @@
     "featured",
     "geo-arbitrage"
   ],
-  "cover": "retire-in-southeast-asia-as-an-indian.webp",
+  "cover": "retire-in-southeast-asia-as-an-indian-card.webp",
   "featured": true,
   "faqs": [
     {
@@ -38,5 +38,12 @@
     }
   ],
   "order": 7,
-  "cover_alt": "Retiring in Southeast Asia as an Indian on a Lean FIRE budget"
+  "cover_alt": "A local barbershop in Vietnam, the everyday cost of living that makes retiring in Southeast Asia work",
+  "hook": "The money is a wash. The life is not.",
+  "hook_accent": "is not",
+  "scrim_side": "left",
+  "eyebrow": "Geo-arbitrage",
+  "cover_base": "retire-in-southeast-asia-as-an-indian-photo.webp",
+  "photo_pos": "58% 34%",
+  "photo_zoom": "140%"
 }

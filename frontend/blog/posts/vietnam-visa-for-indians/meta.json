@@ -9,7 +9,7 @@
     "geo-arbitrage",
     "visa"
   ],
-  "cover": "vietnam-visa-for-indians.webp",
+  "cover": "vietnam-visa-for-indians-card.webp",
   "featured": false,
   "faqs": [
     {
@@ -38,5 +38,12 @@
     }
   ],
   "order": 6,
-  "cover_alt": "Vietnam visa guide for Indian passport holders retiring in Da Nang"
+  "cover_alt": "Vietnam visa guide for Indian passport holders retiring in Da Nang",
+  "hook": "The visa run nobody warns you about",
+  "hook_accent": "visa run",
+  "scrim_side": "left",
+  "eyebrow": "Vietnam",
+  "cover_base": "vietnam-visa-for-indians.webp",
+  "photo_pos": "36% center",
+  "photo_zoom": "112%"
 }

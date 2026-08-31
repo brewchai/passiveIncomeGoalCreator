@@ -65,8 +65,8 @@
 :root {
     --primary-color: #2E2620;
     --secondary-color: #4A4038;
-    --accent-color: #9E4520;
-    --accent-secondary: #9E4520;
+    --accent-color: #7C2432;
+    --accent-secondary: #7C2432;
     --background: #FAF7F3;
     --card-background: #FFFFFF;
     --text-primary: #1C1714;
@@ -76,7 +76,7 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --accent-rgb: 158, 69, 32;   /* channels of --accent-color, for tints */
+    --accent-rgb: 124, 36, 50;   /* channels of --accent-color, for tints */
     --toast-accent: #4A6B22;   /* olive, sampled from cover foliage (90–100°) — 5.75:1 */
     --toast-rgb: 74, 107, 34;
     --radius-control: 4px;     /* form controls — one value, was 8/12/24 */
@@ -87,9 +87,9 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --accent-color: #E08A57;   /* 7.12:1 on #14110E */
-        --accent-secondary: #E08A57;
-        --accent-rgb: 224, 138, 87;
+        --accent-color: #D26C79;   /* 5.52:1 on #14110E */
+        --accent-secondary: #D26C79;
+        --accent-rgb: 210, 108, 121;
         --toast-accent: #9DBF63;   /* 9.02:1 on #14110E */
         --toast-rgb: 157, 191, 99;
         --accent-fill: var(--accent-color);
@@ -252,7 +252,7 @@ body {
 .search-box:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .search-icon {
@@ -345,12 +345,12 @@ body {
 
 .hero-post-image {
     width: 100%;
-    height: 100%;
-    min-height: 340px;
+    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;   /* cards are composed to the frame — never crop them */
     display: block;
+    align-self: center;
 }
 
 .hero-post-content {
@@ -482,7 +482,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1rem;
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.04);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.04);
 }
 
 .hub-card h3 {
@@ -552,7 +552,7 @@ body {
 /* Sidebar Newsletter Box */
 .newsletter-widget {
     border: 2px solid var(--accent-color);
-    background: linear-gradient(to bottom, rgba(var(--accent-rgb, 158, 69, 32), 0.03), rgba(var(--accent-rgb, 158, 69, 32), 0.05));
+    background: linear-gradient(to bottom, rgba(var(--accent-rgb, 124, 36, 50), 0.03), rgba(var(--accent-rgb, 124, 36, 50), 0.05));
     position: relative;
     overflow: hidden;
 }
@@ -605,7 +605,7 @@ body {
 .sidebar-input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 124, 36, 50), 0.1);
 }
 
 .sidebar-btn {
@@ -624,7 +624,7 @@ body {
 
 .sidebar-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--accent-rgb, 158, 69, 32), 0.4);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb, 124, 36, 50), 0.4);
     background: var(--accent-secondary);
 }
 
@@ -683,7 +683,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
     display: block;
     transition: transform 0.4s ease;
 }
@@ -695,7 +695,7 @@ body {
 .article-thumbnail-placeholder {
     width: 100%;
     height: 200px;
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -720,7 +720,7 @@ body {
 }
 
 .article-tag {
-    background: rgba(var(--accent-rgb, 158, 69, 32), 0.1);
+    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
     color: var(--accent-color);
     padding: 0.2rem 0.6rem;
     border-radius: 20px;

@@ -6,7 +6,7 @@ const GLOBE = {
   affordable: '#9DBF63',                    // --toast-accent, dark-mode value
   aboveBudget: 'rgba(176, 164, 152, 0.45)', // warm neutral (was blue-grey)
   ring: 'rgba(157, 191, 99, 0.65)',
-  atmosphere: '#E08A57',                    // --accent-color, dark-mode value — warm rim
+  atmosphere: '#D26C79',                    // --accent-color, dark-mode value — warm rim
   label: '#F4EFE9'                          // --text-primary, dark-mode value
 };
 

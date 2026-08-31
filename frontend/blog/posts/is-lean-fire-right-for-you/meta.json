@@ -5,7 +5,7 @@
   "subtitle": "Six honest questions I worked through before I leaned into a small and free life",
   "date": "2026-07-13",
   "date_modified": "2026-07-13",
-  "cover": "is-lean-fire-right-for-you.webp",
+  "cover": "is-lean-fire-right-for-you-card.webp",
   "tags": [
     "lean-fire",
     "fire-planning",
@@ -36,5 +36,12 @@
     }
   ],
   "order": 3,
-  "cover_alt": "Deciding whether Lean FIRE is right for you over morning coffee"
+  "cover_alt": "Standing still in a river in Kerala, deciding whether Lean FIRE is the right fit",
+  "hook": "Six questions before you go lean",
+  "hook_accent": "Six",
+  "scrim_side": "left",
+  "eyebrow": "Lean FIRE",
+  "cover_base": "is-lean-fire-right-for-you-photo.webp",
+  "photo_pos": "center 0%",
+  "photo_zoom": "cover"
 }
