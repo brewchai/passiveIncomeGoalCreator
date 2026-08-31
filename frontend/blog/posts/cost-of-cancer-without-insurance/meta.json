@@ -5,7 +5,7 @@
   "description": "The real, itemised cost of breast cancer treatment in India without insurance (Pune, 2026): chemotherapy, immunotherapy, surgery, radiation and scans — close to ₹40 lakh — plus how we cut the bill and what it did to a FIRE plan.",
   "date": "2026-06-28",
   "date_modified": "2026-07-05",
-  "cover": "cover.webp",
+  "cover": "cover-card.webp",
   "tags": [
     "Personal Finance",
     "Health",
@@ -39,5 +39,11 @@
       "answer": "Effectively no. Once there is any finding in your medical file — even a benign one — insurers will decline or exclude it. We applied within days of a benign first biopsy and were still rejected. Insurance must be bought while you are healthy."
     }
   ],
-  "noindex": true
+  "noindex": true,
+  "hook": "What cancer cost us in India",
+  "hook_accent": "cancer",
+  "eyebrow": "Real numbers",
+  "scrim_side": "left",
+  "type_only": true,
+  "cover_base": "cover.webp"
 }

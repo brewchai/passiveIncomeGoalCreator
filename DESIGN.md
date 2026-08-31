@@ -111,6 +111,25 @@ two-stop gradient — it is the loudest single tell in the dossier.
 blue-gray to signal trust. Warm ground signals the opposite thing this site actually is —
 someone writing at a kitchen table, not an institution's dashboard.
 
+## Images — where they appear
+
+Decided 2026-08-30. One image per post, used in three places, never duplicated on screen.
+
+| Slot | Shows | Why |
+|---|---|---|
+| Listing hero | the clean photograph (`cover_base`) | the real title sits beside it, so a burned-in hook would say the same thing twice |
+| Listing grid | **no image** — the title on a warm dark ground | the titles are the strongest asset; a card grid of photos was the "3-up card" tell |
+| Top of article | the card (`cover`) | |
+| Share / OG / Discover | the same card | the only slot where the image travels alone, so the hook earns its place |
+
+Tile titles are sized at runtime by `fitTiles()` in `blog.html` — a binary search for the
+largest size that still fits the box, so no tile carries dead space whatever the title
+length. This also breaks the monotony of thirteen identical dark rectangles.
+
+**Photo when the picture is evidence; `type_only: true` when it is not.** A concept post
+with no honest photograph gets a type card rather than a stock stand-in — six of the
+unlisted posts and `can-a-major-illness-end-lean-fire` use this.
+
 ## Deferred — not yet decided, do not improvise
 
 Radius, elevation policy, motion policy, density,

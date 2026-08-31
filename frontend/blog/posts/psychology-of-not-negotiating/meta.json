@@ -8,8 +8,13 @@
     "mindset",
     "personal-story"
   ],
-  "cover": "psychology-of-not-negotiating-salary.webp",
+  "cover": "psychology-of-not-negotiating-salary-card.webp",
   "featured": false,
   "cover_alt": "Portrait sitting on steps, thinking through why people avoid negotiating salary",
-  "noindex": true
+  "noindex": true,
+  "hook": "Why you won't ask for more",
+  "hook_accent": "won't ask",
+  "eyebrow": "Psychology",
+  "scrim_side": "left",
+  "cover_base": "psychology-of-not-negotiating-salary.webp"
 }

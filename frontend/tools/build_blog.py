@@ -135,13 +135,25 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str) -> s
     canonical_abs = f"{BASE_URL}{canonical_path}" if BASE_URL else canonical_path
     
     # Fix cover path: if relative, prepend full blog post path
-    if cover and not cover.startswith("/"):
+    if cover and not cover.startswith(("/", "http://", "https://")):
         cover = f"/blog/posts/{slug}/{cover}"
     cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover) else cover
+    # Covers keep their filename when the photo is swapped, so returning readers would
+    # be served the cached old image. Version by mtime so a changed file gets a new URL.
+    cover_ver = ""
+    if cover:
+        _cf = FRONTEND / cover.lstrip("/")
+        if _cf.exists():
+            cover_ver = f"?v={int(_cf.stat().st_mtime)}"
+    cover_abs = f"{cover_abs}{cover_ver}" if cover_abs else cover_abs
     # Descriptive, keyword-rich alt for image SEO; falls back to the title.
     cover_alt = (meta.get("cover_alt") or title).strip()
 
-    hero_html = f'<img src="{cover_abs}" alt="{cover_alt}" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if cover_abs else ''
+    # The <img> must be site-relative: an absolute production URL makes every local
+    # page load its hero from butfirstfire.com, so local preview never shows local work.
+    # cover_abs stays absolute for og:image and JSON-LD, where scrapers require it.
+    hero_src = f"{cover}{cover_ver}" if cover else ''
+    hero_html = f'<img src="{hero_src}" alt="{cover_alt}" style="width:100%; border-radius: 12px; margin-top: 0.5rem;" fetchpriority="high" decoding="async">' if hero_src else ''
 
     # Remove duplicate H1 at top of content
     html_body = strip_leading_h1(html_content)
@@ -215,8 +227,22 @@ def build_one_post(slug: str, template: str) -> dict:
     # Minimal record for posts.json
     # Fix cover path for JSON output too
     cover_for_json = meta.get("cover", "")
-    if cover_for_json and not cover_for_json.startswith("/"):
+    if cover_for_json and not cover_for_json.startswith(("/", "http://", "https://")):
         cover_for_json = f"/blog/posts/{slug}/{cover_for_json}"
+
+    # The listing hero shows the un-lettered photograph; the card (with the hook burned
+    # in) is for the article page and for share previews, where it travels alone.
+    photo_for_json = (meta.get("cover_base") or "").strip()
+    if photo_for_json and not photo_for_json.startswith("/"):
+        photo_for_json = f"/blog/posts/{slug}/{photo_for_json}"
+    for _p in (cover_for_json, photo_for_json):
+        pass
+    def _ver(rel):
+        if not rel: return rel
+        f = FRONTEND / rel.lstrip("/")
+        return f"{rel}?v={int(f.stat().st_mtime)}" if f.exists() else rel
+    cover_for_json = _ver(cover_for_json)
+    photo_for_json = _ver(photo_for_json)
     
     return {
         "slug": slug,
@@ -226,6 +252,8 @@ def build_one_post(slug: str, template: str) -> dict:
         "date": iso_date(meta["date"]),
         "date_modified": iso_date(meta["date_modified"]) if meta.get("date_modified") else iso_date(meta["date"]),
         "cover": cover_for_json,
+        "cover_photo": photo_for_json,
+        "eyebrow": (meta.get("eyebrow") or "").strip(),
         "tags": meta.get("tags", []),
         "featured": bool(meta.get("featured", False)),
         "pinned": bool(meta.get("pinned", False)),

@@ -7,7 +7,13 @@
     "featured",
     "basics"
   ],
-  "cover": "/blog/posts/four-different-types-of-fire/cover.webp",
+  "cover": "cover-card.webp",
   "featured": true,
-  "noindex": true
+  "noindex": true,
+  "hook": "Lean, Fat, Barista, Coast",
+  "hook_accent": "Lean",
+  "eyebrow": "The basics",
+  "scrim_side": "left",
+  "type_only": true,
+  "cover_base": "cover.webp"
 }

@@ -1,23 +1,29 @@
 {
-    "title": "What is Barista F.I.R.E?",
-    "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
-    "description": "A detailed breakdown of the math behind Barista FIRE",
-    "date": "2025-11-16",
-    "tags": [
-        "featured",
-        "basics"
-    ],
-    "cover": "/blog/posts/what-is-barista-FIRE/cover.webp",
-    "featured": true,
-    "faqs": [
-        {
-            "question": "What is Barista FIRE?",
-            "answer": "Barista FIRE is a partial early retirement strategy where investments cover part of your expenses while lower-stress part-time work covers the rest."
-        },
-        {
-            "question": "How is Barista FIRE different from traditional FIRE?",
-            "answer": "Traditional FIRE requires enough invested assets to cover nearly all living expenses, while Barista FIRE relies on a smaller portfolio plus ongoing flexible income."
-        }
-    ],
-    "noindex": true
+  "title": "What is Barista F.I.R.E?",
+  "subtitle": "The Complete Barista FIRE Blueprint: How to Retire Partially",
+  "description": "A detailed breakdown of the math behind Barista FIRE",
+  "date": "2025-11-16",
+  "tags": [
+    "featured",
+    "basics"
+  ],
+  "cover": "cover-card.webp",
+  "featured": true,
+  "faqs": [
+    {
+      "question": "What is Barista FIRE?",
+      "answer": "Barista FIRE is a partial early retirement strategy where investments cover part of your expenses while lower-stress part-time work covers the rest."
+    },
+    {
+      "question": "How is Barista FIRE different from traditional FIRE?",
+      "answer": "Traditional FIRE requires enough invested assets to cover nearly all living expenses, while Barista FIRE relies on a smaller portfolio plus ongoing flexible income."
+    }
+  ],
+  "noindex": true,
+  "hook": "Half retired, half employed",
+  "hook_accent": "Half",
+  "eyebrow": "The basics",
+  "scrim_side": "left",
+  "type_only": true,
+  "cover_base": "cover.webp"
 }

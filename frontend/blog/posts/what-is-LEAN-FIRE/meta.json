@@ -47,5 +47,6 @@
   "hook_accent": "$1,800",
   "scrim_side": "left",
   "eyebrow": "Lean FIRE",
-  "cover_base": "lean-fire-daily-life-vietnam.webp"
+  "cover_base": "lean-fire-daily-life-vietnam.webp",
+  "pinned": true
 }

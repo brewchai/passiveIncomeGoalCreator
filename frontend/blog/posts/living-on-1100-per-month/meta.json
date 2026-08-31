@@ -6,7 +6,7 @@
   "date": "2026-02-02",
   "date_modified": "2026-07-05",
   "author": "Ninad Mundalik",
-  "cover": "living-on-1100-per-month-vietnam.webp",
+  "cover": "living-on-1100-per-month-vietnam-card.webp",
   "faqs": [
     {
       "question": "How much does it cost to live in Da Nang, Vietnam?",
@@ -26,5 +26,10 @@
     }
   ],
   "noindex": true,
-  "cover_alt": "Inside a local Vietnamese barbershop, the kind of prices that make 1,100 dollars a month work"
+  "cover_alt": "Inside a local Vietnamese barbershop, the kind of prices that make 1,100 dollars a month work",
+  "hook": "What $1,100 a month buys",
+  "hook_accent": "$1,100",
+  "eyebrow": "Geo-arbitrage",
+  "scrim_side": "left",
+  "cover_base": "living-on-1100-per-month-vietnam.webp"
 }

@@ -8,8 +8,13 @@
     "basics",
     "mindset"
   ],
-  "cover": "why-fire-is-not-for-you.webp",
+  "cover": "why-fire-is-not-for-you-card.webp",
   "featured": true,
   "cover_alt": "Portrait outdoors in a denim jacket, on why FIRE is not for everyone",
-  "noindex": true
+  "noindex": true,
+  "hook": "FIRE is not for everyone",
+  "hook_accent": "not",
+  "eyebrow": "Honest test",
+  "scrim_side": "left",
+  "cover_base": "why-fire-is-not-for-you.webp"
 }

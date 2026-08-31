@@ -3,7 +3,7 @@
   "subtitle": "Passive income is real, but the way it is sold to you is a catastrophic misrepresentation of the suffering required to achieve it.",
   "description": "An honest, hyper-personal breakdown of the four types of income, the nomadic journey, and why trying to separate your time from your money is the hardest active grind you will ever face.",
   "date": "2026-03-19",
-  "cover": "truth-about-passive-income-fire.webp",
+  "cover": "truth-about-passive-income-fire-card.webp",
   "tags": [
     "featured",
     "mindset",
@@ -12,5 +12,11 @@
   ],
   "featured": true,
   "cover_alt": "The honest truth about passive income for financial independence",
-  "noindex": true
+  "noindex": true,
+  "hook": "Passive income is a lie",
+  "hook_accent": "a lie",
+  "eyebrow": "Reality check",
+  "scrim_side": "left",
+  "type_only": true,
+  "cover_base": "truth-about-passive-income-fire.webp"
 }

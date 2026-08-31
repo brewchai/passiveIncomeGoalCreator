@@ -7,8 +7,13 @@
     "featured",
     "basics"
   ],
-  "cover": "coast-fire-relaxed-dog-cafe.webp",
+  "cover": "coast-fire-relaxed-dog-cafe-card.webp",
   "featured": true,
   "noindex": true,
-  "cover_alt": "Sitting with a dog at a cafe, coasting to retirement after hitting the Coast FIRE number"
+  "cover_alt": "Sitting with a dog at a cafe, coasting to retirement after hitting the Coast FIRE number",
+  "hook": "Save early, then coast",
+  "hook_accent": "coast",
+  "eyebrow": "The basics",
+  "scrim_side": "left",
+  "cover_base": "coast-fire-relaxed-dog-cafe.webp"
 }

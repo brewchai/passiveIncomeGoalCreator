@@ -673,34 +673,13 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-.article-thumbnail {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-}
 
-.article-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform 0.4s ease;
-}
 
-.article-card:hover .article-thumbnail img {
-    transform: scale(1.05);
-}
 
-.article-thumbnail-placeholder {
-    width: 100%;
-    height: 200px;
-    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-}
+
+.article-card:hover 
+
+
 
 .article-content {
     padding: 1.25rem;
@@ -1088,3 +1067,38 @@ body {
    for anyone holding a cached copy of that script, and beats the style block the
    script injects at runtime — hence !important. Remove both to re-enable. */
 #ai-trigger { display: none !important; }
+
+/* ── Listing tiles ──────────────────────────────────────────────────────────
+   The grid carries no photographs. Each tile shows the real title, sized by
+   fitTiles() in blog.html to the largest that fills the box — so a short title
+   runs large and a long one wraps, and neither leaves dead ground.
+   Photographs remain on the hero, the article page, and share previews. */
+.tile-head {
+    aspect-ratio: 2.6 / 1;
+    padding: 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(120% 100% at 82% 12%,
+                rgba(var(--accent-rgb, 124, 36, 50), 0.10) 0%, transparent 62%),
+                var(--background);
+    border-bottom: 1px solid var(--border-color);
+}
+.tile-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 6px;
+    flex: none;
+}
+.tile-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    line-height: 1.08;
+    font-weight: var(--w-heading);
+    letter-spacing: -0.024em;
+    color: var(--text-primary);
+    font-size: 1.3rem;   /* replaced at runtime by fitTiles() */
+}

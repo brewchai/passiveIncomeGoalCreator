@@ -210,7 +210,9 @@
             }
 
             function getHeroImageAttrs(post) {
-                return `src="${htmlEscape(post.cover)}"`;
+                // The clean photograph, not the share card — the real title sits beside it,
+                // so a burned-in hook would just say the same thing twice.
+                return `src="${htmlEscape(post.cover_photo || post.cover)}"`;
             }
 
             // ---- Tag label mapping ----
@@ -251,16 +253,17 @@
             }
 
             // ---- Card HTML ----
+            // No thumbnail. The title lives in the tile and is sized to fill it (see fitTiles).
             function cardHTML(post) {
-                const cover = post.cover && post.cover.trim() ? post.cover : '';
                 const date = new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-                const imgBlock = cover
-                    ? `<div class="article-thumbnail"><img src="${htmlEscape(cover)}" alt="${htmlEscape(post.cover_alt || post.title)}" loading="lazy" decoding="async"></div>`
-                    : `<div class="article-thumbnail-placeholder"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-image"/></svg></div>`;
+                const eyebrow = post.eyebrow || (post.tags || []).filter(t => t !== 'featured')[0] || 'Essay';
                 return `
                 <a href="/blog/${encodeURIComponent(post.slug)}" class="article-card-wrap">
                   <article class="article-card">
-                    ${imgBlock}
+                    <div class="tile-head">
+                        <span class="tile-eyebrow">${htmlEscape(eyebrow.replace(/-/g, ' '))}</span>
+                        <span class="tile-title">${htmlEscape(post.title)}</span>
+                    </div>
                     <div class="article-content">
                         <div class="article-meta">
                             <span class="meta-date">${date}</span>
@@ -268,13 +271,37 @@
                             <span class="read-time">${htmlEscape(post.readTime || '5 min read')}</span>
                             ${post.featured ? '<span class="article-tag">Featured</span>' : ''}
                         </div>
-                        <h3 class="article-title">${htmlEscape(post.title)}</h3>
                         <p class="article-excerpt">${htmlEscape(post.subtitle || '')}</p>
                         <span class="read-more">Read More →</span>
                     </div>
                   </article>
                 </a>`;
             }
+
+            // Size each tile title to the largest that still fits its box, so no tile
+            // carries dead space regardless of how long the title is.
+            function fitTiles(root) {
+                (root || document).querySelectorAll('.tile-head').forEach(head => {
+                    const el = head.querySelector('.tile-title');
+                    if (!el) return;
+                    const eb = head.querySelector('.tile-eyebrow');
+                    const styles = getComputedStyle(head);
+                    const padY = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+                    const avail = head.clientHeight - padY - (eb ? eb.offsetHeight + 6 : 0);
+                    const wide = head.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight);
+                    if (avail <= 0 || wide <= 0) return;
+                    let lo = 13, hi = 56, best = 13;
+                    while (lo <= hi) {
+                        const mid = (lo + hi) >> 1;
+                        el.style.fontSize = mid + 'px';
+                        if (el.scrollHeight <= avail && el.scrollWidth <= wide + 1) { best = mid; lo = mid + 1; }
+                        else { hi = mid - 1; }
+                    }
+                    el.style.fontSize = best + 'px';
+                });
+            }
+            let fitTimer = null;
+            window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => fitTiles(), 150); });
 
             // ---- Tag Filters ----
             function buildTagFilters() {
@@ -360,6 +387,7 @@
                 const next = posts.slice(renderedCount, renderedCount + PAGE_SIZE);
                 gridEl.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
                 renderedCount += next.length;
+                requestAnimationFrame(() => fitTiles(gridEl));
 
                 // Update sentinel visibility
                 if (isSearching || activeTag !== 'all' || renderedCount >= posts.length) {
@@ -433,7 +461,9 @@
             async function init() {
                 try {
                     const url = '/blog/posts/posts.json';
-                    const res = await fetch(url);
+                    // Revalidate: the index changes on every publish, and a cached copy
+                    // silently serves readers an old post list.
+                    const res = await fetch(url, { cache: 'no-cache' });
                     if (!res.ok) return;
                     const text = await res.text();
                     if (!text) { console.warn('Empty posts.json response'); return; }

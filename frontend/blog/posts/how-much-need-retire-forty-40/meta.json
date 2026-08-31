@@ -7,7 +7,7 @@
     "featured",
     "basics"
   ],
-  "cover": "/blog/posts/how-much-need-retire-forty-40/cover.webp",
+  "cover": "cover-card.webp",
   "featured": true,
   "faqs": [
     {
@@ -23,5 +23,11 @@
       "answer": "Many early retirees planning to stop work at 40 use a more conservative withdrawal rate around 3.0% to 3.5%."
     }
   ],
-  "noindex": true
+  "noindex": true,
+  "hook": "The number to stop at 40",
+  "hook_accent": "40",
+  "eyebrow": "Planning",
+  "scrim_side": "left",
+  "type_only": true,
+  "cover_base": "cover.webp"
 }

@@ -8,8 +8,13 @@
     "personal-story",
     "life-after-fire"
   ],
-  "cover": "negotiated-200k-more-tech-salary.webp",
+  "cover": "negotiated-200k-more-tech-salary-card.webp",
   "featured": false,
   "cover_alt": "Standing outside a university building in a long coat, before a tech salary negotiation",
-  "noindex": true
+  "noindex": true,
+  "hook": "One call, four years earlier",
+  "hook_accent": "One call",
+  "eyebrow": "Negotiation",
+  "scrim_side": "left",
+  "cover_base": "negotiated-200k-more-tech-salary.webp"
 }
