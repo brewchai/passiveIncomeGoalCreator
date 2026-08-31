@@ -102,10 +102,14 @@
            article has a single right edge instead of three. The rail fills
            the space that opens up beside it. */
         .post-container {
-            max-width: 1010px;
+            max-width: 1330px;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 268px;
-            column-gap: 44px;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            column-gap: 52px;
+            /* Scoped override: the listing keeps the narrower global measure. Body type is
+               21px here, so 66ch still lands near 84 characters a line rather than 95 —
+               a wider column only works because the type grew with it. */
+            --measure: 66ch;
             align-items: start;
         }
         .post-hero, .post-content { grid-column: 1; }
@@ -144,7 +148,7 @@
         }
 
         .post-content {
-            font-size: var(--t-0);
+            font-size: 21px;
             line-height: 1.75;
             color: var(--text-primary);
         }
