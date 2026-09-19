@@ -2,16 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "reel-ui",
+      "name": "overlay-engine",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "ui", "--prefix", "/Users/ninadmundalik/Documents/workspace/remotion-claude"],
-      "port": 5173
+      "runtimeArgs": ["start", "--prefix", "/Users/ninadmundalik/Documents/workspace/overlay-engine"],
+      "port": 3311
     },
     {
-      "name": "frontend",
+      "name": "butfirstfire",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4599", "--directory", "frontend"],
-      "port": 4599
+      "runtimeArgs": ["-m", "http.server", "8737", "--directory", "frontend"],
+      "port": 8737
     }
   ]
 }

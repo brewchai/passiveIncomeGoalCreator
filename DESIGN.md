@@ -41,16 +41,32 @@ converging on the tool's own palette. The accent is now **oxblood** `#7C2432` (h
 chosen from a slate of four alternatives; its dark partner is held at saturation 0.49 so it
 reads red rather than dusty rose. The original warm derivation still governs the neutrals, and darkened until it clears AA. Nothing here came from memory.
 
-| Token | Light | Dark | Job |
-|---|---|---|---|
-| `--accent-color` | `#7C2432` 9.12:1 | `#D26C79` 5.52:1 | links, active state, one emphasis per view |
-| `--accent-fill` | `#7C2432` | `#D26C79` |
-| `--toast-accent` | `#4A6B22` 5.75:1 | `#9DBF63` 9.02:1 | the article toast only | solid fill for buttons/pills — **replaces the gradient** |
-| `--background` | `#FAF7F3` | `#14110E` | ground |
-| `--card-background` | `#FFFFFF` | `#1E1A16` | raised surface |
-| `--text-primary` | `#1C1714` 16.6:1 | `#F4EFE9` 16.5:1 | body ink |
-| `--text-secondary` | `#5C5049` 7.3:1 | `#B9ACA1` 7.8:1 | bylines, captions |
-| `--text-muted` | `#6E6159` 5.6:1 | `#9C8E82` 5.9:1 | dates, meta |
+**Renegotiated 2026-09-13: light-only, accent moved oxblood → turmeric.** Ninad asked to
+move away from the dark background entirely, and for a different main color. Dark mode is
+gone as a *theme* — both `prefers-color-scheme: dark` blocks deleted, `color-scheme: light`
+pinned on `:root` in `styles.css` and `blog.css`. Dark survives only where a canvas is
+fixed dark by design: the geo-arbitrage globe and the thumb cover-card template, which now
+use `#E0A33E` (8.49:1 on `#14110E`). The session's reflexes were banned first: shipping the
+light palette unexamined; sea-teal (proposed minutes earlier, and adjacent to the
+already-banned teal move); white-card+shadow separation; cool gray borders. The accent is
+**deep turmeric `#7A4E00`** (hue 38°, outside the banned 10–30° band; checked against
+`#D97757`) — marigold/incense/temple gold, the warm family honestly present in the Da Nang
+photography that the oxblood pass had to detour around. Hover darkens to `#5E3C00`
+(index.html inline handlers). The warm neutrals were re-affirmed, not inherited by
+inertia: they still share temperature with every cover photo, which stays true with dark gone.
+
+| Token | Value | Job |
+|---|---|---|
+| `--accent-color` | `#7A4E00` 6.74:1 on ground, 7.2:1 under white | links, active state, one emphasis per view |
+| `--accent-fill` | `#7A4E00` | solid fill for buttons/pills — **replaces the gradient** |
+| `--accent-rgb` | `122, 78, 0` | tint channels |
+| `--toast-accent` | `#4A6B22` 5.75:1 | the article toast only |
+| `--background` | `#FAF7F3` | ground |
+| `--card-background` | `#FFFFFF` | raised surface |
+| `--text-primary` | `#1C1714` 16.6:1 | body ink |
+| `--text-secondary` | `#5C5049` 7.3:1 | bylines, captions |
+| `--text-muted` | `#6E6159` 5.6:1 | dates, meta |
+| fixed-dark accent | `#E0A33E` 8.49:1 on `#14110E` | globe atmosphere, cover-card highlights only |
 
 **Type — Manrope, self-hosted variable (400–800).**
 Chosen because Ninad saw it on phosphoricons.com and liked it. Manrope appears on the

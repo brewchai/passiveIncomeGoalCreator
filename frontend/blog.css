@@ -63,20 +63,21 @@
 }
 
 :root {
+    color-scheme: light;
     --primary-color: #2E2620;
     --secondary-color: #4A4038;
-    --accent-color: #7C2432;
-    --accent-secondary: #7C2432;
+    --accent-color: #7A4E00;
+    --accent-secondary: #7A4E00;
     --background: #FAF7F3;
     --card-background: #FFFFFF;
     --text-primary: #1C1714;
     --text-secondary: #5C5049;
     --text-muted: #6E6159;
-    --border-color: #E8E1D9;
+    --border-color: #CFC0A8;   /* stronger than the site-wide #E8E1D9 — blog cards sit on cream and need a real edge */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-    --accent-rgb: 124, 36, 50;   /* channels of --accent-color, for tints */
+    --accent-rgb: 122, 78, 0;   /* channels of --accent-color, for tints */
     --toast-accent: #4A6B22;   /* olive, sampled from cover foliage (90–100°) — 5.75:1 */
     --toast-rgb: 74, 107, 34;
     --radius-control: 4px;     /* form controls — one value, was 8/12/24 */
@@ -85,25 +86,8 @@
     --gradient: var(--accent-fill); /* flat, not a gradient — see DESIGN.md */
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --accent-color: #D26C79;   /* 5.52:1 on #14110E */
-        --accent-secondary: #D26C79;
-        --accent-rgb: 210, 108, 121;
-        --toast-accent: #9DBF63;   /* 9.02:1 on #14110E */
-        --toast-rgb: 157, 191, 99;
-        --accent-fill: var(--accent-color);
-        --background: #14110E;
-        --card-background: #1E1A16;
-        --text-primary: #F4EFE9;
-        --text-secondary: #B9ACA1;
-        --text-muted: #9C8E82;
-        --border-color: #2E2823;
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-    }
-}
+/* Light-only by decision (2026-09-13) — see DESIGN.md. Dark survives solely on
+   fixed-dark canvases (geo-arbitrage globe, thumb cover cards), not as a theme. */
 
 body {
     font-family: var(--font-sans);
@@ -252,7 +236,7 @@ body {
 .search-box:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 124, 36, 50), 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 122, 78, 0), 0.1);
 }
 
 .search-icon {
@@ -482,7 +466,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1rem;
-    background: rgba(var(--accent-rgb, 124, 36, 50), 0.04);
+    background: rgba(var(--accent-rgb, 122, 78, 0), 0.04);
 }
 
 .hub-card h3 {
@@ -552,7 +536,7 @@ body {
 /* Sidebar Newsletter Box */
 .newsletter-widget {
     border: 2px solid var(--accent-color);
-    background: linear-gradient(to bottom, rgba(var(--accent-rgb, 124, 36, 50), 0.03), rgba(var(--accent-rgb, 124, 36, 50), 0.05));
+    background: linear-gradient(to bottom, rgba(var(--accent-rgb, 122, 78, 0), 0.03), rgba(var(--accent-rgb, 122, 78, 0), 0.05));
     position: relative;
     overflow: hidden;
 }
@@ -605,7 +589,7 @@ body {
 .sidebar-input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 124, 36, 50), 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 122, 78, 0), 0.1);
 }
 
 .sidebar-btn {
@@ -624,7 +608,7 @@ body {
 
 .sidebar-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--accent-rgb, 124, 36, 50), 0.4);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb, 122, 78, 0), 0.4);
     background: var(--accent-secondary);
 }
 
@@ -658,9 +642,10 @@ body {
 
 .article-card {
     background: var(--card-background);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    /* border is the separation mechanism at rest; shadow only on hover lift */
     transition: all 0.3s ease;
     cursor: pointer;
     display: flex;
@@ -691,7 +676,7 @@ body {
 }
 
 .article-tag {
-    background: rgba(var(--accent-rgb, 124, 36, 50), 0.1);
+    background: rgba(var(--accent-rgb, 122, 78, 0), 0.1);
     color: var(--accent-color);
     padding: 0.2rem 0.6rem;
     border-radius: 20px;
@@ -1059,7 +1044,7 @@ body {
     display: flex;
     flex-direction: column;
     background: radial-gradient(120% 100% at 82% 12%,
-                rgba(var(--accent-rgb, 124, 36, 50), 0.10) 0%, transparent 62%),
+                rgba(var(--accent-rgb, 122, 78, 0), 0.16) 0%, transparent 62%),
                 var(--background);
     border-bottom: 1px solid var(--border-color);
 }
