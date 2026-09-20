@@ -289,6 +289,30 @@
       "order": 9,
       "noindex": false,
       "url": "/blog/can-i-retire-at-35-with-500k"
+    },
+    {
+      "slug": "best-airlines-southeast-asia",
+      "title": "The Airlines I Fly Across India, Vietnam, and Thailand (and 2 I Avoid)",
+      "subtitle": "IndiGo, Vietnam Airlines, and AirAsia are the 3 I trust, VietJet and Air India are the 2 I avoid, with real fares, safety ratings, and a cheeky baggage trick",
+      "description": "The 3 airlines I trust flying between India, Vietnam, and Thailand (IndiGo, Vietnam Airlines, AirAsia) and the 2 I avoid (VietJet, Air India), with real fares, safety ratings, and baggage tips from a full time nomad.",
+      "date": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "geo-arbitrage",
+        "southeast-asia",
+        "vietnam",
+        "travel",
+        "nomad-life"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The Airlines I Fly Across India, Vietnam, and Thailand (and 2 I Avoid)",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/best-airlines-southeast-asia"
     }
   ],
   "all": [
@@ -490,6 +514,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "best-airlines-southeast-asia",
+      "title": "The Airlines I Fly Across India, Vietnam, and Thailand (and 2 I Avoid)",
+      "subtitle": "IndiGo, Vietnam Airlines, and AirAsia are the 3 I trust, VietJet and Air India are the 2 I avoid, with real fares, safety ratings, and a cheeky baggage trick",
+      "description": "The 3 airlines I trust flying between India, Vietnam, and Thailand (IndiGo, Vietnam Airlines, AirAsia) and the 2 I avoid (VietJet, Air India), with real fares, safety ratings, and baggage tips from a full time nomad.",
+      "date": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "geo-arbitrage",
+        "southeast-asia",
+        "vietnam",
+        "travel",
+        "nomad-life"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The Airlines I Fly Across India, Vietnam, and Thailand (and 2 I Avoid)",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/best-airlines-southeast-asia"
+    },
+    {
       "slug": "surviving-a-stock-market-crash-on-lean-fire",
       "title": "The Reality of Surviving a Stock Market Crash on Lean FIRE",
       "subtitle": "The guardrails strategy in plain English, plus a builder that shows the exact pay cut a crash would hand you, in dollars or rupees",
@@ -581,5 +629,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-08-31T08:43:03.691278Z"
+  "_generated_at": "2026-09-20T16:05:11.762098Z"
 }
