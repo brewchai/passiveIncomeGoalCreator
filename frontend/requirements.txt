@@ -1,0 +1,9 @@
+# Build dependencies for the static blog.
+# Pinned so the local build and the CI build (.github/workflows/build-blog.yml)
+# produce byte-identical HTML, and there is no phantom whole-site diff.
+# To upgrade: bump a version here, run `python tools/build_blog.py`, and commit
+# the reformatted HTML in one deliberate pass.
+markdown==3.10.3
+
+# Used only locally by tools/add_cover.py to build 16:9 webp covers.
+Pillow==9.4.0

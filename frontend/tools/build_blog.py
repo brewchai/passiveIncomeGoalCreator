@@ -2,6 +2,7 @@
 import json
 import os
 import re
+import hashlib
 from pathlib import Path
 from datetime import datetime
 
@@ -9,6 +10,17 @@ try:
     import markdown  # pip install markdown
 except ImportError:
     raise SystemExit("Missing dependency: pip install markdown")
+
+
+def _asset_ver(path: Path) -> str:
+    """Deterministic cache-buster from a file's contents.
+    Using the content hash (not mtime, which git resets on every checkout)
+    means the URL only changes when the image itself changes, so local and CI
+    builds produce identical HTML instead of a phantom whole-site diff."""
+    try:
+        return f"?v={hashlib.md5(path.read_bytes()).hexdigest()[:10]}"
+    except Exception:
+        return ""
 
 # Paths
 THIS = Path(__file__).resolve()
@@ -203,12 +215,13 @@ def render_html(template: str, *, slug: str, meta: dict, html_content: str, rela
         cover = f"/blog/posts/{slug}/{cover}"
     cover_abs = f"{BASE_URL}{cover}" if (BASE_URL and cover) else cover
     # Covers keep their filename when the photo is swapped, so returning readers would
-    # be served the cached old image. Version by mtime so a changed file gets a new URL.
+    # be served the cached old image. Version by content hash so a changed file gets a
+    # new URL, and unchanged files keep the same URL across every machine and checkout.
     cover_ver = ""
     if cover:
         _cf = FRONTEND / cover.lstrip("/")
         if _cf.exists():
-            cover_ver = f"?v={int(_cf.stat().st_mtime)}"
+            cover_ver = _asset_ver(_cf)
     cover_abs = f"{cover_abs}{cover_ver}" if cover_abs else cover_abs
     # Descriptive, keyword-rich alt for image SEO; falls back to the title.
     cover_alt = (meta.get("cover_alt") or title).strip()
@@ -312,7 +325,7 @@ def build_one_post(slug: str, template: str, index: dict | None = None) -> dict:
     def _ver(rel):
         if not rel: return rel
         f = FRONTEND / rel.lstrip("/")
-        return f"{rel}?v={int(f.stat().st_mtime)}" if f.exists() else rel
+        return f"{rel}{_asset_ver(f)}" if f.exists() else rel
     cover_for_json = _ver(cover_for_json)
     photo_for_json = _ver(photo_for_json)
     
