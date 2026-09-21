@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Can You Run Out of Money With FIRE? The Real Risks and How to See Them Coming | But First Fire</title>
+    <meta name="description" content="Can you run out of money with FIRE? Yes, in 5 specific ways, including a bad sequence of returns. Here is the real math, why you will see it coming, and how to correct course.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://butfirstfire.com/blog/can-you-run-out-of-money-with-fire">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="What If I Run Out of Money? The Real Risks That Drain a FIRE Plan">
+    <meta property="og:description" content="Can you run out of money with FIRE? Yes, in 5 specific ways, including a bad sequence of returns. Here is the real math, why you will see it coming, and how to correct course.">
+    <meta property="og:url" content="https://butfirstfire.com/blog/can-you-run-out-of-money-with-fire">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What If I Run Out of Money? The Real Risks That Drain a FIRE Plan">
+    <meta name="twitter:description" content="Can you run out of money with FIRE? Yes, in 5 specific ways, including a bad sequence of returns. Here is the real math, why you will see it coming, and how to correct course.">
+    <meta name="twitter:image" content="">
+
+    <!-- JSON-LD Article -->
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "What If I Run Out of Money? The Real Risks That Drain a FIRE Plan", "description": "Can you run out of money with FIRE? Yes, in 5 specific ways, including a bad sequence of returns. Here is the real math, why you will see it coming, and how to correct course.", "image": [], "datePublished": "2026-09-21", "dateModified": "2026-09-21", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/og-image.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/can-you-run-out-of-money-with-fire"}
+  </script>
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you run out of money with FIRE?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but almost never at random. It happens in 5 specific ways: your original number was too low, you hit a bad sequence of returns, you let your spending inflate, an outside shock like a serious illness lands, or your assets quietly underperform for years. 4 of those 5 are slow and give you years of warning, so with monthly monitoring and a willingness to adjust, running dry becomes something you can see coming and correct."}}, {"@type": "Question", "name": "What is sequence of returns risk?", "acceptedAnswer": {"@type": "Answer", "text": "It is the risk that a market crash early in your retirement does permanent damage, because you are selling shares cheap to live on while the market is down, and those shares never recover for you. Two retirees with the exact same average return can end up in completely different places purely because of the order the good and bad years arrived in. On a $1,000,000 portfolio taking out $50,000, a 30% crash in year 1 leaves you with $665,000, while a 20% gain leaves $1,140,000, a $475,000 gap from a single year."}}, {"@type": "Question", "name": "How often should you check your FIRE plan?", "acceptedAnswer": {"@type": "Answer", "text": "Every month, not once a year. Two quick checks are enough: your spending against your plan, so you catch lifestyle creep while it is tiny, and an audit of your portfolio's allocation, performance, and fees. Together they take about 4 to 6 hours a month, and catching a problem while it is small is the difference between a quick adjustment and a crisis."}}, {"@type": "Question", "name": "Why do you need a Monte Carlo simulation for retirement?", "acceptedAnswer": {"@type": "Answer", "text": "Because a single projection that assumes one smooth average return every year hides sequence risk and tells you a comforting story that is not true. A Monte Carlo simulation runs your plan through thousands of random return sequences and gives you a success rate. A plan that survives 90% or more of them is solid, while one that only survives 60% is warning you of a 4 in 10 chance of running dry, which you want to know while you can still fix it."}}]}
+  </script>
+
+
+    <!-- Fonts & Styles -->    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        /* Modern post page design */
+        body {
+            background: var(--background);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .post-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-hero img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+            object-fit: cover;
+        }
+
+        .post-title {
+            font-size: var(--t-4);
+            font-weight: var(--w-display);
+            letter-spacing: -0.02em;
+            line-height: var(--lh-tight);
+            margin: 0 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+
+        /* ── Related rail ────────────────────────────────────────────────
+           Title, subtitle, byline and body all share one measure, so the
+           article has a single right edge instead of three. The rail fills
+           the space that opens up beside it. */
+        .post-container {
+            max-width: 1330px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            column-gap: 52px;
+            /* Scoped override: the listing keeps the narrower global measure. Body type is
+               21px here, so 66ch still lands near 84 characters a line rather than 95 —
+               a wider column only works because the type grew with it. */
+            --measure: 66ch;
+            align-items: start;
+        }
+        .post-hero, .post-content { grid-column: 1; }
+        .post-title, .post-subtitle, .post-meta { max-width: var(--measure); }
+
+        .related-rail {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            position: sticky;
+            top: calc(var(--header-h, 84px) + 20px);
+        }
+        .related-rail h4 {
+            font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--text-muted); margin: 0 0 0.8rem;
+        }
+        .rel-item {
+            display: block; text-decoration: none;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1rem; margin-bottom: 0.7rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .rel-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .rel-eyebrow {
+            display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent-color); margin-bottom: 0.35rem;
+        }
+        .rel-title {
+            display: block; font-size: 0.95rem; line-height: 1.25; font-weight: 600;
+            letter-spacing: -0.015em; color: var(--text-primary);
+        }
+        @media (max-width: 900px) {
+            .post-container { grid-template-columns: 1fr; }
+            .related-rail { grid-column: 1; grid-row: auto; position: static; margin-top: 2.5rem; }
+        }
+
+        .post-content {
+            font-size: 21px;
+            line-height: 1.75;
+            color: var(--text-primary);
+        }
+        .post-content p,
+        .post-content li,
+        .post-content blockquote {
+            max-width: var(--measure);
+        }
+
+
+        .post-content>*:first-child {
+            margin-top: 0;
+        }
+
+        .post-content p {
+            margin: 1.25rem 0;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .post-content li {
+            margin: 0.5rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .post-content strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .post-content em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(var(--accent-rgb, 122, 78, 0), 0.3);
+            transition: all 0.2s;
+        }
+
+        .post-content a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(var(--accent-rgb, 122, 78, 0), 0.05);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            /* standard dark code bg */
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.05);
+            /* very light bg relative to current mode */
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-content table {
+                font-size: 0.9rem;
+            }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(var(--accent-rgb, 122, 78, 0), 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--background);
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="post-container">
+            <div class="post-hero">
+                <h1 class="post-title">What If I Run Out of Money? The Real Risks That Drain a FIRE Plan</h1>
+                <p class="post-subtitle">The 5 real risks that drain an early retirement, why you will see them coming, and the corrections that fix them, with real numbers.</p>
+                <div class="post-meta"><span>By <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;"><strong>Nomad Ninad</strong></a></span><span class="post-meta-right">2026-09-21 · 13 min read</span></div>
+                
+            </div>
+
+            <article class="post-content">
+                <p>It is the single scariest question in this whole thing, and it is the one that keeps people working years longer than they ever needed to. What if I retire early and the money runs out? What if I am 55, out of the workforce, and broke? I have felt that fear, and I want to answer it honestly, because the honest answer is far more reassuring than the fear itself, as long as you understand how it actually works.</p>
+<p>Here is the first thing to understand. Money does not run out at random. It does not quietly vanish one morning while you are asleep. It runs out for specific, nameable reasons, and every single one of them gives you warning and time to act. If you know the real risks and you watch your numbers closely, running dry stops being a sudden cliff and becomes something you see coming from years away and steer around. Let me walk through exactly how it happens, with the actual math, and exactly what you do about it.</p>
+<h2 id="the-5-real-ways-a-fire-plan-runs-dry">The 5 real ways a FIRE plan runs dry</h2>
+<p><strong>1. Your calculations were wrong from the start.</strong> This is the most common one and the most avoidable. Say you budget $40,000 a year and multiply by 25 to get a $1,000,000 target, then quit. The problem is that your real spending was always $52,000 once you added the healthcare, the taxes, and the money you send home. Your honest number was $1,300,000, so you retired $300,000 short before the market did anything at all. No return can rescue a target that was simply too low. The fix is to build the number properly, category by category, before you ever quit, which is exactly why I obsess over <a href="/blog/calculating-fire-number">calculating your FIRE number</a>.</p>
+<p><strong>2. A bad sequence of returns.</strong> This is the sneaky one, and it is the single biggest risk unique to early retirement, so let me show you the actual math. Two people can earn the exact same average return over their retirement and one dies rich while the other runs dry, purely because of the order the good and bad years arrived in. It sounds impossible until you see it.</p>
+<p>Picture 2 retirees, each starting with $1,000,000, each taking $50,000 out at the start of the year to live on. The only difference is what the market does in year 1.</p>
+<table>
+<thead>
+<tr>
+<th>End of year 1</th>
+<th>Retires into a 30% crash</th>
+<th>Retires into a 20% gain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starting balance</td>
+<td>$1,000,000</td>
+<td>$1,000,000</td>
+</tr>
+<tr>
+<td>Takes out $50,000</td>
+<td>$950,000</td>
+<td>$950,000</td>
+</tr>
+<tr>
+<td>Market that year</td>
+<td>down 30%</td>
+<td>up 20%</td>
+</tr>
+<tr>
+<td>Balance a year later</td>
+<td>$665,000</td>
+<td>$1,140,000</td>
+</tr>
+<tr>
+<td>Next $50,000 is now</td>
+<td>7.5% of the pot</td>
+<td>4.4% of the pot</td>
+</tr>
+</tbody>
+</table>
+<p>That is a single year. Same person, same spending, same $1,000,000 start, and they are already $475,000 apart. Worse than the gap is what it does to every year after. The crash retiree now has to pull 7.5% of a shrunken pot just to live, selling more and more shares at low prices, which only makes the next year worse. The other retiree is drawing a comfortable 4.4% from a pot that grew.</p>
+<p>Run that forward over a 30 year retirement and the crash retiree can genuinely hit zero while still in their 70s, while the boom retiree, with the identical average return, finishes with more money than they started with. This is not a theory. Someone who retired at the start of 2000 lived through the dot com crash and then the 2008 crash inside 8 years, one of the ugliest sequences in modern history, while someone who retired in early 2009 rode one of the longest bull markets ever recorded. Same 4% rule, opposite lives. I went deep on how to survive this exact risk in <a href="/blog/surviving-a-stock-market-crash-on-lean-fire">surviving a stock market crash on Lean FIRE</a>.</p>
+<p><strong>3. You let your expenses inflate.</strong> The number that looked safe when you quit slowly stops being safe, because your spending crept up while you were not watching. This one is quiet and it adds up fast. If your spending grows just 3% a year, a lifestyle that cost $40,000 when you retired costs about $54,000 only 10 years later. At the 25 times rule, the pot you needed just climbed from $1,000,000 to roughly $1,350,000 without a single dramatic purchase. A nicer place here, better trips there, and the target quietly grew beyond what you saved. The good news is that this one is entirely inside your control.</p>
+<p><strong>4. A genuine shock lands from outside your control.</strong> A serious illness, a family emergency, a cost you could never have modeled. This is the only one of the 5 that arrives suddenly, and it is why you carry insurance and a dedicated buffer for exactly this. My own family paid for a full cancer treatment with our own money, and that single bill approached ₹40 lakh, which is around $47,000. In the USA a major health event or a stretch of long term care can run past $100,000 even with insurance. These are the numbers that a lean plan with no buffer simply cannot absorb, and I wrote about what one does to a plan in <a href="/blog/can-a-major-illness-end-lean-fire">can a major illness end your Lean FIRE</a>.</p>
+<p><strong>5. Assets that quietly underperform for years.</strong> A dud fund, a piece of real estate that never delivers, a portfolio losing a percent or 2 every year to fees you barely notice. Nothing here is dramatic, which is exactly the danger. A 1% annual fee against a near zero fee does not sound like much, but on a $1,000,000 portfolio growing over 30 years it can quietly cost you close to a quarter of your final wealth, which is easily a 7 figure difference. A slow drag is still a drain, it just never makes a sound.</p>
+<p>Look at that list again and notice something. 4 of the 5 are slow. Only the outside shock arrives without warning, and even that you plan a buffer for. The rest announce themselves months and years in advance, as long as you are paying attention.</p>
+<h2 id="why-it-will-not-happen-to-you-at-random">Why it will not happen to you at random</h2>
+<p>Here is the part people forget when they are frightened. If you are genuinely on a path to financial independence, you are not a careless person. You were disciplined enough to save a large chunk of your income for years, you were a decent earner, and you paid enough attention to your money to get within reach of quitting at all. That exact same person does not sit and watch a plan fail slowly. They notice, and they act.</p>
+<p>Money in a real portfolio does not disappear overnight. It drains slowly, and slow means visible, and visible means you get years of warning to change course. The people who actually run out are almost never the ones who hit a patch of bad luck. They are the ones who set their number once, quit, and never looked at it again. The danger was never the risk itself. The danger was not paying attention.</p>
+<h2 id="the-corrections-you-can-actually-make">The corrections you can actually make</h2>
+<p>When you do spot a problem, you are not helpless, and you are not stuck with a single option. You have a whole menu of course corrections, and they run from trivially easy to genuinely hard.</p>
+<p>The easy ones you can do in an afternoon. A fund that keeps underperforming can be swapped for a better one, either by doing your own research or by paying an advisor once for a proper review. That 1% fee draining your returns can be cut to almost nothing by moving to a cheap index fund, which on a large portfolio is worth 6 figures over time for a single afternoon of work. A piece of real estate that never performed can be sold and the money moved into the market where it actually works.</p>
+<p>The medium ones ask a little discipline. You can trim your spending again, and here is the reassuring truth, you already know how, because you did it on the way up. You can delay a big purchase, or cut your withdrawal for a year the way a guardrail plan tells you to. The single year my own spending jumped, because a real family cost landed, I simply drew a little more that year and pulled it back the next. That is course correction in practice, not a theory in a book.</p>
+<p>The bigger corrections change the shape of the plan, and they are still not failure. Say you spend $40,000 a year and your portfolio has fallen to a level where a full withdrawal feels unsafe. Pick up $20,000 a year of part time work you actually enjoy and you have just halved what you pull from investments, which turns a scary 6% or 7% withdrawal into a comfortable 3%. That is Barista FIRE, and it takes almost all the pressure off the portfolio. You can also slide into Coast FIRE, where you let the investments keep compounding untouched and simply earn enough to cover today. Or you can go back to real earning for a defined stretch, on your own terms, to rebuild the balance. None of these is the disaster people picture. They are dials, and you get to turn them.</p>
+<h2 id="the-habit-that-makes-all-of-this-safe">The habit that makes all of this safe</h2>
+<p>Every bit of this depends on one cheap habit, which is staying genuinely in tune with your numbers. Not once a year. You do it every single month.</p>
+<p>I run 2 checks monthly. The first is my spending against my plan, so I catch that 3% lifestyle creep in month 2, while it is still a rounding error, instead of discovering it in year 5 after it has quietly cost me tens of thousands. The second is a proper audit of my portfolio, its allocation, its performance, and the fees eating into it. Together they take me somewhere between 4 and 6 hours a month, which is nothing against what they protect. Catching a problem while it is small is the entire difference between a quick adjustment and a crisis. You cannot steer around something you never saw coming.</p>
+<h2 id="the-proactive-shield-earn-from-what-you-already-love">The proactive shield: earn from what you already love</h2>
+<p>The strongest protection against running out is not a bigger pile of cash. It is optionality, and specifically a way to earn that you would genuinely enjoy. Lean into whatever you are actually good at and see whether your expertise can be monetized without costing you your freedom. A remote job on your own terms, some consultancy, writing or content, coaching, even hobby projects in the field you already know deeply.</p>
+<p>The math here is quietly powerful. Every $1,000 a month you earn is $12,000 a year you do not have to withdraw, and in a bad market that single stream can be the difference between selling shares at the bottom and leaving them alone to recover. Because it is something you would happily do anyway, it stops being a grim fallback and becomes just another part of a good life. That is what turns running out of money from a cliff into a dial you control.</p>
+<h2 id="why-monte-carlo-simulations-matter">Why Monte Carlo simulations matter</h2>
+<p>All of this is why a single tidy projection is not enough. If you assume one smooth 7% return every year, your spreadsheet will always tell you a comforting story, and it will be lying to you, because real returns never arrive in a smooth line, as that year 1 table showed. A Monte Carlo simulation fixes this by running your plan through thousands of different random return sequences, the calm years and the crash years alike, and telling you in how many of them your money actually lasts.</p>
+<p>That success rate is the honest number. A plan that survives 90% or more of those simulated futures is one you can relax into. A plan that only survives 60% is telling you there is a 4 in 10 chance you run dry, which is a risk no one should retire on. You want to know that now, while you still have every correction available to you, and not at 70 with no options left. It is the clearest way to face sequence risk before it ever happens, and it is exactly what my <a href="/tools/sequence-risk/">sequence risk calculator</a> is built to show you.</p>
+<h2 id="so-what-if-you-run-out-of-money">So, what if you run out of money?</h2>
+<p>You almost certainly will not, if you keep watching. Running out is a real risk, but for anyone disciplined enough to reach financial independence in the first place, it is a slow, visible, and correctable one. The rare people who genuinely run dry are the ones who set the number once and stopped looking. Watch your numbers every month, keep a way to earn that you actually enjoy, and stress test the whole thing with a Monte Carlo simulation, and the scariest question in early retirement quietly becomes one you already have the answer to.</p>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<h3 id="can-you-run-out-of-money-with-fire">Can you run out of money with FIRE?</h3>
+<p>Yes, but almost never at random. It happens in 5 specific ways: your original number was too low, you hit a bad sequence of returns, you let your spending inflate, an outside shock like a serious illness lands, or your assets quietly underperform for years. 4 of those 5 are slow and give you years of warning, so with monthly monitoring and a willingness to adjust, running dry becomes something you can see coming and correct.</p>
+<h3 id="what-is-sequence-of-returns-risk">What is sequence of returns risk?</h3>
+<p>It is the risk that a market crash early in your retirement does permanent damage, because you are selling shares cheap to live on while the market is down, and those shares never recover for you. Two retirees with the exact same average return can end up in completely different places purely because of the order the good and bad years arrived in. On a $1,000,000 portfolio taking out $50,000, a 30% crash in year 1 leaves you with $665,000, while a 20% gain leaves $1,140,000, a $475,000 gap from a single year.</p>
+<h3 id="how-often-should-you-check-your-fire-plan">How often should you check your FIRE plan?</h3>
+<p>Every month, not once a year. Two quick checks are enough: your spending against your plan, so you catch lifestyle creep while it is tiny, and an audit of your portfolio's allocation, performance, and fees. Together they take about 4 to 6 hours a month, and catching a problem while it is small is the difference between a quick adjustment and a crisis.</p>
+<h3 id="why-do-you-need-a-monte-carlo-simulation-for-retirement">Why do you need a Monte Carlo simulation for retirement?</h3>
+<p>Because a single projection that assumes one smooth average return every year hides sequence risk and tells you a comforting story that is not true. A Monte Carlo simulation runs your plan through thousands of random return sequences and gives you a success rate. A plan that survives 90% or more of them is solid, while one that only survives 60% is warning you of a 4 in 10 chance of running dry, which you want to know while you can still fix it.</p>
+<hr />
+<p><em>This is a personal account of how I think about the risk of running out of money in early retirement, and it is not financial or investment advice. Everyone's numbers and situation are different, so build your own plan and speak to a qualified professional before acting on anything here.</em></p>
+
+                <!-- Author Byline -->
+                <div class="author-box"
+                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--card-background); box-shadow: var(--shadow-sm); border-radius: 12px; margin-top: 2rem;">
+                    <div
+                        style="width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
+                        N</div>
+                    <div>
+                        <strong style="font-size: 1.1rem; color: var(--text-primary);">Written by <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;">Nomad Ninad</a></strong>
+                        <p
+                            style="margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Ninad is a former Meta engineer from Pune who moved to the US with $40k of student debt, cleared it, reached Lean FIRE by 33, and now lives on about $1,800 a month in Da Nang, Vietnam. He writes butfirstfire.com from wherever he happens to be.</p>
+                        <a href="/about"
+                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb, 122, 78, 0), 0.3);">Learn
+                            more →</a>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="related-rail"><h4>Related</h4><a class="rel-item" href="/blog/calculating-fire-number"><span class="rel-eyebrow">The basics</span><span class="rel-title">How to Calculate Your FIRE Number</span></a><a class="rel-item" href="/blog/surviving-a-stock-market-crash-on-lean-fire"><span class="rel-eyebrow">Market crash</span><span class="rel-title">The Reality of Surviving a Stock Market Crash on Lean FIRE</span></a><a class="rel-item" href="/blog/can-a-major-illness-end-lean-fire"><span class="rel-eyebrow">Risk</span><span class="rel-title">Can a Major Illness Kick You Out of Lean FIRE?</span></a></aside>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
+</body>
+
+</html>

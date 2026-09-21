@@ -1,0 +1,35 @@
+{
+  "title": "What If I Run Out of Money? The Real Risks That Drain a FIRE Plan",
+  "meta_title": "Can You Run Out of Money With FIRE? The Real Risks and How to See Them Coming",
+  "subtitle": "The 5 real risks that drain an early retirement, why you will see them coming, and the corrections that fix them, with real numbers.",
+  "description": "Can you run out of money with FIRE? Yes, in 5 specific ways, including a bad sequence of returns. Here is the real math, why you will see it coming, and how to correct course.",
+  "date": "2026-09-21",
+  "date_modified": "2026-09-21",
+  "cover": "",
+  "tags": [
+    "fire-planning",
+    "financial-independence",
+    "sequence-risk",
+    "lean-fire",
+    "early-retirement"
+  ],
+  "featured": false,
+  "faqs": [
+    {
+      "question": "Can you run out of money with FIRE?",
+      "answer": "Yes, but almost never at random. It happens in 5 specific ways: your original number was too low, you hit a bad sequence of returns, you let your spending inflate, an outside shock like a serious illness lands, or your assets quietly underperform for years. 4 of those 5 are slow and give you years of warning, so with monthly monitoring and a willingness to adjust, running dry becomes something you can see coming and correct."
+    },
+    {
+      "question": "What is sequence of returns risk?",
+      "answer": "It is the risk that a market crash early in your retirement does permanent damage, because you are selling shares cheap to live on while the market is down, and those shares never recover for you. Two retirees with the exact same average return can end up in completely different places purely because of the order the good and bad years arrived in. On a $1,000,000 portfolio taking out $50,000, a 30% crash in year 1 leaves you with $665,000, while a 20% gain leaves $1,140,000, a $475,000 gap from a single year."
+    },
+    {
+      "question": "How often should you check your FIRE plan?",
+      "answer": "Every month, not once a year. Two quick checks are enough: your spending against your plan, so you catch lifestyle creep while it is tiny, and an audit of your portfolio's allocation, performance, and fees. Together they take about 4 to 6 hours a month, and catching a problem while it is small is the difference between a quick adjustment and a crisis."
+    },
+    {
+      "question": "Why do you need a Monte Carlo simulation for retirement?",
+      "answer": "Because a single projection that assumes one smooth average return every year hides sequence risk and tells you a comforting story that is not true. A Monte Carlo simulation runs your plan through thousands of random return sequences and gives you a success rate. A plan that survives 90% or more of them is solid, while one that only survives 60% is warning you of a 4 in 10 chance of running dry, which you want to know while you can still fix it."
+    }
+  ]
+}
