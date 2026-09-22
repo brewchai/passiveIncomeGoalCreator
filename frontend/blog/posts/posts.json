@@ -339,6 +339,30 @@
       "url": "/blog/foreigner-friendly-guide-grocery-shopping-da-nang"
     },
     {
+      "slug": "how-to-make-friends-living-abroad",
+      "title": "How to Make Friends When You Live Abroad",
+      "subtitle": "You are far more likely to run out of social battery than to be lonely. Here is the honest playbook I used to build a real circle of friends in Da Nang.",
+      "description": "How to make friends when you live abroad, from a nomad in Da Nang: why it is far easier than you fear, the online communities to join first, the hobby meetups like pickleball and board games that actually work, and the apps worth using.",
+      "date": "2026-09-21",
+      "date_modified": "2026-09-21",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "nomad-life",
+        "geo-arbitrage",
+        "da-nang",
+        "vietnam",
+        "expat-life"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "How to Make Friends When You Live Abroad",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/how-to-make-friends-living-abroad"
+    },
+    {
       "slug": "4-walls-of-financial-freedom",
       "title": "The 4 Walls of Financial Freedom: The Levers That Got Me to FIRE at 33",
       "subtitle": "Income, expenses, taxes, and returns, drawn as a room you expand. The real moves to raise the ceiling, drop the floor, and push both walls out.",
@@ -658,6 +682,30 @@
       "url": "/blog/foreigner-friendly-guide-grocery-shopping-da-nang"
     },
     {
+      "slug": "how-to-make-friends-living-abroad",
+      "title": "How to Make Friends When You Live Abroad",
+      "subtitle": "You are far more likely to run out of social battery than to be lonely. Here is the honest playbook I used to build a real circle of friends in Da Nang.",
+      "description": "How to make friends when you live abroad, from a nomad in Da Nang: why it is far easier than you fear, the online communities to join first, the hobby meetups like pickleball and board games that actually work, and the apps worth using.",
+      "date": "2026-09-21",
+      "date_modified": "2026-09-21",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "nomad-life",
+        "geo-arbitrage",
+        "da-nang",
+        "vietnam",
+        "expat-life"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "How to Make Friends When You Live Abroad",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/how-to-make-friends-living-abroad"
+    },
+    {
       "slug": "4-walls-of-financial-freedom",
       "title": "The 4 Walls of Financial Freedom: The Levers That Got Me to FIRE at 33",
       "subtitle": "Income, expenses, taxes, and returns, drawn as a room you expand. The real moves to raise the ceiling, drop the floor, and push both walls out.",
@@ -821,5 +869,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-21T14:53:46.128771Z"
+  "_generated_at": "2026-09-22T14:07:50.053243Z"
 }
