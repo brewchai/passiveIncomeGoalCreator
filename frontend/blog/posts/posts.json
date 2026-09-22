@@ -291,6 +291,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "fire-ladder",
+      "title": "The FIRE Ladder: The Order to Actually Chase FIRE In",
+      "subtitle": "Forget the glossary. The useful question is what order to chase the types of FIRE in, and when to finally stop working. Here is my roadmap, with a real Southeast Asia example.",
+      "description": "The order to pursue the types of FIRE: Coast first, then Barista, then Lean, Regular, and Fat. A simple roadmap for which milestone to chase first, when to stop working for active income, and a Southeast Asia example with real numbers.",
+      "date": "2026-09-22",
+      "date_modified": "2026-09-22",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "lean-fire",
+        "early-retirement",
+        "fire-basics",
+        "geo-arbitrage",
+        "southeast-asia"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The FIRE Ladder: The Order to Actually Chase FIRE In",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/fire-ladder"
+    },
+    {
       "slug": "can-you-run-out-of-money-with-fire",
       "title": "What If I Run Out of Money? The Real Risks That Drain a FIRE Plan",
       "subtitle": "The 5 real risks that drain an early retirement, why you will see them coming, and the corrections that fix them, with real numbers.",
@@ -634,6 +658,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "fire-ladder",
+      "title": "The FIRE Ladder: The Order to Actually Chase FIRE In",
+      "subtitle": "Forget the glossary. The useful question is what order to chase the types of FIRE in, and when to finally stop working. Here is my roadmap, with a real Southeast Asia example.",
+      "description": "The order to pursue the types of FIRE: Coast first, then Barista, then Lean, Regular, and Fat. A simple roadmap for which milestone to chase first, when to stop working for active income, and a Southeast Asia example with real numbers.",
+      "date": "2026-09-22",
+      "date_modified": "2026-09-22",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "lean-fire",
+        "early-retirement",
+        "fire-basics",
+        "geo-arbitrage",
+        "southeast-asia"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "The FIRE Ladder: The Order to Actually Chase FIRE In",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/fire-ladder"
+    },
+    {
       "slug": "can-you-run-out-of-money-with-fire",
       "title": "What If I Run Out of Money? The Real Risks That Drain a FIRE Plan",
       "subtitle": "The 5 real risks that drain an early retirement, why you will see them coming, and the corrections that fix them, with real numbers.",
@@ -869,5 +917,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-22T14:07:50.053243Z"
+  "_generated_at": "2026-09-22T15:20:06.915688Z"
 }
