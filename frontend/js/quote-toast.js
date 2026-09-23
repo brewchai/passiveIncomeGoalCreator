@@ -1,30 +1,17 @@
 /* Rotating "from the blog" quote toast. Loaded ONLY on /blog.
    Desktop only, gentle (no strobe). Closing a toast dismisses only that
    one, and the rotation keeps going. Each toast links to its article.
-   No dependencies, no tracking.
+
+   The lines are NOT hardcoded here: they are fetched from /toast-quotes.json,
+   which the blog build (tools/build_blog.py) regenerates from every indexed
+   post. So adding, deleting, or de-indexing an article automatically updates
+   the toast, and every live article is covered (a post with no curated line
+   falls back to its subtitle). No dependencies, no tracking.
    Test hook: add ?toastnow to the URL to show immediately. */
 (function () {
   'use strict';
 
-  // Curated punchy lines, weighted toward the articles lower down the page
-  // so the toast pushes traffic to the ones that get less attention.
-  var QUOTES = [
-    { q: 'Don’t 33x your parents. That funds them until the year 2100.', title: 'How Many Crores to FIRE in India', url: '/blog/fire-in-india-how-many-crores' },
-    { q: 'Healthcare inflates at 12% a year. You cannot fund it like groceries.', title: 'How Many Crores to FIRE in India', url: '/blog/fire-in-india-how-many-crores' },
-    { q: 'A flat that’s paid off in Mumbai buys you a tier 2 cost of living in a tier 1 city.', title: 'How Many Crores to FIRE in India', url: '/blog/fire-in-india-how-many-crores' },
-    { q: 'A bad first year in the market should never force you to sell at the bottom. That is what the cash bucket is for.', title: 'The 3-Bucket Strategy', url: '/blog/three-bucket-strategy-fire' },
-    { q: 'I FIRE’d as an NRI not by moving back to India, but by geo-arbitraging to Southeast Asia.', title: 'Retire in Southeast Asia as an Indian', url: '/blog/retire-in-southeast-asia-as-an-indian' },
-    { q: 'Every 3 months I do a $300 visa run. It is the Vietnam tax on an Indian passport.', title: 'Vietnam Visa for Indians', url: '/blog/vietnam-visa-for-indians' },
-    { q: 'Geography, not the amount, decides whether $500k is enough to retire on.', title: 'Can You Retire at 35 With $500k?', url: '/blog/can-i-retire-at-35-with-500k' },
-    { q: 'Your FIRE number tells you the target. It does not prove the plan survives bad timing.', title: 'Calculating Your FIRE Number', url: '/blog/calculating-fire-number' },
-    { q: 'The moment you need insurance is the exact moment you can no longer buy it.', title: 'Can a Major Illness End Your Lean FIRE?', url: '/blog/can-a-major-illness-end-lean-fire' },
-    { q: 'Once your money grows past a point, it does more work than you ever could by saving.', title: 'Lean FIRE to Regular FIRE', url: '/blog/lean-fire-to-regular-fire' },
-    { q: 'Work was never the problem. Being answerable to someone else’s dream was.', title: 'Lean FIRE to Regular FIRE', url: '/blog/lean-fire-to-regular-fire' },
-    { q: 'The money is the easy part of Lean FIRE. Knowing how you will spend your days is the hard part.', title: 'Is Lean FIRE Right For You?', url: '/blog/is-lean-fire-right-for-you' },
-    { q: 'I went from $6,000 a month in New York to $1,800 in Vietnam, same quality of life.', title: 'What Is Lean FIRE?', url: '/blog/what-is-LEAN-FIRE' },
-    { q: 'I cleared $40,000 of debt in a single year, then poured that same discipline into investing.', title: 'From $40k Debt to Lean FIRE at 33', url: '/blog/40k-debt-to-lean-fire-at-33' }
-  ];
-
+  var QUOTES = [];
   var CFG = { first: 5000, visible: 20000, gap: 5000, maxShows: 5 };
 
   // guard: desktop only. The toast is a nice-to-have, not for small screens.
@@ -34,8 +21,7 @@
   var params = new URLSearchParams(location.search);
   if (params.has('toastnow')) { CFG.first = 600; CFG.gap = 6000; }
 
-  var order = shuffle(QUOTES.map(function (_, i) { return i; }));
-  var cursor = 0, shows = 0, hideTimer = null, gapTimer = null, el = null;
+  var order = [], cursor = 0, shows = 0, hideTimer = null, gapTimer = null, el = null;
 
   function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
 
@@ -121,8 +107,21 @@
     hide();
   }
 
-  function start() { injectStyles(); setTimeout(show, CFG.first); }
+  function init(quotes) {
+    if (!quotes || !quotes.length) return;   // nothing to show, stay silent
+    QUOTES = quotes;
+    order = shuffle(QUOTES.map(function (_, i) { return i; }));
+    injectStyles();
+    setTimeout(show, CFG.first);
+  }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-  else start();
+  function boot() {
+    fetch('/toast-quotes.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) { init(data && data.quotes); })
+      .catch(function () { /* offline or missing file: no toast, no error */ });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();

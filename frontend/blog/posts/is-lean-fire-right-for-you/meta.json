@@ -43,5 +43,8 @@
   "eyebrow": "Lean FIRE",
   "cover_base": "is-lean-fire-right-for-you-photo.webp",
   "photo_pos": "center 0%",
-  "photo_zoom": "cover"
+  "photo_zoom": "cover",
+  "toast": [
+    "The money is the easy part of Lean FIRE. Knowing how you will spend your days is the hard part."
+  ]
 }

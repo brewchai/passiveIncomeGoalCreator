@@ -39,5 +39,8 @@
   "hook_accent": "$500k",
   "scrim_side": "right",
   "eyebrow": "Reality check",
-  "cover_base": "retire-at-35-with-500k-lean-fire.webp"
+  "cover_base": "retire-at-35-with-500k-lean-fire.webp",
+  "toast": [
+    "Geography, not the amount, decides whether $500k is enough to retire on."
+  ]
 }

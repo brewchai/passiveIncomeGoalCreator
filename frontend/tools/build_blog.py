@@ -336,6 +336,7 @@ def build_one_post(slug: str, template: str, index: dict | None = None) -> dict:
         "description": meta.get("description", ""),
         "date": iso_date(meta["date"]),
         "date_modified": iso_date(meta["date_modified"]) if meta.get("date_modified") else iso_date(meta["date"]),
+        "toast": meta.get("toast"),
         "cover": cover_for_json,
         "cover_photo": photo_for_json,
         "eyebrow": (meta.get("eyebrow") or "").strip(),
@@ -356,8 +357,10 @@ def collect_posts() -> list[dict]:
     return sorted(slugs)
 
 def write_posts_index(records: list[dict]) -> None:
-    # Benched (noindex) posts are hidden from the /blog listing.
-    records = [r for r in records if not r.get("noindex")]
+    # Benched (noindex) posts are hidden from the /blog listing. The `toast` field
+    # is only used to build toast-quotes.json, so it is stripped from posts.json.
+    records = [{k: v for k, v in r.items() if k != "toast"}
+               for r in records if not r.get("noindex")]
     # Ordering: pinned first, then an explicit `order` (ascending), then date desc.
     # Two stable passes keep date-desc for posts without an explicit order.
     sorted_records = sorted(records, key=lambda r: r["date"], reverse=True)
@@ -392,6 +395,44 @@ def write_posts_index(records: list[dict]) -> None:
     payload["_generated_at"] = datetime.utcnow().isoformat() + "Z"
     out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("  posts.json: updated")
+
+def write_toast_quotes(records: list[dict]) -> None:
+    """Regenerate toast-quotes.json: the rotating 'from the blog' lines shown on /blog.
+
+    Built from the same indexed-post list as posts.json, so it automatically covers
+    every live article and drops anything that is deleted or de-indexed (noindex).
+    Each post supplies its own punchy lines via a `toast` field in meta.json (a
+    string or a list of strings); a post without one falls back to its subtitle, so
+    a newly added article is always covered even if no line was written for it."""
+    records = [r for r in records if not r.get("noindex")]
+    recs = sorted(records, key=lambda r: r.get("date", ""), reverse=True)
+    quotes = []
+    for r in recs:
+        lines = r.get("toast")
+        if isinstance(lines, str):
+            lines = [lines]
+        if not lines:
+            fallback = (r.get("subtitle") or r.get("description") or "").strip()
+            lines = [fallback] if fallback else []
+        for q in lines:
+            q = (q or "").strip()
+            if q:
+                quotes.append({"q": q, "title": r["title"], "url": r["url"]})
+
+    out_path = FRONTEND / "toast-quotes.json"
+    payload = {"quotes": quotes}
+    # Deterministic content (no timestamp), and only rewrite when something changed,
+    # so builds stay byte-identical and do not churn the file needlessly.
+    if out_path.exists():
+        try:
+            if json.loads(out_path.read_text(encoding="utf-8")) == payload:
+                print("  toast-quotes.json: no change — skipped")
+                return
+        except Exception:
+            pass
+    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"  toast-quotes.json: wrote {len(quotes)} lines across {len(recs)} posts")
+
 
 def update_sitemap(records: list[dict]) -> None:
     """Regenerate the blog <url> block in sitemap.xml between the BLOG markers.
@@ -441,7 +482,8 @@ def main():
             posts.append(record)
     write_posts_index(posts)
     update_sitemap(posts)
-    print(f"Built {len(posts)} post(s). Output: posts.json + sitemap.xml updated.")
+    write_toast_quotes(posts)
+    print(f"Built {len(posts)} post(s). Output: posts.json + sitemap.xml + toast-quotes.json updated.")
 
 if __name__ == "__main__":
     main()

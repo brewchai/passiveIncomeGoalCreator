@@ -41,5 +41,8 @@
   "eyebrow": "Strategy",
   "cover_base": "three-bucket-strategy-lean-fire-photo.webp",
   "photo_pos": "center 36%",
-  "photo_zoom": "cover"
+  "photo_zoom": "cover",
+  "toast": [
+    "A bad first year in the market should never force you to sell at the bottom. That is what the cash bucket is for."
+  ]
 }

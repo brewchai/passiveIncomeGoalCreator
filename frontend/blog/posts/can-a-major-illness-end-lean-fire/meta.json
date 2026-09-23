@@ -48,5 +48,8 @@
   "cover_base": "major-illness-lean-fire-risk-photo.webp",
   "photo_pos": "center 30%",
   "photo_zoom": "cover",
-  "type_only": true
+  "type_only": true,
+  "toast": [
+    "The moment you need insurance is the exact moment you can no longer buy it."
+  ]
 }

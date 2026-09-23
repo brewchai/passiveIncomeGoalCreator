@@ -53,5 +53,8 @@
   "hook_accent": "$40k",
   "scrim_side": "left",
   "eyebrow": "Lean FIRE",
-  "cover_base": "40k-debt-to-lean-fire-at-33.webp"
+  "cover_base": "40k-debt-to-lean-fire-at-33.webp",
+  "toast": [
+    "I cleared $40,000 of debt in a single year, then poured that same discipline into investing."
+  ]
 }

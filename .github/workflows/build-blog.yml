@@ -44,6 +44,7 @@ jobs:
           git add frontend/blog/posts/**/index.html
           git add frontend/blog/posts/posts.json
           git add frontend/sitemap.xml
+          git add frontend/toast-quotes.json
           
           # Commit only if there are changes
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-build blog posts [skip ci]"

@@ -40,5 +40,8 @@
   "eyebrow": "The basics",
   "cover_base": "how-to-calculate-your-fire-number-photo.webp",
   "photo_pos": "28% 18%",
-  "photo_zoom": "110%"
+  "photo_zoom": "110%",
+  "toast": [
+    "Your FIRE number tells you the target. It does not prove the plan survives bad timing."
+  ]
 }
