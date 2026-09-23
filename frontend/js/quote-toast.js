@@ -77,8 +77,11 @@
     cursor = (cursor + 1) % order.length;
     el.querySelector('.bff-toast-q').textContent = '“' + item.q + '”';
     var link = el.querySelector('.bff-toast-link');
-    link.textContent = 'Read: ' + item.title + ' →';
+    // Keep the link short: the long article title (with white-space:nowrap) used to
+    // hog the row and squash the quote into a narrow column. The quote carries the hook.
+    link.textContent = 'Read the article →';
     link.setAttribute('href', item.url);
+    link.setAttribute('title', item.title);
 
     el.classList.add('in');
     if (!reduced) { el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse'); }
