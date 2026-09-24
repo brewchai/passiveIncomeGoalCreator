@@ -1,4 +1,4 @@
-# ₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.
+# ₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore in 2026, You Might Just Make It.
 
 We are all quietly terrified of the same thing. You spend years grinding your way to a FIRE number, you finally hit it, and then a voice in your head starts asking the only question that actually matters, which is whether the money will really last. Will ₹5 crore hold? Will ₹10 crore hold? Nobody honestly knows, because nobody has next year's returns or next decade's inflation.
 
