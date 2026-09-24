@@ -291,6 +291,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "10-crore-retirement-backtest",
+      "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "subtitle": "I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.",
+      "description": "A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.",
+      "date": "2026-09-24",
+      "date_modified": "2026-09-24",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "fire-in-india",
+        "early-retirement",
+        "inflation",
+        "safe-withdrawal-rate",
+        "backtest"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/10-crore-retirement-backtest"
+    },
+    {
       "slug": "can-i-retire-with-5-crore",
       "title": "I Have ₹5 Crore. Can I Retire? Let Us Break It Down",
       "subtitle": "₹5 crore on its own tells you almost nothing. Whether it is enough comes down to your age, your city, where the money actually sits, who depends on you, your real expenses, and your health cover. Here is the honest breakdown.",
@@ -730,6 +754,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "10-crore-retirement-backtest",
+      "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "subtitle": "I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.",
+      "description": "A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.",
+      "date": "2026-09-24",
+      "date_modified": "2026-09-24",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "fire-in-india",
+        "early-retirement",
+        "inflation",
+        "safe-withdrawal-rate",
+        "backtest"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/10-crore-retirement-backtest"
+    },
+    {
       "slug": "can-i-retire-with-5-crore",
       "title": "I Have ₹5 Crore. Can I Retire? Let Us Break It Down",
       "subtitle": "₹5 crore on its own tells you almost nothing. Whether it is enough comes down to your age, your city, where the money actually sits, who depends on you, your real expenses, and your health cover. Here is the honest breakdown.",
@@ -1061,5 +1109,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-23T07:24:11.567075Z"
+  "_generated_at": "2026-09-24T07:21:28.536055Z"
 }

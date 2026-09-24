@@ -1,6 +1,16 @@
 {
   "quotes": [
     {
+      "q": "I backtested a ₹10 crore retirement across 26 years of real Indian data. It survived, but the first 3 years nearly broke it.",
+      "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "url": "/blog/10-crore-retirement-backtest"
+    },
+    {
+      "q": "Skip tax and fund costs in a backtest and you overstate the result by about 2 times over 26 years. The honest 4% plan ends at 0.77x, not 1.5x.",
+      "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+      "url": "/blog/10-crore-retirement-backtest"
+    },
+    {
       "q": "₹5 crore is not ₹5 crore. Locked in a flat or sitting idle in an FD, it funds almost nothing.",
       "title": "I Have ₹5 Crore. Can I Retire? Let Us Break It Down",
       "url": "/blog/can-i-retire-with-5-crore"

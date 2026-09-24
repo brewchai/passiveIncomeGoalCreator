@@ -1,0 +1,39 @@
+{
+  "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.",
+  "meta_title": "Will ₹10 Crore Last in Retirement? A 26-Year Backtest",
+  "subtitle": "I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.",
+  "description": "A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.",
+  "date": "2026-09-24",
+  "date_modified": "2026-09-24",
+  "cover": "",
+  "tags": [
+    "fire-in-india",
+    "early-retirement",
+    "inflation",
+    "safe-withdrawal-rate",
+    "backtest"
+  ],
+  "featured": false,
+  "toast": [
+    "I backtested a ₹10 crore retirement across 26 years of real Indian data. It survived, but the first 3 years nearly broke it.",
+    "Skip tax and fund costs in a backtest and you overstate the result by about 2 times over 26 years. The honest 4% plan ends at 0.77x, not 1.5x."
+  ],
+  "faqs": [
+    {
+      "question": "Will ₹10 crore last in retirement in India?",
+      "answer": "In this backtest, yes at every rate tested. A person retiring on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio still had money in 2026 at 3%, 3.5%, and 4% withdrawals, even through the 2000 to 2002 fall and the 2008 crash. But after tax and costs the 4% plan is trending down and effectively spending 5.2% today, so 3% to 3.5% is the durable zone."
+    },
+    {
+      "question": "What is a safe withdrawal rate for FIRE in India?",
+      "answer": "On this one historical path, 3% survived every start year with real room to spare, 3.5% was roughly break even in real terms, and 4% only worked from 2000 because the 2003 to 2007 boom arrived in time. India has only about 26 years of total return index data, so treat any single safe rate with humility."
+    },
+    {
+      "question": "Do fixed deposits protect a retirement in India?",
+      "answer": "They cushion the crashes but lose purchasing power. In this backtest, after 30% tax, FD returns beat inflation in only 9 of the 26 years. The equity side did all the real growth, and the debt side worked as a shock absorber rather than an engine."
+    },
+    {
+      "question": "How much do tax and fund costs matter over a retirement?",
+      "answer": "Enormously. In this backtest they roughly halved the ending corpus over 26 years, cutting the 4% result from ₹15.1 crore down to ₹7.7 crore. A clean backtest that ignores them overstates the real outcome by about 2 times, which is why so much comforting FIRE math describes a retirement that does not actually exist."
+    }
+  ]
+}

@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Will ₹10 Crore Last in Retirement? A 26-Year Backtest | But First Fire</title>
+    <meta name="description" content="A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://butfirstfire.com/blog/10-crore-retirement-backtest">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.">
+    <meta property="og:description" content="A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.">
+    <meta property="og:url" content="https://butfirstfire.com/blog/10-crore-retirement-backtest">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.">
+    <meta name="twitter:description" content="A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.">
+    <meta name="twitter:image" content="">
+
+    <!-- JSON-LD Article -->
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Article", "headline": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.", "description": "A real Indian FIRE backtest: retire on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio, let spending grow with actual inflation, and see whether 3%, 3.5%, and 4% withdrawal rates survive 26 years, before and after tax and costs.", "image": [], "datePublished": "2026-09-24", "dateModified": "2026-09-24", "author": {"@type": "Person", "name": "FIRE Planner"}, "publisher": {"@type": "Organization", "name": "FIRE Planner", "logo": {"@type": "ImageObject", "url": "https://butfirstfire.com/og-image.png"}}, "mainEntityOfPage": "https://butfirstfire.com/blog/10-crore-retirement-backtest"}
+  </script>
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will ₹10 crore last in retirement in India?", "acceptedAnswer": {"@type": "Answer", "text": "In this backtest, yes at every rate tested. A person retiring on ₹10 crore in the year 2000 with a 60/40 Nifty and FD portfolio still had money in 2026 at 3%, 3.5%, and 4% withdrawals, even through the 2000 to 2002 fall and the 2008 crash. But after tax and costs the 4% plan is trending down and effectively spending 5.2% today, so 3% to 3.5% is the durable zone."}}, {"@type": "Question", "name": "What is a safe withdrawal rate for FIRE in India?", "acceptedAnswer": {"@type": "Answer", "text": "On this one historical path, 3% survived every start year with real room to spare, 3.5% was roughly break even in real terms, and 4% only worked from 2000 because the 2003 to 2007 boom arrived in time. India has only about 26 years of total return index data, so treat any single safe rate with humility."}}, {"@type": "Question", "name": "Do fixed deposits protect a retirement in India?", "acceptedAnswer": {"@type": "Answer", "text": "They cushion the crashes but lose purchasing power. In this backtest, after 30% tax, FD returns beat inflation in only 9 of the 26 years. The equity side did all the real growth, and the debt side worked as a shock absorber rather than an engine."}}, {"@type": "Question", "name": "How much do tax and fund costs matter over a retirement?", "acceptedAnswer": {"@type": "Answer", "text": "Enormously. In this backtest they roughly halved the ending corpus over 26 years, cutting the 4% result from ₹15.1 crore down to ₹7.7 crore. A clean backtest that ignores them overstates the real outcome by about 2 times, which is why so much comforting FIRE math describes a retirement that does not actually exist."}}]}
+  </script>
+
+
+    <!-- Fonts & Styles -->    <link rel="stylesheet" href="/blog.css">
+
+    <style>
+        /* Modern post page design */
+        body {
+            background: var(--background);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .post-hero {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-hero img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+            object-fit: cover;
+        }
+
+        .post-title {
+            font-size: var(--t-4);
+            font-weight: var(--w-display);
+            letter-spacing: -0.02em;
+            line-height: var(--lh-tight);
+            margin: 0 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .post-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+
+        /* ── Related rail ────────────────────────────────────────────────
+           Title, subtitle, byline and body all share one measure, so the
+           article has a single right edge instead of three. The rail fills
+           the space that opens up beside it. */
+        .post-container {
+            max-width: 1330px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            column-gap: 52px;
+            /* Scoped override: the listing keeps the narrower global measure. Body type is
+               21px here, so 66ch still lands near 84 characters a line rather than 95 —
+               a wider column only works because the type grew with it. */
+            --measure: 66ch;
+            align-items: start;
+        }
+        .post-hero, .post-content { grid-column: 1; }
+        .post-title, .post-subtitle, .post-meta { max-width: var(--measure); }
+
+        .related-rail {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            position: sticky;
+            top: calc(var(--header-h, 84px) + 20px);
+        }
+        .related-rail h4 {
+            font-size: 0.68rem; font-weight: 800; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--text-muted); margin: 0 0 0.8rem;
+        }
+        .rel-item {
+            display: block; text-decoration: none;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.9rem 1rem; margin-bottom: 0.7rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .rel-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .rel-eyebrow {
+            display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent-color); margin-bottom: 0.35rem;
+        }
+        .rel-title {
+            display: block; font-size: 0.95rem; line-height: 1.25; font-weight: 600;
+            letter-spacing: -0.015em; color: var(--text-primary);
+        }
+        @media (max-width: 900px) {
+            .post-container { grid-template-columns: 1fr; }
+            .related-rail { grid-column: 1; grid-row: auto; position: static; margin-top: 2.5rem; }
+        }
+
+        .post-content {
+            font-size: 21px;
+            line-height: 1.75;
+            color: var(--text-primary);
+        }
+        .post-content p,
+        .post-content li,
+        .post-content blockquote {
+            max-width: var(--measure);
+        }
+
+
+        .post-content>*:first-child {
+            margin-top: 0;
+        }
+
+        .post-content p {
+            margin: 1.25rem 0;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.25rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .post-content li {
+            margin: 0.5rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .post-content strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .post-content em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .post-content hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2.5rem 0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(var(--accent-rgb, 122, 78, 0), 0.3);
+            transition: all 0.2s;
+        }
+
+        .post-content a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .post-content blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(var(--accent-rgb, 122, 78, 0), 0.05);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .post-content thead {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .post-content th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .post-content td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .post-content tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .post-content tbody tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .post-content pre {
+            background: #0f172a;
+            /* standard dark code bg */
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.05);
+            /* very light bg relative to current mode */
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem 1.25rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .post-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-content table {
+                font-size: 0.9rem;
+            }
+
+            .post-content th,
+            .post-content td {
+                padding: 0.625rem 0.75rem;
+            }
+
+            /* Native AI Panel Mobile */
+            #native-ai-panel.open {
+                width: 100%;
+            }
+        }
+
+
+        /* LIVE ARTICLE STYLES */
+        .live-var {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            padding: 0 4px;
+            cursor: text;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .live-var:focus {
+            background: rgba(var(--accent-rgb, 122, 78, 0), 0.1);
+            border-radius: 4px;
+        }
+
+        .live-calc {
+            font-weight: 700;
+            color: var(--text-primary);
+            background: #f1f5f9;
+            padding: 0 6px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .live-calc.updated {
+            background: #bbf7d0;
+            /* Green flash */
+        }
+
+        /* Native AI Panel */
+        #native-ai-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-background);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+        }
+
+        #native-ai-panel.open {
+            right: 0;
+        }
+
+        .ai-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+        }
+
+        .ai-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .ai-content-area {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: var(--background);
+        }
+
+        .ai-message {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-message.user {
+            color: var(--text-primary);
+            font-weight: 500;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .ai-message.assistant {
+            color: var(--text-secondary);
+        }
+
+        .ai-message.system,
+        .ai-placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .ai-input-area {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--card-background);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #ai-input {
+            flex: 1;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        #ai-send {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #ai-send:hover {
+            transform: scale(1.05);
+        }
+
+        #ai-trigger {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-background);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ai-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        #ai-trigger.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/privacy" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Privacy</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="post-container">
+            <div class="post-hero">
+                <h1 class="post-title">₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore, You Might Just Make It.</h1>
+                <p class="post-subtitle">I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.</p>
+                <div class="post-meta"><span>By <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;"><strong>Nomad Ninad</strong></a></span><span class="post-meta-right">2026-09-24 · 13 min read</span></div>
+                
+            </div>
+
+            <article class="post-content">
+                <p>We are all quietly terrified of the same thing. You spend years grinding your way to a FIRE number, you finally hit it, and then a voice in your head starts asking the only question that actually matters, which is whether the money will really last. Will ₹5 crore hold? Will ₹10 crore hold? Nobody honestly knows, because nobody has next year's returns or next decade's inflation.</p>
+<p>So I stopped guessing and ran a proper backtest. Here is the exact question I put to the data. Take someone who retires today on ₹10 crore and wants to pull a normal FIRE income out of it. Now rewind that exact plan 26 years and drop it into January 2000, keeping the same corpus in real terms, the same withdrawal rates, and the same kind of lifestyle, and then let real history happen to it. We do not have the future, but we do have the entire past, every real Nifty return, every real inflation print, and every real FD rate from 2000 to today. So let us run the tape and find out whether the money survives.</p>
+<h2 id="no-assumptions-just-what-actually-happened">No assumptions, just what actually happened</h2>
+<p>Here is the one thing that makes this worth your time. There is not a single made up number in it. Most FIRE math runs on a fantasy, a flat 12% return every year and a neat 6% inflation forever, which is the kind of smooth line that reality never actually draws. This backtest throws all of that out and uses the real record instead. The actual Nifty 50 total return for every single year, the actual CPI inflation India printed each year, the actual bank fixed deposit rates of the time, and the actual capital gains tax rules exactly as they changed. Real returns, real inflation, real rates, real tax. The messy, jagged, true version of 26 years, not a tidy projection of them.</p>
+<h2 id="the-setup-in-one-breath">The setup, in one breath</h2>
+<p>The rules are deliberately boring. He retires on 1 January 2000. His ₹10 crore in today's money was worth about ₹2.25 crore back then, because prices in India have risen roughly 4.45 times since 2000. He holds 60% in the Nifty 50 with dividends reinvested and 40% in bank fixed deposits, and every 1 January he takes out a full year of spending and rebalances back to 60/40. His year one spending is set by his withdrawal rate, and after that it rises every single year by that year's actual inflation, no matter what the market did. No cutting back in bad years, no side income, no pension, no rescue. Pure autopilot.</p>
+<p>I ran him at 3%, 3.5%, and 4% withdrawal rates, which in today's money is spending of ₹30 lakh, ₹35 lakh, and ₹40 lakh a year. And I ran two versions of each. The clean version ignores tax and fund costs, which is quietly how almost every FIRE backtest you have ever seen is presented. The real version charges 30% tax on FD interest, capital gains tax on equity under the actual rules of each year, and a 1% annual fund cost. That second version is the one you actually live in.</p>
+<h2 id="the-answer-he-survives">The answer: he survives</h2>
+<p>He makes it. At every withdrawal rate, in both versions, the ₹10 crore retiree still has money in September 2026, a full 26 years and 9 months later. That is the headline, and it is genuinely reassuring.</p>
+<p>But the gap between the two versions is the whole story. Ignore tax and costs and the picture is a fairy tale, because at 3% he ends with ₹20.9 crore, at 3.5% with ₹18 crore, and even at 4% with ₹15.1 crore, every one of them far richer in real terms than the day he quit. Now switch on tax and the 1% fund cost, and reality shows up. At 3% he ends with ₹12.3 crore, at 3.5% with ₹10 crore, which is exactly where he started in real terms, and at 4% with ₹7.7 crore. That last retiree is now spending ₹40 lakh a year out of ₹7.7 crore, which is a 5.2% withdrawal rate, higher than the 4% he began with. He survived, and his plan is quietly drifting the wrong way.</p>
+<table>
+<thead>
+<tr>
+<th>Withdrawal rate</th>
+<th>Spending today</th>
+<th>Ending, clean</th>
+<th>Ending, after tax and costs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3%</td>
+<td>₹30 L a year</td>
+<td>₹20.9 cr</td>
+<td>₹12.3 cr</td>
+</tr>
+<tr>
+<td>3.5%</td>
+<td>₹35 L a year</td>
+<td>₹18.0 cr</td>
+<td>₹10.0 cr</td>
+</tr>
+<tr>
+<td>4%</td>
+<td>₹40 L a year</td>
+<td>₹15.1 cr</td>
+<td>₹7.7 cr</td>
+</tr>
+</tbody>
+</table>
+<p>All figures are in today's rupees. Read the right column carefully, because that is the one that is real.</p>
+<h2 id="the-first-three-years-almost-ended-it">The first three years almost ended it</h2>
+<p>Here is the part that would have kept him awake at night. He picked a genuinely rough moment to walk away. The Nifty fell 13.4% in 2000 and another 15% in 2001, and the whole time his spending kept climbing with inflation, because bills do not care what the market did. By the start of 2003, the 4% retiree's account had fallen from ₹2.25 crore to ₹1.78 crore in the actual rupees of the day, and because prices kept rising the entire time, that was a 29% hit to what the money could really buy, the same as ₹10 crore shrinking to ₹7.06 crore in today's terms. His withdrawal rate had crept from 4% up to 5.7%, and anyone actually living through that would have been convinced the plan was failing.</p>
+<p><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corpus in today rupees, 2000 to 2026, 4 percent withdrawal, clean versus after tax and costs" style="width:100%;height:auto;font-family:-apple-system,Segoe UI,Roboto,sans-serif;"><rect x="0" y="0" width="720" height="410" rx="14" fill="#faf5ec"/><line x1="60" y1="362.0" x2="694" y2="362.0" stroke="#e4dccb" stroke-width="1"/><text x="50" y="366.0" text-anchor="end" font-size="12" fill="#7a6f63">0</text><line x1="60" y1="276.4" x2="694" y2="276.4" stroke="#e4dccb" stroke-width="1"/><text x="50" y="280.4" text-anchor="end" font-size="12" fill="#7a6f63">5</text><line x1="60" y1="190.9" x2="694" y2="190.9" stroke="#e4dccb" stroke-width="1"/><text x="50" y="194.9" text-anchor="end" font-size="12" fill="#7a6f63">10</text><line x1="60" y1="105.3" x2="694" y2="105.3" stroke="#e4dccb" stroke-width="1"/><text x="50" y="109.3" text-anchor="end" font-size="12" fill="#7a6f63">15</text><text x="50" y="75.1" text-anchor="end" font-size="11" fill="#7a6f63">₹cr</text><line x1="60" y1="190.9" x2="694" y2="190.9" stroke="#2b2b2b" stroke-width="1.3" stroke-dasharray="5 4" opacity="0.55"/><text x="694" y="182.9" text-anchor="end" font-size="11.5" fill="#2b2b2b" opacity="0.75">where he started, ₹10 cr</text><text x="60.0" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2000</text><text x="177.4" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2005</text><text x="294.8" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2010</text><text x="412.2" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2015</text><text x="529.6" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2020</text><text x="670.5" y="384" text-anchor="middle" font-size="12" fill="#7a6f63">2026</text><polyline points="60.0,190.9 83.5,210.7 107.0,231.1 130.4,234.9 153.9,190.5 177.4,188.7 200.9,164.7 224.4,133.6 247.9,81.4 271.3,182.8 294.8,131.3 318.3,127.4 341.8,176.5 365.3,165.1 388.7,168.8 412.2,143.0 435.7,156.5 459.2,158.9 482.7,133.7 506.1,137.0 529.6,135.3 553.1,127.9 576.6,112.0 600.1,119.4 623.6,103.6 647.0,94.7 670.5,86.3 694.0,103.3" fill="none" stroke="#c47d16" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/><polyline points="60.0,190.9 83.5,213.3 107.0,235.5 130.4,241.2 153.9,201.3 177.4,202.7 200.9,183.4 224.4,158.4 247.9,116.3 271.3,208.5 294.8,168.3 318.3,168.8 341.8,212.8 365.3,207.5 388.7,214.3 412.2,198.9 435.7,213.0 459.2,218.8 482.7,205.6 506.1,211.9 529.6,215.2 553.1,215.0 576.6,209.7 600.1,218.8 623.6,214.7 647.0,215.2 670.5,216.2 694.0,230.1" fill="none" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/><circle cx="130.4" cy="241.2" r="4.5" fill="#a83f2b"/><text x="138.4" y="257.2" font-size="12" font-weight="700" fill="#a83f2b">2003 low: ₹7.06 cr</text><circle cx="694.0" cy="103.3" r="4" fill="#c47d16"/><text x="688.0" y="95.3" text-anchor="end" font-size="12.5" font-weight="700" fill="#c47d16">₹15.1 cr</text><circle cx="694.0" cy="230.1" r="4" fill="#2b2b2b"/><text x="688.0" y="248.1" text-anchor="end" font-size="12.5" font-weight="700" fill="#2b2b2b">₹7.7 cr</text><rect x="60" y="16" width="14" height="4" rx="2" fill="#c47d16"/><text x="80" y="22" font-size="12.5" fill="#2b2b2b">Ignoring tax and costs</text><rect x="245" y="16" width="14" height="4" rx="2" fill="#2b2b2b"/><text x="265" y="22" font-size="12.5" fill="#2b2b2b">After tax and 1% costs (real)</text></svg></p>
+<p><em>The 4% retiree's corpus in today's rupees, from 2000 to 2026. The dashed line is where he started. Ignore tax and costs and he soars. Count them and he sinks below his starting wealth for years and never fully climbs back.</em></p>
+<p>Then 2003 returned 77%, and 2003 to 2007 handed him five straight years of gains, and the problem simply dissolved. The entire outcome of this experiment was decided in those years, when the market gave him a boom exactly when he needed one. That is sequence of returns risk in one real life. The order of your returns matters more than their average, and the first few years matter most of all. If you want to put your own plan through exactly this kind of bad early market, I built a <a href="/tools/sequence-risk/">sequence of returns calculator</a> that stress tests it.</p>
+<table>
+<thead>
+<tr>
+<th>1 January</th>
+<th>Corpus, actual rupees</th>
+<th>Corpus in today's money</th>
+<th>Spending</th>
+<th>Withdrawal rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2000</td>
+<td>₹2.25 cr</td>
+<td>₹10.00 cr</td>
+<td>₹8.98 L</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>₹2.03 cr</td>
+<td>₹8.69 cr</td>
+<td>₹9.32 L</td>
+<td>4.6%</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>₹1.80 cr</td>
+<td>₹7.39 cr</td>
+<td>₹9.72 L</td>
+<td>5.4%</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>₹1.78 cr</td>
+<td>₹7.06 cr</td>
+<td>₹10.09 L</td>
+<td>5.7%</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>₹2.46 cr</td>
+<td>₹9.39 cr</td>
+<td>₹10.47 L</td>
+<td>4.3%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tax-and-costs-are-not-a-footnote">Tax and costs are not a footnote</h2>
+<p>Look again at that gap between the two versions, because it is the most important lesson here and almost nobody includes it. Over 26 years, tax and a 1% fund cost roughly halved the 4% retiree's ending wealth, from ₹15.1 crore down to ₹7.7 crore. A clean backtest tells him 4% leaves him with about 1.5 times his starting money. The honest version tells him 0.77 times, and falling. Backtests that skip tax and costs overstate the result by roughly 2 times over a full retirement, which means most of the comforting FIRE math floating around out there is describing a retirement that does not exist. At 4%, the 30% tax on FD interest alone cost him about ₹4.5 crore of final wealth, and the 1% fund fee cost another ₹3.5 crore. Fees and tax are not rounding errors, they are half your result.</p>
+<h2 id="the-safe-money-was-not-safe">The safe money was not safe</h2>
+<p>There is a cruel little twist buried inside the 40% he held in fixed deposits for safety. After 30% tax, his FD returns beat inflation in only 9 of the 26 years. The other 17 years, the safest part of his portfolio quietly lost purchasing power while it sat there looking responsible. It did its real job of cushioning the crashes of 2008 and 2011, and it dragged on returns in every calm year in between. All the growth that actually kept him ahead of inflation across 26 years came from the equity side. The lesson here is that debt is a shock absorber rather than an engine, so you cannot fund a multi decade retirement on an asset that loses to inflation after tax.</p>
+<h2 id="was-2000-just-lucky">Was 2000 just lucky?</h2>
+<p>A fair objection is that 2000, for all its scary start, might simply have been a good year to quit. So I ran the same person, the same ₹10 crore, and the same rules, starting in a range of different years, and the honest answer is that when you retire matters enormously.</p>
+<p><svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corpus left today by retirement year, 4 percent after tax" style="width:100%;height:auto;font-family:-apple-system,Segoe UI,Roboto,sans-serif;"><rect x="0" y="0" width="720" height="380" rx="14" fill="#faf5ec"/><line x1="52" y1="306.0" x2="696" y2="306.0" stroke="#e4dccb" stroke-width="1"/><text x="42" y="310.0" text-anchor="end" font-size="12" fill="#7a6f63">0</text><line x1="52" y1="194.7" x2="696" y2="194.7" stroke="#e4dccb" stroke-width="1"/><text x="42" y="198.7" text-anchor="end" font-size="12" fill="#7a6f63">5</text><line x1="52" y1="83.4" x2="696" y2="83.4" stroke="#e4dccb" stroke-width="1"/><text x="42" y="87.4" text-anchor="end" font-size="12" fill="#7a6f63">10</text><line x1="52" y1="83.4" x2="696" y2="83.4" stroke="#2b2b2b" stroke-width="1.3" stroke-dasharray="5 4" opacity="0.5"/><text x="56" y="76.4" text-anchor="start" font-size="11.5" fill="#2b2b2b" opacity="0.7">started at ₹10 cr</text><rect x="72.2" y="134.6" width="51.5" height="171.4" rx="4" fill="#c47d16"/><text x="98.0" y="126.6" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹7.7 cr</text><text x="98.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2000</text><text x="98.0" y="344" text-anchor="middle" font-size="11.5" fill="#7a6f63">5.2% today</text><rect x="164.2" y="101.2" width="51.5" height="204.8" rx="4" fill="#c47d16"/><text x="190.0" y="93.2" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹9.2 cr</text><text x="190.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2004</text><text x="190.0" y="344" text-anchor="middle" font-size="11.5" fill="#7a6f63">4.4% today</text><rect x="256.2" y="152.4" width="51.5" height="153.6" rx="4" fill="#c47d16"/><text x="282.0" y="144.4" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹6.9 cr</text><text x="282.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2006</text><text x="282.0" y="344" text-anchor="middle" font-size="11.5" fill="#7a6f63">5.8% today</text><rect x="348.2" y="201.4" width="51.5" height="104.6" rx="4" fill="#a83f2b"/><text x="374.0" y="193.4" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹4.7 cr</text><text x="374.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2007</text><text x="374.0" y="344" text-anchor="middle" font-size="11.5" fill="#a83f2b">8.5% today</text><rect x="440.2" y="257.0" width="51.5" height="49.0" rx="4" fill="#a83f2b"/><text x="466.0" y="249.0" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹2.2 cr</text><text x="466.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2008</text><text x="466.0" y="344" text-anchor="middle" font-size="11.5" fill="#a83f2b">18.2% today</text><rect x="532.2" y="179.1" width="51.5" height="126.9" rx="4" fill="#a83f2b"/><text x="558.0" y="171.1" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹5.7 cr</text><text x="558.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2010</text><text x="558.0" y="344" text-anchor="middle" font-size="11.5" fill="#a83f2b">7% today</text><rect x="624.2" y="83.4" width="51.5" height="222.6" rx="4" fill="#c47d16"/><text x="650.0" y="75.4" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2b2b">₹10 cr</text><text x="650.0" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2b2b2b">2012</text><text x="650.0" y="344" text-anchor="middle" font-size="11.5" fill="#7a6f63">4% today</text><text x="52" y="26" font-size="12.5" fill="#a83f2b" font-weight="700">Red = withdrawal rate now above 6%, plan in trouble</text></svg></p>
+<p><em>What ₹10 crore is worth today after retiring in different years, all at 4% after tax and costs. Retire straight into a peak like 2008 and the same plan is in serious trouble. Later start years also faced fewer years of spending, so their bars flatter them.</em></p>
+<p>2000 turns out to sit right in the middle of the pack. The genuinely dangerous years to have retired were 2006 to 2008 and 2010 to 2011, the people who quit near a market peak and then ran straight into a crash in their first year or two. The clearest victim is the 2008 retiree. At 4% after tax he has ₹2.2 crore left today and needs ₹40 lakh a year, an 18% withdrawal rate, and even with decent returns from here he runs out of money in the early 2030s. Same plan, same discipline, same starting wealth as our 2000 retiree, and he is on track to fail purely because of the decade he retired into.</p>
+<h2 id="so-what-does-this-actually-tell-you">So what does this actually tell you</h2>
+<p>Strip it all down and a few things are clearly true. At 3%, the plan survived every single start year with room to spare, and even its worst case, the 2008 retiree, still has ₹4.8 crore and is stable. At 3.5% it was roughly break even in real terms and fragile from a bad start. At 4% it only worked from 2000 because the boom arrived, and from a peak start it can fail outright. If you want a number to sleep on for an early retirement in India, 3% is the one with real margin, 3.5% is a judgement call, and 4% is a bet on good timing.</p>
+<p>And the quiet thing running underneath all of it is inflation. His spending had to grow from ₹8.98 lakh in 2000 to ₹40 lakh in 2026 just to buy the same life, more than 4 times over, and any plan that looks healthy in nominal rupees can be failing badly in real ones. Indian inflation is the thing most likely to hollow out a retirement, and it does the damage slowly enough that you might not notice until it is late, which makes it more dangerous than any single crash.</p>
+<h2 id="the-honest-limits-of-this">The honest limits of this</h2>
+<p>Before you build your whole plan on this, hear the caveats, because they genuinely matter. This is one historical path, not a probability. India's Nifty total return series only begins in 1999, so we have only about 26 years of it, and 26 years cannot hand you a safe withdrawal rate with the confidence the much longer American studies pretend to have. It does not model a health shock, a wedding, a child's education, a house, or your personal inflation running hotter than the official number. It also does not model the two things real people actually do, which cut both ways, because real people trim their spending in a bad year, which helps, and real people also panic and sell everything in the middle of 2008, which is far worse than anything in this spreadsheet. Treat this as one honest data point, not a promise.</p>
+<h2 id="so-will-your-10-crore-last">So, will your ₹10 crore last?</h2>
+<p>On the evidence of the one full history we actually have, yes, as long as you keep your real withdrawal rate near 3%, hold real growth assets instead of leaning on fixed deposits, actually account for tax and costs, and survive the first five years without panicking. That is the whole game.</p>
+<p>If you want to pressure test your own number instead of a hypothetical ₹10 crore, I built <a href="/blog/fire-in-india-how-many-crores">an interactive FIRE calculator for India</a>, and it is worth reading the companion pieces on <a href="/blog/can-i-retire-with-5-crore">whether ₹5 crore is enough to retire on</a> and <a href="/blog/can-you-run-out-of-money-with-fire">the real risks that drain a FIRE plan</a>, because sequence risk and inflation are exactly what this backtest just showed you across 26 years of real numbers.</p>
+<h2 id="where-the-numbers-come-from">Where the numbers come from</h2>
+<p>Every figure in this backtest is real, not assumed, so here is exactly where each piece came from. The market returns are the <a href="https://www.niftyindices.com/reports/historical-data">Nifty 50 Total Return Index from NSE Indices</a>, with 2026 running to 23 September and cross checked against <a href="https://archives.nseindia.com/content/indices/ind_nifty50.pdf">NSE's own Nifty 50 factsheet</a>. Inflation is India's annual CPI from the <a href="https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=IN">World Bank series</a> through 2025, with the 2026 figure taken from <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2260251">MoSPI's monthly CPI releases</a>. The fixed deposit rates are the 1 to 3 year term deposit rates of major banks from the <a href="https://rbi.org.in/Scripts/PublicationsView.aspx?id=23884">RBI Handbook of Statistics on the Indian Economy</a>. The equity tax treatment, including the October 2004 exemption and the 2018 grandfathering, follows the rules as laid out by <a href="https://cleartax.in/s/long-term-capital-gains-on-shares">ClearTax</a>. And as noted above, the Nifty total return series itself only starts in 1999, which is the real reason this backtest cannot reach any further back than the year 2000.</p>
+<hr />
+<h2 id="the-disclaimer-please-actually-read-it">The disclaimer, please actually read it</h2>
+<p>I need to be clear about what this is and what it is not. This is a backtest of one historical path, written to make a point about how retirement money really behaves, and it is general information and honestly a bit of entertainment, nothing more. It is absolutely not financial advice, investment advice, tax advice, or a recommendation to retire on any particular number or withdrawal rate. I am not a licensed financial advisor, a planner, or an accountant, and I know nothing about your income, your family, your health, or your goals, so none of this is tailored to you.</p>
+<p>Every number here comes from real historical data, the Nifty 50 Total Returns Index, World Bank and MoSPI inflation, and RBI deposit rates, but a backtest is a description of the past and never a promise about the future. Markets, inflation, tax rules, and fund costs will all be different going forward, India has only about 26 years of usable total return data, and a single sequence of returns cannot tell you a safe withdrawal rate the way decades of it might. The result also ignores health shocks, big one off expenses, and the very human habits of adapting in a downturn or panicking at the bottom.</p>
+<p>So please do not take these figures and set your own retirement date by them. Treat this as a way to understand sequence risk, inflation, and the real cost of tax and fees, then do your own careful math for your own life, and speak to a qualified financial professional before you act. Your money and your future are entirely your own responsibility, and only you can make these calls.</p>
+
+                <!-- Author Byline -->
+                <div class="author-box"
+                    style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--card-background); box-shadow: var(--shadow-sm); border-radius: 12px; margin-top: 2rem;">
+                    <div
+                        style="width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; flex-shrink: 0;">
+                        N</div>
+                    <div>
+                        <strong style="font-size: 1.1rem; color: var(--text-primary);">Written by <a href="https://solo.to/nomadninad" target="_blank" rel="me noopener" style="color: inherit; text-decoration: underline;">Nomad Ninad</a></strong>
+                        <p
+                            style="margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Ninad is a former Meta engineer from Pune who moved to the US with $40k of student debt, cleared it, reached Lean FIRE by 33, and now lives on about $1,800 a month in Da Nang, Vietnam. He writes butfirstfire.com from wherever he happens to be.</p>
+                        <a href="/about"
+                            style="color: var(--accent-color); font-size: 0.9rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb, 122, 78, 0), 0.3);">Learn
+                            more →</a>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="related-rail"><h4>Related</h4><a class="rel-item" href="/blog/fire-in-india-how-many-crores"><span class="rel-eyebrow">FIRE in India</span><span class="rel-title">How Many Crores to FIRE in India? Honest Math From a Guy Who Did It at 33</span></a><a class="rel-item" href="/blog/can-i-retire-with-5-crore"><span class="rel-eyebrow">Read next</span><span class="rel-title">I Have ₹5 Crore. Can I Retire? Let Us Break It Down</span></a><a class="rel-item" href="/blog/can-you-run-out-of-money-with-fire"><span class="rel-eyebrow">Read next</span><span class="rel-title">What If I Run Out of Money? The Real Risks That Drain a FIRE Plan</span></a></aside>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/privacy" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: #94a3b8; text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    <script src="/config.js"></script>
+    <script src="/js/live-article.js"></script>
+</body>
+
+</html>
