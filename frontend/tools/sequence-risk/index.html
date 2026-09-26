@@ -81,18 +81,23 @@
                 <div class="card-head">
                     <h2>Inputs</h2>
                 </div>
+                <div class="currency-toggle" style="display:flex; gap:0.5rem; align-items:center; margin-bottom:1.25rem;">
+                    <span style="font-size:0.85rem; color:var(--text-muted);">Currency:</span>
+                    <button type="button" class="col-toggle cur-btn active" data-cur="USD">USD ($)</button>
+                    <button type="button" class="col-toggle cur-btn" data-cur="INR">INR (₹)</button>
+                </div>
                 <form class="input-grid" id="sequenceForm">
                     <label class="field">
                         <span class="field-label">Starting Portfolio</span>
                         <div class="field-control field-control-money">
-                            <span class="field-prefix">$</span>
+                            <span class="field-prefix currency-symbol">$</span>
                             <input id="startingPortfolio" type="number" inputmode="numeric" min="0" step="1000" value="1000000">
                         </div>
                     </label>
                     <label class="field">
                         <span class="field-label">Annual Withdrawal</span>
                         <div class="field-control field-control-money">
-                            <span class="field-prefix">$</span>
+                            <span class="field-prefix currency-symbol">$</span>
                             <input id="annualWithdrawal" type="number" inputmode="numeric" min="0" step="500" value="50000">
                         </div>
                         <span class="field-help" style="margin-top: 0.5rem; display: block; color: var(--primary);">Withdrawal Rate: <strong id="withdrawalRateText">5.0%</strong></span>
@@ -103,9 +108,9 @@
                             </label>
                         </div>
                         <div id="guardrailsFloorContainer" style="margin-top: 0.75rem; display: none; padding-left: 1rem; border-left: 2px solid var(--primary);">
-                            <span class="field-label" style="font-size: 0.85rem;">Absolute Minimum Floor (Today's $)</span>
+                            <span class="field-label" style="font-size: 0.85rem;">Absolute Minimum Floor (Today's money)</span>
                             <div class="field-control field-control-money" style="padding: 0.4rem 0.6rem; margin-top: 0.3rem;">
-                                <span class="field-prefix" style="font-size: 0.9rem;">$</span>
+                                <span class="field-prefix currency-symbol" style="font-size: 0.9rem;">$</span>
                                 <input id="guardrailsFloor" type="number" inputmode="numeric" min="0" step="500" value="40000" style="font-size: 0.95rem;">
                             </div>
                             <span class="field-help" style="margin-top: 0.3rem; display: block; font-size: 0.75rem;">If the rules force your spending below this line, we'll flag a warning.</span>
@@ -184,7 +189,7 @@
                                     <input type="number" id="popupReturn" step="0.1">
                                 </div>
                                 <div class="popup-input" style="margin-top: 0.5rem;">
-                                    <label>Withdrawal ($)</label>
+                                    <label id="popupWithdrawalLabel">Withdrawal ($)</label>
                                     <input type="number" id="popupWithdrawal" step="1000">
                                 </div>
                                 <div class="popup-actions">
