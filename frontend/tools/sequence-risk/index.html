@@ -81,10 +81,12 @@
                 <div class="card-head">
                     <h2>Inputs</h2>
                 </div>
-                <div class="currency-toggle" style="display:flex; gap:0.5rem; align-items:center; margin-bottom:1.25rem;">
-                    <span style="font-size:0.85rem; color:var(--text-muted);">Currency:</span>
-                    <button type="button" class="col-toggle cur-btn active" data-cur="USD">USD ($)</button>
-                    <button type="button" class="col-toggle cur-btn" data-cur="INR">INR (₹)</button>
+                <div class="currency-toggle">
+                    <span class="cur-label">Currency</span>
+                    <div class="mode-toggle" role="tablist" aria-label="Currency">
+                        <button class="mode-btn cur-btn active" data-cur="USD" role="tab" aria-selected="true" type="button">USD ($)</button>
+                        <button class="mode-btn cur-btn" data-cur="INR" role="tab" aria-selected="false" type="button">INR (₹)</button>
+                    </div>
                 </div>
                 <form class="input-grid" id="sequenceForm">
                     <label class="field">

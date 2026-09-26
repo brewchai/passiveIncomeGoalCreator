@@ -1002,7 +1002,7 @@
         });
         currency = newCur;
         currentCustomWithdrawals = []; // money overrides were expressed in the old currency
-        if (el.curBtns) el.curBtns.forEach(b => b.classList.toggle('active', b.dataset.cur === newCur));
+        if (el.curBtns) el.curBtns.forEach(b => { const on = b.dataset.cur === newCur; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
         updateCurrencySymbols();
         updateWR();
         if (state.lastResults) { compute(); render(); }
