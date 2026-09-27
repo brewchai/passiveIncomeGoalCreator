@@ -1,0 +1,39 @@
+{
+  "title": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+  "meta_title": "Sequence Risk: Will ₹10 Crore Survive a Market Crash?",
+  "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
+  "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+  "date": "2026-09-27",
+  "date_modified": "2026-09-27",
+  "cover": "",
+  "tags": [
+    "fire-in-india",
+    "sequence-of-returns",
+    "early-retirement",
+    "inflation",
+    "safe-withdrawal-rate"
+  ],
+  "featured": false,
+  "toast": [
+    "The averages say ₹10 crore becomes ₹285 crore. A crash in your first year says ₹0. Same money, same crash.",
+    "Shift the exact same crash from year 1 to year 5 and you go from broke to ₹13 crore. The early years decide everything."
+  ],
+  "faqs": [
+    {
+      "question": "What is sequence of returns risk?",
+      "answer": "It is the danger that a market crash early in retirement, while you are withdrawing money, permanently damages your portfolio. The same average return arriving in a different order can mean the difference between survival and running out of money, because a crash in the first years forces you to sell investments while they are down."
+    },
+    {
+      "question": "Does a market crash matter more early or late in retirement?",
+      "answer": "Far more early. In this experiment, the exact same dot-com style crash depleted a ₹10 crore plan to zero when it hit in year 1 or year 3, but the identical crash left ₹13.31 crore when it hit in year 5 and ₹27.80 crore when it hit in year 7. Nothing changed except the timing."
+    },
+    {
+      "question": "Is a 2.5% or 3% withdrawal rate safe for FIRE in India?",
+      "answer": "Not automatically. Indian inflation of around 6% pushes your effective withdrawal rate up over time, so even a careful 2.5% start crosses 3% within about 4 years if the market stays flat. Real safety comes from a cash cushion and flexible spending, not from a low starting rate alone."
+    },
+    {
+      "question": "How do you protect a retirement against sequence risk?",
+      "answer": "Keep a few years of spending in cash and safe assets so you never have to sell equity into an early crash, use flexible withdrawal guardrails that cut spending in bad years, and avoid retiring fully invested at the top of a bull market. You can stress test your own plan against a bad early sequence with the free sequence risk calculator."
+    }
+  ]
+}

@@ -291,6 +291,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "sequence-risk-10-crore",
+      "title": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
+      "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+      "date": "2026-09-27",
+      "date_modified": "2026-09-27",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "fire-in-india",
+        "sequence-of-returns",
+        "early-retirement",
+        "inflation",
+        "safe-withdrawal-rate"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/sequence-risk-10-crore"
+    },
+    {
       "slug": "10-crore-retirement-backtest",
       "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore in 2026, You Might Just Make It.",
       "subtitle": "I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.",
@@ -754,6 +778,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "sequence-risk-10-crore",
+      "title": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
+      "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+      "date": "2026-09-27",
+      "date_modified": "2026-09-27",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "fire-in-india",
+        "sequence-of-returns",
+        "early-retirement",
+        "inflation",
+        "safe-withdrawal-rate"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/sequence-risk-10-crore"
+    },
+    {
       "slug": "10-crore-retirement-backtest",
       "title": "₹2.25 Crore Was All You Needed to Retire in 2000. With ₹10 Crore in 2026, You Might Just Make It.",
       "subtitle": "I took a ₹10 crore FIRE retiree, dropped him into January 2000, and ran 26 years of real Nifty returns, real inflation, and real FD rates to see if the money survived at 3%, 3.5%, and 4% withdrawals.",
@@ -1109,5 +1157,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-24T07:30:24.142923Z"
+  "_generated_at": "2026-09-27T18:01:50.367246Z"
 }
