@@ -32,11 +32,11 @@ So far nothing has crashed. Let us fix that. Imagine the AI boom that is inflati
 
 I injected exactly that sequence into the calculator, starting in year 1.
 
-<img src="/blog/posts/sequence-risk-10-crore/crash-year-1.webp" alt="Sequence risk calculator showing a dot-com style crash in year 1 draining a 10 crore portfolio to zero while the average line climbs to 374 crore" style="width:100%;height:auto;border-radius:12px;border:1px solid #e8e0d0;margin:1rem 0 0.35rem;display:block;">
+<img src="/blog/posts/sequence-risk-10-crore/crash-year-1.webp" alt="Sequence risk calculator showing a dot-com style crash in year 1 draining a 10 crore portfolio to zero while the average line climbs to 346 crore" style="width:100%;height:auto;border-radius:12px;border:1px solid #e8e0d0;margin:1rem 0 0.35rem;display:block;">
 
-*The same 2.5% plan, with a dot com style crash in the opening years. The orange line is the average fantasy climbing to ₹374 crore. The purple line is your actual money, and it dies.*
+*The same 2.5% plan, with a dot com style crash in the opening years. The orange line is the average fantasy climbing to ₹346 crore. The purple line is your actual money, and it dies.*
 
-Look at the gap between the two lines, because that gap is the entire point of retirement planning. The average promised ₹374 crore. Your real portfolio, forced to sell shares while the market was down just to fund your life, never recovers and reaches zero. Same ₹10 crore, same 2.5% withdrawal, same long run 11% average. One badly timed crash is the difference between generational wealth and running out of money. This is sequence of returns risk, and it is the risk that almost no Indian retirement plan accounts for.
+Look at the gap between the two lines, because that gap is the entire point of retirement planning. The average promised ₹346 crore. Your real portfolio, forced to sell shares while the market was down just to fund your life, never recovers and reaches zero. Same ₹10 crore, same 2.5% withdrawal, same long run 11% average. One badly timed crash is the difference between generational wealth and running out of money. This is sequence of returns risk, and it is the risk that almost no Indian retirement plan accounts for.
 
 ## Step 4: the same crash, a few years later
 
