@@ -292,7 +292,7 @@
     },
     {
       "slug": "sequence-risk-10-crore",
-      "title": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "title": "Will Your ₹10 Crore Survive an AI Crash?",
       "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
       "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
       "date": "2026-09-27",
@@ -309,7 +309,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "cover_alt": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "cover_alt": "Will Your ₹10 Crore Survive an AI Crash?",
       "order": null,
       "noindex": false,
       "url": "/blog/sequence-risk-10-crore"
@@ -779,7 +779,7 @@
     },
     {
       "slug": "sequence-risk-10-crore",
-      "title": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "title": "Will Your ₹10 Crore Survive an AI Crash?",
       "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
       "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
       "date": "2026-09-27",
@@ -796,7 +796,7 @@
       ],
       "featured": false,
       "pinned": false,
-      "cover_alt": "Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.",
+      "cover_alt": "Will Your ₹10 Crore Survive an AI Crash?",
       "order": null,
       "noindex": false,
       "url": "/blog/sequence-risk-10-crore"
@@ -1157,5 +1157,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-27T18:49:48.211802Z"
+  "_generated_at": "2026-09-28T08:24:03.996608Z"
 }

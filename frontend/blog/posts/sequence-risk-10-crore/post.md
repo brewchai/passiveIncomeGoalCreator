@@ -1,4 +1,4 @@
-# Averages Say ₹10 Crore Becomes ₹285 Crore. A Crash in Year 1 Says ₹0.
+# Will Your ₹10 Crore Survive an AI Crash?
 
 Everyone planning to retire in India obsesses over the number. Is it ₹5 crore, ₹10 crore, ₹40 crore? You hit it, a calculator tells you the money lasts forever, and you feel safe. I want to show you why that feeling is dangerous, so I took a ₹10 crore retirement and ran it through my own [sequence risk calculator](/tools/sequence-risk/), in rupees, and then I did the one thing those comfortable projections never do. I broke it on purpose.
 
