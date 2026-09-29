@@ -35,6 +35,7 @@ But First Fire (butfirstfire.com) publishes first-hand essays on reaching and li
 - [Can a Major Illness Kick You Out of Lean FIRE?](https://butfirstfire.com/blog/can-a-major-illness-end-lean-fire): Health shocks and how to plan around them.
 - [Can You Run Out of Money With FIRE?](https://butfirstfire.com/blog/can-you-run-out-of-money-with-fire): The 5 real risks that drain an early retirement, with the sequence-of-returns math, and the corrections that fix each one.
 - [Will ₹10 Crore Survive a Market Crash?](https://butfirstfire.com/blog/sequence-risk-10-crore): A screenshot-driven experiment in the sequence risk calculator showing how a dot-com style crash in the first years of retirement drains a ₹10 crore plan to zero, while the same crash a few years later leaves 13 to 28 crore.
+- [When Should You Actually Buy Individual Stocks?](https://butfirstfire.com/blog/when-to-buy-individual-stocks): The six conditions that all have to be true before buying a single stock instead of an index fund, why any risky bet must be your own thesis and not a tip, and a compounding simulation showing how a 30 to 50 lakh slice diverted from the index can cost 7 to 11 crore over 30 years.
 
 ## The personal journey
 

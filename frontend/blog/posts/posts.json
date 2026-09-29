@@ -291,6 +291,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "when-to-buy-individual-stocks",
+      "title": "When Should You Actually Buy Individual Stocks?",
+      "subtitle": "Your SIP is boring, a friend's stock just tripled, and the itch to pick your own winners is real. I have bought single stocks and still hold a few, but I am moving that money into index funds. Here are the six conditions that all have to be true before I buy a company.",
+      "description": "The honest rules for buying individual stocks instead of just an index fund. Six conditions, only while accumulating, foundation secured, under 5% of the portfolio, value over hype, a long horizon, and inside your circle of competence, plus why any risky bet has to be your own thesis and how a small slice diverted from the index can cost 7 to 11 crore in lost compounding.",
+      "date": "2026-09-29",
+      "date_modified": "2026-09-29",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "investing",
+        "stock-picking",
+        "index-funds",
+        "portfolio",
+        "fire-in-india"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "When Should You Actually Buy Individual Stocks?",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/when-to-buy-individual-stocks"
+    },
+    {
       "slug": "sequence-risk-10-crore",
       "title": "Will Your ₹10 Crore Survive an AI Crash?",
       "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
@@ -778,6 +802,30 @@
       "url": "/blog/can-i-retire-at-35-with-500k"
     },
     {
+      "slug": "when-to-buy-individual-stocks",
+      "title": "When Should You Actually Buy Individual Stocks?",
+      "subtitle": "Your SIP is boring, a friend's stock just tripled, and the itch to pick your own winners is real. I have bought single stocks and still hold a few, but I am moving that money into index funds. Here are the six conditions that all have to be true before I buy a company.",
+      "description": "The honest rules for buying individual stocks instead of just an index fund. Six conditions, only while accumulating, foundation secured, under 5% of the portfolio, value over hype, a long horizon, and inside your circle of competence, plus why any risky bet has to be your own thesis and how a small slice diverted from the index can cost 7 to 11 crore in lost compounding.",
+      "date": "2026-09-29",
+      "date_modified": "2026-09-29",
+      "cover": "",
+      "cover_photo": "",
+      "eyebrow": "",
+      "tags": [
+        "investing",
+        "stock-picking",
+        "index-funds",
+        "portfolio",
+        "fire-in-india"
+      ],
+      "featured": false,
+      "pinned": false,
+      "cover_alt": "When Should You Actually Buy Individual Stocks?",
+      "order": null,
+      "noindex": false,
+      "url": "/blog/when-to-buy-individual-stocks"
+    },
+    {
       "slug": "sequence-risk-10-crore",
       "title": "Will Your ₹10 Crore Survive an AI Crash?",
       "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
@@ -1157,5 +1205,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-28T08:24:03.996608Z"
+  "_generated_at": "2026-09-29T10:10:45.704821Z"
 }
