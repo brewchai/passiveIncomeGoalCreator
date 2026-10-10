@@ -163,15 +163,15 @@
 
                 <div class="sidebar-widget newsletter-widget">
                     <div class="newsletter-widget-content">
-                        <h3 class="newsletter-title">Join the FIRE<br>Movement</h3>
-                        <p class="newsletter-text">Get exclusive tips, tools, and stories delivered to your inbox. Start
-                            your journey to freedom today.</p>
-                        <form class="sidebar-newsletter-form" action="https://formspree.io/f/mqkenwbp" method="POST">
-                            <input type="text" name="name" class="sidebar-input" placeholder="First Name" required>
-                            <input type="email" name="email" class="sidebar-input" placeholder="Email Address" required>
-                            <input type="text" name="_gotcha" style="display:none">
-                            <button type="submit" class="sidebar-btn">Subscribe</button>
-                        </form>
+                        <h3 class="newsletter-title">
+                            <svg viewBox="0 0 24 24" style="width: 1.5rem; height: 1.5rem; flex-shrink: 0;" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.5 15.5v-7l6 3.5z"/></svg>
+                            Watch on YouTube
+                        </h3>
+                        <p class="newsletter-text">FIRE breakdowns, real numbers, and the nomad life, over on my channel
+                            But First F.I. Come subscribe and follow along.</p>
+                        <a href="https://www.youtube.com/channel/UCUpTXR2OhK4QoNHCDVpTi-g?sub_confirmation=1"
+                            target="_blank" rel="noopener" class="sidebar-btn"
+                            style="display: block; text-align: center; text-decoration: none; box-sizing: border-box;">Subscribe on YouTube</a>
                     </div>
                 </div>
 
@@ -512,49 +512,6 @@
             }
 
             // ---- Newsletter Form ----
-            const newsletterForm = document.querySelector('.sidebar-newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', async function (e) {
-                    e.preventDefault();
-                    const form = e.target;
-                    const btn = form.querySelector('.sidebar-btn');
-
-                    const originalText = btn.textContent;
-                    btn.textContent = 'Subscribing...';
-                    btn.disabled = true;
-
-                    try {
-                        const emailInput = form.querySelector('input[name="email"]').value;
-                        const nameInput = form.querySelector('input[name="name"]')?.value || '';
-
-                        // Convert explicitly to form-data because Google Scripts handles this natively without breaking
-                        const formData = new URLSearchParams();
-                        formData.append('email', emailInput);
-                        formData.append('name', nameInput);
-
-                        // Send directly to the web app URL
-                        const endpoint = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
-
-                        const res = await fetch(endpoint, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            body: formData
-                        });
-
-                        // Google Apps Script with no-cors returns an 'opaque' response (status 0).
-                        // It won't have res.ok = true, so we assume success if no network error triggered catch().
-                        form.innerHTML = '<div style="text-align:center; padding: 1rem 0; color: #10b981; font-weight: 600; font-size: 1.1rem;">Thanks for subscribing!</div>';
-                    } catch (error) {
-                        console.error('Newsletter error:', error);
-                        btn.textContent = 'Error! Try again.';
-                        setTimeout(() => {
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                        }, 3000);
-                    }
-                });
-            }
-
             init();
         })();
     </script>
