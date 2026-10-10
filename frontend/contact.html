@@ -137,6 +137,22 @@
             display: block;
         }
 
+        .error-message {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid #C0392B;
+            background: rgba(192, 57, 43, 0.07);
+            border-radius: 10px;
+            color: #9B2D22;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
         .success-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
@@ -296,8 +312,16 @@
                             required></textarea>
                     </div>
 
+                    <!-- honeypot: real people leave this empty -->
+                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+                        style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
+
                     <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
                 </form>
+
+                <div class="error-message" id="errorMessage">
+                    Something went wrong sending your message. Please email me directly at the address below.
+                </div>
 
                 <div class="success-message" id="successMessage">
                     <div class="success-icon"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-check-circle"/></svg></div>
@@ -354,39 +378,56 @@
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/butfirstfire@gmail.com';
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const submitBtn = document.getElementById('submitBtn');
             const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
 
-            // Disable button and show loading
+            // honeypot: if filled, silently pretend success (it is a bot)
+            if (form.querySelector('[name="_honey"]').value) {
+                form.style.display = 'none';
+                successMessage.classList.add('show');
+                return;
+            }
+
+            errorMessage.classList.remove('show');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            // Get form data
-            const formData = {
+            const payload = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value,
+                _subject: `[But First Fire] ${document.getElementById('subject').value} from ${document.getElementById('name').value}`,
+                _template: 'table',
+                _captcha: 'false'
             };
 
-            // Create mailto link as fallback (opens email client)
-            const mailtoSubject = encodeURIComponent(`[But First Fire] ${formData.subject}: ${formData.name}`);
-            const mailtoBody = encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nSubject: ${formData.subject}\n\n${formData.message}`);
-            const mailtoLink = `mailto:butfirstfire@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+            try {
+                const res = await fetch(FORMSUBMIT_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json().catch(() => ({}));
 
-            // Simulate sending (since we don't have a backend for contact form)
-            setTimeout(() => {
-                // Open mailto as the actual sending mechanism
-                window.location.href = mailtoLink;
-
-                // Show success
-                form.style.display = 'none';
-                successMessage.classList.add('show');
-            }, 500);
+                if (res.ok && (data.success === true || data.success === 'true')) {
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                } else {
+                    throw new Error(data.message || 'send failed');
+                }
+            } catch (err) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                errorMessage.classList.add('show');
+            }
         });
     </script>
 </body>
