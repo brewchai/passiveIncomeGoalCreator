@@ -45,6 +45,10 @@
             "destination": "/tools/sequence-risk/index.html"
         },
         {
+            "source": "/appearances",
+            "destination": "/appearances.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
