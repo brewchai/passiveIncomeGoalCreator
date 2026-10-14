@@ -593,6 +593,9 @@
     if (el.useGuardrails && el.guardrailsFloorContainer) {
         el.useGuardrails.addEventListener('change', () => {
             el.guardrailsFloorContainer.style.display = el.useGuardrails.checked ? 'block' : 'none';
+            if (el.useGuardrails.checked && el.guardrailsFloor) {
+                el.guardrailsFloor.value = Math.round(safeNum(el.annualWithdrawal.value, 40000));
+            }
         });
     }
 
