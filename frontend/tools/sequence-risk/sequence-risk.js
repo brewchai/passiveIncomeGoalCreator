@@ -76,15 +76,20 @@
             desc: 'A decade of mostly uninterrupted growth. A best-case scenario for retiring. (Actual returns 2010-2023, padded)',
             data: [15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29]
         },
+        realistic: {
+            name: 'Realistic (same average)',
+            desc: 'A normal, bumpy market with the exact same average return you entered, but real year-to-year ups and downs. This is the honest baseline, not a straight line.',
+            data: [] // Computed dynamically with volatility around the Expected Return input
+        },
         historical_average: {
             name: 'Historical Average',
-            desc: 'A perfectly smooth, constant average return every year. (Not realistic in practice, but good for a baseline comparison)',
+            desc: 'A perfectly smooth, constant average return every year. Useful as a reference line, but no real market ever behaves this way.',
             data: [] // Computed dynamically based on Expected Return input
         }
     };
 
-    let activePreset = 'historical_average';
-    let customSourcePreset = 'historical_average';
+    let activePreset = 'realistic';
+    let customSourcePreset = 'realistic';
     let currentCustomData = null; // Holds the currently active sequence data
     let currentCustomWithdrawals = []; // Holds manually overridden withdrawals
     let isCalculating = false;
@@ -120,11 +125,40 @@
     }
 
     // ── Scenario generation ──
+    // Deterministic PRNG so the "Realistic" path is stable across runs (not random every click).
+    function mulberry32(seed) {
+        return function () {
+            seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+            let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+
+    // A bumpy return sequence whose ARITHMETIC mean is exactly avgPct, with ~15% annual volatility.
+    // Same average as the smooth line, but real ups and downs, so the two paths diverge.
+    function buildRealisticSequence(avgPct, years, vol = 15) {
+        const rand = mulberry32(20260517); // fixed seed → reproducible
+        const z = [];
+        for (let i = 0; i < years; i++) {
+            let u = 0, v = 0;
+            while (u === 0) u = rand();
+            while (v === 0) v = rand();
+            z.push(Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v)); // Box-Muller normal
+        }
+        const meanZ = z.reduce((a, b) => a + b, 0) / (z.length || 1);
+        // Centre to exact target mean, scale by vol, clamp to sane bounds.
+        return z.map(zi => clamp(avgPct + (zi - meanZ) * vol, -60, 90));
+    }
+
     function buildSequence(presetId, avgPct, years) {
         if (presetId === 'custom' && currentCustomData) {
             const d = [...currentCustomData];
             while (d.length < years) d.push(avgPct);
             return d.slice(0, years);
+        }
+        if (presetId === 'realistic') {
+            return buildRealisticSequence(avgPct, years);
         }
         const preset = PRESETS[presetId];
         const data = preset.data.slice(0, years);
@@ -377,15 +411,41 @@
         el.textSummaryPanel.className = `summary-panel tone-${st.tone}`;
         
         let desc = '';
-        if (currentResult.survived) {
-            desc = `Your portfolio successfully survived the ${years}-year period. Despite market fluctuations, your withdrawal rate allows for sustainable long-term growth.`;
+        const isSmooth = activePreset === 'historical_average';
+        const smoothEnd = baselineResult.endVal;
+        const avgLabel = fmtPct(avgPct);
+
+        // One honest line comparing this path against the smooth, same-average line.
+        const smoothSurvived = baselineResult.survived;
+        function vsSmooth() {
+            if (isSmooth) return '';
+            if (currentResult.survived) {
+                if (smoothSurvived && smoothEnd > currentResult.endVal) {
+                    return ` For the same ${avgLabel} average, the smooth line ends at ${fmtCompact(smoothEnd)} while this path ends at ${fmtCompact(currentResult.endVal)}, a gap of ${fmtCompact(smoothEnd - currentResult.endVal)} created purely by the order the returns arrived in.`;
+                }
+                return ` This path happened to get lucky with its timing and ended ahead of the smooth ${avgLabel} line, which shows the flip side: sequence risk cuts both ways.`;
+            }
+            // Current path failed.
+            if (smoothSurvived) {
+                return ` Meanwhile the smooth line with the identical ${avgLabel} average survives comfortably. Same average, completely different outcome. That is sequence risk.`;
+            }
+            return ` The smooth same-average line also runs out, in Year ${baselineResult.failYear}, so this withdrawal rate is too high even in a straight line. Real volatility just makes the end arrive sooner and harder.`;
+        }
+
+        if (isSmooth) {
+            desc = currentResult.survived
+                ? `This is the straight-line fantasy: the exact same ${avgLabel} return every single year. Real markets never move like this, which is why it looks so safe. Switch to <strong>Realistic</strong> or a crash scenario to see what actually threatens this plan.`
+                : `Even on a perfectly smooth ${avgLabel} every year, this plan runs out in Year ${currentResult.failYear}. The withdrawal rate is simply too high, before we have even added any real-world volatility.`;
+        } else if (currentResult.survived) {
             if (st.tone === 'warn') {
-                desc = `Your portfolio survived the ${years}-year period, but it got uncomfortably low (${fmtCompact(currentResult.minVal)}). A slightly worse sequence could have caused it to deplete.`;
+                desc = `Your portfolio survived the ${years}-year period, but it got uncomfortably low (${fmtCompact(currentResult.minVal)}). A slightly worse sequence could have emptied it.` + vsSmooth();
             } else if (st.tone === 'bad') {
-                desc = `Your portfolio barely survived the ${years}-year period, dropping to ${fmtCompact(currentResult.minVal)}. This is highly risky.`;
+                desc = `Your portfolio barely survived the ${years}-year period, dropping to ${fmtCompact(currentResult.minVal)}. This is highly risky.` + vsSmooth();
+            } else {
+                desc = `Your portfolio survived the ${years}-year period.` + vsSmooth();
             }
         } else {
-            desc = `Your portfolio depleted in Year ${currentResult.failYear} due to negative returns combined with ongoing withdrawals. Once the balance hits zero, there is no way to recover even if the market bounces back.`;
+            desc = `Your portfolio ran out in Year ${currentResult.failYear}, forced to sell during down years just to keep withdrawing. Once the balance hits zero there is no recovery, even if the market later bounces back.` + vsSmooth();
         }
 
         if (inputs.isGuardrails && inputs.minFloor > 0 && currentResult.floorBreaches && currentResult.floorBreaches.length > 0) {
@@ -641,6 +701,10 @@
         }
         
         let data = p.data.length > 0 ? p.data : Array(5).fill(avgPct);
+        if (presetId === 'realistic') {
+            const yrs = clamp(Math.floor(safeNum(el.retirementYears.value, 50)), 1, 80);
+            data = buildRealisticSequence(avgPct, yrs);
+        }
         const first5 = data.slice(0, 5).map(v => fmtSignedPct(v)).join(', ') + '...';
 
         if (el.previewTitle) el.previewTitle.textContent = p.name;
@@ -877,17 +941,8 @@
         if (el.portfolioLineChart?.parentElement) ro.observe(el.portfolioLineChart.parentElement);
     }
 
-    // ── Download / Email Gate ──
-    const NEWSLETTER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
-    const EMAIL_RE_DL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const dlModal = byId('downloadModal');
+    // ── CSV download (free, no email gate) ──
     const openDlBtn = byId('openDownloadModal');
-    const closeDlBtn = byId('closeDownloadModal');
-    const dlForm = byId('downloadEmailForm');
-    const dlEmailInput = byId('downloadEmail');
-    const dlSubmitBtn = byId('downloadSubmitBtn');
-    const dlError = byId('downloadEmailError');
 
     function buildCSV() {
         if (!state.lastResults) return '';
@@ -946,44 +1001,7 @@
 
     if (openDlBtn) {
         openDlBtn.addEventListener('click', () => {
-            if (!state.lastResults) return;
-            if (dlEmailInput) dlEmailInput.value = '';
-            if (dlError) dlError.style.display = 'none';
-            if (dlModal) dlModal.style.display = 'flex';
-            setTimeout(() => { if (dlEmailInput) dlEmailInput.focus(); }, 100);
-        });
-    }
-
-    if (closeDlBtn) closeDlBtn.addEventListener('click', () => { if (dlModal) dlModal.style.display = 'none'; });
-    if (dlModal) dlModal.addEventListener('click', (e) => { if (e.target === dlModal) dlModal.style.display = 'none'; });
-
-    if (dlForm) {
-        dlForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = dlEmailInput ? dlEmailInput.value.trim() : '';
-            if (!EMAIL_RE_DL.test(email)) {
-                if (dlError) dlError.style.display = 'block';
-                return;
-            }
-            if (dlError) dlError.style.display = 'none';
-
-            // Disable button while submitting
-            if (dlSubmitBtn) { dlSubmitBtn.disabled = true; dlSubmitBtn.textContent = 'Downloading…'; }
-
-            // Submit email to newsletter (fire-and-forget, same as blog.html)
-            try {
-                const fd = new URLSearchParams();
-                fd.append('email', email);
-                fd.append('source', 'sequence-risk-calculator-download');
-                await fetch(NEWSLETTER_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd });
-            } catch (_) { /* never block download on webhook failure */ }
-
-            // Trigger the CSV download
-            triggerCSVDownload();
-
-            // Close modal with success message
-            if (dlModal) dlModal.style.display = 'none';
-            if (dlSubmitBtn) { dlSubmitBtn.disabled = false; dlSubmitBtn.textContent = 'Download CSV →'; }
+            if (state.lastResults) triggerCSVDownload();
         });
     }
 
