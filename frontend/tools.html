@@ -13,10 +13,79 @@
 
     <style>
         .page-container {
-            max-width: 800px;
+            max-width: 1040px;
             margin: 0 auto;
             padding: 3rem 1.5rem;
             min-height: 50vh;
+        }
+
+        .tools-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .tools-main {
+            min-width: 0;
+        }
+
+        .coffee-widget {
+            position: sticky;
+            top: 6rem;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .coffee-widget .coffee-ico {
+            width: 48px;
+            height: 48px;
+            border-radius: 11px;
+            background: rgba(var(--accent-rgb, 122, 78, 0), 0.08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.65rem;
+        }
+
+        .coffee-widget p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.45;
+            margin: 0 0 1rem;
+        }
+
+        .coffee-widget .coffee-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--accent-fill, #7A4E00);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .coffee-widget .coffee-btn:hover {
+            background: #5E3C00;
+        }
+
+        @media (max-width: 900px) {
+            .tools-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .coffee-widget {
+                position: static;
+            }
         }
 
         .page-title {
@@ -114,38 +183,41 @@
             <h1 class="page-title">FIRE <span class="gradient-text">Tools</span></h1>
             <p class="page-subtitle">Interactive tools to help you reach financial independence faster.</p>
 
-            <a href="/tools/fire-number/" class="tool-card">
-                <h3>FIRE Number Calculator</h3>
-                <p>Find exactly how much money you need to retire early. Enter your annual expenses and savings rate — get your FIRE number, years to financial independence, and a year-by-year roadmap.</p>
-                <div class="btn-launch">Calculate my FIRE number →</div>
-            </a>
+            <div class="tools-layout">
+                <div class="tools-main">
+                    <a href="/tools/fire-number/" class="tool-card">
+                        <h3>FIRE Number Calculator</h3>
+                        <p>Find exactly how much money you need to retire early. Enter your annual expenses and savings rate — get your FIRE number, years to financial independence, and a year-by-year roadmap.</p>
+                        <div class="btn-launch">Calculate my FIRE number →</div>
+                    </a>
 
-            <a href="/tools/geo-arbitrage/" class="tool-card">
-                <h3>Geo-Arbitrage Portal</h3>
-                <p>Use the Geo-Arbitrage Portal to spin a live 3D globe, set your passive income, and instantly see where in the world you can retire today.</p>
-                <div class="btn-launch">Launch Tool →</div>
-            </a>
+                    <a href="/tools/geo-arbitrage/" class="tool-card">
+                        <h3>Geo-Arbitrage Portal</h3>
+                        <p>Use the Geo-Arbitrage Portal to spin a live 3D globe, set your passive income, and instantly see where in the world you can retire today.</p>
+                        <div class="btn-launch">Launch Tool →</div>
+                    </a>
 
-            <a href="/tools/sequence-risk/" class="tool-card">
-                <h3>Sequence Risk Calculator</h3>
-                <p>Same average return. Different order. Completely different retirement outcome.</p>
-                <p>Average returns do not tell the whole story. Timing matters when you are withdrawing money.</p>
-                <div class="btn-launch">Run Calculator →</div>
-            </a>
+                    <a href="/tools/sequence-risk/" class="tool-card">
+                        <h3>Sequence Risk Calculator</h3>
+                        <p>Same average return. Different order. Completely different retirement outcome.</p>
+                        <p>Average returns do not tell the whole story. Timing matters when you are withdrawing money.</p>
+                        <div class="btn-launch">Run Calculator →</div>
+                    </a>
+                </div>
 
-            <!-- Buy me a coffee -->
-            <a href="https://buymeacoffee.com/supportninad" target="_blank" rel="noopener"
-                style="display: flex; align-items: center; gap: 1.5rem; background: var(--card-background); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.5rem 1.75rem; margin-top: 2.5rem; text-decoration: none; transition: border-color 0.2s;"
-                onmouseover="this.style.borderColor='#7A4E00'" onmouseout="this.style.borderColor='var(--border-color)'">
-                <span style="width: 56px; height: 56px; border-radius: 12px; background: rgba(var(--accent-rgb, 122, 78, 0), 0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A4E00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-                </span>
-                <span style="flex: 1; min-width: 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); line-height: 1.4;">If you found value in any of my tools, I'd love it if you buy me a coffee.</span>
-                <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-fill, #7A4E00); color: #fff; font-weight: 700; font-size: 0.95rem; padding: 0.8rem 1.4rem; border-radius: 10px; white-space: nowrap; flex-shrink: 0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-                    Buy me a coffee
-                </span>
-            </a>
+                <aside class="tools-aside">
+                    <div class="coffee-widget">
+                        <span class="coffee-ico">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7A4E00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                        </span>
+                        <p>If you found value in any of my tools, I'd love it if you buy me a coffee.</p>
+                        <a href="https://buymeacoffee.com/supportninad" target="_blank" rel="noopener" class="coffee-btn">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                            Buy me a coffee
+                        </a>
+                    </div>
+                </aside>
+            </div>
         </div>
     </main>
 
