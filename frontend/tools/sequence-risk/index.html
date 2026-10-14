@@ -153,28 +153,6 @@
                         </div>
                     </label>
                 </form>
-                <div class="presets-section">
-                    <h3>Scenarios</h3>
-                    <div class="presets-grid">
-                        <button class="preset-btn active" data-preset="realistic" title="A realistic bumpy market with the same average return you entered">Realistic</button>
-                        <button class="preset-btn" data-preset="great_depression" title="The Great Depression (1929-1958)">Great Depression</button>
-                        <button class="preset-btn" data-preset="dot_com" title="The Dot-Com Crash (2000-2023)">Dot-Com Crash</button>
-                        <button class="preset-btn" data-preset="gfc" title="Global Financial Crisis (2007-2023)">2008 Crisis</button>
-                        <button class="preset-btn" data-preset="bull_run" title="The 2010s Bull Run (2010-2023)">Bull Run</button>
-                        <button class="preset-btn" data-preset="historical_average" title="A perfectly smooth constant return (reference line only)">Historical Average</button>
-                    </div>
-
-                    <!-- Scenario Preview Panel -->
-                    <div id="scenarioPreview" class="scenario-preview" style="display: none;">
-                        <div class="preview-header">
-                            <h4 id="previewTitle">Scenario Name</h4>
-                            <span id="previewDesc">Description</span>
-                        </div>
-                        <div class="preview-data">
-                            <strong>First 5 Years:</strong> <span id="previewYears"></span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="field-actions" style="margin-top: 1.5rem;">
                     <button class="primary-btn" id="runButton" type="button" style="width: 100%; position: relative;">
@@ -189,8 +167,9 @@
                 
                 <!-- THE CHART -->
                 <section class="section">
-                    <h2 class="section-heading" id="chartHeading">Portfolio Value Over Time</h2>
-                    <p class="section-desc" id="chartSubHeading">Projected Scenario</p>
+                    <h2 class="section-heading" id="chartHeading">Portfolio value over time</h2>
+                    <p class="section-desc">Every line uses the <strong>same average return</strong>. Toggle scenarios to stack them and watch the order of returns change everything.</p>
+                    <div class="scenario-chips" id="scenarioChips"></div>
                     <div class="chart-card">
                         <div class="chart-shell" style="position: relative;">
                             <canvas id="portfolioLineChart" class="chart-canvas" aria-label="Portfolio value over time"></canvas>
@@ -221,19 +200,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chart-actions">
-                            <button class="btn-sm chart-reset-btn" id="resetManualEdits" type="button" style="display: none;">Reset manual edits</button>
-                        </div>
-                        <div class="chart-legend" id="lineLegend"></div>
                     </div>
                     <p class="sequence-note" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
-                        Click on any point in the chart to edit the return for that specific year.
+                        The thick line is your focused scenario. Click any point on it to edit that year, or click an outcome card below to focus a different scenario.
                     </p>
+                    <div class="scenario-outcomes" id="scenarioOutcomes"></div>
                 </section>
 
-                <!-- TEXT SUMMARY -->
+                <!-- TEXT SUMMARY (focused scenario) -->
                 <section class="section">
-                    <h2 class="section-heading">Results Summary</h2>
+                    <h2 class="section-heading">Focused scenario</h2>
                     <div class="summary-panel" id="textSummaryPanel">
                         <!-- Summary content injected via JS -->
                     </div>
