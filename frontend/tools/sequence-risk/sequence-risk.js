@@ -184,6 +184,15 @@
                 w = thisYearW;
             }
 
+            // Hard floor: you never spend below your absolute minimum. If the guardrails
+            // want to cut deeper, you hold at the floor instead, which drains faster and can
+            // genuinely run the portfolio out.
+            let heldAtFloor = false;
+            if (isGuardrails && currentMinFloor > 0 && thisYearW < currentMinFloor) {
+                thisYearW = currentMinFloor;
+                heldAtFloor = true;
+            }
+
             if (port < thisYearW) {
                 const actualWithdrawal = port;
                 withdrawals.push(actualWithdrawal);
@@ -197,7 +206,7 @@
                 return { survived: false, failYear: y, endVal: 0, minVal: 0, vals, withdrawals, rows, floorBreaches };
             }
 
-            if (isGuardrails && currentMinFloor > 0 && thisYearW < currentMinFloor) floorBreaches.push(y);
+            if (heldAtFloor) floorBreaches.push(y);
 
             withdrawals.push(thisYearW);
             port -= thisYearW;
@@ -404,7 +413,7 @@
         }
 
         if (inputs.isGuardrails && inputs.minFloor > 0 && cur.floorBreaches && cur.floorBreaches.length > 0) {
-            desc += `<br><br><span style="color: #ef4444;"><strong>Warning:</strong> The guardrails strategy forced your spending below your absolute minimum floor (${fmtMoney(inputs.minFloor)} in today's money) in ${cur.floorBreaches.length} different years.</span>`;
+            desc += `<br><br><span style="color: #ef4444;"><strong>Heads up:</strong> The guardrails wanted to cut your spending below your ${fmtMoney(inputs.minFloor)} floor (today's money) in ${cur.floorBreaches.length} years. Because the floor held, you kept spending the minimum, which drained the portfolio faster${cur.survived ? '' : ' and is what ran it out'}.</span>`;
         }
 
         const peakVal = Math.max(...cur.vals);
@@ -466,7 +475,7 @@
             const r = rows[y];
             const tr = document.createElement('tr');
             const isBreach = inputs.isGuardrails && inputs.minFloor > 0 && floorBreaches.includes(r.year);
-            if (isBreach) { tr.style.backgroundColor = 'rgba(239, 68, 68, 0.15)'; tr.title = 'Withdrawal fell below your absolute minimum lifestyle floor (inflation adjusted)'; }
+            if (isBreach) { tr.style.backgroundColor = 'rgba(239, 68, 68, 0.15)'; tr.title = 'Spending was held at your minimum floor — the guardrails wanted to cut deeper (inflation adjusted)'; }
 
             const tdY = document.createElement('td'); tdY.textContent = r.year; tdY.className = 'year-col'; tr.appendChild(tdY);
 
