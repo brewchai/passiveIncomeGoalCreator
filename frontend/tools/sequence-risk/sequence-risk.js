@@ -360,6 +360,15 @@
         const years = inputs.years;
         const st = classify({ survived: cur.survived, failYear: cur.failYear, years, startVal: inputs.startVal, endVal: cur.endVal, minVal: cur.minVal });
 
+        // The portfolio may "survive" only because guardrails cut spending below the minimum
+        // floor. Those years are a lifestyle failure the portfolio number hides, so escalate.
+        const breachCount = (inputs.isGuardrails && inputs.minFloor > 0 && cur.floorBreaches) ? cur.floorBreaches.length : 0;
+        if (cur.survived && breachCount > 0) {
+            const frac = breachCount / years;
+            if (frac >= 0.2) { st.label = 'High Risk'; st.tone = 'bad'; }
+            else if (st.tone === 'good') { st.label = 'Moderate Risk'; st.tone = 'warn'; }
+        }
+
         el.textSummaryPanel.className = `summary-panel tone-${st.tone}`;
 
         const isSmooth = focusKey === 'historical_average';
