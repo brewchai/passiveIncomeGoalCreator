@@ -47,6 +47,12 @@
     const INR_PER_USD = 94;
     function symChar() { return currency === 'INR' ? '₹' : '$'; }
 
+    // Each currency loads its own market-appropriate defaults on switch.
+    const CUR_DEFAULTS = {
+        USD: { startingPortfolio: 1000000, annualWithdrawal: 40000, inflationRate: 3, avgReturn: 7 },
+        INR: { startingPortfolio: 50000000, annualWithdrawal: 2000000, inflationRate: 6, avgReturn: 11 }
+    };
+
     // ── Data Models ──
     const PRESETS = {
         great_depression: {
@@ -812,16 +818,15 @@
 
     function setCurrency(newCur) {
         if (newCur === currency) return;
-        const factor = newCur === 'INR' ? INR_PER_USD : (1 / INR_PER_USD);
-        ['startingPortfolio', 'annualWithdrawal', 'guardrailsFloor'].forEach(id => {
-            const e = byId(id);
-            if (e && e.value !== '') e.value = Math.round(safeNum(e.value, 0) * factor);
-        });
         currency = newCur;
+        // Load that market's defaults (₹5 cr / 11% / 6% for India, $1M / 7% / 3% for US).
+        const d = CUR_DEFAULTS[newCur];
+        for (const id in d) { const e = byId(id); if (e) e.value = d[id]; }
+        if (el.guardrailsFloor) el.guardrailsFloor.value = d.annualWithdrawal;
         if (el.curBtns) el.curBtns.forEach(b => { const on = b.dataset.cur === newCur; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
         updateCurrencySymbols();
         updateWR();
-        if (state.scenarios) { compute(); render(); } // money overrides were in the old currency — recompute fresh
+        if (state.scenarios) { compute(); render(); } // scenarios were in the old currency — recompute fresh
     }
 
     if (el.curBtns) el.curBtns.forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.cur)));
