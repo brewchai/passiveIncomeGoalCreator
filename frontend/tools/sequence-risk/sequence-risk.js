@@ -50,7 +50,7 @@
     // Each currency loads its own market-appropriate defaults on switch.
     const CUR_DEFAULTS = {
         USD: { startingPortfolio: 1000000, annualWithdrawal: 40000, inflationRate: 3, avgReturn: 7 },
-        INR: { startingPortfolio: 50000000, annualWithdrawal: 2000000, inflationRate: 6, avgReturn: 11 }
+        INR: { startingPortfolio: 50000000, annualWithdrawal: 1500000, inflationRate: 6, avgReturn: 11 }
     };
 
     // ── Data Models ──
