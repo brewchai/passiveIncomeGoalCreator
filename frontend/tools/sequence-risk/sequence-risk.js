@@ -71,6 +71,19 @@
             name: 'The 2010s Bull Run',
             data: [15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29]
         },
+        // Indian crashes — real Nifty 50 TRI (calendar year), from the ₹10cr backtest research.
+        india_2008: {
+            name: '2008 Crash (India)',
+            data: [-51.3, 77.6]
+        },
+        india_dotcom: {
+            name: 'Dot-Com (India)',
+            data: [-13.4, -15.1]
+        },
+        india_2011: {
+            name: '2011 Correction (India)',
+            data: [-23.8]
+        },
         realistic: {
             name: 'Realistic (same average)',
             data: [] // Computed dynamically with volatility around the Expected Return input
@@ -82,14 +95,22 @@
     };
 
     // Chart line / chip colours (one per scenario).
-    const SCENARIO_KEYS = ['realistic', 'historical_average', 'dot_com', 'gfc', 'great_depression', 'bull_run'];
+    // Scenario sets are currency-aware: US crashes in USD, Indian crashes in INR.
+    const SCENARIO_SETS = {
+        USD: ['realistic', 'historical_average', 'dot_com', 'gfc', 'great_depression', 'bull_run'],
+        INR: ['realistic', 'historical_average', 'india_2008', 'india_dotcom', 'india_2011']
+    };
+    function scenarioKeys() { return SCENARIO_SETS[currency]; }
     const SCENARIO_LABELS = {
         realistic: 'Realistic',
         historical_average: 'Historical Average',
         dot_com: 'Dot-Com Crash',
         gfc: '2008 Crisis',
         great_depression: 'Great Depression',
-        bull_run: 'Bull Run'
+        bull_run: 'Bull Run',
+        india_2008: '2008 Crash',
+        india_dotcom: 'Dot-Com Crash',
+        india_2011: '2011 Correction'
     };
     const SCENARIO_COLORS = {
         realistic: '#9333EA',
@@ -97,7 +118,10 @@
         dot_com: '#0891B2',
         gfc: '#E11D48',
         great_depression: '#475569',
-        bull_run: '#16A34A'
+        bull_run: '#16A34A',
+        india_2008: '#E11D48',
+        india_dotcom: '#0891B2',
+        india_2011: '#475569'
     };
     const DEFAULT_ACTIVE = ['historical_average', 'realistic'];
 
@@ -286,7 +310,7 @@
     function compute() {
         state.inputs = readInputs();
         state.scenarios = {};
-        for (const key of SCENARIO_KEYS) state.scenarios[key] = buildScenario(key);
+        for (const key of scenarioKeys()) state.scenarios[key] = buildScenario(key);
         // Keep focus valid.
         if (!activeSet.has(focusKey)) { const a = [...activeSet]; focusKey = a[a.length - 1] || 'realistic'; }
     }
@@ -294,7 +318,7 @@
     function resetScenarios() {
         activeSet = new Set(DEFAULT_ACTIVE);
         focusKey = 'realistic';
-        if (state.inputs) for (const key of SCENARIO_KEYS) state.scenarios[key] = buildScenario(key);
+        if (state.inputs) for (const key of scenarioKeys()) state.scenarios[key] = buildScenario(key);
         if (el.chartPopup) el.chartPopup.style.display = 'none';
         state.activePopupYear = null;
         render();
@@ -312,7 +336,7 @@
 
     function renderChips() {
         clear(el.scenarioChips);
-        SCENARIO_KEYS.forEach(key => {
+        scenarioKeys().forEach(key => {
             const on = activeSet.has(key);
             const foc = on && focusKey === key;
             const c = document.createElement('button');
@@ -341,7 +365,7 @@
 
     function renderOutcomes() {
         clear(el.scenarioOutcomes);
-        [...activeSet].sort((a, b) => SCENARIO_KEYS.indexOf(a) - SCENARIO_KEYS.indexOf(b)).forEach(key => {
+        [...activeSet].sort((a, b) => scenarioKeys().indexOf(a) - scenarioKeys().indexOf(b)).forEach(key => {
             const r = state.scenarios[key].result;
             const card = document.createElement('button');
             card.type = 'button';
@@ -823,6 +847,9 @@
         const d = CUR_DEFAULTS[newCur];
         for (const id in d) { const e = byId(id); if (e) e.value = d[id]; }
         if (el.guardrailsFloor) el.guardrailsFloor.value = d.annualWithdrawal;
+        // The scenario set changes with currency, so reset to the default two.
+        activeSet = new Set(DEFAULT_ACTIVE);
+        focusKey = 'realistic';
         if (el.curBtns) el.curBtns.forEach(b => { const on = b.dataset.cur === newCur; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
         updateCurrencySymbols();
         updateWR();
