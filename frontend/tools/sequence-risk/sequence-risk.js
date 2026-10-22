@@ -71,18 +71,18 @@
             name: 'The 2010s Bull Run',
             data: [15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29]
         },
-        // Indian crashes — real Nifty 50 TRI (calendar year), from the ₹10cr backtest research.
+        // Indian crashes — real Nifty 50 calendar-year returns, no invented years.
+        // 2008 Crash: the GFC and everything that actually followed, 2008-2024 (17 real years).
         india_2008: {
             name: '2008 Crash (India)',
-            data: [-51.3, 77.6]
+            data: [-51.3, 77.6, 19.2, -23.8, 29.4, 8.1, 32.9, -3.0, 4.4, 30.3, 4.6, 13.5, 16.1, 24.6, 4.3, 19.8, 9.4]
         },
+        // Dot-Com: the real 2000-2003 crash-and-recovery window only. We deliberately stop
+        // before the 2004-2007 mega-bull, otherwise injecting that once-in-a-generation run
+        // would make a "crash" the most optimistic scenario and quietly undersell the risk.
         india_dotcom: {
             name: 'Dot-Com (India)',
             data: [-13.4, -15.1, 5.3, 76.6]
-        },
-        india_2011: {
-            name: '2011 Correction (India)',
-            data: [-23.8]
         },
         realistic: {
             name: 'Realistic (same average)',
@@ -109,8 +109,7 @@
         great_depression: 'Great Depression',
         bull_run: 'Bull Run',
         india_2008: '2008 Crash',
-        india_dotcom: 'Dot-Com Crash',
-        india_2011: '2011 Correction'
+        india_dotcom: 'Dot-Com Crash'
     };
     const SCENARIO_COLORS = {
         realistic: '#9333EA',
@@ -120,8 +119,7 @@
         great_depression: '#475569',
         bull_run: '#16A34A',
         india_2008: '#E11D48',
-        india_dotcom: '#0891B2',
-        india_2011: '#475569'
+        india_dotcom: '#0891B2'
     };
     const DEFAULT_ACTIVE = ['historical_average', 'realistic'];
 
@@ -168,8 +166,8 @@
     }
 
     // A bumpy return sequence whose ARITHMETIC mean is exactly avgPct, with ~15% annual volatility.
-    function buildRealisticSequence(avgPct, years, vol = 15) {
-        const rand = mulberry32(20260517); // fixed seed → reproducible
+    function buildRealisticSequence(avgPct, years, vol = 15, seed = 20260517) {
+        const rand = mulberry32(seed); // fixed seed → reproducible
         const z = [];
         for (let i = 0; i < years; i++) {
             let u = 0, v = 0;
@@ -301,10 +299,20 @@
         return simulate({ portfolio: i.startVal, initialWithdrawal: i.initialWithdrawal, inflPct: i.inflPct, returnsPct: data, isGuardrails: i.isGuardrails, minFloor: i.minFloor, customWithdrawals: withdrawals });
     }
 
+    // How many of a scenario's years come from REAL market data (vs. the long-run
+    // average we assume afterwards). Only the finite historical crash presets have a
+    // boundary; realistic and historical_average are modelled across the whole horizon.
+    function realYearsFor(key, years) {
+        if (key === 'realistic' || key === 'historical_average') return years;
+        const preset = PRESETS[key];
+        const len = (preset && preset.data) ? preset.data.length : 0;
+        return Math.min(len, years);
+    }
+
     function buildScenario(key) {
         const data = buildSequence(key, state.inputs.avgPct, state.inputs.years);
         const withdrawals = new Array(state.inputs.years).fill(null);
-        return { data, withdrawals, result: simForScenario(data, withdrawals), edited: false };
+        return { data, withdrawals, result: simForScenario(data, withdrawals), edited: false, realYears: realYearsFor(key, state.inputs.years) };
     }
 
     function compute() {
@@ -606,15 +614,49 @@
         // Non-focused lines first, focused on top.
         const drawOrder = activeKeys.filter(k => k !== focusKey).concat(activeSet.has(focusKey) ? [focusKey] : []);
         for (const k of drawOrder) {
-            const vals = state.scenarios[k].result.vals;
+            const sc = state.scenarios[k];
+            const vals = sc.result.vals;
+            const ry = Math.min(sc.realYears != null ? sc.realYears : years, vals.length - 1);
             ctx.strokeStyle = SCENARIO_COLORS[k];
             ctx.lineWidth = k === focusKey ? 3.5 : 2;
             ctx.globalAlpha = k === focusKey ? 1 : 0.7;
+            // Solid: real market data.
+            ctx.setLineDash([]);
             ctx.beginPath();
-            vals.forEach((v, x) => { const px = xPx(x), py = yPx(v); x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); });
+            for (let x = 0; x <= ry; x++) { const px = xPx(x), py = yPx(vals[x]); x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
             ctx.stroke();
+            // Dashed: beyond real data we assume the long-run average, so we never pretend
+            // invented years are real market history.
+            if (ry < years) {
+                ctx.setLineDash([5, 4]);
+                ctx.beginPath();
+                for (let x = ry; x <= years; x++) { const px = xPx(x), py = yPx(vals[x]); x === ry ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
         }
         ctx.globalAlpha = 1;
+
+        // Mark where the focused scenario's real data ends and the assumed average begins.
+        if (activeSet.has(focusKey)) {
+            const fsc = state.scenarios[focusKey];
+            const fry = Math.min(fsc.realYears != null ? fsc.realYears : years, years);
+            if (fry < years) {
+                const mx = xPx(fry);
+                ctx.save();
+                ctx.strokeStyle = 'rgba(100,116,139,0.45)';
+                ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+                ctx.beginPath(); ctx.moveTo(mx, pad.t); ctx.lineTo(mx, h - pad.b); ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.fillStyle = cs.getPropertyValue('--text-muted').trim() || '#64748b';
+                ctx.font = '11px Manrope,system-ui,sans-serif';
+                const nearRight = mx > w - 120;
+                ctx.textAlign = nearRight ? 'right' : 'left';
+                ctx.textBaseline = 'top';
+                ctx.fillText('assumed avg →', nearRight ? mx - 6 : mx + 6, pad.t + 20);
+                ctx.restore();
+            }
+        }
 
         // Editable points on the focused line only.
         state.chartCoords = [];
