@@ -126,6 +126,9 @@
 
     let activeSet = new Set(DEFAULT_ACTIVE);
     let focusKey = 'realistic';
+    // Chart Y axis: linear shows compounding the way people expect; log keeps early crashes
+    // visible instead of flattening them under the late growth.
+    let yScale = 'linear';
     let isCalculating = false;
     // state.scenarios[key] = { data:number[], withdrawals:(number|null)[], result:simResult, edited:bool }
     const state = { inputs: null, scenarios: null, chartCoords: [], activePopupYear: null };
@@ -439,6 +442,15 @@
             });
             el.scenarioChips.appendChild(c);
         });
+        const scl = document.createElement('button');
+        scl.type = 'button';
+        scl.className = 'scn-reset';
+        scl.textContent = yScale === 'log' ? 'Scale: Log' : 'Scale: Linear';
+        scl.title = yScale === 'log'
+            ? 'Log scale keeps early crashes visible. Click for a regular linear axis.'
+            : 'Linear axis shows compounding as it is. Click for log scale, which keeps early crashes visible.';
+        scl.addEventListener('click', () => { yScale = yScale === 'log' ? 'linear' : 'log'; render(); });
+        el.scenarioChips.appendChild(scl);
         const rst = document.createElement('button');
         rst.type = 'button';
         rst.className = 'scn-reset';
@@ -706,11 +718,15 @@
         // Log Y axis fitted to the actual data: start just below the lowest point any line
         // reaches, so the plot is not wasted on empty space below the data and the real
         // swings use the full height instead of being squashed into a thin band up top.
-        const yLo = Math.max(1, Math.min(minV * 0.7, state.inputs.startVal * 0.9));
-        const yHi = Math.max(maxV * 1.2, yLo * 10);
-        const logLo = Math.log10(yLo), logSpan = Math.log10(yHi) - logLo;
+        const isLog = yScale === 'log';
+        const yLo = isLog ? Math.max(1, Math.min(minV * 0.7, state.inputs.startVal * 0.9)) : 0;
+        const yHi = isLog ? Math.max(maxV * 1.2, yLo * 10) : Math.max(maxV * 1.08, state.inputs.startVal * 1.1);
+        const logLo = isLog ? Math.log10(yLo) : 0, logSpan = isLog ? Math.log10(yHi) - logLo : 1;
         const xPx = x => pad.l + (x / years) * pW;
-        const yPx = v => pad.t + pH - (Math.log10(v < yLo ? yLo : v) - logLo) / logSpan * pH;
+        const yPx = isLog
+            ? (v => pad.t + pH - (Math.log10(v < yLo ? yLo : v) - logLo) / logSpan * pH)
+            : (v => pad.t + pH - (Math.max(0, v) / yHi) * pH);
+        const gridVal = i => isLog ? Math.pow(10, logLo + logSpan * i / 5) : yHi * i / 5;
 
         ctx.clearRect(0, 0, w, h);
         const cs = getComputedStyle(document.documentElement);
@@ -721,11 +737,11 @@
         ctx.font = '12px Manrope,system-ui,sans-serif';
         ctx.fillStyle = cs.getPropertyValue('--text-muted').trim() || '#94a3b8';
         for (let i = 0; i <= 5; i++) {
-            const v = Math.pow(10, logLo + logSpan * i / 5), py = yPx(v);
+            const v = gridVal(i), py = yPx(v);
             ctx.beginPath(); ctx.moveTo(pad.l, py); ctx.lineTo(w - pad.r, py); ctx.stroke();
             ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fmtCompact(v), pad.l - 10, py);
         }
-        ctx.textAlign = 'left'; ctx.fillText('log scale', pad.l + 4, pad.t + 6);
+        ctx.textAlign = 'left'; ctx.fillText(isLog ? 'log scale' : 'linear scale', pad.l + 4, pad.t + 6);
         const xN = Math.min(10, years);
         ctx.textAlign = 'center'; ctx.textBaseline = 'top';
         for (let i = 0; i <= xN; i++) {
