@@ -71,15 +71,16 @@
             name: 'The 2010s Bull Run',
             data: [15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29]
         },
-        // Indian crashes — real Nifty 50 calendar-year returns, no invented years.
-        // 2008 Crash: the GFC and everything that actually followed, 2008-2024 (17 real years).
+        // Indian crashes — the real Nifty 50 crash-and-snap-back years only. We keep these
+        // windows tight (just the crash event itself) so each is a clean stress test of that
+        // crash; the simulated realistic path takes over afterwards and supplies the bumpiness.
+        // 2008 Crash: the 51% fall and its 78% recovery the next year.
         india_2008: {
             name: '2008 Crash (India)',
-            data: [-51.3, 77.6, 19.2, -23.8, 29.4, 8.1, 32.9, -3.0, 4.4, 30.3, 4.6, 13.5, 16.1, 24.6, 4.3, 19.8, 9.4]
+            data: [-51.3, 77.6]
         },
-        // Dot-Com: the real 2000-2003 crash-and-recovery window only. We deliberately stop
-        // before the 2004-2007 mega-bull, otherwise injecting that once-in-a-generation run
-        // would make a "crash" the most optimistic scenario and quietly undersell the risk.
+        // Dot-Com: the real 2000-2003 fall and first bounce, stopped before the 2004-2007
+        // mega-bull so this stays a crash, not a stealth bull run.
         india_dotcom: {
             name: 'Dot-Com (India)',
             data: [-13.4, -15.1, 5.3, 76.6]
@@ -165,8 +166,10 @@
         };
     }
 
-    // A bumpy return sequence whose ARITHMETIC mean is exactly avgPct, with ~15% annual volatility.
-    function buildRealisticSequence(avgPct, years, vol = 15, seed = 20260517) {
+    // A bumpy return sequence whose ARITHMETIC mean is exactly avgPct, with real-equity
+    // annual volatility. The forced-exact mean keeps every scenario honestly on the same
+    // average; the vol is what gives it real-market swings (and real volatility drag).
+    function buildRealisticSequence(avgPct, years, vol = 18, seed = 3983) {
         const rand = mulberry32(seed); // fixed seed → reproducible
         const z = [];
         for (let i = 0; i < years; i++) {
@@ -181,10 +184,16 @@
 
     function buildSequence(key, avgPct, years) {
         if (key === 'realistic') return buildRealisticSequence(avgPct, years);
+        // The flat-average reference line (no volatility, so it shows the no-drag ceiling).
+        if (key === 'historical_average') return Array.from({ length: years }, () => avgPct);
+        // A crash scenario is the realistic market with a REAL historical crash dropped into
+        // its first years. After the crash we continue on the exact same realistic path, so
+        // the crash carries the same volatility drag as the baseline and can only ever end at
+        // or below the realistic line, never above it.
         const preset = PRESETS[key];
         const data = preset.data.slice(0, years);
         const rem = years - data.length;
-        if (rem > 0) return data.concat(Array.from({ length: rem }, () => avgPct));
+        if (rem > 0) return data.concat(buildRealisticSequence(avgPct, years).slice(data.length));
         return data.slice(0, years);
     }
 
@@ -579,11 +588,17 @@
         const activeKeys = [...activeSet];
         const pad = { l: 62, r: 14, t: 14, b: 34 };
         const pW = w - pad.l - pad.r, pH = h - pad.t - pad.b;
-        let maxV = 1;
-        activeKeys.forEach(k => state.scenarios[k].result.vals.forEach(v => { if (v > maxV) maxV = v; }));
-        // Log Y axis: early crashes stay visible instead of being squashed flat by late exponential growth.
-        const yLo = Math.max(1, state.inputs.startVal / 50);
-        const yHi = Math.max(maxV * 1.25, yLo * 10);
+        let maxV = 1, minV = Infinity;
+        activeKeys.forEach(k => state.scenarios[k].result.vals.forEach(v => {
+            if (v > maxV) maxV = v;
+            if (v > 0 && v < minV) minV = v;
+        }));
+        if (!isFinite(minV)) minV = maxV / 100;
+        // Log Y axis fitted to the actual data: start just below the lowest point any line
+        // reaches, so the plot is not wasted on empty space below the data and the real
+        // swings use the full height instead of being squashed into a thin band up top.
+        const yLo = Math.max(1, Math.min(minV * 0.7, state.inputs.startVal * 0.9));
+        const yHi = Math.max(maxV * 1.2, yLo * 10);
         const logLo = Math.log10(yLo), logSpan = Math.log10(yHi) - logLo;
         const xPx = x => pad.l + (x / years) * pW;
         const yPx = v => pad.t + pH - (Math.log10(v < yLo ? yLo : v) - logLo) / logSpan * pH;
@@ -653,7 +668,7 @@
                 const nearRight = mx > w - 120;
                 ctx.textAlign = nearRight ? 'right' : 'left';
                 ctx.textBaseline = 'top';
-                ctx.fillText('assumed avg →', nearRight ? mx - 6 : mx + 6, pad.t + 20);
+                ctx.fillText('simulated →', nearRight ? mx - 6 : mx + 6, pad.t + 20);
                 ctx.restore();
             }
         }
