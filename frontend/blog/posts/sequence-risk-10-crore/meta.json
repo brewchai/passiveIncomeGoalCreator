@@ -1,10 +1,10 @@
 {
   "title": "Will Your ₹10 Crore Survive an AI Crash?",
   "meta_title": "Sequence Risk: Will ₹10 Crore Survive a Market Crash?",
-  "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
-  "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+  "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees, and dropped the real Indian dot com crash into year 1. The crash itself did not break it. Then I replaced the smooth average with 1,500 futures built from real Nifty years, and fewer than half of them made it to the end.",
+  "description": "A screenshot by screenshot experiment on a ₹10 crore Indian retirement at a 3% withdrawal. The smooth 11% average says it grows to ₹286 crore. The real Nifty dot com crash dropped into year 1 still leaves ₹201 crore. But across 1,500 futures built from real Nifty years, with 6% inflation, only 43% survive 40 years. Sequence of returns risk, shown honestly in rupees.",
   "date": "2026-09-27",
-  "date_modified": "2026-09-28",
+  "date_modified": "2026-10-22",
   "cover": "",
   "tags": [
     "fire-in-india",
@@ -15,25 +15,25 @@
   ],
   "featured": false,
   "toast": [
-    "The averages say ₹10 crore becomes ₹285 crore. A crash in your first year says ₹0. Same money, same crash.",
-    "Shift the exact same crash from year 1 to year 5 and you go from broke to ₹13 crore. The early years decide everything."
+    "The smooth average says ₹10 crore becomes ₹286 crore. Drop the real Indian dot com crash into year 1 and you still end with ₹201 crore. The crash is survivable.",
+    "Replace the smooth line with 1,500 futures built from real Nifty years and only 43 in 100 last 40 years at a 3% withdrawal. The gap between 11% returns and 6% inflation is the real danger, and it is thin."
   ],
   "faqs": [
     {
+      "question": "Will a ₹10 crore retirement survive a stock market crash in India?",
+      "answer": "A crash on its own, yes. A ₹10 crore portfolio withdrawing 3% a year survived the real Indian dot com crash even when it hit in the very first year of retirement, ending with about ₹201 crore instead of the ₹286 crore it would have reached with no crash. What it does not reliably survive is 40 years of realistic volatility against 6% inflation, where only about 43% of simulated real market futures lasted the distance."
+    },
+    {
       "question": "What is sequence of returns risk?",
-      "answer": "It is the danger that a market crash early in retirement, while you are withdrawing money, permanently damages your portfolio. The same average return arriving in a different order can mean the difference between survival and running out of money, because a crash in the first years forces you to sell investments while they are down."
+      "answer": "It is the danger that a bad run of returns early in retirement, while you are withdrawing money, does lasting damage to your portfolio. The same average return arriving in a different order changes your outcome, because a crash in the first years forces you to sell investments while they are down. In this test the identical crash cost ₹85 crore of ending wealth when it struck in year 1 and less when it struck in year 5."
     },
     {
-      "question": "Does a market crash matter more early or late in retirement?",
-      "answer": "Far more early. In this experiment, the exact same dot-com style crash depleted a ₹10 crore plan to zero when it hit in year 1 or year 3, but the identical crash left ₹13.31 crore when it hit in year 5 and ₹27.80 crore when it hit in year 7. Nothing changed except the timing."
-    },
-    {
-      "question": "Is a 2.5% or 3% withdrawal rate safe for FIRE in India?",
-      "answer": "Not automatically. Indian inflation of around 6% pushes your effective withdrawal rate up over time, so even a careful 2.5% start crosses 3% within about 4 years if the market stays flat. Real safety comes from a cash cushion and flexible spending, not from a low starting rate alone."
+      "question": "Is a 3% withdrawal rate safe for FIRE in India?",
+      "answer": "Only if your return and inflation assumptions hold. On a smooth 11% average with 6% inflation, 3% looks very safe. Across 1,500 futures built from real Nifty years, 3% over 40 years survived only about 43% of the time, rising to 61% over 30 years and to 55% at a 2.5% withdrawal. The safe rate depends far more on the gap between your return and your inflation than on the rate itself."
     },
     {
       "question": "How do you protect a retirement against sequence risk?",
-      "answer": "Keep a few years of spending in cash and safe assets so you never have to sell equity into an early crash, use flexible withdrawal guardrails that cut spending in bad years, and avoid retiring fully invested at the top of a bull market. You can stress test your own plan against a bad early sequence with the free sequence risk calculator."
+      "answer": "Keep a few years of spending in cash and safe assets so you never have to sell equity into an early crash, use flexible withdrawal rules that cut spending in bad years, build a margin into your inflation and return assumptions, and avoid retiring fully invested at the top of a boom. You can stress test your own plan and see your honest survival odds with the free sequence risk calculator."
     }
   ]
 }

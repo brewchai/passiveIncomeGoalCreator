@@ -317,10 +317,10 @@
     {
       "slug": "sequence-risk-10-crore",
       "title": "Will Your ₹10 Crore Survive an AI Crash?",
-      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
-      "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees, and dropped the real Indian dot com crash into year 1. The crash itself did not break it. Then I replaced the smooth average with 1,500 futures built from real Nifty years, and fewer than half of them made it to the end.",
+      "description": "A screenshot by screenshot experiment on a ₹10 crore Indian retirement at a 3% withdrawal. The smooth 11% average says it grows to ₹286 crore. The real Nifty dot com crash dropped into year 1 still leaves ₹201 crore. But across 1,500 futures built from real Nifty years, with 6% inflation, only 43% survive 40 years. Sequence of returns risk, shown honestly in rupees.",
       "date": "2026-09-27",
-      "date_modified": "2026-09-28",
+      "date_modified": "2026-10-22",
       "cover": "",
       "cover_photo": "",
       "eyebrow": "",
@@ -828,10 +828,10 @@
     {
       "slug": "sequence-risk-10-crore",
       "title": "Will Your ₹10 Crore Survive an AI Crash?",
-      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees. The averages promise you get rich. Then I dropped in an AI-style crash and moved it year by year, and the timing alone decided everything.",
-      "description": "A screenshot-by-screenshot experiment on a ₹10 crore Indian retirement: the averages say it grows to ₹285 crore, but a dot-com style crash in the first years drains it to zero, while the same crash a few years later leaves ₹13 to 28 crore. Sequence of returns risk, shown in rupees.",
+      "subtitle": "I ran a ₹10 crore retirement through my own sequence risk calculator, in rupees, and dropped the real Indian dot com crash into year 1. The crash itself did not break it. Then I replaced the smooth average with 1,500 futures built from real Nifty years, and fewer than half of them made it to the end.",
+      "description": "A screenshot by screenshot experiment on a ₹10 crore Indian retirement at a 3% withdrawal. The smooth 11% average says it grows to ₹286 crore. The real Nifty dot com crash dropped into year 1 still leaves ₹201 crore. But across 1,500 futures built from real Nifty years, with 6% inflation, only 43% survive 40 years. Sequence of returns risk, shown honestly in rupees.",
       "date": "2026-09-27",
-      "date_modified": "2026-09-28",
+      "date_modified": "2026-10-22",
       "cover": "",
       "cover_photo": "",
       "eyebrow": "",
@@ -1205,5 +1205,5 @@
       "url": "/blog/calculating-fire-number"
     }
   ],
-  "_generated_at": "2026-09-29T10:10:45.704821Z"
+  "_generated_at": "2026-10-22T08:33:25.760252Z"
 }
