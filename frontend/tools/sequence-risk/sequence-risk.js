@@ -78,7 +78,7 @@
         },
         india_dotcom: {
             name: 'Dot-Com (India)',
-            data: [-13.4, -15.1]
+            data: [-13.4, -15.1, 5.3, 76.6]
         },
         india_2011: {
             name: '2011 Correction (India)',
@@ -98,7 +98,7 @@
     // Scenario sets are currency-aware: US crashes in USD, Indian crashes in INR.
     const SCENARIO_SETS = {
         USD: ['realistic', 'historical_average', 'dot_com', 'gfc', 'great_depression', 'bull_run'],
-        INR: ['realistic', 'historical_average', 'india_2008', 'india_dotcom', 'india_2011']
+        INR: ['realistic', 'historical_average', 'india_2008', 'india_dotcom']
     };
     function scenarioKeys() { return SCENARIO_SETS[currency]; }
     const SCENARIO_LABELS = {
@@ -571,11 +571,14 @@
         const activeKeys = [...activeSet];
         const pad = { l: 62, r: 14, t: 14, b: 34 };
         const pW = w - pad.l - pad.r, pH = h - pad.t - pad.b;
-        let allV = [1];
-        activeKeys.forEach(k => { allV = allV.concat(state.scenarios[k].result.vals); });
-        const yMax = Math.max(...allV) * 1.08;
+        let maxV = 1;
+        activeKeys.forEach(k => state.scenarios[k].result.vals.forEach(v => { if (v > maxV) maxV = v; }));
+        // Log Y axis: early crashes stay visible instead of being squashed flat by late exponential growth.
+        const yLo = Math.max(1, state.inputs.startVal / 50);
+        const yHi = Math.max(maxV * 1.25, yLo * 10);
+        const logLo = Math.log10(yLo), logSpan = Math.log10(yHi) - logLo;
         const xPx = x => pad.l + (x / years) * pW;
-        const yPx = y => pad.t + pH - (y / yMax) * pH;
+        const yPx = v => pad.t + pH - (Math.log10(v < yLo ? yLo : v) - logLo) / logSpan * pH;
 
         ctx.clearRect(0, 0, w, h);
         const cs = getComputedStyle(document.documentElement);
@@ -586,10 +589,11 @@
         ctx.font = '12px Manrope,system-ui,sans-serif';
         ctx.fillStyle = cs.getPropertyValue('--text-muted').trim() || '#94a3b8';
         for (let i = 0; i <= 5; i++) {
-            const y = yMax * i / 5, py = yPx(y);
+            const v = Math.pow(10, logLo + logSpan * i / 5), py = yPx(v);
             ctx.beginPath(); ctx.moveTo(pad.l, py); ctx.lineTo(w - pad.r, py); ctx.stroke();
-            ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fmtCompact(y), pad.l - 10, py);
+            ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fmtCompact(v), pad.l - 10, py);
         }
+        ctx.textAlign = 'left'; ctx.fillText('log scale', pad.l + 4, pad.t + 6);
         const xN = Math.min(10, years);
         ctx.textAlign = 'center'; ctx.textBaseline = 'top';
         for (let i = 0; i <= xN; i++) {
