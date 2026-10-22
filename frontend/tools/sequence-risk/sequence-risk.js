@@ -33,7 +33,7 @@
         popupWithdrawal: byId('popupWithdrawal'),
         popupSave: byId('popupSave'),
         popupCancel: byId('popupCancel'),
-        presetInjectBtns: document.querySelectorAll('.preset-inject-btn'),
+        injectPresets: byId('injectPresets'),
         guardrailsFloorContainer: byId('guardrailsFloorContainer'),
         guardrailsFloor: byId('guardrailsFloor'),
         toggleInflTarget: byId('toggleInflTarget'),
@@ -937,25 +937,46 @@
         });
     }
 
-    if (el.presetInjectBtns) {
-        el.presetInjectBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (state.activePopupYear !== null && activeSet.has(focusKey)) {
-                    const presetData = PRESETS[btn.getAttribute('data-inject')]?.data;
-                    if (presetData && presetData.length > 0) {
-                        const sc = state.scenarios[focusKey];
-                        const startYear = state.activePopupYear;
-                        for (let i = 0; i < presetData.length; i++) {
-                            if (startYear + i < state.inputs.years) sc.data[startYear + i] = presetData[i];
-                        }
-                        sc.edited = true;
-                        sc.result = simForScenario(sc.data, sc.withdrawals);
-                        render();
-                    }
-                }
-                if (el.chartPopup) el.chartPopup.style.display = 'none';
-            });
+    // The "inject a crash from this year" buttons must match the market you are in: injecting
+    // 24 years of S&P history into a rupee plan is how the original ₹10cr article went wrong.
+    const INJECT_SETS = {
+        USD: ['great_depression', 'dot_com', 'gfc'],
+        INR: ['india_dotcom', 'india_2008']
+    };
+    function renderInjectButtons() {
+        if (!el.injectPresets) return;
+        clear(el.injectPresets);
+        (INJECT_SETS[currency] || INJECT_SETS.USD).forEach(key => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'btn-sm preset-inject-btn';
+            b.dataset.inject = key;
+            b.style.cssText = 'font-size:0.75rem;padding:0.25rem 0.5rem;background:rgba(0,0,0,0.2);';
+            b.textContent = SCENARIO_LABELS[key] || PRESETS[key].name;
+            b.title = `${PRESETS[key].name}: ${PRESETS[key].data.length} real years, starting at this year`;
+            el.injectPresets.appendChild(b);
         });
+    }
+    if (el.injectPresets) {
+        el.injectPresets.addEventListener('click', (e) => {
+            const btn = e.target.closest('.preset-inject-btn');
+            if (!btn) return;
+            if (state.activePopupYear !== null && activeSet.has(focusKey)) {
+                const presetData = PRESETS[btn.dataset.inject]?.data;
+                if (presetData && presetData.length > 0) {
+                    const sc = state.scenarios[focusKey];
+                    const startYear = state.activePopupYear;
+                    for (let i = 0; i < presetData.length; i++) {
+                        if (startYear + i < state.inputs.years) sc.data[startYear + i] = presetData[i];
+                    }
+                    sc.edited = true;
+                    sc.result = simForScenario(sc.data, sc.withdrawals);
+                    render();
+                }
+            }
+            if (el.chartPopup) el.chartPopup.style.display = 'none';
+        });
+        renderInjectButtons();
     }
 
     if (el.popupCancel) el.popupCancel.addEventListener('click', () => { if (el.chartPopup) el.chartPopup.style.display = 'none'; });
@@ -1041,6 +1062,7 @@
         activeSet = new Set(DEFAULT_ACTIVE);
         focusKey = 'realistic';
         if (el.curBtns) el.curBtns.forEach(b => { const on = b.dataset.cur === newCur; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+        renderInjectButtons();
         updateCurrencySymbols();
         updateWR();
         if (state.scenarios) { compute(); render(); } // scenarios were in the old currency — recompute fresh
