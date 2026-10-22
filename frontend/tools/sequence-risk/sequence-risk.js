@@ -154,6 +154,10 @@
     function fmtPct(v, d = 1) { return `${(Number.isFinite(+v) ? (+v).toFixed(d) : '0')}%`; }
     function fmtSignedPct(v, d = 1) { const n = +v; return `${n > 0 ? '+' : ''}${Number.isFinite(n) ? n.toFixed(d) : '0'}%`; }
     function clear(n) { while (n && n.firstChild) n.removeChild(n.firstChild); }
+    function hexToRgb(hex) {
+        const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex || '');
+        return m ? `${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)}` : '147,51,234';
+    }
 
     // ── Scenario generation ──
     // Deterministic PRNG so the "Realistic" path is stable across runs (not random every click).
@@ -166,35 +170,92 @@
         };
     }
 
-    // A bumpy return sequence whose ARITHMETIC mean is exactly avgPct, with real-equity
-    // annual volatility. The forced-exact mean keeps every scenario honestly on the same
-    // average; the vol is what gives it real-market swings (and real volatility drag).
-    function buildRealisticSequence(avgPct, years, vol = 18, seed = 3983) {
-        const rand = mulberry32(seed); // fixed seed → reproducible
-        const z = [];
-        for (let i = 0; i < years; i++) {
-            let u = 0, v = 0;
-            while (u === 0) u = rand();
-            while (v === 0) v = rand();
-            z.push(Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v)); // Box-Muller normal
+    // ── Real historical return pools (calendar-year %), resampled for the Monte Carlo ──
+    // These are ACTUAL market years, not invented numbers. INR = Nifty 50 2000-2024,
+    // USD = S&P 500 total return 2000-2023. The bootstrap draws real multi-year blocks from
+    // these and recentres them on the user's expected return, so every scenario still shares
+    // the same long-run average while borrowing real markets' volatility, fat tails and the
+    // way crashes and recoveries cluster together.
+    const REAL_RETURNS = {
+        INR: [-13.4, -15.1, 5.3, 76.6, 13.0, 38.6, 41.9, 56.8, -51.3, 77.6, 19.2, -23.8, 29.4, 8.1, 32.9, -3.0, 4.4, 30.3, 4.6, 13.5, 16.1, 24.6, 4.3, 19.8, 9.4],
+        USD: [-9.10, -11.89, -22.10, 28.68, 10.88, 4.91, 15.79, 5.49, -37.00, 26.46, 15.06, 2.11, 16.00, 32.39, 13.69, 1.38, 11.96, 21.83, -4.38, 31.49, 18.40, 28.71, -18.11, 26.29]
+    };
+    function returnPool() { return REAL_RETURNS[currency] || REAL_RETURNS.USD; }
+    const BOOTSTRAP_BLOCK = 5; // draw real 5-year runs so crashes-and-recoveries stay glued together
+
+    // One simulated future: real historical years drawn in random multi-year blocks, then
+    // shifted so the sequence's expected return matches avgPct.
+    function buildBootstrapSequence(avgPct, years, seed) {
+        const pool = returnPool();
+        const poolMean = pool.reduce((a, b) => a + b, 0) / pool.length;
+        const shift = avgPct - poolMean;
+        const rand = mulberry32(seed);
+        const out = [];
+        while (out.length < years) {
+            const start = Math.floor(rand() * pool.length);
+            for (let i = 0; i < BOOTSTRAP_BLOCK && out.length < years; i++) {
+                out.push(clamp(pool[(start + i) % pool.length] + shift, -60, 90));
+            }
         }
-        const meanZ = z.reduce((a, b) => a + b, 0) / (z.length || 1);
-        return z.map(zi => clamp(avgPct + (zi - meanZ) * vol, -60, 90));
+        return out.slice(0, years);
     }
 
+    const CRASH_TAIL_SEED = 424242; // fixed so an injected crash's post-crash years are reproducible
+
     function buildSequence(key, avgPct, years) {
-        if (key === 'realistic') return buildRealisticSequence(avgPct, years);
         // The flat-average reference line (no volatility, so it shows the no-drag ceiling).
         if (key === 'historical_average') return Array.from({ length: years }, () => avgPct);
-        // A crash scenario is the realistic market with a REAL historical crash dropped into
-        // its first years. After the crash we continue on the exact same realistic path, so
-        // the crash carries the same volatility drag as the baseline and can only ever end at
-        // or below the realistic line, never above it.
+        // A crash scenario is a REAL historical crash dropped into the opening years, then a
+        // representative run of resampled real years after it (drawn dashed). Because the crash
+        // replaces the first years with a bad stretch, it lands at or below the realistic range.
         const preset = PRESETS[key];
         const data = preset.data.slice(0, years);
         const rem = years - data.length;
-        if (rem > 0) return data.concat(buildRealisticSequence(avgPct, years).slice(data.length));
+        if (rem > 0) return data.concat(buildBootstrapSequence(avgPct, years, CRASH_TAIL_SEED).slice(data.length));
         return data.slice(0, years);
+    }
+
+    // ── Monte Carlo (Realistic scenario) ──
+    const MC_RUNS = 1500;
+    const MC_SEED_BASE = 777000;
+    function percentile(sortedAsc, p) {
+        if (!sortedAsc.length) return 0;
+        const idx = clamp(Math.round((p / 100) * (sortedAsc.length - 1)), 0, sortedAsc.length - 1);
+        return sortedAsc[idx];
+    }
+    // Many simulated futures, each a block-bootstrap of real market years recentred on the
+    // expected return. We keep the per-year 10th/50th/90th percentile band and the survival
+    // rate, plus one representative run (ending nearest the median) for the year-by-year table.
+    function runMonteCarlo(avgPct, years) {
+        const yearVals = Array.from({ length: years + 1 }, () => []);
+        const endVals = [];
+        let survived = 0;
+        const runs = [];
+        for (let i = 0; i < MC_RUNS; i++) {
+            const seq = buildBootstrapSequence(avgPct, years, MC_SEED_BASE + i);
+            const res = simForScenario(seq, new Array(years).fill(null));
+            for (let t = 0; t <= years; t++) yearVals[t].push(res.vals[t] != null ? res.vals[t] : 0);
+            endVals.push(res.endVal);
+            if (res.survived) survived++;
+            runs.push({ seq, res });
+        }
+        const endSorted = [...endVals].sort((a, b) => a - b);
+        const medianEnd = percentile(endSorted, 50);
+        const p10End = percentile(endSorted, 10);
+        const p90End = percentile(endSorted, 90);
+        let repSeq = runs[0].seq, repRes = runs[0].res, bestGap = Infinity;
+        for (const r of runs) {
+            const gap = Math.abs(r.res.endVal - medianEnd);
+            if (gap < bestGap) { bestGap = gap; repSeq = r.seq; repRes = r.res; }
+        }
+        const band = { lo: [], med: [], hi: [] };
+        for (let t = 0; t <= years; t++) {
+            const s = yearVals[t].sort((a, b) => a - b);
+            band.lo.push(percentile(s, 10));
+            band.med.push(percentile(s, 50));
+            band.hi.push(percentile(s, 90));
+        }
+        return { band, survivalRate: survived / MC_RUNS, runs: MC_RUNS, medianEnd, p10End, p90End, seq: repSeq, result: repRes };
     }
 
     // ── Simulation ──
@@ -319,6 +380,12 @@
     }
 
     function buildScenario(key) {
+        if (key === 'realistic') {
+            // Not one hand-picked path: a Monte Carlo band over thousands of real-data futures.
+            const mc = runMonteCarlo(state.inputs.avgPct, state.inputs.years);
+            const withdrawals = new Array(state.inputs.years).fill(null);
+            return { data: mc.seq, withdrawals, result: mc.result, edited: false, realYears: state.inputs.years, mc };
+        }
         const data = buildSequence(key, state.inputs.avgPct, state.inputs.years);
         const withdrawals = new Array(state.inputs.years).fill(null);
         return { data, withdrawals, result: simForScenario(data, withdrawals), edited: false, realYears: realYearsFor(key, state.inputs.years) };
@@ -383,13 +450,23 @@
     function renderOutcomes() {
         clear(el.scenarioOutcomes);
         [...activeSet].sort((a, b) => scenarioKeys().indexOf(a) - scenarioKeys().indexOf(b)).forEach(key => {
-            const r = state.scenarios[key].result;
+            const sc = state.scenarios[key];
+            const r = sc.result;
             const card = document.createElement('button');
             card.type = 'button';
             card.className = 'scn-outcome' + (focusKey === key ? ' focus' : '');
-            const badge = r.survived ? '<span class="scn-badge ok">SURVIVED</span>' : '<span class="scn-badge fail">FAILED</span>';
-            const big = r.survived ? fmtCompact(r.endVal) : 'Year ' + r.failYear;
-            const sub = (r.survived ? 'final value · low ' : 'ran out · low ') + fmtCompact(r.minVal) + (state.scenarios[key].edited ? ' · edited' : '');
+            let badge, big, sub;
+            if (sc.mc) {
+                const pct = Math.round(sc.mc.survivalRate * 100);
+                const tone = pct >= 85 ? 'ok' : (pct >= 65 ? 'warn' : 'fail');
+                badge = `<span class="scn-badge ${tone}">${pct}% SURVIVE</span>`;
+                big = fmtCompact(sc.mc.medianEnd);
+                sub = `median of ${sc.mc.runs.toLocaleString()} futures · 10th–90th ${fmtCompact(sc.mc.p10End)}–${fmtCompact(sc.mc.p90End)}`;
+            } else {
+                badge = r.survived ? '<span class="scn-badge ok">SURVIVED</span>' : '<span class="scn-badge fail">FAILED</span>';
+                big = r.survived ? fmtCompact(r.endVal) : 'Year ' + r.failYear;
+                sub = (r.survived ? 'final value · low ' : 'ran out · low ') + fmtCompact(r.minVal) + (sc.edited ? ' · edited' : '');
+            }
             card.innerHTML = `<span class="scn-oc-name"><span class="scn-dot" style="background:${SCENARIO_COLORS[key]}"></span>${SCENARIO_LABELS[key]}${badge}</span>`
                 + `<span class="scn-oc-big">${big}</span><span class="scn-oc-sub">${sub}</span>`;
             card.addEventListener('click', () => {
@@ -411,7 +488,35 @@
             return;
         }
 
-        const cur = state.scenarios[focusKey].result;
+        const focusSc = state.scenarios[focusKey];
+
+        // Monte Carlo scenario gets its own write-up: it is a distribution, not one path.
+        if (focusSc.mc) {
+            const mc = focusSc.mc;
+            const years = inputs.years;
+            const pct = Math.round(mc.survivalRate * 100);
+            const tone = pct >= 85 ? 'good' : (pct >= 65 ? 'warn' : 'bad');
+            el.textSummaryPanel.className = `summary-panel tone-${tone}`;
+            const poolLabel = currency === 'INR' ? 'Nifty 50 (2000–2024)' : 'S&P 500 (2000–2023)';
+            const fails = 100 - pct;
+            const oddsLine = fails <= 0
+                ? `Every one of the ${mc.runs.toLocaleString()} simulated futures lasted the full ${years} years.`
+                : `About ${fails} in 100 of those futures ran out of money before year ${years}; the other ${pct} lasted the distance.`;
+            el.textSummaryPanel.innerHTML = `
+                <h3 class="summary-title"><span class="summary-dot" style="background:${SCENARIO_COLORS[focusKey]}"></span>Realistic — ${pct}% of futures survive</h3>
+                <p class="summary-desc">This is not one hand-picked market. It is <strong>${mc.runs.toLocaleString()} simulated retirements</strong>, each built by replaying real ${poolLabel} years in random multi-year blocks, then recentred on your ${fmtPct(inputs.avgPct)} expected return. The shaded band on the chart is the middle 80% of those outcomes (10th to 90th percentile); the line is the median. ${oddsLine}</p>
+                <div class="summary-stats">
+                    <div class="stat-box"><span class="stat-label">Survived</span><span class="stat-value">${pct}%</span></div>
+                    <div class="stat-box"><span class="stat-label">Median End (Yr ${years})</span><span class="stat-value">${fmtCompact(mc.medianEnd)}</span></div>
+                    <div class="stat-box"><span class="stat-label">Unlucky (10th pct)</span><span class="stat-value">${fmtCompact(mc.p10End)}</span></div>
+                    <div class="stat-box"><span class="stat-label">Lucky (90th pct)</span><span class="stat-value">${fmtCompact(mc.p90End)}</span></div>
+                </div>
+                <p class="summary-desc" style="margin-top:0.85rem;font-size:0.9rem;opacity:0.85;">Resampling can only recombine years that have already happened, so it can understate a crash deeper than anything on record. It is a range of plausible futures, not a prediction.</p>`;
+            renderSequenceTable(inputs, mc.result, true);
+            return;
+        }
+
+        const cur = focusSc.result;
         const base = state.scenarios['historical_average'].result;
         const years = inputs.years;
         const st = classify({ survived: cur.survived, failYear: cur.failYear, years, startVal: inputs.startVal, endVal: cur.endVal, minVal: cur.minVal });
@@ -490,10 +595,12 @@
         });
     }
 
-    function renderSequenceTable(inputs, result) {
+    function renderSequenceTable(inputs, result, isRep) {
         clear(el.sequenceTableHead);
         clear(el.sequenceTableBody);
-        if (el.sequenceTableHeading) el.sequenceTableHeading.textContent = `${SCENARIO_LABELS[focusKey]} — year by year`;
+        if (el.sequenceTableHeading) el.sequenceTableHeading.textContent = isRep
+            ? `${SCENARIO_LABELS[focusKey]} — one representative run (the median outcome)`
+            : `${SCENARIO_LABELS[focusKey]} — year by year`;
 
         const headTr = document.createElement('tr');
         const coreCols = [
@@ -589,10 +696,12 @@
         const pad = { l: 62, r: 14, t: 14, b: 34 };
         const pW = w - pad.l - pad.r, pH = h - pad.t - pad.b;
         let maxV = 1, minV = Infinity;
-        activeKeys.forEach(k => state.scenarios[k].result.vals.forEach(v => {
-            if (v > maxV) maxV = v;
-            if (v > 0 && v < minV) minV = v;
-        }));
+        const noteV = v => { if (v > maxV) maxV = v; if (v > 0 && v < minV) minV = v; };
+        activeKeys.forEach(k => {
+            const sc = state.scenarios[k];
+            if (sc.mc) { sc.mc.band.hi.forEach(noteV); sc.mc.band.lo.forEach(noteV); }
+            else sc.result.vals.forEach(noteV);
+        });
         if (!isFinite(minV)) minV = maxV / 100;
         // Log Y axis fitted to the actual data: start just below the lowest point any line
         // reaches, so the plot is not wasted on empty space below the data and the real
@@ -630,6 +739,25 @@
         const drawOrder = activeKeys.filter(k => k !== focusKey).concat(activeSet.has(focusKey) ? [focusKey] : []);
         for (const k of drawOrder) {
             const sc = state.scenarios[k];
+            // Monte Carlo scenario: a shaded 10th–90th percentile band + the median line.
+            if (sc.mc) {
+                const { lo, hi, med } = sc.mc.band;
+                const col = hexToRgb(SCENARIO_COLORS[k]);
+                ctx.setLineDash([]);
+                ctx.fillStyle = `rgba(${col},${k === focusKey ? 0.16 : 0.09})`;
+                ctx.beginPath();
+                for (let x = 0; x <= years; x++) { const px = xPx(x), py = yPx(hi[x]); x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
+                for (let x = years; x >= 0; x--) { ctx.lineTo(xPx(x), yPx(lo[x])); }
+                ctx.closePath(); ctx.fill();
+                ctx.strokeStyle = SCENARIO_COLORS[k];
+                ctx.lineWidth = k === focusKey ? 3.5 : 2;
+                ctx.globalAlpha = k === focusKey ? 1 : 0.7;
+                ctx.beginPath();
+                for (let x = 0; x <= years; x++) { const px = xPx(x), py = yPx(med[x]); x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+                continue;
+            }
             const vals = sc.result.vals;
             const ry = Math.min(sc.realYears != null ? sc.realYears : years, vals.length - 1);
             ctx.strokeStyle = SCENARIO_COLORS[k];
@@ -640,8 +768,8 @@
             ctx.beginPath();
             for (let x = 0; x <= ry; x++) { const px = xPx(x), py = yPx(vals[x]); x === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); }
             ctx.stroke();
-            // Dashed: beyond real data we assume the long-run average, so we never pretend
-            // invented years are real market history.
+            // Dashed: beyond the real crash years we play out a representative run of resampled
+            // real years, so we never pretend invented numbers are actual market history.
             if (ry < years) {
                 ctx.setLineDash([5, 4]);
                 ctx.beginPath();
@@ -673,9 +801,10 @@
             }
         }
 
-        // Editable points on the focused line only.
+        // Editable points on the focused line only — the Monte Carlo band is a distribution,
+        // not a single editable path, so it gets no clickable dots.
         state.chartCoords = [];
-        if (activeSet.has(focusKey)) {
+        if (activeSet.has(focusKey) && !state.scenarios[focusKey].mc) {
             const vals = state.scenarios[focusKey].result.vals;
             ctx.fillStyle = SCENARIO_COLORS[focusKey];
             vals.forEach((v, x) => {
