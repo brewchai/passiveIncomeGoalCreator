@@ -375,12 +375,11 @@
         $('quick').addEventListener('submit', e => e.preventDefault());
         render();
 
-        // Waitlist. Rows go to the Google Sheet through the same Apps Script web app the FIRE
-        // number tool's newsletter box posts to (tools/fire-number/fire-number.js). `source` is
-        // hard-coded so every row from here reads as the FIRE planner. The script answers
-        // {"success":true} with CORS open, so "you're on the list" is shown only after a real write.
-        // FormSubmit (the contact page's endpoint) is pinged best-effort so an email lands too.
-        const WAITLIST_SHEET = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
+        // Waitlist. Rows go to the waitlist Google Sheet through the Apps Script bound to it
+        // (source in waitlist/Code.gs). `source` is hard-coded so every row from here reads as the
+        // FIRE planner. The script answers {"success":true} with CORS open, so "you're on the list"
+        // is shown only after a real write. FormSubmit is pinged best-effort so an email lands too.
+        const WAITLIST_SHEET = 'https://script.google.com/macros/s/AKfycbxEgOvw4syL7nYWfIR0r_QBk-461ZYSOsiPML0HE2_oNNEo5-gRLoYBUXyQ5D_4D295lg/exec';
         const WAITLIST_MAIL = 'https://formsubmit.co/ajax/butfirstfire@gmail.com';
         const wl = $('waitlist'), wlEmail = $('wl-email'), wlBtn = $('wl-btn'), wlNote = $('wl-note');
         const done = () => { wlBtn.disabled = true; wlBtn.textContent = 'You’re on the list'; wlNote.innerHTML = '<span class="ok">Thanks. One email when steps 2 to 6 are live.</span>'; };
