@@ -94,7 +94,6 @@
         .field input::placeholder { color: var(--text-muted); opacity: .55; font-weight: 400; }
         .empty { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 24px; }
         .empty strong { font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
-        .empty .mark { width: 72px; height: 12px; }
         [hidden] { display: none !important; }
         .cur { display: flex; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); overflow: hidden; }
         .cur button { border: 0; padding: 6px 12px; font-weight: 600; font-size: var(--t-1); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; }
@@ -113,14 +112,11 @@
         .ledger .age { text-align: right; }
         .ledger hr { grid-column: 1 / -1; border: 0; border-top: 1px solid var(--rule); margin: 0; }
         .note { margin: 0; font-size: var(--t-1); color: var(--text-secondary); line-height: 1.5; }
-        /* The hand-drawn accent stroke from the hero, reused as a mark. Static here. */
-        .mark { display: block; width: 56px; height: 10px; overflow: visible; }
-        .mark path { fill: none; stroke: var(--accent-color); stroke-width: 6; stroke-linecap: round; }
-        .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 56px; padding: 12px 0 8px; }
-        .tiles div { display: flex; flex-direction: column; gap: 10px; font-size: var(--t0); line-height: 1.45; }
+        .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px; padding: 8px 0; }
+        .tiles div { display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: var(--t0); line-height: 1.45; }
         .tiles strong { font-weight: 500; display: block; font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); line-height: 1.15; letter-spacing: -0.01em; }
         .tiles span { color: var(--text-secondary); max-width: 22rem; }
-        .tiles .wide { grid-column: 1 / -1; padding-top: 36px; border-top: 1px solid var(--rule); }
+        .tiles .wide { grid-column: 1 / -1; padding-top: 28px; }
         .tiles .wide strong { font-size: var(--t3); }
         .tiles .wide span { max-width: 46rem; font-size: var(--t1); line-height: 1.4; }
         /* Every section stands alone: one hairline on top, a big title, a lede, then content. Nothing shares a row. */
@@ -212,13 +208,13 @@
             <h2>Reaching a number doesn't guarantee success.</h2>
             <p class="lede">Let's dig deeper.</p>
             <div class="tiles">
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg><strong>Dependents</strong><span>and the year each one stops costing</span></div>
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 20 14, 36 6, 52 11 S 84 13, 98 8"/></svg><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11 C 16 6, 30 14, 48 9 S 80 12, 98 7"/></svg><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 18 13, 38 5, 54 10 S 82 14, 98 9"/></svg><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 22 6, 34 14, 50 9 S 78 5, 98 12"/></svg><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
-                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 C 14 15, 32 6, 50 11 S 84 7, 98 12"/></svg><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
-                <div class="wide"><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg><strong>Thousands of simulations</strong><span>on real market years, with a report of what breaks the plan and what to fix</span></div>
+                <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
+                <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
+                <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
+                <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
+                <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
+                <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
+                <div class="wide"><strong>Thousands of simulations</strong><span>on real market years, with a report of what breaks the plan and what to fix</span></div>
             </div>
             <p class="lede">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
 
