@@ -176,7 +176,7 @@
             <div class="sheet">
                 <form id="quick" autocomplete="off">
                     <div class="sheet-head">
-                        <strong>In today's money <span>· we grow it with inflation to the year you stop</span></strong>
+                        <strong>In today's money <span>· inflation is built in, every figure on the right is too</span></strong>
                         <div class="cur" role="group" aria-label="Currency">
                             <button type="button" data-cur="INR" aria-pressed="true">₹</button>
                             <button type="button" data-cur="USD" aria-pressed="false">$</button>
@@ -203,7 +203,7 @@
                         <div id="numbers">
                             <div class="panel-h">Your number, three ways, and the age you reach it</div>
                             <div class="ledger" id="ledger"></div>
-                            <p class="note" style="margin-top:20px">Each number is in the money of the year you stop, so inflation is already inside it. The ages assume the market returns its average every single year. It won't.</p>
+                            <p class="note" style="margin-top:20px">All figures are in today's money. The ages assume the market returns its average every single year. It won't.</p>
                         </div>
                         <div id="forward" hidden>
                             <div class="panel-h">What this money supports each month, in today's money</div>
@@ -354,9 +354,10 @@
             const last = Math.max(MAX_AGE, stop);
             const path = pathFor(age, pot, save);
             const spendAt = t => spend * Math.pow(1 + infl, t);
-            const rows = RATES.map(({ rate, why }) => ({ rate, why, target: spendAt(n) / (rate / 100), reached: reachAge(age, path, spend, rate, last) }));
+            const rows = RATES.map(({ rate, why }) => ({ rate, why, target: spend / (rate / 100), reached: reachAge(age, path, spend, rate, last) }));
             const potAtStop = path[Math.min(n, path.length - 1)];
             const spendAtStop = spendAt(n);
+            const potToday = potAtStop / Math.pow(1 + infl, n);
             // Levers for a plan that doesn't close: the monthly amount, the yearly cost, or the stop age that would.
             let saveNeeded = null;
             if (n > 0) {
@@ -366,7 +367,7 @@
             }
             const spendFits = potAtStop * 0.04 / Math.pow(1 + infl, n);
             const stopWorks = reachAge(age, path, spend, 4, PLAN_TO);
-            return { a, age, stop, spend, pot, save, n, last, rows, potAtStop, spendAtStop, saveNeeded, spendFits, stopWorks };
+            return { a, age, stop, spend, pot, save, n, last, rows, potAtStop, potToday, spendAtStop, saveNeeded, spendFits, stopWorks };
         }
         // For someone who is already there: the monthly spend this money supports at each rate, in today's money.
         function supports(c) {
@@ -393,7 +394,7 @@
         function words(c, kind) {
             const r4 = c.rows[0].reached, r35 = c.rows[1].reached, r3 = c.rows[2].reached;
             const pct = pctOf(c.spendAtStop, c.potAtStop);
-            const atStop = `At ${c.stop} you'd hold about ${money(c.potAtStop)}, and your first year off costs ${money(c.spendAtStop)}, which is ${pct}% of it.`;
+            const atStop = `At ${c.stop} you’d hold about ${money(c.potToday)} in today’s money, and your first year off would take ${pct}% of it.`;
             const arrives = r => r === null ? `doesn't arrive by ${c.last}` : r <= c.age ? 'is already there' : `arrives at ${r}`;
             switch (kind) {
                 case 'pastAll': return {
@@ -413,7 +414,7 @@
                     wl: 'test' };
                 case 'late': return {
                     head: `You get there, ${yrs(r4 - c.stop)} after you planned to stop.`,
-                    para: `At ${c.stop} you’d hold ${money(c.potAtStop)} and spend ${pct}% of it. The 4% number arrives at ${r4}.`,
+                    para: `At ${c.stop} you’d hold about ${money(c.potToday)} in today’s money and spend ${pct}% of it a year. The 4% number arrives at ${r4}.`,
                     hand: `${yrs(r4 - c.stop)} is closable without ${r4 - c.stop} more ${r4 - c.stop === 1 ? 'year' : 'years'} of work. Rent, part time income, a lower first few years of spending with a floor under them. The next 5 steps put each of those in and show what the gap becomes.`,
                     wl: 'close' };
                 case 'impossible': {
@@ -444,7 +445,7 @@
                     wl: 'test' };
                 case 'short': return {
                     head: `Stopping at ${c.stop} is a ${PLAN_TO - c.stop}-year retirement. That is the one the 4% rule was built for.`,
-                    para: `The 4% number lands at ${r4}. By ${c.stop} you’d hold ${money(c.potAtStop)} and spend ${pct}% of it.`,
+                    para: `The 4% number lands at ${r4}. By ${c.stop} you’d hold about ${money(c.potToday)} in today’s money and spend ${pct}% of it a year.`,
                     hand: 'The next 5 steps answer a different question for you: how early could you have stopped, and at what odds.',
                     wl: 'test' };
                 case 'under': return {
