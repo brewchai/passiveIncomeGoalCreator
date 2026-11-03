@@ -91,6 +91,11 @@
         .sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
         .sheet-head strong { font-size: var(--t0); font-weight: 600; }
         .sheet-head strong span { font-weight: 400; color: var(--text-muted); font-size: var(--t-1); }
+        .field input::placeholder { color: var(--text-muted); opacity: .55; font-weight: 400; }
+        .empty { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 24px; }
+        .empty strong { font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
+        .empty .mark { width: 72px; height: 12px; }
+        [hidden] { display: none !important; }
         .cur { display: flex; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); overflow: hidden; }
         .cur button { border: 0; padding: 6px 12px; font-weight: 600; font-size: var(--t-1); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; }
         .cur button[aria-pressed="true"] { background: var(--accent-color); color: #fff; }
@@ -108,17 +113,21 @@
         .ledger .age { text-align: right; }
         .ledger hr { grid-column: 1 / -1; border: 0; border-top: 1px solid var(--rule); margin: 0; }
         .note { margin: 0; font-size: var(--t-1); color: var(--text-secondary); line-height: 1.5; }
-        .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-        .tiles div { padding: 16px 18px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: var(--t0); line-height: 1.45; }
-        .tiles strong { font-weight: 600; display: block; font-family: var(--display); font-size: var(--t1); line-height: 1.25; margin-bottom: 4px; }
-        .tiles span { color: var(--text-secondary); }
-        .tiles .wide { grid-column: 1 / -1; }
-        /* Every section stands alone: one hairline on top, label, heading, content. Nothing shares a row. */
+        /* The hand-drawn accent stroke from the hero, reused as a mark. Static here. */
+        .mark { display: block; width: 56px; height: 10px; overflow: visible; }
+        .mark path { fill: none; stroke: var(--accent-color); stroke-width: 6; stroke-linecap: round; }
+        .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 56px; padding: 12px 0 8px; }
+        .tiles div { display: flex; flex-direction: column; gap: 10px; font-size: var(--t0); line-height: 1.45; }
+        .tiles strong { font-weight: 500; display: block; font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); line-height: 1.15; letter-spacing: -0.01em; }
+        .tiles span { color: var(--text-secondary); max-width: 22rem; }
+        .tiles .wide { grid-column: 1 / -1; padding-top: 36px; border-top: 1px solid var(--rule); }
+        .tiles .wide strong { font-size: var(--t3); }
+        .tiles .wide span { max-width: 46rem; font-size: var(--t1); line-height: 1.4; }
+        /* Every section stands alone: one hairline on top, a big title, a lede, then content. Nothing shares a row. */
         .section { padding: 56px 0 0; margin-top: 56px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 20px; }
-        .section > .label { margin-bottom: -6px; }
-        .section h2 { font-size: var(--t3); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; max-width: 46rem; }
+        .section h2 { font-size: clamp(32px, 3.6vw, var(--t4)); font-weight: 500; line-height: 1.1; letter-spacing: -0.015em; max-width: 46rem; }
         .section p { margin: 0; color: var(--text-secondary); max-width: 46rem; }
-        .section .lede { font-size: var(--t1); line-height: 1.4; color: var(--text-primary); }
+        .section .lede { font-size: var(--t1); line-height: 1.4; color: var(--text-primary); margin-top: -4px; }
         details { border-bottom: 1px solid var(--rule); padding: 16px 0; }
         .faqs { border-top: 1px solid var(--rule); max-width: 52rem; }
         summary { cursor: pointer; font-size: var(--t1); font-weight: 600; line-height: 1.25; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-family: var(--display); font-optical-sizing: auto; }
@@ -160,33 +169,40 @@
         </section>
 
         <section class="wrap section" id="step-1">
-            <div class="label">Step 1 of 6 · the only step that is live today</div>
-            <h2>Five numbers in. Your number three ways, and the age you reach each one.</h2>
+            <h2>Step 1 of 6. Your five numbers.</h2>
+            <p class="lede">Five numbers in. Your number three ways, and the age you reach each one.</p>
 
             <div class="sheet">
                 <form id="quick" autocomplete="off">
                     <div class="sheet-head">
-                        <strong>Step 1 of 6 · Your five numbers <span>· in today's money</span></strong>
+                        <strong>In today's money</strong>
                         <div class="cur" role="group" aria-label="Currency">
                             <button type="button" data-cur="INR" aria-pressed="true">₹</button>
                             <button type="button" data-cur="USD" aria-pressed="false">$</button>
                         </div>
                     </div>
                     <div class="two">
-                        <div class="field"><label for="q-age">Your age</label><input id="q-age" type="number" inputmode="numeric" min="18" max="80" value="32"></div>
-                        <div class="field"><label for="q-stop">Stop working at</label><input id="q-stop" type="number" inputmode="numeric" min="18" max="90" value="42"></div>
+                        <div class="field"><label for="q-age">Your age</label><input id="q-age" type="number" inputmode="numeric" min="18" max="80" placeholder="32"></div>
+                        <div class="field"><label for="q-stop">Stop working at</label><input id="q-stop" type="number" inputmode="numeric" min="18" max="90" placeholder="42"></div>
                     </div>
-                    <div class="field"><label for="q-spend">What a year of your life costs</label><input id="q-spend" type="text" inputmode="numeric" value="13,80,000"></div>
-                    <div class="field"><label for="q-pot">Invested today, all accounts</label><input id="q-pot" type="text" inputmode="numeric" value="1,60,00,000"></div>
-                    <div class="field"><label for="q-save">You invest every month</label><input id="q-save" type="text" inputmode="numeric" value="1,20,000"></div>
+                    <div class="field"><label for="q-spend">What a year of your life costs</label><input id="q-spend" type="text" inputmode="numeric"></div>
+                    <div class="field"><label for="q-pot">Invested today, all accounts</label><input id="q-pot" type="text" inputmode="numeric"></div>
+                    <div class="field"><label for="q-save">You invest every month</label><input id="q-save" type="text" inputmode="numeric"></div>
                     <p class="assume" id="assume"></p>
                 </form>
 
                 <div class="results">
-                    <div class="label">Your number, three ways, and the age you reach it</div>
-                    <div class="ledger" id="ledger"></div>
-                    <p class="note" id="atstop"></p>
-                    <p class="note">Ages assume your mix returns its long-run average every single year. It won't, and the full planner shows how early or late real markets make it.</p>
+                    <div class="empty" id="empty">
+                        <svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg>
+                        <strong>Your numbers will show up here.</strong>
+                        <p class="note" id="empty-note">Fill in the five fields. The three numbers and the ages update as you type.</p>
+                    </div>
+                    <div id="filled" hidden>
+                        <div class="label">Your number, three ways, and the age you reach it</div>
+                        <div class="ledger" id="ledger" style="margin-top:14px"></div>
+                        <p class="note" id="atstop" style="margin-top:24px"></p>
+                        <p class="note" style="margin-top:14px">Ages assume your mix returns its long-run average every single year. It won't, and the full planner shows how early or late real markets make it.</p>
+                    </div>
                 </div>
             </div>
 
@@ -194,17 +210,16 @@
         </section>
 
         <section class="wrap section" id="steps-2-to-6">
-            <div class="label">Steps 2 to 6 · being built</div>
             <h2>Reaching a number doesn't guarantee success.</h2>
             <p class="lede">Let's dig deeper.</p>
             <div class="tiles">
-                <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
-                <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
-                <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
-                <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
-                <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
-                <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
-                <div class="wide"><strong>Thousands of simulations</strong><span>on real market years, with a report of what breaks the plan and what to fix</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg><strong>Dependents</strong><span>and the year each one stops costing</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 20 14, 36 6, 52 11 S 84 13, 98 8"/></svg><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 11 C 16 6, 30 14, 48 9 S 80 12, 98 7"/></svg><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 18 13, 38 5, 54 10 S 82 14, 98 9"/></svg><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 22 6, 34 14, 50 9 S 78 5, 98 12"/></svg><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
+                <div><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 C 14 15, 32 6, 50 11 S 84 7, 98 12"/></svg><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
+                <div class="wide"><svg class="mark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg><strong>Thousands of simulations</strong><span>on real market years, with a report of what breaks the plan and what to fix</span></div>
             </div>
             <p class="lede">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
 
@@ -221,14 +236,14 @@
         </section>
 
         <section class="wrap section">
-            <div class="label">Why odds, and not one number</div>
-            <h2>Every calculator you've used hands you one number from a smooth average. Nobody retires into an average.</h2>
+            <h2>Why odds, and not one number.</h2>
+            <p class="lede">Every calculator you've used hands you one number from a smooth average. Nobody retires into an average.</p>
             <p>I ran a ₹10 crore retirement at a 3% withdrawal through the engine behind this planner. On an exact 11% every year it grows to ₹286 crore and gets called safe. Across 1,500 futures built from real Nifty years, with 6% inflation, only 43 in 100 last 40 years and the typical one runs out. Same inputs. The gap between those two results is the entire reason this page exists.</p>
             <p class="links"><a href="/blog/sequence-risk-10-crore">Read the ₹10 crore experiment, every figure reproducible in the sequence risk tool</a></p>
         </section>
 
         <section class="wrap section">
-            <div class="label">Things people ask before they trust it</div>
+            <h2>Things people ask before they trust it.</h2>
             <div class="faqs">
                 <details><summary><span>"Isn't this the 4% rule with extra steps?"</span><span class="plus">+</span></summary><p>The 4% rule was built on 30 year retirements and one country's past returns. Stop in your early 40s and you're asking your market, after your inflation, to carry 45 or 50 years. The planner doesn't assume a rule; it tests your spending against real sequences of returns and tells you how often it holds.</p></details>
                 <details><summary><span>"My situation isn't simple."</span><span class="plus">+</span></summary><p>Good, nobody's is. A child who leaves home at 22, parents who may need help later, a property that starts paying rent at 45, part time work that might dry up early, money in two currencies. Every one of those is an input with a start and an end, and the report tells you which of them the plan depends on most.</p></details>
@@ -238,7 +253,7 @@
         </section>
 
         <section class="wrap section">
-            <div class="label">Tools that are live today</div>
+            <h2>Tools that are live today.</h2>
             <div class="list">
                 <a href="/tools/sequence-risk/"><span>Sequence risk calculator</span><span>drop a real crash into any year</span></a>
                 <a href="/tools/fire-number/"><span>FIRE number</span><span>the quick version</span></a>
@@ -292,6 +307,12 @@
             if (n >= 1e3) return `$${Math.round(n / 1e3)}k`;
             return '$' + Math.round(n);
         }
+        const filled = id => $(id).value.trim() !== '';
+        function missing() {
+            // Which of the five fields are still empty. Invested today and monthly investing may be 0, but must be typed.
+            const need = [['q-age', 'your age'], ['q-stop', 'the age you stop working'], ['q-spend', 'what a year costs'], ['q-pot', 'what you have invested'], ['q-save', 'what you invest each month']];
+            return need.filter(([id]) => !filled(id)).map(([, what]) => what);
+        }
         function read() {
             return { age: Math.max(18, Math.min(80, num($('q-age').value))), stop: Math.max(18, Math.min(90, num($('q-stop').value))), spend: num($('q-spend').value), pot: num($('q-pot').value), save: num($('q-save').value) };
         }
@@ -316,22 +337,43 @@
             return { rows, potAtStop, spendAtStop, n, stop, a };
         }
         function render() {
-            const { rows, potAtStop, spendAtStop, n, stop, a } = compute();
+            const a0 = ASSUME[cur];
+            $('assume').textContent = `Assumes 70% equity at ${a0.equity}%, 30% debt at ${a0.debt}%, ${a0.infl}% inflation, monthly investing growing 5% a year, and that you plan the money to ${PLAN_TO}. All of it is yours to change in the full planner.`;
+            const left = missing();
+            const { age, stop, spend } = read();
+            const bad = left.length === 0 && (age < 18 || stop <= age || spend <= 0);
+            if (left.length || bad) {
+                $('empty').hidden = false; $('filled').hidden = true;
+                $('empty-note').textContent = left.length === 5
+                    ? 'Fill in the five fields. The three numbers and the ages update as you type.'
+                    : left.length
+                        ? `Still needed: ${left.join(', ')}.`
+                        : stop <= age ? 'The age you stop working needs to be later than your age today.' : 'A year of your life needs to cost more than zero.';
+                return;
+            }
+            $('empty').hidden = true; $('filled').hidden = false;
+            const { rows, potAtStop, spendAtStop, n, a } = compute();
             $('ledger').innerHTML = rows.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.target)}</span><span class="why">${row.why}</span><span class="age">${row.reached === null ? `after ${MAX_AGE}` : `age <strong>${row.reached}</strong>`}</span>`).join('');
             const pct = potAtStop > 0 ? (spendAtStop / potAtStop * 100).toFixed(1) : '—';
             $('atstop').textContent = n === 0
                 ? `Stopping now: ${money(potAtStop)} invested, spending ${money(spendAtStop)} a year, which is ${pct}% of it.`
                 : `If you stop at ${stop} as planned: about ${money(potAtStop)} invested, and your first year off costs ${money(spendAtStop)}, which is ${pct}% of it.`;
-            $('assume').textContent = `Assumes 70% equity at ${a.equity}%, 30% debt at ${a.debt}%, ${a.infl}% inflation, monthly investing growing 5% a year, and that you plan the money to ${PLAN_TO}. All of it is yours to change in the full planner.`;
+        }
+        function placeholders() {
+            // Sample figures sit in the placeholders, never in the fields: the sheet starts empty.
+            const d = ASSUME[cur].defaults;
+            $('q-spend').placeholder = fmtInput(d.spend); $('q-pot').placeholder = fmtInput(d.pot); $('q-save').placeholder = fmtInput(d.save);
         }
         function setCurrency(c) {
             if (c === cur) return;
             cur = c;
             document.querySelectorAll('.cur button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cur === c)));
-            const d = ASSUME[c].defaults;
-            $('q-spend').value = fmtInput(d.spend); $('q-pot').value = fmtInput(d.pot); $('q-save').value = fmtInput(d.save);
+            // Money typed in one currency means nothing in the other, so those three fields clear.
+            ['q-spend', 'q-pot', 'q-save'].forEach(id => { $(id).value = ''; });
+            placeholders();
             render();
         }
+        placeholders();
         ['q-age', 'q-stop', 'q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('input', render));
         ['q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('blur', e => { const v = num(e.target.value); if (v) e.target.value = fmtInput(v); }));
         document.querySelectorAll('.cur button').forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.cur)));
