@@ -94,6 +94,7 @@
         .field input::placeholder { color: var(--text-muted); opacity: .55; font-weight: 400; }
         .empty { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 24px; }
         .empty strong { font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
+        .fwd { margin: 10px 0 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
         .verdict { font-size: var(--t2); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; }
         #handoff { max-width: 52rem; }
         [hidden] { display: none !important; }
@@ -197,9 +198,19 @@
                     <div id="filled" hidden>
                         <div class="display verdict" id="head"></div>
                         <p class="note" id="atstop"></p>
-                        <div class="label" style="margin-top:28px">Your number, three ways, and the age you reach it. Each is in the money of the year you stop, so inflation is already inside it.</div>
-                        <div class="ledger" id="ledger" style="margin-top:14px"></div>
-                        <p class="note" style="margin-top:24px">Ages assume your mix returns its long-run average every single year. It won't.</p>
+                        <div id="numbers">
+                            <div class="label" style="margin-top:28px">Your number, three ways, and the age you reach it. Each is in the money of the year you stop, so inflation is already inside it.</div>
+                            <div class="ledger" id="ledger" style="margin-top:14px"></div>
+                            <p class="note" style="margin-top:24px">Ages assume your mix returns its long-run average every single year. It won't.</p>
+                        </div>
+                        <div id="forward" hidden>
+                            <div class="label" style="margin-top:28px">What this money carries, in today's money</div>
+                            <div class="ledger" id="carry" style="margin-top:14px"></div>
+                            <div class="label" style="margin-top:28px">Will it last?</div>
+                            <p class="fwd" id="smooth"></p>
+                            <p class="fwd" id="crash"></p>
+                            <p class="note" style="margin-top:14px">Both are single paths. Real markets hand you one order of returns out of thousands, and the order decides it. That is what steps 2 to 6 run.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -293,6 +304,9 @@
         ];
         // Monthly amounts shown to someone with nothing invested yet.
         const LADDER = { INR: [50000, 100000, 200000], USD: [1000, 2000, 4000] };
+        // The real 2008 crash and its rebound, equity calendar years: Nifty 50 for INR, S&P 500 for USD.
+        // Same figures the sequence risk tool uses. Applied to the equity share; debt stays at its average.
+        const CRASH = { INR: { name: '2008', eq: [-51.3, 77.6] }, USD: { name: '2008', eq: [-37.0, 26.5] } };
         let cur = 'INR';
         const $ = id => document.getElementById(id);
         const num = v => Number(String(v).replace(/[^0-9.]/g, '')) || 0;
@@ -300,10 +314,13 @@
         function money(n) {
             const a = ASSUME[cur];
             if (cur === 'INR') {
+                if (n >= 1e9) return `₹${Math.round(n / 1e7).toLocaleString(a.locale)} crore`;
                 if (n >= 1e7) return `₹${(n / 1e7).toFixed(1)} crore`;
                 if (n >= 1e5) return `₹${(n / 1e5).toFixed(1)} lakh`;
                 return '₹' + Math.round(n).toLocaleString(a.locale);
             }
+            if (n >= 1e9) return `$${(n / 1e9).toFixed(1)} billion`;
+            if (n >= 1e8) return `$${Math.round(n / 1e6)} million`;
             if (n >= 1e6) return `$${(n / 1e6).toFixed(2)} million`;
             if (n >= 1e3) return `$${Math.round(n / 1e3)}k`;
             return '$' + Math.round(n);
@@ -355,6 +372,31 @@
             const stopWorks = reachAge(age, path, spend, 4, PLAN_TO);
             return { a, age, stop, spend, pot, save, n, last, rows, potAtStop, spendAtStop, saveNeeded, spendFits, stopWorks };
         }
+        // Retirement on one fixed path: withdraw, then grow, withdrawal rising with inflation. Returns the
+        // age the money runs out, or what is left at the plan horizon.
+        function retire(pot, w0, fromAge, blendPct) {
+            const { infl } = assumptions();
+            let p = pot, w = w0;
+            for (let y = 1; y <= PLAN_TO - fromAge; y++) {
+                if (p < w) return { out: fromAge + y };
+                p -= w;
+                p *= 1 + blendPct(y) / 100;
+                w *= 1 + infl;
+            }
+            return { end: p };
+        }
+        // For someone who is already there: what the money carries at each rate, and two single paths.
+        function forward(c) {
+            const { a, r, infl } = assumptions();
+            const from = Math.max(c.stop, c.age);
+            const short = { 4: 'at 4%', 3.5: 'at 3.5%, the usual target', 3: 'at 3%, the cautious one' };
+            const carry = [...RATES].reverse().map(({ rate }) => ({ rate, why: short[rate], yearly: c.potAtStop * (rate / 100) / Math.pow(1 + infl, c.n) }));
+            const smooth = retire(c.potAtStop, c.spendAtStop, from, () => r * 100);
+            const k = CRASH[cur];
+            const blend = y => y <= 2 ? EQUITY_SHARE * k.eq[y - 1] + (1 - EQUITY_SHARE) * a.debt : r * 100;
+            const crash = retire(c.potAtStop, c.spendAtStop, from, blend);
+            return { carry, smooth, crash, k, from };
+        }
         // Which of nine situations the five numbers describe. Each one gets its own words.
         function situation(c) {
             const r4 = c.rows[0].reached, r3 = c.rows[2].reached;
@@ -379,7 +421,7 @@
             switch (kind) {
                 case 'pastAll': return {
                     head: 'On paper, you’ve reached FIRE.',
-                    para: `${money(c.pot)} against ${money(c.spend)} a year is a ${pctOf(c.spend, c.pot)}% withdrawal. Every number on this list is already behind you.`,
+                    para: `${money(c.pot)} against ${money(c.spend)} a year is a ${pctOf(c.spend, c.pot)}% withdrawal. The number is behind you. The question in front of you is whether it lasts.`,
                     hand: 'Reaching it was the easy part to check. Have you run it through a crash in year 1, a child’s college, a parent’s care? That is what the next 5 steps do, across thousands of real market sequences. If it holds, step 3 tells you how much more you could be spending.',
                     wl: 'test' };
                 case 'pastSome': return {
@@ -420,7 +462,7 @@
                 }
                 case 'stopped': return {
                     head: 'You’ve already stopped. Here is where you stand.',
-                    para: `${money(c.pot)} against ${money(c.spend)} a year is a ${pctOf(c.spend, c.pot)}% withdrawal. At 3%, this money carries ${money(c.pot * 0.03)} a year.`,
+                    para: `${money(c.pot)} against ${money(c.spend)} a year is a ${pctOf(c.spend, c.pot)}% withdrawal. ${c.spend / c.pot > 0.04 ? 'That is above the 4% most plans are built on, so the next question matters more than usual.' : 'What matters now is the order the next years arrive in.'}`,
                     hand: 'The next 5 steps are the check you can’t do in a spreadsheet: thousands of real market sequences, your dependents, your one-time costs, a floor under your spending, and the year the portfolio would run dry in the worst 10 of 100 futures.',
                     wl: 'test' };
                 case 'short': return {
@@ -470,6 +512,19 @@
             $('handoff').textContent = w.hand;
             if (!wlDone) $('wl-note').textContent = WL[w.wl];
             $('q-save-label').textContent = kind === 'stopped' ? 'You still add every month, 0 is fine' : 'You invest every month';
+            const there = kind === 'pastAll' || kind === 'stopped' || kind === 'under';
+            $('numbers').hidden = there; $('forward').hidden = !there;
+            if (there) {
+                const f = forward(c);
+                const vs = y => { const d = y - c.spend; return Math.abs(d) < c.spend * 0.01 ? 'what you spend' : d > 0 ? `${money(d)} more` : `${money(-d)} less`; };
+                $('carry').innerHTML = f.carry.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.yearly)}</span><span class="why">a year ${row.why}</span><span class="age">${vs(row.yearly)}</span>`).join('');
+                $('smooth').textContent = f.smooth.out
+                    ? `On the smooth average every calculator uses, it runs out at ${f.smooth.out}.`
+                    : `On the smooth average every calculator uses, it never runs out: ${money(f.smooth.end)} left at ${PLAN_TO}.`;
+                const first = c.stop <= c.age ? 'this year' : 'your first year off';
+                $('crash').textContent = `Drop ${f.k.name} into ${first}, equity ${Math.round(f.k.eq[0])}% then +${Math.round(f.k.eq[1])}% then the average, and ` + (f.crash.out ? `it runs out at ${f.crash.out}.` : `${money(f.crash.end)} is left at ${PLAN_TO}.`);
+                return;
+            }
             // "Reached" at your current age means you already hold it today; say that instead of printing today's age.
             const when = row => row.reached === null ? `not by ${c.last}` : row.reached <= c.age ? '<strong>already there</strong>' : `age <strong>${row.reached}</strong>`;
             $('ledger').innerHTML = c.rows.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.target)}</span><span class="why">${row.why}</span><span class="age">${when(row)}</span>`).join('');
