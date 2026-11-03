@@ -207,7 +207,8 @@
                         </div>
                         <div id="forward" hidden>
                             <div class="panel-h">What this money supports each month, in today's money</div>
-                            <p class="fwd" id="carry" style="margin:0"></p>
+                            <div class="ledger" id="carry"></div>
+                            <p class="fwd" id="carry-now" style="margin-top:18px"></p>
                             <div class="panel-h">Will it last?</div>
                         </div>
                         <p class="fwd hand" id="hand"></p>
@@ -494,7 +495,10 @@
             $('numbers').hidden = there; $('forward').hidden = !there;
             if (there) {
                 const m = supports(c);
-                $('carry').textContent = `${money(m.m3)} a month at 3%, the cautious level. ${money(m.m35)} at 3.5%. ${money(m.m4)} at 4%. You spend ${money(m.now)} a month today.`;
+                const vs = v => { const d = v - m.now; return Math.abs(d) < m.now * 0.01 ? 'what you spend' : d > 0 ? `${money(d)} more` : `${money(-d)} less`; };
+                const rows = [[m.m3, 'at 3%, the cautious level'], [m.m35, 'at 3.5%, the usual target'], [m.m4, 'at 4%']];
+                $('carry').innerHTML = rows.map(([v, why], i) => `${i ? '<hr>' : ''}<span class="n">${money(v)}</span><span class="why">a month ${why}</span><span class="age">${vs(v)}</span>`).join('');
+                $('carry-now').textContent = `You spend ${money(m.now)} a month today.`;
                 return;
             }
             // "Reached" at your current age means you already hold it today; say that instead of printing today's age.
