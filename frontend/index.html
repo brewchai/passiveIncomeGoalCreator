@@ -94,9 +94,13 @@
         .field input::placeholder { color: var(--text-muted); opacity: .55; font-weight: 400; }
         .empty { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 24px; }
         .empty strong { font-family: var(--display); font-optical-sizing: auto; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
-        .fwd { margin: 10px 0 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
+        .section .fwd { margin: 10px 0 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); max-width: none; }
+        .section .hand { margin-top: 28px; }
+        .panel-h { font-family: var(--display); font-optical-sizing: auto; font-size: var(--t1); font-weight: 600; line-height: 1.25; margin: 30px 0 14px; }
+        .ledger.lasts { grid-template-columns: 1fr auto; gap: 6px 18px; }
+        .ledger.lasts .n { font-size: var(--t1); font-weight: 600; }
+        .ledger.lasts .why { grid-column: 1 / -1; padding-bottom: 6px; }
         .verdict { font-size: var(--t2); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; }
-        #handoff { max-width: 52rem; }
         [hidden] { display: none !important; }
         .cur { display: flex; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); overflow: hidden; }
         .cur button { border: 0; padding: 6px 12px; font-weight: 600; font-size: var(--t-1); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; }
@@ -199,24 +203,23 @@
                         <div class="display verdict" id="head"></div>
                         <p class="note" id="atstop"></p>
                         <div id="numbers">
-                            <div class="label" style="margin-top:28px">Your number, three ways, and the age you reach it. Each is in the money of the year you stop, so inflation is already inside it.</div>
-                            <div class="ledger" id="ledger" style="margin-top:14px"></div>
-                            <p class="note" style="margin-top:24px">Ages assume your mix returns its long-run average every single year. It won't.</p>
+                            <div class="panel-h">Your number, three ways, and the age you reach it</div>
+                            <div class="ledger" id="ledger"></div>
+                            <p class="note" style="margin-top:20px">Each number is in the money of the year you stop, so inflation is already inside it. The ages assume the market returns its average every single year. It won't.</p>
                         </div>
                         <div id="forward" hidden>
-                            <div class="label" style="margin-top:28px">What this money carries, in today's money</div>
-                            <div class="ledger" id="carry" style="margin-top:14px"></div>
-                            <div class="label" style="margin-top:28px">Will it last?</div>
-                            <p class="fwd" id="smooth"></p>
-                            <p class="fwd" id="crash"></p>
-                            <p class="note" style="margin-top:14px">Both are single paths. Real markets hand you one order of returns out of thousands, and the order decides it. That is what steps 2 to 6 run.</p>
+                            <div class="panel-h">What this money carries, in today's money</div>
+                            <div class="ledger" id="carry"></div>
+                            <div class="panel-h">Will it last?</div>
+                            <div class="ledger lasts" id="lasts"></div>
+                            <p class="note" style="margin-top:20px">Both are single paths. Real markets deal you one order of returns out of thousands, and the order decides it.</p>
                         </div>
+                        <p class="fwd hand" id="hand"></p>
                     </div>
                 </div>
             </div>
 
-            <p id="exit">Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
-            <p class="lede" id="handoff" hidden></p>
+            <p>Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
         </section>
 
         <section class="wrap section" id="steps-2-to-6">
@@ -422,22 +425,22 @@
                 case 'pastAll': return {
                     head: 'On paper, you’ve reached FIRE.',
                     para: `${money(c.pot)} against ${money(c.spend)} a year is a ${pctOf(c.spend, c.pot)}% withdrawal. The number is behind you. The question in front of you is whether it lasts.`,
-                    hand: 'Reaching it was the easy part to check. Have you run it through a crash in year 1, a child’s college, a parent’s care? That is what the next 5 steps do, across thousands of real market sequences. If it holds, step 3 tells you how much more you could be spending.',
+                    hand: 'Reaching it was the easy part to check. Have you run it through a crash in year 1, a child’s college, a parent’s care, all at once? That is what the next 5 steps do, across thousands of real market sequences. If it holds, they tell you how much more you could be spending.',
                     wl: 'test' };
                 case 'pastSome': return {
                     head: 'Past the 4% number. The others are close.',
                     para: `You hold the 4% number today. 3.5% ${arrives(r35)}, 3% ${arrives(r3)}. ${atStop}`,
-                    hand: `Step 3 puts odds on each: how often ${money(c.spend)} a year lasts to ${PLAN_TO} at each of the 3 levels, on real market years. Then you choose, with the price on the label.`,
+                    hand: `The next 5 steps put odds on each: how often ${money(c.spend)} a year lasts to ${PLAN_TO} at each of the 3 levels, on real market years. Then you choose, with the price on the label.`,
                     wl: 'test' };
                 case 'onTime': return {
                     head: 'You reach your number before you stop.',
                     para: `${r4 === c.stop ? `The 4% number lands at ${r4}, exactly when you plan to stop.` : `The 4% number lands at ${r4}, ${yrs(c.stop - r4)} before your planned stop.`} ${atStop}`,
-                    hand: `That age assumes the market returns its average every year. It won’t. Have you run the plan through multiple scenarios? The next 5 steps run it through thousands of real sequences and tell you how often ${c.stop} still works, and what you’d cut in a bad year to keep it working.`,
+                    hand: `Have you run the plan through bad markets? The next 5 steps run it through thousands of real sequences and tell you how often stopping at ${c.stop} still works, and what you’d cut in a bad year to keep it working.`,
                     wl: 'test' };
                 case 'late': return {
                     head: `You get there, ${yrs(r4 - c.stop)} after you planned to stop.`,
                     para: `At ${c.stop} you’d hold ${money(c.potAtStop)} and spend ${pct}% of it. The 4% number arrives at ${r4}.`,
-                    hand: `${yrs(r4 - c.stop)} is closable without ${r4 - c.stop} more ${r4 - c.stop === 1 ? 'year' : 'years'} of work. Rent, part time income, a lower first few years of spending with a floor under them. Steps 4 and 5 put each of those in and show what the gap becomes.`,
+                    hand: `${yrs(r4 - c.stop)} is closable without ${r4 - c.stop} more ${r4 - c.stop === 1 ? 'year' : 'years'} of work. Rent, part time income, a lower first few years of spending with a floor under them. The next 5 steps put each of those in and show what the gap becomes.`,
                     wl: 'close' };
                 case 'impossible': {
                     const levers = [];
@@ -448,7 +451,7 @@
                     return {
                         head: `This plan doesn’t close by ${c.last}. Here is what would close it.`,
                         para: levers.length ? `To stop at ${c.stop} at the 4% number you’d need one of these: ${list}.` : `At ${money(c.spend)} a year there is no monthly amount, yearly cost or stop age before ${PLAN_TO} that closes it on these assumptions.`,
-                        hand: 'Steps 3 and 5 are built for this: a spending level that fits, and income after you stop. The report then says which lever moves your odds the most, so you change one thing, not everything.',
+                        hand: 'The next 5 steps are built for this: a spending level that fits, and income after you stop. The report then says which lever moves your odds the most, so you change one thing instead of everything.',
                         wl: 'close' };
                 }
                 case 'nothing': {
@@ -468,12 +471,12 @@
                 case 'short': return {
                     head: `Stopping at ${c.stop} is a ${PLAN_TO - c.stop}-year retirement. That is the one the 4% rule was built for.`,
                     para: `The 4% number lands at ${r4}. By ${c.stop} you’d hold ${money(c.potAtStop)} and spend ${pct}% of it.`,
-                    hand: 'The next 5 steps answer a different question for you: how early could you have stopped, and at what odds. Step 3 is where that shows up.',
+                    hand: 'The next 5 steps answer a different question for you: how early could you have stopped, and at what odds.',
                     wl: 'test' };
                 case 'under': return {
                     head: 'You’re spending well under what this money carries.',
-                    para: `${money(c.spend)} a year is ${pctOf(c.spend, c.pot)}% of ${money(c.pot)}. At 3%, the cautious level, that is ${money(c.pot * 0.03)} a year, ${money(c.pot * 0.03 - c.spend)} more than now.`,
-                    hand: `Step 3 puts odds on each spending level. For you the question is what the extra ${money(c.pot * 0.03 - c.spend)} a year is for.`,
+                    para: `${money(c.spend)} a year is ${pctOf(c.spend, c.pot)}% of ${money(c.pot)}. Even the cautious level, 3%, carries more than you spend.`,
+                    hand: `The next 5 steps put odds on each of those spending levels across thousands of real market sequences. For you the question is what the extra ${money(c.pot * 0.03 - c.spend)} a year is for.`,
                     wl: 'test' };
             }
         }
@@ -495,7 +498,7 @@
                 else if (spend <= 0) problem = 'A year of your life needs to cost more than zero.';
             }
             if (left.length || problem) {
-                $('empty').hidden = false; $('filled').hidden = true; $('exit').hidden = false; $('handoff').hidden = true;
+                $('empty').hidden = false; $('filled').hidden = true;
                 $('empty-note').textContent = left.length === 5
                     ? 'Fill in the five fields. The three numbers and the ages update as you type.'
                     : left.length ? `Still needed: ${left.join(', ')}.` : problem;
@@ -506,10 +509,10 @@
             const c = compute();
             const kind = situation(c);
             const w = words(c, kind);
-            $('empty').hidden = true; $('filled').hidden = false; $('exit').hidden = true; $('handoff').hidden = false;
+            $('empty').hidden = true; $('filled').hidden = false;
             $('head').textContent = w.head;
             $('atstop').textContent = w.para;
-            $('handoff').textContent = w.hand;
+            $('hand').textContent = w.hand;
             if (!wlDone) $('wl-note').textContent = WL[w.wl];
             $('q-save-label').textContent = kind === 'stopped' ? 'You still add every month, 0 is fine' : 'You invest every month';
             const there = kind === 'pastAll' || kind === 'stopped' || kind === 'under';
@@ -518,11 +521,10 @@
                 const f = forward(c);
                 const vs = y => { const d = y - c.spend; return Math.abs(d) < c.spend * 0.01 ? 'what you spend' : d > 0 ? `${money(d)} more` : `${money(-d)} less`; };
                 $('carry').innerHTML = f.carry.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.yearly)}</span><span class="why">a year ${row.why}</span><span class="age">${vs(row.yearly)}</span>`).join('');
-                $('smooth').textContent = f.smooth.out
-                    ? `On the smooth average every calculator uses, it runs out at ${f.smooth.out}.`
-                    : `On the smooth average every calculator uses, it never runs out: ${money(f.smooth.end)} left at ${PLAN_TO}.`;
                 const first = c.stop <= c.age ? 'this year' : 'your first year off';
-                $('crash').textContent = `Drop ${f.k.name} into ${first}, equity ${Math.round(f.k.eq[0])}% then +${Math.round(f.k.eq[1])}% then the average, and ` + (f.crash.out ? `it runs out at ${f.crash.out}.` : `${money(f.crash.end)} is left at ${PLAN_TO}.`);
+                const path = (res, why) => `<span class="n">${res.out ? `Runs out at ${res.out}` : 'Never runs out'}</span><span class="age">${res.out ? '' : `${money(res.end)} left at ${PLAN_TO}`}</span><span class="why">${why}</span>`;
+                $('lasts').innerHTML = path(f.smooth, 'if the market returns its average every single year, which is what every calculator assumes')
+                    + '<hr>' + path(f.crash, `if a ${f.k.name} crash hits ${first}: equity down ${Math.round(-f.k.eq[0])}%, then up ${Math.round(f.k.eq[1])}%, then the average`);
                 return;
             }
             // "Reached" at your current age means you already hold it today; say that instead of printing today's age.
