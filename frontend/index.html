@@ -71,12 +71,23 @@
         .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .sub { font-size: var(--t1); line-height: 1.4; color: var(--text-secondary); margin: 0; }
         .hero-side { font-size: var(--t0); line-height: 1.5; color: var(--text-secondary); max-width: 28rem; margin: 0; }
-        .strike { position: relative; white-space: nowrap; }
-        .strike::after { content: ""; position: absolute; left: 0; top: 54%; height: 4px; width: 0; background: var(--accent-color); animation: strike .45s ease-out 1s forwards; }
-        .swap { opacity: 0; animation: appear .35s ease-out 1.55s forwards; }
-        @keyframes strike { to { width: 100%; } }
-        @keyframes appear { to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) { .strike::after { animation: none; width: 100%; } .swap { animation: none; opacity: 1; } }
+        .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
+        .strike svg { position: absolute; left: -2%; top: 8%; width: 104%; height: 84%; overflow: visible; pointer-events: none; }
+        .strike path { fill: none; stroke: var(--accent-color); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 130; stroke-dashoffset: 130; animation: draw .55s cubic-bezier(.65,0,.35,1) .9s forwards; }
+        .swap { display: inline-block; opacity: 0; transform: translateY(.35em) rotate(-2deg); animation: rise .5s cubic-bezier(.2,.9,.3,1.2) 1.5s forwards; }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+        @keyframes fade-word { to { color: var(--text-muted); } }
+        @keyframes rise { to { opacity: 1; transform: translateY(0) rotate(0deg); } }
+        @media (prefers-reduced-motion: reduce) { .strike, .strike path, .swap { animation: none; } .strike { color: var(--text-muted); } .strike path { stroke-dashoffset: 0; } .swap { opacity: 1; transform: none; } }
+        .waitlist { display: flex; flex-direction: column; gap: 12px; margin: auto 0 0; padding-top: 22px; border-top: 1px solid var(--rule); }
+        .waitlist-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .waitlist input[type="email"] { flex: 1 1 220px; height: 52px; box-sizing: border-box; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); padding: 0 14px; font-size: var(--t0); font-family: inherit; background: #fff; }
+        .waitlist input[type="email"]:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 122, 78, 0), 0.1); }
+        .waitlist button { height: 52px; padding: 0 24px; border: 0; border-radius: var(--radius-surface, 12px); background: var(--accent-color); color: #fff; font-weight: 600; font-size: var(--t0); font-family: inherit; cursor: pointer; }
+        .waitlist button:hover { background: #5E3C00; }
+        .waitlist button[disabled] { opacity: .6; cursor: default; }
+        .waitlist .ok { color: var(--accent-color); font-weight: 600; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
         .sheet { background: var(--card-background); border-radius: var(--radius-surface, 12px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
         .sheet form { padding: 32px; display: flex; flex-direction: column; gap: 18px; border-right: 1px solid var(--rule); margin: 0; }
@@ -110,14 +121,14 @@
         .soon { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-top: auto; }
         .soon .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: var(--radius-surface, 12px); background: var(--accent-color); color: #fff; font-weight: 600; font-size: var(--t0); opacity: .55; cursor: default; }
         .soon .btn em { font-style: normal; font-weight: 400; margin-left: 10px; font-size: var(--t-1); }
-        .section { padding: 72px 0 0; }
-        .section-grid { border-top: 1px solid var(--rule); padding-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 56px; }
-        .section-grid > .label { max-width: 22rem; line-height: 1.5; }
-        .section-grid > .body { grid-column: span 2; display: flex; flex-direction: column; gap: 20px; max-width: 46rem; }
-        .section h2 { font-size: var(--t3); font-weight: 500; line-height: 1.15; }
+        .section { padding: 64px 0 0; }
+        .cols { border-top: 1px solid var(--rule); padding-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px 56px; }
+        .col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+        .col > .label { margin-bottom: -4px; }
+        .section h2 { font-size: var(--t2); font-weight: 500; line-height: 1.2; }
         .section p { margin: 0; color: var(--text-secondary); }
         details { border-bottom: 1px solid var(--rule); padding: 14px 0; }
-        .faqs { border-top: 1px solid var(--rule); gap: 0 !important; }
+        .faqs { border-top: 1px solid var(--rule); }
         summary { cursor: pointer; font-size: var(--t1); font-weight: 600; line-height: 1.25; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-family: var(--display); font-optical-sizing: auto; }
         summary::-webkit-details-marker { display: none; }
         summary .plus { color: var(--accent-color); font-weight: 400; transition: transform .15s ease; }
@@ -151,11 +162,10 @@
         <section class="wrap hero">
             <div class="hero-top">
                 <div class="hero-copy">
-                    <h1>A better version of the FIRE <span class="strike">calculator</span> <span class="swap">tool</span> you've used.</h1>
+                    <h1>A better version of the FIRE <span class="strike">calculator<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span class="swap">tool</span> you've used.</h1>
                     <p class="tagline display">It starts where others stop.</p>
-                    <p class="sub">A detailed, thorough, realistic FIRE planner.</p>
+                    <p class="sub">A detailed, thorough, realistic FIRE planner. Step 1 is right here: five numbers, and you get your number three ways and the age you reach each one.</p>
                 </div>
-                <p class="hero-side">Step 1 is right here. Five numbers, and you get your number three ways and the age you reach each one.</p>
             </div>
 
             <div class="sheet">
@@ -200,10 +210,16 @@
                         <p style="margin:0;font-size:var(--t0);line-height:1.5;color:var(--text-primary)">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
                     </div>
 
-                    <div class="soon">
-                        <span class="btn" aria-disabled="true">Steps 2 to 6 <em>coming soon</em></span>
-                        <span class="note">The full planner is being built. The blog and the tools are live.</span>
-                    </div>
+                    <form class="waitlist" id="waitlist" novalidate>
+                        <div class="display" style="font-size:var(--t1);font-weight:600;line-height:1.25">Steps 2 to 6 are being built. Get one email when they're live.</div>
+                        <div class="waitlist-row">
+                            <label for="wl-email" class="sr-only">Email</label>
+                            <input id="wl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                            <button type="submit" id="wl-btn">Join the waitlist</button>
+                        </div>
+                        <span class="note" id="wl-note">One email when the planner is live. Nothing else, ever. The blog and the tools are already up.</span>
+                    </form>
                 </div>
             </div>
 
@@ -211,32 +227,29 @@
         </section>
 
         <section class="wrap section">
-            <div class="section-grid">
-                <div class="label">Why odds, and not one number</div>
-                <div class="body">
+            <div class="cols">
+                <div class="col">
+                    <div class="label">Why odds, and not one number</div>
                     <h2>Every calculator you've used hands you one number from a smooth average. Nobody retires into an average.</h2>
-                    <p>I ran a ₹10 crore retirement at a 3% withdrawal through the engine behind this planner. On an exact 11% every year it grows to ₹286 crore and gets called safe. Across 1,500 futures built from real Nifty years, with 6% inflation, only 43 in 100 last 40 years and the typical one runs out. Same inputs. The gap between those two results is the entire reason this page exists, and the thing every step of the planner is built to close.</p>
+                    <p>I ran a ₹10 crore retirement at a 3% withdrawal through the engine behind this planner. On an exact 11% every year it grows to ₹286 crore and gets called safe. Across 1,500 futures built from real Nifty years, with 6% inflation, only 43 in 100 last 40 years and the typical one runs out. Same inputs. The gap between those two results is the entire reason this page exists.</p>
                     <p class="links"><a href="/blog/sequence-risk-10-crore">Read the ₹10 crore experiment, every figure reproducible in the sequence risk tool</a></p>
                 </div>
-            </div>
-        </section>
-
-        <section class="wrap section">
-            <div class="section-grid">
-                <div class="label">Things people ask before they trust it</div>
-                <div class="body faqs">
-                    <details><summary><span>"Isn't this the 4% rule with extra steps?"</span><span class="plus">+</span></summary><p>The 4% rule was built on 30 year retirements and one country's past returns. Stop in your early 40s and you're asking your market, after your inflation, to carry 45 or 50 years. The planner doesn't assume a rule; it tests your spending against real sequences of returns and tells you how often it holds.</p></details>
-                    <details><summary><span>"My situation isn't simple."</span><span class="plus">+</span></summary><p>Good, nobody's is. A child who leaves home at 22, parents who may need help later, a property that starts paying rent at 45, part time work that might dry up early, money in two currencies. Every one of those is an input with a start and an end, and the report tells you which of them the plan depends on most.</p></details>
-                    <details><summary><span>"Where do the market numbers come from?"</span><span class="plus">+</span></summary><p>Real calendar years for the market you choose, drawn in multi-year blocks so crashes and their recoveries stay together, then centred on the return you set. It can only recombine years that have already happened, so it cannot see a crash deeper than anything on record, and it says so on the report.</p></details>
-                    <details><summary><span>"Where does my data go?"</span><span class="plus">+</span></summary><p>It stays in your browser. The link to your plan carries your inputs, which is how you come back to it or send it to someone, and the PDF is generated on your machine.</p></details>
+                <div class="col">
+                    <div class="label">Things people ask before they trust it</div>
+                    <div class="faqs">
+                        <details><summary><span>"Isn't this the 4% rule with extra steps?"</span><span class="plus">+</span></summary><p>The 4% rule was built on 30 year retirements and one country's past returns. Stop in your early 40s and you're asking your market, after your inflation, to carry 45 or 50 years. The planner doesn't assume a rule; it tests your spending against real sequences of returns and tells you how often it holds.</p></details>
+                        <details><summary><span>"My situation isn't simple."</span><span class="plus">+</span></summary><p>Good, nobody's is. A child who leaves home at 22, parents who may need help later, a property that starts paying rent at 45, part time work that might dry up early, money in two currencies. Every one of those is an input with a start and an end, and the report tells you which of them the plan depends on most.</p></details>
+                        <details><summary><span>"Where do the market numbers come from?"</span><span class="plus">+</span></summary><p>Real calendar years for the market you choose, drawn in multi-year blocks so crashes and their recoveries stay together, then centred on the return you set. It can only recombine years that have already happened, so it cannot see a crash deeper than anything on record, and it says so on the report.</p></details>
+                        <details><summary><span>"Where does my data go?"</span><span class="plus">+</span></summary><p>It stays in your browser. The link to your plan carries your inputs, which is how you come back to it or send it to someone, and the PDF is generated on your machine.</p></details>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="wrap section">
-            <div class="section-grid">
-                <div class="label">The writing behind it</div>
-                <div class="body">
+            <div class="cols">
+                <div class="col">
+                    <div class="label">The writing behind it</div>
                     <h2>26 articles, each one a question I had to answer for myself first.</h2>
                     <div class="list">
                         <a href="/blog/sequence-risk-10-crore"><span>Will your ₹10 crore survive an AI crash?</span><span>12 min</span></a>
@@ -244,8 +257,16 @@
                         <a href="/blog/is-lean-fire-right-for-you"><span>Is lean FIRE right for you?</span><span>10 min</span></a>
                         <a href="/blog/fire-in-india-how-many-crores"><span>How many crores do you actually need to FIRE in India?</span><span>11 min</span></a>
                     </div>
-                    <p class="links"><a href="/blog">All articles</a> · <a href="/tools/sequence-risk/">Sequence risk calculator</a> · <a href="/tools/fire-number/">FIRE number</a> · <a href="/tools/geo-arbitrage/">Geo-arbitrage</a></p>
-                    <p style="margin-top:12px;color:var(--text-secondary)">Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 20 minutes with Ninad</a>.</p>
+                    <p class="links"><a href="/blog">All 26 articles</a></p>
+                </div>
+                <div class="col">
+                    <div class="label">Tools that are live today</div>
+                    <div class="list">
+                        <a href="/tools/sequence-risk/"><span>Sequence risk calculator</span><span>drop a real crash into any year</span></a>
+                        <a href="/tools/fire-number/"><span>FIRE number</span><span>the quick version</span></a>
+                        <a href="/tools/geo-arbitrage/"><span>Geo-arbitrage</span><span>the same life, priced by city</span></a>
+                    </div>
+                    <p style="margin-top:20px;color:var(--text-secondary)">Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 20 minutes with Ninad</a>.</p>
                 </div>
             </div>
         </section>
@@ -340,6 +361,41 @@
         document.querySelectorAll('.cur button').forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.cur)));
         $('quick').addEventListener('submit', e => e.preventDefault());
         render();
+
+        // Waitlist. Two channels, same field names the old backend used (timestamp, email,
+        // source, builderStep), with `source` hard-coded so every row reads as the FIRE planner:
+        //  1. FormSubmit (the contact page's working endpoint): emails each signup. Verified
+        //     via its JSON reply, so the "you're on the list" message is only shown when it is true.
+        //  2. The Zapier catch hook that feeds the waitlist Google Sheet: fired best-effort. It was
+        //     returning 404 (Zap switched off) when this shipped; turn the Zap back on and rows flow.
+        const WAITLIST_MAIL = 'https://formsubmit.co/ajax/butfirstfire@gmail.com';
+        const WAITLIST_HOOK = 'https://hooks.zapier.com/hooks/catch/25189906/uiqn4fk/';
+        const wl = $('waitlist'), wlEmail = $('wl-email'), wlBtn = $('wl-btn'), wlNote = $('wl-note');
+        const done = () => { wlBtn.disabled = true; wlBtn.textContent = 'You’re on the list'; wlNote.innerHTML = '<span class="ok">Thanks. One email when steps 2 to 6 are live.</span>'; };
+        try { if (localStorage.getItem('bff_waitlist')) done(); } catch (e) { }
+        wl.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (wl.querySelector('[name="_honey"]').value) { done(); return; }
+            const email = wlEmail.value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { wlEmail.focus(); wlNote.textContent = 'That email doesn’t look right.'; return; }
+            wlBtn.disabled = true; wlBtn.textContent = 'Adding you…';
+            const row = { timestamp: new Date().toISOString(), email, source: 'fire-planner-waitlist', builderStep: 'home-step-1', page: location.pathname, currency: cur };
+            fetch(WAITLIST_HOOK, { method: 'POST', body: new URLSearchParams(row) }).catch(() => { });
+            try {
+                const res = await fetch(WAITLIST_MAIL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ ...row, _subject: '[But First Fire] FIRE planner waitlist: ' + email, _template: 'table', _captcha: 'false' })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!(res.ok && (data.success === true || data.success === 'true'))) throw new Error(data.message || 'send failed');
+                try { localStorage.setItem('bff_waitlist', email); } catch (err) { }
+                done();
+            } catch (err) {
+                wlBtn.disabled = false; wlBtn.textContent = 'Join the waitlist';
+                wlNote.innerHTML = 'That didn’t go through. Try again, or use the <a href="/contact">contact page</a> and say "waitlist".';
+            }
+        });
     })();
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
