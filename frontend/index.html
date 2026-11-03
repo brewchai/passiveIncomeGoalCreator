@@ -451,7 +451,7 @@
                 case 'under': return {
                     head: 'You’re spending well under what this money carries.',
                     para: `${money(c.spend)} a year is ${pctOf(c.spend, c.pot)}% of ${money(c.pot)}. Even the cautious level, 3%, carries more than you spend.`,
-                    hand: `The next 5 steps put odds on each of those spending levels across thousands of real market sequences. For you the question is what the extra ${money(c.pot * 0.03 - c.spend)} a year is for.`,
+                    hand: `The next 5 steps put odds on each of those spending levels across thousands of real market sequences. For you the question is what the extra ${money(supports(c).m3 - c.spend / 12)} a month, even at the cautious 3%, is for.`,
                     wl: 'test' };
             }
         }
