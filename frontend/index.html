@@ -362,14 +362,13 @@
         $('quick').addEventListener('submit', e => e.preventDefault());
         render();
 
-        // Waitlist. Two channels, same field names the old backend used (timestamp, email,
-        // source, builderStep), with `source` hard-coded so every row reads as the FIRE planner:
-        //  1. FormSubmit (the contact page's working endpoint): emails each signup. Verified
-        //     via its JSON reply, so the "you're on the list" message is only shown when it is true.
-        //  2. The Zapier catch hook that feeds the waitlist Google Sheet: fired best-effort. It was
-        //     returning 404 (Zap switched off) when this shipped; turn the Zap back on and rows flow.
+        // Waitlist. Rows go to the Google Sheet through the same Apps Script web app the FIRE
+        // number tool's newsletter box posts to (tools/fire-number/fire-number.js). `source` is
+        // hard-coded so every row from here reads as the FIRE planner. The script answers
+        // {"success":true} with CORS open, so "you're on the list" is shown only after a real write.
+        // FormSubmit (the contact page's endpoint) is pinged best-effort so an email lands too.
+        const WAITLIST_SHEET = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
         const WAITLIST_MAIL = 'https://formsubmit.co/ajax/butfirstfire@gmail.com';
-        const WAITLIST_HOOK = 'https://hooks.zapier.com/hooks/catch/25189906/uiqn4fk/';
         const wl = $('waitlist'), wlEmail = $('wl-email'), wlBtn = $('wl-btn'), wlNote = $('wl-note');
         const done = () => { wlBtn.disabled = true; wlBtn.textContent = 'You’re on the list'; wlNote.innerHTML = '<span class="ok">Thanks. One email when steps 2 to 6 are live.</span>'; };
         try { if (localStorage.getItem('bff_waitlist')) done(); } catch (e) { }
@@ -380,15 +379,15 @@
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { wlEmail.focus(); wlNote.textContent = 'That email doesn’t look right.'; return; }
             wlBtn.disabled = true; wlBtn.textContent = 'Adding you…';
             const row = { timestamp: new Date().toISOString(), email, source: 'fire-planner-waitlist', builderStep: 'home-step-1', page: location.pathname, currency: cur };
-            fetch(WAITLIST_HOOK, { method: 'POST', body: new URLSearchParams(row) }).catch(() => { });
+            fetch(WAITLIST_MAIL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ ...row, _subject: '[But First Fire] FIRE planner waitlist: ' + email, _template: 'table', _captcha: 'false' })
+            }).catch(() => { });
             try {
-                const res = await fetch(WAITLIST_MAIL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ ...row, _subject: '[But First Fire] FIRE planner waitlist: ' + email, _template: 'table', _captcha: 'false' })
-                });
+                const res = await fetch(WAITLIST_SHEET, { method: 'POST', body: new URLSearchParams(row) });
                 const data = await res.json().catch(() => ({}));
-                if (!(res.ok && (data.success === true || data.success === 'true'))) throw new Error(data.message || 'send failed');
+                if (!(res.ok && data.success === true)) throw new Error('sheet write failed');
                 try { localStorage.setItem('bff_waitlist', email); } catch (err) { }
                 done();
             } catch (err) {
