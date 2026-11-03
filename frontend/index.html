@@ -178,7 +178,7 @@
             <div class="sheet">
                 <form id="quick" autocomplete="off">
                     <div class="sheet-head">
-                        <strong>In today's money</strong>
+                        <strong>In today's money <span>· we grow it with inflation to the year you stop</span></strong>
                         <div class="cur" role="group" aria-label="Currency">
                             <button type="button" data-cur="INR" aria-pressed="true">₹</button>
                             <button type="button" data-cur="USD" aria-pressed="false">$</button>
@@ -188,7 +188,7 @@
                         <div class="field"><label for="q-age">Your age</label><input id="q-age" type="number" inputmode="numeric" min="18" max="80" placeholder="32"></div>
                         <div class="field"><label for="q-stop">Stop working at</label><input id="q-stop" type="number" inputmode="numeric" min="18" max="90" placeholder="42"></div>
                     </div>
-                    <div class="field"><label for="q-spend">What a year of your life costs</label><input id="q-spend" type="text" inputmode="numeric"></div>
+                    <div class="field"><label for="q-spend">What a year of your life costs today</label><input id="q-spend" type="text" inputmode="numeric"></div>
                     <div class="field"><label for="q-pot">Invested today, all accounts</label><input id="q-pot" type="text" inputmode="numeric"></div>
                     <div class="field"><label for="q-save" id="q-save-label">You invest every month</label><input id="q-save" type="text" inputmode="numeric"></div>
                     <p class="assume" id="assume"></p>
@@ -331,7 +331,7 @@
         const filled = id => $(id).value.trim() !== '';
         function missing() {
             // Which of the five fields are still empty. Invested today and monthly investing may be 0, but must be typed.
-            const need = [['q-age', 'your age'], ['q-stop', 'the age you stop working'], ['q-spend', 'what a year costs'], ['q-pot', 'what you have invested'], ['q-save', 'what you invest each month']];
+            const need = [['q-age', 'your age'], ['q-stop', 'the age you stop working'], ['q-spend', 'what a year costs today'], ['q-pot', 'what you have invested'], ['q-save', 'what you invest each month']];
             return need.filter(([id]) => !filled(id)).map(([, what]) => what);
         }
         function read() {
