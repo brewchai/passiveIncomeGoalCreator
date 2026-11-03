@@ -193,7 +193,7 @@
                         <p class="note" id="empty-note">Fill in the five fields. The three numbers and the ages update as you type.</p>
                     </div>
                     <div id="filled" hidden>
-                        <div class="label">Your number, three ways, and the age you reach it</div>
+                        <div class="label">Your number, three ways, and the age you reach it. Each is in the money of the year you stop, so inflation is already inside it.</div>
                         <div class="ledger" id="ledger" style="margin-top:14px"></div>
                         <p class="note" id="atstop" style="margin-top:24px"></p>
                         <p class="note" style="margin-top:14px">Ages assume your mix returns its long-run average every single year. It won't, and the full planner shows how early or late real markets make it.</p>
@@ -335,7 +335,7 @@
             const a0 = ASSUME[cur];
             $('assume').textContent = `Assumes 70% equity at ${a0.equity}%, 30% debt at ${a0.debt}%, ${a0.infl}% inflation, monthly investing growing 5% a year, and that you plan the money to ${PLAN_TO}. All of it is yours to change in the full planner.`;
             const left = missing();
-            const { age, stop, spend } = read();
+            const { age, stop, spend, pot } = read();
             const bad = left.length === 0 && (age < 18 || stop <= age || spend <= 0);
             if (left.length || bad) {
                 $('empty').hidden = false; $('filled').hidden = true;
@@ -348,11 +348,15 @@
             }
             $('empty').hidden = true; $('filled').hidden = false;
             const { rows, potAtStop, spendAtStop, n, a } = compute();
-            $('ledger').innerHTML = rows.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.target)}</span><span class="why">${row.why}</span><span class="age">${row.reached === null ? `after ${MAX_AGE}` : `age <strong>${row.reached}</strong>`}</span>`).join('');
+            // "Reached" at your current age means you already hold it today; say that instead of printing today's age.
+            const when = row => row.reached === null ? `after ${MAX_AGE}` : row.reached <= age ? '<strong>already there</strong>' : `age <strong>${row.reached}</strong>`;
+            $('ledger').innerHTML = rows.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.target)}</span><span class="why">${row.why}</span><span class="age">${when(row)}</span>`).join('');
             const pct = potAtStop > 0 ? (spendAtStop / potAtStop * 100).toFixed(1) : '—';
-            $('atstop').textContent = n === 0
+            const pastAll = rows.every(row => row.reached !== null && row.reached <= age);
+            const today = pastAll ? `You are past all three today: ${money(pot)} invested against ${money(spend)} a year is a ${(spend / pot * 100).toFixed(1)}% withdrawal. ` : '';
+            $('atstop').textContent = today + (n === 0
                 ? `Stopping now: ${money(potAtStop)} invested, spending ${money(spendAtStop)} a year, which is ${pct}% of it.`
-                : `If you stop at ${stop} as planned: about ${money(potAtStop)} invested, and your first year off costs ${money(spendAtStop)}, which is ${pct}% of it.`;
+                : `If you stop at ${stop} as planned: about ${money(potAtStop)} invested, and your first year off costs ${money(spendAtStop)}, which is ${pct}% of it.`);
         }
         function placeholders() {
             // Sample figures sit in the placeholders, never in the fields: the sheet starts empty.
