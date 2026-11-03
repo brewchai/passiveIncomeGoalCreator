@@ -49,6 +49,14 @@
             "destination": "/appearances.html"
         },
         {
+            "source": "/app",
+            "destination": "/app.html"
+        },
+        {
+            "source": "/app/",
+            "destination": "/app.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
@@ -64,11 +72,6 @@
             ],
             "destination": "https://butfirstfire.com/:path*",
             "permanent": true
-        },
-        {
-            "source": "/",
-            "destination": "/blog",
-            "permanent": false
         },
         {
             "source": "/blog/40k-debt-to-1m-at-33",

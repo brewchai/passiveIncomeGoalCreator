@@ -146,6 +146,49 @@ length. This also breaks the monotony of thirteen identical dark rectangles.
 with no honest photograph gets a type card rather than a stock stand-in — six of the
 unlisted posts and `can-a-major-illness-end-lean-fire` use this.
 
+## Home page — decided 2026-10-30: the quick check is the hero
+
+`/` is a landing page whose hero is a working five-input quick check (age, stop age, yearly
+spend, invested today, monthly investing, ₹/$) that recalculates on every keystroke and shows
+the three numbers with the age you reach each, then the odds at the planned spending, then
+one button that opens the full planner with those inputs carried in. Two copy-led drafts
+were rejected first; the product's first screen is the pitch. The quick check sheet is the
+only raised surface on the page. The layout decisions below carry over unchanged.
+
+### Layout decisions (2026-10-27)
+
+Decided for the home page that will replace the `/` → `/blog` redirect. Mock lives in the
+"FIRE Planner — UX Mocks" canvas as `Landing.dc.html`; carry these into the build.
+
+**Reflex dump, banned for this page:** all-caps tracked micro-labels above numbers and
+sections; grids of 1px-bordered white cards (3-up / 6-up, heading + two gray lines); the split
+hero with copy left and a shadowed product card right plus two buttons; a four-claim trust
+strip and a stat row of big numbers over small-caps labels. All four shipped in the first mock
+and all four are in the slop-watch dossier dated 2026-10-02.
+
+**Research it follows:** Julian Shapiro's landing-page guide (header must fully describe what
+you sell, purchase rate = desire − (labour + confusion), navbar → hero → proof → CTA →
+features-with-objections → CTA → footer, 3–6 features each tied back to the hero claim and
+shown as the product in action); Harry Dry's five-part fold (value, how, the real product,
+believable proof, one call-to-value), objections in the customer's own words, founder's note
+last; and what the current planner sites do (ProjectionLab signals depth by naming specific
+mechanisms and scale, Portfolio Charts earns trust with methodology and first-person voice).
+
+| Decision | Value and reason |
+|---|---|
+| Density | moderate; long sentences are the content, so the page reads like a feature, not a dashboard |
+| Separation | **one mechanism: a hairline rule (`--rule` #E8E1D9) at the top of each section**, no cards, no shadows, no tinted bands. The one raised surface is the report sheet in the hero: white on cream, a background shift, because it depicts a document |
+| Layout | editorial two-column grid: a muted sentence-case label (14px) in the left column, content in the right, measure 46rem; the hero is the exception, headline left, the report sheet right, **bleeding past the right margin** (the deliberate oddity: the product arrives like a sheet sliding onto the desk, and nothing else on the site does this) |
+| Type | **Two families on the home page, revised 2026-11-03.** Display: Bricolage Grotesque (variable, optical size 12–96, Google Fonts) for the h1, the tagline and section headings; chosen from a specific real reference, Creative Boom's 2026 State of Creativity survey of typefaces designers are using, where it is the one Google Fonts face with real display character (ink traps, optical sizing) that is not on the slop-watch list (Inter, Space Grotesk, Instrument Serif, Geist). Body and every numeral stay Manrope, the site family, for continuity and tabular figures. The h1 is the animated strike line at 68px/600; the tagline sits at 35px/500. Candidates considered and set aside: Satoshi and General Sans (Fontshare, not Google Fonts), Inclusive Sans, Zalando Sans, Plus Jakarta Sans (too widely used), Fraunces and Lora (serifs; the page is a tool, not an essay). The shipped earlier pass used Manrope alone at display 500. |
+| Accent | `#7A4E00` only: the one button, links, and the "typical future" line and band tint in the chart. The smooth average line is ink, dashed. No semantic red/green anywhere; outcomes are stated in words and numbers |
+| Elevation | none |
+| Motion | none |
+| Radius | 12px on the button and the sheet's one rounded corner, 4px on controls, per the record |
+| Copy rules | no price, no account, no "free", no "sign up"; comprehensiveness is written out in full sentences in the reader's words rather than listed in a grid; every number on the page is one the planner produces for the sample plan |
+
+Objections section answers the four questions readers actually ask (4% rule, "my situation
+isn't simple", where the market data comes from, where the data goes). Founder's note closes.
+
 ## Deferred — not yet decided, do not improvise
 
 Radius, elevation policy, motion policy, density,

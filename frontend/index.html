@@ -2,35 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
-    <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn. Plan. Track. Your complete FIRE journey—simplified.</title>
+    <meta name="google-adsense-account" content="ca-pub-4689015782638460">
+    <title>But First Fire · It starts where others stop. A detailed, thorough, realistic FIRE planner</title>
     <meta name="description"
-        content="Free passive income calculator and goal tracker. Plan your financial independence with dividend investing, rental income, and multiple income streams. Track your path to financial freedom.">
-    <meta name="keywords"
-        content="passive income calculator, financial independence, dividend income tracker, rental income planner, FIRE calculator, financial freedom, retirement planning, investment goal tracker">
-    <!-- SEO: Canonical and Robots -->
+        content="Put in five numbers and get your FIRE number three ways, the age you reach each, and what a plan needs beyond a number: dependents, one-time costs, your portfolio split, guardrails, income on the side and the order your returns arrive in.">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="canonical" href="https://butfirstfire.com/">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="But First Fire - FIRE Calculator & Planner">
+    <meta property="og:title" content="But First Fire · It starts where others stop">
     <meta property="og:description"
-        content="Free FIRE calculator and passive income tracker. Plan your financial independence with dividend investing, rental income, and more.">
+        content="A detailed, thorough, realistic FIRE planner. Five numbers in, your number three ways out, and a plan that holds up instead of a number that looks nice.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://butfirstfire.com/">
     <meta property="og:image" content="https://butfirstfire.com/dashboard-screenshot.png">
 
-    <!-- Twitter Cards -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="But First Fire - FIRE Calculator & Planner">
-    <meta name="twitter:description"
-        content="Free FIRE calculator and passive income tracker. Plan your financial independence with dividend investing, rental income, and more.">
+    <meta name="twitter:title" content="But First Fire · It starts where others stop">
+    <meta name="twitter:description" content="A detailed, thorough, realistic FIRE planner.">
     <meta name="twitter:image" content="https://butfirstfire.com/dashboard-screenshot.png">
 
-    <!-- JSON-LD Organization Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -38,12 +33,10 @@
         "name": "But First Fire",
         "url": "https://butfirstfire.com",
         "logo": "https://butfirstfire.com/favicon.png",
-        "description": "Free FIRE calculator and passive income tracker for financial independence",
-        "sameAs": []
+        "description": "A detailed, thorough, realistic FIRE planner, and the writing behind it, by someone who retired at 33.",
+        "sameAs": ["https://www.youtube.com/watch?v=v3iHRqg2q2I", "https://www.youtube.com/watch?v=HviOWHDAUII", "https://www.youtube.com/watch?v=20Y8cWXqMQg"]
     }
     </script>
-
-    <!-- JSON-LD WebSite Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,1197 +51,296 @@
     }
     </script>
 
-    <link rel="stylesheet" href="styles.css">    <!-- KaTeX for math rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <link rel="stylesheet" href="/blog.css">
+    <!-- Display face for the home page. TODO: self-host the woff2 like Manrope; see DESIGN.md. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&display=swap">
+
+    <style>
+        :root {
+            --display: "Bricolage Grotesque", var(--font-sans, Manrope, system-ui, sans-serif);
+            --rule: #E8E1D9;
+            --t-1: 14px; --t0: 18px; --t1: 22px; --t2: 28px; --t3: 35px; --t4: 44px; --t5: 55px; --t6: 68px;
+        }
+        .home { font-size: var(--t0); line-height: 1.6; font-variant-numeric: tabular-nums; }
+        .home h1, .home h2, .home h3, .home .display { font-family: var(--display); font-optical-sizing: auto; margin: 0; }
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+        .hero { padding: 56px 0 0; display: flex; flex-direction: column; gap: 28px; }
+        .hero-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+        .hero-copy { display: flex; flex-direction: column; gap: 16px; max-width: 40rem; }
+        .hero-copy h1 { font-size: clamp(38px, 5.2vw, var(--t6)); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; }
+        .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+        .sub { font-size: var(--t1); line-height: 1.4; color: var(--text-secondary); margin: 0; }
+        .hero-side { font-size: var(--t0); line-height: 1.5; color: var(--text-secondary); max-width: 28rem; margin: 0; }
+        .strike { position: relative; white-space: nowrap; }
+        .strike::after { content: ""; position: absolute; left: 0; top: 54%; height: 4px; width: 0; background: var(--accent-color); animation: strike .45s ease-out 1s forwards; }
+        .swap { opacity: 0; animation: appear .35s ease-out 1.55s forwards; }
+        @keyframes strike { to { width: 100%; } }
+        @keyframes appear { to { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { .strike::after { animation: none; width: 100%; } .swap { animation: none; opacity: 1; } }
+
+        .sheet { background: var(--card-background); border-radius: var(--radius-surface, 12px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .sheet form { padding: 32px; display: flex; flex-direction: column; gap: 18px; border-right: 1px solid var(--rule); margin: 0; }
+        .sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .sheet-head strong { font-size: var(--t0); font-weight: 600; }
+        .sheet-head strong span { font-weight: 400; color: var(--text-muted); font-size: var(--t-1); }
+        .cur { display: flex; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); overflow: hidden; }
+        .cur button { border: 0; padding: 6px 12px; font-weight: 600; font-size: var(--t-1); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; }
+        .cur button[aria-pressed="true"] { background: var(--accent-color); color: #fff; }
+        .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field label { font-size: var(--t-1); color: var(--text-secondary); }
+        .field input { height: 48px; box-sizing: border-box; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); padding: 0 14px; font-size: var(--t1); font-weight: 500; color: var(--text-primary); font-family: inherit; background: #fff; width: 100%; }
+        .field input:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 122, 78, 0), 0.1); }
+        .assume { margin: 4px 0 0; font-size: var(--t-1); color: var(--text-muted); line-height: 1.5; }
+        .results { padding: 32px; display: flex; flex-direction: column; gap: 24px; }
+        .label { font-size: var(--t-1); color: var(--text-muted); }
+        .ledger { display: grid; grid-template-columns: auto 1fr auto; gap: 10px 18px; align-items: baseline; }
+        .ledger .n { font-size: var(--t2); font-weight: 500; line-height: 1.25; }
+        .ledger .why { color: var(--text-secondary); }
+        .ledger .age { text-align: right; }
+        .ledger hr { grid-column: 1 / -1; border: 0; border-top: 1px solid var(--rule); margin: 0; }
+        .note { margin: 0; font-size: var(--t-1); color: var(--text-secondary); line-height: 1.5; }
+        .deeper { border-top: 1px solid var(--rule); padding-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+        .deeper .display { font-size: var(--t2); font-weight: 500; line-height: 1.2; }
+        .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+        .tiles div { padding: 12px 14px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: var(--t-1); }
+        .tiles strong { font-weight: 600; display: block; }
+        .tiles span { color: var(--text-secondary); }
+        .tiles .wide { grid-column: 1 / -1; }
+        .soon { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-top: auto; }
+        .soon .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: var(--radius-surface, 12px); background: var(--accent-color); color: #fff; font-weight: 600; font-size: var(--t0); opacity: .55; cursor: default; }
+        .soon .btn em { font-style: normal; font-weight: 400; margin-left: 10px; font-size: var(--t-1); }
+        .section { padding: 72px 0 0; }
+        .section-grid { border-top: 1px solid var(--rule); padding-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 56px; }
+        .section-grid > .label { max-width: 22rem; line-height: 1.5; }
+        .section-grid > .body { grid-column: span 2; display: flex; flex-direction: column; gap: 20px; max-width: 46rem; }
+        .section h2 { font-size: var(--t3); font-weight: 500; line-height: 1.15; }
+        .section p { margin: 0; color: var(--text-secondary); }
+        details { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+        .faqs { border-top: 1px solid var(--rule); gap: 0 !important; }
+        summary { cursor: pointer; font-size: var(--t1); font-weight: 600; line-height: 1.25; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-family: var(--display); font-optical-sizing: auto; }
+        summary::-webkit-details-marker { display: none; }
+        summary .plus { color: var(--accent-color); font-weight: 400; transition: transform .15s ease; }
+        details[open] summary .plus { transform: rotate(45deg); }
+        details p { margin: 12px 0 0; }
+        .list a { text-decoration: none; color: var(--text-primary); padding: 16px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 24px; align-items: baseline; }
+        .list a:last-child { border-bottom: 1px solid var(--rule); }
+        .list a span:first-child { font-size: var(--t1); font-weight: 600; line-height: 1.25; font-family: var(--display); }
+        .list a span:last-child { font-size: var(--t-1); color: var(--text-muted); white-space: nowrap; }
+        .links { font-size: var(--t-1); }
+        .home .blog-footer { margin-top: 72px; }
+        @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } }
+    </style>
 </head>
 
-<body class="app-loading">
-    <!-- ADD THIS SNIPPET -->
-    <div id="app-loader"
-        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--card-background); z-index: 9999; display: flex; justify-content: center; align-items: center;">
-        <div style="font-size: 1.2rem; color: var(--text-secondary);">Loading your dashboard...</div>
-    </div>
-    <!-- END SNIPPET -->
-    <div class="container">
-        <!-- Step 0: Landing Page -->
-        <div class="step active" id="step0">
-            <div class="landing-page">
-                <div class="landing-hero">
-                    <h1 class="landing-title">World's <span class="gradient-text">smartest</span> FIRE planner</h1>
-                    <p class="landing-subtitle">The most <strong>actionable financial dashboard
-                            available. </strong> We provide the guidance and clarity you need to move from tracking your
-                        money to mastering your financial freedom.
-                    </p>
-
-                    <div class="landing-features">
-                        <div class="feature-pill">
-                            <span>Expense Tracker</span>
-                        </div>
-                        <div class="feature-pill">
-                            <span>Goal Creator</span>
-                        </div>
-                        <div class="feature-pill">
-                            <span>Net Worth Projector</span>
-                        </div>
-                        <div class="feature-pill">
-                            <span>Retirement Planner</span>
-                        </div>
-                    </div>
-
-                    <button class="btn-cta" onclick="startBuilder()">
-                        Launch FIRE Date Projector
-                        <span class="cta-arrow">→</span>
-                    </button>
-
-                    <p class="landing-note">Zero Distractions • Hit Your Milestones • Actionable Insights</p>
-
-                    <a href="/appearances" style="display: flex; align-items: center; gap: 1rem; max-width: 520px; margin: 22px auto 0; padding: 0.85rem 1.25rem; background: var(--card-background); border: 1px solid var(--border-color); border-radius: 14px; text-decoration: none; text-align: left; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#7A4E00'" onmouseout="this.style.borderColor='var(--border-color)'">
-                        <span style="display: block; width: 120px; aspect-ratio: 16/9; border-radius: 9px; overflow: hidden; flex-shrink: 0; background: #ddd;">
-                            <img src="https://i.ytimg.com/vi/v3iHRqg2q2I/hqdefault.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                        </span>
-                        <span style="display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0;">
-                            <span style="font-size: 12px; color: var(--text-secondary); font-weight: 600; letter-spacing: 0.04em;">AS SEEN ON &middot; THE FIRED COUPLE</span>
-                            <span style="font-size: 1rem; color: var(--text-primary); font-weight: 600; line-height: 1.3;">NRI Retires at 33: The Exact FIRE Strategy That Works</span>
-                            <span style="font-size: 13px; color: var(--accent-color); font-weight: 600;">See appearances &rarr;</span>
-                        </span>
-                    </a>
-
-                    <p style="margin-top: 20px; font-size: 15px; color: var(--text-secondary);">
-                        Want to learn about F.I.R.E?
-                        <a href="https://butfirstfire.com/blog"
-                            style="color: var(--accent-color); text-decoration: none; font-weight: 600; transition: color 0.2s;"
-                            onmouseover="this.style.color='#5E3C00'" onmouseout="this.style.color='#7A4E00'">Check out
-                            our blog →</a>
-                    </p>
-
-                    <p style="margin-top: 12px; font-size: 15px; color: var(--text-secondary);">
-                        Curious where your current portfolio could already fund your life?
-                        <a href="/tools/geo-arbitrage/"
-                            style="color: var(--accent-color); text-decoration: none; font-weight: 600; transition: color 0.2s;"
-                            onmouseover="this.style.color='#5E3C00'" onmouseout="this.style.color='#7A4E00'">Try the Geo-Arbitrage Portal →</a>
-                    </p>
-
-                    <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">
-                        Already have an account?
-                        <a href="#" onclick="event.preventDefault(); submitSignupModal();"
-                            style="color: var(--accent-color); text-decoration: none; font-weight: 500; transition: color 0.2s;"
-                            onmouseover="this.style.color='#5E3C00'" onmouseout="this.style.color='#7A4E00'">Sign in</a>
-                    </p>
-
-                    <div class="scroll-indicator">
-                        <span class="scroll-text">Or scroll to see how it works</span>
-                        <span class="scroll-arrow">↓</span>
-                    </div>
-                </div>
-
-                <div class="landing-how-it-works">
-                    <h2>How It Works</h2>
-                    <div class="steps-preview">
-                        <div class="step-preview-card">
-                            <div class="step-number">1</div>
-                            <h4>Add Income Sources</h4>
-                            <p>Enter your dividend stocks, rental properties, and other passive income streams</p>
-                        </div>
-                        <div class="step-preview-card">
-                            <div class="step-number">2</div>
-                            <h4>List Your Expenses</h4>
-                            <p>Add monthly expenses—we'll automatically create goals from them</p>
-                        </div>
-                        <div class="step-preview-card">
-                            <div class="step-number">3</div>
-                            <h4>Track Your FIRE Journey</h4>
-                            <p>Monitor your progress toward financial independence and get AI-powered tips to retire
-                                earlier</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dashboard Preview Section -->
-                <div class="landing-dashboard-preview">
-                    <h2>See Your Financial Future at a Glance</h2>
-                    <p class="preview-subtitle">Track everything that matters in one beautiful dashboard</p>
-                    <div class="dashboard-screenshot-container">
-                        <img src="dashboard-screenshot.png"
-                            alt="FIRE Dashboard showing monthly income, expenses, savings rate, FIRE number, and projected retirement year with AI-powered optimization tips"
-                            class="dashboard-screenshot">
-                    </div>
-                </div>
-
-                <div class="landing-benefits">
-                    <div class="benefit-card">
-                        <h3>Track Your FIRE Number</h3>
-                        <p>See your personalized FIRE number based on the 4% rule. Know exactly how much you need to
-                            achieve financial independence and track your progress in real-time.</p>
-                    </div>
-
-                    <div class="benefit-card">
-                        <h3>See When You Can Retire</h3>
-                        <p>Calculate your retirement timeline based on real numbers—not guesswork. Watch it improve as
-                            you optimize your finances.</p>
-                    </div>
-
-                    <div class="benefit-card">
-                        <h3>AI-Powered Optimization</h3>
-                        <p>Receive personalized recommendations to boost income and cut expenses. Get specific,
-                            actionable tips based on your real financial data—not generic advice.</p>
-                    </div>
-                </div>
-
-                <div class="landing-cta-section">
-                    <h2>Start Your Financial Independence Journey Today</h2>
-                    <p>Join thousands planning their path to financial freedom through smart tracking</p>
-                    <button class="btn-cta btn-cta-pulse" onclick="startBuilder()">
-                        Launch FIRE Date Projector
-                        <span class="cta-arrow">→</span>
-                    </button>
-
-                    <div class="blog-cta-card">
-                        <div class="blog-cta-content">
-                            <p>You can also explore our blog for actionable guides on early retirement, calculating your
-                                FIRE number,
-                                and building passive income streams.</p>
-                            <a href="https://butfirstfire.com/blog" class="blog-cta-link">
-                                Read the Blog <span class="cta-arrow">→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="landing-keywords">
-                    <p class="keywords-text">
-                        <strong>Perfect for:</strong> Financial Independence Retire Early (FIRE), Dividend Growth
-                        Investing, Rental Property Income Planning, Retirement Income Strategy, Multiple Income Streams,
-                        Wealth Building, Investment Portfolio Tracking, Financial Freedom Planning
-                    </p>
-                </div>
-                <footer class="blog-footer">
-                    <div class="footer-container">
-                        <p>&copy; 2026 But First Fire. All rights reserved.</p>
-                        <p class="footer-tagline">Empowering your journey to financial independence</p>
-                        <p class="footer-links" style="margin-top: 0.75rem;">
-                            <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
-                            <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy
-                                Policy</a>
-                            <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of
-                                Service</a>
-                            <a href="/contact"
-                                style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
-                        </p>
-                    </div>
-                </footer>
+<body class="home">
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/appearances" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Appearances</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
             </div>
         </div>
+    </header>
 
-        <!-- Progress Indicator (shown from step 1-7) -->
-        <div class="progress-indicator" id="progressIndicator" style="display: none;">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+    <main>
+        <section class="wrap hero">
+            <div class="hero-top">
+                <div class="hero-copy">
+                    <h1>A better version of the FIRE <span class="strike">calculator</span> <span class="swap">tool</span> you've used.</h1>
+                    <p class="tagline display">It starts where others stop.</p>
+                    <p class="sub">A detailed, thorough, realistic FIRE planner.</p>
+                </div>
+                <p class="hero-side">Step 1 is right here. Five numbers, and you get your number three ways and the age you reach each one.</p>
             </div>
-            <div class="progress-text" id="progressText">Step 1 of 8</div>
+
+            <div class="sheet">
+                <form id="quick" autocomplete="off">
+                    <div class="sheet-head">
+                        <strong>Step 1 of 6 · Your five numbers <span>· in today's money</span></strong>
+                        <div class="cur" role="group" aria-label="Currency">
+                            <button type="button" data-cur="INR" aria-pressed="true">₹</button>
+                            <button type="button" data-cur="USD" aria-pressed="false">$</button>
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="field"><label for="q-age">Your age</label><input id="q-age" type="number" inputmode="numeric" min="18" max="80" value="32"></div>
+                        <div class="field"><label for="q-stop">Stop working at</label><input id="q-stop" type="number" inputmode="numeric" min="18" max="90" value="42"></div>
+                    </div>
+                    <div class="field"><label for="q-spend">What a year of your life costs</label><input id="q-spend" type="text" inputmode="numeric" value="13,80,000"></div>
+                    <div class="field"><label for="q-pot">Invested today, all accounts</label><input id="q-pot" type="text" inputmode="numeric" value="1,60,00,000"></div>
+                    <div class="field"><label for="q-save">You invest every month</label><input id="q-save" type="text" inputmode="numeric" value="1,20,000"></div>
+                    <p class="assume" id="assume"></p>
+                </form>
+
+                <div class="results">
+                    <div style="display:flex;flex-direction:column;gap:14px">
+                        <div class="label">Your number, three ways, and the age you reach it</div>
+                        <div class="ledger" id="ledger"></div>
+                        <p class="note" id="atstop"></p>
+                        <p class="note">Ages assume your mix returns its long-run average every single year. It won't, and the full planner shows how early or late real markets make it.</p>
+                    </div>
+
+                    <div class="deeper">
+                        <div class="display">Reaching a number doesn't guarantee success.</div>
+                        <p class="note">Let's dig deeper.</p>
+                        <div class="tiles">
+                            <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
+                            <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
+                            <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
+                            <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
+                            <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
+                            <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
+                            <div class="wide"><strong>Thousands of simulations</strong><span>on real market years, with a report of what breaks the plan and what to fix</span></div>
+                        </div>
+                        <p style="margin:0;font-size:var(--t0);line-height:1.5;color:var(--text-primary)">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
+                    </div>
+
+                    <div class="soon">
+                        <span class="btn" aria-disabled="true">Steps 2 to 6 <em>coming soon</em></span>
+                        <span class="note">The full planner is being built. The blog and the tools are live.</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin:0;color:var(--text-secondary)">Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
+        </section>
+
+        <section class="wrap section">
+            <div class="section-grid">
+                <div class="label">Why odds, and not one number</div>
+                <div class="body">
+                    <h2>Every calculator you've used hands you one number from a smooth average. Nobody retires into an average.</h2>
+                    <p>I ran a ₹10 crore retirement at a 3% withdrawal through the engine behind this planner. On an exact 11% every year it grows to ₹286 crore and gets called safe. Across 1,500 futures built from real Nifty years, with 6% inflation, only 43 in 100 last 40 years and the typical one runs out. Same inputs. The gap between those two results is the entire reason this page exists, and the thing every step of the planner is built to close.</p>
+                    <p class="links"><a href="/blog/sequence-risk-10-crore">Read the ₹10 crore experiment, every figure reproducible in the sequence risk tool</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap section">
+            <div class="section-grid">
+                <div class="label">Things people ask before they trust it</div>
+                <div class="body faqs">
+                    <details><summary><span>"Isn't this the 4% rule with extra steps?"</span><span class="plus">+</span></summary><p>The 4% rule was built on 30 year retirements and one country's past returns. Stop in your early 40s and you're asking your market, after your inflation, to carry 45 or 50 years. The planner doesn't assume a rule; it tests your spending against real sequences of returns and tells you how often it holds.</p></details>
+                    <details><summary><span>"My situation isn't simple."</span><span class="plus">+</span></summary><p>Good, nobody's is. A child who leaves home at 22, parents who may need help later, a property that starts paying rent at 45, part time work that might dry up early, money in two currencies. Every one of those is an input with a start and an end, and the report tells you which of them the plan depends on most.</p></details>
+                    <details><summary><span>"Where do the market numbers come from?"</span><span class="plus">+</span></summary><p>Real calendar years for the market you choose, drawn in multi-year blocks so crashes and their recoveries stay together, then centred on the return you set. It can only recombine years that have already happened, so it cannot see a crash deeper than anything on record, and it says so on the report.</p></details>
+                    <details><summary><span>"Where does my data go?"</span><span class="plus">+</span></summary><p>It stays in your browser. The link to your plan carries your inputs, which is how you come back to it or send it to someone, and the PDF is generated on your machine.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrap section">
+            <div class="section-grid">
+                <div class="label">The writing behind it</div>
+                <div class="body">
+                    <h2>26 articles, each one a question I had to answer for myself first.</h2>
+                    <div class="list">
+                        <a href="/blog/sequence-risk-10-crore"><span>Will your ₹10 crore survive an AI crash?</span><span>12 min</span></a>
+                        <a href="/blog/when-to-buy-individual-stocks"><span>When you should actually buy individual stocks</span><span>9 min</span></a>
+                        <a href="/blog/is-lean-fire-right-for-you"><span>Is lean FIRE right for you?</span><span>10 min</span></a>
+                        <a href="/blog/fire-in-india-how-many-crores"><span>How many crores do you actually need to FIRE in India?</span><span>11 min</span></a>
+                    </div>
+                    <p class="links"><a href="/blog">All articles</a> · <a href="/tools/sequence-risk/">Sequence risk calculator</a> · <a href="/tools/fire-number/">FIRE number</a> · <a href="/tools/geo-arbitrage/">Geo-arbitrage</a></p>
+                    <p style="margin-top:12px;color:var(--text-secondary)">Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 20 minutes with Ninad</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+            <p class="footer-links" style="margin-top: 0.75rem;">
+                <a href="/about" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">About</a>
+                <a href="/appearances" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Appearances</a>
+                <a href="/privacy" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Privacy Policy</a>
+                <a href="/terms" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Terms of Service</a>
+                <a href="/contact" style="color: var(--text-muted); text-decoration: none; margin: 0 0.75rem;">Contact</a>
+            </p>
+            <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); max-width: 80ch; margin-left: auto; margin-right: auto;">General information, not financial advice. The planner resamples real market years and cannot see a crash deeper than anything on record. Your decisions stay yours.</p>
         </div>
+    </footer>
 
-        <!-- Step 1: Personal and Family Data -->
-        <div class="step" id="step1">
-            <div class="step-content">
-                <h1>Tell Us About Yourself</h1>
-                <p class="subtitle">Help us personalize your financial independence journey</p>
-
-                <div class="form-group">
-                    <label for="careerField">What's your career field?</label>
-                    <input type="text" id="careerField" class="input-field"
-                        placeholder="e.g., Software Engineer, Teacher, Business Owner" />
-                </div>
-
-                <div class="form-group">
-                    <label for="cityLocation">Which city do you live in?</label>
-                    <input type="text" id="cityLocation" class="input-field"
-                        placeholder="e.g., San Francisco, New York, Austin" />
-                </div>
-
-                <div class="form-group">
-                    <label for="relationshipStatus">Relationship Status</label>
-                    <select id="relationshipStatus" class="input-field">
-                        <option value="">Select...</option>
-                        <option value="single">Single</option>
-                        <option value="married">Married</option>
-                        <option value="partnered">Partnered</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="numberOfKids">Number of Kids</label>
-                    <input type="number" id="numberOfKids" class="input-field" placeholder="0" min="0" max="20"
-                        value="0" />
-                </div>
-
-                <div class="form-group">
-                    <label for="annualIncome">Total Annual Income from Employment</label>
-                    <input type="number" id="annualIncome" class="input-field" placeholder="150000" min="0"
-                        step="1000" />
-                </div>
-
-                <button class="btn-primary" onclick="saveStep1Data()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Step 2: Real Estate & Housing -->
-        <div class="step" id="step2">
-            <div class="step-content">
-                <h1>Real Estate & Housing</h1>
-                <p class="subtitle">Track your properties and their financial details</p>
-
-                <div class="house-section">
-                    <div class="house-form-card">
-                        <h3>Add a Property</h3>
-
-                        <div class="form-group">
-                            <label for="houseType">Property Type</label>
-                            <select id="houseType" class="input-field">
-                                <option value="">Select type...</option>
-                                <option value="primary">Primary Residence</option>
-                                <option value="rental">Rental Property</option>
-                                <option value="vacation">Vacation Home</option>
-                                <option value="investment">Investment Property</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="houseName">Property Name/Address</label>
-                            <input type="text" id="houseName" class="input-field"
-                                placeholder="e.g., Main Street House, Downtown Condo" />
-                        </div>
-
-                        <div class="form-group">
-                            <label>Is this property paid off?</label>
-                            <div class="radio-group">
-                                <label class="radio-option">
-                                    <input type="radio" name="paidOffStatus" value="yes" checked />
-                                    <span>Yes, paid off</span>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="paidOffStatus" value="no" />
-                                    <span>No, has mortgage</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group" id="paidOffGroup">
-                            <label for="houseEstimate">Estimated Property Value</label>
-                            <input type="number" id="houseEstimate" class="input-field" placeholder="500000" min="0"
-                                step="10000" />
-                            <p class="field-hint">Don't know the value? Ask our AI Assistant for an estimate based on
-                                your location and property type.</p>
-                        </div>
-
-                        <div class="form-group" id="mortgageGroup" style="display: none;">
-                            <label for="homeEquity">Current Home Equity</label>
-                            <input type="number" id="homeEquity" class="input-field" placeholder="200000" min="0"
-                                step="10000" />
-                            <p class="field-hint">Your current ownership stake in the property (property value -
-                                remaining loan balance)</p>
-                        </div>
-
-                        <div class="form-group" id="mortgagePaymentGroup" style="display: none;">
-                            <label for="mortgagePayment">Monthly Mortgage Payment</label>
-                            <input type="number" id="mortgagePayment" class="input-field" placeholder="2500" min="0"
-                                step="100" />
-                        </div>
-
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="generatesRental" />
-                                <span>This property generates rental income</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group" id="rentalIncomeGroup" style="display: none;">
-                            <label for="monthlyRentalIncome">Monthly Rental Income</label>
-                            <input type="number" id="monthlyRentalIncome" class="input-field" placeholder="3000" min="0"
-                                step="100" />
-                        </div>
-
-                        <button class="btn-secondary" onclick="addHouse()">+ Add Property</button>
-                    </div>
-
-                    <div id="houseList" class="house-list"></div>
-
-                    <div id="houseSummary" class="summary-box" style="display: none;">
-                        <div class="summary-row">
-                            <span>Total Properties:</span>
-                            <span class="summary-value" id="totalHousesCount">0</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Total Property Value:</span>
-                            <span class="summary-value" id="totalPropertyValue">$0</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Total Monthly Rental Income:</span>
-                            <span class="summary-value income-highlight" id="totalRentalIncome">$0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 3: Investment Portfolio -->
-        <div class="step" id="step3">
-            <div class="step-content">
-                <h1>Investment Portfolio</h1>
-                <p class="subtitle">Add your investments to get a full picture of your portfolio.</p>
-
-                <div class="portfolio-section">
-                    <!-- Image Upload Section -->
-                    <div class="upload-section"
-                        style="margin-top: 0; padding: 20px; border: 2px dashed #cbd5e1; border-radius: 12px; text-align: center; background: linear-gradient(0deg, rgba(var(--accent-rgb, 122, 78, 0), 0.02), rgba(var(--accent-rgb, 122, 78, 0), 0.02)), #fff;">
-                        <div style="font-size: 32px; margin-bottom: 8px;"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-image"/></svg></div>
-                        <h3 style="margin: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #1f2937;">Upload
-                            Brokerage Screenshots</h3>
-                        <p style="color: var(--text-secondary); margin: 0 0 16px 0; font-size: 14px;">Automatically extract your
-                            portfolio from broker statements</p>
-
-                        <button type="button"
-                            onclick="alert('Coming soon! We\'re building AI-powered portfolio extraction from screenshots. Please input manual portfolio values for now.')"
-                            class="btn-secondary" style="padding: 10px 24px; font-size: 14px;">
-                            <svg class="icon" aria-hidden="true"><use href="/icons.svg#i-upload-simple"/></svg> Upload Images
-                        </button>
-
-                        <p style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">
-                            Supported: Robinhood, Fidelity, Schwab, E*TRADE, and more
-                        </p>
-                    </div>
-
-                    <div class="input-group" style="margin-top: 24px;">
-                        <label>Total Portfolio Value:</label>
-                        <input type="number" id="portfolioValue" placeholder="Total invested amount ($)"
-                            class="input-field" min="0" step="1000" oninput="updateDividendIncome()">
-                        <p class="input-hint">Enter the total current value of your dividend-paying investments</p>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Add your investments:</label>
-                        <div class="ticker-input-row">
-                            <input type="text" id="tickerSymbol" placeholder="Ticker Symbol (e.g., AAPL)"
-                                class="input-field">
-                            <input type="number" id="tickerPercent" placeholder="% of Portfolio" class="input-field"
-                                min="0" max="100" step="0.1">
-                            <button class="btn-secondary" onclick="addTicker()">Add</button>
-                        </div>
-                        <p class="input-hint" style="margin-top: 8px; color: var(--muted, var(--text-muted, #6E6159));">
-                            Note: We currently support a limited set of ticker symbols. Full coverage coming soon.
-                        </p>
-                    </div>
-
-                    <div id="tickerList" class="ticker-list"></div>
-
-                    <div id="blendedYield" class="blended-yield-box" style="display: none;">
-                        <h3>Your Portfolio Summary</h3>
-                        <div class="yield-display">
-                            <div class="yield-stat">
-                                <span class="yield-label">Blended Yield</span>
-                                <span class="yield-value" id="yieldValue">0.00%</span>
-                            </div>
-                            <div class="yield-stat">
-                                <span class="yield-label">Monthly Dividend Income</span>
-                                <span class="yield-value income-highlight" id="monthlyDividendIncome">$0.00</span>
-                            </div>
-                        </div>
-                        <p class="yield-explanation">Based on your portfolio value and blended yield</p>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 4: Retirement Accounts -->
-        <div class="step" id="step4">
-            <div class="step-content">
-                <h1>Retirement Accounts</h1>
-                <p class="subtitle">Track your 401(k), IRA, Roth IRA, and other retirement savings</p>
-
-                <div class="retirement-input-section">
-                    <div class="input-row">
-                        <select id="retirementAccountType" class="input-field">
-                            <option value="">Select account type...</option>
-                            <option value="401k">401(k)</option>
-                            <option value="roth-ira">Roth IRA</option>
-                            <option value="traditional-ira">Traditional IRA</option>
-                            <option value="403b">403(b)</option>
-                            <option value="sep-ira">SEP IRA</option>
-                            <option value="simple-ira">SIMPLE IRA</option>
-                            <option value="pension">Pension</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <input type="number" id="retirementAccountBalance" class="input-field"
-                            placeholder="Current balance" min="0" step="1000">
-                        <button class="btn-secondary" onclick="addRetirementAccount()">Add</button>
-                    </div>
-                </div>
-
-                <div id="retirementList" class="list-container"></div>
-
-                <div id="totalRetirement" class="total-box" style="display: none;">
-                    <span>Total Retirement Savings:</span>
-                    <span class="total-value" id="totalRetirementValue">$0.00</span>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 5: Cash in Savings -->
-        <div class="step" id="step5">
-            <div class="step-content">
-                <h1>Cash & Savings Accounts</h1>
-                <p class="subtitle">Track your liquid savings and the interest rates they earn</p>
-
-                <div class="savings-section">
-                    <div class="input-group">
-                        <label>Add savings accounts:</label>
-                        <input type="text" id="savingsName" placeholder="Account Name (e.g., Emergency Fund)"
-                            class="input-field" style="margin-bottom: 12px;">
-                        <div class="savings-input-row" style="display: flex; gap: 12px; align-items: center;">
-                            <input type="number" id="savingsAmount" placeholder="Balance ($)" class="input-field"
-                                min="0" step="0.01" style="flex: 1;">
-                            <input type="number" id="savingsInterestRate" placeholder="Annual Interest Rate (%)"
-                                class="input-field" min="0" max="100" step="0.01" style="flex: 1;">
-                            <button class="btn-secondary" onclick="addSavings()">Add</button>
-                        </div>
-                    </div>
-
-                    <div id="savingsList" class="savings-list"></div>
-
-                    <div id="totalSavings" class="total-box" style="display: none;">
-                        <div class="savings-summary-row">
-                            <span>Total Savings Balance:</span>
-                            <span class="total-value" id="totalSavingsBalance">$0.00</span>
-                        </div>
-                        <div class="savings-summary-row">
-                            <span>Monthly Interest Income:</span>
-                            <span class="total-value income-highlight" id="monthlySavingsInterest">$0.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 6: Monthly Expenses -->
-        <div class="step" id="step6">
-            <div class="step-content">
-                <h1>Monthly Expenses</h1>
-                <p class="subtitle">List all your essential monthly expenses, feel free to exclude mortgage</p>
-
-                <div class="expenses-section">
-                    <div class="input-group">
-                        <label>Add your expenses:</label>
-                        <div class="expense-input-row">
-                            <input type="text" id="expenseName" placeholder="Expense Name (e.g., Rent)"
-                                class="input-field">
-                            <input type="number" id="expenseAmount" placeholder="Monthly Amount ($)" class="input-field"
-                                min="0" step="0.01">
-                            <button class="btn-secondary" onclick="addExpense()">Add</button>
-                        </div>
-                    </div>
-
-                    <div id="expenseList" class="expense-list"></div>
-
-                    <div id="totalExpenses" class="total-box" style="display: none;">
-                        <span>Total Monthly Expenses:</span>
-                        <span class="total-value" id="totalExpensesValue">$0.00</span>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
-                    <button class="btn-primary" onclick="nextStep()">Next →</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 7: Calculating Goals -->
-        <div class="step" id="step7">
-            <div class="step-content">
-                <div class="calculating-container">
-                    <div class="spinner" id="calcSpinner"></div>
-                    <h1 id="calcHeader">Setting Up your Financial Independence numbers</h1>
-                    <p class="calculating-text">Analyzing your income streams and expenses...</p>
-                    <div class="calculating-steps">
-                        <div class="calc-step" id="calcStep1" style="display:none;">✓ Calculating portfolio passive
-                            income
-                        </div>
-                        <div class="calc-step" id="calcStep2" style="display:none;">✓ Calculating total annual income
-                        </div>
-                        <div class="calc-step" id="calcStep3" style="display:none;">✓ Calculating total monthly expenses
-                        </div>
-                        <div class="calc-step" id="calcStep4" style="display:none;">✓ Calculating FIRE number</div>
-                        <div class="calc-step" id="calcStep5" style="display:none;">✓ Calculating Financial independence
-                            year</div>
-                    </div>
-
-                    <!-- Waitlist signup banner -->
-                    <div class="info-banner" id="signupBanner"
-                        style="display:none; margin-top:12px; padding:12px; border:1px solid rgba(0,0,0,0.08); border-radius:10px; background: linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)), #fff;">
-                        <div
-                            style="font-size:15px; color:#1f2937; text-align:center; margin-bottom:10px; font-weight:500; line-height:1.4;">
-                            We're building something special. Join the waitlist for early access to premium features and
-                            exclusive content.
-                        </div>
-                        <div
-                            style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:center;">
-                            <input type="email" id="waitlistEmail" placeholder="your@email.com"
-                                style="flex:1; min-width:250px; font-size:15px; padding:12px 16px; border-radius:12px; border:1px solid rgba(0,0,0,0.12); background: var(--card-background);">
-                            <button type="button" onclick="submitWaitlist()" class="btn-primary"
-                                style="padding:12px 32px; font-size:15px; font-weight:600; border-radius:12px; border:none; background:var(--accent-fill, #7A4E00); color:#ffffff; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 1px 2px rgba(28, 23, 20, 0.18);">
-                                Join Waitlist
-                            </button>
-                            <button type="button" onclick="dismissStep6Banner()" class="btn-secondary"
-                                style="padding:12px 24px; font-size:15px; font-weight:500; border-radius:12px; border:1px solid rgba(0,0,0,0.12); background: var(--card-background); color: var(--text-secondary); cursor:pointer; transition:all 0.2s;">
-                                Skip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 8: Dashboard -->
-        <div class="step" id="step8">
-            <div class="dashboard">
-                <!-- Top Section: Income & Expense Summary -->
-                <div class="dashboard-summary">
-                    <div class="dashboard-header">
-                        <h1 class="dashboard-title">Your Financial Dashboard</h1>
-                    </div>
-                    <div class="summary-section">
-                        <div class="summary-grid">
-                            <div class="summary-item clickable" onclick="openIncomeModal()">
-                                <span class="summary-label">Total Monthly Income</span>
-                                <span class="summary-amount income" id="dashTotalIncome">$0</span>
-                                <div class="summary-breakdown" id="incomeBreakdown"></div>
-                            </div>
-                            <div class="summary-item clickable" onclick="openExpenseModal()">
-                                <span class="summary-label">Total Monthly Expenses</span>
-                                <span class="summary-amount expense" id="dashTotalExpenses">$0</span>
-                                <div class="summary-breakdown" id="expenseBreakdown"></div>
-                            </div>
-                            <div class="summary-item highlight">
-                                <span class="summary-label">Savings Rate</span>
-                                <span class="summary-amount" id="dashGoalsAchieved">0%</span>
-                            </div>
-                            <div class="summary-item highlight clickable" onclick="openFireModal()">
-                                <span class="summary-label">FIRE Number</span>
-                                <span class="summary-amount" id="dashFIPercentage">$0</span>
-                                <div class="summary-breakdown">4% withdrawal rule</div>
-                            </div>
-                            <div class="summary-item highlight clickable" onclick="openFIYearModal()">
-                                <span class="summary-label">Projected FI Year</span>
-                                <span class="summary-amount" id="dashProjectedFIYear">Never</span>
-                                <div class="summary-breakdown">at 5% annual return</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Middle Section: Next Goal Highlight (HIDDEN - kept for backward compatibility) -->
-                <div class="next-goal-compact" id="nextGoalCompact" style="display: none;">
-                    <div class="next-goal-info">
-                        <span class="next-goal-label">NEXT MILESTONE</span>
-                        <h3 id="nextGoalTitleCompact">Loading...</h3>
-                        <div class="next-goal-stats">
-                            <div class="stat-item">
-                                <span class="stat-label">Target</span>
-                                <span class="stat-value" id="nextGoalTargetCompact">$0</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Net Worth</span>
-                                <span class="stat-value highlight" id="nextGoalCurrentPortfolio">$0</span>
-                            </div>
-                            <!-- <div class="stat-item">
-                                <span class="stat-label">Portfolio Needed</span>
-                                <span class="stat-value" id="nextGoalPortfolioNeeded">$0</span>
-                            </div> -->
-                            <div class="stat-item">
-                                <span class="stat-label">Additional Investment</span>
-                                <span class="stat-value accent" id="nextGoalAdditionalInvestment">$0</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="next-goal-progress-compact">
-                        <div class="progress-circle" id="progressCircle">
-                            <span class="progress-percentage" id="progressPercentage">0%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Section: All Goals Grid (HIDDEN - kept for backward compatibility) -->
-                <div class="goals-section-compact" style="display: none;">
-                    <h3 class="section-subtitle">All Milestones</h3>
-                    <div class="goals-grid-compact" id="goalsGridCompact">
-                        <!-- Goals will be dynamically inserted here -->
-                    </div>
-                </div>
-
-                <!-- New Optimization Sections -->
-                <div class="optimization-sections">
-                    <div class="optimization-card">
-                        <h3 class="optimization-title">Optimize Your Income</h3>
-                        <div class="optimization-content">
-                            <div class="chart-container">
-                                <canvas id="dashboardIncomeChart"></canvas>
-                            </div>
-                            <div class="ai-tip-section">
-                                <div class="ai-tip-text-wrapper">
-                                    <p class="ai-tip-text" id="incomeTipText">Loading tip...</p>
-                                </div>
-                                <div class="ai-tip-actions">
-                                    <button class="btn-tip-refresh" id="refreshIncomeTipBtn" aria-label="Refresh tip"
-                                        title="Refresh tip" onclick="refreshIncomeTip()">
-                                        
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="optimization-card">
-                        <h3 class="optimization-title">Optimize Your Expenses</h3>
-                        <div class="optimization-content">
-                            <div class="chart-container">
-                                <canvas id="dashboardExpenseChart"></canvas>
-                            </div>
-                            <div class="ai-tip-section">
-                                <div class="ai-tip-text-wrapper">
-                                    <p class="ai-tip-text" id="expenseTipText">Loading tip...</p>
-                                </div>
-                                <div class="ai-tip-actions">
-                                    <button class="btn-tip-refresh" id="refreshExpenseTipBtn" aria-label="Refresh tip"
-                                        title="Refresh tip" onclick="refreshExpenseTip()">
-                                        
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Button -->
-                <div class="dashboard-actions" style="display: none;">
-                    <a href="/signup" class="btn-primary">Sign Up</a>
-                    <button class="btn-secondary" onclick="resetApp()">Start Over</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Expense Edit Modal -->
-    <div class="modal-overlay" id="expenseEditModal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Monthly Expenses</h2>
-                <button class="modal-close" onclick="closeExpenseModal()">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <!-- Edit Tab Content -->
-                <div class="tab-content" id="contentExpenseEdit">
-                    <div class="expense-edit-list" id="expenseEditList">
-                        <!-- Expenses will be populated here -->
-                    </div>
-                    <div class="add-expense-row">
-                        <input type="text" id="modalExpenseName" placeholder="Expense Name" class="input-field">
-                        <input type="number" id="modalExpenseAmount" placeholder="Amount ($)" class="input-field"
-                            min="0" step="10">
-                        <button class="btn-secondary" onclick="addExpenseFromModal()">Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeExpenseModal()">Cancel</button>
-                <button class="btn-primary" onclick="saveExpenseChanges()">Save Changes</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Income Edit Modal -->
-    <div class="modal-overlay" id="incomeEditModal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Assets/Income</h2>
-                <button class="modal-close" onclick="closeIncomeModal()">&times;</button>
-            </div>
-
-            <!-- Tab Navigation -->
-            <div class="modal-tabs">
-                <button class="tab-button active" id="tabJob" onclick="switchIncomeTab('job')">Job</button>
-                <button class="tab-button" id="tabStocks" onclick="switchIncomeTab('stocks')">Stocks</button>
-                <button class="tab-button" id="tabRealEstate"
-                    onclick="switchIncomeTab('realEstate')">Properties</button>
-                <button class="tab-button" id="tabRetirement"
-                    onclick="switchIncomeTab('retirement')">Retirement</button>
-                <button class="tab-button" id="tabSavings" onclick="switchIncomeTab('savings')">Savings</button>
-                <button class="tab-button" id="tabOther" onclick="switchIncomeTab('other')">Other</button>
-            </div>
-
-            <div class="modal-body">
-                <!-- Job Income Tab Content -->
-                <div class="tab-content active" id="contentJob">
-                    <label for="modalJobIncome"
-                        style="display: block; margin-bottom: 8px; font-weight: 500; color: #374151;">Annual Income from
-                        Job(s):</label>
-                    <div class="job-income-edit-item"
-                        style="display: flex; gap: 12px; align-items: center; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb;">
-                        <input type="number" id="modalJobIncome" class="input-field" min="0" step="1000"
-                            placeholder="Annual Income" style="flex: 1; max-width: 200px;">
-                        <span class="stock-income" id="jobIncomeMonthly"
-                            style="color: #3b82f6; font-weight: 600; min-width: 100px;">$0/mo</span>
-                    </div>
-                </div>
-
-                <!-- Stocks Tab Content -->
-                <div class="tab-content" id="contentStocks">
-                    <!-- Portfolio Value Editor -->
-                    <div class="portfolio-value-editor"
-                        style="margin-bottom: 16px; padding: 12px; background: var(--card-background); border-radius: 8px; border: 1px solid var(--border-color);">
-                        <label
-                            style="font-weight: 600; font-size: 0.9rem; color: var(--text-secondary); display: block; margin-bottom: 6px;">
-                            Total Portfolio Value
-                        </label>
-                        <div style="display: flex; gap: 8px; align-items: center;">
-                            <span style="font-size: 1.2rem; color: var(--text-secondary);">$</span>
-                            <input type="number" id="modalPortfolioValue" placeholder="Enter total invested amount"
-                                class="input-field" min="0" step="1000"
-                                style="flex: 1; font-size: 1.1rem; font-weight: 600;">
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
-                            The total value of all your dividend-paying investments.
-                        </p>
-                    </div>
-                    <div class="income-edit-list" id="stockEditList">
-                        <!-- Stocks will be populated here -->
-                    </div>
-                    <div class="add-income-row">
-                        <input type="text" id="modalStockSymbol" placeholder="Ticker Symbol" class="input-field">
-                        <input type="number" id="modalStockPercent" placeholder="% of Portfolio" class="input-field"
-                            min="0" max="100" step="1">
-                        <button class="btn-secondary" onclick="addStockFromModal()">Add</button>
-                    </div>
-                </div>
-
-                <!-- Rental Tab Content Removed -->
-
-                <!-- Other Income Tab Content -->
-                <div class="tab-content" id="contentOther">
-                    <div class="income-edit-list" id="otherEditList">
-                        <!-- Other income sources will be populated here -->
-                    </div>
-                    <div class="add-income-row">
-                        <input type="text" id="modalOtherName" placeholder="Income Source" class="input-field">
-                        <input type="number" id="modalOtherAmount" placeholder="Monthly Income ($)" class="input-field"
-                            min="0" step="10">
-                        <button class="btn-secondary" onclick="addOtherFromModal()">Add</button>
-                    </div>
-                </div>
-
-                <!-- Real Estate Tab Content -->
-                <div class="tab-content" id="contentRealEstate">
-                    <div class="income-edit-list" id="realEstateEditList">
-                        <!-- Real Estate properties will be populated here -->
-                    </div>
-                    <div class="add-income-column">
-                        <label style="font-weight: 600; margin-bottom: 8px;">Add New Property</label>
-                        <input type="text" id="modalHouseName" placeholder="Property Name" class="input-field">
-                        <div class="row-inputs">
-                            <input type="number" id="modalHouseValue" placeholder="Value ($)" class="input-field"
-                                min="0" step="1000">
-                            <select id="modalHouseType" class="input-field">
-                                <option value="primary">Primary</option>
-                                <option value="rental">Rental</option>
-                                <option value="vacation">Vacation</option>
-                                <option value="investment">Investment</option>
-                            </select>
-                        </div>
-                        <div class="row-inputs">
-                            <label class="checkbox-label" style="font-size: 14px;">
-                                <input type="checkbox" id="modalHouseMortgage"> Has Mortgage?
-                            </label>
-                            <input type="number" id="modalHouseMortgageAmount" placeholder="Payment ($)"
-                                class="input-field" style="display:none;" min="0">
-                        </div>
-                        <div class="row-inputs">
-                            <label class="checkbox-label" style="font-size: 14px;">
-                                <input type="checkbox" id="modalHouseRent"> Earns Rent?
-                            </label>
-                            <input type="number" id="modalHouseRentAmount" placeholder="Rent ($)" class="input-field"
-                                style="display:none;" min="0">
-                        </div>
-                        <button class="btn-secondary" onclick="addHouseFromModal()"
-                            style="width: 100%; margin-top: 8px;">+ Add Property</button>
-                    </div>
-                </div>
-
-                <!-- Retirement Tab Content -->
-                <div class="tab-content" id="contentRetirement">
-                    <div class="income-edit-list" id="retirementEditList">
-                        <!-- Retirement accounts will be populated here -->
-                    </div>
-                    <div class="add-income-row">
-                        <select id="modalRetirementType" class="input-field">
-                            <option value="">Type...</option>
-                            <option value="401k">401(k)</option>
-                            <option value="roth-ira">Roth IRA</option>
-                            <option value="traditional-ira">Trad IRA</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <input type="number" id="modalRetirementBalance" placeholder="Balance ($)" class="input-field"
-                            min="0" step="1000">
-                        <button class="btn-secondary" onclick="addRetirementFromModal()">Add</button>
-                    </div>
-                </div>
-
-                <!-- Savings Tab Content -->
-                <div class="tab-content" id="contentSavings">
-                    <div class="income-edit-list" id="savingsEditList">
-                        <!-- Savings accounts will be populated here -->
-                    </div>
-                    <div class="add-income-row">
-                        <input type="text" id="modalSavingsName" placeholder="Bank Name" class="input-field">
-                        <input type="number" id="modalSavingsBalance" placeholder="Balance ($)" class="input-field"
-                            min="0">
-                        <input type="number" id="modalSavingsRate" placeholder="APY %" class="input-field" step="0.1"
-                            style="width: 80px;">
-                        <button class="btn-secondary" onclick="addSavingsFromModal()">Add</button>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeIncomeModal()">Cancel</button>
-                <button class="btn-primary" onclick="saveIncomeChanges()">Save Changes</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FIRE Number Explanation Modal -->
-    <div class="modal-overlay" id="fireExplanationModal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Your FIRE Number Explained</h2>
-                <button class="modal-close" onclick="closeFireModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="fire-explanation">
-                    <div class="fire-intro">
-                        <p>Your <strong>FIRE Number</strong> is the total amount you need invested to achieve
-                            Financial
-                            Independence and Retire Early (FIRE). It's calculated using the <strong>4% Safe
-                                Withdrawal
-                                Rule</strong>.</p>
-                    </div>
-
-                    <div class="fire-calculation">
-                        <h3>Here's how we calculated your FIRE Number:</h3>
-                        <div class="calculation-steps">
-                            <div class="calc-step">
-                                <div class="step-label">1. Your Monthly Expenses:</div>
-                                <div class="step-value" id="fireModalExpenses">$0</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">2. Annual Expenses (Monthly × 12):</div>
-                                <div class="step-value" id="fireModalAnnualExpenses">$0</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">3. FIRE Number (Annual Expenses ÷ 4%):</div>
-                                <div class="step-value highlight" id="fireModalFireNumber">$0</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fire-explanation-text">
-                        <h3>What does this mean?</h3>
-                        <p>Once you have <span id="fireModalFireNumberText">$0</span> invested, you can safely
-                            withdraw
-                            4% per year (<span id="fireModalAnnualWithdrawal">$0</span>) to cover your expenses
-                            without
-                            touching the principal. This means you're financially independent!</p>
-
-                        <div class="fire-progress">
-                            <h4>Your Progress:</h4>
-                            <div class="progress-item">
-                                <span>Current Net Worth:</span>
-                                <span id="fireModalCurrentNetWorth">$0</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Growing Assets (Portfolio):</span>
-                                <span id="fireModalGrowingAssets">$0</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Still Need:</span>
-                                <span id="fireModalStillNeed">$0</span>
-                            </div>
-                            <div class="progress-item">
-                                <span>Progress:</span>
-                                <span id="fireModalProgress">0%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fire-customization">
-                        <div class="customization-note">
-                            <p><strong>Want to try different withdrawal rates?</strong></p>
-                            <p>The 4% rule is conservative. Some people use 3.5% for extra safety or 4.5% for a more
-                                aggressive approach.</p>
-                            <button class="btn-secondary" onclick="showSwrCustomization()" disabled>
-                                Customize Withdrawal Rate (Coming Soon)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" onclick="closeFireModal()">Got It!</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Projected FI Year Explanation Modal -->
-    <div class="modal-overlay" id="fiYearExplanationModal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Your Projected FI Year Explained</h2>
-                <button class="modal-close" onclick="closeFIYearModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="fire-explanation">
-                    <div class="fire-intro">
-                        <p>Your <strong>Projected FI Year</strong> is when you're expected to reach Financial
-                            Independence based on your current savings rate and investment returns. This calculation
-                            assumes a <strong>5% annual real return</strong> after inflation.</p>
-                    </div>
-
-                    <div class="fire-calculation">
-                        <h3>Here's how we calculated your FI timeline:</h3>
-                        <div class="calculation-steps">
-                            <div class="calc-step">
-                                <div class="step-label">1. Your FIRE Number Target:</div>
-                                <div class="step-value" id="fiYearModalFireNumber">$0</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">2. Current Net Worth:</div>
-                                <div class="step-value" id="fiYearModalCurrentNetWorth">$0</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">3. Monthly Savings:</div>
-                                <div class="step-value" id="fiYearModalMonthlySavings">$0</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">4. Expected Annual Return:</div>
-                                <div class="step-value">5.0%</div>
-                            </div>
-                            <div class="calc-step">
-                                <div class="step-label">5. Projected FI Year:</div>
-                                <div class="step-value highlight" id="fiYearModalProjectedYear">Never</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fire-explanation-text">
-                        <h3>What does this mean?</h3>
-                        <p id="fiYearModalExplanation">Based on your current savings and investment strategy, you're
-                            projected to reach financial independence in <span id="fiYearModalYearsToGo">0</span>
-                            years.
-                        </p>
-                    </div>
-
-                    <!-- HERO: Realistic Range Simulation Section -->
-                    <div class="realistic-range-hero">
-                        <div class="hero-header">
-                            <h3>But wait — what if the market doesn't cooperate?</h3>
-                            <p>That projection assumes <strong>steady 5% growth every year</strong>. Real markets swing
-                                wildly. Let's run a stress test.</p>
-                        </div>
-                        <button class="btn-primary btn-hero" id="runRealisticRangeBtn">
-                            Run 1,000 Market Simulations
-                        </button>
-                        <div id="simulationLoader" style="display: none; text-align: center; padding: 20px;">
-                            <div class="loader-spinner"></div>
-                            <p id="loaderText" style="margin-top: 12px; color: #718096; font-size: 0.9rem;">Simulating
-                                1,000 possible futures...</p>
-                        </div>
-                        <div id="realisticRangeResults" style="display: none; margin-top: 16px;">
-                            <div class="simulation-stats">
-                                <span>✓ <strong id="simCount">1,000</strong> simulations completed</span>
-                                <span>• 7% avg return • 15% volatility</span>
-                            </div>
-                            <div class="range-results-grid">
-                                <div class="range-result best">
-                                    <span class="range-label">Best Case (10%)</span>
-                                    <span class="range-value" id="rangeBest">-</span>
-                                </div>
-                                <div class="range-result likely">
-                                    <span class="range-label">Most Likely</span>
-                                    <span class="range-value" id="rangeLikely">-</span>
-                                </div>
-                                <div class="range-result conservative">
-                                    <span class="range-label">Conservative (90%)</span>
-                                    <span class="range-value" id="rangeConservative">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fire-progress" style="margin-top: 20px;">
-                        <h4>Your Investment Journey:</h4>
-                        <div class="progress-item">
-                            <span>Starting Point:</span>
-                            <span id="fiYearModalStartingPoint">$0</span>
-                        </div>
-                        <div class="progress-item">
-                            <span>Monthly Contributions:</span>
-                            <span id="fiYearModalMonthlyContrib">$0</span>
-                        </div>
-                        <div class="progress-item">
-                            <span>Compound Growth:</span>
-                            <span>5% annually</span>
-                        </div>
-                        <div class="progress-item">
-                            <span>Total Net Worth:</span>
-                            <span id="fiYearModalFinalValue">$0</span>
-                        </div>
-                    </div>
-
-                    <div class="fire-customization">
-                        <div class="customization-note">
-                            <p><strong>Want to reach FI faster?</strong></p>
-                            <p>Try increasing your savings rate or reducing expenses.</p>
-                            <button class="btn-secondary" onclick="showFIOptimization()" disabled>
-                                Optimize Your FI Timeline (Coming Soon)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" onclick="closeFIYearModal()">Got It!</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div class="modal-overlay" id="signupModal" style="display:none;">
-        <div class="modal-content" style="max-width: 500px;">
-            <div class="modal-header">
-                <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #1f2937;">Save Your Dashboard</h2>
-            </div>
-            <div class="modal-body">
-                <p style="font-size: 16px; color: #4b5563; line-height: 1.6; margin-bottom: 20px;">
-                    Your data is only saved on this device for now. Create an account to keep it safe and access it
-                    anywhere.
-                </p>
-                <div style="background: #f3f4f6; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                    <div style="display: flex; align-items: start; gap: 12px;">
-                        <div>
-                            <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">Why sign up?</div>
-                            <ul
-                                style="margin: 0; padding-left: 20px; color: var(--text-muted, #6E6159); font-size: 14px; line-height: 1.6;">
-                                <li>Access your dashboard from anywhere</li>
-                                <li>Never lose your financial data</li>
-                                <li>Get early access to premium features</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <button type="button" onclick="submitSignupModal()" class="btn-primary"
-                        style="width: 100%; padding: 12px 16px; font-size: 16px; font-weight: 600; border-radius: 8px; border: none; background: var(--card-background); color: #1f2937; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #d1d5db; display: flex; align-items: center; justify-content: center; gap: 12px;">
-                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"
-                                fill="#4285F4" />
-                            <path
-                                d="M9.003 18c2.43 0 4.467-.806 5.956-2.18L12.05 13.56c-.806.54-1.836.86-3.047.86-2.344 0-4.328-1.584-5.036-3.711H.96v2.332C2.44 15.983 5.485 18 9.003 18z"
-                                fill="#34A853" />
-                            <path
-                                d="M3.964 10.712c-.18-.54-.282-1.117-.282-1.71 0-.593.102-1.17.282-1.71V4.96H.957C.347 6.175 0 7.55 0 9.002c0 1.452.348 2.827.957 4.042l3.007-2.332z"
-                                fill="#FBBC05" />
-                            <path
-                                d="M9.003 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.464.891 11.426 0 9.003 0 5.485 0 2.44 2.017.96 4.958L3.967 7.29c.708-2.127 2.692-3.71 5.036-3.71z"
-                                fill="#EA4335" />
-                        </svg>
-                        Sign in with Google
-                    </button>
-                    <button type="button" onclick="closeSignupModal()" class="btn-secondary"
-                        style="width: 100%; padding: 12px; font-size: 15px; font-weight: 500; border-radius: 8px; border: 1px solid #d1d5db; background: var(--card-background); color: var(--text-muted, #6E6159); cursor: pointer;">
-                        Maybe Later
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- AI Chatbot Widget -->
-    <div class="chatbot-container minimized" id="chatbotContainer">
-        <div class="chatbot-header" onclick="toggleChatbot()">
-            <div class="chatbot-title">
-                <span class="chatbot-icon"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-robot"/></svg></span>
-                <span>AI Assistant</span>
-            </div>
-            <button class="chatbot-minimize">−</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="chatbot-message bot-message">
-                    <div class="message-content" id="welcomeMessage">
-
-                    </div>
-                </div>
-            </div>
-            <div class="chatbot-input-container">
-                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask me anything..." />
-                <button class="chatbot-send" onclick="sendChatMessage()">
-                    <span>→</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Supabase Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <script src="config.js"></script>
-    <!-- Markdown rendering and sanitization for chatbot -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-    <!-- KaTeX for math rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
-        crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        crossorigin="anonymous"></script>
-    <script src="app.js"></script>
     <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    (() => {
+        'use strict';
+        // Step 1 is deliberately deterministic: plain compounding at the assumed average.
+        // The odds (Monte Carlo) only appear from step 3 of the full planner.
+        const ASSUME = {
+            INR: { equity: 11, debt: 7, infl: 6, sym: '₹', locale: 'en-IN', defaults: { spend: 1380000, pot: 16000000, save: 120000 } },
+            USD: { equity: 7, debt: 4, infl: 3, sym: '$', locale: 'en-US', defaults: { spend: 48000, pot: 350000, save: 2500 } }
+        };
+        const EQUITY_SHARE = 0.7, SAVINGS_GROWTH = 0.05, PLAN_TO = 90, MAX_AGE = 75;
+        const RATES = [
+            { rate: 4, why: 'at a 4% withdrawal' },
+            { rate: 3.5, why: 'at 3.5%, the usual early retirement target' },
+            { rate: 3, why: 'at 3%, the cautious one' }
+        ];
+        let cur = 'INR';
+        const $ = id => document.getElementById(id);
+        const num = v => Number(String(v).replace(/[^0-9.]/g, '')) || 0;
+        const fmtInput = (n) => n.toLocaleString(ASSUME[cur].locale, { maximumFractionDigits: 0 });
+        function money(n) {
+            const a = ASSUME[cur];
+            if (cur === 'INR') {
+                if (n >= 1e7) return `₹${(n / 1e7).toFixed(1)} crore`;
+                if (n >= 1e5) return `₹${(n / 1e5).toFixed(1)} lakh`;
+                return '₹' + Math.round(n).toLocaleString(a.locale);
+            }
+            if (n >= 1e6) return `$${(n / 1e6).toFixed(2)} million`;
+            if (n >= 1e3) return `$${Math.round(n / 1e3)}k`;
+            return '$' + Math.round(n);
+        }
+        function read() {
+            return { age: Math.max(18, Math.min(80, num($('q-age').value))), stop: Math.max(18, Math.min(90, num($('q-stop').value))), spend: num($('q-spend').value), pot: num($('q-pot').value), save: num($('q-save').value) };
+        }
+        function compute() {
+            const a = ASSUME[cur];
+            const r = (EQUITY_SHARE * a.equity + (1 - EQUITY_SHARE) * a.debt) / 100;
+            const infl = a.infl / 100;
+            const { age, stop, spend, pot, save } = read();
+            const n = Math.max(0, stop - age);
+            // Pot path while still working: grows at r, yearly contributions grow 5% a year.
+            const path = [pot];
+            for (let t = 1; t <= MAX_AGE - age; t++) path.push(path[t - 1] * (1 + r) + save * 12 * Math.pow(1 + SAVINGS_GROWTH, t - 1));
+            const spendAt = t => spend * Math.pow(1 + infl, t);
+            const rows = RATES.map(({ rate, why }) => {
+                const target = spendAt(n) / (rate / 100);
+                let reached = null;
+                for (let t = 0; t < path.length; t++) { if (path[t] >= spendAt(t) / (rate / 100)) { reached = age + t; break; } }
+                return { rate, why, target, reached };
+            });
+            const potAtStop = path[Math.min(n, path.length - 1)];
+            const spendAtStop = spendAt(n);
+            return { rows, potAtStop, spendAtStop, n, stop, a };
+        }
+        function render() {
+            const { rows, potAtStop, spendAtStop, n, stop, a } = compute();
+            $('ledger').innerHTML = rows.map((row, i) => `${i ? '<hr>' : ''}<span class="n">${money(row.target)}</span><span class="why">${row.why}</span><span class="age">${row.reached === null ? `after ${MAX_AGE}` : `age <strong>${row.reached}</strong>`}</span>`).join('');
+            const pct = potAtStop > 0 ? (spendAtStop / potAtStop * 100).toFixed(1) : '—';
+            $('atstop').textContent = n === 0
+                ? `Stopping now: ${money(potAtStop)} invested, spending ${money(spendAtStop)} a year, which is ${pct}% of it.`
+                : `If you stop at ${stop} as planned: about ${money(potAtStop)} invested, and your first year off costs ${money(spendAtStop)}, which is ${pct}% of it.`;
+            $('assume').textContent = `Assumes 70% equity at ${a.equity}%, 30% debt at ${a.debt}%, ${a.infl}% inflation, monthly investing growing 5% a year, and that you plan the money to ${PLAN_TO}. All of it is yours to change in the full planner.`;
+        }
+        function setCurrency(c) {
+            if (c === cur) return;
+            cur = c;
+            document.querySelectorAll('.cur button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cur === c)));
+            const d = ASSUME[c].defaults;
+            $('q-spend').value = fmtInput(d.spend); $('q-pot').value = fmtInput(d.pot); $('q-save').value = fmtInput(d.save);
+            render();
+        }
+        ['q-age', 'q-stop', 'q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('input', render));
+        ['q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('blur', e => { const v = num(e.target.value); if (v) e.target.value = fmtInput(v); }));
+        document.querySelectorAll('.cur button').forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.cur)));
+        $('quick').addEventListener('submit', e => e.preventDefault());
+        render();
+    })();
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 </body>
