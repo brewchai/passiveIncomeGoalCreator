@@ -69,6 +69,8 @@
         .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
         .hero { padding: 64px 0 0; display: flex; flex-direction: column; gap: 16px; max-width: 40rem; }
         .hero h1 { font-size: clamp(38px, 5.2vw, var(--t6)); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; }
+        .hero h1 .fi { color: var(--accent-color); } /* Financial Independence: the brand accent */
+        .hero h1 .re { color: var(--toast-accent); } /* Retire Early: the system's second accent, olive from the same cover photography */
         .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .sub { font-size: var(--t1); line-height: 1.4; color: var(--text-secondary); margin: 0; }
         .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
@@ -170,7 +172,7 @@
 
     <main>
         <section class="wrap hero">
-            <h1>The FIRE planner that starts where calculators stop.</h1>
+            <h1>The <span class="fi">FI</span><span class="re">RE</span> planner that starts where calculators stop.</h1>
             <p class="tagline display cycle" aria-hidden="true">
                 <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
                 <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
@@ -284,7 +286,7 @@
                 <a href="/tools/fire-number/"><span>FIRE number</span><span>the quick version</span></a>
                 <a href="/tools/geo-arbitrage/"><span>Geo-arbitrage</span><span>the same life, priced by city</span></a>
             </div>
-            <p>Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 20 minutes with Ninad</a>.</p>
+            <p>Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 15 minutes with Ninad</a>.</p>
         </section>
     </main>
 
