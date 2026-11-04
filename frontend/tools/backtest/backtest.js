@@ -10,7 +10,7 @@
 
     const els = {
         corpus: byId('corpus'),
-        monthly: byId('monthly'),
+        rate: byId('rate'),
         equity: byId('equity'),
         years: byId('years'),
         ypick: byId('ypick'),
@@ -19,12 +19,12 @@
         ypopClose: byId('ypopClose'),
         tCorpus: byId('tCorpus'),
         tEquity: byId('tEquity'),
-        tMonthly: byId('tMonthly'),
+        tRate: byId('tRate'),
         tNote: byId('tNote'),
         context: byId('context'),
         real: byId('countTax'),
         go: byId('go'),
-        rateChips: document.querySelectorAll('[data-rate]'),
+        barsLegend: byId('barsLegend'),
         empty: byId('empty'),
         emptyNote: byId('emptyNote'),
         results: byId('results'),
@@ -46,7 +46,7 @@
     const ACCENT = '#7A4E00';
     const MUTED = '#6E6159';
     const RULE = '#E8E1D9';
-    const DEFAULTS = { corpus: 100000000, monthly: 250000, share: 0.6, start: 2000 };
+    const DEFAULTS = { corpus: 100000000, rate: 3.5, share: 0.6, start: 2000 };
 
     // ── Formatting ──
     const trim = (s) => s.replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1');
@@ -62,11 +62,6 @@
         if (n >= 1e5) { const l = n / 1e5; return `${trim(l >= 10 ? l.toFixed(0) : l.toFixed(1))} L`; }
         return Math.round(n).toLocaleString('en-IN');
     }
-    function monthlyMoney(n) {
-        n = Math.max(0, n);
-        if (n >= 1e5) { const l = n / 1e5; return `₹${trim(l >= 10 ? l.toFixed(1) : l.toFixed(2))} lakh`; }
-        return `₹${(Math.round(n / 100) * 100).toLocaleString('en-IN')}`;
-    }
     const pct = (n, d = 1) => `${trim((+n).toFixed(d))}%`;
     const num = (el) => { const v = Number(String(el?.value ?? '').replace(/[^\d.]/g, '')); return Number.isFinite(v) ? v : 0; };
     const groupIN = (el) => { const v = num(el); if (el && v > 0) el.value = Math.round(v).toLocaleString('en-IN'); fit(el); };
@@ -76,11 +71,12 @@
     const state = { inputs: null, runs: null, hover: null, start: DEFAULTS.start, revealed: false };
 
     function readInputs() {
-        const monthly = num(els.monthly);
+        const corpus = num(els.corpus);
+        const rate = num(els.rate);
         return {
-            corpus: num(els.corpus),
-            monthly,
-            spend: monthly * 12,
+            corpus,
+            rate,
+            spend: corpus * rate / 100,
             share: Math.min(100, Math.max(0, num(els.equity))) / 100,
             start: state.start,
             real: !!els.real.checked
@@ -88,7 +84,7 @@
     }
 
     function inputsValid(i) {
-        return i.corpus > 0 && i.spend > 0 && i.spend < i.corpus && i.start >= FIRST && i.start <= LAST_START;
+        return i.corpus > 0 && i.rate > 0 && i.rate < 100 && i.start >= FIRST && i.start <= LAST_START;
     }
 
     function compute() {
@@ -103,22 +99,20 @@
     }
 
     // ── The translation line: today's figures in the start year's rupees ──
-    // The past sentence: the same life, in the start year's rupees.
+    // The past sentence: the same plan, with the money as it was back then.
     function renderTranslate() {
         const i = state.inputs;
         els.ypickYear.textContent = String(i.start);
         els.tEquity.textContent = pct(i.share * 100, 0);
-        if (!i || i.corpus <= 0 || i.monthly <= 0) {
+        els.tRate.textContent = i.rate > 0 ? pct(i.rate) : '…';
+        if (!i || i.corpus <= 0 || i.rate <= 0) {
             els.tCorpus.textContent = '…';
-            els.tMonthly.textContent = '…';
-            els.tNote.textContent = 'Fill in both amounts above and this line fills itself in.';
+            els.tNote.textContent = 'Fill in the amount above and this line fills itself in.';
             return;
         }
         const m = priceMultiple(i.start);
-        const wr0 = i.spend / i.corpus;
         els.tCorpus.textContent = money(i.corpus / m);
-        els.tMonthly.textContent = monthlyMoney(i.monthly / m);
-        els.tNote.textContent = `Same life, in ${i.start} rupees. Prices have gone up ${trim(m.toFixed(1))}× since. Spending is ${pct(wr0 * 100)} of the money in year 1.`;
+        els.tNote.textContent = `${money(i.corpus / m)} in ${i.start} bought what ${money(i.corpus)} buys today. Prices have gone up ${trim(m.toFixed(1))}× since.`;
     }
 
     // ── Words ──
@@ -135,9 +129,9 @@
         if (!state.runs) {
             els.empty.hidden = false;
             els.results.hidden = true;
-            els.emptyNote.textContent = !i || i.corpus <= 0 || i.spend <= 0
-                ? 'Fill in both amounts first.'
-                : i.spend >= i.corpus ? 'A year of spending has to be less than the money you have.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
+            els.emptyNote.textContent = !i || i.corpus <= 0
+                ? 'Fill in the amount first.'
+                : i.rate <= 0 || i.rate >= 100 ? 'Spending has to be between 0% and 100% a year.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
             return;
         }
         els.empty.hidden = true;
@@ -152,8 +146,8 @@
             ? `The money ran out in ${run.failYear}.`
             : `${money(run.endToday)} left today.`;
         els.context.textContent = run.failYear
-            ? `You retired in ${i.start} with ${money(i.corpus / m)} and spent ${monthlyMoney(i.monthly / m)} a month, in ${i.start} rupees.`
-            : `You retired in ${i.start} with ${money(i.corpus / m)} and spent ${monthlyMoney(i.monthly / m)} a month, in ${i.start} rupees. Today you spend ${monthlyMoney(i.monthly)} a month, which is ${pct(run.wrNow * 100)} of what is left.`;
+            ? `You started in ${i.start} with ${money(i.corpus / m)}. That was ${money(i.corpus)} in today’s money.`
+            : `You started in ${i.start} with ${money(i.corpus / m)}. That was ${money(i.corpus)} in today’s money. You now spend ${pct(run.wrNow * 100)} of what is left each year.`;
         els.verdict.textContent = verdictFor(run);
 
         const drop = 1 - run.minToday / run.startToday;
@@ -170,9 +164,10 @@
             : (other.failYear ? `With tax and fees the money runs out in ${other.failYear}.` : `With tax and fees it would be ${money(other.endToday)}. That is the number you actually get.`);
 
         els.pathTitle.textContent = `Your money, year by year, from ${i.start}`;
-        els.pathLegend.innerHTML = '<span><i class="sw sw-ink"></i>With tax and fees</span><span><i class="sw sw-accent"></i>Without tax and fees</span>';
+        els.pathLegend.innerHTML = `<span><i class="sw sw-ink"></i>With tax and fees</span><span><i class="sw sw-accent"></i>Without tax and fees</span><span><i class="sw sw-dash"></i>Where you started, ${money(i.corpus)}</span>`;
         drawPath(pair, i);
 
+        els.barsLegend.innerHTML = `<span><i class="sw sw-accent"></i>Money left today</span><span><i class="sw sw-ink"></i>The year above</span><span><i class="sw sw-dash"></i>Where you started, ${money(i.corpus)}</span>`;
         drawBars(i);
         els.barsSummary.textContent = barsSummary(i);
 
@@ -248,9 +243,6 @@
         ctx.setLineDash([5, 4]); ctx.strokeStyle = INK; ctx.globalAlpha = 0.55;
         ctx.beginPath(); ctx.moveTo(pad.l, yPx(i.corpus)); ctx.lineTo(w - pad.r, yPx(i.corpus)); ctx.stroke();
         ctx.setLineDash([]); ctx.globalAlpha = 1;
-        ctx.fillStyle = INK; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom'; ctx.globalAlpha = 0.75;
-        ctx.fillText(`where you started, ${money(i.corpus)}`, w - pad.r, yPx(i.corpus) - 4);
-        ctx.globalAlpha = 1;
 
         const order = i.real ? [pair.clean, pair.real] : [pair.real, pair.clean];
         order.forEach((run) => {
@@ -297,12 +289,6 @@
 
         ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.fillStyle = MUTED; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
         for (let t = 0; t <= 4; t++) { const v = (maxV / 4) * t; const y = yPx(v); ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke(); ctx.fillText(moneyShort(v), pad.l - 8, y); }
-        ctx.setLineDash([5, 4]); ctx.strokeStyle = INK; ctx.globalAlpha = 0.5;
-        ctx.beginPath(); ctx.moveTo(pad.l, yPx(i.corpus)); ctx.lineTo(w - pad.r, yPx(i.corpus)); ctx.stroke();
-        ctx.setLineDash([]); ctx.globalAlpha = 1;
-        ctx.fillStyle = INK; ctx.globalAlpha = 0.75; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
-        ctx.fillText(`started at ${money(i.corpus)}`, pad.l + 4, yPx(i.corpus) - 3); ctx.globalAlpha = 1;
-
         state.barRects = [];
         years.forEach((y, k) => {
             const r = state.runs[y][key];
@@ -329,6 +315,10 @@
                 ctx.font = '12px Manrope, system-ui, sans-serif';
             }
         });
+        // the start line goes on top of the bars so it stays visible
+        ctx.setLineDash([5, 4]); ctx.strokeStyle = INK; ctx.globalAlpha = 0.6; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(pad.l, yPx(i.corpus)); ctx.lineTo(w - pad.r, yPx(i.corpus)); ctx.stroke();
+        ctx.setLineDash([]); ctx.globalAlpha = 1; ctx.lineWidth = 1;
         state.barGeom = { pad, slot, h };
 
         const focus = state.hover ?? i.start;
@@ -424,7 +414,7 @@
         const q = new URLSearchParams(location.search);
         let any = false;
         const set = (el, key) => { const v = q.get(key); if (v !== null && el) { el.value = v; any = true; } };
-        set(els.corpus, 'corpus'); set(els.monthly, 'monthly'); set(els.equity, 'equity');
+        set(els.corpus, 'corpus'); set(els.rate, 'rate'); set(els.equity, 'equity');
         if (q.has('start')) { setStart(Number(q.get('start')) || DEFAULTS.start); any = true; }
         if (q.has('tax') && els.real) { els.real.checked = q.get('tax') !== '0'; any = true; }
         return any;
@@ -436,7 +426,7 @@
             const i = state.inputs; if (!i) return;
             const q = new URLSearchParams();
             if (i.corpus !== DEFAULTS.corpus) q.set('corpus', String(i.corpus));
-            if (i.monthly !== DEFAULTS.monthly) q.set('monthly', String(i.monthly));
+            if (i.rate !== DEFAULTS.rate) q.set('rate', String(i.rate));
             if (i.share !== DEFAULTS.share) q.set('equity', String(Math.round(i.share * 100)));
             if (i.start !== DEFAULTS.start) q.set('start', String(i.start));
             if (!i.real) q.set('tax', '0');
@@ -459,20 +449,11 @@
     function setup() {
         buildYears();
         const fromLink = readUrl();
-        groupIN(els.corpus); groupIN(els.monthly); fit(els.equity);
-        [els.corpus, els.monthly].forEach((el) => {
-            el.addEventListener('input', () => { fit(el); update(); });
-            el.addEventListener('blur', () => groupIN(el));
-        });
-        els.equity.addEventListener('input', () => { fit(els.equity); update(); });
+        groupIN(els.corpus); fit(els.equity); fit(els.rate);
+        els.corpus.addEventListener('input', () => { fit(els.corpus); update(); });
+        els.corpus.addEventListener('blur', () => groupIN(els.corpus));
+        [els.equity, els.rate].forEach((el) => el.addEventListener('input', () => { fit(el); update(); }));
         els.real.addEventListener('change', update);
-        els.rateChips.forEach((chip) => {
-            chip.addEventListener('click', () => {
-                const rate = Number(chip.dataset.rate);
-                const corpus = num(els.corpus);
-                if (corpus > 0) { els.monthly.value = String(Math.round(corpus * rate / 100 / 12 / 1000) * 1000); groupIN(els.monthly); update(); }
-            });
-        });
         els.go.addEventListener('click', reveal);
         els.barsCanvas.addEventListener('mousemove', (e) => { const y = barAt(e); if (y !== state.hover) { state.hover = y; if (state.runs) drawBars(state.inputs); } });
         els.barsCanvas.addEventListener('mouseleave', () => { state.hover = null; if (state.runs) drawBars(state.inputs); });

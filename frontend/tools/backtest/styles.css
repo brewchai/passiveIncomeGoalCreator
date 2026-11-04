@@ -84,6 +84,7 @@
 .bt .legend .sw { display: inline-block; width: 18px; height: 3px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
 .bt .sw-ink { background: var(--bt-text); }
 .bt .sw-accent { background: var(--bt-accent); }
+.bt .sw-dash { background: none; height: 0; border-top: 2px dashed var(--bt-text); opacity: .6; }
 .bt .chart-note { margin-top: 10px; font-size: var(--t-1); color: var(--bt-text); min-height: 1.5em; }
 .bt .bars-hint { margin-top: 2px; font-size: var(--t-1); color: var(--bt-muted); }
 

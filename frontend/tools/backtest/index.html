@@ -43,14 +43,7 @@
         <p class="lede">Take your plan. Start it in any year since 2000. See what the money did.</p>
 
         <section class="sheet" aria-label="Your plan">
-            <p class="story">If I retire today with <span class="inline"><span class="cur">₹</span><input id="corpus" type="text" inputmode="numeric" value="100000000" aria-label="Money you retire with, in today's rupees"></span>, keep <span class="inline small"><input id="equity" type="number" inputmode="numeric" min="0" max="100" step="5" value="60" aria-label="Share in the Nifty 50, in percent"><span class="cur">%</span></span> in the Nifty 50, and spend <span class="inline"><span class="cur">₹</span><input id="monthly" type="text" inputmode="numeric" value="250000" aria-label="Spending a month, in today's rupees"></span> a month, will the money last?</p>
-            <div class="chips">
-                <span class="note">Spend</span>
-                <button type="button" class="chip" data-rate="3">3%</button>
-                <button type="button" class="chip" data-rate="3.5">3.5%</button>
-                <button type="button" class="chip" data-rate="4">4%</button>
-                <span class="note">of it a year</span>
-            </div>
+            <p class="story">If I retire today with <span class="inline"><span class="cur">₹</span><input id="corpus" type="text" inputmode="numeric" value="100000000" aria-label="Money you retire with, in today's rupees"></span>, keep <span class="inline small"><input id="equity" type="number" inputmode="numeric" min="0" max="100" step="5" value="60" aria-label="Share in the Nifty 50, in percent"><span class="cur">%</span></span> in the Nifty 50, and spend <span class="inline small"><input id="rate" type="number" inputmode="decimal" min="0.5" max="20" step="0.1" value="3.5" aria-label="Spending a year, as a percent of the money"><span class="cur">%</span></span> of it a year, will the money last?</p>
 
             <p class="story then">If I had retired in
                 <span class="ypick-wrap">
@@ -60,7 +53,7 @@
                         <span class="years" id="years" role="radiogroup" aria-label="The year you retire"></span>
                     </span>
                 </span>
-                with <strong class="fixed" id="tCorpus"></strong>, kept <strong class="fixed" id="tEquity"></strong> in the Nifty 50, and spent <strong class="fixed" id="tMonthly"></strong> a month, would it have lasted?</p>
+                with <strong class="fixed" id="tCorpus"></strong>, kept <strong class="fixed" id="tEquity"></strong> in the Nifty 50, and spent <strong class="fixed" id="tRate"></strong> of it a year, would it have lasted?</p>
             <p class="tnote" id="tNote"></p>
 
             <div class="go-row">
@@ -102,6 +95,7 @@
                 <p class="sub">Money left today for each start year. Click a bar to see that year.</p>
                 <div class="chart">
                     <canvas id="barsChart" aria-label="Money left today by start year"></canvas>
+                    <div class="legend" id="barsLegend"></div>
                     <p class="chart-note" id="barsNote"></p>
                     <p class="bars-hint">Hover for any year.</p>
                 </div>
