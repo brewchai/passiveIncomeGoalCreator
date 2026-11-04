@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Backtest, India | But First Fire</title>
+    <meta name="description" content="Drop your retirement into 1 January of any year since 2000 and run it through what the Nifty, inflation, FD rates and tax actually did. Real data, every start year.">
+    <link rel="canonical" href="https://butfirstfire.com/tools/backtest/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Retirement Backtest, India | But First Fire">
+    <meta property="og:description" content="Your corpus and spending, run through 26 years of real Nifty returns, real inflation, real FD rates and real tax, from every start year since 2000.">
+    <meta property="og:url" content="https://butfirstfire.com/tools/backtest/">
+    <meta property="og:image" content="https://butfirstfire.com/favicon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Retirement Backtest, India | But First Fire">
+    <meta name="twitter:description" content="Your corpus and spending, run through 26 years of real Nifty returns, real inflation, real FD rates and real tax, from every start year since 2000.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./data.js"></script>
+    <script src="./engine.js"></script>
+    <script src="./backtest.js" defer></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this retirement backtest do?","acceptedAnswer":{"@type":"Answer","text":"It takes a corpus and a yearly spending figure in today's money, moves them back to 1 January of a chosen year since 2000, and runs the retirement forward through the actual Nifty 50 total returns, India's actual CPI inflation, actual fixed deposit rates and the tax rules of each year."}},{"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"Nifty 50 Total Return Index calendar-year returns from NSE Indices, CPI inflation from the World Bank and MoSPI, 1 to 3 year term deposit rates from the RBI Handbook of Statistics, and equity capital gains rules as they changed in 2004, 2018 and 2024."}},{"@type":"Question","name":"Is a backtest a safe withdrawal rate?","acceptedAnswer":{"@type":"Answer","text":"No. India's total return record only starts in 1999, so this is 26 years of one history, not a probability. It shows what the plan would have done, not what it will do."}}]}
+    </script>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="/" class="blog-logo">But First Fire</a>
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="/about" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">About</a>
+                <a href="/blog" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Blog</a>
+                <a href="/tools" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Tools</a>
+                <a href="/appearances" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Appearances</a>
+                <a href="/contact" class="nav-link" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="bt">
+        <h1>Retire into any year since 2000. See what actually happened.</h1>
+        <p class="lede">Your corpus and your spending, in today's money, dropped into 1 January of the year you pick and run through the real Nifty, real inflation, real FD rates and real tax, year by year, to today.</p>
+
+        <section class="sheet" aria-label="Your plan">
+            <div class="sheet-head">In today's money <span>· the tool moves it back to the start year for you</span></div>
+            <div class="grid">
+                <div class="field">
+                    <label for="corpus">Corpus on the day you stop</label>
+                    <div class="money"><input id="corpus" type="text" inputmode="numeric" value="100000000"></div>
+                </div>
+                <div class="field">
+                    <label for="spend">What a year of your life costs</label>
+                    <div class="money"><input id="spend" type="text" inputmode="numeric" value="4000000"></div>
+                    <div class="chips">
+                        <button type="button" class="chip" data-rate="3">3%</button>
+                        <button type="button" class="chip" data-rate="3.5">3.5%</button>
+                        <button type="button" class="chip" data-rate="4">4%</button>
+                        <span class="note" id="rateNote"></span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="equity">Share in the Nifty 50, the rest in fixed deposits</label>
+                    <div class="range-row"><input id="equity" type="range" min="0" max="100" step="5" value="60"><output id="equityOut" for="equity">60%</output></div>
+                </div>
+                <div class="field">
+                    <label for="startYear">The year you retire, on 1 January</label>
+                    <select id="startYear"></select>
+                </div>
+                <label class="check">
+                    <input id="countTax" type="checkbox" checked>
+                    <div>Count tax and a 1% fund cost<span>30% tax on FD interest, capital gains tax on equity under the rule of each year, and 1% a year on the equity side. The chart always shows both versions.</span></div>
+                </label>
+            </div>
+            <p class="assume">Every 1 January a full year of spending comes out and the portfolio is rebalanced back to the split above. Spending rises each year by that year's actual inflation, no cutting back, no side income, no rescue. The run ends on <span id="endDate">2 November 2026</span>.</p>
+        </section>
+
+        <div class="empty" id="empty">
+            <strong>Your result will show up here.</strong>
+            <p>Fill in the corpus and the spending, both in today's money.</p>
+        </div>
+
+        <div id="results" hidden>
+            <section class="section">
+                <p class="headline" id="headline"></p>
+                <p class="verdict" id="verdict"></p>
+                <p class="fwd" id="low"></p>
+                <p class="fwd" id="gap"></p>
+            </section>
+
+            <section class="section">
+                <h2 id="pathTitle">What the money did, in today's money</h2>
+                <p class="sub">The corpus at the start of each year, after that year's inflation is taken out, so a flat line means the money kept its buying power.</p>
+                <div class="chart">
+                    <canvas id="pathChart" aria-label="Corpus in today's money by year"></canvas>
+                    <div class="legend" id="pathLegend"></div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>The same plan from every start year</h2>
+                <p class="sub">What is left today, in today's money, if you had retired on 1 January of each year. Click a bar to open that year above.</p>
+                <div class="chart">
+                    <canvas id="barsChart" aria-label="Corpus left today by start year"></canvas>
+                    <p class="chart-note" id="barsNote"></p>
+                    <p class="bars-hint">Hover for any year.</p>
+                </div>
+                <p class="fwd" id="barsSummary"></p>
+            </section>
+
+            <section class="section">
+                <h2 id="tableTitle">Year by year</h2>
+                <p class="sub">Corpus on 1 January, before that year's spending comes out. Actual rupees of the day and the same sum in today's money.</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>1 January</th><th class="n">Nifty 50</th><th class="n">Inflation</th><th class="n">FD rate</th><th class="n">Corpus, rupees of the day</th><th class="n">In today's money</th><th class="n">Spending that year</th><th class="n">Withdrawal rate</th></tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+                <p class="foot">* 2026 runs to 2 November, so its return, inflation and interest are for the part of the year that has passed.</p>
+            </section>
+        </div>
+
+        <section class="section prose">
+            <h2>What this can and cannot tell you.</h2>
+            <p>This is one history, not a probability. India's total return record only starts in 1999, so 26 years is all there is, and 26 years cannot hand you a safe withdrawal rate with the confidence the long American studies claim. What it can do is show you the thing every smooth projection hides: the order the returns arrived in, and how the first few years decide the rest.</p>
+            <p>It does not model a health shock, a wedding, a child's college, a house, or your own inflation running hotter than the official number. It does not model the two things real people do, which cut both ways: trimming spending in a bad year, which helps, and selling everything in the middle of a crash, which is worse than anything in this table. Later start years have had fewer years of spending, so their bars flatter them.</p>
+            <p>The full write-up of the ₹10 crore version, with the reasoning behind each rule, is in <a href="/blog/10-crore-retirement-backtest">the backtest article</a>. To throw a crash at a plan from today rather than the past, use the <a href="/tools/sequence-risk/">sequence risk calculator</a>.</p>
+        </section>
+
+        <section class="section prose">
+            <h2>Where the numbers come from.</h2>
+            <ul>
+                <li><strong>Market returns.</strong> Nifty 50 Total Return Index, calendar-year returns with dividends reinvested, from <a href="https://www.niftyindices.com/reports/historical-data" target="_blank" rel="noopener">NSE Indices</a>, as published in the <a href="https://www.niftyindices.com/docs/default-source/indices/nifty-50/nifty-50-whitepaper_2025.pdf" target="_blank" rel="noopener">Nifty 50 whitepaper</a>. 2026 is the return to 2 November, a partial year.</li>
+                <li><strong>Inflation.</strong> India's annual CPI from the <a href="https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=IN" target="_blank" rel="noopener">World Bank series</a> through 2025, and the 2026 figure from <a href="https://www.mospi.gov.in/" target="_blank" rel="noopener">MoSPI's monthly releases</a>, January to September.</li>
+                <li><strong>Deposit rates.</strong> Term deposits of 1 to 3 years at major banks, as at the end of March each year, from the <a href="https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=23884" target="_blank" rel="noopener">RBI Handbook of Statistics on the Indian Economy</a>. Each year uses the midpoint of the published range.</li>
+                <li><strong>Tax.</strong> 30% on deposit interest throughout. Equity gains at 10% to 2004, nil from 2005 to 2018, 10% above ₹1 lakh from 2019 with the 2018 grandfathering, and 12.5% above ₹1.25 lakh from 2025, following <a href="https://cleartax.in/s/long-term-capital-gains-on-shares" target="_blank" rel="noopener">the rules as laid out by ClearTax</a>.</li>
+            </ul>
+            <p>Every series sits in one file on this page, with its source next to it. If you find a figure that disagrees with the published one, <a href="/contact">tell me</a> and I will fix it.</p>
+        </section>
+
+        <section class="section prose">
+            <p>This is general information built from public data, not financial, investment or tax advice. A backtest describes the past and promises nothing about the future. Do your own math for your own life, and speak to a qualified professional before you act.</p>
+        </section>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 But First Fire. All rights reserved.</p>
+        </div>
+    </footer>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
