@@ -29,6 +29,8 @@
         us: {
             symbol: '$', locale: 'en-US', currency: 'USD',
             defaultWr: 4.0,
+            defaultReturn: 7.0,
+            returnHelp: 'Before inflation. US equities have averaged about 7% a year.',
             defaults: { spend: 60000, portfolio: 100000, savings: 30000 },
             step:     { spend: 1000, portfolio: 5000, savings: 1000 },
             infoLabel: 'What is the 4% rule?',
@@ -37,6 +39,8 @@
         in: {
             symbol: '₹', locale: 'en-IN', currency: 'INR',
             defaultWr: 3.0,
+            defaultReturn: 11.0,
+            returnHelp: 'Before inflation. Indian equities have averaged about 11% a year.',
             defaults: { spend: 1200000, portfolio: 2000000, savings: 600000 },
             step:     { spend: 10000, portfolio: 50000, savings: 10000 },
             infoLabel: 'Why 3% (33×) for India?',
@@ -317,7 +321,25 @@
             const val = parseFloat(wrSlider.value);
             if (wrDisplay) wrDisplay.textContent = `${val.toFixed(1)}%`;
             setSliderFill(val);
+            compute();
+            render();
         });
+    }
+
+    // ── Live results ──
+    // The numbers update as you type. Finishing a field (blur or Enter) brings the result into
+    // view without pushing the field you were in off the screen.
+    function revealResult() {
+        heroResult?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    [annualSpendEl, currentPortEl, annualSavingsEl, expectedReturnEl].forEach((el) => {
+        if (!el) return;
+        el.addEventListener('input', () => { compute(); render(); });
+        el.addEventListener('change', revealResult);
+    });
+    const fireForm = byId('fireForm');
+    if (fireForm) {
+        fireForm.addEventListener('submit', (e) => { e.preventDefault(); compute(); render(); revealResult(); });
     }
 
     // ── Calculate button ──
@@ -404,10 +426,13 @@
 
         // Reset inputs + steps to region defaults
         if (resetInputs) {
-            if (annualSpendEl)   { annualSpendEl.value   = mode.defaults.spend;     annualSpendEl.step   = mode.step.spend; }
-            if (currentPortEl)   { currentPortEl.value   = mode.defaults.portfolio; currentPortEl.step   = mode.step.portfolio; }
-            if (annualSavingsEl) { annualSavingsEl.value = mode.defaults.savings;   annualSavingsEl.step = mode.step.savings; }
+            if (annualSpendEl)    { annualSpendEl.value    = mode.defaults.spend;     annualSpendEl.step   = mode.step.spend; }
+            if (currentPortEl)    { currentPortEl.value    = mode.defaults.portfolio; currentPortEl.step   = mode.step.portfolio; }
+            if (annualSavingsEl)  { annualSavingsEl.value  = mode.defaults.savings;   annualSavingsEl.step = mode.step.savings; }
+            if (expectedReturnEl) { expectedReturnEl.value = mode.defaultReturn.toFixed(1); }
         }
+        const returnHelpEl = byId('returnHelp');
+        if (returnHelpEl) returnHelpEl.textContent = mode.returnHelp;
 
         // Withdrawal rate → region default
         if (wrSlider) wrSlider.value = mode.defaultWr;
@@ -422,8 +447,10 @@
         btn.addEventListener('click', () => applyMode(btn.dataset.mode));
     });
 
-    // Initialise from detected region
+    // Initialise from detected region, and show the result for the prefilled numbers straight away
     applyMode(detectMode());
+    compute();
+    render();
 
     // ── Resize ──
     if (typeof ResizeObserver !== 'undefined') {
