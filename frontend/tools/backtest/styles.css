@@ -98,6 +98,15 @@
 .bt tr.out td { color: var(--bt-accent); font-weight: 600; }
 .bt .foot { margin-top: 10px; font-size: var(--t-1); color: var(--bt-muted); }
 
+/* the two asks after the results */
+.bt .asks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.bt .ask { background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.bt .ask p { max-width: 30rem; }
+.bt .linkbtn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: var(--bt-r); background: var(--bt-accent); color: #fff; text-decoration: none; font-weight: 600; font-size: var(--t0); }
+.bt .linkbtn:hover { background: #6A4300; }
+.bt .linkbtn.ghost { background: #fff; color: var(--bt-text); border: 1px solid var(--bt-line); }
+.bt .linkbtn.ghost:hover { background: var(--bt-tint); border-color: rgba(var(--bt-accent-rgb), .5); }
+
 /* prose sections */
 .bt .prose p { max-width: 46rem; margin-top: 12px; }
 .bt .prose ul { margin: 12px 0 0; padding-left: 20px; max-width: 46rem; }
@@ -107,6 +116,7 @@
     .bt { padding: 32px 16px 48px; }
     .bt .sheet { padding: 20px 18px 22px; }
     .bt .story { font-size: 21px; line-height: 1.65; }
+    .bt .asks { grid-template-columns: 1fr; }
     .bt .go { width: 100%; }
     .bt .section { margin-top: 36px; padding-top: 28px; }
     .bt .chart { padding: 14px 12px 10px; }
