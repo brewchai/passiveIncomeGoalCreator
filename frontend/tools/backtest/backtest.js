@@ -394,10 +394,11 @@
         els.ypick.setAttribute('aria-expanded', 'true');
         // keep the panel inside the viewport on both sides
         const margin = 12;
+        const vw = document.documentElement.clientWidth; // the layout width, without the scrollbar
         const wrapRect = els.ypick.parentElement.getBoundingClientRect();
-        const width = Math.min(340, window.innerWidth - margin * 2);
+        const width = Math.min(340, vw - margin * 2);
         let left = 0;
-        if (wrapRect.left + left + width > window.innerWidth - margin) left = (window.innerWidth - margin - width) - wrapRect.left;
+        if (wrapRect.left + left + width > vw - margin) left = (vw - margin - width) - wrapRect.left;
         if (wrapRect.left + left < margin) left = margin - wrapRect.left;
         els.ypop.style.width = `${width}px`;
         els.ypop.style.left = `${Math.round(left)}px`;
