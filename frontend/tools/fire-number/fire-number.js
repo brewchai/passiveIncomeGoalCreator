@@ -362,7 +362,9 @@
     if (infoModal) infoModal.addEventListener('click', (e) => { if (e.target === infoModal) infoModal.style.display = 'none'; });
 
     // ── Newsletter CTA ──
-    const NEWSLETTER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwojek3Afm9YM5PspylrXvt1BXs2lM5wroNv3a4bPpG_qeWCo0obdU5GrUvYxMRn3Zwgg/exec';
+    // The same sheet and script as the home page waitlist; the row carries source so the two are told apart.
+    const NEWSLETTER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxEgOvw4syL7nYWfIR0r_QBk-461ZYSOsiPML0HE2_oNNEo5-gRLoYBUXyQ5D_4D295lg/exec';
+    const NEWSLETTER_MAIL = 'https://formsubmit.co/ajax/butfirstfire@gmail.com';
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const ctaForm  = byId('newsletterCtaForm');
@@ -379,14 +381,28 @@
             }
             const btn = ctaForm.querySelector('button[type="submit"]');
             if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+            const row = {
+                timestamp: new Date().toISOString(),
+                email,
+                source: 'fire-number-newsletter',
+                builderStep: '',
+                page: location.pathname,
+                currency: modeKey === 'in' ? 'INR' : 'USD'
+            };
+            // Best-effort email notification; the sheet is the record.
+            fetch(NEWSLETTER_MAIL, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...row, _subject: 'New newsletter signup, FIRE number page' }) }).catch(() => {});
+            let saved = false;
             try {
-                const fd = new URLSearchParams();
-                fd.append('email', email);
-                fd.append('source', 'fire-number-calculator');
-                await fetch(NEWSLETTER_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd });
-            } catch (_) { /* silent */ }
-            if (ctaMsg) { ctaMsg.textContent = 'You\'re in! Watch your inbox for FIRE updates.'; ctaMsg.className = 'newsletter-cta-msg success'; ctaMsg.style.display = 'block'; }
-            if (ctaEmail) ctaEmail.value = '';
+                const res = await fetch(NEWSLETTER_ENDPOINT, { method: 'POST', body: new URLSearchParams(row) });
+                const data = res.ok ? await res.json().catch(() => null) : null;
+                saved = !!(data && data.success === true);
+            } catch (_) { saved = false; }
+            if (ctaMsg) {
+                ctaMsg.textContent = saved ? 'You\'re in! Watch your inbox for FIRE updates.' : 'That didn\'t go through. Please try again in a moment.';
+                ctaMsg.className = `newsletter-cta-msg ${saved ? 'success' : 'error'}`;
+                ctaMsg.style.display = 'block';
+            }
+            if (saved && ctaEmail) ctaEmail.value = '';
             if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
         });
     }
