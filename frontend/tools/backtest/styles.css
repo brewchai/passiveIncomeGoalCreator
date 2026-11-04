@@ -101,7 +101,7 @@
 /* the two asks after the results */
 .bt .asks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .bt .ask { background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.bt .ask p { max-width: 30rem; }
+.bt .ask p { max-width: 30rem; flex: 1; } /* the text takes the slack, so both buttons sit on the same line */
 .bt .linkbtn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: var(--bt-r); background: var(--bt-accent); color: #fff; text-decoration: none; font-weight: 600; font-size: var(--t0); }
 .bt .linkbtn:hover { background: #6A4300; }
 .bt .linkbtn.ghost { background: #fff; color: var(--bt-text); border: 1px solid var(--bt-line); }
