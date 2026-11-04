@@ -10,12 +10,16 @@
 
     const els = {
         corpus: byId('corpus'),
-        spend: byId('spend'),
+        monthly: byId('monthly'),
         equity: byId('equity'),
         years: byId('years'),
-        tToday: byId('tToday'),
-        tThenLabel: byId('tThenLabel'),
-        tThen: byId('tThen'),
+        ypick: byId('ypick'),
+        ypickYear: byId('ypickYear'),
+        ypop: byId('ypop'),
+        ypopClose: byId('ypopClose'),
+        tCorpus: byId('tCorpus'),
+        tEquity: byId('tEquity'),
+        tMonthly: byId('tMonthly'),
         tNote: byId('tNote'),
         context: byId('context'),
         real: byId('countTax'),
@@ -42,7 +46,7 @@
     const ACCENT = '#7A4E00';
     const MUTED = '#6E6159';
     const RULE = '#E8E1D9';
-    const DEFAULTS = { corpus: 100000000, spend: 4000000, share: 0.6, start: 2000 };
+    const DEFAULTS = { corpus: 100000000, monthly: 250000, share: 0.6, start: 2000 };
 
     // ── Formatting ──
     const trim = (s) => s.replace(/\.0+$/, '').replace(/(\.\d*?)0+$/, '$1');
@@ -58,6 +62,11 @@
         if (n >= 1e5) { const l = n / 1e5; return `${trim(l >= 10 ? l.toFixed(0) : l.toFixed(1))} L`; }
         return Math.round(n).toLocaleString('en-IN');
     }
+    function monthlyMoney(n) {
+        n = Math.max(0, n);
+        if (n >= 1e5) { const l = n / 1e5; return `₹${trim(l >= 10 ? l.toFixed(1) : l.toFixed(2))} lakh`; }
+        return `₹${(Math.round(n / 100) * 100).toLocaleString('en-IN')}`;
+    }
     const pct = (n, d = 1) => `${trim((+n).toFixed(d))}%`;
     const num = (el) => { const v = Number(String(el?.value ?? '').replace(/[^\d.]/g, '')); return Number.isFinite(v) ? v : 0; };
     const groupIN = (el) => { const v = num(el); if (el && v > 0) el.value = Math.round(v).toLocaleString('en-IN'); fit(el); };
@@ -67,9 +76,11 @@
     const state = { inputs: null, runs: null, hover: null, start: DEFAULTS.start, revealed: false };
 
     function readInputs() {
+        const monthly = num(els.monthly);
         return {
             corpus: num(els.corpus),
-            spend: num(els.spend),
+            monthly,
+            spend: monthly * 12,
             share: Math.min(100, Math.max(0, num(els.equity))) / 100,
             start: state.start,
             real: !!els.real.checked
@@ -92,20 +103,22 @@
     }
 
     // ── The translation line: today's figures in the start year's rupees ──
+    // The past sentence: the same life, in the start year's rupees.
     function renderTranslate() {
         const i = state.inputs;
-        els.tThenLabel.textContent = `In ${i.start}`;
-        if (!i || i.corpus <= 0 || i.spend <= 0) {
-            els.tToday.textContent = 'Fill in both amounts';
-            els.tThen.textContent = 'and they show up here in that year’s rupees';
-            els.tNote.textContent = '';
+        els.ypickYear.textContent = String(i.start);
+        els.tEquity.textContent = pct(i.share * 100, 0);
+        if (!i || i.corpus <= 0 || i.monthly <= 0) {
+            els.tCorpus.textContent = '…';
+            els.tMonthly.textContent = '…';
+            els.tNote.textContent = 'Fill in both amounts above and this line fills itself in.';
             return;
         }
         const m = priceMultiple(i.start);
         const wr0 = i.spend / i.corpus;
-        els.tToday.textContent = `${money(i.corpus)}, spending ${money(i.spend)} a year`;
-        els.tThen.textContent = `${money(i.corpus / m)}, spending ${money(i.spend / m)} a year`;
-        els.tNote.textContent = `Prices have gone up ${trim(m.toFixed(1))}× since ${i.start}. Spending is ${pct(wr0 * 100)} of the money in year 1.`;
+        els.tCorpus.textContent = money(i.corpus / m);
+        els.tMonthly.textContent = monthlyMoney(i.monthly / m);
+        els.tNote.textContent = `Same life, in ${i.start} rupees. Prices have gone up ${trim(m.toFixed(1))}× since. Spending is ${pct(wr0 * 100)} of the money in year 1.`;
     }
 
     // ── Words ──
@@ -124,7 +137,7 @@
             els.results.hidden = true;
             els.emptyNote.textContent = !i || i.corpus <= 0 || i.spend <= 0
                 ? 'Fill in both amounts first.'
-                : i.spend >= i.corpus ? 'Spending has to be less than the money you have.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
+                : i.spend >= i.corpus ? 'A year of spending has to be less than the money you have.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
             return;
         }
         els.empty.hidden = true;
@@ -133,13 +146,14 @@
         const pair = state.runs[i.start];
         const run = i.real ? pair.real : pair.clean;
         const other = i.real ? pair.clean : pair.real;
+        const m = priceMultiple(i.start);
 
         els.headline.textContent = run.failYear
             ? `The money ran out in ${run.failYear}.`
             : `${money(run.endToday)} left today.`;
         els.context.textContent = run.failYear
-            ? `You retired in ${i.start} with ${money(i.corpus)} and spent ${money(i.spend)} a year.`
-            : `You retired in ${i.start} with ${money(i.corpus)} and spent ${money(i.spend)} a year. Your spending is now ${pct(run.wrNow * 100)} of what is left.`;
+            ? `You retired in ${i.start} with ${money(i.corpus / m)} and spent ${monthlyMoney(i.monthly / m)} a month, in ${i.start} rupees.`
+            : `You retired in ${i.start} with ${money(i.corpus / m)} and spent ${monthlyMoney(i.monthly / m)} a month, in ${i.start} rupees. Today you spend ${monthlyMoney(i.monthly)} a month, which is ${pct(run.wrNow * 100)} of what is left.`;
         els.verdict.textContent = verdictFor(run);
 
         const drop = 1 - run.minToday / run.startToday;
@@ -351,12 +365,12 @@
             </tr>`);
         });
         if (!run.failYear) {
-            frag.push(`<tr class="end"><td>now</td><td></td><td></td><td></td><td class="n">${money(run.endNominal)}</td><td class="n">${money(run.endToday)}</td><td class="n">${money(state.inputs.spend)}</td><td class="n">${pct(run.wrNow * 100)}</td></tr>`);
+            frag.push(`<tr class="end"><td>now</td><td></td><td></td><td></td><td class="n">${money(run.endNominal)}</td><td class="n">${money(run.endToday)}</td><td class="n">${money(state.inputs.spend)} a year</td><td class="n">${pct(run.wrNow * 100)}</td></tr>`);
         }
         els.tableBody.innerHTML = frag.join('');
     }
 
-    // ── Year grid ──
+    // ── Year picker: a button in the sentence that opens a grid, like a date picker ──
     function buildYears() {
         els.years.innerHTML = '';
         for (let y = FIRST; y <= LAST_START; y++) {
@@ -366,10 +380,28 @@
             b.dataset.year = String(y);
             b.textContent = String(y);
             b.setAttribute('role', 'radio');
-            b.addEventListener('click', () => { setStart(y); update(); });
+            b.addEventListener('click', () => { setStart(y); closeYears(); update(); });
             els.years.appendChild(b);
         }
         syncYears();
+        els.ypick.addEventListener('click', () => (els.ypop.hidden ? openYears() : closeYears()));
+        els.ypopClose.addEventListener('click', closeYears);
+        document.addEventListener('click', (e) => { if (!els.ypop.hidden && !els.ypop.contains(e.target) && !els.ypick.contains(e.target)) closeYears(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !els.ypop.hidden) { closeYears(); els.ypick.focus(); } });
+    }
+    function openYears() {
+        els.ypop.hidden = false;
+        els.ypick.setAttribute('aria-expanded', 'true');
+        // keep the panel on screen
+        els.ypop.style.left = '0'; els.ypop.style.right = 'auto';
+        const r = els.ypop.getBoundingClientRect();
+        if (r.right > window.innerWidth - 12) { els.ypop.style.left = 'auto'; els.ypop.style.right = '0'; }
+        const active = els.years.querySelector('.year.active');
+        if (active) active.focus();
+    }
+    function closeYears() {
+        els.ypop.hidden = true;
+        els.ypick.setAttribute('aria-expanded', 'false');
     }
     function setStart(y) { state.start = Math.min(LAST_START, Math.max(FIRST, y)); syncYears(); }
     function syncYears() {
@@ -385,7 +417,7 @@
         const q = new URLSearchParams(location.search);
         let any = false;
         const set = (el, key) => { const v = q.get(key); if (v !== null && el) { el.value = v; any = true; } };
-        set(els.corpus, 'corpus'); set(els.spend, 'spend'); set(els.equity, 'equity');
+        set(els.corpus, 'corpus'); set(els.monthly, 'monthly'); set(els.equity, 'equity');
         if (q.has('start')) { setStart(Number(q.get('start')) || DEFAULTS.start); any = true; }
         if (q.has('tax') && els.real) { els.real.checked = q.get('tax') !== '0'; any = true; }
         return any;
@@ -397,7 +429,7 @@
             const i = state.inputs; if (!i) return;
             const q = new URLSearchParams();
             if (i.corpus !== DEFAULTS.corpus) q.set('corpus', String(i.corpus));
-            if (i.spend !== DEFAULTS.spend) q.set('spend', String(i.spend));
+            if (i.monthly !== DEFAULTS.monthly) q.set('monthly', String(i.monthly));
             if (i.share !== DEFAULTS.share) q.set('equity', String(Math.round(i.share * 100)));
             if (i.start !== DEFAULTS.start) q.set('start', String(i.start));
             if (!i.real) q.set('tax', '0');
@@ -420,8 +452,8 @@
     function setup() {
         buildYears();
         const fromLink = readUrl();
-        groupIN(els.corpus); groupIN(els.spend); fit(els.equity);
-        [els.corpus, els.spend].forEach((el) => {
+        groupIN(els.corpus); groupIN(els.monthly); fit(els.equity);
+        [els.corpus, els.monthly].forEach((el) => {
             el.addEventListener('input', () => { fit(el); update(); });
             el.addEventListener('blur', () => groupIN(el));
         });
@@ -431,7 +463,7 @@
             chip.addEventListener('click', () => {
                 const rate = Number(chip.dataset.rate);
                 const corpus = num(els.corpus);
-                if (corpus > 0) { els.spend.value = String(Math.round(corpus * rate / 100)); groupIN(els.spend); update(); }
+                if (corpus > 0) { els.monthly.value = String(Math.round(corpus * rate / 100 / 12 / 1000) * 1000); groupIN(els.monthly); update(); }
             });
         });
         els.go.addEventListener('click', reveal);

@@ -43,35 +43,34 @@
         <p class="lede">Take your plan. Start it in any year since 2000. See what the money did.</p>
 
         <section class="sheet" aria-label="Your plan">
-            <p class="story">I retire with <span class="inline"><span class="cur">₹</span><input id="corpus" type="text" inputmode="numeric" value="100000000" aria-label="Money you retire with, in today's rupees"></span></p>
-            <p class="story">I spend <span class="inline"><span class="cur">₹</span><input id="spend" type="text" inputmode="numeric" value="4000000" aria-label="Spending a year, in today's rupees"></span> a year</p>
+            <p class="story">If I retire today with <span class="inline"><span class="cur">₹</span><input id="corpus" type="text" inputmode="numeric" value="100000000" aria-label="Money you retire with, in today's rupees"></span>, keep <span class="inline small"><input id="equity" type="number" inputmode="numeric" min="0" max="100" step="5" value="60" aria-label="Share in the Nifty 50, in percent"><span class="cur">%</span></span> in the Nifty 50, and spend <span class="inline"><span class="cur">₹</span><input id="monthly" type="text" inputmode="numeric" value="250000" aria-label="Spending a month, in today's rupees"></span> a month, will the money last?</p>
             <div class="chips">
-                <span class="note">or spend</span>
+                <span class="note">Spend</span>
                 <button type="button" class="chip" data-rate="3">3%</button>
                 <button type="button" class="chip" data-rate="3.5">3.5%</button>
                 <button type="button" class="chip" data-rate="4">4%</button>
                 <span class="note">of it a year</span>
             </div>
-            <p class="split">Keep <span class="inline small"><input id="equity" type="number" inputmode="numeric" min="0" max="100" step="5" value="60" aria-label="Share in the Nifty 50, in percent"><span class="cur">%</span></span> in the Nifty 50 and the rest in fixed deposits.</p>
 
-            <p class="label">Start the retirement in</p>
-            <div class="years" id="years" role="radiogroup" aria-label="The year you retire"></div>
-
-            <div class="translate" id="translate">
-                <div class="trow"><span>Today</span><strong id="tToday"></strong></div>
-                <div class="trow"><span id="tThenLabel">In 2000</span><strong id="tThen"></strong></div>
-                <p class="tnote" id="tNote"></p>
-            </div>
-
-            <label class="check">
-                <input id="countTax" type="checkbox" checked>
-                <div>Include tax and fund fees<span>30% tax on FD interest. Capital gains tax on shares, as the rules were each year. 1% a year in fund fees.</span></div>
-            </label>
+            <p class="story then">If I had retired in
+                <span class="ypick-wrap">
+                    <button type="button" class="ypick" id="ypick" aria-haspopup="dialog" aria-expanded="false"><span id="ypickYear">2000</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <span class="ypop" id="ypop" role="dialog" aria-label="Pick the year you retire" hidden>
+                        <span class="ypop-head"><span>Pick the year</span><button type="button" class="ypop-close" id="ypopClose" aria-label="Close">✕</button></span>
+                        <span class="years" id="years" role="radiogroup" aria-label="The year you retire"></span>
+                    </span>
+                </span>
+                with <strong class="fixed" id="tCorpus"></strong>, kept <strong class="fixed" id="tEquity"></strong> in the Nifty 50, and spent <strong class="fixed" id="tMonthly"></strong> a month, would it have lasted?</p>
+            <p class="tnote" id="tNote"></p>
 
             <div class="go-row">
                 <button type="button" class="go" id="go">Test it on real data</button>
                 <span class="note">Real returns. Real inflation. Real FD rates. Real tax. Every year to <span id="endDate">2 November 2026</span>.</span>
             </div>
+            <label class="check">
+                <input id="countTax" type="checkbox" checked>
+                <div>Include tax and fund fees<span>30% tax on FD interest. Capital gains tax on shares, as the rules were each year. 1% a year in fund fees.</span></div>
+            </label>
             <p class="assume">Each 1 January you take out the year's spending and rebalance. Spending goes up with inflation every year. No cutting back, no side income.</p>
         </section>
 

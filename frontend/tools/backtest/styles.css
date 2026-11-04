@@ -10,6 +10,7 @@
     --bt-accent-rgb: 122, 78, 0;
     --bt-tint: #FFF6E5;
     --bt-shadow: 0 1px 2px rgba(122, 78, 0, 0.07), 0 10px 24px -8px rgba(122, 78, 0, 0.16);
+    --bt-shadow-float: 0 2px 4px rgba(122, 78, 0, 0.08), 0 24px 48px -12px rgba(122, 78, 0, 0.28);
     --bt-r: 12px;
     --bt-rc: 4px;
     --t-1: 14px; --t0: 18px; --t1: 22px; --t2: 28px; --t3: 35px;
@@ -28,9 +29,9 @@
 
 /* the plan, written as a sentence you fill in */
 .bt .sheet { margin-top: 28px; background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 28px 32px 30px; }
-.bt .story { font-size: clamp(26px, 3.2vw, 36px); font-weight: 500; line-height: 1.5; letter-spacing: -0.01em; }
-.bt .story + .story { margin-top: 6px; }
-.bt .split { margin-top: 16px; font-size: var(--t0); color: var(--bt-muted); }
+.bt .story { font-size: clamp(22px, 2.6vw, 30px); font-weight: 500; line-height: 1.7; letter-spacing: -0.01em; max-width: 44ch; }
+.bt .story.then { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--bt-line); }
+.bt .fixed { font-weight: 600; border-bottom: 2px solid var(--bt-line); padding: 0 2px; white-space: nowrap; }
 .bt .inline { display: inline-flex; align-items: baseline; border-bottom: 2px solid var(--bt-accent); padding: 0 2px; margin: 0 2px; white-space: nowrap; }
 .bt .inline .cur { color: var(--bt-muted); font-weight: 500; }
 .bt .inline input { border: 0; background: transparent; font: inherit; color: var(--bt-text); font-weight: 600; padding: 0 2px; min-width: 3ch; width: 9ch; text-align: left; -moz-appearance: textfield; }
@@ -43,18 +44,23 @@
 .bt .chip:hover { border-color: rgba(var(--bt-accent-rgb), .5); color: var(--bt-text); background: var(--bt-tint); }
 .bt .chip:focus-visible, .bt .year:focus-visible, .bt .go:focus-visible, .bt .check:focus-within { outline: 2px solid var(--bt-accent); outline-offset: 2px; }
 .bt .chips .note { font-size: var(--t-1); color: var(--bt-muted); }
-.bt .label { margin-top: 28px; font-weight: 600; }
-.bt .years { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; margin-top: 12px; }
-.bt .year { border: 1px solid var(--bt-line); background: #fff; color: var(--bt-text); border-radius: var(--bt-rc); padding: 9px 0; font: inherit; font-size: var(--t-1); font-weight: 600; cursor: pointer; transition: border-color .18s ease-out, background-color .18s ease-out, color .18s ease-out; font-variant-numeric: tabular-nums; }
-.bt .year:hover { border-color: rgba(var(--bt-accent-rgb), .5); background: var(--bt-tint); }
-.bt .year.active { background: var(--bt-accent); border-color: var(--bt-accent); color: #fff; }
-.bt .translate { margin-top: 22px; padding: 14px 18px 16px; background: var(--bt-bg); border-radius: var(--bt-r); font-size: var(--t0); line-height: 1.5; }
-.bt .trow { display: grid; grid-template-columns: 7ch 1fr; gap: 12px; align-items: baseline; padding: 6px 0; }
-.bt .trow + .trow { border-top: 1px solid var(--bt-line); }
-.bt .trow span { color: var(--bt-muted); font-size: var(--t-1); }
-.bt .trow strong { font-weight: 600; }
-.bt .tnote { margin-top: 8px; font-size: var(--t-1); color: var(--bt-muted); }
-.bt .check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--t0); line-height: 1.4; margin-top: 22px; }
+/* the year picker: a button in the sentence, a grid in a panel below it */
+.bt .ypick-wrap { position: relative; display: inline-block; vertical-align: baseline; }
+.bt .ypick { display: inline-flex; align-items: center; gap: 4px; border: 0; border-bottom: 2px solid var(--bt-accent); background: var(--bt-tint); color: var(--bt-text); padding: 0 6px 0 8px; margin: 0 2px; font: inherit; font-weight: 600; cursor: pointer; border-radius: var(--bt-rc) var(--bt-rc) 0 0; line-height: 1.45; }
+.bt .ypick svg { color: var(--bt-accent); transition: transform .18s ease-out; }
+.bt .ypick[aria-expanded="true"] svg { transform: rotate(180deg); }
+.bt .ypick:hover { background: #FFEFD2; }
+.bt .ypop:not([hidden]) { display: block; }
+.bt .ypop { position: absolute; top: calc(100% + 10px); left: 0; z-index: 20; text-align: left; width: 340px; max-width: calc(100vw - 32px); background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow-float); padding: 14px 14px 16px; font-size: var(--t-1); font-weight: 400; letter-spacing: 0; line-height: 1.4; }
+.bt .ypop-head { display: flex; align-items: center; justify-content: space-between; color: var(--bt-muted); margin-bottom: 10px; padding-left: 4px; }
+.bt .ypop-close { border: 0; background: transparent; color: var(--bt-muted); font: inherit; font-size: 15px; cursor: pointer; padding: 4px 8px; border-radius: var(--bt-rc); }
+.bt .ypop-close:hover { background: var(--bt-tint); color: var(--bt-text); }
+.bt .years { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.bt .year { border: 0; background: transparent; color: var(--bt-text); border-radius: var(--bt-rc); padding: 10px 0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color .18s ease-out, color .18s ease-out; font-variant-numeric: tabular-nums; }
+.bt .year:hover { background: var(--bt-tint); }
+.bt .year.active { background: var(--bt-accent); color: #fff; }
+.bt .tnote { margin-top: 12px; font-size: var(--t-1); color: var(--bt-muted); }
+.bt .check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--t-1); line-height: 1.4; margin-top: 18px; color: var(--bt-text); }
 .bt .check input { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--bt-accent); flex: none; }
 .bt .check span { color: var(--bt-muted); font-size: var(--t-1); display: block; }
 .bt .go-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
@@ -99,8 +105,7 @@
 @media (max-width: 720px) {
     .bt { padding: 32px 16px 48px; }
     .bt .sheet { padding: 20px 18px 22px; }
-    .bt .story { font-size: 24px; line-height: 1.6; }
-    .bt .years { grid-template-columns: repeat(4, 1fr); }
+    .bt .story { font-size: 21px; line-height: 1.65; }
     .bt .go { width: 100%; }
     .bt .section { margin-top: 36px; padding-top: 28px; }
     .bt .chart { padding: 14px 12px 10px; }
