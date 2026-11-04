@@ -82,6 +82,11 @@
             "source": "/blog/40k-debt-to-coast-fire-at-33",
             "destination": "/blog/40k-debt-to-lean-fire-at-33",
             "permanent": true
+        },
+        {
+            "source": "/blog/cost-of-cancer-without-insurance",
+            "destination": "/blog/can-a-major-illness-end-lean-fire",
+            "permanent": true
         }
     ]
 }
