@@ -283,9 +283,12 @@
         ctx.stroke();
 
         // Fill under line
+        // Canvas can't resolve CSS variables, so read the token's value off the page first.
+        const accentRgb = getComputedStyle(document.documentElement)
+            .getPropertyValue('--accent-rgb').trim() || '122, 78, 0';
         const areaGrad = ctx.createLinearGradient(0, pad.t, 0, h - pad.b);
-        areaGrad.addColorStop(0, 'rgba(var(--accent-rgb, 122, 78, 0), 0.18)');
-        areaGrad.addColorStop(1, 'rgba(var(--accent-rgb, 122, 78, 0), 0)');
+        areaGrad.addColorStop(0, `rgba(${accentRgb}, 0.18)`);
+        areaGrad.addColorStop(1, `rgba(${accentRgb}, 0)`);
         ctx.fillStyle = areaGrad;
         ctx.beginPath();
         ctx.moveTo(xPx(0), yPx(projection[0]));
