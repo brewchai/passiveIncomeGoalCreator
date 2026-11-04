@@ -13,7 +13,11 @@
         spend: byId('spend'),
         equity: byId('equity'),
         years: byId('years'),
-        translate: byId('translate'),
+        tToday: byId('tToday'),
+        tThenLabel: byId('tThenLabel'),
+        tThen: byId('tThen'),
+        tNote: byId('tNote'),
+        context: byId('context'),
         real: byId('countTax'),
         go: byId('go'),
         rateChips: document.querySelectorAll('[data-rate]'),
@@ -90,18 +94,26 @@
     // ── The translation line: today's figures in the start year's rupees ──
     function renderTranslate() {
         const i = state.inputs;
-        if (!i || i.corpus <= 0 || i.spend <= 0) { els.translate.textContent = 'Fill in the corpus and the spending, both in today’s money, and this line will show what they were worth back then.'; return; }
+        els.tThenLabel.textContent = `In ${i.start}`;
+        if (!i || i.corpus <= 0 || i.spend <= 0) {
+            els.tToday.textContent = 'Fill in both amounts';
+            els.tThen.textContent = 'and they show up here in that year’s rupees';
+            els.tNote.textContent = '';
+            return;
+        }
         const m = priceMultiple(i.start);
         const wr0 = i.spend / i.corpus;
-        els.translate.textContent = `On 1 January ${i.start}, ${money(i.corpus)} of today was ${money(i.corpus / m)}, and ${money(i.spend)} a year was ${money(i.spend / m)}. Prices have risen ${trim(m.toFixed(1))}× since. Spending is ${pct(wr0 * 100)} of the corpus in year 1.`;
+        els.tToday.textContent = `${money(i.corpus)}, spending ${money(i.spend)} a year`;
+        els.tThen.textContent = `${money(i.corpus / m)}, spending ${money(i.spend / m)} a year`;
+        els.tNote.textContent = `Prices have gone up ${trim(m.toFixed(1))}× since ${i.start}. Spending is ${pct(wr0 * 100)} of the money in year 1.`;
     }
 
     // ── Words ──
     function verdictFor(run) {
-        if (run.failYear) return `The money ran out in ${run.failYear}. Same spending, same discipline, and the decade you retired into did the rest.`;
-        if (run.wrNow <= 0.04) return 'The plan is holding. Your spending is still a sustainable share of what is left.';
-        if (run.wrNow <= 0.06) return 'It survived, and it is drifting the wrong way. The withdrawal rate has crept up from where you started.';
-        return 'It survived so far, but at this rate it does not last. The next bad stretch is the one that ends it.';
+        if (run.failYear) return 'You did nothing wrong. You retired into a bad decade.';
+        if (run.wrNow <= 0.04) return 'The plan is holding.';
+        if (run.wrNow <= 0.06) return 'It survived, but it is slipping. You now spend a bigger share of the money than when you started.';
+        return 'It is in trouble. At this rate the money does not last.';
     }
 
     function render() {
@@ -111,8 +123,8 @@
             els.empty.hidden = false;
             els.results.hidden = true;
             els.emptyNote.textContent = !i || i.corpus <= 0 || i.spend <= 0
-                ? 'Fill in the corpus and the spending, both in today’s money.'
-                : i.spend >= i.corpus ? 'Spending has to be less than the corpus.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
+                ? 'Fill in both amounts first.'
+                : i.spend >= i.corpus ? 'Spending has to be less than the money you have.' : `Pick a start year between ${FIRST} and ${LAST_START}.`;
             return;
         }
         els.empty.hidden = true;
@@ -123,29 +135,34 @@
         const other = i.real ? pair.clean : pair.real;
 
         els.headline.textContent = run.failYear
-            ? `Retire on 1 January ${i.start} with ${money(i.corpus)}, spend ${money(i.spend)} a year, and the money runs out in ${run.failYear}.`
-            : `Retire on 1 January ${i.start} with ${money(i.corpus)}, spend ${money(i.spend)} a year, and today you would have ${money(run.endToday)}. Your spending is now ${pct(run.wrNow * 100)} of it.`;
+            ? `The money ran out in ${run.failYear}.`
+            : `${money(run.endToday)} left today.`;
+        els.context.textContent = run.failYear
+            ? `You retired in ${i.start} with ${money(i.corpus)} and spent ${money(i.spend)} a year.`
+            : `You retired in ${i.start} with ${money(i.corpus)} and spent ${money(i.spend)} a year. Your spending is now ${pct(run.wrNow * 100)} of what is left.`;
         els.verdict.textContent = verdictFor(run);
 
         const drop = 1 - run.minToday / run.startToday;
         els.low.textContent = run.failYear
             ? ''
             : drop > 0.005
-                ? `The low point was ${money(run.minToday)} in today’s money, ${run.minIsEnd ? 'which is where it stands now' : `at the start of ${run.minYear}`}, a drop of ${pct(drop * 100, 0)} in what the money could buy.`
-                : 'The money never dipped below where it started, in today’s money.';
+                ? (run.minIsEnd
+                    ? `This is the worst it has been. The money is down ${pct(drop * 100, 0)} from where you started, in today’s rupees.`
+                    : `The worst point was ${run.minYear}. The money was down to ${money(run.minToday)} in today’s rupees, a ${pct(drop * 100, 0)} fall.`)
+                : 'The money never fell below where it started, in today’s rupees.';
 
         els.gap.textContent = i.real
-            ? (other.failYear ? `Ignore tax and costs and the same plan still runs out, in ${other.failYear}.` : `Ignore tax and costs and the same plan would show ${money(other.endToday)} today. That gap is the part most backtests leave out.`)
-            : (other.failYear ? `Count tax and a 1% fund cost and the same plan runs out in ${other.failYear}.` : `Count tax and a 1% fund cost and the same plan ends at ${money(other.endToday)} today. That is the version you would actually live in.`);
+            ? (other.failYear ? `Without tax and fees it still runs out, in ${other.failYear}.` : `Without tax and fees it would be ${money(other.endToday)}. Most calculators show you that number. It is not the one you get.`)
+            : (other.failYear ? `With tax and fees the money runs out in ${other.failYear}.` : `With tax and fees it would be ${money(other.endToday)}. That is the number you actually get.`);
 
-        els.pathTitle.textContent = `What the money did from ${i.start}, in today’s money`;
-        els.pathLegend.innerHTML = '<span><i class="sw sw-ink"></i>Counting tax and a 1% fund cost</span><span><i class="sw sw-accent"></i>Ignoring tax and costs</span>';
+        els.pathTitle.textContent = `Your money, year by year, from ${i.start}`;
+        els.pathLegend.innerHTML = '<span><i class="sw sw-ink"></i>With tax and fees</span><span><i class="sw sw-accent"></i>Without tax and fees</span>';
         drawPath(pair, i);
 
         drawBars(i);
         els.barsSummary.textContent = barsSummary(i);
 
-        els.tableTitle.textContent = `Year by year from ${i.start}, ${i.real ? 'counting tax and costs' : 'ignoring tax and costs'}`;
+        els.tableTitle.textContent = `Every year, from ${i.start}, ${i.real ? 'with tax and fees' : 'without tax and fees'}`;
         renderTable(run);
     }
 
@@ -157,11 +174,12 @@
         const holding = list.filter((r) => !r.failYear && r.wrNow <= 0.04);
         const worst = list.reduce((a, b) => (b.endToday < a.endToday ? b : a));
         const best = list.reduce((a, b) => (b.endToday > a.endToday ? b : a));
+        const years = (arr) => arr.map((r) => r.startYear).join(', ').replace(/, ([^,]*)$/, ' and $1');
         const parts = [];
-        parts.push(`Across the ${list.length} start years from ${FIRST} to ${LAST_START}, ${holding.length} ${holding.length === 1 ? 'is' : 'are'} holding at 4% or under today.`);
-        if (failed.length) parts.push(`${failed.length} ${failed.length === 1 ? 'runs' : 'run'} out of money: ${failed.map((r) => r.startYear).join(', ')}.`);
-        if (trouble.length) parts.push(`${trouble.length} ${trouble.length === 1 ? 'is' : 'are'} past 6% and in trouble: ${trouble.map((r) => r.startYear).join(', ')}.`);
-        parts.push(`The worst start was ${worst.startYear}${worst.failYear ? ', which failed' : `, with ${money(worst.endToday)} left`}. The best was ${best.startYear}, with ${money(best.endToday)}. Later starts have had fewer years of spending, which flatters them.`);
+        parts.push(`There are ${list.length} start years. ${holding.length} ${holding.length === 1 ? 'is' : 'are'} fine.`);
+        if (failed.length) parts.push(`${failed.length} ${failed.length === 1 ? 'runs' : 'run'} out of money: ${years(failed)}.`);
+        if (trouble.length) parts.push(`${trouble.length} ${trouble.length === 1 ? 'is' : 'are'} in trouble: ${years(trouble)}.`);
+        parts.push(`Worst start: ${worst.startYear}${worst.failYear ? ', the money ran out' : `, ${money(worst.endToday)} left`}. Best start: ${best.startYear}, ${money(best.endToday)} left. Recent years have had less time to go wrong.`);
         return parts.join(' ');
     }
 
@@ -302,8 +320,8 @@
         const focus = state.hover ?? i.start;
         const fr = state.runs[focus][key];
         els.barsNote.textContent = fr.failYear
-            ? `${focus}: the money ran out in ${fr.failYear}.`
-            : `${focus}: ${money(fr.endToday)} left today, spending is ${pct(fr.wrNow * 100)} of it.`;
+            ? `Retire in ${focus}: the money ran out in ${fr.failYear}.`
+            : `Retire in ${focus}: ${money(fr.endToday)} left today. Spending is ${pct(fr.wrNow * 100)} of it.`;
     }
 
     function barAt(evt) {

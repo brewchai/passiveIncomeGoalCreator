@@ -28,10 +28,13 @@
 
 /* the plan, written as a sentence you fill in */
 .bt .sheet { margin-top: 28px; background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 28px 32px 30px; }
-.bt .story { font-size: clamp(22px, 2.6vw, 30px); font-weight: 500; line-height: 1.75; letter-spacing: -0.01em; max-width: 34ch; }
+.bt .story { font-size: clamp(26px, 3.2vw, 36px); font-weight: 500; line-height: 1.5; letter-spacing: -0.01em; }
+.bt .story + .story { margin-top: 6px; }
+.bt .split { margin-top: 16px; font-size: var(--t0); color: var(--bt-muted); }
 .bt .inline { display: inline-flex; align-items: baseline; border-bottom: 2px solid var(--bt-accent); padding: 0 2px; margin: 0 2px; white-space: nowrap; }
 .bt .inline .cur { color: var(--bt-muted); font-weight: 500; }
 .bt .inline input { border: 0; background: transparent; font: inherit; color: var(--bt-text); font-weight: 600; padding: 0 2px; min-width: 3ch; width: 9ch; text-align: left; -moz-appearance: textfield; }
+.bt .inline.small input { font-weight: 600; color: var(--bt-text); }
 .bt .inline input::-webkit-outer-spin-button, .bt .inline input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .bt .inline input:focus { outline: none; }
 .bt .inline:focus-within { background: var(--bt-tint); }
@@ -45,7 +48,12 @@
 .bt .year { border: 1px solid var(--bt-line); background: #fff; color: var(--bt-text); border-radius: var(--bt-rc); padding: 9px 0; font: inherit; font-size: var(--t-1); font-weight: 600; cursor: pointer; transition: border-color .18s ease-out, background-color .18s ease-out, color .18s ease-out; font-variant-numeric: tabular-nums; }
 .bt .year:hover { border-color: rgba(var(--bt-accent-rgb), .5); background: var(--bt-tint); }
 .bt .year.active { background: var(--bt-accent); border-color: var(--bt-accent); color: #fff; }
-.bt .translate { margin-top: 22px; padding: 16px 18px; background: var(--bt-bg); border-radius: var(--bt-r); font-size: var(--t0); line-height: 1.5; max-width: none; }
+.bt .translate { margin-top: 22px; padding: 14px 18px 16px; background: var(--bt-bg); border-radius: var(--bt-r); font-size: var(--t0); line-height: 1.5; }
+.bt .trow { display: grid; grid-template-columns: 7ch 1fr; gap: 12px; align-items: baseline; padding: 6px 0; }
+.bt .trow + .trow { border-top: 1px solid var(--bt-line); }
+.bt .trow span { color: var(--bt-muted); font-size: var(--t-1); }
+.bt .trow strong { font-weight: 600; }
+.bt .tnote { margin-top: 8px; font-size: var(--t-1); color: var(--bt-muted); }
 .bt .check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--t0); line-height: 1.4; margin-top: 22px; }
 .bt .check input { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--bt-accent); flex: none; }
 .bt .check span { color: var(--bt-muted); font-size: var(--t-1); display: block; }
@@ -60,8 +68,9 @@
 .bt .empty { margin-top: 28px; padding: 24px 0; }
 .bt .empty strong { display: block; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
 .bt .empty p { margin-top: 8px; color: var(--bt-muted); }
-.bt .headline { font-size: clamp(22px, 2.4vw, 28px); font-weight: 500; line-height: 1.25; max-width: 40ch; }
-.bt .verdict { margin-top: 14px; font-size: var(--t1); line-height: 1.4; max-width: 46rem; }
+.bt .big { font-size: clamp(32px, 4vw, 44px); font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; }
+.bt .context { margin-top: 12px; font-size: var(--t1); line-height: 1.4; max-width: 46rem; }
+.bt .verdict { margin-top: 12px; font-size: var(--t1); font-weight: 600; line-height: 1.4; max-width: 46rem; }
 .bt .fwd { margin-top: 12px; max-width: 46rem; }
 .bt .chart { margin-top: 22px; background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 20px 20px 14px; }
 .bt .chart canvas { display: block; width: 100%; }
