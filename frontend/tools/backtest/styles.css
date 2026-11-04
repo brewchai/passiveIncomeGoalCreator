@@ -26,31 +26,33 @@
 .bt .section h2 { font-size: clamp(24px, 2.6vw, 30px); font-weight: 600; }
 .bt .section .sub { margin: 8px 0 0; color: var(--bt-muted); font-size: var(--t-1); line-height: 1.5; max-width: 46rem; }
 
-/* inputs */
+/* the plan, written as a sentence you fill in */
 .bt .sheet { margin-top: 28px; background: var(--bt-panel); border-radius: var(--bt-r); box-shadow: var(--bt-shadow); padding: 28px 32px 30px; }
-.bt .sheet-head { font-weight: 600; margin-bottom: 18px; }
-.bt .sheet-head span { font-weight: 400; color: var(--bt-muted); font-size: var(--t-1); }
-.bt .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
-.bt .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.bt .field label { font-size: var(--t-1); color: var(--bt-muted); }
-.bt .field input[type="number"], .bt .field input[type="text"], .bt .field select {
-    height: 48px; box-sizing: border-box; border: 1px solid var(--bt-line); border-radius: var(--bt-rc); padding: 0 14px;
-    font-size: var(--t1); font-weight: 500; color: var(--bt-text); font-family: inherit; background: #fff; width: 100%;
-}
-.bt .field input:focus-visible, .bt .field select:focus-visible, .bt .chip:focus-visible, .bt .check:focus-within { outline: 2px solid var(--bt-accent); outline-offset: 2px; }
-.bt .money { position: relative; }
-.bt .field .money input[type="text"] { padding-left: 34px; }
-.bt .money::before { content: '₹'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--bt-muted); font-size: var(--t1); }
-.bt .chips { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bt .story { font-size: clamp(22px, 2.6vw, 30px); font-weight: 500; line-height: 1.75; letter-spacing: -0.01em; max-width: 34ch; }
+.bt .inline { display: inline-flex; align-items: baseline; border-bottom: 2px solid var(--bt-accent); padding: 0 2px; margin: 0 2px; white-space: nowrap; }
+.bt .inline .cur { color: var(--bt-muted); font-weight: 500; }
+.bt .inline input { border: 0; background: transparent; font: inherit; color: var(--bt-text); font-weight: 600; padding: 0 2px; min-width: 3ch; width: 9ch; text-align: left; -moz-appearance: textfield; }
+.bt .inline input::-webkit-outer-spin-button, .bt .inline input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.bt .inline input:focus { outline: none; }
+.bt .inline:focus-within { background: var(--bt-tint); }
+.bt .chips { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
 .bt .chip { border: 1px solid var(--bt-line); background: #fff; color: var(--bt-muted); border-radius: var(--bt-rc); padding: 6px 12px; font: inherit; font-size: var(--t-1); font-weight: 600; cursor: pointer; transition: border-color .18s ease-out, color .18s ease-out, background-color .18s ease-out; }
 .bt .chip:hover { border-color: rgba(var(--bt-accent-rgb), .5); color: var(--bt-text); background: var(--bt-tint); }
+.bt .chip:focus-visible, .bt .year:focus-visible, .bt .go:focus-visible, .bt .check:focus-within { outline: 2px solid var(--bt-accent); outline-offset: 2px; }
 .bt .chips .note { font-size: var(--t-1); color: var(--bt-muted); }
-.bt .range-row { display: flex; align-items: center; gap: 14px; }
-.bt .range-row input[type="range"] { flex: 1; accent-color: var(--bt-accent); }
-.bt .range-row output { min-width: 3.5ch; font-weight: 600; }
-.bt .check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--t0); line-height: 1.4; margin-top: 4px; grid-column: 1 / -1; }
+.bt .label { margin-top: 28px; font-weight: 600; }
+.bt .years { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; margin-top: 12px; }
+.bt .year { border: 1px solid var(--bt-line); background: #fff; color: var(--bt-text); border-radius: var(--bt-rc); padding: 9px 0; font: inherit; font-size: var(--t-1); font-weight: 600; cursor: pointer; transition: border-color .18s ease-out, background-color .18s ease-out, color .18s ease-out; font-variant-numeric: tabular-nums; }
+.bt .year:hover { border-color: rgba(var(--bt-accent-rgb), .5); background: var(--bt-tint); }
+.bt .year.active { background: var(--bt-accent); border-color: var(--bt-accent); color: #fff; }
+.bt .translate { margin-top: 22px; padding: 16px 18px; background: var(--bt-bg); border-radius: var(--bt-r); font-size: var(--t0); line-height: 1.5; max-width: none; }
+.bt .check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--t0); line-height: 1.4; margin-top: 22px; }
 .bt .check input { width: 18px; height: 18px; margin-top: 4px; accent-color: var(--bt-accent); flex: none; }
 .bt .check span { color: var(--bt-muted); font-size: var(--t-1); display: block; }
+.bt .go-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
+.bt .go { height: 52px; padding: 0 26px; border: 0; border-radius: var(--bt-r); background: var(--bt-accent); color: #fff; font: inherit; font-size: var(--t0); font-weight: 600; cursor: pointer; }
+.bt .go:hover { background: #6A4300; }
+.bt .go-row .note { font-size: var(--t-1); color: var(--bt-muted); max-width: 36rem; line-height: 1.4; }
 .bt .assume { margin-top: 18px; font-size: var(--t-1); color: var(--bt-muted); line-height: 1.5; max-width: 52rem; }
 
 /* results */
@@ -87,7 +89,9 @@
 @media (max-width: 720px) {
     .bt { padding: 32px 16px 48px; }
     .bt .sheet { padding: 20px 18px 22px; }
-    .bt .grid { grid-template-columns: 1fr; }
+    .bt .story { line-height: 1.7; }
+    .bt .years { grid-template-columns: repeat(4, 1fr); }
+    .bt .go { width: 100%; }
     .bt .section { margin-top: 36px; padding-top: 28px; }
     .bt .chart { padding: 14px 12px 10px; }
 }

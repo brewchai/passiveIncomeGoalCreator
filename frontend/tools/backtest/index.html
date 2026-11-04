@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retirement Backtest, India | But First Fire</title>
-    <meta name="description" content="Drop your retirement into 1 January of any year since 2000 and run it through what the Nifty, inflation, FD rates and tax actually did. Real data, every start year.">
+    <meta name="description" content="Retiring today? See what the same plan would have done if it had started in 2000, 2008 or any year since, on the real Nifty, real inflation, real FD rates and real tax.">
     <link rel="canonical" href="https://butfirstfire.com/tools/backtest/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Retirement Backtest, India | But First Fire">
-    <meta property="og:description" content="Your corpus and spending, run through 26 years of real Nifty returns, real inflation, real FD rates and real tax, from every start year since 2000.">
+    <meta property="og:description" content="Your corpus and spending, sent back to 1 January of any year since 2000 and run through 26 years of real Nifty returns, real inflation, real FD rates and real tax.">
     <meta property="og:url" content="https://butfirstfire.com/tools/backtest/">
     <meta property="og:image" content="https://butfirstfire.com/favicon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Retirement Backtest, India | But First Fire">
-    <meta name="twitter:description" content="Your corpus and spending, run through 26 years of real Nifty returns, real inflation, real FD rates and real tax, from every start year since 2000.">
+    <meta name="twitter:description" content="Your corpus and spending, sent back to 1 January of any year since 2000 and run through 26 years of real Nifty returns, real inflation, real FD rates and real tax.">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/blog.css">
     <link rel="stylesheet" href="./styles.css">
@@ -39,45 +39,47 @@
     </header>
 
     <main class="bt">
-        <h1>Retire into any year since 2000. See what actually happened.</h1>
-        <p class="lede">Your corpus and your spending, in today's money, dropped into 1 January of the year you pick and run through the real Nifty, real inflation, real FD rates and real tax, year by year, to today.</p>
+        <h1>Retirement backtest</h1>
+        <p class="lede">You stop working today. Someone with the same plan stopped in 2000, or 2008, or 2015. Here is what happened to their money, on the real record.</p>
 
         <section class="sheet" aria-label="Your plan">
-            <div class="sheet-head">In today's money <span>· the tool moves it back to the start year for you</span></div>
-            <div class="grid">
-                <div class="field">
-                    <label for="corpus">Corpus on the day you stop</label>
-                    <div class="money"><input id="corpus" type="text" inputmode="numeric" value="100000000"></div>
-                </div>
-                <div class="field">
-                    <label for="spend">What a year of your life costs</label>
-                    <div class="money"><input id="spend" type="text" inputmode="numeric" value="4000000"></div>
-                    <div class="chips">
-                        <button type="button" class="chip" data-rate="3">3%</button>
-                        <button type="button" class="chip" data-rate="3.5">3.5%</button>
-                        <button type="button" class="chip" data-rate="4">4%</button>
-                        <span class="note" id="rateNote"></span>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="equity">Share in the Nifty 50, the rest in fixed deposits</label>
-                    <div class="range-row"><input id="equity" type="range" min="0" max="100" step="5" value="60"><output id="equityOut" for="equity">60%</output></div>
-                </div>
-                <div class="field">
-                    <label for="startYear">The year you retire, on 1 January</label>
-                    <select id="startYear"></select>
-                </div>
-                <label class="check">
-                    <input id="countTax" type="checkbox" checked>
-                    <div>Count tax and a 1% fund cost<span>30% tax on FD interest, capital gains tax on equity under the rule of each year, and 1% a year on the equity side. The chart always shows both versions.</span></div>
-                </label>
+            <p class="story">
+                I stop working with
+                <span class="inline"><span class="cur">₹</span><input id="corpus" type="text" inputmode="numeric" value="100000000" aria-label="Corpus in today's money"></span>
+                and I will spend
+                <span class="inline"><span class="cur">₹</span><input id="spend" type="text" inputmode="numeric" value="4000000" aria-label="Spending a year in today's money"></span>
+                a year, with
+                <span class="inline"><input id="equity" type="number" inputmode="numeric" min="0" max="100" step="5" value="60" aria-label="Share in the Nifty 50, in percent"><span class="cur">%</span></span>
+                of it in the Nifty 50 and the rest in fixed deposits.
+            </p>
+            <div class="chips">
+                <span class="note">Set spending to</span>
+                <button type="button" class="chip" data-rate="3">3%</button>
+                <button type="button" class="chip" data-rate="3.5">3.5%</button>
+                <button type="button" class="chip" data-rate="4">4%</button>
+                <span class="note">of the corpus</span>
             </div>
-            <p class="assume">Every 1 January a full year of spending comes out and the portfolio is rebalanced back to the split above. Spending rises each year by that year's actual inflation, no cutting back, no side income, no rescue. The run ends on <span id="endDate">2 November 2026</span>.</p>
+
+            <p class="label">Send this plan back to 1 January</p>
+            <div class="years" id="years" role="radiogroup" aria-label="The year you retire"></div>
+
+            <p class="translate" id="translate"></p>
+
+            <label class="check">
+                <input id="countTax" type="checkbox" checked>
+                <div>Count tax and a 1% fund cost<span>30% tax on FD interest, capital gains tax on equity under the rule of each year, and 1% a year on the equity side. The chart always shows both versions.</span></div>
+            </label>
+
+            <div class="go-row">
+                <button type="button" class="go" id="go">Test it on real data</button>
+                <span class="note" id="goNote">Real Nifty returns, real inflation, real FD rates, real tax, every year to <span id="endDate">2 November 2026</span>.</span>
+            </div>
+            <p class="assume">Every 1 January a full year of spending comes out and the portfolio is rebalanced back to the split above. Spending rises each year by that year's actual inflation, no cutting back, no side income, no rescue.</p>
         </section>
 
-        <div class="empty" id="empty">
-            <strong>Your result will show up here.</strong>
-            <p>Fill in the corpus and the spending, both in today's money.</p>
+        <div class="empty" id="empty" hidden>
+            <strong>Nothing to test yet.</strong>
+            <p id="emptyNote">Fill in the corpus and the spending, both in today's money.</p>
         </div>
 
         <div id="results" hidden>

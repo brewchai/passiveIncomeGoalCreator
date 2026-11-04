@@ -110,6 +110,13 @@ read the page tokens. Its palette is fixed at the dark-mode end of the site pale
 `GLOBE` const at the top of `tools/geo-arbitrage/globe.js` — affordable `#9DBF63`, above-budget
 `rgba(176,164,152,.45)`, atmosphere `#E0A33E`, labels `#F4EFE9`. Green-means-affordable is a
 data encoding and was kept; only the hue moved, from stock mint to the site's olive.
+**The retirement backtest (added 2026-11-04)** runs on the same tokens. Its one new component is
+the plan written as a sentence with inline inputs ("I stop working with ₹[ ] and I will spend
+₹[ ] a year, with [ ]% of it in the Nifty 50"), underlined in the accent, with a grid of year
+buttons and a cream translation line that restates today's figures in the start year's rupees.
+Results stay hidden until "Test it on real data", so the page reads as a question before it
+reads as a chart. Charts are ink (after tax) and accent (clean) on white.
+
 **Revised 2026-11-04:** the page around the sphere is no longer dark. Ninad asked for the tool
 to stop being a two-colour experience under the cream header, so `tools/geo-arbitrage/styles.css`
 now runs on the site tokens: cream page, white cards with the home page's warm shadow, hairline
