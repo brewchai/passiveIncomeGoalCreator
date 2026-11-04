@@ -99,7 +99,7 @@
 @media (max-width: 720px) {
     .bt { padding: 32px 16px 48px; }
     .bt .sheet { padding: 20px 18px 22px; }
-    .bt .story { line-height: 1.7; }
+    .bt .story { font-size: 24px; line-height: 1.6; }
     .bt .years { grid-template-columns: repeat(4, 1fr); }
     .bt .go { width: 100%; }
     .bt .section { margin-top: 36px; padding-top: 28px; }
