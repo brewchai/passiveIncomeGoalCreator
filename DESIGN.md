@@ -105,11 +105,17 @@ active state. `--toast-accent` is the article toast only: an interruption that m
 the same cover photography (90–100°, olive) rather than a generic notification green.
 Charts are a third case — multiple series need distinguishable hues. Not yet decided (Deferred).
 
-**The geo-arbitrage globe** is a fourth: its canvas is dark in both themes, so it cannot read
-the theme-varying tokens. Its palette is fixed at the dark-mode end of the site palette in a
+**The geo-arbitrage globe** is a fourth: the sphere is a dark night-earth texture, so it cannot
+read the page tokens. Its palette is fixed at the dark-mode end of the site palette in a
 `GLOBE` const at the top of `tools/geo-arbitrage/globe.js` — affordable `#9DBF63`, above-budget
-`rgba(176,164,152,.45)`, atmosphere `#E08A57`, labels `#F4EFE9`. Green-means-affordable is a
+`rgba(176,164,152,.45)`, atmosphere `#E0A33E`, labels `#F4EFE9`. Green-means-affordable is a
 data encoding and was kept; only the hue moved, from stock mint to the site's olive.
+**Revised 2026-11-04:** the page around the sphere is no longer dark. Ninad asked for the tool
+to stop being a two-colour experience under the cream header, so `tools/geo-arbitrage/styles.css`
+now runs on the site tokens: cream page, white cards with the home page's warm shadow, hairline
+`#E8E1D9`, ink, the brown accent on active chips and the slider. The globe is the one dark object
+on the page, like a globe on a desk. Radii collapsed to the two site tokens (12px surfaces, 4px
+controls). The legend dot keeps the sphere's olive `#9DBF63` so it matches the markers it explains.
 
 **Radius** — `--radius-control: 4px` for form controls (was 8/12/24 scattered),
 `--radius-surface: 12px` for cards (the dominant existing value, 154 uses). These two tokens

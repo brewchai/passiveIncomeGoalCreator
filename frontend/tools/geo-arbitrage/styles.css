@@ -1,15 +1,25 @@
+/* Geo arbitrage — colour pass 2026-11-04, see /DESIGN.md.
+   The page around the globe is the site's cream, with the site's white cards, hairline, ink and
+   accent. The globe itself stays a dark night-earth sphere: a dark object on a light page, not a
+   dark mode. Layout rules below are unchanged from the dark version; only colours, radii and
+   shadows moved onto the site tokens. */
 :root {
-    --bg: #14110E;
-    --bg-soft: rgba(26, 22, 18, 0.86);      /* warm dark, was cool navy */
-    --panel: rgba(30, 26, 22, 0.88);        /* matches site dark card #1E1A16 */
-    --panel-strong: rgba(22, 18, 15, 0.94);
-    --line: rgba(244, 239, 233, 0.14);      /* cream hairline, was ice blue */
-    --text: #F4EFE9;                        /* site dark-canvas ink */
-    --muted: #9C8E82;   /* site --text-muted, dark value — 5.92:1 on #14110E */
-    --accent: #9DBF63;
-    --accent-strong: #E0A33E;               /* the fixed-dark gold, was hotter #f9b94a */
-    --danger: #ff6b7b;
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --bg: #FAF7F3;                          /* site --background */
+    --bg-soft: rgba(250, 247, 243, 0.86);
+    --panel: #FFFFFF;                       /* site --card-background */
+    --panel-strong: #FFFFFF;
+    --line: #E8E1D9;                        /* site --rule */
+    --text: #1C1714;                        /* site --text-primary */
+    --muted: #6E6159;                       /* site --text-muted, 5.3:1 on cream */
+    --accent: #7A4E00;                      /* site --accent-color: active chips, slider, links */
+    --accent-rgb: 122, 78, 0;
+    --marker: #9DBF63;                      /* the affordable marker on the dark sphere; used only in the legend so it matches the globe */
+    --marker-muted: #B0A498;                /* the above-budget marker, opaque for the legend */
+    --tint: #FFF6E5;                        /* hover highlight, the home page card tint */
+    --shadow: 0 1px 2px rgba(122, 78, 0, 0.07), 0 10px 24px -8px rgba(122, 78, 0, 0.16);     /* the home page card shadow, warm */
+    --shadow-float: 0 2px 4px rgba(122, 78, 0, 0.08), 0 24px 48px -12px rgba(122, 78, 0, 0.28); /* the drawer, which floats over the globe */
+    --r-surface: 12px;                      /* site --radius-surface */
+    --r-control: 4px;                       /* site --radius-control */
 }
 
 * {
@@ -20,10 +30,7 @@ html,
 body {
     margin: 0;
     min-height: 100%;
-    background:
-        radial-gradient(circle at top left, rgba(157, 191, 99, 0.18), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(224, 163, 62, 0.18), transparent 22%),
-        linear-gradient(180deg, #0D0B09 0%, #14110E 56%, #1C1611 100%);
+    background: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
 }
@@ -47,9 +54,8 @@ a {
     position: relative;
     z-index: 3;
     padding: 2rem 1.4rem 1.5rem;
-    background: linear-gradient(180deg, rgba(4, 12, 25, 0.98), rgba(6, 18, 34, 0.86));
+    background: var(--bg);
     border-right: 1px solid var(--line);
-    backdrop-filter: blur(18px);
     overflow-y: auto;
     min-height: 0;
     max-height: calc(100vh - var(--header-h));
@@ -85,8 +91,8 @@ a {
     display: inline-flex;
     margin-bottom: 1rem;
     padding: 0.45rem 0.85rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--r-control);
+    background: var(--panel);
     color: var(--muted);
     font-size: 0.9rem;
 }
@@ -120,10 +126,8 @@ a {
 .mobile-start-label {
     margin: 0 0 0.45rem;
     color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: 0.86rem;
+    font-weight: 600;
 }
 
 .mobile-intro h2 {
@@ -140,7 +144,7 @@ a {
 }
 
 .page-fine-print {
-    max-width: 1200px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 1.4rem 1.5rem;
 }
@@ -156,10 +160,8 @@ body.globe-modal-open {
 .budget-label {
     margin: 0;
     color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-size: 0.82rem;
+    font-weight: 600;
 }
 
 .control-panel h1 {
@@ -193,9 +195,9 @@ body.globe-modal-open {
 
 .filter-group {
     padding: 0.95rem 1rem;
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--line);
+    border-radius: var(--r-surface);
+    background: var(--panel);
+    box-shadow: var(--shadow);
 }
 
 .segmented-control {
@@ -205,52 +207,60 @@ body.globe-modal-open {
 }
 
 .filter-chip {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    background: var(--panel);
     color: var(--muted);
-    border-radius: 999px;
-    padding: 0.65rem 0.95rem;
+    border-radius: var(--r-control);
+    padding: 0.6rem 0.9rem;
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: border-color 0.18s ease-out, background-color 0.18s ease-out, color 0.18s ease-out;
     font: inherit;
     font-size: 0.92rem;
     font-weight: 600;
 }
 
 .filter-chip:hover {
-    transform: translateY(-1px);
-    border-color: rgba(157, 191, 99, 0.3);
+    border-color: rgba(var(--accent-rgb), 0.5);
     color: var(--text);
 }
 
 .filter-chip.active {
-    background: linear-gradient(135deg, rgba(157, 191, 99, 0.18), rgba(224, 163, 62, 0.14));
-    border-color: rgba(157, 191, 99, 0.42);
-    color: var(--text);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
 }
 
 .mode-chip,
 .drawer-close {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    background: var(--panel);
     color: var(--text);
-    border-radius: 14px;
+    border-radius: var(--r-control);
     padding: 0.85rem 1rem;
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    transition: border-color 0.18s ease-out, background-color 0.18s ease-out, color 0.18s ease-out;
     font: inherit;
 }
 
 .mode-chip:hover,
 .drawer-close:hover {
-    transform: translateY(-1px);
-    border-color: rgba(157, 191, 99, 0.35);
+    border-color: rgba(var(--accent-rgb), 0.5);
 }
 
 .mode-chip.active {
-    background: linear-gradient(135deg, rgba(157, 191, 99, 0.18), rgba(224, 163, 62, 0.12));
-    border-color: rgba(157, 191, 99, 0.42);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.filter-chip:focus-visible,
+.mode-chip:focus-visible,
+.drawer-close:focus-visible,
+.city-card:focus-visible,
+.budget-slider:focus-visible,
+.mobile-view-chip:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .budget-card,
@@ -258,12 +268,11 @@ body.globe-modal-open {
 .city-list-card,
 .city-drawer {
     background: var(--panel);
-    border: 1px solid var(--line);
     box-shadow: var(--shadow);
 }
 
 .budget-card {
-    border-radius: 24px;
+    border-radius: var(--r-surface);
     padding: 1rem;
     margin-bottom: 1rem;
 }
@@ -286,9 +295,9 @@ body.globe-modal-open {
 
 .budget-pill {
     white-space: nowrap;
-    border-radius: 999px;
+    border-radius: var(--r-control);
     padding: 0.55rem 0.8rem;
-    background: rgba(157, 191, 99, 0.1);
+    background: rgba(var(--accent-rgb), 0.08);
     color: var(--accent);
     font-weight: 700;
     font-size: 0.9rem;
@@ -302,14 +311,14 @@ body.globe-modal-open {
 
 .budget-slider::-webkit-slider-runnable-track {
     height: 10px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(157, 191, 99, 0.28), rgba(224, 163, 62, 0.28));
+    border-radius: var(--r-control);
+    background: rgba(var(--accent-rgb), 0.18);
 }
 
 .budget-slider::-moz-range-track {
     height: 10px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(157, 191, 99, 0.28), rgba(224, 163, 62, 0.28));
+    border-radius: var(--r-control);
+    background: rgba(var(--accent-rgb), 0.18);
 }
 
 .budget-slider::-webkit-slider-thumb {
@@ -318,18 +327,18 @@ body.globe-modal-open {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid #fff;
     background: var(--accent);
-    box-shadow: 0 0 0 8px rgba(157, 191, 99, 0.16);
+    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.12);
 }
 
 .budget-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid #fff;
     background: var(--accent);
-    box-shadow: 0 0 0 8px rgba(157, 191, 99, 0.16);
+    box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.12);
 }
 
 .slider-scale {
@@ -348,7 +357,7 @@ body.globe-modal-open {
 }
 
 .summary-tile {
-    border-radius: 18px;
+    border-radius: var(--r-surface);
     padding: 1rem;
 }
 
@@ -364,7 +373,7 @@ body.globe-modal-open {
 }
 
 .city-list-card {
-    border-radius: 24px;
+    border-radius: var(--r-surface);
     padding: 1rem;
 }
 
@@ -415,20 +424,20 @@ body.globe-modal-open {
 .city-card {
     width: 100%;
     text-align: left;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    background: var(--bg);
     color: var(--text);
     padding: 0.95rem;
-    border-radius: 18px;
+    border-radius: var(--r-surface);
     cursor: pointer;
-    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    font: inherit;
+    transition: border-color 0.18s ease-out, background-color 0.18s ease-out;
 }
 
 .city-card:hover,
 .city-card.active {
-    transform: translateY(-1px);
-    border-color: rgba(157, 191, 99, 0.35);
-    background: rgba(157, 191, 99, 0.08);
+    border-color: rgba(var(--accent-rgb), 0.5);
+    background: var(--tint);
 }
 
 .city-card-head,
@@ -494,7 +503,7 @@ body.globe-modal-open {
     height: 80px;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    border: 2px solid rgba(157, 191, 99, 0.1);
+    border: 2px solid rgba(var(--accent-rgb), 0.12);
     border-top-color: var(--accent);
     position: relative;
     animation: loader-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -505,7 +514,7 @@ body.globe-modal-open {
     position: absolute;
     inset: -8px;
     border-radius: 50%;
-    border: 2px solid rgba(157, 191, 99, 0.05);
+    border: 2px solid rgba(var(--accent-rgb), 0.06);
     border-bottom-color: var(--accent);
     opacity: 0.5;
     animation: loader-spin 2s linear infinite reverse;
@@ -514,10 +523,8 @@ body.globe-modal-open {
 .globe-loader p {
     margin: 0;
     color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+    font-size: 0.95rem;
+    font-weight: 600;
     animation: loader-pulse 1.5s ease-in-out infinite;
 }
 
@@ -544,15 +551,18 @@ body.globe-modal-open {
 
 .stage-topbar > div:first-child {
     max-width: min(720px, calc(100% - 200px));
+    padding: 0.7rem 1rem 0.8rem;
+    border-radius: var(--r-surface);
+    background: var(--panel);
+    border: 1px solid var(--line);
 }
 
 .stage-link {
     padding: 0.75rem 1rem;
-    border-radius: 999px;
-    background: rgba(4, 12, 25, 0.58);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--muted);
-    backdrop-filter: blur(14px);
+    border-radius: var(--r-control);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
 }
 
 .globe-canvas {
@@ -579,11 +589,10 @@ body.globe-modal-open {
     gap: 1rem;
     flex-wrap: wrap;
     padding: 0.8rem 1rem;
-    border-radius: 999px;
-    background: rgba(4, 12, 25, 0.58);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--muted);
-    backdrop-filter: blur(14px);
+    border-radius: var(--r-control);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
 }
 
 .mobile-summary-grid,
@@ -601,49 +610,32 @@ body.globe-modal-open {
 }
 
 .legend-dot-active {
-    background: var(--accent);
-    box-shadow: 0 0 16px rgba(157, 191, 99, 0.8);
+    background: var(--marker);
+    border: 1px solid rgba(74, 107, 34, 0.6);
 }
 
 .legend-dot-muted {
-    background: rgba(176, 164, 152, 0.4);
+    background: var(--marker-muted);
 }
 
 .glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    pointer-events: none;
-}
-
-.glow-orb-one {
-    top: 10%;
-    left: 12%;
-    width: 220px;
-    height: 220px;
-    background: rgba(157, 191, 99, 0.14);
-}
-
-.glow-orb-two {
-    right: 10%;
-    bottom: 18%;
-    width: 280px;
-    height: 280px;
-    background: rgba(224, 163, 62, 0.12);
+    display: none;
 }
 
 .city-drawer {
     position: fixed;
-    top: 1.25rem;
+    top: calc(var(--header-h) + 1.25rem); /* below the sticky site header, which used to hide the Close button */
     right: 1.25rem;
     width: min(360px, calc(100vw - 2rem));
+    max-height: calc(100vh - var(--header-h) - 2.5rem);
+    overflow-y: auto;
     z-index: 5;
-    border-radius: 26px;
+    border-radius: var(--r-surface);
     padding: 1.2rem;
     transform: translateX(calc(100% + 2rem));
     transition: transform 0.28s ease;
     background: var(--panel-strong);
-    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-float);
 }
 
 .city-drawer.open {
@@ -654,7 +646,8 @@ body.globe-modal-open {
     margin-left: auto;
     display: block;
     padding: 0.55rem 0.85rem;
-    color: var(--muted);
+    color: var(--text);
+    font-weight: 600;
 }
 
 .city-drawer h2 {
@@ -678,10 +671,10 @@ body.globe-modal-open {
 }
 
 .drawer-stat {
-    border-radius: 18px;
+    border-radius: var(--r-surface);
     padding: 0.9rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg);
+    border: 1px solid var(--line);
 }
 
 .drawer-stat strong {
@@ -702,9 +695,9 @@ body.globe-modal-open {
 
 .globe-tooltip {
     padding: 0.7rem 0.8rem;
-    border-radius: 14px;
-    background: rgba(4, 12, 25, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-surface);
+    background: var(--panel);
+    border: 1px solid var(--line);
     color: var(--text);
     box-shadow: var(--shadow);
 }
@@ -743,7 +736,6 @@ body.globe-modal-open {
         max-height: none;
         overflow: visible;
         background: transparent;
-        backdrop-filter: none;
         box-shadow: none;
     }
 
@@ -780,9 +772,8 @@ body.globe-modal-open {
     .filter-stack,
     .budget-card {
         background: var(--panel);
-        border: 1px solid var(--line);
         box-shadow: var(--shadow);
-        border-radius: 24px;
+        border-radius: var(--r-surface);
         padding: 1rem;
     }
 
@@ -798,6 +789,8 @@ body.globe-modal-open {
 
     .filter-group {
         padding: 0.9rem;
+        box-shadow: none;
+        border: 1px solid var(--line);
     }
 
     .globe-stage {
@@ -817,15 +810,14 @@ body.globe-modal-open {
         gap: 0.65rem;
         padding: 0.35rem;
         margin-bottom: 1rem;
-        border-radius: 999px;
-        background: rgba(4, 12, 25, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(16px);
+        border-radius: var(--r-surface);
+        background: var(--panel);
+        box-shadow: var(--shadow);
     }
 
     .mobile-view-chip {
         border: 0;
-        border-radius: 999px;
+        border-radius: var(--r-control);
         padding: 0.75rem 0.9rem;
         background: transparent;
         color: var(--muted);
@@ -835,8 +827,8 @@ body.globe-modal-open {
     }
 
     .mobile-view-chip.active {
-        background: linear-gradient(135deg, rgba(157, 191, 99, 0.2), rgba(224, 163, 62, 0.16));
-        color: var(--text);
+        background: var(--accent);
+        color: #fff;
     }
 
     .mobile-globe-shell {
@@ -859,12 +851,11 @@ body.globe-modal-open {
         width: 44px;
         height: 44px;
         padding: 0;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(4, 12, 25, 0.72);
+        border-radius: var(--r-control);
+        border: 1px solid var(--line);
+        background: var(--panel);
         color: var(--text);
         cursor: pointer;
-        backdrop-filter: blur(16px);
         box-shadow: var(--shadow);
     }
 
@@ -894,26 +885,24 @@ body.globe-modal-open {
     }
 
     .mobile-list-card {
-        border-radius: 24px;
+        border-radius: var(--r-surface);
         padding: 1rem;
         background: var(--panel);
-        border: 1px solid var(--line);
         box-shadow: var(--shadow);
     }
 
     .globe-canvas {
         height: 58svh;
         min-height: 420px;
-        border-radius: 28px;
+        border-radius: var(--r-surface);
         overflow: hidden;
         border: 1px solid var(--line);
-        box-shadow: var(--shadow);
     }
 
     .globe-legend {
         position: static;
         margin-top: 0.85rem;
-        border-radius: 20px;
+        border-radius: var(--r-surface);
         padding: 0.85rem 1rem;
     }
 
@@ -922,7 +911,7 @@ body.globe-modal-open {
         inset: 0;
         z-index: 40;
         padding: calc(env(safe-area-inset-top, 0px) + 1rem) 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
-        background: #0D0B09;
+        background: var(--bg);
         display: grid;
         grid-template-rows: 1fr auto;
         gap: 0.9rem;
@@ -932,18 +921,16 @@ body.globe-modal-open {
         height: auto;
         min-height: 0;
         width: 100%;
-        border-radius: 28px;
+        border-radius: var(--r-surface);
     }
 
     .mobile-globe-shell.mobile-expanded .globe-legend {
         margin-top: 0;
-        background: rgba(4, 12, 25, 0.82);
     }
 
     .mobile-globe-shell.mobile-expanded .mobile-globe-expand {
         top: calc(env(safe-area-inset-top, 0px) + 1rem);
         right: 1rem;
-        background: rgba(4, 12, 25, 0.82);
     }
 
     .city-drawer {
@@ -992,5 +979,15 @@ body.globe-modal-open {
     .globe-canvas {
         height: 52svh;
         min-height: 360px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .filter-chip,
+    .mode-chip,
+    .drawer-close,
+    .city-card,
+    .city-drawer {
+        transition: none;
     }
 }
