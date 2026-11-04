@@ -56,6 +56,7 @@
 .bt .assume { margin-top: 18px; font-size: var(--t-1); color: var(--bt-muted); line-height: 1.5; max-width: 52rem; }
 
 /* results */
+.bt #results, .bt .empty { scroll-margin-top: calc(var(--header-h, 84px) + 12px); } /* the site header is sticky; land below it */
 .bt .empty { margin-top: 28px; padding: 24px 0; }
 .bt .empty strong { display: block; font-size: var(--t2); font-weight: 500; line-height: 1.2; }
 .bt .empty p { margin-top: 8px; color: var(--bt-muted); }
