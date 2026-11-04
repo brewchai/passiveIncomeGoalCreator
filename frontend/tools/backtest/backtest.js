@@ -392,10 +392,16 @@
     function openYears() {
         els.ypop.hidden = false;
         els.ypick.setAttribute('aria-expanded', 'true');
-        // keep the panel on screen
-        els.ypop.style.left = '0'; els.ypop.style.right = 'auto';
-        const r = els.ypop.getBoundingClientRect();
-        if (r.right > window.innerWidth - 12) { els.ypop.style.left = 'auto'; els.ypop.style.right = '0'; }
+        // keep the panel inside the viewport on both sides
+        const margin = 12;
+        const wrapRect = els.ypick.parentElement.getBoundingClientRect();
+        const width = Math.min(340, window.innerWidth - margin * 2);
+        let left = 0;
+        if (wrapRect.left + left + width > window.innerWidth - margin) left = (window.innerWidth - margin - width) - wrapRect.left;
+        if (wrapRect.left + left < margin) left = margin - wrapRect.left;
+        els.ypop.style.width = `${width}px`;
+        els.ypop.style.left = `${Math.round(left)}px`;
+        els.ypop.style.right = 'auto';
         const active = els.years.querySelector('.year.active');
         if (active) active.focus();
     }
