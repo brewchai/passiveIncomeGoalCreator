@@ -74,18 +74,14 @@
         .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
         .strike svg { position: absolute; left: -2%; top: 8%; width: 104%; height: 84%; overflow: visible; pointer-events: none; }
         .strike path { fill: none; stroke: var(--accent-color); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 130; stroke-dashoffset: 130; animation: draw .55s cubic-bezier(.65,0,.35,1) .9s forwards; }
-        .swap { display: inline-block; opacity: 0; transform: translateY(.35em) rotate(-2deg); animation: rise .5s cubic-bezier(.2,.9,.3,1.2) 1.5s forwards; }
-        .strike.late { animation-delay: 2.55s; }
-        .strike.late path { animation-delay: 2.2s; }
         .cycle { display: grid; }
         .cycle > span { grid-area: 1 / 1; }
         .cycle .ghost { visibility: hidden; }
-        .caret { display: inline-block; width: 3px; height: .85em; margin-left: 4px; vertical-align: -0.06em; border-radius: 2px; background: var(--accent-color); opacity: 0; animation: blink .9s steps(2, start) 2.9s infinite; }
+        .caret { display: inline-block; width: 3px; height: .85em; margin-left: 4px; vertical-align: -0.06em; border-radius: 2px; background: var(--accent-color); opacity: 0; animation: blink .9s steps(2, start) 1.7s infinite; }
         @keyframes draw { to { stroke-dashoffset: 0; } }
         @keyframes fade-word { to { color: var(--text-muted); } }
-        @keyframes rise { to { opacity: 1; transform: translateY(0) rotate(0deg); } }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        @media (prefers-reduced-motion: reduce) { .strike, .strike path, .swap, .caret { animation: none; } .strike { color: var(--text-muted); } .strike path { stroke-dashoffset: 0; } .swap { opacity: 1; transform: none; } .caret { display: none; } .tiles div, .tiles strong { transition: none; } .tiles div:hover { transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .strike, .strike path, .caret { animation: none; } .strike { color: var(--text-muted); } .strike path { stroke-dashoffset: 0; } .caret { display: none; } .tiles div, .tiles strong { transition: none; } .tiles div:hover { transform: none; } }
         .waitlist { display: flex; flex-direction: column; gap: 12px; margin: 8px 0 0; max-width: 46rem; }
         .waitlist-row { display: flex; gap: 10px; flex-wrap: wrap; }
         .waitlist input[type="email"] { flex: 1 1 220px; height: 52px; box-sizing: border-box; border: 1px solid var(--rule); border-radius: var(--radius-control, 4px); padding: 0 14px; font-size: var(--t0); font-family: inherit; background: #fff; }
@@ -174,10 +170,10 @@
 
     <main>
         <section class="wrap hero">
-            <h1>A better version of the FIRE <span class="strike">calculator<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span class="swap">tool</span> you've used.</h1>
+            <h1>The FIRE planner that starts where calculators stop.</h1>
             <p class="tagline display cycle" aria-hidden="true">
                 <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
-                <span>You need <span class="strike late">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
+                <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
             </p>
             <p class="sr-only">You need more than a FIRE number: a plan that survives a bad decade, a floor under your spending, and odds across thousands of real market years.</p>
             <p class="sub">A detailed, thorough, realistic FIRE planner.</p>
@@ -326,7 +322,7 @@
         typed.textContent = '';
         const wait = ms => new Promise(r => setTimeout(r, ms));
         (async () => {
-            await wait(2900); // after the strike has drawn and faded
+            await wait(1700); // after the strike has drawn and faded
             for (let i = 0; ; i++) {
                 const p = PHRASES[i % PHRASES.length];
                 for (let k = 1; k <= p.length; k++) { typed.textContent = p.slice(0, k); await wait(p[k - 1] === ' ' ? 80 : 38); }
