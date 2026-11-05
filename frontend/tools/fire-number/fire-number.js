@@ -333,12 +333,13 @@
         heroResult?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     // Usage mark for Clarity, once per page view. The numbers show on load, so "used" means the
-    // visitor changed a field or pressed the button. /js/usage.js defines bffEvent.
+    // visitor typed in a field or pressed the button. It fires on typing, not on leaving the field:
+    // on a phone people type and scroll without ever closing the keyboard. /js/usage.js defines bffEvent.
     function markUsed() { if (window.bffEvent) window.bffEvent('fire_number_used', true); }
     [annualSpendEl, currentPortEl, annualSavingsEl, expectedReturnEl].forEach((el) => {
         if (!el) return;
-        el.addEventListener('input', () => { compute(); render(); });
-        el.addEventListener('change', () => { markUsed(); revealResult(); });
+        el.addEventListener('input', () => { markUsed(); compute(); render(); });
+        el.addEventListener('change', revealResult);
     });
     const fireForm = byId('fireForm');
     if (fireForm) {
