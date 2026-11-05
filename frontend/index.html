@@ -150,8 +150,25 @@
         .list a span:last-child { font-size: var(--t-1); color: var(--text-muted); white-space: nowrap; }
         .links { font-size: var(--t-1); }
         .home .blog-footer { margin-top: 72px; }
+        /* .hero and .section set their own padding, which wiped out the side padding .wrap gives.
+           Below the full 1180px width that left every heading and paragraph touching the edge of
+           the screen. This puts the gutter back wherever the page is narrower than the wrap. */
+        @media (max-width: 1228px) { .hero, .section { padding-left: 24px; padding-right: 24px; } }
         @media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } .section { padding-top: 40px; margin-top: 40px; } .tiles { grid-template-columns: 1fr; gap: 14px; } }
+        @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } .section { padding-top: 40px; margin-top: 40px; } .tiles { grid-template-columns: 1fr; gap: 14px; }
+            .hero, .section { padding-left: 20px; padding-right: 20px; }
+            .hero { padding-top: 40px; }
+            /* the sheet's columns ask for 320px each; on a 320px phone that is wider than the page */
+            .sheet { grid-template-columns: minmax(0, 1fr); }
+            /* the tool list: name, then what it does under it, so the description can wrap */
+            .list a { flex-direction: column; gap: 4px; align-items: flex-start; }
+            .list a span:last-child { white-space: normal; }
+            /* The three-number ledger: the amount and the age share a line, the reason sits under
+               them at full width. Three columns squeezed the reason into five-line slivers. */
+            .ledger { grid-template-columns: 1fr auto; grid-auto-flow: row dense; gap: 4px 14px; }
+            .ledger .why { grid-column: 1 / -1; }
+            .ledger hr { margin: 10px 0; }
+        }
     </style>
     <script defer src="/js/usage.js"></script>
 </head>

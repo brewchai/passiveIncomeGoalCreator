@@ -964,6 +964,11 @@ body.globe-modal-open {
         flex-direction: column;
     }
 
+    /* Stacked, the header's flex-end alignment pushed "Household", "Profile" and "Lifestyle" to the right edge. */
+    .section-header {
+        align-items: flex-start;
+    }
+
     .stage-topbar > div:first-child {
         max-width: 100%;
     }

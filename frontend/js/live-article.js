@@ -3,8 +3,21 @@
  * Handles inline variables, reactive calculations, and native AI integration.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    wrapTables();
     initLiveArticle();
 });
+
+// Every table in an article gets a box it can scroll sideways in. Without it a table wider than
+// a phone pushes the whole article off the edge of the screen. Styled by .table-scroll in blog.css.
+function wrapTables() {
+    document.querySelectorAll('.post-content table').forEach((table) => {
+        if (table.parentElement && table.parentElement.classList.contains('table-scroll')) return;
+        const box = document.createElement('div');
+        box.className = 'table-scroll';
+        table.parentNode.insertBefore(box, table);
+        box.appendChild(table);
+    });
+}
 
 const STATE = {};
 

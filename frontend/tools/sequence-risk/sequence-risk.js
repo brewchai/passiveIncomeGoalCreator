@@ -742,7 +742,8 @@
             ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillText(fmtCompact(v), pad.l - 10, py);
         }
         ctx.textAlign = 'left'; ctx.fillText(isLog ? 'log scale' : 'linear scale', pad.l + 4, pad.t + 6);
-        const xN = Math.min(10, years);
+        // One label needs about 48px. A phone-width chart fits five or six, not eleven.
+        const xN = Math.max(1, Math.min(10, years, Math.floor((w - pad.l - pad.r) / 48)));
         ctx.textAlign = 'center'; ctx.textBaseline = 'top';
         for (let i = 0; i <= xN; i++) {
             const yr = Math.round(i / xN * years);

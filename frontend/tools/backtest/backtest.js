@@ -237,8 +237,10 @@
         }
         ctx.textAlign = 'center'; ctx.textBaseline = 'top';
         const span = x1 - x0; const stepYears = span > 18 ? 5 : span > 9 ? 2 : 1;
-        for (let y = x0; y <= LAST; y += stepYears) ctx.fillText(String(y), xPx(y), h - pad.b + 8);
-        ctx.fillText('now', xPx(x1), h - pad.b + 8);
+        // A year label that would sit on top of "now" is left out. On a phone 2025 and "now" are 20px apart.
+        const nowX = xPx(x1);
+        for (let y = x0; y <= LAST; y += stepYears) if (nowX - xPx(y) > 44) ctx.fillText(String(y), xPx(y), h - pad.b + 8);
+        ctx.fillText('now', nowX, h - pad.b + 8);
 
         ctx.setLineDash([5, 4]); ctx.strokeStyle = INK; ctx.globalAlpha = 0.55;
         ctx.beginPath(); ctx.moveTo(pad.l, yPx(i.corpus)); ctx.lineTo(w - pad.r, yPx(i.corpus)); ctx.stroke();
