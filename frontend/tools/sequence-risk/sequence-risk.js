@@ -857,6 +857,8 @@
         el.runButton.addEventListener('click', () => {
             if (isCalculating) return;
             isCalculating = true;
+            // Usage mark for Clarity. /js/usage.js defines bffEvent.
+            if (window.bffEvent) window.bffEvent('sequence_risk_ran');
             el.runButton.classList.add('loading');
             el.runButton.disabled = true;
             if (el.runButtonText) el.runButtonText.style.opacity = '0';

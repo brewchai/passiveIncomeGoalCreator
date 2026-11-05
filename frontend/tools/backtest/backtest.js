@@ -370,7 +370,7 @@
             b.dataset.year = String(y);
             b.textContent = String(y);
             b.setAttribute('role', 'radio');
-            b.addEventListener('click', () => { setStart(y); closeYears(); update(); });
+            b.addEventListener('click', () => { setStart(y); closeYears(); update(); mark('backtest_year_changed', true); });
             els.years.appendChild(b);
         }
         syncYears();
@@ -439,6 +439,9 @@
     // ── Wiring ──
     function update() { compute(); renderTranslate(); render(); if (state.revealed) writeUrl(); }
 
+    // Usage marks for Clarity. /js/usage.js defines bffEvent; the tool works the same without it.
+    function mark(name, once) { if (window.bffEvent) window.bffEvent(name, once); }
+
     function reveal() {
         state.revealed = true;
         update();
@@ -454,10 +457,10 @@
         els.corpus.addEventListener('blur', () => groupIN(els.corpus));
         [els.equity, els.rate].forEach((el) => el.addEventListener('input', () => { fit(el); update(); }));
         els.real.addEventListener('change', update);
-        els.go.addEventListener('click', reveal);
+        els.go.addEventListener('click', () => { reveal(); mark(state.runs ? 'backtest_ran' : 'backtest_missing_inputs'); });
         els.barsCanvas.addEventListener('mousemove', (e) => { const y = barAt(e); if (y !== state.hover) { state.hover = y; if (state.runs) drawBars(state.inputs); } });
         els.barsCanvas.addEventListener('mouseleave', () => { state.hover = null; if (state.runs) drawBars(state.inputs); });
-        els.barsCanvas.addEventListener('click', (e) => { const y = barAt(e); if (y) { setStart(y); update(); } });
+        els.barsCanvas.addEventListener('click', (e) => { const y = barAt(e); if (y) { setStart(y); update(); mark('backtest_year_changed', true); } });
         if (typeof ResizeObserver !== 'undefined') {
             const ro = new ResizeObserver(() => { if (state.runs && state.revealed) { drawPath(state.runs[state.inputs.start], state.inputs); drawBars(state.inputs); } });
             ro.observe(els.pathCanvas.parentElement);

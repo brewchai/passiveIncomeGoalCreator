@@ -160,7 +160,7 @@ async function init() {
     updateView();
     syncMobileLayout();
     if (fromUrl.city) {
-        selectCity(fromUrl.city, { mobileView: 'globe' });
+        selectCity(fromUrl.city, { mobileView: 'globe', fromLink: true });
     }
 
     // Hide loader
@@ -174,6 +174,8 @@ function setupInteractions() {
     els.budgetSlider.addEventListener('input', (event) => {
         state.value = Number(event.target.value);
         updateView();
+        // Usage mark for Clarity, once per page view. /js/usage.js defines bffEvent.
+        if (window.bffEvent) window.bffEvent('geo_budget_moved', true);
     });
 
     els.incomeModeButton.addEventListener('click', () => applyMode('income'));
@@ -412,6 +414,9 @@ function selectCity(cityId, options = {}) {
     if (!city) {
         return;
     }
+
+    // A city opened by the visitor, not one restored from a shared link.
+    if (!options.fromLink && window.bffEvent) window.bffEvent('geo_city_opened', true);
 
     pauseAutoRotate();
     state.selectedCityId = cityId;

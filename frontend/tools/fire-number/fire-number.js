@@ -332,19 +332,23 @@
     function revealResult() {
         heroResult?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+    // Usage mark for Clarity, once per page view. The numbers show on load, so "used" means the
+    // visitor changed a field or pressed the button. /js/usage.js defines bffEvent.
+    function markUsed() { if (window.bffEvent) window.bffEvent('fire_number_used', true); }
     [annualSpendEl, currentPortEl, annualSavingsEl, expectedReturnEl].forEach((el) => {
         if (!el) return;
         el.addEventListener('input', () => { compute(); render(); });
-        el.addEventListener('change', revealResult);
+        el.addEventListener('change', () => { markUsed(); revealResult(); });
     });
     const fireForm = byId('fireForm');
     if (fireForm) {
-        fireForm.addEventListener('submit', (e) => { e.preventDefault(); compute(); render(); revealResult(); });
+        fireForm.addEventListener('submit', (e) => { e.preventDefault(); compute(); render(); markUsed(); revealResult(); });
     }
 
     // ── Calculate button ──
     if (calcBtn) {
         calcBtn.addEventListener('click', () => {
+            markUsed();
             compute();
             render();
             setTimeout(() => {
@@ -402,6 +406,7 @@
                 ctaMsg.className = `newsletter-cta-msg ${saved ? 'success' : 'error'}`;
                 ctaMsg.style.display = 'block';
             }
+            if (saved && window.bffEvent) window.bffEvent('newsletter_joined');
             if (saved && ctaEmail) ctaEmail.value = '';
             if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
         });

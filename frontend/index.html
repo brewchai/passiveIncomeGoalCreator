@@ -153,6 +153,7 @@
         @media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } .section { padding-top: 40px; margin-top: 40px; } .tiles { grid-template-columns: 1fr; gap: 14px; } }
     </style>
+    <script defer src="/js/usage.js"></script>
 </head>
 
 <body class="home">
@@ -507,6 +508,9 @@
             close: 'One email when the steps that close this gap are live. Nothing else, ever.'
         };
         let wlDone = false;
+        // Usage marks for Clarity. /js/usage.js defines bffEvent; the page works the same without it.
+        const mark = name => { if (window.bffEvent) window.bffEvent(name, true); };
+        let typed = false;
         function render() {
             const a0 = ASSUME[cur];
             $('assume').textContent = `Assumes 70% equity at ${a0.equity}%, 30% debt at ${a0.debt}%, ${a0.infl}% inflation, monthly investing growing 5% a year, and that you plan the money to ${PLAN_TO}. All of it is yours to change in the full planner.`;
@@ -531,6 +535,7 @@
             const kind = situation(c);
             const w = words(c, kind);
             $('empty').hidden = true; $('filled').hidden = false;
+            if (typed) mark('home_step1_got_result');
             $('head').textContent = w.head;
             $('atstop').textContent = w.para;
             $('hand').textContent = w.hand;
@@ -565,7 +570,7 @@
             render();
         }
         placeholders();
-        ['q-age', 'q-stop', 'q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('input', render));
+        ['q-age', 'q-stop', 'q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('input', () => { typed = true; mark('home_step1_started'); render(); }));
         ['q-spend', 'q-pot', 'q-save'].forEach(id => $(id).addEventListener('blur', e => { const v = num(e.target.value); if (v) e.target.value = fmtInput(v); }));
         document.querySelectorAll('.cur button').forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.cur)));
         $('quick').addEventListener('submit', e => e.preventDefault());
@@ -598,6 +603,7 @@
                 if (!(res.ok && data.success === true)) throw new Error('sheet write failed');
                 try { localStorage.setItem('bff_waitlist', email); } catch (err) { }
                 done();
+                mark('waitlist_joined');
             } catch (err) {
                 wlBtn.disabled = false; wlBtn.textContent = 'Join the waitlist';
                 wlNote.innerHTML = 'That didn’t go through. Try again, or use the <a href="/contact">contact page</a> and say "waitlist".';
