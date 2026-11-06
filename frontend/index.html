@@ -76,14 +76,14 @@
            line in his own words, two short paragraphs. No card, no border, no shadow; the photo takes the
            surface radius, not a circle. It starts at the same left edge as every section under it. */
         .intro { padding: 56px 0 0; display: grid; grid-template-columns: 96px minmax(0, 34rem); gap: 12px 24px; align-items: start; }
-        .intro img { grid-row: 1 / span 3; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
+        .intro img { grid-row: 1 / span 4; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
         .intro h2 { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .intro p { margin: 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
         /* Links in running text take the accent. They were falling back to the browser's default blue. */
         .intro a, .section p a { color: var(--accent-color); }
         .intro a:hover, .section p a:hover { color: #5E3C00; }
-        /* Where the selling starts: two plain sentences between the headline and the typed line. */
-        .pitch { margin: 0; font-size: var(--t1); line-height: 1.4; color: var(--text-primary); }
+        /* "Which is why I built": the last words of the section above, set as the run-in to the headline. */
+        .bridge { margin: 0 0 -6px; font-size: clamp(22px, 2.4vw, var(--t2)); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--text-secondary); }
         .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
         .strike svg { position: absolute; left: -2%; top: 8%; width: 104%; height: 84%; overflow: visible; pointer-events: none; }
@@ -207,42 +207,42 @@
     </header>
 
     <main>
-        <!-- The page in the order Ninad set on 2026-11-07:
-             1. who made this, in his own words, with the links to his interviews and the blog
-             2. "Reaching a number doesn't guarantee success" and the six tiles, pulled up here to tease what
-                the planner covers, so it carries no "steps 2 to 6 are coming soon" line
-             3. the pitch: everyone tells you to reach a number, here is what you need instead, the typed line
-             4. step 1, the five numbers, and "get started today"
-             5. what he is still building, and the one email box
-             6. the rest of the page -->
+        <!-- LOCAL DRAFT, 2026-11-07 evening. Not pushed. The story Ninad laid out:
+             1. who I am, and why my plan had to be thorough: a 50 year retirement
+             2. what I realized: reaching a FIRE number is just the beginning. The six things you also need
+             3. "which is why I built" → the planner headline → "because you need" + the typed line
+             4. step 1: get started today. Then what I am still building, and the email box
+             5. not convinced? my other free tools, live today
+             6. why odds, and the questions people ask -->
         <section class="wrap intro" id="about-ninad">
             <img src="/ninad-portrait-208.webp" alt="Ninad" width="96" height="96" decoding="async">
             <h2>I'm Ninad, and I retired at 33.</h2>
             <p>I'm a former Meta engineer who moved to the US at 23 with $40,000 in student loans. Since 2025 my portfolio has paid for my life in Da Nang, Vietnam, at about $1,800 a month.</p>
-            <p>Getting here, I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I've talked and written about what they are in detail, in <a href="/appearances">my interviews</a> and on <a href="/blog">the blog</a>.</p>
+            <p>Retiring at 33 meant planning a 50 year retirement, which is much tougher than the 30 years most advice is built for. So I had to make my own plan very thorough.</p>
+            <p>Along the way I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I've talked and written about what they are in detail, in <a href="/appearances">my interviews</a> and on <a href="/blog">the blog</a>.</p>
         </section>
 
         <section class="wrap section" id="steps-2-to-6">
-            <h2>Reaching a number doesn't guarantee success.</h2>
-            <p class="lede">These are the things a number ignores.</p>
+            <h2>I realized that reaching a FIRE number is just the beginning.</h2>
+            <p class="lede">A plan that has to last 50 years also needs these.</p>
             <div class="tiles">
-                <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
-                <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
-                <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
                 <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
-                <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
                 <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
+                <div><strong>Portfolio allocation</strong><span>equity, debt and a cash bucket</span></div>
+                <div><strong>Historical backtests</strong><span>your plan replayed through real past decades</span></div>
+                <div><strong>Thousands of simulations</strong><span>lots and lots of tests on real market years</span></div>
+                <div><strong>Dependents and one-time costs</strong><span>a child, college, a car, a parent's care</span></div>
             </div>
         </section>
 
         <section class="wrap hero">
+            <p class="bridge display">Which is why I built</p>
             <h1>The <span class="fi">F.I.</span><span class="re">R.E</span> planner that starts where calculators stop.</h1>
-            <p class="pitch">Everyone tells you to reach a certain number, but that is just the starting point. Here's what you need instead.</p>
             <p class="tagline display cycle" aria-hidden="true">
-                <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
-                <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
+                <span class="ghost" id="ghost">Because you need a FIRE number an answer for college, a car, a parent's care</span>
+                <span>Because you need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
             </p>
-            <p class="sr-only">You need more than a FIRE number: a plan that survives a bad decade, a floor under your spending, and odds across thousands of real market years.</p>
+            <p class="sr-only">Because you need more than a FIRE number: a plan that survives a bad decade, a floor under your spending, and odds across thousands of real market years.</p>
         </section>
 
         <section class="wrap section" id="step-1">
@@ -307,13 +307,17 @@
             <p>Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
         </section>
 
-        <section class="wrap section" id="simulations">
-            <h2>Thousands of simulations.</h2>
-            <p class="lede">Coming with steps 2 to 6: your plan, run through thousands of real market sequences instead of one smooth average.</p>
-            <p>Each run draws a different order of actual market years, with your inflation, your dependents and your one-time costs in place. You get how many of those futures last, the age the money runs dry in the worst ones, and a report of what breaks the plan and what to fix.</p>
-            <p class="lede">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
+        <section class="wrap section" id="other-tools">
+            <h2>Not convinced it's going to be good?</h2>
+            <p class="lede">Check my other free tools. All 4 are live today.</p>
+            <div class="list">
+                <a href="/tools/backtest/"><span>Retirement backtest</span><span>retire into any year since 2000, see what happened</span></a>
+                <a href="/tools/sequence-risk/"><span>Sequence risk calculator</span><span>drop a real crash into any year</span></a>
+                <a href="/tools/fire-number/"><span>FIRE number</span><span>the quick version</span></a>
+                <a href="/tools/geo-arbitrage/"><span>Geo-arbitrage</span><span>the same life, priced by city</span></a>
+            </div>
+            <p>Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 15 minutes with Ninad</a>.</p>
         </section>
-
         <section class="wrap section">
             <h2>Why odds, and not one number.</h2>
             <p class="lede">Every calculator you've used hands you one number from a smooth average. Nobody retires into an average.</p>
@@ -331,16 +335,6 @@
             </div>
         </section>
 
-        <section class="wrap section">
-            <h2>Tools that are live today.</h2>
-            <div class="list">
-                <a href="/tools/backtest/"><span>Retirement backtest</span><span>retire into any year since 2000, see what happened</span></a>
-                <a href="/tools/sequence-risk/"><span>Sequence risk calculator</span><span>drop a real crash into any year</span></a>
-                <a href="/tools/fire-number/"><span>FIRE number</span><span>the quick version</span></a>
-                <a href="/tools/geo-arbitrage/"><span>Geo-arbitrage</span><span>the same life, priced by city</span></a>
-            </div>
-            <p>Want to talk your plan through? <a href="https://topmate.io/ninad17/2353708?utm_source=butfirstfire&utm_medium=home&utm_campaign=book_call" target="_blank" rel="noopener">Book 15 minutes with Ninad</a>.</p>
-        </section>
     </main>
 
     <footer class="blog-footer">
@@ -372,7 +366,7 @@
             'odds across thousands of real market years'
         ];
         const longest = PHRASES.reduce((a, b) => (b.length > a.length ? b : a));
-        if (ghost) ghost.textContent = 'You need a FIRE number ' + longest; // reserves the height of the longest phrase so the page never jumps
+        if (ghost) ghost.textContent = 'Because you need a FIRE number ' + longest; // reserves the height of the longest phrase so the page never jumps
         if (matchMedia('(prefers-reduced-motion: reduce)').matches) { typed.textContent = PHRASES[0]; return; }
         typed.textContent = '';
         const wait = ms => new Promise(r => setTimeout(r, ms));
