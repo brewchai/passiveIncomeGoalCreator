@@ -244,6 +244,19 @@ full-width section now sits between the intro and the headline, both dropped the
 column: every block starts at the wrap's left edge, the headline block takes the same top hairline
 as a section, and its text keeps a 40rem measure.
 
+**Published 2026-11-07, night: the story order.** Worked out locally with Ninad on the
+`home-story` branch, then published on his word. The page now reads as his story with the planner
+as its answer: (1) the intro, which adds "Retiring at 33 meant planning a 50 year retirement,
+which is much tougher than the 30 years most advice is built for. So I had to make my own plan
+very thorough."; (2) "I realized that reaching a FIRE number is just the beginning." with six
+tiles: Guardrails, Sequence of returns risk calculations, Portfolio allocation, Historical
+backtests, Thousands of simulations, Dependents and one-time costs; (3) "Which is why I built" as
+the run-in to the headline, and the typed line now begins "Because you need"; (4) Step 1, then his
+line about step 2 onwards and the email box; (5) "Not convinced it's going to be good?" with the
+tool list pulled up under it; (6) the questions people ask. Removed: the "Thousands of
+simulations" section (it is a tile now) and "Why odds, and not one number", which no longer fit
+the flow. "Income on the side" lost its tile when the set went to his six.
+
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.
 
