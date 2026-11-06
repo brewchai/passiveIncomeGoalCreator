@@ -722,8 +722,17 @@ textarea:focus {
     color: var(--text-secondary);
 }
 
+/* ── The two asks at the foot of the tool: a coffee if it helped, the contact page if it did not.
+   Same pair as the backtest. The text takes the slack so both buttons sit on the same line. ── */
+.asks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.ask { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; align-items: flex-start; }
+.ask p { margin: 0; flex: 1; max-width: 30rem; color: var(--text-primary); font-size: 1rem; line-height: 1.5; }
+.ask-btn { display: inline-flex; align-items: center; gap: 0.5rem; height: 46px; padding: 0 1.25rem; border-radius: 12px; background: var(--accent-fill, #7A4E00); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+.ask-btn:hover { background: #5E3C00; }
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
+    .asks { grid-template-columns: 1fr; }
     .page-title { font-size: 1.8rem; }
     .summary-grid { grid-template-columns: 1fr; }
     .input-grid { grid-template-columns: 1fr; }
