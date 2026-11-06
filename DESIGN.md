@@ -256,6 +256,11 @@ line about step 2 onwards and the email box; (5) "Not convinced it's going to be
 tool list pulled up under it; (6) the questions people ask. Removed: the "Thousands of
 simulations" section (it is a tile now) and "Why odds, and not one number", which no longer fit
 the flow. "Income on the side" lost its tile when the set went to his six.
+Copy fixes the next morning, his words: the intro's "Since 2025 my portfolio has paid for my
+life in Da Nang…" became "At 33 I achieved financial independence." and the 50 year line now
+opens "But retiring at 33 meant…"; the headline reads "…starts where other calculators stop."; the
+geo tool in the list is "Geo arbitrage portal", described as "spin the globe and discover
+destinations for your budget and lifestyle".
 
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.
