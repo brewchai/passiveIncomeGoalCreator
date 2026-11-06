@@ -199,6 +199,18 @@ mechanisms and scale, Portfolio Charts earns trust with methodology and first-pe
 | Radius | 12px on the button and the sheet's one rounded corner, 4px on controls, per the record |
 | Copy rules | no price, no account, no "free", no "sign up"; comprehensiveness is written out in full sentences in the reader's words rather than listed in a grid; every number on the page is one the planner produces for the sample plan |
 
+**Revised 2026-11-07: the maker comes before the numbers.** Ninad said the top of the page was
+selling the calculator too hard and asked for authority first: sell him, in a short snippet,
+before anyone types a number. The hero is now the headline and then the maker: a 88px photograph
+(cropped from `/ninad-headshot.jpg` to `/ninad-portrait-208.webp`) beside two first-person
+sentences and one line naming the three interviews, with links to the debt-to-FIRE article and
+`/appearances`. Every fact in it is already published elsewhere on the site, and it never states
+or implies what he has, only what he spends. No card, no border, no shadow; the photo takes the
+12px surface radius rather than an avatar circle. On a phone the words wrap around a 64px photo
+and then run full width. The typed "You need ~~a FIRE number~~ …" line was not deleted: it moved
+down to open the steps 2 to 6 section, which is the part of the page it describes. Links in
+running text on the home page now take the accent; they had been falling back to browser blue.
+
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.
 
