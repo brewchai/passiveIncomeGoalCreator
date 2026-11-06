@@ -71,18 +71,20 @@
         .hero h1 { font-size: clamp(38px, 5.2vw, var(--t6)); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; }
         .hero h1 .fi { color: var(--accent-color); } /* Financial Independence: the brand accent */
         .hero h1 .re { color: var(--toast-accent); } /* Retire Early: the system's second accent, olive from the same cover photography */
-        /* Who made this: a photograph and three sentences under the headline, before any numbers are asked for.
-           No card, no border, no shadow. The photo takes the surface radius, not a circle. */
-        .maker { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; align-items: start; margin-top: 12px; }
-        .maker img { width: 88px; height: 88px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
-        .maker p { margin: 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
-        .maker .seen { margin-top: 10px; font-size: var(--t-1); color: var(--text-secondary); }
+        /* The intro: who made this, as its own section and the first thing on the page. A photograph, a
+           line in his own words, two short paragraphs. No card, no border, no shadow; the photo takes the
+           surface radius, not a circle. It sits in the same narrow column as the headline under it, so the
+           photo and the headline share a left edge, and one hairline separates the two. */
+        .intro { padding: 56px 0 0; max-width: 40rem; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px 24px; align-items: start; }
+        .intro img { grid-row: 1 / span 4; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
+        .intro h2 { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+        .intro p { margin: 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
+        .intro .seen { font-size: var(--t-1); color: var(--text-secondary); }
+        .intro + .hero { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--rule); }
         /* Links in running text take the accent. They were falling back to the browser's default blue. */
-        .maker a, .section p a { color: var(--accent-color); }
-        .maker a:hover, .section p a:hover { color: #5E3C00; }
+        .intro a, .section p a { color: var(--accent-color); }
+        .intro a:hover, .section p a:hover { color: #5E3C00; }
         .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
-        /* The typed line now opens the steps 2 to 6 section, the part of the page it describes. */
-        .section .tagline { color: var(--text-primary); font-size: clamp(24px, 2.6vw, var(--t2)); max-width: 46rem; }
         .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
         .strike svg { position: absolute; left: -2%; top: 8%; width: 104%; height: 84%; overflow: visible; pointer-events: none; }
         .strike path { fill: none; stroke: var(--accent-color); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 130; stroke-dashoffset: 130; animation: draw .55s cubic-bezier(.65,0,.35,1) .9s forwards; }
@@ -164,15 +166,17 @@
         /* .hero and .section set their own padding, which wiped out the side padding .wrap gives.
            Below the full 1180px width that left every heading and paragraph touching the edge of
            the screen. This puts the gutter back wherever the page is narrower than the wrap. */
-        @media (max-width: 1228px) { .hero, .section { padding-left: 24px; padding-right: 24px; } }
+        @media (max-width: 1228px) { .intro, .hero, .section { padding-left: 24px; padding-right: 24px; } }
         @media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } .section { padding-top: 40px; margin-top: 40px; } .tiles { grid-template-columns: 1fr; gap: 14px; }
-            .hero, .section { padding-left: 20px; padding-right: 20px; }
+            .intro, .hero, .section { padding-left: 20px; padding-right: 20px; }
             .hero { padding-top: 40px; }
-            /* on a phone the words wrap around the photo and then run full width, which saves four lines */
-            .maker { display: block; }
-            .maker img { width: 64px; height: 64px; float: left; margin: 4px 14px 4px 0; }
-            .maker::after { content: ""; display: block; clear: both; }
+            /* on a phone the photo sits beside the opening line and the paragraphs run full width under them */
+            .intro { padding-top: 32px; grid-template-columns: 72px minmax(0, 1fr); gap: 12px 16px; }
+            .intro img { grid-row: auto; width: 72px; height: 72px; }
+            .intro h2 { align-self: center; }
+            .intro p { grid-column: 1 / -1; }
+            .intro + .hero { margin-top: 32px; padding-top: 32px; }
             /* the sheet's columns ask for 320px each; on a 320px phone that is wider than the page */
             .sheet { grid-template-columns: minmax(0, 1fr); }
             /* the tool list: name, then what it does under it, so the description can wrap */
@@ -203,16 +207,23 @@
     </header>
 
     <main>
+        <!-- First on the page: who made this, in his own words. Every fact here is already published on the site.
+             The planner's headline comes after it, so the page opens with a person and not a pitch. -->
+        <section class="wrap intro" id="about-ninad">
+            <img src="/ninad-portrait-208.webp" alt="Ninad" width="96" height="96" decoding="async">
+            <h2>I'm Ninad, and I retired at 33.</h2>
+            <p>I'm a former Meta engineer who moved to the US at 23 with $40,000 in student loans. Since 2025 my portfolio has paid for my life in Da Nang, Vietnam, at about $1,800 a month.</p>
+            <p>Getting here, I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I put them into the planner below.</p>
+            <p class="seen">Interviewed on The FIREd Couple, Hemant CareerBytes and Belong. <a href="/blog/40k-debt-to-lean-fire-at-33">Read how I did it</a> or <a href="/appearances">watch the interviews</a>.</p>
+        </section>
+
         <section class="wrap hero">
             <h1>The <span class="fi">F.I.</span><span class="re">R.E</span> planner that starts where calculators stop.</h1>
-            <!-- Who made this, before any numbers are asked for. Every fact here is already published on the site. -->
-            <div class="maker">
-                <img src="/ninad-portrait-208.webp" alt="Ninad" width="88" height="88" decoding="async">
-                <div>
-                    <p>I'm Ninad, a former Meta engineer who moved to the US at 23 with $40,000 in student loans and stopped working at 33. Since 2025 my portfolio has paid for my life in Da Nang, Vietnam, at about $1,800 a month.</p>
-                    <p class="seen">Interviewed on The FIREd Couple, Hemant CareerBytes and Belong. <a href="/blog/40k-debt-to-lean-fire-at-33">Read how I did it</a> or <a href="/appearances">watch the interviews</a>.</p>
-                </div>
-            </div>
+            <p class="tagline display cycle" aria-hidden="true">
+                <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
+                <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
+            </p>
+            <p class="sr-only">You need more than a FIRE number: a plan that survives a bad decade, a floor under your spending, and odds across thousands of real market years.</p>
         </section>
 
         <section class="wrap section" id="step-1">
@@ -267,11 +278,6 @@
 
         <section class="wrap section" id="steps-2-to-6">
             <h2>Reaching a number doesn't guarantee success.</h2>
-            <p class="tagline display cycle" aria-hidden="true">
-                <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
-                <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
-            </p>
-            <p class="sr-only">You need more than a FIRE number: a plan that survives a bad decade, a floor under your spending, and odds across thousands of real market years.</p>
             <p class="lede">Steps 2 to 6 are coming soon. They test the things a number ignores.</p>
             <div class="tiles">
                 <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>

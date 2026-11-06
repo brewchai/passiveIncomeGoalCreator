@@ -199,17 +199,25 @@ mechanisms and scale, Portfolio Charts earns trust with methodology and first-pe
 | Radius | 12px on the button and the sheet's one rounded corner, 4px on controls, per the record |
 | Copy rules | no price, no account, no "free", no "sign up"; comprehensiveness is written out in full sentences in the reader's words rather than listed in a grid; every number on the page is one the planner produces for the sample plan |
 
-**Revised 2026-11-07: the maker comes before the numbers.** Ninad said the top of the page was
-selling the calculator too hard and asked for authority first: sell him, in a short snippet,
-before anyone types a number. The hero is now the headline and then the maker: a 88px photograph
-(cropped from `/ninad-headshot.jpg` to `/ninad-portrait-208.webp`) beside two first-person
-sentences and one line naming the three interviews, with links to the debt-to-FIRE article and
-`/appearances`. Every fact in it is already published elsewhere on the site, and it never states
-or implies what he has, only what he spends. No card, no border, no shadow; the photo takes the
-12px surface radius rather than an avatar circle. On a phone the words wrap around a 64px photo
-and then run full width. The typed "You need ~~a FIRE number~~ …" line was not deleted: it moved
-down to open the steps 2 to 6 section, which is the part of the page it describes. Links in
-running text on the home page now take the accent; they had been falling back to browser blue.
+**Revised 2026-11-07: the page opens with the maker, then leans into the planner.** Ninad said the
+top of the page was selling the calculator too hard and asked for authority first: sell him, in a
+short intro, before anyone types a number, and do not start with the hard sell. The order is now
+(1) an intro section about him, (2) the planner's headline with the typed line under it, exactly
+as it was, (3) Step 1. The intro is its own section, first on the page: a 96px photograph
+(cropped from `/ninad-headshot.jpg` to `/ninad-portrait-208.webp`), the line "I'm Ninad, and I
+retired at 33.", two short first-person paragraphs, and one line naming the three interviews with
+links to the debt-to-FIRE article and `/appearances`. The second paragraph is his own framing: he
+painstakingly learnt a few things the calculators and blogs he relied on were missing, and put
+them into the planner below. That sentence is the only bridge to the product; the pitch itself
+waits for the headline. Every fact is already published elsewhere on the site, and the intro never
+states or implies what he has, only what he spends. No card, no border, no shadow; the photo takes
+the 12px surface radius rather than an avatar circle. The intro shares the headline's 40rem column,
+so the photo and the headline have one left edge, and a single hairline separates the two. On a
+phone the photo sits beside the opening line and the paragraphs run full width under them.
+**The typed "You need ~~a FIRE number~~ …" line stays under the headline.** A first pass that day
+moved it down to the steps 2 to 6 section; Ninad had not asked for that and it was put back.
+Links in running text on the home page now take the accent; they had been falling back to browser
+blue.
 
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.
