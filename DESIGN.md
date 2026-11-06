@@ -232,8 +232,17 @@ instead.", then the strike-and-typing line.
 to perfect, so that I can give you more depth than most other tools you might have come across",
 and the waitlist email box directly under it. The box moved up from the end of "Thousands of
 simulations"; there is one box on the page.
-(5) "Reaching a number doesn't guarantee success" with the six tiles, then the rest of the page
-unchanged.
+(5) The rest of the page unchanged.
+
+**Corrected the same day: "Reaching a number doesn't guarantee success" and the six tiles sit
+directly after the intro, before the headline.** Ninad's plan said to "pull up" that section; the
+first build read that as "show it next" and left it under Step 1. Up there it teases what the
+planner covers, so its lede is now "These are the things a number ignores." and carries no "steps 2
+to 6 are coming soon" line. Final order: intro, the tiles section, the headline with the pitch and
+the typed line, Step 1, his line about step 2 onwards with the email box, then the rest. Because a
+full-width section now sits between the intro and the headline, both dropped their centred 40rem
+column: every block starts at the wrap's left edge, the headline block takes the same top hairline
+as a section, and its text keeps a 40rem measure.
 
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.

@@ -67,19 +67,18 @@
         .home { font-size: var(--t0); line-height: 1.6; font-variant-numeric: tabular-nums; }
         .home h1, .home h2, .home h3, .home .display { font-family: var(--display); font-optical-sizing: auto; margin: 0; }
         .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
-        .hero { padding: 64px 0 0; display: flex; flex-direction: column; gap: 16px; max-width: 40rem; }
+        .hero { padding: 56px 0 0; margin-top: 56px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 16px; }
+        .hero > * { max-width: 40rem; }
         .hero h1 { font-size: clamp(38px, 5.2vw, var(--t6)); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; }
         .hero h1 .fi { color: var(--accent-color); } /* Financial Independence: the brand accent */
         .hero h1 .re { color: var(--toast-accent); } /* Retire Early: the system's second accent, olive from the same cover photography */
         /* The intro: who made this, as its own section and the first thing on the page. A photograph, a
            line in his own words, two short paragraphs. No card, no border, no shadow; the photo takes the
-           surface radius, not a circle. It sits in the same narrow column as the headline under it, so the
-           photo and the headline share a left edge, and one hairline separates the two. */
-        .intro { padding: 56px 0 0; max-width: 40rem; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px 24px; align-items: start; }
+           surface radius, not a circle. It starts at the same left edge as every section under it. */
+        .intro { padding: 56px 0 0; display: grid; grid-template-columns: 96px minmax(0, 34rem); gap: 12px 24px; align-items: start; }
         .intro img { grid-row: 1 / span 3; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
         .intro h2 { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .intro p { margin: 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
-        .intro + .hero { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--rule); }
         /* Links in running text take the accent. They were falling back to the browser's default blue. */
         .intro a, .section p a { color: var(--accent-color); }
         .intro a:hover, .section p a:hover { color: #5E3C00; }
@@ -172,13 +171,12 @@
         @media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 720px) { .sheet form { border-right: 0; border-bottom: 1px solid var(--rule); } .sheet form, .results { padding: 22px; } .ledger .n { font-size: var(--t1); } .section { padding-top: 40px; margin-top: 40px; } .tiles { grid-template-columns: 1fr; gap: 14px; }
             .intro, .hero, .section { padding-left: 20px; padding-right: 20px; }
-            .hero { padding-top: 40px; }
+            .hero { padding-top: 40px; margin-top: 40px; }
             /* on a phone the photo sits beside the opening line and the paragraphs run full width under them */
             .intro { padding-top: 32px; grid-template-columns: 72px minmax(0, 1fr); gap: 12px 16px; }
             .intro img { grid-row: auto; width: 72px; height: 72px; }
             .intro h2 { align-self: center; }
             .intro p { grid-column: 1 / -1; }
-            .intro + .hero { margin-top: 32px; padding-top: 32px; }
             /* the sheet's columns ask for 320px each; on a 320px phone that is wider than the page */
             .sheet { grid-template-columns: minmax(0, 1fr); }
             /* the tool list: name, then what it does under it, so the description can wrap */
@@ -211,15 +209,30 @@
     <main>
         <!-- The page in the order Ninad set on 2026-11-07:
              1. who made this, in his own words, with the links to his interviews and the blog
-             2. the pitch: everyone tells you to reach a number, here is what you need instead, the typed line
-             3. step 1, the five numbers, and "get started today"
-             4. what he is still building, and the one email box
-             5. "Reaching a number doesn't guarantee success" and the six tiles, then the rest of the page -->
+             2. "Reaching a number doesn't guarantee success" and the six tiles, pulled up here to tease what
+                the planner covers, so it carries no "steps 2 to 6 are coming soon" line
+             3. the pitch: everyone tells you to reach a number, here is what you need instead, the typed line
+             4. step 1, the five numbers, and "get started today"
+             5. what he is still building, and the one email box
+             6. the rest of the page -->
         <section class="wrap intro" id="about-ninad">
             <img src="/ninad-portrait-208.webp" alt="Ninad" width="96" height="96" decoding="async">
             <h2>I'm Ninad, and I retired at 33.</h2>
             <p>I'm a former Meta engineer who moved to the US at 23 with $40,000 in student loans. Since 2025 my portfolio has paid for my life in Da Nang, Vietnam, at about $1,800 a month.</p>
             <p>Getting here, I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I've talked and written about what they are in detail, in <a href="/appearances">my interviews</a> and on <a href="/blog">the blog</a>.</p>
+        </section>
+
+        <section class="wrap section" id="steps-2-to-6">
+            <h2>Reaching a number doesn't guarantee success.</h2>
+            <p class="lede">These are the things a number ignores.</p>
+            <div class="tiles">
+                <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
+                <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
+                <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
+                <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
+                <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
+                <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
+            </div>
         </section>
 
         <section class="wrap hero">
@@ -292,19 +305,6 @@
             </form>
 
             <p>Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
-        </section>
-
-        <section class="wrap section" id="steps-2-to-6">
-            <h2>Reaching a number doesn't guarantee success.</h2>
-            <p class="lede">Steps 2 to 6 are coming soon. They test the things a number ignores.</p>
-            <div class="tiles">
-                <div><strong>Dependents</strong><span>and the year each one stops costing</span></div>
-                <div><strong>One-time costs</strong><span>college, a car, a parent's care</span></div>
-                <div><strong>Portfolio split</strong><span>equity, debt and a cash bucket</span></div>
-                <div><strong>Guardrails</strong><span>what you'd cut in a bad year, with a floor</span></div>
-                <div><strong>Income on the side</strong><span>part time work, rent, accounts at 60</span></div>
-                <div><strong>Sequence of returns</strong><span>the order they arrive decides if it lasts</span></div>
-            </div>
         </section>
 
         <section class="wrap section" id="simulations">
