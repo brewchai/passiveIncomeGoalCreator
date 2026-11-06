@@ -205,8 +205,9 @@ short intro, before anyone types a number, and do not start with the hard sell. 
 (1) an intro section about him, (2) the planner's headline with the typed line under it, exactly
 as it was, (3) Step 1. The intro is its own section, first on the page: a 96px photograph
 (cropped from `/ninad-headshot.jpg` to `/ninad-portrait-208.webp`), the line "I'm Ninad, and I
-retired at 33.", two short first-person paragraphs, and one line naming the three interviews with
-links to the debt-to-FIRE article and `/appearances`. The second paragraph is his own framing: he
+retired at 33.", two short first-person paragraphs, and one line of two links, "Watch my interviews
+or read more about my journey", to `/appearances` and the debt-to-FIRE article. The channels are not
+named: Ninad asked for that the same day. The second paragraph is his own framing: he
 painstakingly learnt a few things the calculators and blogs he relied on were missing, and put
 them into the planner below. That sentence is the only bridge to the product; the pitch itself
 waits for the headline. Every fact is already published elsewhere on the site, and the intro never
