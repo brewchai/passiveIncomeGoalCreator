@@ -220,6 +220,21 @@ moved it down to the steps 2 to 6 section; Ninad had not asked for that and it w
 Links in running text on the home page now take the accent; they had been falling back to browser
 blue.
 
+**Revised 2026-11-07, later the same day: the running order of the page, set by Ninad.**
+(1) The intro about him. Its second paragraph no longer mentions the planner; it ends "I've
+talked and written about what they are in detail, in my interviews and on the blog", and those
+two phrases are the links (`/appearances`, `/blog`). The separate links line is gone.
+(2) The pitch starts: the headline stays, then two plain sentences in his words, "Everyone tells
+you to reach a certain number, but that is just the starting point. Here's what you need
+instead.", then the strike-and-typing line.
+(3) Step 1, whose lede now opens "Get started with step 1 today."
+(4) Still inside the Step 1 section, under the sheet: his line "Step 2 onwards I'm working hard
+to perfect, so that I can give you more depth than most other tools you might have come across",
+and the waitlist email box directly under it. The box moved up from the end of "Thousands of
+simulations"; there is one box on the page.
+(5) "Reaching a number doesn't guarantee success" with the six tiles, then the rest of the page
+unchanged.
+
 Objections section answers the four questions readers actually ask (4% rule, "my situation
 isn't simple", where the market data comes from, where the data goes). Founder's note closes.
 

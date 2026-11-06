@@ -76,14 +76,15 @@
            surface radius, not a circle. It sits in the same narrow column as the headline under it, so the
            photo and the headline share a left edge, and one hairline separates the two. */
         .intro { padding: 56px 0 0; max-width: 40rem; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px 24px; align-items: start; }
-        .intro img { grid-row: 1 / span 4; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
+        .intro img { grid-row: 1 / span 3; width: 96px; height: 96px; border-radius: var(--radius-surface, 12px); object-fit: cover; display: block; }
         .intro h2 { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .intro p { margin: 0; font-size: var(--t0); line-height: 1.5; color: var(--text-primary); }
-        .intro .seen { font-size: var(--t-1); color: var(--text-secondary); }
         .intro + .hero { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--rule); }
         /* Links in running text take the accent. They were falling back to the browser's default blue. */
         .intro a, .section p a { color: var(--accent-color); }
         .intro a:hover, .section p a:hover { color: #5E3C00; }
+        /* Where the selling starts: two plain sentences between the headline and the typed line. */
+        .pitch { margin: 0; font-size: var(--t1); line-height: 1.4; color: var(--text-primary); }
         .tagline { font-size: clamp(26px, 3vw, var(--t3)); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
         .strike { position: relative; white-space: nowrap; display: inline-block; color: var(--text-primary); animation: fade-word .4s ease-out 1.25s forwards; }
         .strike svg { position: absolute; left: -2%; top: 8%; width: 104%; height: 84%; overflow: visible; pointer-events: none; }
@@ -149,6 +150,7 @@
         .section h2 { font-size: clamp(32px, 3.6vw, var(--t4)); font-weight: 500; line-height: 1.1; letter-spacing: -0.015em; max-width: 46rem; }
         .section p { margin: 0; color: var(--text-secondary); max-width: 46rem; }
         .section .lede { font-size: var(--t1); line-height: 1.4; color: var(--text-primary); margin-top: -4px; }
+        .section .lede.next { margin-top: 28px; } /* his line about steps 2 onwards, set off from the sheet above it */
         details { border-bottom: 1px solid var(--rule); padding: 16px 0; }
         .faqs { border-top: 1px solid var(--rule); max-width: 52rem; }
         summary { cursor: pointer; font-size: var(--t1); font-weight: 600; line-height: 1.25; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-family: var(--display); font-optical-sizing: auto; }
@@ -207,18 +209,22 @@
     </header>
 
     <main>
-        <!-- First on the page: who made this, in his own words. Every fact here is already published on the site.
-             The planner's headline comes after it, so the page opens with a person and not a pitch. -->
+        <!-- The page in the order Ninad set on 2026-11-07:
+             1. who made this, in his own words, with the links to his interviews and the blog
+             2. the pitch: everyone tells you to reach a number, here is what you need instead, the typed line
+             3. step 1, the five numbers, and "get started today"
+             4. what he is still building, and the one email box
+             5. "Reaching a number doesn't guarantee success" and the six tiles, then the rest of the page -->
         <section class="wrap intro" id="about-ninad">
             <img src="/ninad-portrait-208.webp" alt="Ninad" width="96" height="96" decoding="async">
             <h2>I'm Ninad, and I retired at 33.</h2>
             <p>I'm a former Meta engineer who moved to the US at 23 with $40,000 in student loans. Since 2025 my portfolio has paid for my life in Da Nang, Vietnam, at about $1,800 a month.</p>
-            <p>Getting here, I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I put them into the planner below.</p>
-            <p class="seen"><a href="/appearances">Watch my interviews</a> or <a href="/blog/40k-debt-to-lean-fire-at-33">read more about my journey</a>.</p>
+            <p>Getting here, I painstakingly learnt a few things that the calculators and blogs I relied on were missing. I've talked and written about what they are in detail, in <a href="/appearances">my interviews</a> and on <a href="/blog">the blog</a>.</p>
         </section>
 
         <section class="wrap hero">
             <h1>The <span class="fi">F.I.</span><span class="re">R.E</span> planner that starts where calculators stop.</h1>
+            <p class="pitch">Everyone tells you to reach a certain number, but that is just the starting point. Here's what you need instead.</p>
             <p class="tagline display cycle" aria-hidden="true">
                 <span class="ghost" id="ghost">You need a FIRE number an answer for college, a car, a parent's care</span>
                 <span>You need <span class="strike">a FIRE number<svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 18 7, 34 15, 50 10 S 82 6, 98 11"/></svg></span> <span id="typed">a plan that survives a bad decade</span><span class="caret"></span></span>
@@ -228,7 +234,7 @@
 
         <section class="wrap section" id="step-1">
             <h2>Step 1 of 6. Your five numbers.</h2>
-            <p class="lede">Five numbers in. Where you stand, in plain words, and what to test next.</p>
+            <p class="lede">Get started with step 1 today. Five numbers in, and you see where you stand in plain words.</p>
 
             <div class="sheet">
                 <form id="quick" autocomplete="off">
@@ -273,6 +279,18 @@
                 </div>
             </div>
 
+            <p class="lede next">Step 2 onwards I'm working hard to perfect, so that I can give you more depth than most other tools you might have come across.</p>
+            <form class="waitlist" id="waitlist" novalidate>
+                <div class="display" style="font-size:var(--t1);font-weight:600;line-height:1.25">Be first in. One email when steps 2 to 6 go live.</div>
+                <div class="waitlist-row">
+                    <label for="wl-email" class="sr-only">Email</label>
+                    <input id="wl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                    <button type="submit" id="wl-btn">Join the waitlist</button>
+                </div>
+                <span class="note" id="wl-note">One email when the planner is live. Nothing else, ever. The blog and the tools are already up.</span>
+            </form>
+
             <p>Not here for your number? <a href="/blog">Continue to the blog</a>.</p>
         </section>
 
@@ -294,17 +312,6 @@
             <p class="lede">Coming with steps 2 to 6: your plan, run through thousands of real market sequences instead of one smooth average.</p>
             <p>Each run draws a different order of actual market years, with your inflation, your dependents and your one-time costs in place. You get how many of those futures last, the age the money runs dry in the worst ones, and a report of what breaks the plan and what to fix.</p>
             <p class="lede">Five more steps, about five more minutes, and you have a plan that holds up instead of a number that looks nice.</p>
-
-            <form class="waitlist" id="waitlist" novalidate>
-                <div class="display" style="font-size:var(--t1);font-weight:600;line-height:1.25">Be first in. One email when steps 2 to 6 go live.</div>
-                <div class="waitlist-row">
-                    <label for="wl-email" class="sr-only">Email</label>
-                    <input id="wl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-                    <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-                    <button type="submit" id="wl-btn">Join the waitlist</button>
-                </div>
-                <span class="note" id="wl-note">One email when the planner is live. Nothing else, ever. The blog and the tools are already up.</span>
-            </form>
         </section>
 
         <section class="wrap section">
